@@ -1,0 +1,52 @@
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+import test from "node:test";
+
+async function render() {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
+  const { default: worker } = await import(workerUrl.href);
+
+  return worker.fetch(
+    new Request("http://localhost/", {
+      headers: { accept: "text/html" },
+    }),
+    {
+      ASSETS: {
+        fetch: async () => new Response("Not found", { status: 404 }),
+      },
+    },
+    {
+      waitUntil() {},
+      passThroughOnException() {},
+    },
+  );
+}
+
+test("server-renders the draft companion shell", async () => {
+  const response = await render();
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
+
+  const html = await response.text();
+  assert.match(html, /<title>Predecessor Counterpick<\/title>/i);
+  assert.match(html, /Kit draft lab/);
+  assert.match(html, /Enemy draft/);
+  assert.match(html, /Counter picks/);
+  assert.match(html, /I already picked/);
+  assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Your site is taking shape/);
+});
+
+test("keeps the kit data local and explainable", async () => {
+  const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
+  const layout = await readFile(new URL("../app/layout.tsx", import.meta.url), "utf8");
+  const packageJson = await readFile(new URL("../package.json", import.meta.url), "utf8");
+
+  assert.match(page, /const heroes: Hero\[\] = \[/);
+  assert.match(page, /const counterRules = \[/);
+  assert.match(page, /peels dive/);
+  assert.match(page, /frontline shred/);
+  assert.match(page, /recommendBuild/);
+  assert.match(layout, /kit-based draft assistant/i);
+  assert.doesNotMatch(packageJson, /react-loading-skeleton/);
+});
