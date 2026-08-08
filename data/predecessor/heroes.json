@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "akeron-game-client-manual-entry-2026-08-08": {
+      "label": "Akeron game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Akeron roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -107,35 +112,404 @@
       "id": "akeron",
       "name": "Akeron",
       "roles": [
+        "offlane",
         "jungle"
       ],
-      "damage": "physical",
+      "damage": "mixed",
       "range": "melee",
       "threats": [
         "dive",
-        "burst",
-        "pick"
+        "engage",
+        "pick",
+        "sustain",
+        "execute",
+        "terrain-mobility",
+        "hard-cc",
+        "armor-shred",
+        "mixed-damage"
       ],
       "answers": [
-        "burst",
+        "backline-access",
         "mobility",
-        "backline-access"
+        "hard-cc",
+        "root",
+        "stun",
+        "knockup",
+        "sustain",
+        "armor-shred",
+        "execute-pressure",
+        "frontline"
       ],
       "weaknesses": [
+        "anti-heal",
         "hard-cc",
-        "anti-burst"
+        "kite",
+        "poke",
+        "burst-vulnerable",
+        "terrain-dependent"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "akeron-game-client-manual-entry-2026-08-08",
+        "roles": "akeron-game-client-manual-entry-2026-08-08",
+        "classes": "akeron-game-client-manual-entry-2026-08-08",
+        "ratings": "akeron-game-client-manual-entry-2026-08-08",
+        "abilities": "akeron-game-client-manual-entry-2026-08-08",
+        "augments": "akeron-game-client-manual-entry-2026-08-08",
+        "kit": "akeron-game-client-manual-entry-2026-08-08"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
-      }
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Akeron text dated 2026-08-08. Recommendation tags are derived from the source-backed kit."
+      },
+      "classes": [
+        "fighter"
+      ],
+      "ratings": {
+        "basicAttack": 2,
+        "abilityPower": 6,
+        "durability": 7,
+        "mobility": 8
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Flay",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 62.0/65.0/68.2/71.5/75.0/78.7/82.5/86.5/90.6/94.9/99.4/104.0/108.8/113.7/118.8/124.1/129.5/135.1 (+75% physical power) physical damage.",
+          "scaling": {
+            "physicalDamage": [
+              62,
+              65,
+              68.2,
+              71.5,
+              75,
+              78.7,
+              82.5,
+              86.5,
+              90.6,
+              94.9,
+              99.4,
+              104,
+              108.8,
+              113.7,
+              118.8,
+              124.1,
+              129.5,
+              135.1
+            ],
+            "physicalPowerRatio": 0.75
+          },
+          "effects": [
+            "melee-basic",
+            "physical-damage"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "passive",
+          "name": "Pact of the Devourer",
+          "kind": "passive",
+          "description": "Akeron gains up to 100 stacks of Hunger, each granting 0.25% increased healing and lasting 3s and refreshing on application. Akeron gains Hunger each time he hits an Enemy Unit with a basic attack or ability. He gains additional Hunger when damaged by an Enemy Hero. When Akeron reaches max stacks he becomes Awakened for 10s granting him 5.0/5.8/6.5/7.3/8.0/8.8/9.5/10.3/11.0/11.8/12.5/13.3/14.0/14.8/15.5/16.3/17.0/17.8% (+0.75% per level) Damage Reduction, and granting his basic abilities extra effects.",
+          "scaling": {
+            "maxHungerStacks": 100,
+            "healingIncreasePercentPerStack": 0.25,
+            "hungerDuration": 3,
+            "awakenedDuration": 10,
+            "damageReductionPercentByLevel": [
+              5,
+              5.8,
+              6.5,
+              7.3,
+              8,
+              8.8,
+              9.5,
+              10.3,
+              11,
+              11.8,
+              12.5,
+              13.3,
+              14,
+              14.8,
+              15.5,
+              16.3,
+              17,
+              17.8
+            ],
+            "damageReductionPerLevelPercent": 0.75
+          },
+          "effects": [
+            "healing-amp",
+            "stacking-buff",
+            "damage-reduction",
+            "empowered-state",
+            "sustain"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "primary",
+          "name": "Hellfire",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Akeron opens his maw and launches the Demon's Eye forward. The Eye moves slowly, firing off 10 (+10% haste) fireballs around it. Refire the ability to pause the Eye mid-flight. Each fireball deals 18.0/29.0/40.0/51.0/62.0 (+18% magical power) magical damage and Slows Enemies by 7%, up to a max of 35%. If an Enemy is within range, the Eye will fire an additional homing fireball at them. Each subsequent hit on the same Target deals 20% less damage, stacking up to a 80% reduction. When Awakened, the number of fireballs is increased by 50%.",
+          "scaling": {
+            "fireballs": 10,
+            "hasteFireballRatio": 0.1,
+            "magicalDamagePerFireball": [
+              18,
+              29,
+              40,
+              51,
+              62
+            ],
+            "magicalPowerRatio": 0.18,
+            "slowPercentPerHit": 7,
+            "maxSlowPercent": 35,
+            "repeatedHitDamageReductionPercent": 20,
+            "maxRepeatedHitDamageReductionPercent": 80,
+            "awakenedFireballIncreasePercent": 50
+          },
+          "cooldown": [
+            16,
+            14.75,
+            13.5,
+            12.25,
+            11
+          ],
+          "effects": [
+            "magical-damage",
+            "slow",
+            "homing-projectiles",
+            "zone-control",
+            "poke",
+            "empowered-when-awakened"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "secondary",
+          "name": "Web Lash",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Akeron fires a web, stopping on the first Target hit and causing various effects depending on the Target type. Heroes or Units: Damages for 70.0/95.0/120.0/145.0/170.0 (+40% magical power) magical damage and Roots for 1s, also creating a web field that Slows Enemies by 35%. World: Lashes to it for up to 5s. While attached to terrain, Akeron can use abilities or leap to the ground, dealing 60.0/85.0/110.0/135.0/160.0 (+50% physical power)(+40% magical power) physical damage, Knocking Up, and Stunning Enemies for 1s. Awakened: Root and Stun Duration increased to 1.25.",
+          "scaling": {
+            "magicalDamage": [
+              70,
+              95,
+              120,
+              145,
+              170
+            ],
+            "magicalPowerRatio": 0.4,
+            "rootDuration": 1,
+            "fieldSlowPercent": 35,
+            "terrainAttachDuration": 5,
+            "leapPhysicalDamage": [
+              60,
+              85,
+              110,
+              135,
+              160
+            ],
+            "leapPhysicalPowerRatio": 0.5,
+            "leapMagicalPowerRatio": 0.4,
+            "stunDuration": 1,
+            "awakenedCcDuration": 1.25
+          },
+          "cooldown": [
+            25,
+            22.5,
+            20,
+            17.5,
+            15
+          ],
+          "effects": [
+            "mobility",
+            "terrain-attach",
+            "root",
+            "stun",
+            "knockup",
+            "hard-cc",
+            "slow-field",
+            "engage",
+            "pick"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "alternate",
+          "name": "Crushing Maw",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Akeron deals 70.0/90.0/110.0/130.0/150.0 (+65% physical power)(+40% magical power)(+4% max health) physical damage in a cone. Enemies close to Akeron take 1.35x damage. Akeron also heals for 8.0/12.0/16.0/20.0/24.0 (+1.8/2.5/3.3/4.0/4.8% max health). The heal is reduced to 20% for Non-Heroes, and increased by 200% on kill. If an Enemy Hero is killed, Akeron becomes Awakened. While Akeron is attached to terrain, this ability becomes a roar, affecting the area around him. Awakened: Shred 15.0/17.5/20.0/22.5/25.0% Physical Armor and Magical Armor for 5s.",
+          "scaling": {
+            "physicalDamage": [
+              70,
+              90,
+              110,
+              130,
+              150
+            ],
+            "physicalPowerRatio": 0.65,
+            "magicalPowerRatio": 0.4,
+            "maxHealthDamageRatio": 0.04,
+            "closeRangeDamageMultiplier": 1.35,
+            "heal": [
+              8,
+              12,
+              16,
+              20,
+              24
+            ],
+            "maxHealthHealPercent": [
+              1.8,
+              2.5,
+              3.3,
+              4,
+              4.8
+            ],
+            "nonHeroHealPercent": 20,
+            "killHealIncreasePercent": 200,
+            "armorShredPercent": [
+              15,
+              17.5,
+              20,
+              22.5,
+              25
+            ],
+            "armorShredDuration": 5
+          },
+          "cooldown": [
+            11,
+            10,
+            9,
+            8,
+            7
+          ],
+          "effects": [
+            "cone-damage",
+            "physical-damage",
+            "max-health-scaling",
+            "self-heal",
+            "execute-synergy",
+            "armor-shred",
+            "magic-armor-shred",
+            "sustain",
+            "empowered-when-awakened"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Consume",
+          "kind": "ultimate ability",
+          "damageType": "mixed",
+          "description": "Akeron Slows himself by 35% while Pulling and dealing 15.0/20.0/25.0 (+5% magical power) magical damage to all Enemies in a cone every 0.25s for 3s. If an Enemy Hero collides with Akeron, he bites them, dealing 55.0/75.0/95.0 (+75% physical power)(+45% magical power) physical damage while healing for 2.5/3.5/4.5% Missing Health + 40.0/50.0/60.0% of bite damage dealt. Akeron Executes Enemies bitten under 12% (+3.5% physical power)(+2.5% magical power) of their Max Health. Each time Akeron successfully executes a Hero, he gains 100.0/125.0/150.0 Maximum Health permanently, also healing for 2.5x the bite value.",
+          "scaling": {
+            "selfSlowPercent": 35,
+            "tickMagicalDamage": [
+              15,
+              20,
+              25
+            ],
+            "tickMagicalPowerRatio": 0.05,
+            "tickRate": 0.25,
+            "duration": 3,
+            "bitePhysicalDamage": [
+              55,
+              75,
+              95
+            ],
+            "bitePhysicalPowerRatio": 0.75,
+            "biteMagicalPowerRatio": 0.45,
+            "missingHealthHealPercent": [
+              2.5,
+              3.5,
+              4.5
+            ],
+            "biteDamageHealPercent": [
+              40,
+              50,
+              60
+            ],
+            "executeThresholdPercent": 12,
+            "executePhysicalPowerRatio": 0.035,
+            "executeMagicalPowerRatio": 0.025,
+            "permanentMaxHealthOnExecute": [
+              100,
+              125,
+              150
+            ],
+            "executeHealMultiplier": 2.5
+          },
+          "cooldown": [
+            135,
+            115,
+            95
+          ],
+          "effects": [
+            "pull",
+            "cone-damage",
+            "magical-damage",
+            "bite",
+            "execute",
+            "self-heal",
+            "permanent-health",
+            "sustain",
+            "displacement"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Trapdoor Demon",
+          "category": "terrain sustain",
+          "description": "Akeron becomes camouflaged when attaching to terrain, gaining 1.5% Max Health Regen and generating 8 Hunger per second while he remains there.",
+          "tags": [
+            "camouflage",
+            "terrain-attach",
+            "health-regen",
+            "hunger-generation",
+            "sustain"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "name": "Death From Above",
+          "category": "mobility",
+          "description": "Akeron can fire an additional web projectile from the wall or ground once, allowing him to leap from surface to surface or to Root from where he hangs.",
+          "tags": [
+            "mobility",
+            "terrain-attach",
+            "extra-web",
+            "root",
+            "engage",
+            "pick"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "name": "Roar of Torment",
+          "category": "ultimate modification",
+          "description": "Consume now Pushes instead of Pulls and deals 275% increased tick damage, but can no longer bite.",
+          "tags": [
+            "push",
+            "ultimate",
+            "area-damage",
+            "tradeoff",
+            "no-bite"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        }
+      ]
     },
     {
       "id": "argus",
@@ -186,12 +560,32 @@
           "damageType": "magical",
           "description": "Argus lobs an unstable orb of energy. Upon landing it explodes, dealing 80/120/160/200/240 (+50%) magical damage to all nearby Targets and Stuns them for 1/1.05/1.1/1.15/1.2s.",
           "scaling": {
-            "damage": [80, 120, 160, 200, 240],
+            "damage": [
+              80,
+              120,
+              160,
+              200,
+              240
+            ],
             "magicalPowerRatio": 0.5,
-            "stunDuration": [1, 1.05, 1.1, 1.15, 1.2]
+            "stunDuration": [
+              1,
+              1.05,
+              1.1,
+              1.15,
+              1.2
+            ]
           },
-          "cooldown": [16, 15, 14, 13, 12],
-          "cost": [50],
+          "cooldown": [
+            16,
+            15,
+            14,
+            13,
+            12
+          ],
+          "cost": [
+            50
+          ],
           "effects": [
             "area-damage",
             "stun",
@@ -207,14 +601,38 @@
           "damageType": "magical",
           "description": "Argus summons an Ether Crystal at the target location for 2s. The Crystal will Push Enemy Heroes from the center and Lift Allied Heroes into the air before producing a storm that deals 15/25/35/45/55 (+18%) magical damage every 0.5s to nearby Enemies and Slows by 25/30/35/40/45% for 0.5s. After the duration the Crystal will implode, Pulling all Enemies within to the center.",
           "scaling": {
-            "damagePerTick": [15, 25, 35, 45, 55],
+            "damagePerTick": [
+              15,
+              25,
+              35,
+              45,
+              55
+            ],
             "magicalPowerRatio": 0.18,
-            "slowPercent": [25, 30, 35, 40, 45],
+            "slowPercent": [
+              25,
+              30,
+              35,
+              40,
+              45
+            ],
             "duration": 2,
             "tickRate": 0.5
           },
-          "cooldown": [16, 15.5, 15, 14.5, 14],
-          "cost": [70, 80, 90, 100, 110],
+          "cooldown": [
+            16,
+            15.5,
+            15,
+            14.5,
+            14
+          ],
+          "cost": [
+            70,
+            80,
+            90,
+            100,
+            110
+          ],
           "effects": [
             "zone-control",
             "pull",
@@ -232,12 +650,26 @@
           "damageType": "magical",
           "description": "Argus fires homing projectiles from his Abyssal Staff for up to 3.5s. Each projectile consumes mana and deals 13/20/27/34/41 (+18%) per blast. At maximum rank, Particle Shredder can be used indefinitely.",
           "scaling": {
-            "damagePerBlast": [13, 20, 27, 34, 41],
+            "damagePerBlast": [
+              13,
+              20,
+              27,
+              34,
+              41
+            ],
             "magicalPowerRatio": 0.18,
             "channelDuration": 3.5
           },
-          "cooldown": [3],
-          "cost": [12, 14, 16, 18, 20],
+          "cooldown": [
+            3
+          ],
+          "cost": [
+            12,
+            14,
+            16,
+            18,
+            20
+          ],
           "effects": [
             "homing-projectiles",
             "channeled-damage",
@@ -253,16 +685,30 @@
           "damageType": "magical",
           "description": "After a short delay, Argus channels for up to 8s, gaining immunity to pushes and pulls whilst deploying his ultimate weapon to fire up to 3/4/5 powerful Energy Beams. Each beam deals 100/130/160 (+25%) magical damage (increased by up to 150% based on the Target's missing health) and Slows Enemies hit by 60% for 0.5s.",
           "scaling": {
-            "damagePerBeam": [100, 130, 160],
+            "damagePerBeam": [
+              100,
+              130,
+              160
+            ],
             "magicalPowerRatio": 0.25,
-            "beams": [3, 4, 5],
+            "beams": [
+              3,
+              4,
+              5
+            ],
             "maxMissingHealthAmpPercent": 150,
             "slowPercent": 60,
             "slowDuration": 0.5,
             "channelDuration": 8
           },
-          "cooldown": [135, 120, 105],
-          "cost": [100],
+          "cooldown": [
+            135,
+            120,
+            105
+          ],
+          "cost": [
+            100
+          ],
           "effects": [
             "long-range-damage",
             "execute-pressure",
