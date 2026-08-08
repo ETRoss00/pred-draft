@@ -36,6 +36,10 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
     },
+    "argus-game-client-manual-entry-2026-08-08": {
+      "label": "Argus game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Argus roles, class, ratings, ability text, and augments."
     "akeron-game-client-manual-entry-2026-08-08": {
       "label": "Akeron game-client manual entry",
       "url": null,
@@ -865,11 +869,11 @@
       "id": "argus",
       "name": "Argus",
       "roles": [
+        "midlane",
         "support"
       ],
       "classes": [
-        "mage",
-        "catcher"
+        "mage"
       ],
       "damage": "magical",
       "range": "ranged",
@@ -881,35 +885,52 @@
       },
       "abilities": [
         {
-          "slot": "passive",
-          "name": "Disintegrate",
-          "kind": "passive",
-          "damageType": "magical",
-          "description": "Argus' abilities apply a stack of Disintegration for 2s, causing subsequent instances of ability damage to deal 4 (+3%) bonus magical damage. Each stack of Disintegration deals 50% more damage, stacking infinitely (capped at 12 against Monsters).",
-          "effects": [
-            "stacking-damage",
-            "bonus-magical-damage"
-          ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
-        },
-        {
           "slot": "basic",
           "name": "Arcrune Conduit",
           "kind": "basic attack",
           "damageType": "physical",
-          "description": "Ranged basic attack dealing 55 (+55%) physical damage.",
+          "description": "Ranged basic attack dealing 55.0/57.5/60.0/62.7/65.6/68.6/71.7/74.9/78.3/81.8/85.4/89.2/93.1/97.1/101.2/105.5/110.0/114.5 (+55% physical power) physical damage.",
+          "scaling": {
+            "physicalDamage": [55, 57.5, 60, 62.7, 65.6, 68.6, 71.7, 74.9, 78.3, 81.8, 85.4, 89.2, 93.1, 97.1, 101.2, 105.5, 110, 114.5],
+            "physicalPowerRatio": 0.55
+          },
           "effects": [
-            "ranged-basic"
+            "ranged-basic",
+            "physical-damage"
           ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "passive",
+          "name": "Disintegrate",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "Argus' abilities apply a stack of Disintegration for 2s, causing subsequent instances of ability damage to deal 4 (+3% magical power) bonus magical damage. Each stack of Disintegration deals 50% more damage, stacking infinitely (capped at 12 against Monsters).",
+          "scaling": {
+            "bonusMagicalDamage": 4,
+            "magicalPowerRatio": 0.03,
+            "stackDuration": 2,
+            "damageIncreasePercentPerStack": 50,
+            "monsterStackCap": 12
+          },
+          "effects": [
+            "stacking-damage",
+            "bonus-magical-damage"
+          ],
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
         },
         {
           "slot": "primary",
           "name": "Dread Nova",
           "kind": "primary ability",
           "damageType": "magical",
-          "description": "Argus lobs an unstable orb of energy. Upon landing it explodes, dealing 80/120/160/200/240 (+50%) magical damage to all nearby Targets and Stuns them for 1/1.05/1.1/1.15/1.2s.",
+          "description": "Argus lobs an unstable orb of energy. Upon landing it explodes, dealing 85.0/125.0/165.0/205.0/245.0 (+50% magical power) magical damage to all nearby Targets and Stuns them for 1.0/1.1/1.1/1.1/1.2s.",
           "scaling": {
+            "damage": [85, 125, 165, 205, 245],
+            "magicalPowerRatio": 0.5,
+            "stunDuration": [1, 1.1, 1.1, 1.1, 1.2]
+          },
+          "cooldown": [16, 15, 14, 13, 12],
             "damage": [
               80,
               120,
@@ -942,15 +963,16 @@
             "hard-cc",
             "burst"
           ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
         },
         {
           "slot": "secondary",
           "name": "Ether Crystal",
           "kind": "secondary ability",
           "damageType": "magical",
-          "description": "Argus summons an Ether Crystal at the target location for 2s. The Crystal will Push Enemy Heroes from the center and Lift Allied Heroes into the air before producing a storm that deals 15/25/35/45/55 (+18%) magical damage every 0.5s to nearby Enemies and Slows by 25/30/35/40/45% for 0.5s. After the duration the Crystal will implode, Pulling all Enemies within to the center.",
+          "description": "Argus summons an Ether Crystal at the target location for 2s. The Crystal will Push Enemy Heroes from the center and Lift Allied Heroes into the air before producing a storm that deals 20.0/30.0/40.0/50.0/60.0 (+18% magical power) magical damage every 0.5s to nearby Enemies and Slows by 25.0/30.0/35.0/40.0/45.0% for 0.5s. After the duration the Crystal will implode, Pulling all Enemies within to the center.",
           "scaling": {
+            "damagePerTick": [20, 30, 40, 50, 60],
             "damagePerTick": [
               15,
               25,
@@ -969,6 +991,7 @@
             "duration": 2,
             "tickRate": 0.5
           },
+          "cooldown": [16, 15.5, 15, 14.5, 14],
           "cooldown": [
             16,
             15.5,
@@ -991,14 +1014,14 @@
             "area-damage",
             "ally-lift"
           ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
         },
         {
           "slot": "alternate",
           "name": "Particle Shredder",
           "kind": "alternate ability",
           "damageType": "magical",
-          "description": "Argus fires homing projectiles from his Abyssal Staff for up to 3.5s. Each projectile consumes mana and deals 13/20/27/34/41 (+18%) per blast. At maximum rank, Particle Shredder can be used indefinitely.",
+          "description": "Argus fires homing projectiles from his Abyssal Staff for up to 3.5s. Each projectile consumes mana and deals 13.0/20.0/27.0/34.0/41.0 (+18% magical power) per blast. At maximum rank, Particle Shredder can be used indefinitely.",
           "scaling": {
             "damagePerBlast": [
               13,
@@ -1010,6 +1033,7 @@
             "magicalPowerRatio": 0.18,
             "channelDuration": 3.5
           },
+          "cooldown": [3, 3, 3, 3, 3],
           "cooldown": [
             3
           ],
@@ -1026,15 +1050,16 @@
             "mana-dependent",
             "sustained-damage"
           ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
         },
         {
           "slot": "ultimate",
           "name": "Synaptic Obliterator",
           "kind": "ultimate ability",
           "damageType": "magical",
-          "description": "After a short delay, Argus channels for up to 8s, gaining immunity to pushes and pulls whilst deploying his ultimate weapon to fire up to 3/4/5 powerful Energy Beams. Each beam deals 100/130/160 (+25%) magical damage (increased by up to 150% based on the Target's missing health) and Slows Enemies hit by 60% for 0.5s.",
+          "description": "After a short delay, Argus channels for up to 8s, gaining immunity to pushes and pulls whilst deploying his ultimate weapon to fire up to 3.0/4.0/5.0 powerful Energy Beams. Each beam deals 130.0/155.0/180.0 (+25% magical power) magical damage (increased by up to 150% based on the Target's missing health) and Slows Enemies hit by 60% for 0.5s.",
           "scaling": {
+            "damagePerBeam": [130, 155, 180],
             "damagePerBeam": [
               100,
               130,
@@ -1066,7 +1091,7 @@
             "push-pull-immunity",
             "channel"
           ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
         }
       ],
       "augments": [
@@ -1079,7 +1104,7 @@
             "combat-speed",
             "ability-damage"
           ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
         },
         {
           "name": "Mana Catalyst",
@@ -1090,19 +1115,19 @@
             "poke-sustain",
             "long-fights"
           ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
         },
         {
           "name": "Infinite Obliteration",
           "category": "increased range",
-          "description": "Synaptic Obliterator's projectile now have infinite range, travel 25% faster, and Slow for 50% longer.",
+          "description": "Synaptic Obliterator's projectile now have infinite range, travel 50% faster, and Slow for 50% longer.",
           "tags": [
             "increased-range",
             "ultimate",
             "pick",
             "siege"
           ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
         }
       ],
       "threats": [
@@ -1129,13 +1154,13 @@
         "mana-dependent"
       ],
       "sourceRefs": {
-        "roster": "argus-game-client-screenshots-2026-08-02",
-        "roles": "argus-game-client-screenshots-2026-08-02",
-        "classes": "argus-game-client-screenshots-2026-08-02",
-        "ratings": "argus-game-client-screenshots-2026-08-02",
-        "abilities": "argus-game-client-screenshots-2026-08-02",
-        "augments": "argus-game-client-screenshots-2026-08-02",
-        "kit": "argus-game-client-screenshots-2026-08-02"
+        "roster": "argus-game-client-manual-entry-2026-08-08",
+        "roles": "argus-game-client-manual-entry-2026-08-08",
+        "classes": "argus-game-client-manual-entry-2026-08-08",
+        "ratings": "argus-game-client-manual-entry-2026-08-08",
+        "abilities": "argus-game-client-manual-entry-2026-08-08",
+        "augments": "argus-game-client-manual-entry-2026-08-08",
+        "kit": "argus-game-client-manual-entry-2026-08-08"
       },
       "verification": {
         "rosterStatus": "source-backed",
@@ -1145,7 +1170,7 @@
         "abilityStatus": "source-backed",
         "augmentStatus": "source-backed",
         "kitStatus": "source-backed",
-        "notes": "Fully encoded from user-provided in-game Argus screenshots dated 2026-08-02. Recommendation tags are derived from the source-backed kit."
+        "notes": "Revised from user-provided in-game Argus text dated 2026-08-08. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
