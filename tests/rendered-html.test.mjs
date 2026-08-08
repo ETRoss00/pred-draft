@@ -32,17 +32,30 @@ test("server-renders the draft companion shell", async () => {
   assert.match(html, /<title>Predecessor Counterpick<\/title>/i);
   assert.match(html, /Kit draft lab/);
   assert.match(html, /Enemy draft/);
+  assert.match(html, /Data audit/);
   assert.match(html, /Counter picks/);
   assert.match(html, /I already picked/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Your site is taking shape/);
 });
 
-test("keeps the kit data local and explainable", async () => {
+test("keeps the kit data in a source-audited data folder", async () => {
   const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
+  const heroes = await readFile(new URL("../data/predecessor/heroes.json", import.meta.url), "utf8");
+  const audit = await readFile(new URL("../data/predecessor/audit.ts", import.meta.url), "utf8");
   const layout = await readFile(new URL("../app/layout.tsx", import.meta.url), "utf8");
   const packageJson = await readFile(new URL("../package.json", import.meta.url), "utf8");
 
-  assert.match(page, /const heroes: Hero\[\] = \[/);
+  assert.doesNotMatch(page, /const heroes: Hero\[\] = \[/);
+  assert.match(page, /from "@\/data\/predecessor\/audit"/);
+  assert.match(heroes, /"schemaVersion": 2/);
+  assert.match(heroes, /"official-hero-gallery"/);
+  assert.match(heroes, /"argus-game-client-screenshots-2026-08-02"/);
+  assert.match(heroes, /"name": "Disintegrate"/);
+  assert.match(heroes, /"name": "Infinite Obliteration"/);
+  assert.match(heroes, /"roleStatus": "needs-review"/);
+  assert.match(heroes, /"roleStatus": "source-backed"/);
+  assert.match(audit, /auditHeroData/);
+  assert.match(audit, /fullyVerifiedHeroes/);
   assert.match(page, /const counterRules = \[/);
   assert.match(page, /peels dive/);
   assert.match(page, /frontline shred/);

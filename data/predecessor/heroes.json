@@ -1,0 +1,2092 @@
+{
+  "schemaVersion": 2,
+  "game": "Predecessor",
+  "patch": "unknown-current",
+  "lastManualReview": null,
+  "sources": {
+    "official-hero-gallery": {
+      "label": "Official Predecessor Hero Gallery",
+      "url": "https://www.predecessorgame.com/en-US/heroes",
+      "use": "Roster and role filters when imported/verified."
+    },
+    "predecessor-wiki-hero": {
+      "label": "Predecessor Wiki Hero Pages",
+      "url": "https://predecessor.wiki.gg/wiki/Hero",
+      "use": "Hero roles, stats, ability text, and kit details when verified."
+    },
+    "prototype-kit-taxonomy": {
+      "label": "Prototype kit taxonomy",
+      "url": null,
+      "use": "Draft-engine tags created for MVP behavior only; not source-backed yet."
+    },
+    "argus-game-client-screenshots-2026-08-02": {
+      "label": "Argus game-client screenshots",
+      "url": null,
+      "use": "User-provided in-game screenshots covering Argus role/class ratings, ability text, and augments.",
+      "files": [
+        "C:/Users/erict/Downloads/Mobile Devices/1000001800.jpg",
+        "C:/Users/erict/Downloads/Mobile Devices/1000001801.jpg",
+        "C:/Users/erict/Downloads/Mobile Devices/1000001802.jpg",
+        "C:/Users/erict/Downloads/Mobile Devices/1000001803.jpg",
+        "C:/Users/erict/Downloads/Mobile Devices/1000001804.jpg",
+        "C:/Users/erict/Downloads/Mobile Devices/1000001805.jpg",
+        "C:/Users/erict/Downloads/Mobile Devices/1000001806.jpg",
+        "C:/Users/erict/Downloads/Mobile Devices/1000001807.jpg",
+        "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
+        "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
+      ]
+    }
+  },
+  "validRoles": [
+    "offlane",
+    "jungle",
+    "midlane",
+    "carry",
+    "support"
+  ],
+  "validDamageTypes": [
+    "physical",
+    "magical",
+    "mixed"
+  ],
+  "validRangeTypes": [
+    "melee",
+    "ranged"
+  ],
+  "validAbilitySlots": [
+    "passive",
+    "basic",
+    "primary",
+    "secondary",
+    "alternate",
+    "ultimate"
+  ],
+  "validVerificationStatuses": [
+    "source-backed",
+    "needs-review",
+    "prototype"
+  ],
+  "heroes": [
+    {
+      "id": "adele",
+      "name": "Adele",
+      "roles": [
+        "support",
+        "offlane"
+      ],
+      "damage": "physical",
+      "range": "melee",
+      "threats": [
+        "engage",
+        "peel",
+        "frontline"
+      ],
+      "answers": [
+        "peel",
+        "hard-cc",
+        "anti-dive",
+        "frontline"
+      ],
+      "weaknesses": [
+        "poke",
+        "low-range"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "akeron",
+      "name": "Akeron",
+      "roles": [
+        "jungle"
+      ],
+      "damage": "physical",
+      "range": "melee",
+      "threats": [
+        "dive",
+        "burst",
+        "pick"
+      ],
+      "answers": [
+        "burst",
+        "mobility",
+        "backline-access"
+      ],
+      "weaknesses": [
+        "hard-cc",
+        "anti-burst"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "argus",
+      "name": "Argus",
+      "roles": [
+        "support"
+      ],
+      "classes": [
+        "mage",
+        "catcher"
+      ],
+      "damage": "magical",
+      "range": "ranged",
+      "ratings": {
+        "basicAttack": 1,
+        "durability": 2,
+        "mobility": 1,
+        "abilityPower": 10
+      },
+      "abilities": [
+        {
+          "slot": "passive",
+          "name": "Disintegrate",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "Argus' abilities apply a stack of Disintegration for 2s, causing subsequent instances of ability damage to deal 4 (+3%) bonus magical damage. Each stack of Disintegration deals 50% more damage, stacking infinitely (capped at 12 against Monsters).",
+          "effects": [
+            "stacking-damage",
+            "bonus-magical-damage"
+          ],
+          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+        },
+        {
+          "slot": "basic",
+          "name": "Arcrune Conduit",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged basic attack dealing 55 (+55%) physical damage.",
+          "effects": [
+            "ranged-basic"
+          ],
+          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+        },
+        {
+          "slot": "primary",
+          "name": "Dread Nova",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Argus lobs an unstable orb of energy. Upon landing it explodes, dealing 80/120/160/200/240 (+50%) magical damage to all nearby Targets and Stuns them for 1/1.05/1.1/1.15/1.2s.",
+          "scaling": {
+            "damage": [80, 120, 160, 200, 240],
+            "magicalPowerRatio": 0.5,
+            "stunDuration": [1, 1.05, 1.1, 1.15, 1.2]
+          },
+          "cooldown": [16, 15, 14, 13, 12],
+          "cost": [50],
+          "effects": [
+            "area-damage",
+            "stun",
+            "hard-cc",
+            "burst"
+          ],
+          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+        },
+        {
+          "slot": "secondary",
+          "name": "Ether Crystal",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Argus summons an Ether Crystal at the target location for 2s. The Crystal will Push Enemy Heroes from the center and Lift Allied Heroes into the air before producing a storm that deals 15/25/35/45/55 (+18%) magical damage every 0.5s to nearby Enemies and Slows by 25/30/35/40/45% for 0.5s. After the duration the Crystal will implode, Pulling all Enemies within to the center.",
+          "scaling": {
+            "damagePerTick": [15, 25, 35, 45, 55],
+            "magicalPowerRatio": 0.18,
+            "slowPercent": [25, 30, 35, 40, 45],
+            "duration": 2,
+            "tickRate": 0.5
+          },
+          "cooldown": [16, 15.5, 15, 14.5, 14],
+          "cost": [70, 80, 90, 100, 110],
+          "effects": [
+            "zone-control",
+            "pull",
+            "push",
+            "slow",
+            "area-damage",
+            "ally-lift"
+          ],
+          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+        },
+        {
+          "slot": "alternate",
+          "name": "Particle Shredder",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Argus fires homing projectiles from his Abyssal Staff for up to 3.5s. Each projectile consumes mana and deals 13/20/27/34/41 (+18%) per blast. At maximum rank, Particle Shredder can be used indefinitely.",
+          "scaling": {
+            "damagePerBlast": [13, 20, 27, 34, 41],
+            "magicalPowerRatio": 0.18,
+            "channelDuration": 3.5
+          },
+          "cooldown": [3],
+          "cost": [12, 14, 16, 18, 20],
+          "effects": [
+            "homing-projectiles",
+            "channeled-damage",
+            "mana-dependent",
+            "sustained-damage"
+          ],
+          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Synaptic Obliterator",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "After a short delay, Argus channels for up to 8s, gaining immunity to pushes and pulls whilst deploying his ultimate weapon to fire up to 3/4/5 powerful Energy Beams. Each beam deals 100/130/160 (+25%) magical damage (increased by up to 150% based on the Target's missing health) and Slows Enemies hit by 60% for 0.5s.",
+          "scaling": {
+            "damagePerBeam": [100, 130, 160],
+            "magicalPowerRatio": 0.25,
+            "beams": [3, 4, 5],
+            "maxMissingHealthAmpPercent": 150,
+            "slowPercent": 60,
+            "slowDuration": 0.5,
+            "channelDuration": 8
+          },
+          "cooldown": [135, 120, 105],
+          "cost": [100],
+          "effects": [
+            "long-range-damage",
+            "execute-pressure",
+            "slow",
+            "push-pull-immunity",
+            "channel"
+          ],
+          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Arcane Engine",
+          "category": "mobility",
+          "description": "Dealing Ability Damage to Heroes grants you 1.75% Movement Speed for 1.5s, stacking infinitely - 0.15s CD.",
+          "tags": [
+            "mobility",
+            "combat-speed",
+            "ability-damage"
+          ],
+          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+        },
+        {
+          "name": "Mana Catalyst",
+          "category": "mana regen",
+          "description": "Restore Mana equal to 10% of damage dealt to Heroes, reduced to 1.5% for Non-Heroes. Basic Attacks restore 2x more.",
+          "tags": [
+            "mana-regen",
+            "poke-sustain",
+            "long-fights"
+          ],
+          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+        },
+        {
+          "name": "Infinite Obliteration",
+          "category": "increased range",
+          "description": "Synaptic Obliterator's projectile now have infinite range, travel 25% faster, and Slow for 50% longer.",
+          "tags": [
+            "increased-range",
+            "ultimate",
+            "pick",
+            "siege"
+          ],
+          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+        }
+      ],
+      "threats": [
+        "poke",
+        "zone-control",
+        "pick",
+        "burst",
+        "mana-pressure",
+        "long-range-execute"
+      ],
+      "answers": [
+        "poke",
+        "waveclear",
+        "hard-cc",
+        "area-control",
+        "anti-engage",
+        "catch",
+        "objective-zone"
+      ],
+      "weaknesses": [
+        "dive",
+        "burst-vulnerable",
+        "low-mobility",
+        "mana-dependent"
+      ],
+      "sourceRefs": {
+        "roster": "argus-game-client-screenshots-2026-08-02",
+        "roles": "argus-game-client-screenshots-2026-08-02",
+        "classes": "argus-game-client-screenshots-2026-08-02",
+        "ratings": "argus-game-client-screenshots-2026-08-02",
+        "abilities": "argus-game-client-screenshots-2026-08-02",
+        "augments": "argus-game-client-screenshots-2026-08-02",
+        "kit": "argus-game-client-screenshots-2026-08-02"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Argus screenshots dated 2026-08-02. Recommendation tags are derived from the source-backed kit."
+      }
+    },
+    {
+      "id": "aurora",
+      "name": "Aurora",
+      "roles": [
+        "offlane",
+        "jungle"
+      ],
+      "damage": "magical",
+      "range": "melee",
+      "threats": [
+        "engage",
+        "zone-control",
+        "frontline"
+      ],
+      "answers": [
+        "hard-cc",
+        "anti-dive",
+        "frontline",
+        "disengage"
+      ],
+      "weaknesses": [
+        "poke",
+        "tank-shred"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "bayle",
+      "name": "Bayle",
+      "roles": [
+        "offlane",
+        "jungle"
+      ],
+      "damage": "physical",
+      "range": "melee",
+      "threats": [
+        "dive",
+        "frontline",
+        "burst"
+      ],
+      "answers": [
+        "anti-burst",
+        "frontline",
+        "backline-access"
+      ],
+      "weaknesses": [
+        "kite",
+        "poke"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "boris",
+      "name": "Boris",
+      "roles": [
+        "offlane",
+        "jungle"
+      ],
+      "damage": "physical",
+      "range": "melee",
+      "threats": [
+        "dive",
+        "sustain",
+        "frontline"
+      ],
+      "answers": [
+        "frontline",
+        "anti-burst",
+        "duelist"
+      ],
+      "weaknesses": [
+        "anti-heal",
+        "kite"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "countess",
+      "name": "Countess",
+      "roles": [
+        "midlane",
+        "jungle"
+      ],
+      "damage": "magical",
+      "range": "melee",
+      "threats": [
+        "burst",
+        "dive",
+        "pick"
+      ],
+      "answers": [
+        "burst",
+        "backline-access",
+        "mobility"
+      ],
+      "weaknesses": [
+        "hard-cc",
+        "anti-burst"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "crunch",
+      "name": "Crunch",
+      "roles": [
+        "offlane",
+        "jungle"
+      ],
+      "damage": "physical",
+      "range": "melee",
+      "threats": [
+        "dive",
+        "sustain",
+        "engage"
+      ],
+      "answers": [
+        "hard-cc",
+        "duelist",
+        "mobility"
+      ],
+      "weaknesses": [
+        "anti-heal",
+        "poke"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "dekker",
+      "name": "Dekker",
+      "roles": [
+        "support",
+        "midlane"
+      ],
+      "damage": "magical",
+      "range": "ranged",
+      "threats": [
+        "pick",
+        "peel",
+        "zone-control"
+      ],
+      "answers": [
+        "hard-cc",
+        "peel",
+        "anti-dive",
+        "disengage"
+      ],
+      "weaknesses": [
+        "burst-vulnerable"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "drongo",
+      "name": "Drongo",
+      "roles": [
+        "carry"
+      ],
+      "damage": "physical",
+      "range": "ranged",
+      "threats": [
+        "poke",
+        "sustained-dps",
+        "anti-heal"
+      ],
+      "answers": [
+        "anti-heal",
+        "tank-shred",
+        "poke"
+      ],
+      "weaknesses": [
+        "dive",
+        "burst-vulnerable"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "eden",
+      "name": "Eden",
+      "roles": [
+        "carry",
+        "midlane"
+      ],
+      "damage": "magical",
+      "range": "ranged",
+      "threats": [
+        "poke",
+        "burst",
+        "zone-control"
+      ],
+      "answers": [
+        "poke",
+        "waveclear",
+        "anti-frontline"
+      ],
+      "weaknesses": [
+        "dive",
+        "burst-vulnerable"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "feng-mao",
+      "name": "Feng Mao",
+      "roles": [
+        "jungle",
+        "offlane"
+      ],
+      "damage": "physical",
+      "range": "melee",
+      "threats": [
+        "dive",
+        "burst",
+        "split-push"
+      ],
+      "answers": [
+        "backline-access",
+        "mobility",
+        "duelist"
+      ],
+      "weaknesses": [
+        "hard-cc",
+        "anti-burst"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "gadget",
+      "name": "Gadget",
+      "roles": [
+        "midlane"
+      ],
+      "damage": "magical",
+      "range": "ranged",
+      "threats": [
+        "poke",
+        "zone-control",
+        "waveclear"
+      ],
+      "answers": [
+        "poke",
+        "waveclear",
+        "zone-control"
+      ],
+      "weaknesses": [
+        "dive",
+        "low-mobility"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "gideon",
+      "name": "Gideon",
+      "roles": [
+        "midlane"
+      ],
+      "damage": "magical",
+      "range": "ranged",
+      "threats": [
+        "burst",
+        "zone-control",
+        "mobility"
+      ],
+      "answers": [
+        "waveclear",
+        "anti-frontline",
+        "disengage"
+      ],
+      "weaknesses": [
+        "hard-cc",
+        "burst-vulnerable"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "greystone",
+      "name": "Greystone",
+      "roles": [
+        "offlane",
+        "jungle"
+      ],
+      "damage": "physical",
+      "range": "melee",
+      "threats": [
+        "frontline",
+        "dive",
+        "sustain"
+      ],
+      "answers": [
+        "frontline",
+        "anti-burst",
+        "engage"
+      ],
+      "weaknesses": [
+        "anti-heal",
+        "kite"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "grim-exe",
+      "name": "GRIM.exe",
+      "roles": [
+        "carry",
+        "midlane"
+      ],
+      "damage": "mixed",
+      "range": "ranged",
+      "threats": [
+        "sustained-dps",
+        "poke",
+        "objective-control"
+      ],
+      "answers": [
+        "tank-shred",
+        "poke",
+        "anti-frontline"
+      ],
+      "weaknesses": [
+        "dive",
+        "low-mobility"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "grux",
+      "name": "Grux",
+      "roles": [
+        "offlane",
+        "jungle"
+      ],
+      "damage": "physical",
+      "range": "melee",
+      "threats": [
+        "engage",
+        "sustain",
+        "frontline"
+      ],
+      "answers": [
+        "hard-cc",
+        "frontline",
+        "anti-dive"
+      ],
+      "weaknesses": [
+        "anti-heal",
+        "kite"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "howitzer",
+      "name": "Howitzer",
+      "roles": [
+        "midlane",
+        "offlane"
+      ],
+      "damage": "magical",
+      "range": "ranged",
+      "threats": [
+        "poke",
+        "burst",
+        "disengage"
+      ],
+      "answers": [
+        "poke",
+        "waveclear",
+        "disengage"
+      ],
+      "weaknesses": [
+        "hard-cc",
+        "dive"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "iggy-scorch",
+      "name": "Iggy & Scorch",
+      "roles": [
+        "midlane",
+        "offlane"
+      ],
+      "damage": "magical",
+      "range": "ranged",
+      "threats": [
+        "zone-control",
+        "poke",
+        "waveclear"
+      ],
+      "answers": [
+        "zone-control",
+        "anti-engage",
+        "waveclear"
+      ],
+      "weaknesses": [
+        "dive",
+        "low-mobility"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "ikra",
+      "name": "Ikra",
+      "roles": [
+        "midlane",
+        "support"
+      ],
+      "damage": "magical",
+      "range": "ranged",
+      "threats": [
+        "zone-control",
+        "sustain",
+        "poke"
+      ],
+      "answers": [
+        "anti-burst",
+        "poke",
+        "zone-control"
+      ],
+      "weaknesses": [
+        "anti-heal",
+        "dive"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "kallari",
+      "name": "Kallari",
+      "roles": [
+        "jungle"
+      ],
+      "damage": "physical",
+      "range": "melee",
+      "threats": [
+        "pick",
+        "burst",
+        "dive"
+      ],
+      "answers": [
+        "backline-access",
+        "burst",
+        "split-push"
+      ],
+      "weaknesses": [
+        "hard-cc",
+        "anti-burst"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "khaimera",
+      "name": "Khaimera",
+      "roles": [
+        "jungle"
+      ],
+      "damage": "physical",
+      "range": "melee",
+      "threats": [
+        "dive",
+        "sustain",
+        "objective-control"
+      ],
+      "answers": [
+        "anti-burst",
+        "duelist",
+        "objective-control"
+      ],
+      "weaknesses": [
+        "anti-heal",
+        "hard-cc"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "kira",
+      "name": "Kira",
+      "roles": [
+        "carry"
+      ],
+      "damage": "physical",
+      "range": "ranged",
+      "threats": [
+        "sustained-dps",
+        "burst",
+        "mobility"
+      ],
+      "answers": [
+        "tank-shred",
+        "mobility",
+        "anti-frontline"
+      ],
+      "weaknesses": [
+        "hard-cc",
+        "burst-vulnerable"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "kwang",
+      "name": "Kwang",
+      "roles": [
+        "offlane",
+        "jungle"
+      ],
+      "damage": "magical",
+      "range": "melee",
+      "threats": [
+        "engage",
+        "frontline",
+        "pick"
+      ],
+      "answers": [
+        "hard-cc",
+        "frontline",
+        "anti-dive"
+      ],
+      "weaknesses": [
+        "poke",
+        "tank-shred"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "legion",
+      "name": "Legion",
+      "roles": [
+        "jungle",
+        "offlane"
+      ],
+      "damage": "physical",
+      "range": "melee",
+      "threats": [
+        "engage",
+        "frontline",
+        "objective-control"
+      ],
+      "answers": [
+        "frontline",
+        "hard-cc",
+        "anti-burst"
+      ],
+      "weaknesses": [
+        "kite",
+        "anti-heal"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "lt-belica",
+      "name": "Lt. Belica",
+      "roles": [
+        "midlane",
+        "support"
+      ],
+      "damage": "magical",
+      "range": "ranged",
+      "threats": [
+        "pick",
+        "burst",
+        "poke"
+      ],
+      "answers": [
+        "hard-cc",
+        "burst",
+        "anti-caster"
+      ],
+      "weaknesses": [
+        "dive",
+        "burst-vulnerable"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "maco",
+      "name": "Maco",
+      "roles": [
+        "support",
+        "midlane"
+      ],
+      "damage": "magical",
+      "range": "ranged",
+      "threats": [
+        "peel",
+        "poke",
+        "zone-control"
+      ],
+      "answers": [
+        "peel",
+        "anti-dive",
+        "poke"
+      ],
+      "weaknesses": [
+        "burst-vulnerable"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "morigesh",
+      "name": "Morigesh",
+      "roles": [
+        "midlane"
+      ],
+      "damage": "magical",
+      "range": "ranged",
+      "threats": [
+        "poke",
+        "burst",
+        "pick"
+      ],
+      "answers": [
+        "poke",
+        "anti-squishy",
+        "waveclear"
+      ],
+      "weaknesses": [
+        "dive",
+        "low-mobility"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "mourn",
+      "name": "Mourn",
+      "roles": [
+        "offlane",
+        "support"
+      ],
+      "damage": "physical",
+      "range": "melee",
+      "threats": [
+        "frontline",
+        "peel",
+        "engage"
+      ],
+      "answers": [
+        "frontline",
+        "peel",
+        "anti-dive"
+      ],
+      "weaknesses": [
+        "poke",
+        "tank-shred"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "murdock",
+      "name": "Murdock",
+      "roles": [
+        "carry"
+      ],
+      "damage": "physical",
+      "range": "ranged",
+      "threats": [
+        "sustained-dps",
+        "pick",
+        "poke"
+      ],
+      "answers": [
+        "tank-shred",
+        "poke",
+        "objective-control"
+      ],
+      "weaknesses": [
+        "dive",
+        "low-mobility"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "muriel",
+      "name": "Muriel",
+      "roles": [
+        "support"
+      ],
+      "damage": "magical",
+      "range": "ranged",
+      "threats": [
+        "peel",
+        "shields",
+        "global-presence"
+      ],
+      "answers": [
+        "peel",
+        "anti-burst",
+        "shields"
+      ],
+      "weaknesses": [
+        "hard-engage",
+        "low-damage"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "narbash",
+      "name": "Narbash",
+      "roles": [
+        "support"
+      ],
+      "damage": "magical",
+      "range": "melee",
+      "threats": [
+        "sustain",
+        "engage",
+        "peel"
+      ],
+      "answers": [
+        "sustain",
+        "hard-cc",
+        "anti-poke"
+      ],
+      "weaknesses": [
+        "anti-heal",
+        "poke"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "neon",
+      "name": "Neon",
+      "roles": [
+        "midlane",
+        "carry"
+      ],
+      "damage": "mixed",
+      "range": "ranged",
+      "threats": [
+        "poke",
+        "mobility",
+        "burst"
+      ],
+      "answers": [
+        "poke",
+        "mobility",
+        "waveclear"
+      ],
+      "weaknesses": [
+        "hard-cc",
+        "burst-vulnerable"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "phase",
+      "name": "Phase",
+      "roles": [
+        "support"
+      ],
+      "damage": "magical",
+      "range": "ranged",
+      "threats": [
+        "peel",
+        "sustain",
+        "pick"
+      ],
+      "answers": [
+        "peel",
+        "anti-dive",
+        "sustain"
+      ],
+      "weaknesses": [
+        "anti-heal",
+        "burst-vulnerable"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "rampage",
+      "name": "Rampage",
+      "roles": [
+        "jungle",
+        "offlane"
+      ],
+      "damage": "physical",
+      "range": "melee",
+      "threats": [
+        "frontline",
+        "engage",
+        "objective-control"
+      ],
+      "answers": [
+        "frontline",
+        "hard-cc",
+        "anti-burst"
+      ],
+      "weaknesses": [
+        "anti-heal",
+        "tank-shred"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "renna",
+      "name": "Renna",
+      "roles": [
+        "midlane"
+      ],
+      "damage": "magical",
+      "range": "ranged",
+      "threats": [
+        "burst",
+        "poke",
+        "zone-control"
+      ],
+      "answers": [
+        "burst",
+        "poke",
+        "waveclear"
+      ],
+      "weaknesses": [
+        "dive",
+        "low-mobility"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "revenant",
+      "name": "Revenant",
+      "roles": [
+        "carry"
+      ],
+      "damage": "physical",
+      "range": "ranged",
+      "threats": [
+        "burst",
+        "pick",
+        "sustained-dps"
+      ],
+      "answers": [
+        "burst",
+        "anti-squishy",
+        "duelist"
+      ],
+      "weaknesses": [
+        "dive",
+        "low-mobility"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "riktor",
+      "name": "Riktor",
+      "roles": [
+        "support",
+        "offlane"
+      ],
+      "damage": "magical",
+      "range": "melee",
+      "threats": [
+        "pick",
+        "engage",
+        "frontline"
+      ],
+      "answers": [
+        "hard-cc",
+        "pick",
+        "frontline"
+      ],
+      "weaknesses": [
+        "poke",
+        "missed-engage"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "serath",
+      "name": "Serath",
+      "roles": [
+        "jungle",
+        "offlane"
+      ],
+      "damage": "physical",
+      "range": "melee",
+      "threats": [
+        "dive",
+        "sustained-dps",
+        "split-push"
+      ],
+      "answers": [
+        "backline-access",
+        "tank-shred",
+        "mobility"
+      ],
+      "weaknesses": [
+        "hard-cc",
+        "anti-burst"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "sevarog",
+      "name": "Sevarog",
+      "roles": [
+        "offlane",
+        "jungle"
+      ],
+      "damage": "magical",
+      "range": "melee",
+      "threats": [
+        "frontline",
+        "scaling",
+        "engage"
+      ],
+      "answers": [
+        "frontline",
+        "anti-burst",
+        "hard-cc"
+      ],
+      "weaknesses": [
+        "weak-early",
+        "tank-shred"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "shinbi",
+      "name": "Shinbi",
+      "roles": [
+        "offlane",
+        "jungle"
+      ],
+      "damage": "magical",
+      "range": "melee",
+      "threats": [
+        "dive",
+        "burst",
+        "split-push"
+      ],
+      "answers": [
+        "mobility",
+        "burst",
+        "duelist"
+      ],
+      "weaknesses": [
+        "hard-cc",
+        "anti-burst"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "skylar",
+      "name": "Skylar",
+      "roles": [
+        "carry",
+        "midlane"
+      ],
+      "damage": "physical",
+      "range": "ranged",
+      "threats": [
+        "poke",
+        "mobility",
+        "sustained-dps"
+      ],
+      "answers": [
+        "poke",
+        "tank-shred",
+        "mobility"
+      ],
+      "weaknesses": [
+        "hard-cc",
+        "burst-vulnerable"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "sparrow",
+      "name": "Sparrow",
+      "roles": [
+        "carry"
+      ],
+      "damage": "physical",
+      "range": "ranged",
+      "threats": [
+        "sustained-dps",
+        "scaling",
+        "objective-control"
+      ],
+      "answers": [
+        "tank-shred",
+        "objective-control",
+        "late-scaling"
+      ],
+      "weaknesses": [
+        "dive",
+        "low-mobility"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "steel",
+      "name": "Steel",
+      "roles": [
+        "support",
+        "offlane"
+      ],
+      "damage": "physical",
+      "range": "melee",
+      "threats": [
+        "engage",
+        "frontline",
+        "peel"
+      ],
+      "answers": [
+        "hard-cc",
+        "frontline",
+        "anti-dive",
+        "engage"
+      ],
+      "weaknesses": [
+        "poke",
+        "tank-shred"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "terra",
+      "name": "Terra",
+      "roles": [
+        "offlane",
+        "jungle"
+      ],
+      "damage": "physical",
+      "range": "melee",
+      "threats": [
+        "frontline",
+        "engage",
+        "anti-cc"
+      ],
+      "answers": [
+        "frontline",
+        "anti-burst",
+        "anti-dive"
+      ],
+      "weaknesses": [
+        "kite",
+        "tank-shred"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "the-fey",
+      "name": "The Fey",
+      "roles": [
+        "midlane",
+        "support"
+      ],
+      "damage": "magical",
+      "range": "ranged",
+      "threats": [
+        "zone-control",
+        "poke",
+        "engage"
+      ],
+      "answers": [
+        "zone-control",
+        "waveclear",
+        "anti-engage"
+      ],
+      "weaknesses": [
+        "dive",
+        "low-mobility"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "twinblast",
+      "name": "TwinBlast",
+      "roles": [
+        "carry"
+      ],
+      "damage": "physical",
+      "range": "ranged",
+      "threats": [
+        "mobility",
+        "sustained-dps",
+        "poke"
+      ],
+      "answers": [
+        "mobility",
+        "poke",
+        "tank-shred"
+      ],
+      "weaknesses": [
+        "hard-cc",
+        "burst-vulnerable"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "wraith",
+      "name": "Wraith",
+      "roles": [
+        "carry",
+        "midlane"
+      ],
+      "damage": "mixed",
+      "range": "ranged",
+      "threats": [
+        "pick",
+        "poke",
+        "burst"
+      ],
+      "answers": [
+        "pick",
+        "poke",
+        "anti-squishy"
+      ],
+      "weaknesses": [
+        "dive",
+        "low-mobility"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "wukong",
+      "name": "Wukong",
+      "roles": [
+        "offlane",
+        "jungle"
+      ],
+      "damage": "physical",
+      "range": "melee",
+      "threats": [
+        "split-push",
+        "dive",
+        "sustained-dps"
+      ],
+      "answers": [
+        "split-push",
+        "mobility",
+        "tank-shred"
+      ],
+      "weaknesses": [
+        "hard-cc",
+        "anti-burst"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "yin",
+      "name": "Yin",
+      "roles": [
+        "carry",
+        "offlane"
+      ],
+      "damage": "physical",
+      "range": "melee",
+      "threats": [
+        "duelist",
+        "anti-projectile",
+        "sustained-dps"
+      ],
+      "answers": [
+        "anti-poke",
+        "duelist",
+        "mobility"
+      ],
+      "weaknesses": [
+        "hard-cc",
+        "burst-vulnerable"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "yurei",
+      "name": "Yurei",
+      "roles": [
+        "jungle",
+        "offlane"
+      ],
+      "damage": "magical",
+      "range": "melee",
+      "threats": [
+        "dive",
+        "burst",
+        "sustain"
+      ],
+      "answers": [
+        "mobility",
+        "burst",
+        "anti-burst"
+      ],
+      "weaknesses": [
+        "anti-heal",
+        "hard-cc"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "zarus",
+      "name": "Zarus",
+      "roles": [
+        "offlane",
+        "jungle"
+      ],
+      "damage": "physical",
+      "range": "melee",
+      "threats": [
+        "engage",
+        "duelist",
+        "frontline"
+      ],
+      "answers": [
+        "hard-cc",
+        "frontline",
+        "duelist"
+      ],
+      "weaknesses": [
+        "poke",
+        "tank-shred"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "zinx",
+      "name": "Zinx",
+      "roles": [
+        "support",
+        "offlane"
+      ],
+      "damage": "magical",
+      "range": "ranged",
+      "threats": [
+        "sustain",
+        "peel",
+        "frontline"
+      ],
+      "answers": [
+        "sustain",
+        "anti-poke",
+        "frontline"
+      ],
+      "weaknesses": [
+        "anti-heal",
+        "burst"
+      ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    }
+  ]
+}

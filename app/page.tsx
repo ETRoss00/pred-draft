@@ -1,19 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-
-type Role = "offlane" | "jungle" | "midlane" | "carry" | "support";
-type Damage = "physical" | "magical" | "mixed";
-
-type Hero = {
-  name: string;
-  roles: Role[];
-  damage: Damage;
-  range: "melee" | "ranged";
-  threats: string[];
-  answers: string[];
-  weaknesses: string[];
-};
+import { auditHeroData, heroes, predecessorHeroData, roles, type Hero, type Role } from "@/data/predecessor/audit";
 
 type Advice = {
   name: string;
@@ -22,64 +10,6 @@ type Advice = {
   reasons: string[];
   tags: string[];
 };
-
-const roles: Role[] = ["offlane", "jungle", "midlane", "carry", "support"];
-
-const heroes: Hero[] = [
-  h("Adele", ["support", "offlane"], "physical", "melee", ["engage", "peel", "frontline"], ["peel", "hard-cc", "anti-dive", "frontline"], ["poke", "low-range"]),
-  h("Akeron", ["jungle"], "physical", "melee", ["dive", "burst", "pick"], ["burst", "mobility", "backline-access"], ["hard-cc", "anti-burst"]),
-  h("Argus", ["midlane", "support"], "magical", "ranged", ["poke", "zone-control", "pick"], ["poke", "waveclear", "hard-cc"], ["dive", "burst-vulnerable"]),
-  h("Aurora", ["offlane", "jungle"], "magical", "melee", ["engage", "zone-control", "frontline"], ["hard-cc", "anti-dive", "frontline", "disengage"], ["poke", "tank-shred"]),
-  h("Bayle", ["offlane", "jungle"], "physical", "melee", ["dive", "frontline", "burst"], ["anti-burst", "frontline", "backline-access"], ["kite", "poke"]),
-  h("Boris", ["offlane", "jungle"], "physical", "melee", ["dive", "sustain", "frontline"], ["frontline", "anti-burst", "duelist"], ["anti-heal", "kite"]),
-  h("Countess", ["midlane", "jungle"], "magical", "melee", ["burst", "dive", "pick"], ["burst", "backline-access", "mobility"], ["hard-cc", "anti-burst"]),
-  h("Crunch", ["offlane", "jungle"], "physical", "melee", ["dive", "sustain", "engage"], ["hard-cc", "duelist", "mobility"], ["anti-heal", "poke"]),
-  h("Dekker", ["support", "midlane"], "magical", "ranged", ["pick", "peel", "zone-control"], ["hard-cc", "peel", "anti-dive", "disengage"], ["burst-vulnerable"]),
-  h("Drongo", ["carry"], "physical", "ranged", ["poke", "sustained-dps", "anti-heal"], ["anti-heal", "tank-shred", "poke"], ["dive", "burst-vulnerable"]),
-  h("Eden", ["carry", "midlane"], "magical", "ranged", ["poke", "burst", "zone-control"], ["poke", "waveclear", "anti-frontline"], ["dive", "burst-vulnerable"]),
-  h("Feng Mao", ["jungle", "offlane"], "physical", "melee", ["dive", "burst", "split-push"], ["backline-access", "mobility", "duelist"], ["hard-cc", "anti-burst"]),
-  h("Gadget", ["midlane"], "magical", "ranged", ["poke", "zone-control", "waveclear"], ["poke", "waveclear", "zone-control"], ["dive", "low-mobility"]),
-  h("Gideon", ["midlane"], "magical", "ranged", ["burst", "zone-control", "mobility"], ["waveclear", "anti-frontline", "disengage"], ["hard-cc", "burst-vulnerable"]),
-  h("Greystone", ["offlane", "jungle"], "physical", "melee", ["frontline", "dive", "sustain"], ["frontline", "anti-burst", "engage"], ["anti-heal", "kite"]),
-  h("GRIM.exe", ["carry", "midlane"], "mixed", "ranged", ["sustained-dps", "poke", "objective-control"], ["tank-shred", "poke", "anti-frontline"], ["dive", "low-mobility"]),
-  h("Grux", ["offlane", "jungle"], "physical", "melee", ["engage", "sustain", "frontline"], ["hard-cc", "frontline", "anti-dive"], ["anti-heal", "kite"]),
-  h("Howitzer", ["midlane", "offlane"], "magical", "ranged", ["poke", "burst", "disengage"], ["poke", "waveclear", "disengage"], ["hard-cc", "dive"]),
-  h("Iggy & Scorch", ["midlane", "offlane"], "magical", "ranged", ["zone-control", "poke", "waveclear"], ["zone-control", "anti-engage", "waveclear"], ["dive", "low-mobility"]),
-  h("Ikra", ["midlane", "support"], "magical", "ranged", ["zone-control", "sustain", "poke"], ["anti-burst", "poke", "zone-control"], ["anti-heal", "dive"]),
-  h("Kallari", ["jungle"], "physical", "melee", ["pick", "burst", "dive"], ["backline-access", "burst", "split-push"], ["hard-cc", "anti-burst"]),
-  h("Khaimera", ["jungle"], "physical", "melee", ["dive", "sustain", "objective-control"], ["anti-burst", "duelist", "objective-control"], ["anti-heal", "hard-cc"]),
-  h("Kira", ["carry"], "physical", "ranged", ["sustained-dps", "burst", "mobility"], ["tank-shred", "mobility", "anti-frontline"], ["hard-cc", "burst-vulnerable"]),
-  h("Kwang", ["offlane", "jungle"], "magical", "melee", ["engage", "frontline", "pick"], ["hard-cc", "frontline", "anti-dive"], ["poke", "tank-shred"]),
-  h("Legion", ["jungle", "offlane"], "physical", "melee", ["engage", "frontline", "objective-control"], ["frontline", "hard-cc", "anti-burst"], ["kite", "anti-heal"]),
-  h("Lt. Belica", ["midlane", "support"], "magical", "ranged", ["pick", "burst", "poke"], ["hard-cc", "burst", "anti-caster"], ["dive", "burst-vulnerable"]),
-  h("Maco", ["support", "midlane"], "magical", "ranged", ["peel", "poke", "zone-control"], ["peel", "anti-dive", "poke"], ["burst-vulnerable"]),
-  h("Morigesh", ["midlane"], "magical", "ranged", ["poke", "burst", "pick"], ["poke", "anti-squishy", "waveclear"], ["dive", "low-mobility"]),
-  h("Mourn", ["offlane", "support"], "physical", "melee", ["frontline", "peel", "engage"], ["frontline", "peel", "anti-dive"], ["poke", "tank-shred"]),
-  h("Murdock", ["carry"], "physical", "ranged", ["sustained-dps", "pick", "poke"], ["tank-shred", "poke", "objective-control"], ["dive", "low-mobility"]),
-  h("Muriel", ["support"], "magical", "ranged", ["peel", "shields", "global-presence"], ["peel", "anti-burst", "shields"], ["hard-engage", "low-damage"]),
-  h("Narbash", ["support"], "magical", "melee", ["sustain", "engage", "peel"], ["sustain", "hard-cc", "anti-poke"], ["anti-heal", "poke"]),
-  h("Neon", ["midlane", "carry"], "mixed", "ranged", ["poke", "mobility", "burst"], ["poke", "mobility", "waveclear"], ["hard-cc", "burst-vulnerable"]),
-  h("Phase", ["support"], "magical", "ranged", ["peel", "sustain", "pick"], ["peel", "anti-dive", "sustain"], ["anti-heal", "burst-vulnerable"]),
-  h("Rampage", ["jungle", "offlane"], "physical", "melee", ["frontline", "engage", "objective-control"], ["frontline", "hard-cc", "anti-burst"], ["anti-heal", "tank-shred"]),
-  h("Renna", ["midlane"], "magical", "ranged", ["burst", "poke", "zone-control"], ["burst", "poke", "waveclear"], ["dive", "low-mobility"]),
-  h("Revenant", ["carry"], "physical", "ranged", ["burst", "pick", "sustained-dps"], ["burst", "anti-squishy", "duelist"], ["dive", "low-mobility"]),
-  h("Riktor", ["support", "offlane"], "magical", "melee", ["pick", "engage", "frontline"], ["hard-cc", "pick", "frontline"], ["poke", "missed-engage"]),
-  h("Serath", ["jungle", "offlane"], "physical", "melee", ["dive", "sustained-dps", "split-push"], ["backline-access", "tank-shred", "mobility"], ["hard-cc", "anti-burst"]),
-  h("Sevarog", ["offlane", "jungle"], "magical", "melee", ["frontline", "scaling", "engage"], ["frontline", "anti-burst", "hard-cc"], ["weak-early", "tank-shred"]),
-  h("Shinbi", ["offlane", "jungle"], "magical", "melee", ["dive", "burst", "split-push"], ["mobility", "burst", "duelist"], ["hard-cc", "anti-burst"]),
-  h("Skylar", ["carry", "midlane"], "physical", "ranged", ["poke", "mobility", "sustained-dps"], ["poke", "tank-shred", "mobility"], ["hard-cc", "burst-vulnerable"]),
-  h("Sparrow", ["carry"], "physical", "ranged", ["sustained-dps", "scaling", "objective-control"], ["tank-shred", "objective-control", "late-scaling"], ["dive", "low-mobility"]),
-  h("Steel", ["support", "offlane"], "physical", "melee", ["engage", "frontline", "peel"], ["hard-cc", "frontline", "anti-dive", "engage"], ["poke", "tank-shred"]),
-  h("Terra", ["offlane", "jungle"], "physical", "melee", ["frontline", "engage", "anti-cc"], ["frontline", "anti-burst", "anti-dive"], ["kite", "tank-shred"]),
-  h("The Fey", ["midlane", "support"], "magical", "ranged", ["zone-control", "poke", "engage"], ["zone-control", "waveclear", "anti-engage"], ["dive", "low-mobility"]),
-  h("TwinBlast", ["carry"], "physical", "ranged", ["mobility", "sustained-dps", "poke"], ["mobility", "poke", "tank-shred"], ["hard-cc", "burst-vulnerable"]),
-  h("Wraith", ["carry", "midlane"], "mixed", "ranged", ["pick", "poke", "burst"], ["pick", "poke", "anti-squishy"], ["dive", "low-mobility"]),
-  h("Wukong", ["offlane", "jungle"], "physical", "melee", ["split-push", "dive", "sustained-dps"], ["split-push", "mobility", "tank-shred"], ["hard-cc", "anti-burst"]),
-  h("Yin", ["carry", "offlane"], "physical", "melee", ["duelist", "anti-projectile", "sustained-dps"], ["anti-poke", "duelist", "mobility"], ["hard-cc", "burst-vulnerable"]),
-  h("Yurei", ["jungle", "offlane"], "magical", "melee", ["dive", "burst", "sustain"], ["mobility", "burst", "anti-burst"], ["anti-heal", "hard-cc"]),
-  h("Zarus", ["offlane", "jungle"], "physical", "melee", ["engage", "duelist", "frontline"], ["hard-cc", "frontline", "duelist"], ["poke", "tank-shred"]),
-  h("Zinx", ["support", "offlane"], "magical", "ranged", ["sustain", "peel", "frontline"], ["sustain", "anti-poke", "frontline"], ["anti-heal", "burst"]),
-];
 
 const counterRules = [
   rule("dive", ["hard-cc", "peel", "anti-dive", "disengage"], "peels dive"),
@@ -107,10 +37,6 @@ const buildPlans = [
   plan("Siege breaker", ["objective-control", "zone-control", "scaling"], ["waveclear item", "objective damage", "engage or flank tool"], "Clear waves, deny setup, and force fights before scaling takes over."),
 ];
 
-function h(name: string, roles: Role[], damage: Damage, range: Hero["range"], threats: string[], answers: string[], weaknesses: string[]): Hero {
-  return { name, roles, damage, range, threats, answers, weaknesses };
-}
-
 function rule(threat: string, answers: string[], reason: string) {
   return { threat, answers, reason };
 }
@@ -119,9 +45,6 @@ function plan(title: string, threats: string[], items: string[], note: string) {
   return { title, threats, items, note };
 }
 
-function normalize(value: string) {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-}
 
 function analyze(enemyNames: string[]) {
   const enemies = enemyNames
@@ -219,10 +142,12 @@ export default function Home() {
   const [enemyPicks, setEnemyPicks] = useState<string[]>(["", "", "", "", ""]);
   const [lockedHero, setLockedHero] = useState("");
   const [search, setSearch] = useState("");
+  const [showAudit, setShowAudit] = useState(false);
 
   const enemyNames = enemyPicks.filter(Boolean);
   const comp = useMemo(() => analyze(enemyNames), [enemyNames]);
   const locked = heroes.find((hero) => hero.name === lockedHero);
+  const audit = useMemo(() => auditHeroData(), []);
 
   const recommendations = useMemo(
     () =>
@@ -348,6 +273,43 @@ export default function Home() {
               </div>
             ) : (
               <p className="text-sm text-[#e9dfcf]">Add enemy picks to reveal draft pressure.</p>
+            )}
+          </section>
+
+          <section className="rounded-lg border border-[#2b29231a] bg-white p-3 shadow-sm">
+            <div className="flex items-center justify-between gap-3">
+              <div>
+                <h2 className="text-sm font-black uppercase tracking-[0.12em]">Data audit</h2>
+                <p className="mt-1 text-sm font-semibold text-[#665f52]">
+                  {audit.heroCount} heroes / {audit.fullyVerifiedHeroes} fully verified / {audit.errors.length} errors
+                </p>
+              </div>
+              <button
+                className="rounded-md border border-[#191712] px-3 py-2 text-xs font-bold"
+                onClick={() => setShowAudit((value) => !value)}
+              >
+                {showAudit ? "Hide" : "Review"}
+              </button>
+            </div>
+            {showAudit && (
+              <div className="mt-3 space-y-3">
+                <div className="grid grid-cols-2 gap-2">
+                  {roles.map((item) => (
+                    <p key={item} className="rounded-md bg-[#faf8f3] px-3 py-2 text-xs font-black capitalize text-[#191712]">
+                      {item}: {audit.roleCoverage[item]}
+                    </p>
+                  ))}
+                </div>
+                <p className="rounded-md bg-[#fff5cf] px-3 py-2 text-sm font-semibold text-[#5f4610]">
+                  Current patch: {predecessorHeroData.patch}. Role and kit fields marked as needs-review are visible here until checked against current game data.
+                </p>
+                {[...audit.errors, ...audit.warnings].slice(0, 8).map((issue, index) => (
+                  <p key={`${issue.severity}-${issue.hero}-${issue.field}-${index}`} className="rounded-md bg-[#f4e0d9] px-3 py-2 text-xs font-bold text-[#8a3524]">
+                    {issue.severity.toUpperCase()} / {issue.hero ?? "Dataset"} / {issue.field}: {issue.message}
+                  </p>
+                ))}
+                {audit.warnings.length > 8 && <p className="text-xs font-semibold text-[#665f52]">Run npm run audit:data to see all {audit.warnings.length} warnings.</p>}
+              </div>
             )}
           </section>
 
