@@ -36,6 +36,10 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
     },
+    "countess-game-client-manual-entry-2026-08-09": {
+      "label": "Countess game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Countess roles, class, ratings, ability text, and augments."
     "boris-game-client-manual-entry-2026-08-09": {
       "label": "Boris game-client manual entry",
       "url": null,
@@ -1974,35 +1978,250 @@
       "id": "countess",
       "name": "Countess",
       "roles": [
+        "jungle",
         "midlane",
-        "jungle"
+        "offlane"
+      ],
+      "classes": [
+        "assassin"
       ],
       "damage": "magical",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 1,
+        "abilityPower": 8,
+        "durability": 2,
+        "mobility": 5
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Sophia & Marie",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 64.0/67.2/70.5/74.0/77.6/81.4/85.4/89.6/93.9/98.4/103.1/107.9/112.9/118.1/123.5/129.0/134.7/140.5 (+75% physical power) physical damage.",
+          "scaling": {
+            "physicalDamage": [64, 67.2, 70.5, 74, 77.6, 81.4, 85.4, 89.6, 93.9, 98.4, 103.1, 107.9, 112.9, 118.1, 123.5, 129, 134.7, 140.5],
+            "physicalPowerRatio": 0.75
+          },
+          "effects": [
+            "melee-basic",
+            "physical-damage"
+          ],
+          "sourceRef": "countess-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "passive",
+          "name": "Blood Tithe",
+          "kind": "passive",
+          "damageType": "true",
+          "description": "Dealing damage to an Enemy Hero with abilities two times within 4s applies Haemorrhage, dealing 4% of their maximum health as true damage over 4s, granting Countess 5% movement speed for the same duration. This effect can stack but will not refresh.",
+          "scaling": {
+            "abilityHitsRequired": 2,
+            "hitWindow": 4,
+            "haemorrhageMaxHealthTrueDamagePercent": 4,
+            "haemorrhageDuration": 4,
+            "movementSpeedPercent": 5,
+            "movementSpeedDuration": 4
+          },
+          "effects": [
+            "haemorrhage",
+            "true-damage",
+            "max-health-damage",
+            "movement-speed",
+            "stacking-damage",
+            "ability-combo"
+          ],
+          "sourceRef": "countess-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "primary",
+          "name": "Shadow Slip",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Rapidly dash to a location in a cloud of blood, dealing 40.0/60.0/80.0/100.0/120.0 (+35% magical power) magical damage to nearby enemies and slowing them by 25% for 1.25s. A Shadow is left in your original position. Re-triggering the ability within 3.5s will swap places with the Shadow.",
+          "scaling": {
+            "magicalDamage": [40, 60, 80, 100, 120],
+            "magicalPowerRatio": 0.35,
+            "slowPercent": 25,
+            "slowDuration": 1.25,
+            "shadowSwapWindow": 3.5
+          },
+          "cooldown": [18, 17.5, 17, 16.5, 16],
+          "effects": [
+            "dash",
+            "mobility",
+            "shadow-swap",
+            "magical-damage",
+            "slow",
+            "engage",
+            "disengage",
+            "backline-access"
+          ],
+          "sourceRef": "countess-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "secondary",
+          "name": "Eventide",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Send out a cloud of darkness dealing 105.0/145.0/185.0/225.0/265.0 (+80% magical power) magical damage to Enemy Targets within its path.",
+          "scaling": {
+            "magicalDamage": [105, 145, 185, 225, 265],
+            "magicalPowerRatio": 0.8
+          },
+          "cooldown": [11, 10, 9, 8, 7],
+          "effects": [
+            "line-damage",
+            "magical-damage",
+            "burst",
+            "poke",
+            "waveclear"
+          ],
+          "sourceRef": "countess-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "alternate",
+          "name": "Blade Siphon",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Countess spins and strikes all Enemy Targets around her, dealing 80.0/110.0/140.0/170.0/200.0 (+60% magical power) magical damage to each and healing herself for 4.0/6.0/8.0/10.0/12.0 (+10% magical power) per Target hit. Against Heroes the healing is increased by 450%. Monsters receive 95 more damage.",
+          "scaling": {
+            "magicalDamage": [80, 110, 140, 170, 200],
+            "magicalPowerRatio": 0.6,
+            "healPerTarget": [4, 6, 8, 10, 12],
+            "healMagicalPowerRatio": 0.1,
+            "heroHealingIncreasePercent": 450,
+            "bonusMonsterDamage": 95
+          },
+          "cooldown": [11, 10, 9, 8, 7],
+          "effects": [
+            "area-damage",
+            "magical-damage",
+            "self-heal",
+            "sustain",
+            "jungle-clear",
+            "burst"
+          ],
+          "sourceRef": "countess-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Feast",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "Leap to an Enemy Hero, forcing them to face Countess and Suppress them for 0.75s. After the duration, Countess deals 135.0/185.0/235.0 (+5% (+2.5% magical power) of the target's maximum health) magical damage and applying Haemorrhage. Targets already affected by Haemorrhage take 50% bonus damage and Countess restores health equal to 100% of the damage dealt.",
+          "scaling": {
+            "suppressDuration": 0.75,
+            "magicalDamage": [135, 185, 235],
+            "targetMaxHealthDamagePercent": 5,
+            "targetMaxHealthMagicalPowerRatio": 0.025,
+            "haemorrhageBonusDamagePercent": 50,
+            "damageDealtHealingPercent": 100
+          },
+          "cooldown": [135, 110, 85],
+          "effects": [
+            "leap",
+            "suppression",
+            "hard-cc",
+            "single-target-lockdown",
+            "magical-damage",
+            "max-health-damage",
+            "haemorrhage",
+            "self-heal",
+            "finisher",
+            "dive"
+          ],
+          "sourceRef": "countess-game-client-manual-entry-2026-08-09"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Shadow Echo",
+          "category": "mobility damage",
+          "description": "Repeat Shadow Slip's damage effect at your current location when swapping places with your Shadow.",
+          "tags": [
+            "shadow-slip",
+            "mobility",
+            "area-damage",
+            "swap",
+            "burst"
+          ],
+          "sourceRef": "countess-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "name": "Sanguine Slash",
+          "category": "isolated damage",
+          "description": "Blade Siphon deals 20% more damage to Isolated Targets.",
+          "tags": [
+            "blade-siphon",
+            "isolated-target",
+            "burst",
+            "dueling",
+            "pick"
+          ],
+          "sourceRef": "countess-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "name": "Blood Well",
+          "category": "takedown sustain",
+          "description": "Takedowns summon a pool of blood with 18 charges for 120s. While standing in the pool, Countess consumes a charge to restore 2% Max Health and 2.5% Max Mana every 0.25s.",
+          "tags": [
+            "takedown",
+            "sustain",
+            "health-restore",
+            "mana-restore",
+            "reset-window"
+          ],
+          "sourceRef": "countess-game-client-manual-entry-2026-08-09"
+        }
+      ],
       "threats": [
         "burst",
         "dive",
-        "pick"
+        "pick",
+        "backline-access",
+        "single-target-lockdown",
+        "sustain",
+        "reset-pressure"
       ],
       "answers": [
         "burst",
         "backline-access",
-        "mobility"
+        "mobility",
+        "squishy-punish",
+        "pick",
+        "self-heal",
+        "max-health-damage",
+        "waveclear"
       ],
       "weaknesses": [
         "hard-cc",
-        "anti-burst"
+        "anti-burst",
+        "anti-heal",
+        "peel",
+        "silence",
+        "reveal",
+        "frontline"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "countess-game-client-manual-entry-2026-08-09",
+        "roles": "countess-game-client-manual-entry-2026-08-09",
+        "classes": "countess-game-client-manual-entry-2026-08-09",
+        "ratings": "countess-game-client-manual-entry-2026-08-09",
+        "abilities": "countess-game-client-manual-entry-2026-08-09",
+        "augments": "countess-game-client-manual-entry-2026-08-09",
+        "kit": "countess-game-client-manual-entry-2026-08-09"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Countess text dated 2026-08-09. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
