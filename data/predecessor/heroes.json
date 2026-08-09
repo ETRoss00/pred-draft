@@ -40,6 +40,18 @@
       "label": "Aurora game-client manual entry",
       "url": null,
       "use": "User-provided in-game text covering Aurora roles, class, ratings, ability text, and augments."
+    "argus-game-client-manual-entry-2026-08-08": {
+      "label": "Argus game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Argus roles, class, ratings, ability text, and augments."
+    "akeron-game-client-manual-entry-2026-08-08": {
+      "label": "Akeron game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Akeron roles, class, ratings, ability text, and augments."
+    "adele-game-client-manual-entry-2026-08-08": {
+      "label": "Adele game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Adele roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -79,78 +91,793 @@
         "support",
         "offlane"
       ],
+      "classes": [
+        "tank"
+      ],
       "damage": "physical",
       "range": "melee",
       "threats": [
+        "frontline",
         "engage",
-        "peel",
-        "frontline"
+        "root",
+        "slow",
+        "area-control",
+        "true-damage",
+        "damage-reduction",
+        "objective-zone"
       ],
       "answers": [
-        "peel",
-        "hard-cc",
         "anti-dive",
-        "frontline"
+        "peel",
+        "frontline",
+        "objective-zone",
+        "interrupt",
+        "anti-mobility",
+        "hard-cc",
+        "ally-protection"
       ],
       "weaknesses": [
         "poke",
-        "low-range"
+        "kite",
+        "anti-shield",
+        "disengage",
+        "range-vulnerable"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "adele-game-client-manual-entry-2026-08-08",
+        "roles": "adele-game-client-manual-entry-2026-08-08",
+        "classes": "adele-game-client-manual-entry-2026-08-08",
+        "ratings": "adele-game-client-manual-entry-2026-08-08",
+        "abilities": "adele-game-client-manual-entry-2026-08-08",
+        "augments": "adele-game-client-manual-entry-2026-08-08",
+        "kit": "adele-game-client-manual-entry-2026-08-08"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
-      }
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Adele text dated 2026-08-08. Recommendation tags are derived from the source-backed kit."
+      },
+      "ratings": {
+        "basicAttack": 2,
+        "abilityPower": 4,
+        "durability": 9,
+        "mobility": 5
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Acacia",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 43.0/45.1/47.3/49.6/52.1/54.6/57.3/60.1/63.0/66.0/69.1/72.3/75.6/79.1/82.6/86.3/90.1/94.0 (+30% physical power) physical damage. Additionally deals 5.0/6.0/7.0/8.0/9.0/10.0/11.0/12.0/13.0/14.0/15.0/16.0/17.0/18.0/19.0/20.0/21.0/22.0 (+30% physical power) true damage.",
+          "scaling": {
+            "physicalDamage": [
+              43,
+              45.1,
+              47.3,
+              49.6,
+              52.1,
+              54.6,
+              57.3,
+              60.1,
+              63,
+              66,
+              69.1,
+              72.3,
+              75.6,
+              79.1,
+              82.6,
+              86.3,
+              90.1,
+              94
+            ],
+            "trueDamage": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "physicalPowerRatio": 0.3
+          },
+          "effects": [
+            "melee-basic",
+            "physical-damage",
+            "true-damage"
+          ],
+          "sourceRef": "adele-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "passive",
+          "name": "Crown of Thorns",
+          "kind": "passive",
+          "description": "Damaging Enemy Heroes applies Thorns to the target for 4s. Additional applications refresh the duration. Cannot be applied to Epic Monsters. Allies deal 6% of their damage as bonus true damage to Enemies afflicted by Thorns.",
+          "scaling": {
+            "duration": 4,
+            "allyBonusTrueDamagePercent": 6
+          },
+          "effects": [
+            "debuff",
+            "bonus-true-damage",
+            "ally-damage-amp",
+            "damage-amplification"
+          ],
+          "sourceRef": "adele-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "primary",
+          "name": "Royal Flourish",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Adele swings her sword, gaining 40% Movement Speed for the duration. She deals 5.0/15.0/25.0/35.0/45.0 (+50.0/60.0/70.0/80.0/90.0% physical power) physical damage twice to nearby Enemies and Mesmerizes them for 1s. Mesmerized Enemies are immune to Slows. Adele then slams her sword down in an area to deal 70.0/90.0/110.0/130.0/150.0 (+7% max health) true damage to all Enemies hit.",
+          "scaling": {
+            "movementSpeedPercent": 40,
+            "physicalDamagePerHit": [
+              5,
+              15,
+              25,
+              35,
+              45
+            ],
+            "physicalPowerRatioPercent": [
+              50,
+              60,
+              70,
+              80,
+              90
+            ],
+            "hitCount": 2,
+            "mesmerizeDuration": 1,
+            "slamTrueDamage": [
+              70,
+              90,
+              110,
+              130,
+              150
+            ],
+            "maxHealthRatio": 0.07
+          },
+          "cooldown": [
+            14,
+            14,
+            14,
+            14,
+            14
+          ],
+          "cost": [
+            40,
+            45,
+            50,
+            55,
+            60
+          ],
+          "effects": [
+            "area-damage",
+            "movement-speed",
+            "mesmerize",
+            "soft-cc",
+            "true-damage",
+            "frontline-pressure"
+          ],
+          "sourceRef": "adele-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "secondary",
+          "name": "Iron Rose",
+          "kind": "secondary ability",
+          "description": "Adele equips her shield for 4.5s, increasing her hitbox size and gaining 20.0/22.5/25.0/27.5/30.0% (+4% physical armor)(+4% magical armor) Damage Reduction. This can be cast during other abilities. On cast, she attaches a Thorned Vine to Enemy Heroes and Monsters within 800u. The Vine deals 6.0/8.0/10.0/12.0/14.0 (+0.7% max health) true damage every 0.5s for the duration. The Vine snaps if an Enemy moves more than 1000u away.",
+          "scaling": {
+            "duration": 4.5,
+            "damageReductionPercent": [
+              20,
+              22.5,
+              25,
+              27.5,
+              30
+            ],
+            "physicalArmorRatio": 0.04,
+            "magicalArmorRatio": 0.04,
+            "attachRange": 800,
+            "trueDamagePerTick": [
+              6,
+              8,
+              10,
+              12,
+              14
+            ],
+            "maxHealthRatio": 0.007,
+            "tickRate": 0.5,
+            "snapRange": 1000
+          },
+          "cooldown": [
+            18,
+            17.25,
+            16.5,
+            15.75,
+            15
+          ],
+          "cost": [
+            60,
+            60,
+            60,
+            60,
+            60
+          ],
+          "effects": [
+            "damage-reduction",
+            "self-mitigation",
+            "true-damage",
+            "tether",
+            "cast-during-abilities",
+            "frontline"
+          ],
+          "sourceRef": "adele-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "alternate",
+          "name": "Imperial Lash",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Adele unfurls her Sword in a straight line, dealing 45.0/65.0/85.0/105.0/125.0 (+50% physical damage) true damage to all Enemies it passes through. If she hits an Enemy Hero or Monster, they are Rooted for 0.6s and Adele dashes to the furthest target hit.",
+          "scaling": {
+            "trueDamage": [
+              45,
+              65,
+              85,
+              105,
+              125
+            ],
+            "physicalDamageRatio": 0.5,
+            "rootDuration": 0.6
+          },
+          "cooldown": [
+            13.5,
+            12.25,
+            11,
+            9.75,
+            8.5
+          ],
+          "cost": [
+            50,
+            55,
+            60,
+            65,
+            70
+          ],
+          "effects": [
+            "mobility",
+            "dash",
+            "root",
+            "hard-cc",
+            "line-damage",
+            "engage",
+            "true-damage"
+          ],
+          "sourceRef": "adele-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Queen's Garden",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Adele performs a small leap, slamming her shield into the ground, summoning a large Thornbush at her location for 8s. Vines attach to all Enemies within the central section, dealing 55.0/90.0/125.0 (+5% max health) physical damage. This Interrupts abilities, Roots Enemies for 0.75s, and pulls flying Enemies to the ground. All Enemies inside the Thornbush are Slowed by 35.0/37.5/40.0% and take 4.0/7.0/10.0 true damage every 35u moved within it.",
+          "scaling": {
+            "duration": 8,
+            "physicalDamage": [
+              55,
+              90,
+              125
+            ],
+            "maxHealthRatio": 0.05,
+            "rootDuration": 0.75,
+            "slowPercent": [
+              35,
+              37.5,
+              40
+            ],
+            "movementTrueDamage": [
+              4,
+              7,
+              10
+            ],
+            "movementDistanceUnit": 35
+          },
+          "cooldown": [
+            120,
+            100,
+            80
+          ],
+          "cost": [
+            100,
+            100,
+            100
+          ],
+          "effects": [
+            "area-control",
+            "zone-control",
+            "interrupt",
+            "root",
+            "hard-cc",
+            "slow",
+            "anti-airborne",
+            "true-damage",
+            "objective-zone"
+          ],
+          "sourceRef": "adele-game-client-manual-entry-2026-08-08"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Tyrant of Thorns",
+          "category": "damage amplification",
+          "description": "Adele triggers Crown of Thorns at 300% effectiveness. Royal Flourish has 9.0/8.5/8.0/7.5/7.0 Cooldown and provides 50% Movement Speed, but no longer Mesmerizes.",
+          "tags": [
+            "damage-amp",
+            "lower-cooldown",
+            "movement-speed",
+            "tradeoff",
+            "no-mesmerize"
+          ],
+          "sourceRef": "adele-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "name": "Court of Roses",
+          "category": "ally protection",
+          "description": "Iron Rose grants nearest Ally a 5s barrier with 20% Damage Reduction and attaches Thorned Vines to nearby Enemy Heroes dealing 50% damage.",
+          "tags": [
+            "ally-protection",
+            "barrier",
+            "damage-reduction",
+            "peel",
+            "support"
+          ],
+          "sourceRef": "adele-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "name": "Seeds of Dominion",
+          "category": "zone control",
+          "description": "Imperial Lash spawns a Thornbush under the dash target, reducing its Cooldown by 10%. Enemies are Slowed 10% and take 2.0/2.5/3.0/3.5/4.0 True Damage per 35u moved inside the Thornbush.",
+          "tags": [
+            "zone-control",
+            "slow",
+            "true-damage",
+            "cooldown-reduction",
+            "engage"
+          ],
+          "sourceRef": "adele-game-client-manual-entry-2026-08-08"
+        }
+      ]
     },
     {
       "id": "akeron",
       "name": "Akeron",
       "roles": [
+        "offlane",
         "jungle"
       ],
-      "damage": "physical",
+      "damage": "mixed",
       "range": "melee",
       "threats": [
         "dive",
-        "burst",
-        "pick"
+        "engage",
+        "pick",
+        "sustain",
+        "execute",
+        "terrain-mobility",
+        "hard-cc",
+        "armor-shred",
+        "mixed-damage"
       ],
       "answers": [
-        "burst",
+        "backline-access",
         "mobility",
-        "backline-access"
+        "hard-cc",
+        "root",
+        "stun",
+        "knockup",
+        "sustain",
+        "armor-shred",
+        "execute-pressure",
+        "frontline"
       ],
       "weaknesses": [
+        "anti-heal",
         "hard-cc",
-        "anti-burst"
+        "kite",
+        "poke",
+        "burst-vulnerable",
+        "terrain-dependent"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "akeron-game-client-manual-entry-2026-08-08",
+        "roles": "akeron-game-client-manual-entry-2026-08-08",
+        "classes": "akeron-game-client-manual-entry-2026-08-08",
+        "ratings": "akeron-game-client-manual-entry-2026-08-08",
+        "abilities": "akeron-game-client-manual-entry-2026-08-08",
+        "augments": "akeron-game-client-manual-entry-2026-08-08",
+        "kit": "akeron-game-client-manual-entry-2026-08-08"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
-      }
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Akeron text dated 2026-08-08. Recommendation tags are derived from the source-backed kit."
+      },
+      "classes": [
+        "fighter"
+      ],
+      "ratings": {
+        "basicAttack": 2,
+        "abilityPower": 6,
+        "durability": 7,
+        "mobility": 8
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Flay",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 62.0/65.0/68.2/71.5/75.0/78.7/82.5/86.5/90.6/94.9/99.4/104.0/108.8/113.7/118.8/124.1/129.5/135.1 (+75% physical power) physical damage.",
+          "scaling": {
+            "physicalDamage": [
+              62,
+              65,
+              68.2,
+              71.5,
+              75,
+              78.7,
+              82.5,
+              86.5,
+              90.6,
+              94.9,
+              99.4,
+              104,
+              108.8,
+              113.7,
+              118.8,
+              124.1,
+              129.5,
+              135.1
+            ],
+            "physicalPowerRatio": 0.75
+          },
+          "effects": [
+            "melee-basic",
+            "physical-damage"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "passive",
+          "name": "Pact of the Devourer",
+          "kind": "passive",
+          "description": "Akeron gains up to 100 stacks of Hunger, each granting 0.25% increased healing and lasting 3s and refreshing on application. Akeron gains Hunger each time he hits an Enemy Unit with a basic attack or ability. He gains additional Hunger when damaged by an Enemy Hero. When Akeron reaches max stacks he becomes Awakened for 10s granting him 5.0/5.8/6.5/7.3/8.0/8.8/9.5/10.3/11.0/11.8/12.5/13.3/14.0/14.8/15.5/16.3/17.0/17.8% (+0.75% per level) Damage Reduction, and granting his basic abilities extra effects.",
+          "scaling": {
+            "maxHungerStacks": 100,
+            "healingIncreasePercentPerStack": 0.25,
+            "hungerDuration": 3,
+            "awakenedDuration": 10,
+            "damageReductionPercentByLevel": [
+              5,
+              5.8,
+              6.5,
+              7.3,
+              8,
+              8.8,
+              9.5,
+              10.3,
+              11,
+              11.8,
+              12.5,
+              13.3,
+              14,
+              14.8,
+              15.5,
+              16.3,
+              17,
+              17.8
+            ],
+            "damageReductionPerLevelPercent": 0.75
+          },
+          "effects": [
+            "healing-amp",
+            "stacking-buff",
+            "damage-reduction",
+            "empowered-state",
+            "sustain"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "primary",
+          "name": "Hellfire",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Akeron opens his maw and launches the Demon's Eye forward. The Eye moves slowly, firing off 10 (+10% haste) fireballs around it. Refire the ability to pause the Eye mid-flight. Each fireball deals 18.0/29.0/40.0/51.0/62.0 (+18% magical power) magical damage and Slows Enemies by 7%, up to a max of 35%. If an Enemy is within range, the Eye will fire an additional homing fireball at them. Each subsequent hit on the same Target deals 20% less damage, stacking up to a 80% reduction. When Awakened, the number of fireballs is increased by 50%.",
+          "scaling": {
+            "fireballs": 10,
+            "hasteFireballRatio": 0.1,
+            "magicalDamagePerFireball": [
+              18,
+              29,
+              40,
+              51,
+              62
+            ],
+            "magicalPowerRatio": 0.18,
+            "slowPercentPerHit": 7,
+            "maxSlowPercent": 35,
+            "repeatedHitDamageReductionPercent": 20,
+            "maxRepeatedHitDamageReductionPercent": 80,
+            "awakenedFireballIncreasePercent": 50
+          },
+          "cooldown": [
+            16,
+            14.75,
+            13.5,
+            12.25,
+            11
+          ],
+          "effects": [
+            "magical-damage",
+            "slow",
+            "homing-projectiles",
+            "zone-control",
+            "poke",
+            "empowered-when-awakened"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "secondary",
+          "name": "Web Lash",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Akeron fires a web, stopping on the first Target hit and causing various effects depending on the Target type. Heroes or Units: Damages for 70.0/95.0/120.0/145.0/170.0 (+40% magical power) magical damage and Roots for 1s, also creating a web field that Slows Enemies by 35%. World: Lashes to it for up to 5s. While attached to terrain, Akeron can use abilities or leap to the ground, dealing 60.0/85.0/110.0/135.0/160.0 (+50% physical power)(+40% magical power) physical damage, Knocking Up, and Stunning Enemies for 1s. Awakened: Root and Stun Duration increased to 1.25.",
+          "scaling": {
+            "magicalDamage": [
+              70,
+              95,
+              120,
+              145,
+              170
+            ],
+            "magicalPowerRatio": 0.4,
+            "rootDuration": 1,
+            "fieldSlowPercent": 35,
+            "terrainAttachDuration": 5,
+            "leapPhysicalDamage": [
+              60,
+              85,
+              110,
+              135,
+              160
+            ],
+            "leapPhysicalPowerRatio": 0.5,
+            "leapMagicalPowerRatio": 0.4,
+            "stunDuration": 1,
+            "awakenedCcDuration": 1.25
+          },
+          "cooldown": [
+            25,
+            22.5,
+            20,
+            17.5,
+            15
+          ],
+          "effects": [
+            "mobility",
+            "terrain-attach",
+            "root",
+            "stun",
+            "knockup",
+            "hard-cc",
+            "slow-field",
+            "engage",
+            "pick"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "alternate",
+          "name": "Crushing Maw",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Akeron deals 70.0/90.0/110.0/130.0/150.0 (+65% physical power)(+40% magical power)(+4% max health) physical damage in a cone. Enemies close to Akeron take 1.35x damage. Akeron also heals for 8.0/12.0/16.0/20.0/24.0 (+1.8/2.5/3.3/4.0/4.8% max health). The heal is reduced to 20% for Non-Heroes, and increased by 200% on kill. If an Enemy Hero is killed, Akeron becomes Awakened. While Akeron is attached to terrain, this ability becomes a roar, affecting the area around him. Awakened: Shred 15.0/17.5/20.0/22.5/25.0% Physical Armor and Magical Armor for 5s.",
+          "scaling": {
+            "physicalDamage": [
+              70,
+              90,
+              110,
+              130,
+              150
+            ],
+            "physicalPowerRatio": 0.65,
+            "magicalPowerRatio": 0.4,
+            "maxHealthDamageRatio": 0.04,
+            "closeRangeDamageMultiplier": 1.35,
+            "heal": [
+              8,
+              12,
+              16,
+              20,
+              24
+            ],
+            "maxHealthHealPercent": [
+              1.8,
+              2.5,
+              3.3,
+              4,
+              4.8
+            ],
+            "nonHeroHealPercent": 20,
+            "killHealIncreasePercent": 200,
+            "armorShredPercent": [
+              15,
+              17.5,
+              20,
+              22.5,
+              25
+            ],
+            "armorShredDuration": 5
+          },
+          "cooldown": [
+            11,
+            10,
+            9,
+            8,
+            7
+          ],
+          "effects": [
+            "cone-damage",
+            "physical-damage",
+            "max-health-scaling",
+            "self-heal",
+            "execute-synergy",
+            "armor-shred",
+            "magic-armor-shred",
+            "sustain",
+            "empowered-when-awakened"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Consume",
+          "kind": "ultimate ability",
+          "damageType": "mixed",
+          "description": "Akeron Slows himself by 35% while Pulling and dealing 15.0/20.0/25.0 (+5% magical power) magical damage to all Enemies in a cone every 0.25s for 3s. If an Enemy Hero collides with Akeron, he bites them, dealing 55.0/75.0/95.0 (+75% physical power)(+45% magical power) physical damage while healing for 2.5/3.5/4.5% Missing Health + 40.0/50.0/60.0% of bite damage dealt. Akeron Executes Enemies bitten under 12% (+3.5% physical power)(+2.5% magical power) of their Max Health. Each time Akeron successfully executes a Hero, he gains 100.0/125.0/150.0 Maximum Health permanently, also healing for 2.5x the bite value.",
+          "scaling": {
+            "selfSlowPercent": 35,
+            "tickMagicalDamage": [
+              15,
+              20,
+              25
+            ],
+            "tickMagicalPowerRatio": 0.05,
+            "tickRate": 0.25,
+            "duration": 3,
+            "bitePhysicalDamage": [
+              55,
+              75,
+              95
+            ],
+            "bitePhysicalPowerRatio": 0.75,
+            "biteMagicalPowerRatio": 0.45,
+            "missingHealthHealPercent": [
+              2.5,
+              3.5,
+              4.5
+            ],
+            "biteDamageHealPercent": [
+              40,
+              50,
+              60
+            ],
+            "executeThresholdPercent": 12,
+            "executePhysicalPowerRatio": 0.035,
+            "executeMagicalPowerRatio": 0.025,
+            "permanentMaxHealthOnExecute": [
+              100,
+              125,
+              150
+            ],
+            "executeHealMultiplier": 2.5
+          },
+          "cooldown": [
+            135,
+            115,
+            95
+          ],
+          "effects": [
+            "pull",
+            "cone-damage",
+            "magical-damage",
+            "bite",
+            "execute",
+            "self-heal",
+            "permanent-health",
+            "sustain",
+            "displacement"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Trapdoor Demon",
+          "category": "terrain sustain",
+          "description": "Akeron becomes camouflaged when attaching to terrain, gaining 1.5% Max Health Regen and generating 8 Hunger per second while he remains there.",
+          "tags": [
+            "camouflage",
+            "terrain-attach",
+            "health-regen",
+            "hunger-generation",
+            "sustain"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "name": "Death From Above",
+          "category": "mobility",
+          "description": "Akeron can fire an additional web projectile from the wall or ground once, allowing him to leap from surface to surface or to Root from where he hangs.",
+          "tags": [
+            "mobility",
+            "terrain-attach",
+            "extra-web",
+            "root",
+            "engage",
+            "pick"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "name": "Roar of Torment",
+          "category": "ultimate modification",
+          "description": "Consume now Pushes instead of Pulls and deals 275% increased tick damage, but can no longer bite.",
+          "tags": [
+            "push",
+            "ultimate",
+            "area-damage",
+            "tradeoff",
+            "no-bite"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        }
+      ]
     },
     {
       "id": "argus",
       "name": "Argus",
       "roles": [
+        "midlane",
         "support"
       ],
       "classes": [
-        "mage",
-        "catcher"
+        "mage"
       ],
       "damage": "magical",
       "range": "ranged",
@@ -162,64 +889,127 @@
       },
       "abilities": [
         {
-          "slot": "passive",
-          "name": "Disintegrate",
-          "kind": "passive",
-          "damageType": "magical",
-          "description": "Argus' abilities apply a stack of Disintegration for 2s, causing subsequent instances of ability damage to deal 4 (+3%) bonus magical damage. Each stack of Disintegration deals 50% more damage, stacking infinitely (capped at 12 against Monsters).",
-          "effects": [
-            "stacking-damage",
-            "bonus-magical-damage"
-          ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
-        },
-        {
           "slot": "basic",
           "name": "Arcrune Conduit",
           "kind": "basic attack",
           "damageType": "physical",
-          "description": "Ranged basic attack dealing 55 (+55%) physical damage.",
+          "description": "Ranged basic attack dealing 55.0/57.5/60.0/62.7/65.6/68.6/71.7/74.9/78.3/81.8/85.4/89.2/93.1/97.1/101.2/105.5/110.0/114.5 (+55% physical power) physical damage.",
+          "scaling": {
+            "physicalDamage": [55, 57.5, 60, 62.7, 65.6, 68.6, 71.7, 74.9, 78.3, 81.8, 85.4, 89.2, 93.1, 97.1, 101.2, 105.5, 110, 114.5],
+            "physicalPowerRatio": 0.55
+          },
           "effects": [
-            "ranged-basic"
+            "ranged-basic",
+            "physical-damage"
           ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "passive",
+          "name": "Disintegrate",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "Argus' abilities apply a stack of Disintegration for 2s, causing subsequent instances of ability damage to deal 4 (+3% magical power) bonus magical damage. Each stack of Disintegration deals 50% more damage, stacking infinitely (capped at 12 against Monsters).",
+          "scaling": {
+            "bonusMagicalDamage": 4,
+            "magicalPowerRatio": 0.03,
+            "stackDuration": 2,
+            "damageIncreasePercentPerStack": 50,
+            "monsterStackCap": 12
+          },
+          "effects": [
+            "stacking-damage",
+            "bonus-magical-damage"
+          ],
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
         },
         {
           "slot": "primary",
           "name": "Dread Nova",
           "kind": "primary ability",
           "damageType": "magical",
-          "description": "Argus lobs an unstable orb of energy. Upon landing it explodes, dealing 80/120/160/200/240 (+50%) magical damage to all nearby Targets and Stuns them for 1/1.05/1.1/1.15/1.2s.",
+          "description": "Argus lobs an unstable orb of energy. Upon landing it explodes, dealing 85.0/125.0/165.0/205.0/245.0 (+50% magical power) magical damage to all nearby Targets and Stuns them for 1.0/1.1/1.1/1.1/1.2s.",
           "scaling": {
-            "damage": [80, 120, 160, 200, 240],
+            "damage": [85, 125, 165, 205, 245],
             "magicalPowerRatio": 0.5,
-            "stunDuration": [1, 1.05, 1.1, 1.15, 1.2]
+            "stunDuration": [1, 1.1, 1.1, 1.1, 1.2]
           },
           "cooldown": [16, 15, 14, 13, 12],
-          "cost": [50],
+            "damage": [
+              80,
+              120,
+              160,
+              200,
+              240
+            ],
+            "magicalPowerRatio": 0.5,
+            "stunDuration": [
+              1,
+              1.05,
+              1.1,
+              1.15,
+              1.2
+            ]
+          },
+          "cooldown": [
+            16,
+            15,
+            14,
+            13,
+            12
+          ],
+          "cost": [
+            50
+          ],
           "effects": [
             "area-damage",
             "stun",
             "hard-cc",
             "burst"
           ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
         },
         {
           "slot": "secondary",
           "name": "Ether Crystal",
           "kind": "secondary ability",
           "damageType": "magical",
-          "description": "Argus summons an Ether Crystal at the target location for 2s. The Crystal will Push Enemy Heroes from the center and Lift Allied Heroes into the air before producing a storm that deals 15/25/35/45/55 (+18%) magical damage every 0.5s to nearby Enemies and Slows by 25/30/35/40/45% for 0.5s. After the duration the Crystal will implode, Pulling all Enemies within to the center.",
+          "description": "Argus summons an Ether Crystal at the target location for 2s. The Crystal will Push Enemy Heroes from the center and Lift Allied Heroes into the air before producing a storm that deals 20.0/30.0/40.0/50.0/60.0 (+18% magical power) magical damage every 0.5s to nearby Enemies and Slows by 25.0/30.0/35.0/40.0/45.0% for 0.5s. After the duration the Crystal will implode, Pulling all Enemies within to the center.",
           "scaling": {
-            "damagePerTick": [15, 25, 35, 45, 55],
+            "damagePerTick": [20, 30, 40, 50, 60],
+            "damagePerTick": [
+              15,
+              25,
+              35,
+              45,
+              55
+            ],
             "magicalPowerRatio": 0.18,
-            "slowPercent": [25, 30, 35, 40, 45],
+            "slowPercent": [
+              25,
+              30,
+              35,
+              40,
+              45
+            ],
             "duration": 2,
             "tickRate": 0.5
           },
           "cooldown": [16, 15.5, 15, 14.5, 14],
-          "cost": [70, 80, 90, 100, 110],
+          "cooldown": [
+            16,
+            15.5,
+            15,
+            14.5,
+            14
+          ],
+          "cost": [
+            70,
+            80,
+            90,
+            100,
+            110
+          ],
           "effects": [
             "zone-control",
             "pull",
@@ -228,46 +1018,76 @@
             "area-damage",
             "ally-lift"
           ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
         },
         {
           "slot": "alternate",
           "name": "Particle Shredder",
           "kind": "alternate ability",
           "damageType": "magical",
-          "description": "Argus fires homing projectiles from his Abyssal Staff for up to 3.5s. Each projectile consumes mana and deals 13/20/27/34/41 (+18%) per blast. At maximum rank, Particle Shredder can be used indefinitely.",
+          "description": "Argus fires homing projectiles from his Abyssal Staff for up to 3.5s. Each projectile consumes mana and deals 13.0/20.0/27.0/34.0/41.0 (+18% magical power) per blast. At maximum rank, Particle Shredder can be used indefinitely.",
           "scaling": {
-            "damagePerBlast": [13, 20, 27, 34, 41],
+            "damagePerBlast": [
+              13,
+              20,
+              27,
+              34,
+              41
+            ],
             "magicalPowerRatio": 0.18,
             "channelDuration": 3.5
           },
-          "cooldown": [3],
-          "cost": [12, 14, 16, 18, 20],
+          "cooldown": [3, 3, 3, 3, 3],
+          "cooldown": [
+            3
+          ],
+          "cost": [
+            12,
+            14,
+            16,
+            18,
+            20
+          ],
           "effects": [
             "homing-projectiles",
             "channeled-damage",
             "mana-dependent",
             "sustained-damage"
           ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
         },
         {
           "slot": "ultimate",
           "name": "Synaptic Obliterator",
           "kind": "ultimate ability",
           "damageType": "magical",
-          "description": "After a short delay, Argus channels for up to 8s, gaining immunity to pushes and pulls whilst deploying his ultimate weapon to fire up to 3/4/5 powerful Energy Beams. Each beam deals 100/130/160 (+25%) magical damage (increased by up to 150% based on the Target's missing health) and Slows Enemies hit by 60% for 0.5s.",
+          "description": "After a short delay, Argus channels for up to 8s, gaining immunity to pushes and pulls whilst deploying his ultimate weapon to fire up to 3.0/4.0/5.0 powerful Energy Beams. Each beam deals 130.0/155.0/180.0 (+25% magical power) magical damage (increased by up to 150% based on the Target's missing health) and Slows Enemies hit by 60% for 0.5s.",
           "scaling": {
-            "damagePerBeam": [100, 130, 160],
+            "damagePerBeam": [130, 155, 180],
+            "damagePerBeam": [
+              100,
+              130,
+              160
+            ],
             "magicalPowerRatio": 0.25,
-            "beams": [3, 4, 5],
+            "beams": [
+              3,
+              4,
+              5
+            ],
             "maxMissingHealthAmpPercent": 150,
             "slowPercent": 60,
             "slowDuration": 0.5,
             "channelDuration": 8
           },
-          "cooldown": [135, 120, 105],
-          "cost": [100],
+          "cooldown": [
+            135,
+            120,
+            105
+          ],
+          "cost": [
+            100
+          ],
           "effects": [
             "long-range-damage",
             "execute-pressure",
@@ -275,7 +1095,7 @@
             "push-pull-immunity",
             "channel"
           ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
         }
       ],
       "augments": [
@@ -288,7 +1108,7 @@
             "combat-speed",
             "ability-damage"
           ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
         },
         {
           "name": "Mana Catalyst",
@@ -299,19 +1119,19 @@
             "poke-sustain",
             "long-fights"
           ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
         },
         {
           "name": "Infinite Obliteration",
           "category": "increased range",
-          "description": "Synaptic Obliterator's projectile now have infinite range, travel 25% faster, and Slow for 50% longer.",
+          "description": "Synaptic Obliterator's projectile now have infinite range, travel 50% faster, and Slow for 50% longer.",
           "tags": [
             "increased-range",
             "ultimate",
             "pick",
             "siege"
           ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
         }
       ],
       "threats": [
@@ -338,13 +1158,13 @@
         "mana-dependent"
       ],
       "sourceRefs": {
-        "roster": "argus-game-client-screenshots-2026-08-02",
-        "roles": "argus-game-client-screenshots-2026-08-02",
-        "classes": "argus-game-client-screenshots-2026-08-02",
-        "ratings": "argus-game-client-screenshots-2026-08-02",
-        "abilities": "argus-game-client-screenshots-2026-08-02",
-        "augments": "argus-game-client-screenshots-2026-08-02",
-        "kit": "argus-game-client-screenshots-2026-08-02"
+        "roster": "argus-game-client-manual-entry-2026-08-08",
+        "roles": "argus-game-client-manual-entry-2026-08-08",
+        "classes": "argus-game-client-manual-entry-2026-08-08",
+        "ratings": "argus-game-client-manual-entry-2026-08-08",
+        "abilities": "argus-game-client-manual-entry-2026-08-08",
+        "augments": "argus-game-client-manual-entry-2026-08-08",
+        "kit": "argus-game-client-manual-entry-2026-08-08"
       },
       "verification": {
         "rosterStatus": "source-backed",
@@ -354,7 +1174,7 @@
         "abilityStatus": "source-backed",
         "augmentStatus": "source-backed",
         "kitStatus": "source-backed",
-        "notes": "Fully encoded from user-provided in-game Argus screenshots dated 2026-08-02. Recommendation tags are derived from the source-backed kit."
+        "notes": "Revised from user-provided in-game Argus text dated 2026-08-08. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
