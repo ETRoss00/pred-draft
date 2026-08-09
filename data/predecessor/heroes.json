@@ -36,6 +36,10 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
     },
+    "bayle-game-client-manual-entry-2026-08-09": {
+      "label": "Bayle game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Bayle roles, class, ratings, ability text, and augments."
     "aurora-game-client-manual-entry-2026-08-08": {
       "label": "Aurora game-client manual entry",
       "url": null,
@@ -1440,32 +1444,265 @@
         "offlane",
         "jungle"
       ],
+      "classes": [
+        "fighter"
+      ],
       "damage": "physical",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 3,
+        "abilityPower": 7,
+        "durability": 7,
+        "mobility": 5
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Vigil",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack chain dealing 52.0/54.8/57.8/60.9/64.1/67.5/71.0/74.8/78.6/82.6/86.8/91.0/95.5/100.1/104.8/109.8/114.8/120.0 (+65% physical power) physical damage. 1.0/1.0/2.3x Damage and Swing Time Chain.",
+          "scaling": {
+            "physicalDamage": [52, 54.8, 57.8, 60.9, 64.1, 67.5, 71, 74.8, 78.6, 82.6, 86.8, 91, 95.5, 100.1, 104.8, 109.8, 114.8, 120],
+            "physicalPowerRatio": 0.65,
+            "chainDamageAndSwingTime": [1, 1, 2.3]
+          },
+          "effects": [
+            "melee-basic",
+            "basic-chain",
+            "physical-damage"
+          ],
+          "sourceRef": "bayle-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "passive",
+          "name": "Berserk",
+          "kind": "passive",
+          "description": "When Bayle drops below 40% of his Maximum Health, he enters Berserk for 7s. While Berserk, Bayle gains 15.0/19.0/23.0/27.0/31.0/35.0/39.0/43.0/47.0/51.0/55.0/59.0/63.0/67.0/71.0/75.0/79.0/83.0% (+3% per level) Attack Speed, 4.0/4.5/5.0/5.5/6.0/6.5/7.0/7.5/8.0/8.5/9.0/9.5/10.0/10.5/11.0/11.5/12.0/12.5% (+0.5% per level) Movement Speed, and 40 Tenacity. Bayle can only enter Berserk once every 20s.",
+          "scaling": {
+            "healthThresholdPercent": 40,
+            "berserkDuration": 7,
+            "attackSpeedPercentByLevel": [15, 19, 23, 27, 31, 35, 39, 43, 47, 51, 55, 59, 63, 67, 71, 75, 79, 83],
+            "attackSpeedPercentPerLevel": 3,
+            "movementSpeedPercentByLevel": [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5],
+            "movementSpeedPercentPerLevel": 0.5,
+            "tenacity": 40,
+            "cooldown": 20
+          },
+          "effects": [
+            "low-health-buff",
+            "attack-speed",
+            "movement-speed",
+            "tenacity",
+            "dueling",
+            "anti-cc"
+          ],
+          "sourceRef": "bayle-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "primary",
+          "name": "Cursed Edge",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Bayle activates the runes on his arm, swinging 3 times to conjure slashes of cursed energy that pierce through all Enemies, dealing 35.0/50.0/65.0/80.0/95.0 (+75% physical power)(+50% magical power) physical damage each. The first two slashes are vertical, while the third is horizontal and Knocks Up and Stuns all Enemies it hits for 0.65s. If Bayle hits the same Target with all 3 slashes, they take 5.0/10.0/15.0/20.0/25.0 (+18% physical power)(+15% magical power) bonus bleed damage every 0.5s for 3s.",
+          "scaling": {
+            "slashes": 3,
+            "physicalDamagePerSlash": [35, 50, 65, 80, 95],
+            "physicalPowerRatio": 0.75,
+            "magicalPowerRatio": 0.5,
+            "knockupStunDuration": 0.65,
+            "bleedDamagePerTick": [5, 10, 15, 20, 25],
+            "bleedPhysicalPowerRatio": 0.18,
+            "bleedMagicalPowerRatio": 0.15,
+            "bleedTickRate": 0.5,
+            "bleedDuration": 3
+          },
+          "cooldown": [18, 16.5, 15, 13.5, 12],
+          "effects": [
+            "piercing-damage",
+            "physical-damage",
+            "knockup",
+            "stun",
+            "hard-cc",
+            "bleed",
+            "area-damage"
+          ],
+          "sourceRef": "bayle-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "secondary",
+          "name": "Dire Howl",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Bayle howls out a battle cry, dealing 50.0/65.0/80.0/95.0/110.0 (+30% physical power)(+65% magical power) physical damage around him and Slowing Enemies hit by 30% for 1.25s. Additionally, Bayle is buffed for 5s, gaining 8.0/12.0/16.0/20.0/24.0 (+25% magical power) bonus Physical Power and 8.0/10.0/12.0/14.0/16.0% Omnivamp. When the buff ends, Bayle Heals for 10.0/14.0/18.0/22.0/26.0% of his damage taken during the duration.",
+          "scaling": {
+            "physicalDamage": [50, 65, 80, 95, 110],
+            "physicalPowerRatio": 0.3,
+            "magicalPowerRatio": 0.65,
+            "slowPercent": 30,
+            "slowDuration": 1.25,
+            "buffDuration": 5,
+            "bonusPhysicalPower": [8, 12, 16, 20, 24],
+            "bonusPhysicalPowerMagicalPowerRatio": 0.25,
+            "omnivampPercent": [8, 10, 12, 14, 16],
+            "damageTakenHealPercent": [10, 14, 18, 22, 26]
+          },
+          "cooldown": [16, 16, 16, 16, 16],
+          "effects": [
+            "area-damage",
+            "slow",
+            "self-buff",
+            "physical-power",
+            "omnivamp",
+            "delayed-heal",
+            "sustain"
+          ],
+          "sourceRef": "bayle-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "alternate",
+          "name": "Skull Crusher",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Bayle leaps a set distance forward, flipping in the air and slamming his sword into the ground to deal 90.0/130.0/170.0/210.0/250.0 (+110% physical power) physical damage in the area. Enemies hit by the slam are marked for 4s, Shredding their Physical Armor by 20.0/22.5/25.0/27.5/30.0% and granting Bayle 30% increased Movement Speed toward them. The leap can be cancelled early, allowing Bayle to slam immediately below him.",
+          "scaling": {
+            "physicalDamage": [90, 130, 170, 210, 250],
+            "physicalPowerRatio": 1.1,
+            "markDuration": 4,
+            "physicalArmorShredPercent": [20, 22.5, 25, 27.5, 30],
+            "movementSpeedTowardMarkedPercent": 30
+          },
+          "cooldown": [17, 15.5, 14, 12.5, 11],
+          "effects": [
+            "leap",
+            "mobility",
+            "area-damage",
+            "physical-damage",
+            "armor-shred",
+            "target-chase",
+            "engage"
+          ],
+          "sourceRef": "bayle-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Kingslayer",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Bayle Slows himself by 60% while he gathers cursed energy, then dashing forward at blinding speed. If Bayle hits an Enemy Hero, he stops dashing and swings his sword in a massive uppercut, throwing them into the air while pummeling them with a barrage of 8 sword strikes, each dealing 30.0/40.0/50.0 (+24% physical power) (+1.0/1.3/1.6% Target's Max Health) physical damage. Finally, Bayle slams the Enemy into the ground, dealing 70.0/95.0/120.0 (+75% physical power) (+3.0/4.0/5.0% Target's Max Health) physical damage in a small area around where they land.",
+          "scaling": {
+            "selfSlowPercent": 60,
+            "strikeCount": 8,
+            "strikePhysicalDamage": [30, 40, 50],
+            "strikePhysicalPowerRatio": 0.24,
+            "strikeTargetMaxHealthDamagePercent": [1, 1.3, 1.6],
+            "slamPhysicalDamage": [70, 95, 120],
+            "slamPhysicalPowerRatio": 0.75,
+            "slamTargetMaxHealthDamagePercent": [3, 4, 5]
+          },
+          "cooldown": [135, 125, 115],
+          "effects": [
+            "dash",
+            "single-target-lockdown",
+            "knockup",
+            "max-health-damage",
+            "physical-damage",
+            "area-damage",
+            "dive",
+            "finisher"
+          ],
+          "sourceRef": "bayle-game-client-manual-entry-2026-08-09"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Frenzied Fighter",
+          "category": "berserk uptime",
+          "description": "Berserk has no cooldown and can remain on indefinitely while under the Health threshold.",
+          "tags": [
+            "berserk",
+            "low-health-buff",
+            "dueling",
+            "attack-speed",
+            "sustain-window"
+          ],
+          "sourceRef": "bayle-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "name": "Swift Strikes",
+          "category": "attack chain",
+          "description": "After casting an ability, Bayle gains 45% Attack Speed for one attack. Additionally, he automatically starts with the 3rd attack in his Basic Attack chain, but it always deals 20% decreased damage.",
+          "tags": [
+            "attack-speed",
+            "basic-chain",
+            "ability-weaving",
+            "burst-window"
+          ],
+          "sourceRef": "bayle-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "name": "Betrayer's Reqiuem",
+          "category": "ultimate modification",
+          "description": "Kingslayer uppercuts all Enemies in an area around the initial Target. Additionally, Kingslayer's Cooldown is reduced by 15%.",
+          "tags": [
+            "ultimate",
+            "area-knockup",
+            "teamfight",
+            "cooldown-reduction",
+            "engage"
+          ],
+          "sourceRef": "bayle-game-client-manual-entry-2026-08-09"
+        }
+      ],
       "threats": [
         "dive",
         "frontline",
-        "burst"
+        "burst",
+        "duelist",
+        "sustain",
+        "armor-shred",
+        "single-target-lockdown",
+        "teamfight-engage"
       ],
       "answers": [
         "anti-burst",
         "frontline",
-        "backline-access"
+        "backline-access",
+        "dive",
+        "hard-cc",
+        "knockup",
+        "stun",
+        "armor-shred",
+        "sustain",
+        "max-health-damage",
+        "anti-frontline"
       ],
       "weaknesses": [
         "kite",
-        "poke"
+        "poke",
+        "anti-heal",
+        "hard-cc",
+        "disengage",
+        "range"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "bayle-game-client-manual-entry-2026-08-09",
+        "roles": "bayle-game-client-manual-entry-2026-08-09",
+        "classes": "bayle-game-client-manual-entry-2026-08-09",
+        "ratings": "bayle-game-client-manual-entry-2026-08-09",
+        "abilities": "bayle-game-client-manual-entry-2026-08-09",
+        "augments": "bayle-game-client-manual-entry-2026-08-09",
+        "kit": "bayle-game-client-manual-entry-2026-08-09"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Bayle text dated 2026-08-09. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
