@@ -36,6 +36,10 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
     },
+    "aurora-game-client-manual-entry-2026-08-08": {
+      "label": "Aurora game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Aurora roles, class, ratings, ability text, and augments."
     "argus-game-client-manual-entry-2026-08-08": {
       "label": "Argus game-client manual entry",
       "url": null,
@@ -1180,33 +1184,253 @@
         "offlane",
         "jungle"
       ],
+      "classes": [
+        "fighter"
+      ],
       "damage": "magical",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 1,
+        "abilityPower": 7,
+        "durability": 4,
+        "mobility": 8
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Shatter",
+          "kind": "basic attack",
+          "damageType": "mixed",
+          "description": "Melee basic attack dealing 62.0/65.0/68.2/71.5/75.0/78.7/82.5/86.5/90.6/94.9/99.4/104.0/108.8/113.7/118.8/124.1/129.5/135.1 (+75% physical power) physical damage. Additionally deals (+30% magical power) magical damage on-hit.",
+          "scaling": {
+            "physicalDamage": [62, 65, 68.2, 71.5, 75, 78.7, 82.5, 86.5, 90.6, 94.9, 99.4, 104, 108.8, 113.7, 118.8, 124.1, 129.5, 135.1],
+            "physicalPowerRatio": 0.75,
+            "magicalOnHitPowerRatio": 0.3
+          },
+          "effects": [
+            "melee-basic",
+            "physical-damage",
+            "magical-on-hit"
+          ],
+          "sourceRef": "aurora-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "passive",
+          "name": "Frozen Simulacrum",
+          "kind": "passive",
+          "description": "Aurora can jump whilst airborne to leap in the direction she is moving, leaving behind a Replica of herself. This cooldown is reduced by 4s when Immobilizing Heroes. The Replica has (+20% max health)(+150% magical power) Health, will draw aggro from Enemy Towers, and lasts for 8s. Damaging an Enemy Hero or Monster 4 times will summon a Frost Storm around Aurora for 3s, refreshing on additional damage dealt. The Storm deals 5 (+30% magical power) +1.0/1.2/1.4/1.6/1.8/2.0/2.2/2.4/2.6/2.8/3.0/3.2/3.4/3.6/3.8/4.0/4.2/4.4% (+0.2% per level) Enemy Max Health magical damage per second.",
+          "scaling": {
+            "cooldown": 25,
+            "immobilizeCooldownReduction": 4,
+            "replicaMaxHealthRatio": 0.2,
+            "replicaMagicalPowerHealthRatio": 1.5,
+            "replicaDuration": 8,
+            "frostStormTriggerHits": 4,
+            "frostStormDuration": 3,
+            "frostStormBaseDamagePerSecond": 5,
+            "frostStormMagicalPowerRatio": 0.3,
+            "frostStormEnemyMaxHealthPercentByLevel": [1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4],
+            "frostStormEnemyMaxHealthPercentPerLevel": 0.2
+          },
+          "effects": [
+            "airborne-leap",
+            "replica",
+            "tower-aggro-decoy",
+            "mobility",
+            "max-health-damage",
+            "area-damage",
+            "magical-damage"
+          ],
+          "sourceRef": "aurora-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "primary",
+          "name": "Glacial Charge",
+          "kind": "primary ability",
+          "description": "Aurora dashes forward, leaving behind a wall of ice that other Heroes can walk on for the next 5s. Reactivating the ability will destroy the wall early. Aurora can stop her movement mid-way by using Hoarfrost or Cryoseism, or by Jumping. Additionally, Aurora and her Allies gain 25.0/30.0/35.0/40.0/45.0% Movement Speed while walking on the ice.",
+          "scaling": {
+            "iceWallDuration": 5,
+            "movementSpeedPercent": [25, 30, 35, 40, 45]
+          },
+          "cooldown": [26, 24, 22, 20, 18],
+          "effects": [
+            "dash",
+            "mobility",
+            "terrain-creation",
+            "ally-mobility",
+            "movement-speed",
+            "engage",
+            "disengage"
+          ],
+          "sourceRef": "aurora-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "secondary",
+          "name": "Hoarfrost",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Aurora creates a ring of frost on the ground around her. Enemies that touch the ring take 70.0/110.0/150.0/190.0/230.0 (+50% magical power) magical damage and are Rooted for 1.0/1.1/1.1/1.1/1.2s. The ring remains in the world for 2.5s.",
+          "scaling": {
+            "magicalDamage": [70, 110, 150, 190, 230],
+            "magicalPowerRatio": 0.5,
+            "rootDuration": [1, 1.1, 1.1, 1.1, 1.2],
+            "ringDuration": 2.5
+          },
+          "cooldown": [14, 13.5, 13, 12.5, 12],
+          "effects": [
+            "area-damage",
+            "root",
+            "hard-cc",
+            "zone-control",
+            "anti-dive",
+            "magical-damage"
+          ],
+          "sourceRef": "aurora-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "alternate",
+          "name": "Boreal Sweep",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Aurora summons a wave of frost in a cone dealing 40.0/55.0/70.0/85.0/100.0 (+35% magical power) magical damage and Slowing Enemy Targets hit by 30.0/35.0/40.0/45.0/50.0% for 0.9s. After a short delay the frost erupts, dealing an additional 80.0/110.0/140.0/170.0/200.0 (+60% magical power) magical damage.",
+          "scaling": {
+            "initialMagicalDamage": [40, 55, 70, 85, 100],
+            "initialMagicalPowerRatio": 0.35,
+            "slowPercent": [30, 35, 40, 45, 50],
+            "slowDuration": 0.9,
+            "eruptionMagicalDamage": [80, 110, 140, 170, 200],
+            "eruptionMagicalPowerRatio": 0.6
+          },
+          "cooldown": [12.5, 11.25, 10, 8.75, 7.5],
+          "effects": [
+            "cone-damage",
+            "slow",
+            "area-damage",
+            "burst",
+            "magical-damage"
+          ],
+          "sourceRef": "aurora-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Cryoseism",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "Aurora freezes an area, applying a 50% Slow to all Enemies for 1.5s. After 1.5s, the ice freezes, Stunning the target for 1s. After the Stun, the Target explodes dealing 200.0/300.0/400.0 (+70% magical power) magical damage to them and nearby Enemies. Enemies damaged by Cryoseism will be Slowed by 50% for 0.5s before exploding, dealing 60.0/90.0/120.0 (+20% magical power) magical damage to them and nearby Enemies. Targets can only be slowed this way once per Cryoseism.",
+          "scaling": {
+            "initialSlowPercent": 50,
+            "initialSlowDuration": 1.5,
+            "freezeDelay": 1.5,
+            "stunDuration": 1,
+            "primaryExplosionMagicalDamage": [200, 300, 400],
+            "primaryExplosionMagicalPowerRatio": 0.7,
+            "secondarySlowPercent": 50,
+            "secondarySlowDuration": 0.5,
+            "secondaryExplosionMagicalDamage": [60, 90, 120],
+            "secondaryExplosionMagicalPowerRatio": 0.2
+          },
+          "cooldown": [140, 125, 110],
+          "effects": [
+            "area-control",
+            "slow",
+            "stun",
+            "hard-cc",
+            "area-damage",
+            "teamfight",
+            "magical-damage"
+          ],
+          "sourceRef": "aurora-game-client-manual-entry-2026-08-08"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Glacial Thorns",
+          "category": "root damage",
+          "description": "Glacial Charge spawns Hoarfrost Crystals at its base that deal 40.0/60.0/80.0/100.0/120.0 (+20% magical power) Damage and Root for 0.5s.",
+          "tags": [
+            "root",
+            "hard-cc",
+            "mobility-synergy",
+            "magical-damage",
+            "anti-dive"
+          ],
+          "sourceRef": "aurora-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "name": "Frozen Fury",
+          "category": "attack speed",
+          "description": "Frost Storm grants 10-34% Attack Speed while active. Increases with Hero Level.",
+          "tags": [
+            "attack-speed",
+            "frost-storm",
+            "dueling",
+            "sustained-damage"
+          ],
+          "sourceRef": "aurora-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "name": "Hypothermia",
+          "category": "shred",
+          "description": "Damaging Enemy Heroes with Boreal Sweep shreds 15% Physical Armor and Magical Armor and slows Attack Speed by 20% for 3s.",
+          "tags": [
+            "armor-shred",
+            "magic-armor-shred",
+            "attack-speed-slow",
+            "anti-frontline",
+            "dueling"
+          ],
+          "sourceRef": "aurora-game-client-manual-entry-2026-08-08"
+        }
+      ],
       "threats": [
         "engage",
         "zone-control",
-        "frontline"
+        "frontline",
+        "dive",
+        "hard-cc",
+        "area-control",
+        "teamfight",
+        "mobility"
       ],
       "answers": [
         "hard-cc",
         "anti-dive",
         "frontline",
-        "disengage"
+        "disengage",
+        "root",
+        "slow",
+        "stun",
+        "zone-control",
+        "engage",
+        "mobility",
+        "anti-frontline"
       ],
       "weaknesses": [
         "poke",
-        "tank-shred"
+        "tank-shred",
+        "anti-heal",
+        "silence",
+        "hard-cc",
+        "cooldown-dependent"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "aurora-game-client-manual-entry-2026-08-08",
+        "roles": "aurora-game-client-manual-entry-2026-08-08",
+        "classes": "aurora-game-client-manual-entry-2026-08-08",
+        "ratings": "aurora-game-client-manual-entry-2026-08-08",
+        "abilities": "aurora-game-client-manual-entry-2026-08-08",
+        "augments": "aurora-game-client-manual-entry-2026-08-08",
+        "kit": "aurora-game-client-manual-entry-2026-08-08"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Aurora text dated 2026-08-08. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
