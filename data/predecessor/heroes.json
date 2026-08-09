@@ -36,6 +36,10 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
     },
+    "dekker-game-client-manual-entry-2026-08-09": {
+      "label": "Dekker game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Dekker roles, class, ratings, ability text, and augments."
     "crunch-game-client-manual-entry-2026-08-09": {
       "label": "Crunch game-client manual entry",
       "url": null,
@@ -2481,35 +2485,236 @@
       "id": "dekker",
       "name": "Dekker",
       "roles": [
-        "support",
-        "midlane"
+        "support"
+      ],
+      "classes": [
+        "support"
       ],
       "damage": "magical",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 1,
+        "abilityPower": 3,
+        "durability": 3,
+        "mobility": 5
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "The Ionizer",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged basic attack dealing 60.0/63.4/66.9/70.6/74.5/78.6/82.9/87.3/91.9/96.7/101.7/106.9/112.2/117.7/123.4/129.3/135.4/141.6 (+40% physical power) physical damage.",
+          "scaling": {
+            "physicalDamage": [60, 63.4, 66.9, 70.6, 74.5, 78.6, 82.9, 87.3, 91.9, 96.7, 101.7, 106.9, 112.2, 117.7, 123.4, 129.3, 135.4, 141.6],
+            "physicalPowerRatio": 0.4
+          },
+          "effects": [
+            "ranged-basic",
+            "physical-damage"
+          ],
+          "sourceRef": "dekker-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "passive",
+          "name": "Rocket Boots",
+          "kind": "passive",
+          "description": "Dekker can jump while airborne to activate Rocket Boots, propelling her upward. Nearby Allies within 1000 units gain 20% Decaying Movement Speed for 1.5s. Rocket Boots' cooldown is reduced by 3s each time Dekker uses an ability.",
+          "scaling": {
+            "allyRadius": 1000,
+            "allyDecayingMovementSpeedPercent": 20,
+            "allyMovementSpeedDuration": 1.5,
+            "cooldownReductionOnAbilityUse": 3
+          },
+          "effects": [
+            "airborne-jump",
+            "self-mobility",
+            "ally-mobility",
+            "movement-speed",
+            "cooldown-reduction",
+            "disengage"
+          ],
+          "sourceRef": "dekker-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "primary",
+          "name": "Photon Disruptor",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Release a drone emitting a beam of energy along its path, dealing 90.0/130.0/170.0/210.0/250.0 (+80% magical power) magical damage to all Enemies hit and Slowing them by 30.0/32.5/35.0/37.5/40.0% for 1s.",
+          "scaling": {
+            "magicalDamage": [90, 130, 170, 210, 250],
+            "magicalPowerRatio": 0.8,
+            "slowPercent": [30, 32.5, 35, 37.5, 40],
+            "slowDuration": 1
+          },
+          "cooldown": [12, 11, 10, 9, 8],
+          "effects": [
+            "line-damage",
+            "magical-damage",
+            "slow",
+            "poke",
+            "peel"
+          ],
+          "sourceRef": "dekker-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "secondary",
+          "name": "Containment Fence",
+          "kind": "secondary ability",
+          "description": "Deploy a circular energy fence for 2.6/2.8/2.9/3.0/3.2s, preventing Enemy Heroes from passing through.",
+          "scaling": {
+            "duration": [2.6, 2.8, 2.9, 3, 3.2]
+          },
+          "cooldown": [22, 21, 20, 19, 18],
+          "effects": [
+            "terrain-control",
+            "containment",
+            "zone-control",
+            "peel",
+            "anti-dive",
+            "disengage"
+          ],
+          "sourceRef": "dekker-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "alternate",
+          "name": "Stasis Bomb",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Launch a bouncing bomb, dealing 70.0/95.0/120.0/145.0/170.0 (+45% magical power) magical damage and Stunning Enemies hit in a small area for 0.9s. Stun duration increases up to 1.6s based on distance (3500 units max).",
+          "scaling": {
+            "magicalDamage": [70, 95, 120, 145, 170],
+            "magicalPowerRatio": 0.45,
+            "minimumStunDuration": 0.9,
+            "maximumStunDuration": 1.6,
+            "maximumDistance": 3500
+          },
+          "cooldown": [15, 14.5, 14, 13.5, 13],
+          "effects": [
+            "area-damage",
+            "magical-damage",
+            "stun",
+            "hard-cc",
+            "pick",
+            "peel"
+          ],
+          "sourceRef": "dekker-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Ion Strike",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "Summon a bot above the target location that blasts the ground after a short delay, dealing 190.0/300.0/410.0 (+80% magical power) magical damage and Slowing Enemies hit by 50% for 1.5s. Enemies caught in the center are Stunned instead.",
+          "scaling": {
+            "magicalDamage": [190, 300, 410],
+            "magicalPowerRatio": 0.8,
+            "slowPercent": 50,
+            "slowDuration": 1.5
+          },
+          "cooldown": [115, 95, 75],
+          "effects": [
+            "area-damage",
+            "magical-damage",
+            "slow",
+            "stun",
+            "hard-cc",
+            "zone-control",
+            "teamfight"
+          ],
+          "sourceRef": "dekker-game-client-manual-entry-2026-08-09"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Nothin' But Net",
+          "category": "scaling reward",
+          "description": "Stasis Bomb grants +25g and +2 Magical Power when it damages a Hero.",
+          "tags": [
+            "stasis-bomb",
+            "gold",
+            "magical-power",
+            "hero-hit-reward",
+            "scaling"
+          ],
+          "sourceRef": "dekker-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "name": "Photon Efficiency",
+          "category": "damage cooldown",
+          "description": "Photon Disruptor deals 10% more damage and its Cooldown is reduced by 15% when it hits a Hero.",
+          "tags": [
+            "photon-disruptor",
+            "damage-increase",
+            "cooldown-reduction",
+            "poke",
+            "hero-hit-reward"
+          ],
+          "sourceRef": "dekker-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "name": "Polarity Strike",
+          "category": "shield",
+          "description": "Ion Strike also grants a 200.0/350.0/500.0 (+50% magical power)(+15% Target's Missing Health) Shield to Allied Heroes for 3.5s.",
+          "tags": [
+            "ion-strike",
+            "shield",
+            "ally-protection",
+            "anti-burst",
+            "teamfight"
+          ],
+          "sourceRef": "dekker-game-client-manual-entry-2026-08-09"
+        }
+      ],
       "threats": [
         "pick",
         "peel",
-        "zone-control"
+        "zone-control",
+        "hard-cc",
+        "anti-dive",
+        "teamfight-control",
+        "ally-mobility",
+        "shielding"
       ],
       "answers": [
         "hard-cc",
         "peel",
         "anti-dive",
-        "disengage"
+        "disengage",
+        "containment",
+        "zone-control",
+        "stun",
+        "slow",
+        "anti-engage",
+        "ally-protection"
       ],
       "weaknesses": [
-        "burst-vulnerable"
+        "burst-vulnerable",
+        "dive",
+        "poke",
+        "cleanse",
+        "cooldown-dependent",
+        "low-durability"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "dekker-game-client-manual-entry-2026-08-09",
+        "roles": "dekker-game-client-manual-entry-2026-08-09",
+        "classes": "dekker-game-client-manual-entry-2026-08-09",
+        "ratings": "dekker-game-client-manual-entry-2026-08-09",
+        "abilities": "dekker-game-client-manual-entry-2026-08-09",
+        "augments": "dekker-game-client-manual-entry-2026-08-09",
+        "kit": "dekker-game-client-manual-entry-2026-08-09"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Dekker text dated 2026-08-09. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
