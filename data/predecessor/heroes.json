@@ -36,6 +36,10 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
     },
+    "crunch-game-client-manual-entry-2026-08-09": {
+      "label": "Crunch game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Crunch roles, class, ratings, ability text, and augments."
     "countess-game-client-manual-entry-2026-08-09": {
       "label": "Countess game-client manual entry",
       "url": null,
@@ -2231,32 +2235,246 @@
         "offlane",
         "jungle"
       ],
-      "damage": "physical",
+      "classes": [
+        "fighter"
+      ],
+      "damage": "mixed",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 5,
+        "abilityPower": 7,
+        "durability": 5,
+        "mobility": 5
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Crunch",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 65.0/67.7/70.5/73.4/76.5/79.7/83.1/86.6/90.3/94.1/98.0/102.1/106.3/110.7/115.2/119.9/124.7/129.6 (+80% physical power) physical damage.",
+          "scaling": {
+            "physicalDamage": [65, 67.7, 70.5, 73.4, 76.5, 79.7, 83.1, 86.6, 90.3, 94.1, 98, 102.1, 106.3, 110.7, 115.2, 119.9, 124.7, 129.6],
+            "physicalPowerRatio": 0.8
+          },
+          "effects": [
+            "melee-basic",
+            "physical-damage"
+          ],
+          "sourceRef": "crunch-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "passive",
+          "name": "Cross Crunch",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "After casting an ability, Crunch amplifies his next basic attack to deal (+28% physical power)(+30% magical power) bonus magical damage and reduce his current cooldowns by 1s. Passive: Upon using a basic ability, Crunch gains a stack of Turbo for 10s. While at 2 stacks, Crunch activates Turbo Crunch. The next ability used in this state consumes Turbo Crunch to deal enhanced effects.",
+          "scaling": {
+            "bonusMagicalDamagePhysicalPowerRatio": 0.28,
+            "bonusMagicalDamageMagicalPowerRatio": 0.3,
+            "currentCooldownReduction": 1,
+            "turboStackDuration": 10,
+            "turboStacksRequired": 2
+          },
+          "effects": [
+            "empowered-basic",
+            "bonus-magical-damage",
+            "cooldown-reduction",
+            "ability-weaving",
+            "turbo-stacks",
+            "empowered-ability"
+          ],
+          "sourceRef": "crunch-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "primary",
+          "name": "Left Crunch",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Crunch swings, dealing 20.0/35.0/50.0/65.0/80.0 (+110.0/115.0/120.0/125.0/130.0% physical power)(+75% magical power) physical damage to the first Enemy hit and 100% to subsequent Targets. Empowered: Damage is increased to 30.0/52.5/75.0/97.5/120.0 (+120.0/126.0/132.0/138.0/144.0% physical power)(+80% magical power) and dealt as true damage to all Targets.",
+          "scaling": {
+            "physicalDamage": [20, 35, 50, 65, 80],
+            "physicalPowerRatio": [1.1, 1.15, 1.2, 1.25, 1.3],
+            "magicalPowerRatio": 0.75,
+            "subsequentTargetDamagePercent": 100,
+            "empoweredTrueDamage": [30, 52.5, 75, 97.5, 120],
+            "empoweredPhysicalPowerRatio": [1.2, 1.26, 1.32, 1.38, 1.44],
+            "empoweredMagicalPowerRatio": 0.8
+          },
+          "cooldown": [10, 9, 8, 7, 6],
+          "effects": [
+            "physical-damage",
+            "cleave",
+            "true-damage",
+            "empowered-when-turbo",
+            "dueling"
+          ],
+          "sourceRef": "crunch-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "secondary",
+          "name": "Right Crunch",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Crunch jabs, dealing 60.0/90.0/120.0/150.0/180.0 (+110% physical power)(+75% magical power) physical damage to all nearby Enemies, Slowing them by 50% for 1s. Empowered: Launch upwards, uppercutting nearby Enemies and Knocking them Up for 0.75s.",
+          "scaling": {
+            "physicalDamage": [60, 90, 120, 150, 180],
+            "physicalPowerRatio": 1.1,
+            "magicalPowerRatio": 0.75,
+            "slowPercent": 50,
+            "slowDuration": 1,
+            "empoweredKnockupDuration": 0.75
+          },
+          "cooldown": [13, 12, 11, 10, 9],
+          "effects": [
+            "area-damage",
+            "physical-damage",
+            "slow",
+            "knockup",
+            "hard-cc",
+            "empowered-when-turbo",
+            "anti-dive"
+          ],
+          "sourceRef": "crunch-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "alternate",
+          "name": "Forward Crunch",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Dash forward, dealing 60.0/85.0/110.0/135.0/160.0 (+75% physical power)(+45% magical power) physical damage on contact and Stunning them for 0.25s. Empowered: Dash an extended distance and pushes Enemy Heroes.",
+          "scaling": {
+            "physicalDamage": [60, 85, 110, 135, 160],
+            "physicalPowerRatio": 0.75,
+            "magicalPowerRatio": 0.45,
+            "stunDuration": 0.25
+          },
+          "cooldown": [19, 18, 17, 16, 15],
+          "effects": [
+            "dash",
+            "mobility",
+            "physical-damage",
+            "stun",
+            "hard-cc",
+            "push",
+            "engage",
+            "empowered-when-turbo"
+          ],
+          "sourceRef": "crunch-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Re-Crunch",
+          "kind": "ultimate ability",
+          "description": "Passive: Every third basic attack or ability hit against Heroes or Monsters heals Crunch for 20.0/60.0/100.0 (+70% physical power)(+20% magical power). Active: Repeat the last ability used.",
+          "scaling": {
+            "healTriggerEveryHits": 3,
+            "heal": [20, 60, 100],
+            "healPhysicalPowerRatio": 0.7,
+            "healMagicalPowerRatio": 0.2
+          },
+          "cooldown": [50, 35, 20],
+          "effects": [
+            "repeat-last-ability",
+            "self-heal",
+            "sustain",
+            "combo-extension",
+            "ability-reset",
+            "dueling"
+          ],
+          "sourceRef": "crunch-game-client-manual-entry-2026-08-09"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Combo Crunch",
+          "category": "attack speed",
+          "description": "Dealing damage with Cross Crunch grants 7.5% Total Attack Speed for 3s, stacking up to 4 times.",
+          "tags": [
+            "cross-crunch",
+            "attack-speed",
+            "stacking-buff",
+            "ability-weaving",
+            "dueling"
+          ],
+          "sourceRef": "crunch-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "name": "Lunge Crunch",
+          "category": "mobility",
+          "description": "Forward Crunch travels 10% further.",
+          "tags": [
+            "forward-crunch",
+            "mobility",
+            "engage-range",
+            "chase"
+          ],
+          "sourceRef": "crunch-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "name": "Falcon Crunch",
+          "category": "empowered right crunch",
+          "description": "Empowered Right Crunch deals 15% increased damage and launches Crunch 4x higher when used mid-air. Its Cooldown is 30% longer when this occurs.",
+          "tags": [
+            "right-crunch",
+            "empowered",
+            "knockup",
+            "airborne",
+            "damage-increase",
+            "cooldown-tradeoff"
+          ],
+          "sourceRef": "crunch-game-client-manual-entry-2026-08-09"
+        }
+      ],
       "threats": [
         "dive",
         "sustain",
-        "engage"
+        "engage",
+        "duelist",
+        "combo",
+        "hard-cc",
+        "true-damage",
+        "ability-reset"
       ],
       "answers": [
         "hard-cc",
         "duelist",
-        "mobility"
+        "mobility",
+        "anti-dive",
+        "sustain",
+        "knockup",
+        "stun",
+        "displacement",
+        "true-damage",
+        "frontline"
       ],
       "weaknesses": [
         "anti-heal",
-        "poke"
+        "poke",
+        "kite",
+        "hard-cc",
+        "silence",
+        "disengage",
+        "cooldown-dependent"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "crunch-game-client-manual-entry-2026-08-09",
+        "roles": "crunch-game-client-manual-entry-2026-08-09",
+        "classes": "crunch-game-client-manual-entry-2026-08-09",
+        "ratings": "crunch-game-client-manual-entry-2026-08-09",
+        "abilities": "crunch-game-client-manual-entry-2026-08-09",
+        "augments": "crunch-game-client-manual-entry-2026-08-09",
+        "kit": "crunch-game-client-manual-entry-2026-08-09"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Crunch text dated 2026-08-09. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
