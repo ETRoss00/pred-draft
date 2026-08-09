@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "drongo-game-client-manual-entry-2026-08-09": {
+      "label": "Drongo game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Drongo roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -569,32 +574,245 @@
       "roles": [
         "carry"
       ],
+      "classes": [
+        "carry"
+      ],
       "damage": "physical",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 7,
+        "abilityPower": 4,
+        "durability": 1,
+        "mobility": 3
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Lucy",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged basic attack dealing 60.0/62.5/65.2/68.0/70.9/74.0/77.2/80.5/83.9/87.5/91.3/95.2/99.2/103.3/107.6/112.0/116.5/121.2 (+80% physical power) physical damage.",
+          "scaling": {
+            "physicalDamage": [60, 62.5, 65.2, 68, 70.9, 74, 77.2, 80.5, 83.9, 87.5, 91.3, 95.2, 99.2, 103.3, 107.6, 112, 116.5, 121.2],
+            "physicalPowerRatio": 0.8
+          },
+          "effects": [
+            "ranged-basic",
+            "physical-damage"
+          ],
+          "sourceRef": "drongo-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "passive",
+          "name": "Wastelander",
+          "kind": "passive",
+          "damageType": "physical",
+          "description": "Drongo's Critical Strikes and Abilities also apply a Bleed to Enemies, dealing 2.25% of their maximum health as physical damage over 3s. Bleed Damage is reduced to 0.3% for Monsters.",
+          "scaling": {
+            "heroMaxHealthBleedPercent": 2.25,
+            "bleedDuration": 3,
+            "monsterMaxHealthBleedPercent": 0.3
+          },
+          "effects": [
+            "bleed",
+            "physical-damage",
+            "max-health-damage",
+            "critical-strike-synergy",
+            "ability-applied"
+          ],
+          "sourceRef": "drongo-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "primary",
+          "name": "Gag Grenade",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Toss a tear gas grenade that explodes dealing 45.0/65.0/85.0/105.0/125.0 (+50% physical power)(+100% magical power) physical damage to Enemy Targets hit and silencing them for 0.8/0.9/1.0/1.1/1.2s. The gas lasts for 3s, applying Wastelander every 0.3s.",
+          "scaling": {
+            "physicalDamage": [45, 65, 85, 105, 125],
+            "physicalPowerRatio": 0.5,
+            "magicalPowerRatio": 1,
+            "silenceDuration": [0.8, 0.9, 1, 1.1, 1.2],
+            "gasDuration": 3,
+            "wastelanderApplicationRate": 0.3
+          },
+          "cooldown": [22, 20, 18, 16, 14],
+          "effects": [
+            "area-damage",
+            "physical-damage",
+            "silence",
+            "hard-cc",
+            "bleed-application",
+            "zone-control",
+            "anti-caster"
+          ],
+          "sourceRef": "drongo-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "secondary",
+          "name": "Rad Rounds",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Irradiate Drongo's basic attacks, granting him 20.0/22.5/25.0/27.5/30.0% Attack Speed for 4s. During this window, shots Irradiate Enemies for 1.5s, the timer refreshing with each hit. After Irradiate expires, the target erupts, dealing 8.0/15.0/22.0/29.0/36.0 (+22% physical power) physical damage to them for the first stack, and 8.0/15.0/22.0/29.0/36.0 (+22% physical power) for subsequent stacks. Applies an additional stack of Wastelander per Irradiate stack. If Drongo damages irradiated targets with Old Rusty or Shrapnel Cannon, they erupt immediately.",
+          "scaling": {
+            "attackSpeedPercent": [20, 22.5, 25, 27.5, 30],
+            "buffDuration": 4,
+            "irradiateDuration": 1.5,
+            "firstStackPhysicalDamage": [8, 15, 22, 29, 36],
+            "firstStackPhysicalPowerRatio": 0.22,
+            "subsequentStackPhysicalDamage": [8, 15, 22, 29, 36],
+            "subsequentStackPhysicalPowerRatio": 0.22,
+            "wastelanderStacksPerIrradiateStack": 1
+          },
+          "cooldown": [16, 14, 12, 10, 8],
+          "effects": [
+            "attack-speed",
+            "on-hit",
+            "stacking-damage",
+            "physical-damage",
+            "bleed-application",
+            "sustained-dps",
+            "detonation"
+          ],
+          "sourceRef": "drongo-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "alternate",
+          "name": "Old Rusty",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Throw a boomerang, dealing 45.0/70.0/95.0/120.0/145.0 (+55% physical power)(+45% magical power) physical damage to all Enemies hit and Slowing them by 30.0/32.5/35.0/37.5/40.0% for 1.25s. Upon hitting terrain or travelling max range, it returns and repeats the effects.",
+          "scaling": {
+            "physicalDamage": [45, 70, 95, 120, 145],
+            "physicalPowerRatio": 0.55,
+            "magicalPowerRatio": 0.45,
+            "slowPercent": [30, 32.5, 35, 37.5, 40],
+            "slowDuration": 1.25
+          },
+          "cooldown": [12, 11, 10, 9, 8],
+          "cost": [50, 50, 50, 50, 50],
+          "effects": [
+            "boomerang",
+            "physical-damage",
+            "slow",
+            "poke",
+            "multi-hit",
+            "rad-rounds-detonation"
+          ],
+          "sourceRef": "drongo-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Shrapnel Cannon",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Unleash a bazooka blast, dealing 170.0/280.0/390.0 (+115% physical power) physical damage to all Enemies hit and Shredding their Physical Armor by 30% for 4s. When used In-Air, the blast launches Drongo in the opposite direction, becoming briefly CC Immune and Pushing Back any Enemies in front of him.",
+          "scaling": {
+            "physicalDamage": [170, 280, 390],
+            "physicalPowerRatio": 1.15,
+            "physicalArmorShredPercent": 30,
+            "armorShredDuration": 4
+          },
+          "cooldown": [125, 115, 105],
+          "effects": [
+            "area-damage",
+            "physical-damage",
+            "armor-shred",
+            "self-displacement",
+            "cc-immunity",
+            "push",
+            "peel",
+            "rad-rounds-detonation"
+          ],
+          "sourceRef": "drongo-game-client-manual-entry-2026-08-09"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Smog Therapy",
+          "category": "healing zone",
+          "description": "While standing in Gag Grenade, Yourself and Allied Heroes restore for 10.0/55.0/100.0/145.0/190.0 (+105% physical power)(+120% magical power) Health over its lifetime.",
+          "tags": [
+            "gag-grenade",
+            "healing",
+            "ally-sustain",
+            "zone-control",
+            "self-sustain"
+          ],
+          "sourceRef": "drongo-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "name": "Bring The Boom",
+          "category": "area detonation",
+          "description": "Rad Rounds deals 60% of its damage to nearby Enemies upon exploding.",
+          "tags": [
+            "rad-rounds",
+            "area-damage",
+            "detonation",
+            "sustained-dps",
+            "teamfight"
+          ],
+          "sourceRef": "drongo-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "name": "Shred Spree",
+          "category": "ultimate cooldown",
+          "description": "Shrapnel Cannon's Cooldown is reduced by 85%, but it deals 60% less damage.",
+          "tags": [
+            "shrapnel-cannon",
+            "cooldown-reduction",
+            "armor-shred",
+            "damage-tradeoff",
+            "utility-ultimate"
+          ],
+          "sourceRef": "drongo-game-client-manual-entry-2026-08-09"
+        }
+      ],
       "threats": [
         "poke",
         "sustained-dps",
-        "anti-heal"
+        "bleed",
+        "silence",
+        "armor-shred",
+        "tank-shred",
+        "zone-control"
       ],
       "answers": [
-        "anti-heal",
         "tank-shred",
-        "poke"
+        "poke",
+        "silence",
+        "armor-shred",
+        "sustained-dps",
+        "peel",
+        "self-displacement",
+        "anti-frontline"
       ],
       "weaknesses": [
         "dive",
-        "burst-vulnerable"
+        "burst-vulnerable",
+        "low-mobility",
+        "low-durability",
+        "hard-cc",
+        "backline-access"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "drongo-game-client-manual-entry-2026-08-09",
+        "roles": "drongo-game-client-manual-entry-2026-08-09",
+        "classes": "drongo-game-client-manual-entry-2026-08-09",
+        "ratings": "drongo-game-client-manual-entry-2026-08-09",
+        "abilities": "drongo-game-client-manual-entry-2026-08-09",
+        "augments": "drongo-game-client-manual-entry-2026-08-09",
+        "kit": "drongo-game-client-manual-entry-2026-08-09"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Drongo text dated 2026-08-09. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
