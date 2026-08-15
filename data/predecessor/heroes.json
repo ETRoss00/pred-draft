@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "gadget-game-client-manual-entry-2026-08-15": {
+      "label": "Gadget game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Gadget roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -673,32 +678,226 @@
       "roles": [
         "midlane"
       ],
+      "classes": [
+        "mage"
+      ],
       "damage": "magical",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 1,
+        "abilityPower": 8,
+        "durability": 3,
+        "mobility": 3
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Spark",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged basic attack dealing 56.0/58.7/61.5/64.4/67.5/70.7/74.1/77.6/81.3/85.1/89.0/93.1/97.3/101.7/106.2/110.9/115.7/120.6 (+55% physical power) physical damage.",
+          "scaling": {
+            "damage": [56, 58.7, 61.5, 64.4, 67.5, 70.7, 74.1, 77.6, 81.3, 85.1, 89, 93.1, 97.3, 101.7, 106.2, 110.9, 115.7, 120.6],
+            "physicalPowerRatio": 0.55
+          },
+          "effects": [
+            "ranged-basic"
+          ],
+          "sourceRef": "gadget-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "passive",
+          "name": "Field Data Accumulation",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "Gadget acquires stacks of FDA that permanently grant 1 magical power for every 6 stacks gained. Minion & Monster Kills grant 1 stack. Damaging Enemy Heroes with abilities grants 5 stacks, once per activation. Takedowns grant 20 stacks.",
+          "scaling": {
+            "stacksPerMagicalPower": 6,
+            "minionMonsterKillStacks": 1,
+            "abilityHeroDamageStacks": 5,
+            "takedownStacks": 20
+          },
+          "effects": [
+            "infinite-scaling",
+            "magical-power-stacking",
+            "takedown-scaling"
+          ],
+          "sourceRef": "gadget-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "primary",
+          "name": "Sticky Mine",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Launch a sticky mine that attaches to any Enemy Hero in its path, or any nearby Unit upon landing. After 2.5s, the mine explodes, dealing 90.0/120.0/150.0/180.0/210.0 (+70% magical power) magical damage. Landing a Basic Attack against an Enemy with an attached Sticky Mine empowers it, dealing 110.0/150.0/190.0/230.0/270.0 (+95% magical power) magical damage instead. Sticky Mines that attach to yourself or Allied Units are also empowered.",
+          "scaling": {
+            "damage": [90, 120, 150, 180, 210],
+            "magicalPowerRatio": 0.7,
+            "empoweredDamage": [110, 150, 190, 230, 270],
+            "empoweredMagicalPowerRatio": 0.95,
+            "detonationDelay": 2.5
+          },
+          "cooldown": [11, 10.25, 9.5, 8.75, 8],
+          "effects": [
+            "delayed-damage",
+            "burst",
+            "sticky-projectile",
+            "basic-attack-synergy",
+            "waveclear"
+          ],
+          "sourceRef": "gadget-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "secondary",
+          "name": "Security Gate",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Throw forward an electrical gate that lasts 2.5s, granting Allied Units that pass through it 40% decaying movement speed for 2.5s. If an Enemy passes through, the gate deals 70.0/90.0/110.0/130.0/150.0 (+40% magical power) magical damage and Roots them for 1s.",
+          "scaling": {
+            "damage": [70, 90, 110, 130, 150],
+            "magicalPowerRatio": 0.4,
+            "gateDuration": 2.5,
+            "allyMovementSpeedPercent": 40,
+            "allyMovementSpeedDuration": 2.5,
+            "rootDuration": 1
+          },
+          "cooldown": [22, 20, 18, 16, 14],
+          "effects": [
+            "root",
+            "hard-cc",
+            "ally-speed",
+            "zone-control",
+            "anti-engage"
+          ],
+          "sourceRef": "gadget-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "alternate",
+          "name": "Seek and Destroy",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Release an airborne droid that can be reactivated mid-flight to stop it in place. Upon stopping, the droid will follow the nearest Enemy Hero beneath it, dealing 100.0/160.0/220.0/280.0/340.0 (+105% magical power) magical damage to all Enemies in the area over 2.5s, and Slowing them by 20%.",
+          "scaling": {
+            "damage": [100, 160, 220, 280, 340],
+            "magicalPowerRatio": 1.05,
+            "damageDuration": 2.5,
+            "slowPercent": 20
+          },
+          "cooldown": [14, 13, 12, 11, 10],
+          "effects": [
+            "area-damage",
+            "homing-zone",
+            "slow",
+            "poke",
+            "zone-control"
+          ],
+          "sourceRef": "gadget-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Tesla Dome",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "Unleash Gadget's Tesla Dome, dealing 480.0/780.0/1080.0 (+220% magical power) magical damage over 5s to all Enemies caught within. Each instance of damage shreds the Target's magical armor by 3.5% for 3s and briefly Slows them by 50%. Tesla Dome grows 60% larger over its initial lifetime.",
+          "scaling": {
+            "damage": [480, 780, 1080],
+            "magicalPowerRatio": 2.2,
+            "damageDuration": 5,
+            "magicalArmorShredPerInstancePercent": 3.5,
+            "magicalArmorShredDuration": 3,
+            "slowPercent": 50,
+            "growthPercent": 60
+          },
+          "cooldown": [125, 110, 95],
+          "effects": [
+            "large-area-damage",
+            "zone-control",
+            "magical-armor-shred",
+            "slow",
+            "objective-zone"
+          ],
+          "sourceRef": "gadget-game-client-manual-entry-2026-08-15"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Blast Zone",
+          "category": "area damage",
+          "description": "Sticky Mine's explosion radius is increased by 35%. Enhancing a Mine on an Enemy Hero grants 3 additional FDA stacks.",
+          "tags": [
+            "area-damage",
+            "sticky-mine",
+            "scaling",
+            "waveclear"
+          ],
+          "sourceRef": "gadget-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "name": "Eureka!",
+          "category": "scaling",
+          "description": "At 200 FDA stacks, gain a level. At 500 FDA stacks, gain +60% Jump Height.",
+          "tags": [
+            "scaling",
+            "level-advantage",
+            "mobility"
+          ],
+          "sourceRef": "gadget-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "name": "Auto-Lock Amp",
+          "category": "targeting",
+          "description": "Seek and Destroy's homing speed is increased by 25%.",
+          "tags": [
+            "homing",
+            "poke",
+            "zone-control"
+          ],
+          "sourceRef": "gadget-game-client-manual-entry-2026-08-15"
+        }
+      ],
       "threats": [
         "poke",
         "zone-control",
-        "waveclear"
+        "waveclear",
+        "burst",
+        "scaling",
+        "objective-zone",
+        "magical-armor-shred"
       ],
       "answers": [
         "poke",
         "waveclear",
-        "zone-control"
+        "zone-control",
+        "anti-engage",
+        "root",
+        "area-control",
+        "siege",
+        "objective-control"
       ],
       "weaknesses": [
         "dive",
-        "low-mobility"
+        "low-mobility",
+        "burst-vulnerable",
+        "skillshot-dependent"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "gadget-game-client-manual-entry-2026-08-15",
+        "roles": "gadget-game-client-manual-entry-2026-08-15",
+        "classes": "gadget-game-client-manual-entry-2026-08-15",
+        "ratings": "gadget-game-client-manual-entry-2026-08-15",
+        "abilities": "gadget-game-client-manual-entry-2026-08-15",
+        "augments": "gadget-game-client-manual-entry-2026-08-15",
+        "kit": "gadget-game-client-manual-entry-2026-08-15"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Gadget text dated 2026-08-15. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
