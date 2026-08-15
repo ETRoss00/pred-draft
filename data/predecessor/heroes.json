@@ -40,6 +40,63 @@
       "label": "Gadget game-client manual entry",
       "url": null,
       "use": "User-provided in-game text covering Gadget roles, class, ratings, ability text, and augments."
+    "feng-mao-game-client-manual-entry-2026-08-15": {
+      "label": "Feng Mao game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Feng Mao roles, class, ratings, ability text, and augments."
+    "eden-game-client-manual-entry-2026-08-15": {
+      "label": "Eden game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Eden roles, class, ratings, ability text, and augments."
+    "drongo-game-client-manual-entry-2026-08-09": {
+      "label": "Drongo game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Drongo roles, class, ratings, ability text, and augments."
+    },
+    "dekker-game-client-manual-entry-2026-08-09": {
+      "label": "Dekker game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Dekker roles, class, ratings, ability text, and augments."
+    },
+    "crunch-game-client-manual-entry-2026-08-09": {
+      "label": "Crunch game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Crunch roles, class, ratings, ability text, and augments."
+    },
+    "countess-game-client-manual-entry-2026-08-09": {
+      "label": "Countess game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Countess roles, class, ratings, ability text, and augments."
+    },
+    "boris-game-client-manual-entry-2026-08-09": {
+      "label": "Boris game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Boris roles, class, ratings, ability text, and augments."
+    },
+    "bayle-game-client-manual-entry-2026-08-09": {
+      "label": "Bayle game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Bayle roles, class, ratings, ability text, and augments."
+    },
+    "aurora-game-client-manual-entry-2026-08-08": {
+      "label": "Aurora game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Aurora roles, class, ratings, ability text, and augments."
+    },
+    "argus-game-client-manual-entry-2026-08-08": {
+      "label": "Argus game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Argus roles, class, ratings, ability text, and augments."
+    },
+    "akeron-game-client-manual-entry-2026-08-08": {
+      "label": "Akeron game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Akeron roles, class, ratings, ability text, and augments."
+    },
+    "adele-game-client-manual-entry-2026-08-08": {
+      "label": "Adele game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Adele roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -79,78 +136,767 @@
         "support",
         "offlane"
       ],
+      "classes": [
+        "tank"
+      ],
       "damage": "physical",
       "range": "melee",
       "threats": [
+        "frontline",
         "engage",
-        "peel",
-        "frontline"
+        "root",
+        "slow",
+        "area-control",
+        "true-damage",
+        "damage-reduction",
+        "objective-zone"
       ],
       "answers": [
-        "peel",
-        "hard-cc",
         "anti-dive",
-        "frontline"
+        "peel",
+        "frontline",
+        "objective-zone",
+        "interrupt",
+        "anti-mobility",
+        "hard-cc",
+        "ally-protection"
       ],
       "weaknesses": [
         "poke",
-        "low-range"
+        "kite",
+        "anti-shield",
+        "disengage",
+        "range-vulnerable"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "adele-game-client-manual-entry-2026-08-08",
+        "roles": "adele-game-client-manual-entry-2026-08-08",
+        "classes": "adele-game-client-manual-entry-2026-08-08",
+        "ratings": "adele-game-client-manual-entry-2026-08-08",
+        "abilities": "adele-game-client-manual-entry-2026-08-08",
+        "augments": "adele-game-client-manual-entry-2026-08-08",
+        "kit": "adele-game-client-manual-entry-2026-08-08"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
-      }
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Adele text dated 2026-08-08. Recommendation tags are derived from the source-backed kit."
+      },
+      "ratings": {
+        "basicAttack": 2,
+        "abilityPower": 4,
+        "durability": 9,
+        "mobility": 5
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Acacia",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 43.0/45.1/47.3/49.6/52.1/54.6/57.3/60.1/63.0/66.0/69.1/72.3/75.6/79.1/82.6/86.3/90.1/94.0 (+30% physical power) physical damage. Additionally deals 5.0/6.0/7.0/8.0/9.0/10.0/11.0/12.0/13.0/14.0/15.0/16.0/17.0/18.0/19.0/20.0/21.0/22.0 (+30% physical power) true damage.",
+          "scaling": {
+            "physicalDamage": [
+              43,
+              45.1,
+              47.3,
+              49.6,
+              52.1,
+              54.6,
+              57.3,
+              60.1,
+              63,
+              66,
+              69.1,
+              72.3,
+              75.6,
+              79.1,
+              82.6,
+              86.3,
+              90.1,
+              94
+            ],
+            "trueDamage": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ],
+            "physicalPowerRatio": 0.3
+          },
+          "effects": [
+            "melee-basic",
+            "physical-damage",
+            "true-damage"
+          ],
+          "sourceRef": "adele-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "passive",
+          "name": "Crown of Thorns",
+          "kind": "passive",
+          "description": "Damaging Enemy Heroes applies Thorns to the target for 4s. Additional applications refresh the duration. Cannot be applied to Epic Monsters. Allies deal 6% of their damage as bonus true damage to Enemies afflicted by Thorns.",
+          "scaling": {
+            "duration": 4,
+            "allyBonusTrueDamagePercent": 6
+          },
+          "effects": [
+            "debuff",
+            "bonus-true-damage",
+            "ally-damage-amp",
+            "damage-amplification"
+          ],
+          "sourceRef": "adele-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "primary",
+          "name": "Royal Flourish",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Adele swings her sword, gaining 40% Movement Speed for the duration. She deals 5.0/15.0/25.0/35.0/45.0 (+50.0/60.0/70.0/80.0/90.0% physical power) physical damage twice to nearby Enemies and Mesmerizes them for 1s. Mesmerized Enemies are immune to Slows. Adele then slams her sword down in an area to deal 70.0/90.0/110.0/130.0/150.0 (+7% max health) true damage to all Enemies hit.",
+          "scaling": {
+            "movementSpeedPercent": 40,
+            "physicalDamagePerHit": [
+              5,
+              15,
+              25,
+              35,
+              45
+            ],
+            "physicalPowerRatioPercent": [
+              50,
+              60,
+              70,
+              80,
+              90
+            ],
+            "hitCount": 2,
+            "mesmerizeDuration": 1,
+            "slamTrueDamage": [
+              70,
+              90,
+              110,
+              130,
+              150
+            ],
+            "maxHealthRatio": 0.07
+          },
+          "cooldown": [
+            14,
+            14,
+            14,
+            14,
+            14
+          ],
+          "effects": [
+            "area-damage",
+            "movement-speed",
+            "mesmerize",
+            "soft-cc",
+            "true-damage",
+            "frontline-pressure"
+          ],
+          "sourceRef": "adele-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "secondary",
+          "name": "Iron Rose",
+          "kind": "secondary ability",
+          "description": "Adele equips her shield for 4.5s, increasing her hitbox size and gaining 20.0/22.5/25.0/27.5/30.0% (+4% physical armor)(+4% magical armor) Damage Reduction. This can be cast during other abilities. On cast, she attaches a Thorned Vine to Enemy Heroes and Monsters within 800u. The Vine deals 6.0/8.0/10.0/12.0/14.0 (+0.7% max health) true damage every 0.5s for the duration. The Vine snaps if an Enemy moves more than 1000u away.",
+          "scaling": {
+            "duration": 4.5,
+            "damageReductionPercent": [
+              20,
+              22.5,
+              25,
+              27.5,
+              30
+            ],
+            "physicalArmorRatio": 0.04,
+            "magicalArmorRatio": 0.04,
+            "attachRange": 800,
+            "trueDamagePerTick": [
+              6,
+              8,
+              10,
+              12,
+              14
+            ],
+            "maxHealthRatio": 0.007,
+            "tickRate": 0.5,
+            "snapRange": 1000
+          },
+          "cooldown": [
+            18,
+            17.25,
+            16.5,
+            15.75,
+            15
+          ],
+          "effects": [
+            "damage-reduction",
+            "self-mitigation",
+            "true-damage",
+            "tether",
+            "cast-during-abilities",
+            "frontline"
+          ],
+          "sourceRef": "adele-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "alternate",
+          "name": "Imperial Lash",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Adele unfurls her Sword in a straight line, dealing 45.0/65.0/85.0/105.0/125.0 (+50% physical damage) true damage to all Enemies it passes through. If she hits an Enemy Hero or Monster, they are Rooted for 0.6s and Adele dashes to the furthest target hit.",
+          "scaling": {
+            "trueDamage": [
+              45,
+              65,
+              85,
+              105,
+              125
+            ],
+            "physicalDamageRatio": 0.5,
+            "rootDuration": 0.6
+          },
+          "cooldown": [
+            13.5,
+            12.25,
+            11,
+            9.75,
+            8.5
+          ],
+          "effects": [
+            "mobility",
+            "dash",
+            "root",
+            "hard-cc",
+            "line-damage",
+            "engage",
+            "true-damage"
+          ],
+          "sourceRef": "adele-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Queen's Garden",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Adele performs a small leap, slamming her shield into the ground, summoning a large Thornbush at her location for 8s. Vines attach to all Enemies within the central section, dealing 55.0/90.0/125.0 (+5% max health) physical damage. This Interrupts abilities, Roots Enemies for 0.75s, and pulls flying Enemies to the ground. All Enemies inside the Thornbush are Slowed by 35.0/37.5/40.0% and take 4.0/7.0/10.0 true damage every 35u moved within it.",
+          "scaling": {
+            "duration": 8,
+            "physicalDamage": [
+              55,
+              90,
+              125
+            ],
+            "maxHealthRatio": 0.05,
+            "rootDuration": 0.75,
+            "slowPercent": [
+              35,
+              37.5,
+              40
+            ],
+            "movementTrueDamage": [
+              4,
+              7,
+              10
+            ],
+            "movementDistanceUnit": 35
+          },
+          "cooldown": [
+            120,
+            100,
+            80
+          ],
+          "effects": [
+            "area-control",
+            "zone-control",
+            "interrupt",
+            "root",
+            "hard-cc",
+            "slow",
+            "anti-airborne",
+            "true-damage",
+            "objective-zone"
+          ],
+          "sourceRef": "adele-game-client-manual-entry-2026-08-08"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Tyrant of Thorns",
+          "category": "damage amplification",
+          "description": "Adele triggers Crown of Thorns at 300% effectiveness. Royal Flourish has 9.0/8.5/8.0/7.5/7.0 Cooldown and provides 50% Movement Speed, but no longer Mesmerizes.",
+          "tags": [
+            "damage-amp",
+            "lower-cooldown",
+            "movement-speed",
+            "tradeoff",
+            "no-mesmerize"
+          ],
+          "sourceRef": "adele-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "name": "Court of Roses",
+          "category": "ally protection",
+          "description": "Iron Rose grants nearest Ally a 5s barrier with 20% Damage Reduction and attaches Thorned Vines to nearby Enemy Heroes dealing 50% damage.",
+          "tags": [
+            "ally-protection",
+            "barrier",
+            "damage-reduction",
+            "peel",
+            "support"
+          ],
+          "sourceRef": "adele-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "name": "Seeds of Dominion",
+          "category": "zone control",
+          "description": "Imperial Lash spawns a Thornbush under the dash target, reducing its Cooldown by 10%. Enemies are Slowed 10% and take 2.0/2.5/3.0/3.5/4.0 True Damage per 35u moved inside the Thornbush.",
+          "tags": [
+            "zone-control",
+            "slow",
+            "true-damage",
+            "cooldown-reduction",
+            "engage"
+          ],
+          "sourceRef": "adele-game-client-manual-entry-2026-08-08"
+        }
+      ]
     },
     {
       "id": "akeron",
       "name": "Akeron",
       "roles": [
+        "offlane",
         "jungle"
       ],
-      "damage": "physical",
+      "damage": "mixed",
       "range": "melee",
       "threats": [
         "dive",
-        "burst",
-        "pick"
+        "engage",
+        "pick",
+        "sustain",
+        "execute",
+        "terrain-mobility",
+        "hard-cc",
+        "armor-shred",
+        "mixed-damage"
       ],
       "answers": [
-        "burst",
+        "backline-access",
         "mobility",
-        "backline-access"
+        "hard-cc",
+        "root",
+        "stun",
+        "knockup",
+        "sustain",
+        "armor-shred",
+        "execute-pressure",
+        "frontline"
       ],
       "weaknesses": [
+        "anti-heal",
         "hard-cc",
-        "anti-burst"
+        "kite",
+        "poke",
+        "burst-vulnerable",
+        "terrain-dependent"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "akeron-game-client-manual-entry-2026-08-08",
+        "roles": "akeron-game-client-manual-entry-2026-08-08",
+        "classes": "akeron-game-client-manual-entry-2026-08-08",
+        "ratings": "akeron-game-client-manual-entry-2026-08-08",
+        "abilities": "akeron-game-client-manual-entry-2026-08-08",
+        "augments": "akeron-game-client-manual-entry-2026-08-08",
+        "kit": "akeron-game-client-manual-entry-2026-08-08"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
-      }
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Akeron text dated 2026-08-08. Recommendation tags are derived from the source-backed kit."
+      },
+      "classes": [
+        "fighter"
+      ],
+      "ratings": {
+        "basicAttack": 2,
+        "abilityPower": 6,
+        "durability": 7,
+        "mobility": 8
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Flay",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 62.0/65.0/68.2/71.5/75.0/78.7/82.5/86.5/90.6/94.9/99.4/104.0/108.8/113.7/118.8/124.1/129.5/135.1 (+75% physical power) physical damage.",
+          "scaling": {
+            "physicalDamage": [
+              62,
+              65,
+              68.2,
+              71.5,
+              75,
+              78.7,
+              82.5,
+              86.5,
+              90.6,
+              94.9,
+              99.4,
+              104,
+              108.8,
+              113.7,
+              118.8,
+              124.1,
+              129.5,
+              135.1
+            ],
+            "physicalPowerRatio": 0.75
+          },
+          "effects": [
+            "melee-basic",
+            "physical-damage"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "passive",
+          "name": "Pact of the Devourer",
+          "kind": "passive",
+          "description": "Akeron gains up to 100 stacks of Hunger, each granting 0.25% increased healing and lasting 3s and refreshing on application. Akeron gains Hunger each time he hits an Enemy Unit with a basic attack or ability. He gains additional Hunger when damaged by an Enemy Hero. When Akeron reaches max stacks he becomes Awakened for 10s granting him 5.0/5.8/6.5/7.3/8.0/8.8/9.5/10.3/11.0/11.8/12.5/13.3/14.0/14.8/15.5/16.3/17.0/17.8% (+0.75% per level) Damage Reduction, and granting his basic abilities extra effects.",
+          "scaling": {
+            "maxHungerStacks": 100,
+            "healingIncreasePercentPerStack": 0.25,
+            "hungerDuration": 3,
+            "awakenedDuration": 10,
+            "damageReductionPercentByLevel": [
+              5,
+              5.8,
+              6.5,
+              7.3,
+              8,
+              8.8,
+              9.5,
+              10.3,
+              11,
+              11.8,
+              12.5,
+              13.3,
+              14,
+              14.8,
+              15.5,
+              16.3,
+              17,
+              17.8
+            ],
+            "damageReductionPerLevelPercent": 0.75
+          },
+          "effects": [
+            "healing-amp",
+            "stacking-buff",
+            "damage-reduction",
+            "empowered-state",
+            "sustain"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "primary",
+          "name": "Hellfire",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Akeron opens his maw and launches the Demon's Eye forward. The Eye moves slowly, firing off 10 (+10% haste) fireballs around it. Refire the ability to pause the Eye mid-flight. Each fireball deals 18.0/29.0/40.0/51.0/62.0 (+18% magical power) magical damage and Slows Enemies by 7%, up to a max of 35%. If an Enemy is within range, the Eye will fire an additional homing fireball at them. Each subsequent hit on the same Target deals 20% less damage, stacking up to a 80% reduction. When Awakened, the number of fireballs is increased by 50%.",
+          "scaling": {
+            "fireballs": 10,
+            "hasteFireballRatio": 0.1,
+            "magicalDamagePerFireball": [
+              18,
+              29,
+              40,
+              51,
+              62
+            ],
+            "magicalPowerRatio": 0.18,
+            "slowPercentPerHit": 7,
+            "maxSlowPercent": 35,
+            "repeatedHitDamageReductionPercent": 20,
+            "maxRepeatedHitDamageReductionPercent": 80,
+            "awakenedFireballIncreasePercent": 50
+          },
+          "cooldown": [
+            16,
+            14.75,
+            13.5,
+            12.25,
+            11
+          ],
+          "effects": [
+            "magical-damage",
+            "slow",
+            "homing-projectiles",
+            "zone-control",
+            "poke",
+            "empowered-when-awakened"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "secondary",
+          "name": "Web Lash",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Akeron fires a web, stopping on the first Target hit and causing various effects depending on the Target type. Heroes or Units: Damages for 70.0/95.0/120.0/145.0/170.0 (+40% magical power) magical damage and Roots for 1s, also creating a web field that Slows Enemies by 35%. World: Lashes to it for up to 5s. While attached to terrain, Akeron can use abilities or leap to the ground, dealing 60.0/85.0/110.0/135.0/160.0 (+50% physical power)(+40% magical power) physical damage, Knocking Up, and Stunning Enemies for 1s. Awakened: Root and Stun Duration increased to 1.25.",
+          "scaling": {
+            "magicalDamage": [
+              70,
+              95,
+              120,
+              145,
+              170
+            ],
+            "magicalPowerRatio": 0.4,
+            "rootDuration": 1,
+            "fieldSlowPercent": 35,
+            "terrainAttachDuration": 5,
+            "leapPhysicalDamage": [
+              60,
+              85,
+              110,
+              135,
+              160
+            ],
+            "leapPhysicalPowerRatio": 0.5,
+            "leapMagicalPowerRatio": 0.4,
+            "stunDuration": 1,
+            "awakenedCcDuration": 1.25
+          },
+          "cooldown": [
+            25,
+            22.5,
+            20,
+            17.5,
+            15
+          ],
+          "effects": [
+            "mobility",
+            "terrain-attach",
+            "root",
+            "stun",
+            "knockup",
+            "hard-cc",
+            "slow-field",
+            "engage",
+            "pick"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "alternate",
+          "name": "Crushing Maw",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Akeron deals 70.0/90.0/110.0/130.0/150.0 (+65% physical power)(+40% magical power)(+4% max health) physical damage in a cone. Enemies close to Akeron take 1.35x damage. Akeron also heals for 8.0/12.0/16.0/20.0/24.0 (+1.8/2.5/3.3/4.0/4.8% max health). The heal is reduced to 20% for Non-Heroes, and increased by 200% on kill. If an Enemy Hero is killed, Akeron becomes Awakened. While Akeron is attached to terrain, this ability becomes a roar, affecting the area around him. Awakened: Shred 15.0/17.5/20.0/22.5/25.0% Physical Armor and Magical Armor for 5s.",
+          "scaling": {
+            "physicalDamage": [
+              70,
+              90,
+              110,
+              130,
+              150
+            ],
+            "physicalPowerRatio": 0.65,
+            "magicalPowerRatio": 0.4,
+            "maxHealthDamageRatio": 0.04,
+            "closeRangeDamageMultiplier": 1.35,
+            "heal": [
+              8,
+              12,
+              16,
+              20,
+              24
+            ],
+            "maxHealthHealPercent": [
+              1.8,
+              2.5,
+              3.3,
+              4,
+              4.8
+            ],
+            "nonHeroHealPercent": 20,
+            "killHealIncreasePercent": 200,
+            "armorShredPercent": [
+              15,
+              17.5,
+              20,
+              22.5,
+              25
+            ],
+            "armorShredDuration": 5
+          },
+          "cooldown": [
+            11,
+            10,
+            9,
+            8,
+            7
+          ],
+          "effects": [
+            "cone-damage",
+            "physical-damage",
+            "max-health-scaling",
+            "self-heal",
+            "execute-synergy",
+            "armor-shred",
+            "magic-armor-shred",
+            "sustain",
+            "empowered-when-awakened"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Consume",
+          "kind": "ultimate ability",
+          "damageType": "mixed",
+          "description": "Akeron Slows himself by 35% while Pulling and dealing 15.0/20.0/25.0 (+5% magical power) magical damage to all Enemies in a cone every 0.25s for 3s. If an Enemy Hero collides with Akeron, he bites them, dealing 55.0/75.0/95.0 (+75% physical power)(+45% magical power) physical damage while healing for 2.5/3.5/4.5% Missing Health + 40.0/50.0/60.0% of bite damage dealt. Akeron Executes Enemies bitten under 12% (+3.5% physical power)(+2.5% magical power) of their Max Health. Each time Akeron successfully executes a Hero, he gains 100.0/125.0/150.0 Maximum Health permanently, also healing for 2.5x the bite value.",
+          "scaling": {
+            "selfSlowPercent": 35,
+            "tickMagicalDamage": [
+              15,
+              20,
+              25
+            ],
+            "tickMagicalPowerRatio": 0.05,
+            "tickRate": 0.25,
+            "duration": 3,
+            "bitePhysicalDamage": [
+              55,
+              75,
+              95
+            ],
+            "bitePhysicalPowerRatio": 0.75,
+            "biteMagicalPowerRatio": 0.45,
+            "missingHealthHealPercent": [
+              2.5,
+              3.5,
+              4.5
+            ],
+            "biteDamageHealPercent": [
+              40,
+              50,
+              60
+            ],
+            "executeThresholdPercent": 12,
+            "executePhysicalPowerRatio": 0.035,
+            "executeMagicalPowerRatio": 0.025,
+            "permanentMaxHealthOnExecute": [
+              100,
+              125,
+              150
+            ],
+            "executeHealMultiplier": 2.5
+          },
+          "cooldown": [
+            135,
+            115,
+            95
+          ],
+          "effects": [
+            "pull",
+            "cone-damage",
+            "magical-damage",
+            "bite",
+            "execute",
+            "self-heal",
+            "permanent-health",
+            "sustain",
+            "displacement"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Trapdoor Demon",
+          "category": "terrain sustain",
+          "description": "Akeron becomes camouflaged when attaching to terrain, gaining 1.5% Max Health Regen and generating 8 Hunger per second while he remains there.",
+          "tags": [
+            "camouflage",
+            "terrain-attach",
+            "health-regen",
+            "hunger-generation",
+            "sustain"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "name": "Death From Above",
+          "category": "mobility",
+          "description": "Akeron can fire an additional web projectile from the wall or ground once, allowing him to leap from surface to surface or to Root from where he hangs.",
+          "tags": [
+            "mobility",
+            "terrain-attach",
+            "extra-web",
+            "root",
+            "engage",
+            "pick"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "name": "Roar of Torment",
+          "category": "ultimate modification",
+          "description": "Consume now Pushes instead of Pulls and deals 275% increased tick damage, but can no longer bite.",
+          "tags": [
+            "push",
+            "ultimate",
+            "area-damage",
+            "tradeoff",
+            "no-bite"
+          ],
+          "sourceRef": "akeron-game-client-manual-entry-2026-08-08"
+        }
+      ]
     },
     {
       "id": "argus",
       "name": "Argus",
       "roles": [
+        "midlane",
         "support"
       ],
       "classes": [
-        "mage",
-        "catcher"
+        "mage"
       ],
       "damage": "magical",
       "range": "ranged",
@@ -162,64 +908,80 @@
       },
       "abilities": [
         {
-          "slot": "passive",
-          "name": "Disintegrate",
-          "kind": "passive",
-          "damageType": "magical",
-          "description": "Argus' abilities apply a stack of Disintegration for 2s, causing subsequent instances of ability damage to deal 4 (+3%) bonus magical damage. Each stack of Disintegration deals 50% more damage, stacking infinitely (capped at 12 against Monsters).",
-          "effects": [
-            "stacking-damage",
-            "bonus-magical-damage"
-          ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
-        },
-        {
           "slot": "basic",
           "name": "Arcrune Conduit",
           "kind": "basic attack",
           "damageType": "physical",
-          "description": "Ranged basic attack dealing 55 (+55%) physical damage.",
+          "description": "Ranged basic attack dealing 55.0/57.5/60.0/62.7/65.6/68.6/71.7/74.9/78.3/81.8/85.4/89.2/93.1/97.1/101.2/105.5/110.0/114.5 (+55% physical power) physical damage.",
+          "scaling": {
+            "physicalDamage": [55, 57.5, 60, 62.7, 65.6, 68.6, 71.7, 74.9, 78.3, 81.8, 85.4, 89.2, 93.1, 97.1, 101.2, 105.5, 110, 114.5],
+            "physicalPowerRatio": 0.55
+          },
           "effects": [
-            "ranged-basic"
+            "ranged-basic",
+            "physical-damage"
           ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "passive",
+          "name": "Disintegrate",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "Argus' abilities apply a stack of Disintegration for 2s, causing subsequent instances of ability damage to deal 4 (+3% magical power) bonus magical damage. Each stack of Disintegration deals 50% more damage, stacking infinitely (capped at 12 against Monsters).",
+          "scaling": {
+            "bonusMagicalDamage": 4,
+            "magicalPowerRatio": 0.03,
+            "stackDuration": 2,
+            "damageIncreasePercentPerStack": 50,
+            "monsterStackCap": 12
+          },
+          "effects": [
+            "stacking-damage",
+            "bonus-magical-damage"
+          ],
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
         },
         {
           "slot": "primary",
           "name": "Dread Nova",
           "kind": "primary ability",
           "damageType": "magical",
-          "description": "Argus lobs an unstable orb of energy. Upon landing it explodes, dealing 80/120/160/200/240 (+50%) magical damage to all nearby Targets and Stuns them for 1/1.05/1.1/1.15/1.2s.",
+          "description": "Argus lobs an unstable orb of energy. Upon landing it explodes, dealing 85.0/125.0/165.0/205.0/245.0 (+50% magical power) magical damage to all nearby Targets and Stuns them for 1.0/1.1/1.1/1.1/1.2s.",
           "scaling": {
-            "damage": [80, 120, 160, 200, 240],
+            "damage": [85, 125, 165, 205, 245],
             "magicalPowerRatio": 0.5,
-            "stunDuration": [1, 1.05, 1.1, 1.15, 1.2]
+            "stunDuration": [1, 1.1, 1.1, 1.1, 1.2]
           },
           "cooldown": [16, 15, 14, 13, 12],
-          "cost": [50],
           "effects": [
             "area-damage",
             "stun",
             "hard-cc",
             "burst"
           ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
         },
         {
           "slot": "secondary",
           "name": "Ether Crystal",
           "kind": "secondary ability",
           "damageType": "magical",
-          "description": "Argus summons an Ether Crystal at the target location for 2s. The Crystal will Push Enemy Heroes from the center and Lift Allied Heroes into the air before producing a storm that deals 15/25/35/45/55 (+18%) magical damage every 0.5s to nearby Enemies and Slows by 25/30/35/40/45% for 0.5s. After the duration the Crystal will implode, Pulling all Enemies within to the center.",
+          "description": "Argus summons an Ether Crystal at the target location for 2s. The Crystal will Push Enemy Heroes from the center and Lift Allied Heroes into the air before producing a storm that deals 20.0/30.0/40.0/50.0/60.0 (+18% magical power) magical damage every 0.5s to nearby Enemies and Slows by 25.0/30.0/35.0/40.0/45.0% for 0.5s. After the duration the Crystal will implode, Pulling all Enemies within to the center.",
           "scaling": {
-            "damagePerTick": [15, 25, 35, 45, 55],
+            "damagePerTick": [20, 30, 40, 50, 60],
             "magicalPowerRatio": 0.18,
-            "slowPercent": [25, 30, 35, 40, 45],
+            "slowPercent": [
+              25,
+              30,
+              35,
+              40,
+              45
+            ],
             "duration": 2,
             "tickRate": 0.5
           },
           "cooldown": [16, 15.5, 15, 14.5, 14],
-          "cost": [70, 80, 90, 100, 110],
           "effects": [
             "zone-control",
             "pull",
@@ -228,46 +990,58 @@
             "area-damage",
             "ally-lift"
           ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
         },
         {
           "slot": "alternate",
           "name": "Particle Shredder",
           "kind": "alternate ability",
           "damageType": "magical",
-          "description": "Argus fires homing projectiles from his Abyssal Staff for up to 3.5s. Each projectile consumes mana and deals 13/20/27/34/41 (+18%) per blast. At maximum rank, Particle Shredder can be used indefinitely.",
+          "description": "Argus fires homing projectiles from his Abyssal Staff for up to 3.5s. Each projectile consumes mana and deals 13.0/20.0/27.0/34.0/41.0 (+18% magical power) per blast. At maximum rank, Particle Shredder can be used indefinitely.",
           "scaling": {
-            "damagePerBlast": [13, 20, 27, 34, 41],
+            "damagePerBlast": [
+              13,
+              20,
+              27,
+              34,
+              41
+            ],
             "magicalPowerRatio": 0.18,
             "channelDuration": 3.5
           },
-          "cooldown": [3],
-          "cost": [12, 14, 16, 18, 20],
+          "cooldown": [3, 3, 3, 3, 3],
           "effects": [
             "homing-projectiles",
             "channeled-damage",
             "mana-dependent",
             "sustained-damage"
           ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
         },
         {
           "slot": "ultimate",
           "name": "Synaptic Obliterator",
           "kind": "ultimate ability",
           "damageType": "magical",
-          "description": "After a short delay, Argus channels for up to 8s, gaining immunity to pushes and pulls whilst deploying his ultimate weapon to fire up to 3/4/5 powerful Energy Beams. Each beam deals 100/130/160 (+25%) magical damage (increased by up to 150% based on the Target's missing health) and Slows Enemies hit by 60% for 0.5s.",
+          "description": "After a short delay, Argus channels for up to 8s, gaining immunity to pushes and pulls whilst deploying his ultimate weapon to fire up to 3.0/4.0/5.0 powerful Energy Beams. Each beam deals 130.0/155.0/180.0 (+25% magical power) magical damage (increased by up to 150% based on the Target's missing health) and Slows Enemies hit by 60% for 0.5s.",
           "scaling": {
-            "damagePerBeam": [100, 130, 160],
+            "damagePerBeam": [130, 155, 180],
             "magicalPowerRatio": 0.25,
-            "beams": [3, 4, 5],
+            "beams": [
+              3,
+              4,
+              5
+            ],
             "maxMissingHealthAmpPercent": 150,
             "slowPercent": 60,
             "slowDuration": 0.5,
             "channelDuration": 8
           },
-          "cooldown": [135, 120, 105],
-          "cost": [100],
+          "cooldown": [
+            135,
+            120,
+            105
+          ],
           "effects": [
             "long-range-damage",
             "execute-pressure",
@@ -275,7 +1049,7 @@
             "push-pull-immunity",
             "channel"
           ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
         }
       ],
       "augments": [
@@ -288,7 +1062,7 @@
             "combat-speed",
             "ability-damage"
           ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
         },
         {
           "name": "Mana Catalyst",
@@ -299,19 +1073,19 @@
             "poke-sustain",
             "long-fights"
           ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
         },
         {
           "name": "Infinite Obliteration",
           "category": "increased range",
-          "description": "Synaptic Obliterator's projectile now have infinite range, travel 25% faster, and Slow for 50% longer.",
+          "description": "Synaptic Obliterator's projectile now have infinite range, travel 50% faster, and Slow for 50% longer.",
           "tags": [
             "increased-range",
             "ultimate",
             "pick",
             "siege"
           ],
-          "sourceRef": "argus-game-client-screenshots-2026-08-02"
+          "sourceRef": "argus-game-client-manual-entry-2026-08-08"
         }
       ],
       "threats": [
@@ -338,13 +1112,13 @@
         "mana-dependent"
       ],
       "sourceRefs": {
-        "roster": "argus-game-client-screenshots-2026-08-02",
-        "roles": "argus-game-client-screenshots-2026-08-02",
-        "classes": "argus-game-client-screenshots-2026-08-02",
-        "ratings": "argus-game-client-screenshots-2026-08-02",
-        "abilities": "argus-game-client-screenshots-2026-08-02",
-        "augments": "argus-game-client-screenshots-2026-08-02",
-        "kit": "argus-game-client-screenshots-2026-08-02"
+        "roster": "argus-game-client-manual-entry-2026-08-08",
+        "roles": "argus-game-client-manual-entry-2026-08-08",
+        "classes": "argus-game-client-manual-entry-2026-08-08",
+        "ratings": "argus-game-client-manual-entry-2026-08-08",
+        "abilities": "argus-game-client-manual-entry-2026-08-08",
+        "augments": "argus-game-client-manual-entry-2026-08-08",
+        "kit": "argus-game-client-manual-entry-2026-08-08"
       },
       "verification": {
         "rosterStatus": "source-backed",
@@ -354,7 +1128,7 @@
         "abilityStatus": "source-backed",
         "augmentStatus": "source-backed",
         "kitStatus": "source-backed",
-        "notes": "Fully encoded from user-provided in-game Argus screenshots dated 2026-08-02. Recommendation tags are derived from the source-backed kit."
+        "notes": "Revised from user-provided in-game Argus text dated 2026-08-08. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
@@ -364,33 +1138,253 @@
         "offlane",
         "jungle"
       ],
+      "classes": [
+        "fighter"
+      ],
       "damage": "magical",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 1,
+        "abilityPower": 7,
+        "durability": 4,
+        "mobility": 8
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Shatter",
+          "kind": "basic attack",
+          "damageType": "mixed",
+          "description": "Melee basic attack dealing 62.0/65.0/68.2/71.5/75.0/78.7/82.5/86.5/90.6/94.9/99.4/104.0/108.8/113.7/118.8/124.1/129.5/135.1 (+75% physical power) physical damage. Additionally deals (+30% magical power) magical damage on-hit.",
+          "scaling": {
+            "physicalDamage": [62, 65, 68.2, 71.5, 75, 78.7, 82.5, 86.5, 90.6, 94.9, 99.4, 104, 108.8, 113.7, 118.8, 124.1, 129.5, 135.1],
+            "physicalPowerRatio": 0.75,
+            "magicalOnHitPowerRatio": 0.3
+          },
+          "effects": [
+            "melee-basic",
+            "physical-damage",
+            "magical-on-hit"
+          ],
+          "sourceRef": "aurora-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "passive",
+          "name": "Frozen Simulacrum",
+          "kind": "passive",
+          "description": "Aurora can jump whilst airborne to leap in the direction she is moving, leaving behind a Replica of herself. This cooldown is reduced by 4s when Immobilizing Heroes. The Replica has (+20% max health)(+150% magical power) Health, will draw aggro from Enemy Towers, and lasts for 8s. Damaging an Enemy Hero or Monster 4 times will summon a Frost Storm around Aurora for 3s, refreshing on additional damage dealt. The Storm deals 5 (+30% magical power) +1.0/1.2/1.4/1.6/1.8/2.0/2.2/2.4/2.6/2.8/3.0/3.2/3.4/3.6/3.8/4.0/4.2/4.4% (+0.2% per level) Enemy Max Health magical damage per second.",
+          "scaling": {
+            "cooldown": 25,
+            "immobilizeCooldownReduction": 4,
+            "replicaMaxHealthRatio": 0.2,
+            "replicaMagicalPowerHealthRatio": 1.5,
+            "replicaDuration": 8,
+            "frostStormTriggerHits": 4,
+            "frostStormDuration": 3,
+            "frostStormBaseDamagePerSecond": 5,
+            "frostStormMagicalPowerRatio": 0.3,
+            "frostStormEnemyMaxHealthPercentByLevel": [1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4],
+            "frostStormEnemyMaxHealthPercentPerLevel": 0.2
+          },
+          "effects": [
+            "airborne-leap",
+            "replica",
+            "tower-aggro-decoy",
+            "mobility",
+            "max-health-damage",
+            "area-damage",
+            "magical-damage"
+          ],
+          "sourceRef": "aurora-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "primary",
+          "name": "Glacial Charge",
+          "kind": "primary ability",
+          "description": "Aurora dashes forward, leaving behind a wall of ice that other Heroes can walk on for the next 5s. Reactivating the ability will destroy the wall early. Aurora can stop her movement mid-way by using Hoarfrost or Cryoseism, or by Jumping. Additionally, Aurora and her Allies gain 25.0/30.0/35.0/40.0/45.0% Movement Speed while walking on the ice.",
+          "scaling": {
+            "iceWallDuration": 5,
+            "movementSpeedPercent": [25, 30, 35, 40, 45]
+          },
+          "cooldown": [26, 24, 22, 20, 18],
+          "effects": [
+            "dash",
+            "mobility",
+            "terrain-creation",
+            "ally-mobility",
+            "movement-speed",
+            "engage",
+            "disengage"
+          ],
+          "sourceRef": "aurora-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "secondary",
+          "name": "Hoarfrost",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Aurora creates a ring of frost on the ground around her. Enemies that touch the ring take 70.0/110.0/150.0/190.0/230.0 (+50% magical power) magical damage and are Rooted for 1.0/1.1/1.1/1.1/1.2s. The ring remains in the world for 2.5s.",
+          "scaling": {
+            "magicalDamage": [70, 110, 150, 190, 230],
+            "magicalPowerRatio": 0.5,
+            "rootDuration": [1, 1.1, 1.1, 1.1, 1.2],
+            "ringDuration": 2.5
+          },
+          "cooldown": [14, 13.5, 13, 12.5, 12],
+          "effects": [
+            "area-damage",
+            "root",
+            "hard-cc",
+            "zone-control",
+            "anti-dive",
+            "magical-damage"
+          ],
+          "sourceRef": "aurora-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "alternate",
+          "name": "Boreal Sweep",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Aurora summons a wave of frost in a cone dealing 40.0/55.0/70.0/85.0/100.0 (+35% magical power) magical damage and Slowing Enemy Targets hit by 30.0/35.0/40.0/45.0/50.0% for 0.9s. After a short delay the frost erupts, dealing an additional 80.0/110.0/140.0/170.0/200.0 (+60% magical power) magical damage.",
+          "scaling": {
+            "initialMagicalDamage": [40, 55, 70, 85, 100],
+            "initialMagicalPowerRatio": 0.35,
+            "slowPercent": [30, 35, 40, 45, 50],
+            "slowDuration": 0.9,
+            "eruptionMagicalDamage": [80, 110, 140, 170, 200],
+            "eruptionMagicalPowerRatio": 0.6
+          },
+          "cooldown": [12.5, 11.25, 10, 8.75, 7.5],
+          "effects": [
+            "cone-damage",
+            "slow",
+            "area-damage",
+            "burst",
+            "magical-damage"
+          ],
+          "sourceRef": "aurora-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Cryoseism",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "Aurora freezes an area, applying a 50% Slow to all Enemies for 1.5s. After 1.5s, the ice freezes, Stunning the target for 1s. After the Stun, the Target explodes dealing 200.0/300.0/400.0 (+70% magical power) magical damage to them and nearby Enemies. Enemies damaged by Cryoseism will be Slowed by 50% for 0.5s before exploding, dealing 60.0/90.0/120.0 (+20% magical power) magical damage to them and nearby Enemies. Targets can only be slowed this way once per Cryoseism.",
+          "scaling": {
+            "initialSlowPercent": 50,
+            "initialSlowDuration": 1.5,
+            "freezeDelay": 1.5,
+            "stunDuration": 1,
+            "primaryExplosionMagicalDamage": [200, 300, 400],
+            "primaryExplosionMagicalPowerRatio": 0.7,
+            "secondarySlowPercent": 50,
+            "secondarySlowDuration": 0.5,
+            "secondaryExplosionMagicalDamage": [60, 90, 120],
+            "secondaryExplosionMagicalPowerRatio": 0.2
+          },
+          "cooldown": [140, 125, 110],
+          "effects": [
+            "area-control",
+            "slow",
+            "stun",
+            "hard-cc",
+            "area-damage",
+            "teamfight",
+            "magical-damage"
+          ],
+          "sourceRef": "aurora-game-client-manual-entry-2026-08-08"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Glacial Thorns",
+          "category": "root damage",
+          "description": "Glacial Charge spawns Hoarfrost Crystals at its base that deal 40.0/60.0/80.0/100.0/120.0 (+20% magical power) Damage and Root for 0.5s.",
+          "tags": [
+            "root",
+            "hard-cc",
+            "mobility-synergy",
+            "magical-damage",
+            "anti-dive"
+          ],
+          "sourceRef": "aurora-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "name": "Frozen Fury",
+          "category": "attack speed",
+          "description": "Frost Storm grants 10-34% Attack Speed while active. Increases with Hero Level.",
+          "tags": [
+            "attack-speed",
+            "frost-storm",
+            "dueling",
+            "sustained-damage"
+          ],
+          "sourceRef": "aurora-game-client-manual-entry-2026-08-08"
+        },
+        {
+          "name": "Hypothermia",
+          "category": "shred",
+          "description": "Damaging Enemy Heroes with Boreal Sweep shreds 15% Physical Armor and Magical Armor and slows Attack Speed by 20% for 3s.",
+          "tags": [
+            "armor-shred",
+            "magic-armor-shred",
+            "attack-speed-slow",
+            "anti-frontline",
+            "dueling"
+          ],
+          "sourceRef": "aurora-game-client-manual-entry-2026-08-08"
+        }
+      ],
       "threats": [
         "engage",
         "zone-control",
-        "frontline"
+        "frontline",
+        "dive",
+        "hard-cc",
+        "area-control",
+        "teamfight",
+        "mobility"
       ],
       "answers": [
         "hard-cc",
         "anti-dive",
         "frontline",
-        "disengage"
+        "disengage",
+        "root",
+        "slow",
+        "stun",
+        "zone-control",
+        "engage",
+        "mobility",
+        "anti-frontline"
       ],
       "weaknesses": [
         "poke",
-        "tank-shred"
+        "tank-shred",
+        "anti-heal",
+        "silence",
+        "hard-cc",
+        "cooldown-dependent"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "aurora-game-client-manual-entry-2026-08-08",
+        "roles": "aurora-game-client-manual-entry-2026-08-08",
+        "classes": "aurora-game-client-manual-entry-2026-08-08",
+        "ratings": "aurora-game-client-manual-entry-2026-08-08",
+        "abilities": "aurora-game-client-manual-entry-2026-08-08",
+        "augments": "aurora-game-client-manual-entry-2026-08-08",
+        "kit": "aurora-game-client-manual-entry-2026-08-08"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Aurora text dated 2026-08-08. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
@@ -400,102 +1394,776 @@
         "offlane",
         "jungle"
       ],
+      "classes": [
+        "fighter"
+      ],
       "damage": "physical",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 3,
+        "abilityPower": 7,
+        "durability": 7,
+        "mobility": 5
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Vigil",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack chain dealing 52.0/54.8/57.8/60.9/64.1/67.5/71.0/74.8/78.6/82.6/86.8/91.0/95.5/100.1/104.8/109.8/114.8/120.0 (+65% physical power) physical damage. 1.0/1.0/2.3x Damage and Swing Time Chain.",
+          "scaling": {
+            "physicalDamage": [52, 54.8, 57.8, 60.9, 64.1, 67.5, 71, 74.8, 78.6, 82.6, 86.8, 91, 95.5, 100.1, 104.8, 109.8, 114.8, 120],
+            "physicalPowerRatio": 0.65,
+            "chainDamageAndSwingTime": [1, 1, 2.3]
+          },
+          "effects": [
+            "melee-basic",
+            "basic-chain",
+            "physical-damage"
+          ],
+          "sourceRef": "bayle-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "passive",
+          "name": "Berserk",
+          "kind": "passive",
+          "description": "When Bayle drops below 40% of his Maximum Health, he enters Berserk for 7s. While Berserk, Bayle gains 15.0/19.0/23.0/27.0/31.0/35.0/39.0/43.0/47.0/51.0/55.0/59.0/63.0/67.0/71.0/75.0/79.0/83.0% (+3% per level) Attack Speed, 4.0/4.5/5.0/5.5/6.0/6.5/7.0/7.5/8.0/8.5/9.0/9.5/10.0/10.5/11.0/11.5/12.0/12.5% (+0.5% per level) Movement Speed, and 40 Tenacity. Bayle can only enter Berserk once every 20s.",
+          "scaling": {
+            "healthThresholdPercent": 40,
+            "berserkDuration": 7,
+            "attackSpeedPercentByLevel": [15, 19, 23, 27, 31, 35, 39, 43, 47, 51, 55, 59, 63, 67, 71, 75, 79, 83],
+            "attackSpeedPercentPerLevel": 3,
+            "movementSpeedPercentByLevel": [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5],
+            "movementSpeedPercentPerLevel": 0.5,
+            "tenacity": 40,
+            "cooldown": 20
+          },
+          "effects": [
+            "low-health-buff",
+            "attack-speed",
+            "movement-speed",
+            "tenacity",
+            "dueling",
+            "anti-cc"
+          ],
+          "sourceRef": "bayle-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "primary",
+          "name": "Cursed Edge",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Bayle activates the runes on his arm, swinging 3 times to conjure slashes of cursed energy that pierce through all Enemies, dealing 35.0/50.0/65.0/80.0/95.0 (+75% physical power)(+50% magical power) physical damage each. The first two slashes are vertical, while the third is horizontal and Knocks Up and Stuns all Enemies it hits for 0.65s. If Bayle hits the same Target with all 3 slashes, they take 5.0/10.0/15.0/20.0/25.0 (+18% physical power)(+15% magical power) bonus bleed damage every 0.5s for 3s.",
+          "scaling": {
+            "slashes": 3,
+            "physicalDamagePerSlash": [35, 50, 65, 80, 95],
+            "physicalPowerRatio": 0.75,
+            "magicalPowerRatio": 0.5,
+            "knockupStunDuration": 0.65,
+            "bleedDamagePerTick": [5, 10, 15, 20, 25],
+            "bleedPhysicalPowerRatio": 0.18,
+            "bleedMagicalPowerRatio": 0.15,
+            "bleedTickRate": 0.5,
+            "bleedDuration": 3
+          },
+          "cooldown": [18, 16.5, 15, 13.5, 12],
+          "effects": [
+            "piercing-damage",
+            "physical-damage",
+            "knockup",
+            "stun",
+            "hard-cc",
+            "bleed",
+            "area-damage"
+          ],
+          "sourceRef": "bayle-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "secondary",
+          "name": "Dire Howl",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Bayle howls out a battle cry, dealing 50.0/65.0/80.0/95.0/110.0 (+30% physical power)(+65% magical power) physical damage around him and Slowing Enemies hit by 30% for 1.25s. Additionally, Bayle is buffed for 5s, gaining 8.0/12.0/16.0/20.0/24.0 (+25% magical power) bonus Physical Power and 8.0/10.0/12.0/14.0/16.0% Omnivamp. When the buff ends, Bayle Heals for 10.0/14.0/18.0/22.0/26.0% of his damage taken during the duration.",
+          "scaling": {
+            "physicalDamage": [50, 65, 80, 95, 110],
+            "physicalPowerRatio": 0.3,
+            "magicalPowerRatio": 0.65,
+            "slowPercent": 30,
+            "slowDuration": 1.25,
+            "buffDuration": 5,
+            "bonusPhysicalPower": [8, 12, 16, 20, 24],
+            "bonusPhysicalPowerMagicalPowerRatio": 0.25,
+            "omnivampPercent": [8, 10, 12, 14, 16],
+            "damageTakenHealPercent": [10, 14, 18, 22, 26]
+          },
+          "cooldown": [16, 16, 16, 16, 16],
+          "effects": [
+            "area-damage",
+            "slow",
+            "self-buff",
+            "physical-power",
+            "omnivamp",
+            "delayed-heal",
+            "sustain"
+          ],
+          "sourceRef": "bayle-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "alternate",
+          "name": "Skull Crusher",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Bayle leaps a set distance forward, flipping in the air and slamming his sword into the ground to deal 90.0/130.0/170.0/210.0/250.0 (+110% physical power) physical damage in the area. Enemies hit by the slam are marked for 4s, Shredding their Physical Armor by 20.0/22.5/25.0/27.5/30.0% and granting Bayle 30% increased Movement Speed toward them. The leap can be cancelled early, allowing Bayle to slam immediately below him.",
+          "scaling": {
+            "physicalDamage": [90, 130, 170, 210, 250],
+            "physicalPowerRatio": 1.1,
+            "markDuration": 4,
+            "physicalArmorShredPercent": [20, 22.5, 25, 27.5, 30],
+            "movementSpeedTowardMarkedPercent": 30
+          },
+          "cooldown": [17, 15.5, 14, 12.5, 11],
+          "effects": [
+            "leap",
+            "mobility",
+            "area-damage",
+            "physical-damage",
+            "armor-shred",
+            "target-chase",
+            "engage"
+          ],
+          "sourceRef": "bayle-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Kingslayer",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Bayle Slows himself by 60% while he gathers cursed energy, then dashing forward at blinding speed. If Bayle hits an Enemy Hero, he stops dashing and swings his sword in a massive uppercut, throwing them into the air while pummeling them with a barrage of 8 sword strikes, each dealing 30.0/40.0/50.0 (+24% physical power) (+1.0/1.3/1.6% Target's Max Health) physical damage. Finally, Bayle slams the Enemy into the ground, dealing 70.0/95.0/120.0 (+75% physical power) (+3.0/4.0/5.0% Target's Max Health) physical damage in a small area around where they land.",
+          "scaling": {
+            "selfSlowPercent": 60,
+            "strikeCount": 8,
+            "strikePhysicalDamage": [30, 40, 50],
+            "strikePhysicalPowerRatio": 0.24,
+            "strikeTargetMaxHealthDamagePercent": [1, 1.3, 1.6],
+            "slamPhysicalDamage": [70, 95, 120],
+            "slamPhysicalPowerRatio": 0.75,
+            "slamTargetMaxHealthDamagePercent": [3, 4, 5]
+          },
+          "cooldown": [135, 125, 115],
+          "effects": [
+            "dash",
+            "single-target-lockdown",
+            "knockup",
+            "max-health-damage",
+            "physical-damage",
+            "area-damage",
+            "dive",
+            "finisher"
+          ],
+          "sourceRef": "bayle-game-client-manual-entry-2026-08-09"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Frenzied Fighter",
+          "category": "berserk uptime",
+          "description": "Berserk has no cooldown and can remain on indefinitely while under the Health threshold.",
+          "tags": [
+            "berserk",
+            "low-health-buff",
+            "dueling",
+            "attack-speed",
+            "sustain-window"
+          ],
+          "sourceRef": "bayle-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "name": "Swift Strikes",
+          "category": "attack chain",
+          "description": "After casting an ability, Bayle gains 45% Attack Speed for one attack. Additionally, he automatically starts with the 3rd attack in his Basic Attack chain, but it always deals 20% decreased damage.",
+          "tags": [
+            "attack-speed",
+            "basic-chain",
+            "ability-weaving",
+            "burst-window"
+          ],
+          "sourceRef": "bayle-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "name": "Betrayer's Reqiuem",
+          "category": "ultimate modification",
+          "description": "Kingslayer uppercuts all Enemies in an area around the initial Target. Additionally, Kingslayer's Cooldown is reduced by 15%.",
+          "tags": [
+            "ultimate",
+            "area-knockup",
+            "teamfight",
+            "cooldown-reduction",
+            "engage"
+          ],
+          "sourceRef": "bayle-game-client-manual-entry-2026-08-09"
+        }
+      ],
       "threats": [
         "dive",
         "frontline",
-        "burst"
+        "burst",
+        "duelist",
+        "sustain",
+        "armor-shred",
+        "single-target-lockdown",
+        "teamfight-engage"
       ],
       "answers": [
         "anti-burst",
         "frontline",
-        "backline-access"
+        "backline-access",
+        "dive",
+        "hard-cc",
+        "knockup",
+        "stun",
+        "armor-shred",
+        "sustain",
+        "max-health-damage",
+        "anti-frontline"
       ],
       "weaknesses": [
         "kite",
-        "poke"
+        "poke",
+        "anti-heal",
+        "hard-cc",
+        "disengage",
+        "range"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "bayle-game-client-manual-entry-2026-08-09",
+        "roles": "bayle-game-client-manual-entry-2026-08-09",
+        "classes": "bayle-game-client-manual-entry-2026-08-09",
+        "ratings": "bayle-game-client-manual-entry-2026-08-09",
+        "abilities": "bayle-game-client-manual-entry-2026-08-09",
+        "augments": "bayle-game-client-manual-entry-2026-08-09",
+        "kit": "bayle-game-client-manual-entry-2026-08-09"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Bayle text dated 2026-08-09. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
       "id": "boris",
       "name": "Boris",
       "roles": [
-        "offlane",
         "jungle"
       ],
-      "damage": "physical",
+      "classes": [
+        "fighter"
+      ],
+      "damage": "mixed",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 6,
+        "abilityPower": 5,
+        "durability": 5,
+        "mobility": 4
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Maul",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 58.0/60.7/63.5/66.4/69.5/72.7/76.1/79.6/83.3/87.1/91.0/95.1/99.3/103.7/108.2/112.9/117.7/122.6 (+75% physical power) physical damage.",
+          "scaling": {
+            "physicalDamage": [58, 60.7, 63.5, 66.4, 69.5, 72.7, 76.1, 79.6, 83.3, 87.1, 91, 95.1, 99.3, 103.7, 108.2, 112.9, 117.7, 122.6],
+            "physicalPowerRatio": 0.75
+          },
+          "effects": [
+            "melee-basic",
+            "physical-damage"
+          ],
+          "sourceRef": "boris-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "passive",
+          "name": "Tesseract Device",
+          "kind": "passive",
+          "description": "Every second Basic Attack On-Hit against Heroes & Monsters grants Boris a Canister for 5s, up to a maximum of 4. Each Canister grants Boris 7.0/10.0/13.0/16.0% Attack Speed and 1.0/1.3/1.5/1.8/2.0/2.3/2.5/2.8/3.0/3.3/3.5/3.8/4.0/4.3/4.5/4.8/5.0/5.3 (+2% physical power)(+0.25 per Level) Healing On-Hit. At max Canisters, Boris unleashes his Tesseract Core. The Core zaps Enemies On-Hit, dealing 5.0/7.0/9.0/11.0/13.0/15.0/17.0/19.0/21.0/23.0/25.0/27.0/29.0/31.0/33.0/35.0/37.0/39.0 (+10% physical power)(+12% magical power)(+2 per Level) magical damage and Healing Boris for 4.0/5.0/6.0/7.0/8.0/9.0/10.0/11.0/12.0/13.0/14.0/15.0/16.0/17.0/18.0/19.0/20.0/21.0 (+10% physical power)(+1 per Level), reduced to 20% effectiveness against Non-Heroes.",
+          "scaling": {
+            "canisterTriggerEveryBasicAttacks": 2,
+            "canisterDuration": 5,
+            "maxCanisters": 4,
+            "attackSpeedPercentPerCanister": [7, 10, 13, 16],
+            "healingOnHitByLevel": [1, 1.3, 1.5, 1.8, 2, 2.3, 2.5, 2.8, 3, 3.3, 3.5, 3.8, 4, 4.3, 4.5, 4.8, 5, 5.3],
+            "healingOnHitPhysicalPowerRatio": 0.02,
+            "healingOnHitPerLevel": 0.25,
+            "coreMagicalDamageByLevel": [5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39],
+            "corePhysicalPowerRatio": 0.1,
+            "coreMagicalPowerRatio": 0.12,
+            "coreDamagePerLevel": 2,
+            "coreHealByLevel": [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21],
+            "coreHealPhysicalPowerRatio": 0.1,
+            "coreHealPerLevel": 1,
+            "nonHeroEffectivenessPercent": 20
+          },
+          "effects": [
+            "on-hit",
+            "attack-speed",
+            "healing-on-hit",
+            "magical-damage",
+            "sustain",
+            "jungle-clear",
+            "stacking-buff"
+          ],
+          "sourceRef": "boris-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "primary",
+          "name": "Detection Protocol",
+          "kind": "primary ability",
+          "description": "Boris sniffs the air, Marking a nearby Enemy Hero and generating a Scent Trail to their location for 8s. While moving along the Trail, Boris gains 45.0/55.0/65.0/75.0/85.0% (+15% magical power) Movement Speed. Dealing Hero Damage to the Marked Target consumes the Mark, ending the Trail effect, Slowing the Target by 35% for 1.25s and granting Boris 1 Canister. If no Hero is found, 40% of the Cooldown is refunded.",
+          "scaling": {
+            "trailDuration": 8,
+            "movementSpeedPercent": [45, 55, 65, 75, 85],
+            "movementSpeedMagicalPowerRatio": 0.15,
+            "markConsumedSlowPercent": 35,
+            "markConsumedSlowDuration": 1.25,
+            "canistersGranted": 1,
+            "cooldownRefundPercentIfNoHeroFound": 40
+          },
+          "cooldown": [50, 46, 42, 38, 34],
+          "effects": [
+            "mark",
+            "tracking",
+            "movement-speed",
+            "slow",
+            "pick",
+            "gank-setup",
+            "canister-generation"
+          ],
+          "sourceRef": "boris-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "secondary",
+          "name": "Primeval Roar",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Boris generates a defensive Barrier, granting him 20.0/22.5/25.0/27.5/30.0% Damage Reduction for 2.5s. After the duration, Boris roars, exploding the Barrier and dealing 40.0/55.0/70.0/85.0/100.0 (+30% physical power)(+70% magical power) magical damage to all nearby Enemies. Enemies hit are Feared for 0.5-1s, based on Barrier duration. Boris may manually detonate the Barrier after 0.5s.",
+          "scaling": {
+            "damageReductionPercent": [20, 22.5, 25, 27.5, 30],
+            "barrierDuration": 2.5,
+            "magicalDamage": [40, 55, 70, 85, 100],
+            "physicalPowerRatio": 0.3,
+            "magicalPowerRatio": 0.7,
+            "fearDurationRange": [0.5, 1],
+            "manualDetonateDelay": 0.5
+          },
+          "cooldown": [18, 16.5, 15, 13.5, 12],
+          "effects": [
+            "damage-reduction",
+            "barrier",
+            "area-damage",
+            "magical-damage",
+            "fear",
+            "hard-cc",
+            "anti-burst"
+          ],
+          "sourceRef": "boris-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "alternate",
+          "name": "Chrono Swipe",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Boris dashes forward, swiping all Enemies in his path twice. Each hit deals 20.0/30.0/40.0/50.0/60.0 (+44.0/48.0/52.0/56.0/60.0% physical power) physical damage and applies On-Hit effects.",
+          "scaling": {
+            "hits": 2,
+            "physicalDamagePerHit": [20, 30, 40, 50, 60],
+            "physicalPowerRatio": [0.44, 0.48, 0.52, 0.56, 0.6]
+          },
+          "cooldown": [11, 10, 9, 8, 7],
+          "effects": [
+            "dash",
+            "mobility",
+            "physical-damage",
+            "multi-hit",
+            "applies-on-hit",
+            "engage"
+          ],
+          "sourceRef": "boris-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Ursine Burst",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Boris hovers momentarily, before Dashing forward and grabbing the first Enemy Hero he collides with. Boris then leaps into the air with the grabbed Hero and slams them to the ground. All Enemies in the landing zone take 250.0/350.0/450.0 (+160% physical power) (+30.0/45.0/60.0% Target's Bonus Health) physical damage and are Slowed by 75% for 1.25s.",
+          "scaling": {
+            "physicalDamage": [250, 350, 450],
+            "physicalPowerRatio": 1.6,
+            "targetBonusHealthDamagePercent": [30, 45, 60],
+            "slowPercent": 75,
+            "slowDuration": 1.25
+          },
+          "cooldown": [120, 100, 80],
+          "effects": [
+            "dash",
+            "grab",
+            "single-target-lockdown",
+            "area-damage",
+            "physical-damage",
+            "bonus-health-damage",
+            "slow",
+            "dive",
+            "pick"
+          ],
+          "sourceRef": "boris-game-client-manual-entry-2026-08-09"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Bolster Bearicade",
+          "category": "defense",
+          "description": "While Tesseract Core is active, gain 15% increased Armors.",
+          "tags": [
+            "tesseract-core",
+            "armor",
+            "magic-armor",
+            "durability",
+            "frontline"
+          ],
+          "sourceRef": "boris-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "name": "Savage Shred",
+          "category": "armor shred",
+          "description": "Detection Protocol's Mark Shreds 35% Physical Armor for 5s when consumed.",
+          "tags": [
+            "mark",
+            "armor-shred",
+            "gank-setup",
+            "pick",
+            "anti-frontline"
+          ],
+          "sourceRef": "boris-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "name": "Apex Hunter",
+          "category": "execute pressure",
+          "description": "Chrono Swipe deals 70% more damage to Heroes below 20% Max Health.",
+          "tags": [
+            "chrono-swipe",
+            "low-health-damage",
+            "execute-pressure",
+            "mobility",
+            "finisher"
+          ],
+          "sourceRef": "boris-game-client-manual-entry-2026-08-09"
+        }
+      ],
       "threats": [
         "dive",
         "sustain",
-        "frontline"
+        "frontline",
+        "pick",
+        "on-hit",
+        "single-target-lockdown",
+        "anti-burst",
+        "bonus-health-damage"
       ],
       "answers": [
         "frontline",
         "anti-burst",
-        "duelist"
+        "duelist",
+        "sustain",
+        "hard-cc",
+        "fear",
+        "tracking",
+        "mobility",
+        "bonus-health-damage",
+        "armor-shred"
       ],
       "weaknesses": [
         "anti-heal",
-        "kite"
+        "kite",
+        "hard-cc",
+        "poke",
+        "disengage",
+        "anti-shield"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "boris-game-client-manual-entry-2026-08-09",
+        "roles": "boris-game-client-manual-entry-2026-08-09",
+        "classes": "boris-game-client-manual-entry-2026-08-09",
+        "ratings": "boris-game-client-manual-entry-2026-08-09",
+        "abilities": "boris-game-client-manual-entry-2026-08-09",
+        "augments": "boris-game-client-manual-entry-2026-08-09",
+        "kit": "boris-game-client-manual-entry-2026-08-09"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Boris text dated 2026-08-09. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
       "id": "countess",
       "name": "Countess",
       "roles": [
+        "jungle",
         "midlane",
-        "jungle"
+        "offlane"
+      ],
+      "classes": [
+        "assassin"
       ],
       "damage": "magical",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 1,
+        "abilityPower": 8,
+        "durability": 2,
+        "mobility": 5
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Sophia & Marie",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 64.0/67.2/70.5/74.0/77.6/81.4/85.4/89.6/93.9/98.4/103.1/107.9/112.9/118.1/123.5/129.0/134.7/140.5 (+75% physical power) physical damage.",
+          "scaling": {
+            "physicalDamage": [64, 67.2, 70.5, 74, 77.6, 81.4, 85.4, 89.6, 93.9, 98.4, 103.1, 107.9, 112.9, 118.1, 123.5, 129, 134.7, 140.5],
+            "physicalPowerRatio": 0.75
+          },
+          "effects": [
+            "melee-basic",
+            "physical-damage"
+          ],
+          "sourceRef": "countess-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "passive",
+          "name": "Blood Tithe",
+          "kind": "passive",
+          "damageType": "true",
+          "description": "Dealing damage to an Enemy Hero with abilities two times within 4s applies Haemorrhage, dealing 4% of their maximum health as true damage over 4s, granting Countess 5% movement speed for the same duration. This effect can stack but will not refresh.",
+          "scaling": {
+            "abilityHitsRequired": 2,
+            "hitWindow": 4,
+            "haemorrhageMaxHealthTrueDamagePercent": 4,
+            "haemorrhageDuration": 4,
+            "movementSpeedPercent": 5,
+            "movementSpeedDuration": 4
+          },
+          "effects": [
+            "haemorrhage",
+            "true-damage",
+            "max-health-damage",
+            "movement-speed",
+            "stacking-damage",
+            "ability-combo"
+          ],
+          "sourceRef": "countess-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "primary",
+          "name": "Shadow Slip",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Rapidly dash to a location in a cloud of blood, dealing 40.0/60.0/80.0/100.0/120.0 (+35% magical power) magical damage to nearby enemies and slowing them by 25% for 1.25s. A Shadow is left in your original position. Re-triggering the ability within 3.5s will swap places with the Shadow.",
+          "scaling": {
+            "magicalDamage": [40, 60, 80, 100, 120],
+            "magicalPowerRatio": 0.35,
+            "slowPercent": 25,
+            "slowDuration": 1.25,
+            "shadowSwapWindow": 3.5
+          },
+          "cooldown": [18, 17.5, 17, 16.5, 16],
+          "effects": [
+            "dash",
+            "mobility",
+            "shadow-swap",
+            "magical-damage",
+            "slow",
+            "engage",
+            "disengage",
+            "backline-access"
+          ],
+          "sourceRef": "countess-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "secondary",
+          "name": "Eventide",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Send out a cloud of darkness dealing 105.0/145.0/185.0/225.0/265.0 (+80% magical power) magical damage to Enemy Targets within its path.",
+          "scaling": {
+            "magicalDamage": [105, 145, 185, 225, 265],
+            "magicalPowerRatio": 0.8
+          },
+          "cooldown": [11, 10, 9, 8, 7],
+          "effects": [
+            "line-damage",
+            "magical-damage",
+            "burst",
+            "poke",
+            "waveclear"
+          ],
+          "sourceRef": "countess-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "alternate",
+          "name": "Blade Siphon",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Countess spins and strikes all Enemy Targets around her, dealing 80.0/110.0/140.0/170.0/200.0 (+60% magical power) magical damage to each and healing herself for 4.0/6.0/8.0/10.0/12.0 (+10% magical power) per Target hit. Against Heroes the healing is increased by 450%. Monsters receive 95 more damage.",
+          "scaling": {
+            "magicalDamage": [80, 110, 140, 170, 200],
+            "magicalPowerRatio": 0.6,
+            "healPerTarget": [4, 6, 8, 10, 12],
+            "healMagicalPowerRatio": 0.1,
+            "heroHealingIncreasePercent": 450,
+            "bonusMonsterDamage": 95
+          },
+          "cooldown": [11, 10, 9, 8, 7],
+          "effects": [
+            "area-damage",
+            "magical-damage",
+            "self-heal",
+            "sustain",
+            "jungle-clear",
+            "burst"
+          ],
+          "sourceRef": "countess-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Feast",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "Leap to an Enemy Hero, forcing them to face Countess and Suppress them for 0.75s. After the duration, Countess deals 135.0/185.0/235.0 (+5% (+2.5% magical power) of the target's maximum health) magical damage and applying Haemorrhage. Targets already affected by Haemorrhage take 50% bonus damage and Countess restores health equal to 100% of the damage dealt.",
+          "scaling": {
+            "suppressDuration": 0.75,
+            "magicalDamage": [135, 185, 235],
+            "targetMaxHealthDamagePercent": 5,
+            "targetMaxHealthMagicalPowerRatio": 0.025,
+            "haemorrhageBonusDamagePercent": 50,
+            "damageDealtHealingPercent": 100
+          },
+          "cooldown": [135, 110, 85],
+          "effects": [
+            "leap",
+            "suppression",
+            "hard-cc",
+            "single-target-lockdown",
+            "magical-damage",
+            "max-health-damage",
+            "haemorrhage",
+            "self-heal",
+            "finisher",
+            "dive"
+          ],
+          "sourceRef": "countess-game-client-manual-entry-2026-08-09"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Shadow Echo",
+          "category": "mobility damage",
+          "description": "Repeat Shadow Slip's damage effect at your current location when swapping places with your Shadow.",
+          "tags": [
+            "shadow-slip",
+            "mobility",
+            "area-damage",
+            "swap",
+            "burst"
+          ],
+          "sourceRef": "countess-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "name": "Sanguine Slash",
+          "category": "isolated damage",
+          "description": "Blade Siphon deals 20% more damage to Isolated Targets.",
+          "tags": [
+            "blade-siphon",
+            "isolated-target",
+            "burst",
+            "dueling",
+            "pick"
+          ],
+          "sourceRef": "countess-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "name": "Blood Well",
+          "category": "takedown sustain",
+          "description": "Takedowns summon a pool of blood with 18 charges for 120s. While standing in the pool, Countess consumes a charge to restore 2% Max Health and 2.5% Max Mana every 0.25s.",
+          "tags": [
+            "takedown",
+            "sustain",
+            "health-restore",
+            "mana-restore",
+            "reset-window"
+          ],
+          "sourceRef": "countess-game-client-manual-entry-2026-08-09"
+        }
+      ],
       "threats": [
         "burst",
         "dive",
-        "pick"
+        "pick",
+        "backline-access",
+        "single-target-lockdown",
+        "sustain",
+        "reset-pressure"
       ],
       "answers": [
         "burst",
         "backline-access",
-        "mobility"
+        "mobility",
+        "squishy-punish",
+        "pick",
+        "self-heal",
+        "max-health-damage",
+        "waveclear"
       ],
       "weaknesses": [
         "hard-cc",
-        "anti-burst"
+        "anti-burst",
+        "anti-heal",
+        "peel",
+        "silence",
+        "reveal",
+        "frontline"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "countess-game-client-manual-entry-2026-08-09",
+        "roles": "countess-game-client-manual-entry-2026-08-09",
+        "classes": "countess-game-client-manual-entry-2026-08-09",
+        "ratings": "countess-game-client-manual-entry-2026-08-09",
+        "abilities": "countess-game-client-manual-entry-2026-08-09",
+        "augments": "countess-game-client-manual-entry-2026-08-09",
+        "kit": "countess-game-client-manual-entry-2026-08-09"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Countess text dated 2026-08-09. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
@@ -505,67 +2173,482 @@
         "offlane",
         "jungle"
       ],
-      "damage": "physical",
+      "classes": [
+        "fighter"
+      ],
+      "damage": "mixed",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 5,
+        "abilityPower": 7,
+        "durability": 5,
+        "mobility": 5
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Crunch",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 65.0/67.7/70.5/73.4/76.5/79.7/83.1/86.6/90.3/94.1/98.0/102.1/106.3/110.7/115.2/119.9/124.7/129.6 (+80% physical power) physical damage.",
+          "scaling": {
+            "physicalDamage": [65, 67.7, 70.5, 73.4, 76.5, 79.7, 83.1, 86.6, 90.3, 94.1, 98, 102.1, 106.3, 110.7, 115.2, 119.9, 124.7, 129.6],
+            "physicalPowerRatio": 0.8
+          },
+          "effects": [
+            "melee-basic",
+            "physical-damage"
+          ],
+          "sourceRef": "crunch-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "passive",
+          "name": "Cross Crunch",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "After casting an ability, Crunch amplifies his next basic attack to deal (+28% physical power)(+30% magical power) bonus magical damage and reduce his current cooldowns by 1s. Passive: Upon using a basic ability, Crunch gains a stack of Turbo for 10s. While at 2 stacks, Crunch activates Turbo Crunch. The next ability used in this state consumes Turbo Crunch to deal enhanced effects.",
+          "scaling": {
+            "bonusMagicalDamagePhysicalPowerRatio": 0.28,
+            "bonusMagicalDamageMagicalPowerRatio": 0.3,
+            "currentCooldownReduction": 1,
+            "turboStackDuration": 10,
+            "turboStacksRequired": 2
+          },
+          "effects": [
+            "empowered-basic",
+            "bonus-magical-damage",
+            "cooldown-reduction",
+            "ability-weaving",
+            "turbo-stacks",
+            "empowered-ability"
+          ],
+          "sourceRef": "crunch-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "primary",
+          "name": "Left Crunch",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Crunch swings, dealing 20.0/35.0/50.0/65.0/80.0 (+110.0/115.0/120.0/125.0/130.0% physical power)(+75% magical power) physical damage to the first Enemy hit and 100% to subsequent Targets. Empowered: Damage is increased to 30.0/52.5/75.0/97.5/120.0 (+120.0/126.0/132.0/138.0/144.0% physical power)(+80% magical power) and dealt as true damage to all Targets.",
+          "scaling": {
+            "physicalDamage": [20, 35, 50, 65, 80],
+            "physicalPowerRatio": [1.1, 1.15, 1.2, 1.25, 1.3],
+            "magicalPowerRatio": 0.75,
+            "subsequentTargetDamagePercent": 100,
+            "empoweredTrueDamage": [30, 52.5, 75, 97.5, 120],
+            "empoweredPhysicalPowerRatio": [1.2, 1.26, 1.32, 1.38, 1.44],
+            "empoweredMagicalPowerRatio": 0.8
+          },
+          "cooldown": [10, 9, 8, 7, 6],
+          "effects": [
+            "physical-damage",
+            "cleave",
+            "true-damage",
+            "empowered-when-turbo",
+            "dueling"
+          ],
+          "sourceRef": "crunch-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "secondary",
+          "name": "Right Crunch",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Crunch jabs, dealing 60.0/90.0/120.0/150.0/180.0 (+110% physical power)(+75% magical power) physical damage to all nearby Enemies, Slowing them by 50% for 1s. Empowered: Launch upwards, uppercutting nearby Enemies and Knocking them Up for 0.75s.",
+          "scaling": {
+            "physicalDamage": [60, 90, 120, 150, 180],
+            "physicalPowerRatio": 1.1,
+            "magicalPowerRatio": 0.75,
+            "slowPercent": 50,
+            "slowDuration": 1,
+            "empoweredKnockupDuration": 0.75
+          },
+          "cooldown": [13, 12, 11, 10, 9],
+          "effects": [
+            "area-damage",
+            "physical-damage",
+            "slow",
+            "knockup",
+            "hard-cc",
+            "empowered-when-turbo",
+            "anti-dive"
+          ],
+          "sourceRef": "crunch-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "alternate",
+          "name": "Forward Crunch",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Dash forward, dealing 60.0/85.0/110.0/135.0/160.0 (+75% physical power)(+45% magical power) physical damage on contact and Stunning them for 0.25s. Empowered: Dash an extended distance and pushes Enemy Heroes.",
+          "scaling": {
+            "physicalDamage": [60, 85, 110, 135, 160],
+            "physicalPowerRatio": 0.75,
+            "magicalPowerRatio": 0.45,
+            "stunDuration": 0.25
+          },
+          "cooldown": [19, 18, 17, 16, 15],
+          "effects": [
+            "dash",
+            "mobility",
+            "physical-damage",
+            "stun",
+            "hard-cc",
+            "push",
+            "engage",
+            "empowered-when-turbo"
+          ],
+          "sourceRef": "crunch-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Re-Crunch",
+          "kind": "ultimate ability",
+          "description": "Passive: Every third basic attack or ability hit against Heroes or Monsters heals Crunch for 20.0/60.0/100.0 (+70% physical power)(+20% magical power). Active: Repeat the last ability used.",
+          "scaling": {
+            "healTriggerEveryHits": 3,
+            "heal": [20, 60, 100],
+            "healPhysicalPowerRatio": 0.7,
+            "healMagicalPowerRatio": 0.2
+          },
+          "cooldown": [50, 35, 20],
+          "effects": [
+            "repeat-last-ability",
+            "self-heal",
+            "sustain",
+            "combo-extension",
+            "ability-reset",
+            "dueling"
+          ],
+          "sourceRef": "crunch-game-client-manual-entry-2026-08-09"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Combo Crunch",
+          "category": "attack speed",
+          "description": "Dealing damage with Cross Crunch grants 7.5% Total Attack Speed for 3s, stacking up to 4 times.",
+          "tags": [
+            "cross-crunch",
+            "attack-speed",
+            "stacking-buff",
+            "ability-weaving",
+            "dueling"
+          ],
+          "sourceRef": "crunch-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "name": "Lunge Crunch",
+          "category": "mobility",
+          "description": "Forward Crunch travels 10% further.",
+          "tags": [
+            "forward-crunch",
+            "mobility",
+            "engage-range",
+            "chase"
+          ],
+          "sourceRef": "crunch-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "name": "Falcon Crunch",
+          "category": "empowered right crunch",
+          "description": "Empowered Right Crunch deals 15% increased damage and launches Crunch 4x higher when used mid-air. Its Cooldown is 30% longer when this occurs.",
+          "tags": [
+            "right-crunch",
+            "empowered",
+            "knockup",
+            "airborne",
+            "damage-increase",
+            "cooldown-tradeoff"
+          ],
+          "sourceRef": "crunch-game-client-manual-entry-2026-08-09"
+        }
+      ],
       "threats": [
         "dive",
         "sustain",
-        "engage"
+        "engage",
+        "duelist",
+        "combo",
+        "hard-cc",
+        "true-damage",
+        "ability-reset"
       ],
       "answers": [
         "hard-cc",
         "duelist",
-        "mobility"
+        "mobility",
+        "anti-dive",
+        "sustain",
+        "knockup",
+        "stun",
+        "displacement",
+        "true-damage",
+        "frontline"
       ],
       "weaknesses": [
         "anti-heal",
-        "poke"
+        "poke",
+        "kite",
+        "hard-cc",
+        "silence",
+        "disengage",
+        "cooldown-dependent"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "crunch-game-client-manual-entry-2026-08-09",
+        "roles": "crunch-game-client-manual-entry-2026-08-09",
+        "classes": "crunch-game-client-manual-entry-2026-08-09",
+        "ratings": "crunch-game-client-manual-entry-2026-08-09",
+        "abilities": "crunch-game-client-manual-entry-2026-08-09",
+        "augments": "crunch-game-client-manual-entry-2026-08-09",
+        "kit": "crunch-game-client-manual-entry-2026-08-09"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Crunch text dated 2026-08-09. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
       "id": "dekker",
       "name": "Dekker",
       "roles": [
-        "support",
-        "midlane"
+        "support"
+      ],
+      "classes": [
+        "support"
       ],
       "damage": "magical",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 1,
+        "abilityPower": 3,
+        "durability": 3,
+        "mobility": 5
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "The Ionizer",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged basic attack dealing 60.0/63.4/66.9/70.6/74.5/78.6/82.9/87.3/91.9/96.7/101.7/106.9/112.2/117.7/123.4/129.3/135.4/141.6 (+40% physical power) physical damage.",
+          "scaling": {
+            "physicalDamage": [60, 63.4, 66.9, 70.6, 74.5, 78.6, 82.9, 87.3, 91.9, 96.7, 101.7, 106.9, 112.2, 117.7, 123.4, 129.3, 135.4, 141.6],
+            "physicalPowerRatio": 0.4
+          },
+          "effects": [
+            "ranged-basic",
+            "physical-damage"
+          ],
+          "sourceRef": "dekker-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "passive",
+          "name": "Rocket Boots",
+          "kind": "passive",
+          "description": "Dekker can jump while airborne to activate Rocket Boots, propelling her upward. Nearby Allies within 1000 units gain 20% Decaying Movement Speed for 1.5s. Rocket Boots' cooldown is reduced by 3s each time Dekker uses an ability.",
+          "scaling": {
+            "allyRadius": 1000,
+            "allyDecayingMovementSpeedPercent": 20,
+            "allyMovementSpeedDuration": 1.5,
+            "cooldownReductionOnAbilityUse": 3
+          },
+          "effects": [
+            "airborne-jump",
+            "self-mobility",
+            "ally-mobility",
+            "movement-speed",
+            "cooldown-reduction",
+            "disengage"
+          ],
+          "sourceRef": "dekker-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "primary",
+          "name": "Photon Disruptor",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Release a drone emitting a beam of energy along its path, dealing 90.0/130.0/170.0/210.0/250.0 (+80% magical power) magical damage to all Enemies hit and Slowing them by 30.0/32.5/35.0/37.5/40.0% for 1s.",
+          "scaling": {
+            "magicalDamage": [90, 130, 170, 210, 250],
+            "magicalPowerRatio": 0.8,
+            "slowPercent": [30, 32.5, 35, 37.5, 40],
+            "slowDuration": 1
+          },
+          "cooldown": [12, 11, 10, 9, 8],
+          "effects": [
+            "line-damage",
+            "magical-damage",
+            "slow",
+            "poke",
+            "peel"
+          ],
+          "sourceRef": "dekker-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "secondary",
+          "name": "Containment Fence",
+          "kind": "secondary ability",
+          "description": "Deploy a circular energy fence for 2.6/2.8/2.9/3.0/3.2s, preventing Enemy Heroes from passing through.",
+          "scaling": {
+            "duration": [2.6, 2.8, 2.9, 3, 3.2]
+          },
+          "cooldown": [22, 21, 20, 19, 18],
+          "effects": [
+            "terrain-control",
+            "containment",
+            "zone-control",
+            "peel",
+            "anti-dive",
+            "disengage"
+          ],
+          "sourceRef": "dekker-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "alternate",
+          "name": "Stasis Bomb",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Launch a bouncing bomb, dealing 70.0/95.0/120.0/145.0/170.0 (+45% magical power) magical damage and Stunning Enemies hit in a small area for 0.9s. Stun duration increases up to 1.6s based on distance (3500 units max).",
+          "scaling": {
+            "magicalDamage": [70, 95, 120, 145, 170],
+            "magicalPowerRatio": 0.45,
+            "minimumStunDuration": 0.9,
+            "maximumStunDuration": 1.6,
+            "maximumDistance": 3500
+          },
+          "cooldown": [15, 14.5, 14, 13.5, 13],
+          "effects": [
+            "area-damage",
+            "magical-damage",
+            "stun",
+            "hard-cc",
+            "pick",
+            "peel"
+          ],
+          "sourceRef": "dekker-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Ion Strike",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "Summon a bot above the target location that blasts the ground after a short delay, dealing 190.0/300.0/410.0 (+80% magical power) magical damage and Slowing Enemies hit by 50% for 1.5s. Enemies caught in the center are Stunned instead.",
+          "scaling": {
+            "magicalDamage": [190, 300, 410],
+            "magicalPowerRatio": 0.8,
+            "slowPercent": 50,
+            "slowDuration": 1.5
+          },
+          "cooldown": [115, 95, 75],
+          "effects": [
+            "area-damage",
+            "magical-damage",
+            "slow",
+            "stun",
+            "hard-cc",
+            "zone-control",
+            "teamfight"
+          ],
+          "sourceRef": "dekker-game-client-manual-entry-2026-08-09"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Nothin' But Net",
+          "category": "scaling reward",
+          "description": "Stasis Bomb grants +25g and +2 Magical Power when it damages a Hero.",
+          "tags": [
+            "stasis-bomb",
+            "gold",
+            "magical-power",
+            "hero-hit-reward",
+            "scaling"
+          ],
+          "sourceRef": "dekker-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "name": "Photon Efficiency",
+          "category": "damage cooldown",
+          "description": "Photon Disruptor deals 10% more damage and its Cooldown is reduced by 15% when it hits a Hero.",
+          "tags": [
+            "photon-disruptor",
+            "damage-increase",
+            "cooldown-reduction",
+            "poke",
+            "hero-hit-reward"
+          ],
+          "sourceRef": "dekker-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "name": "Polarity Strike",
+          "category": "shield",
+          "description": "Ion Strike also grants a 200.0/350.0/500.0 (+50% magical power)(+15% Target's Missing Health) Shield to Allied Heroes for 3.5s.",
+          "tags": [
+            "ion-strike",
+            "shield",
+            "ally-protection",
+            "anti-burst",
+            "teamfight"
+          ],
+          "sourceRef": "dekker-game-client-manual-entry-2026-08-09"
+        }
+      ],
       "threats": [
         "pick",
         "peel",
-        "zone-control"
+        "zone-control",
+        "hard-cc",
+        "anti-dive",
+        "teamfight-control",
+        "ally-mobility",
+        "shielding"
       ],
       "answers": [
         "hard-cc",
         "peel",
         "anti-dive",
-        "disengage"
+        "disengage",
+        "containment",
+        "zone-control",
+        "stun",
+        "slow",
+        "anti-engage",
+        "ally-protection"
       ],
       "weaknesses": [
-        "burst-vulnerable"
+        "burst-vulnerable",
+        "dive",
+        "poke",
+        "cleanse",
+        "cooldown-dependent",
+        "low-durability"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "dekker-game-client-manual-entry-2026-08-09",
+        "roles": "dekker-game-client-manual-entry-2026-08-09",
+        "classes": "dekker-game-client-manual-entry-2026-08-09",
+        "ratings": "dekker-game-client-manual-entry-2026-08-09",
+        "abilities": "dekker-game-client-manual-entry-2026-08-09",
+        "augments": "dekker-game-client-manual-entry-2026-08-09",
+        "kit": "dekker-game-client-manual-entry-2026-08-09"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Dekker text dated 2026-08-09. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
@@ -574,67 +2657,520 @@
       "roles": [
         "carry"
       ],
+      "classes": [
+        "carry"
+      ],
       "damage": "physical",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 7,
+        "abilityPower": 4,
+        "durability": 1,
+        "mobility": 3
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Lucy",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged basic attack dealing 60.0/62.5/65.2/68.0/70.9/74.0/77.2/80.5/83.9/87.5/91.3/95.2/99.2/103.3/107.6/112.0/116.5/121.2 (+80% physical power) physical damage.",
+          "scaling": {
+            "physicalDamage": [60, 62.5, 65.2, 68, 70.9, 74, 77.2, 80.5, 83.9, 87.5, 91.3, 95.2, 99.2, 103.3, 107.6, 112, 116.5, 121.2],
+            "physicalPowerRatio": 0.8
+          },
+          "effects": [
+            "ranged-basic",
+            "physical-damage"
+          ],
+          "sourceRef": "drongo-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "passive",
+          "name": "Wastelander",
+          "kind": "passive",
+          "damageType": "physical",
+          "description": "Drongo's Critical Strikes and Abilities also apply a Bleed to Enemies, dealing 2.25% of their maximum health as physical damage over 3s. Bleed Damage is reduced to 0.3% for Monsters.",
+          "scaling": {
+            "heroMaxHealthBleedPercent": 2.25,
+            "bleedDuration": 3,
+            "monsterMaxHealthBleedPercent": 0.3
+          },
+          "effects": [
+            "bleed",
+            "physical-damage",
+            "max-health-damage",
+            "critical-strike-synergy",
+            "ability-applied"
+          ],
+          "sourceRef": "drongo-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "primary",
+          "name": "Gag Grenade",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Toss a tear gas grenade that explodes dealing 45.0/65.0/85.0/105.0/125.0 (+50% physical power)(+100% magical power) physical damage to Enemy Targets hit and silencing them for 0.8/0.9/1.0/1.1/1.2s. The gas lasts for 3s, applying Wastelander every 0.3s.",
+          "scaling": {
+            "physicalDamage": [45, 65, 85, 105, 125],
+            "physicalPowerRatio": 0.5,
+            "magicalPowerRatio": 1,
+            "silenceDuration": [0.8, 0.9, 1, 1.1, 1.2],
+            "gasDuration": 3,
+            "wastelanderApplicationRate": 0.3
+          },
+          "cooldown": [22, 20, 18, 16, 14],
+          "effects": [
+            "area-damage",
+            "physical-damage",
+            "silence",
+            "hard-cc",
+            "bleed-application",
+            "zone-control",
+            "anti-caster"
+          ],
+          "sourceRef": "drongo-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "secondary",
+          "name": "Rad Rounds",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Irradiate Drongo's basic attacks, granting him 20.0/22.5/25.0/27.5/30.0% Attack Speed for 4s. During this window, shots Irradiate Enemies for 1.5s, the timer refreshing with each hit. After Irradiate expires, the target erupts, dealing 8.0/15.0/22.0/29.0/36.0 (+22% physical power) physical damage to them for the first stack, and 8.0/15.0/22.0/29.0/36.0 (+22% physical power) for subsequent stacks. Applies an additional stack of Wastelander per Irradiate stack. If Drongo damages irradiated targets with Old Rusty or Shrapnel Cannon, they erupt immediately.",
+          "scaling": {
+            "attackSpeedPercent": [20, 22.5, 25, 27.5, 30],
+            "buffDuration": 4,
+            "irradiateDuration": 1.5,
+            "firstStackPhysicalDamage": [8, 15, 22, 29, 36],
+            "firstStackPhysicalPowerRatio": 0.22,
+            "subsequentStackPhysicalDamage": [8, 15, 22, 29, 36],
+            "subsequentStackPhysicalPowerRatio": 0.22,
+            "wastelanderStacksPerIrradiateStack": 1
+          },
+          "cooldown": [16, 14, 12, 10, 8],
+          "effects": [
+            "attack-speed",
+            "on-hit",
+            "stacking-damage",
+            "physical-damage",
+            "bleed-application",
+            "sustained-dps",
+            "detonation"
+          ],
+          "sourceRef": "drongo-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "alternate",
+          "name": "Old Rusty",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Throw a boomerang, dealing 45.0/70.0/95.0/120.0/145.0 (+55% physical power)(+45% magical power) physical damage to all Enemies hit and Slowing them by 30.0/32.5/35.0/37.5/40.0% for 1.25s. Upon hitting terrain or travelling max range, it returns and repeats the effects.",
+          "scaling": {
+            "physicalDamage": [45, 70, 95, 120, 145],
+            "physicalPowerRatio": 0.55,
+            "magicalPowerRatio": 0.45,
+            "slowPercent": [30, 32.5, 35, 37.5, 40],
+            "slowDuration": 1.25
+          },
+          "cooldown": [12, 11, 10, 9, 8],
+          "effects": [
+            "boomerang",
+            "physical-damage",
+            "slow",
+            "poke",
+            "multi-hit",
+            "rad-rounds-detonation"
+          ],
+          "sourceRef": "drongo-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Shrapnel Cannon",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Unleash a bazooka blast, dealing 170.0/280.0/390.0 (+115% physical power) physical damage to all Enemies hit and Shredding their Physical Armor by 30% for 4s. When used In-Air, the blast launches Drongo in the opposite direction, becoming briefly CC Immune and Pushing Back any Enemies in front of him.",
+          "scaling": {
+            "physicalDamage": [170, 280, 390],
+            "physicalPowerRatio": 1.15,
+            "physicalArmorShredPercent": 30,
+            "armorShredDuration": 4
+          },
+          "cooldown": [125, 115, 105],
+          "effects": [
+            "area-damage",
+            "physical-damage",
+            "armor-shred",
+            "self-displacement",
+            "cc-immunity",
+            "push",
+            "peel",
+            "rad-rounds-detonation"
+          ],
+          "sourceRef": "drongo-game-client-manual-entry-2026-08-09"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Smog Therapy",
+          "category": "healing zone",
+          "description": "While standing in Gag Grenade, Yourself and Allied Heroes restore for 10.0/55.0/100.0/145.0/190.0 (+105% physical power)(+120% magical power) Health over its lifetime.",
+          "tags": [
+            "gag-grenade",
+            "healing",
+            "ally-sustain",
+            "zone-control",
+            "self-sustain"
+          ],
+          "sourceRef": "drongo-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "name": "Bring The Boom",
+          "category": "area detonation",
+          "description": "Rad Rounds deals 60% of its damage to nearby Enemies upon exploding.",
+          "tags": [
+            "rad-rounds",
+            "area-damage",
+            "detonation",
+            "sustained-dps",
+            "teamfight"
+          ],
+          "sourceRef": "drongo-game-client-manual-entry-2026-08-09"
+        },
+        {
+          "name": "Shred Spree",
+          "category": "ultimate cooldown",
+          "description": "Shrapnel Cannon's Cooldown is reduced by 85%, but it deals 60% less damage.",
+          "tags": [
+            "shrapnel-cannon",
+            "cooldown-reduction",
+            "armor-shred",
+            "damage-tradeoff",
+            "utility-ultimate"
+          ],
+          "sourceRef": "drongo-game-client-manual-entry-2026-08-09"
+        }
+      ],
       "threats": [
         "poke",
         "sustained-dps",
-        "anti-heal"
+        "bleed",
+        "silence",
+        "armor-shred",
+        "tank-shred",
+        "zone-control"
       ],
       "answers": [
-        "anti-heal",
         "tank-shred",
-        "poke"
+        "poke",
+        "silence",
+        "armor-shred",
+        "sustained-dps",
+        "peel",
+        "self-displacement",
+        "anti-frontline"
       ],
       "weaknesses": [
         "dive",
-        "burst-vulnerable"
+        "burst-vulnerable",
+        "low-mobility",
+        "low-durability",
+        "hard-cc",
+        "backline-access"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "drongo-game-client-manual-entry-2026-08-09",
+        "roles": "drongo-game-client-manual-entry-2026-08-09",
+        "classes": "drongo-game-client-manual-entry-2026-08-09",
+        "ratings": "drongo-game-client-manual-entry-2026-08-09",
+        "abilities": "drongo-game-client-manual-entry-2026-08-09",
+        "augments": "drongo-game-client-manual-entry-2026-08-09",
+        "kit": "drongo-game-client-manual-entry-2026-08-09"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Drongo text dated 2026-08-09. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
       "id": "eden",
       "name": "Eden",
       "roles": [
-        "carry",
-        "midlane"
+        "carry"
       ],
-      "damage": "magical",
+      "classes": [
+        "carry"
+      ],
+      "damage": "physical",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 6,
+        "abilityPower": 4,
+        "durability": 4,
+        "mobility": 8
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Nova Repeater/Plasma Claws",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged: Basic attack that fires 8 rounds per second, each dealing (+11% physical power) physical damage. Melee: Basic attack chain with 4 light attacks that deals (+35% physical power) physical damage, followed by a heavy attack that deals (+100% physical power).",
+          "scaling": {
+            "rangedRoundsPerSecond": 8,
+            "rangedPhysicalPowerRatioPerRound": 0.11,
+            "meleeLightAttackCount": 4,
+            "meleeLightPhysicalPowerRatio": 0.35,
+            "meleeHeavyPhysicalPowerRatio": 1
+          },
+          "effects": [
+            "stance-basic",
+            "ranged-basic",
+            "melee-basic-chain",
+            "physical-damage",
+            "rapid-fire"
+          ],
+          "sourceRef": "eden-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "passive",
+          "name": "Helios Core",
+          "kind": "passive",
+          "description": "Eden generates Heat from dealing damage to Heroes. Upon reaching 300 Heat, Eden Overheats, gaining access to her Limit Break abilities. Heat will decay when not dealing damage to Heroes for 3.5s. Heat Generation is increased by 12.5%/30%/47.5%/65% based on Ultimate Level. Eden converts 1% Attack Speed into 60% increased Physical Power.",
+          "scaling": {
+            "overheatThreshold": 300,
+            "heatDecayDelay": 3.5,
+            "heatGenerationIncreasePercentByUltimateLevel": [12.5, 30, 47.5, 65],
+            "attackSpeedPercentConverted": 1,
+            "physicalPowerIncreasePercentFromAttackSpeed": 60
+          },
+          "effects": [
+            "heat",
+            "overheat",
+            "limit-break-access",
+            "attack-speed-conversion",
+            "physical-power",
+            "stance-synergy"
+          ],
+          "sourceRef": "eden-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "primary",
+          "name": "Tachyon Lance/Axiom Strike",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Ranged: Fire a piercing laser, dealing 70.0/95.0/120.0/145.0/170.0 (+70.0/75.0/80.0/85.0/90.0% physical power)(+100% physical penetration) physical damage, dealing 50% damage to Targets beyond the first. Melee: Using her twin claws, Eden spins rapidly 4 times, each time dealing 15.0/20.0/25.0/30.0/35.0 (+15% physical power)(+95% physical penetration) physical damage, before unleashing a lightning strike forward, dealing 60.0/80.0/100.0/120.0/140.0 (+45% physical power) (+280% physical penetration) physical damage and slowing Targets hit by 50% for 0.75s.",
+          "scaling": {
+            "rangedPhysicalDamage": [70, 95, 120, 145, 170],
+            "rangedPhysicalPowerRatio": [0.7, 0.75, 0.8, 0.85, 0.9],
+            "rangedPhysicalPenetrationRatio": 1,
+            "rangedSubsequentTargetDamagePercent": 50,
+            "meleeSpinHits": 4,
+            "meleeSpinPhysicalDamage": [15, 20, 25, 30, 35],
+            "meleeSpinPhysicalPowerRatio": 0.15,
+            "meleeSpinPhysicalPenetrationRatio": 0.95,
+            "meleeStrikePhysicalDamage": [60, 80, 100, 120, 140],
+            "meleeStrikePhysicalPowerRatio": 0.45,
+            "meleeStrikePhysicalPenetrationRatio": 2.8,
+            "meleeStrikeSlowPercent": 50,
+            "meleeStrikeSlowDuration": 0.75
+          },
+          "cooldown": [14, 11.75, 9.5, 7.25, 5],
+          "effects": [
+            "stance-ability",
+            "piercing-damage",
+            "physical-damage",
+            "physical-penetration-scaling",
+            "multi-hit",
+            "slow",
+            "poke",
+            "waveclear"
+          ],
+          "sourceRef": "eden-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "secondary",
+          "name": "Zero Shift",
+          "kind": "secondary ability",
+          "description": "Eden switches between ranged and melee stances, changing her abilities and basic attack. Ranged Stance Passive: Eden gains 6.0/14.0/22.0/30.0/38.0 Physical Power. Melee Stance Passive: Eden restores Health equal to 6.0/10.0/14.0/18.0/22.0% of damage dealt to Heroes.",
+          "scaling": {
+            "rangedPhysicalPower": [6, 14, 22, 30, 38],
+            "meleeHeroDamageHealingPercent": [6, 10, 14, 18, 22]
+          },
+          "cooldown": [0.3, 0.3, 0.3, 0.3, 0.3],
+          "effects": [
+            "stance-switch",
+            "physical-power",
+            "self-heal",
+            "sustain",
+            "stance-basic-swap",
+            "stance-ability-swap"
+          ],
+          "sourceRef": "eden-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "alternate",
+          "name": "Sidewind/Talon Drive",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Ranged: Thrust in current movement direction and empower your Nova Repeater for 1.5s to launch an empowered Railshot that explodes dealing 70.0/100.0/130.0/160.0/190.0 (+70% physical power) (+85% physical penetration) physical damage to Targets hit. Melee: Dash towards Target enemy, uppercutting them, dealing 80.0/105.0/130.0/155.0/180.0 (+90% physical power) physical damage and slowing them by 40% for 0.5s.",
+          "scaling": {
+            "rangedEmpowerDuration": 1.5,
+            "rangedRailshotPhysicalDamage": [70, 100, 130, 160, 190],
+            "rangedRailshotPhysicalPowerRatio": 0.7,
+            "rangedRailshotPhysicalPenetrationRatio": 0.85,
+            "meleePhysicalDamage": [80, 105, 130, 155, 180],
+            "meleePhysicalPowerRatio": 0.9,
+            "meleeSlowPercent": 40,
+            "meleeSlowDuration": 0.5
+          },
+          "cooldown": [24, 23, 22, 21, 20],
+          "cost": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+          "effects": [
+            "stance-ability",
+            "dash",
+            "mobility",
+            "empowered-basic",
+            "physical-damage",
+            "physical-penetration-scaling",
+            "slow",
+            "engage",
+            "disengage"
+          ],
+          "sourceRef": "eden-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Limit Break",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Ranged: Eden channels for a brief duration before flying upwards to fire four concentrated beams of energy that decimate Targets over 1s, each dealing 50.0/100.0/150.0/200.0 (+65% physical power) physical damage and applying a 40% Slow for 1.5s. Eden will then rapidly descend back to the location she flew from. Melee: Eden channels for a brief duration, before teleporting to the Target location, striking Targets within over 2.4s. Each strike deals 30.0/42.0/54.0/66.0 (+27% physical power) physical damage, decreased by 10% per consecutive hit, up to 80%, and Slowing targets hit by 15% for 0.5s. Eden can move the target location whilst striking. After the duration, Eden slams into the ground from above, dealing 100.0/195.0/290.0/385.0 (+150% physical power) physical damage.",
+          "scaling": {
+            "rangedBeamCount": 4,
+            "rangedDuration": 1,
+            "rangedPhysicalDamagePerBeam": [50, 100, 150, 200],
+            "rangedPhysicalPowerRatio": 0.65,
+            "rangedSlowPercent": 40,
+            "rangedSlowDuration": 1.5,
+            "meleeStrikeDuration": 2.4,
+            "meleePhysicalDamagePerStrike": [30, 42, 54, 66],
+            "meleePhysicalPowerRatio": 0.27,
+            "meleeConsecutiveHitDamageDecreasePercent": 10,
+            "meleeMaximumDamageDecreasePercent": 80,
+            "meleeSlowPercent": 15,
+            "meleeSlowDuration": 0.5,
+            "meleeSlamPhysicalDamage": [100, 195, 290, 385],
+            "meleeSlamPhysicalPowerRatio": 1.5
+          },
+          "effects": [
+            "limit-break",
+            "stance-ultimate",
+            "channel",
+            "airborne",
+            "teleport",
+            "physical-damage",
+            "slow",
+            "multi-hit",
+            "burst",
+            "mobility"
+          ],
+          "sourceRef": "eden-game-client-manual-entry-2026-08-15"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Kinetic Waltz",
+          "category": "axiom strike mobility",
+          "description": "Axiom Strike deals 90% damage, has 30% reduced cooldown and grants 35% movement speed for 1.5s when damaging Enemy Heroes.",
+          "tags": [
+            "axiom-strike",
+            "cooldown-reduction",
+            "movement-speed",
+            "hero-hit-reward",
+            "damage-tradeoff"
+          ],
+          "sourceRef": "eden-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "name": "Focal Lens",
+          "category": "armor shred",
+          "description": "Hitting an enemy Hero with Tachyon Lance shreds their Physical Armor by 25% for 4s and reduces the cooldown by 10%.",
+          "tags": [
+            "tachyon-lance",
+            "armor-shred",
+            "cooldown-reduction",
+            "poke",
+            "anti-frontline"
+          ],
+          "sourceRef": "eden-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "name": "Limit Break: Echo",
+          "category": "cooldown reset",
+          "description": "After casting Limit Break, the cooldowns of your basic abilities in your current stance are instantly refreshed.",
+          "tags": [
+            "limit-break",
+            "cooldown-reset",
+            "combo-extension",
+            "reset-pressure",
+            "stance-synergy"
+          ],
+          "sourceRef": "eden-game-client-manual-entry-2026-08-15"
+        }
+      ],
       "threats": [
         "poke",
         "burst",
-        "zone-control"
+        "mobility",
+        "stance-flex",
+        "sustained-dps",
+        "armor-shred",
+        "reset-pressure",
+        "backline-access"
       ],
       "answers": [
         "poke",
         "waveclear",
-        "anti-frontline"
+        "anti-frontline",
+        "mobility",
+        "armor-shred",
+        "sustain",
+        "burst",
+        "self-peel",
+        "physical-dps"
       ],
       "weaknesses": [
         "dive",
-        "burst-vulnerable"
+        "burst-vulnerable",
+        "hard-cc",
+        "silence",
+        "anti-heal",
+        "cooldown-dependent",
+        "lockdown"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "eden-game-client-manual-entry-2026-08-15",
+        "roles": "eden-game-client-manual-entry-2026-08-15",
+        "classes": "eden-game-client-manual-entry-2026-08-15",
+        "ratings": "eden-game-client-manual-entry-2026-08-15",
+        "abilities": "eden-game-client-manual-entry-2026-08-15",
+        "augments": "eden-game-client-manual-entry-2026-08-15",
+        "kit": "eden-game-client-manual-entry-2026-08-15"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Eden text dated 2026-08-15. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
@@ -644,32 +3180,243 @@
         "jungle",
         "offlane"
       ],
+      "classes": [
+        "assassin"
+      ],
       "damage": "physical",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 4,
+        "abilityPower": 7,
+        "durability": 3,
+        "mobility": 7
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Windwalker",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 62.0/64.1/66.3/68.6/71.1/73.6/76.3/79.1/82.0/85.0/88.1/91.3/94.6/98.1/101.6/105.3/109.1/113.0 (+75% physical power) physical damage.",
+          "scaling": {
+            "physicalDamage": [62, 64.1, 66.3, 68.6, 71.1, 73.6, 76.3, 79.1, 82, 85, 88.1, 91.3, 94.6, 98.1, 101.6, 105.3, 109.1, 113],
+            "physicalPowerRatio": 0.75
+          },
+          "effects": [
+            "melee-basic",
+            "physical-damage"
+          ],
+          "sourceRef": "feng-mao-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "passive",
+          "name": "Executioners Path",
+          "kind": "passive",
+          "damageType": "physical",
+          "description": "Upon achieving 1.0/3.0/5.0 Unique Hero Takedowns, permanently gain 3.0/7.0/12.0 bonus physical penetration. Additionally increase all Physical Penetration by 40%.",
+          "scaling": {
+            "uniqueHeroTakedownThresholds": [1, 3, 5],
+            "bonusPhysicalPenetration": [3, 7, 12],
+            "physicalPenetrationIncreasePercent": 40
+          },
+          "effects": [
+            "takedown-scaling",
+            "physical-penetration",
+            "permanent-stats",
+            "snowball",
+            "anti-frontline"
+          ],
+          "sourceRef": "feng-mao-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "primary",
+          "name": "Safeguard",
+          "kind": "primary ability",
+          "description": "Gain a Spellshield for 1.5s. Blocking an ability doubles the passive stat gain for 5s. Passive: Gain 8.0/11.0/14.0/17.0/20.0 physical power and 2.0/3.0/4.0/5.0/6.0% movement speed.",
+          "scaling": {
+            "spellshieldDuration": 1.5,
+            "blockedAbilityPassiveStatMultiplier": 2,
+            "blockedAbilityPassiveStatDuration": 5,
+            "passivePhysicalPower": [8, 11, 14, 17, 20],
+            "passiveMovementSpeedPercent": [2, 3, 4, 5, 6]
+          },
+          "cooldown": [22, 20, 18, 16, 14],
+          "effects": [
+            "spellshield",
+            "anti-cc",
+            "physical-power",
+            "movement-speed",
+            "dueling",
+            "engage-safety"
+          ],
+          "sourceRef": "feng-mao-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "secondary",
+          "name": "Hamstring",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Feng Mao swings his glaive twice, each time dealing 45.0/60.0/75.0/90.0/105.0 (+40% physical power) physical damage to all Enemies around him, Slowing them by 30% for 1s. Each hit's damage is increased by 25.0/35.0/45.0/55.0/65.0 (+25% physical power) if only one target is hit.",
+          "scaling": {
+            "hits": 2,
+            "physicalDamagePerHit": [45, 60, 75, 90, 105],
+            "physicalPowerRatio": 0.4,
+            "slowPercent": 30,
+            "slowDuration": 1,
+            "isolatedBonusDamagePerHit": [25, 35, 45, 55, 65],
+            "isolatedBonusPhysicalPowerRatio": 0.25
+          },
+          "cooldown": [9, 8.25, 7.5, 6.75, 6],
+          "effects": [
+            "area-damage",
+            "physical-damage",
+            "multi-hit",
+            "slow",
+            "isolated-target",
+            "dueling",
+            "waveclear"
+          ],
+          "sourceRef": "feng-mao-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "alternate",
+          "name": "Reaping Dash",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Dash forward, dealing 55.0/75.0/95.0/115.0/135.0 (+40% physical power)(+6% of the target's current health) physical damage to all Enemies in Feng Mao's path, and in a small area around the target location. The Current Cooldown is reduced by 80% when achieving a takedown.",
+          "scaling": {
+            "physicalDamage": [55, 75, 95, 115, 135],
+            "physicalPowerRatio": 0.4,
+            "targetCurrentHealthDamagePercent": 6,
+            "takedownCurrentCooldownReductionPercent": 80
+          },
+          "cooldown": [22, 20, 18, 16, 14],
+          "effects": [
+            "dash",
+            "mobility",
+            "area-damage",
+            "physical-damage",
+            "current-health-damage",
+            "takedown-reset",
+            "backline-access"
+          ],
+          "sourceRef": "feng-mao-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Earth Shatter",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Feng Mao slams his glaive into the ground, dealing 225.0/300.0/375.0 (+40% physical power) physical damage to all Enemies in the area. If an Enemy is below 250.0/475.0/600.0 (+40% physical power) (+480% physical penetration) health, execute them. Upon executing an Enemy Hero, Earth Shatter may be recast within 14s at no cost.",
+          "scaling": {
+            "physicalDamage": [225, 300, 375],
+            "physicalPowerRatio": 0.4,
+            "executeHealthThreshold": [250, 475, 600],
+            "executePhysicalPowerRatio": 0.4,
+            "executePhysicalPenetrationRatio": 4.8,
+            "recastWindowOnHeroExecute": 14
+          },
+          "cooldown": [105, 95, 85],
+          "effects": [
+            "area-damage",
+            "physical-damage",
+            "execute",
+            "reset-pressure",
+            "recast-on-kill",
+            "teamfight-finisher"
+          ],
+          "sourceRef": "feng-mao-game-client-manual-entry-2026-08-15"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Ichorous Glaive",
+          "category": "missing health sustain",
+          "description": "Killing Enemy Units restores 4% of Missing Health, increased to 35% for Earth Shatter Executions.",
+          "tags": [
+            "missing-health-heal",
+            "unit-kill",
+            "earth-shatter",
+            "execute-sustain",
+            "jungle-clear"
+          ],
+          "sourceRef": "feng-mao-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "name": "Imperial Duelist",
+          "category": "dueling",
+          "description": "Your Basic Attacks debuff Targets for 3s. Against debuffed Targets, deal 5% more damage and take 5% less damage.",
+          "tags": [
+            "basic-attack",
+            "debuff",
+            "damage-increase",
+            "damage-reduction",
+            "dueling"
+          ],
+          "sourceRef": "feng-mao-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "name": "Seismic Smash",
+          "category": "ultimate control",
+          "description": "Earth Shatter also Knocks Up Enemies and Stuns for a short duration.",
+          "tags": [
+            "earth-shatter",
+            "knockup",
+            "stun",
+            "hard-cc",
+            "teamfight"
+          ],
+          "sourceRef": "feng-mao-game-client-manual-entry-2026-08-15"
+        }
+      ],
       "threats": [
         "dive",
         "burst",
-        "split-push"
+        "split-push",
+        "backline-access",
+        "execute",
+        "physical-penetration",
+        "reset-pressure",
+        "duelist"
       ],
       "answers": [
         "backline-access",
         "mobility",
-        "duelist"
+        "duelist",
+        "spellshield",
+        "anti-cc",
+        "execute-pressure",
+        "physical-penetration",
+        "anti-frontline",
+        "squishy-punish"
       ],
       "weaknesses": [
         "hard-cc",
-        "anti-burst"
+        "anti-burst",
+        "anti-shield",
+        "poke",
+        "peel",
+        "disengage",
+        "anti-heal"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "feng-mao-game-client-manual-entry-2026-08-15",
+        "roles": "feng-mao-game-client-manual-entry-2026-08-15",
+        "classes": "feng-mao-game-client-manual-entry-2026-08-15",
+        "ratings": "feng-mao-game-client-manual-entry-2026-08-15",
+        "abilities": "feng-mao-game-client-manual-entry-2026-08-15",
+        "augments": "feng-mao-game-client-manual-entry-2026-08-15",
+        "kit": "feng-mao-game-client-manual-entry-2026-08-15"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Feng Mao text dated 2026-08-15. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
