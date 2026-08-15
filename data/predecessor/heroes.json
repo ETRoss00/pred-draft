@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "eden-game-client-manual-entry-2026-08-15": {
+      "label": "Eden game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Eden roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -601,35 +606,276 @@
       "id": "eden",
       "name": "Eden",
       "roles": [
-        "carry",
-        "midlane"
+        "carry"
       ],
-      "damage": "magical",
+      "classes": [
+        "carry"
+      ],
+      "damage": "physical",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 6,
+        "abilityPower": 4,
+        "durability": 4,
+        "mobility": 8
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Nova Repeater/Plasma Claws",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged: Basic attack that fires 8 rounds per second, each dealing (+11% physical power) physical damage. Melee: Basic attack chain with 4 light attacks that deals (+35% physical power) physical damage, followed by a heavy attack that deals (+100% physical power).",
+          "scaling": {
+            "rangedRoundsPerSecond": 8,
+            "rangedPhysicalPowerRatioPerRound": 0.11,
+            "meleeLightAttackCount": 4,
+            "meleeLightPhysicalPowerRatio": 0.35,
+            "meleeHeavyPhysicalPowerRatio": 1
+          },
+          "effects": [
+            "stance-basic",
+            "ranged-basic",
+            "melee-basic-chain",
+            "physical-damage",
+            "rapid-fire"
+          ],
+          "sourceRef": "eden-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "passive",
+          "name": "Helios Core",
+          "kind": "passive",
+          "description": "Eden generates Heat from dealing damage to Heroes. Upon reaching 300 Heat, Eden Overheats, gaining access to her Limit Break abilities. Heat will decay when not dealing damage to Heroes for 3.5s. Heat Generation is increased by 12.5%/30%/47.5%/65% based on Ultimate Level. Eden converts 1% Attack Speed into 60% increased Physical Power.",
+          "scaling": {
+            "overheatThreshold": 300,
+            "heatDecayDelay": 3.5,
+            "heatGenerationIncreasePercentByUltimateLevel": [12.5, 30, 47.5, 65],
+            "attackSpeedPercentConverted": 1,
+            "physicalPowerIncreasePercentFromAttackSpeed": 60
+          },
+          "effects": [
+            "heat",
+            "overheat",
+            "limit-break-access",
+            "attack-speed-conversion",
+            "physical-power",
+            "stance-synergy"
+          ],
+          "sourceRef": "eden-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "primary",
+          "name": "Tachyon Lance/Axiom Strike",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Ranged: Fire a piercing laser, dealing 70.0/95.0/120.0/145.0/170.0 (+70.0/75.0/80.0/85.0/90.0% physical power)(+100% physical penetration) physical damage, dealing 50% damage to Targets beyond the first. Melee: Using her twin claws, Eden spins rapidly 4 times, each time dealing 15.0/20.0/25.0/30.0/35.0 (+15% physical power)(+95% physical penetration) physical damage, before unleashing a lightning strike forward, dealing 60.0/80.0/100.0/120.0/140.0 (+45% physical power) (+280% physical penetration) physical damage and slowing Targets hit by 50% for 0.75s.",
+          "scaling": {
+            "rangedPhysicalDamage": [70, 95, 120, 145, 170],
+            "rangedPhysicalPowerRatio": [0.7, 0.75, 0.8, 0.85, 0.9],
+            "rangedPhysicalPenetrationRatio": 1,
+            "rangedSubsequentTargetDamagePercent": 50,
+            "meleeSpinHits": 4,
+            "meleeSpinPhysicalDamage": [15, 20, 25, 30, 35],
+            "meleeSpinPhysicalPowerRatio": 0.15,
+            "meleeSpinPhysicalPenetrationRatio": 0.95,
+            "meleeStrikePhysicalDamage": [60, 80, 100, 120, 140],
+            "meleeStrikePhysicalPowerRatio": 0.45,
+            "meleeStrikePhysicalPenetrationRatio": 2.8,
+            "meleeStrikeSlowPercent": 50,
+            "meleeStrikeSlowDuration": 0.75
+          },
+          "cooldown": [14, 11.75, 9.5, 7.25, 5],
+          "effects": [
+            "stance-ability",
+            "piercing-damage",
+            "physical-damage",
+            "physical-penetration-scaling",
+            "multi-hit",
+            "slow",
+            "poke",
+            "waveclear"
+          ],
+          "sourceRef": "eden-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "secondary",
+          "name": "Zero Shift",
+          "kind": "secondary ability",
+          "description": "Eden switches between ranged and melee stances, changing her abilities and basic attack. Ranged Stance Passive: Eden gains 6.0/14.0/22.0/30.0/38.0 Physical Power. Melee Stance Passive: Eden restores Health equal to 6.0/10.0/14.0/18.0/22.0% of damage dealt to Heroes.",
+          "scaling": {
+            "rangedPhysicalPower": [6, 14, 22, 30, 38],
+            "meleeHeroDamageHealingPercent": [6, 10, 14, 18, 22]
+          },
+          "cooldown": [0.3, 0.3, 0.3, 0.3, 0.3],
+          "effects": [
+            "stance-switch",
+            "physical-power",
+            "self-heal",
+            "sustain",
+            "stance-basic-swap",
+            "stance-ability-swap"
+          ],
+          "sourceRef": "eden-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "alternate",
+          "name": "Sidewind/Talon Drive",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Ranged: Thrust in current movement direction and empower your Nova Repeater for 1.5s to launch an empowered Railshot that explodes dealing 70.0/100.0/130.0/160.0/190.0 (+70% physical power) (+85% physical penetration) physical damage to Targets hit. Melee: Dash towards Target enemy, uppercutting them, dealing 80.0/105.0/130.0/155.0/180.0 (+90% physical power) physical damage and slowing them by 40% for 0.5s.",
+          "scaling": {
+            "rangedEmpowerDuration": 1.5,
+            "rangedRailshotPhysicalDamage": [70, 100, 130, 160, 190],
+            "rangedRailshotPhysicalPowerRatio": 0.7,
+            "rangedRailshotPhysicalPenetrationRatio": 0.85,
+            "meleePhysicalDamage": [80, 105, 130, 155, 180],
+            "meleePhysicalPowerRatio": 0.9,
+            "meleeSlowPercent": 40,
+            "meleeSlowDuration": 0.5
+          },
+          "cooldown": [24, 23, 22, 21, 20],
+          "cost": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+          "effects": [
+            "stance-ability",
+            "dash",
+            "mobility",
+            "empowered-basic",
+            "physical-damage",
+            "physical-penetration-scaling",
+            "slow",
+            "engage",
+            "disengage"
+          ],
+          "sourceRef": "eden-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Limit Break",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Ranged: Eden channels for a brief duration before flying upwards to fire four concentrated beams of energy that decimate Targets over 1s, each dealing 50.0/100.0/150.0/200.0 (+65% physical power) physical damage and applying a 40% Slow for 1.5s. Eden will then rapidly descend back to the location she flew from. Melee: Eden channels for a brief duration, before teleporting to the Target location, striking Targets within over 2.4s. Each strike deals 30.0/42.0/54.0/66.0 (+27% physical power) physical damage, decreased by 10% per consecutive hit, up to 80%, and Slowing targets hit by 15% for 0.5s. Eden can move the target location whilst striking. After the duration, Eden slams into the ground from above, dealing 100.0/195.0/290.0/385.0 (+150% physical power) physical damage.",
+          "scaling": {
+            "rangedBeamCount": 4,
+            "rangedDuration": 1,
+            "rangedPhysicalDamagePerBeam": [50, 100, 150, 200],
+            "rangedPhysicalPowerRatio": 0.65,
+            "rangedSlowPercent": 40,
+            "rangedSlowDuration": 1.5,
+            "meleeStrikeDuration": 2.4,
+            "meleePhysicalDamagePerStrike": [30, 42, 54, 66],
+            "meleePhysicalPowerRatio": 0.27,
+            "meleeConsecutiveHitDamageDecreasePercent": 10,
+            "meleeMaximumDamageDecreasePercent": 80,
+            "meleeSlowPercent": 15,
+            "meleeSlowDuration": 0.5,
+            "meleeSlamPhysicalDamage": [100, 195, 290, 385],
+            "meleeSlamPhysicalPowerRatio": 1.5
+          },
+          "effects": [
+            "limit-break",
+            "stance-ultimate",
+            "channel",
+            "airborne",
+            "teleport",
+            "physical-damage",
+            "slow",
+            "multi-hit",
+            "burst",
+            "mobility"
+          ],
+          "sourceRef": "eden-game-client-manual-entry-2026-08-15"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Kinetic Waltz",
+          "category": "axiom strike mobility",
+          "description": "Axiom Strike deals 90% damage, has 30% reduced cooldown and grants 35% movement speed for 1.5s when damaging Enemy Heroes.",
+          "tags": [
+            "axiom-strike",
+            "cooldown-reduction",
+            "movement-speed",
+            "hero-hit-reward",
+            "damage-tradeoff"
+          ],
+          "sourceRef": "eden-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "name": "Focal Lens",
+          "category": "armor shred",
+          "description": "Hitting an enemy Hero with Tachyon Lance shreds their Physical Armor by 25% for 4s and reduces the cooldown by 10%.",
+          "tags": [
+            "tachyon-lance",
+            "armor-shred",
+            "cooldown-reduction",
+            "poke",
+            "anti-frontline"
+          ],
+          "sourceRef": "eden-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "name": "Limit Break: Echo",
+          "category": "cooldown reset",
+          "description": "After casting Limit Break, the cooldowns of your basic abilities in your current stance are instantly refreshed.",
+          "tags": [
+            "limit-break",
+            "cooldown-reset",
+            "combo-extension",
+            "reset-pressure",
+            "stance-synergy"
+          ],
+          "sourceRef": "eden-game-client-manual-entry-2026-08-15"
+        }
+      ],
       "threats": [
         "poke",
         "burst",
-        "zone-control"
+        "mobility",
+        "stance-flex",
+        "sustained-dps",
+        "armor-shred",
+        "reset-pressure",
+        "backline-access"
       ],
       "answers": [
         "poke",
         "waveclear",
-        "anti-frontline"
+        "anti-frontline",
+        "mobility",
+        "armor-shred",
+        "sustain",
+        "burst",
+        "self-peel",
+        "physical-dps"
       ],
       "weaknesses": [
         "dive",
-        "burst-vulnerable"
+        "burst-vulnerable",
+        "hard-cc",
+        "silence",
+        "anti-heal",
+        "cooldown-dependent",
+        "lockdown"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "eden-game-client-manual-entry-2026-08-15",
+        "roles": "eden-game-client-manual-entry-2026-08-15",
+        "classes": "eden-game-client-manual-entry-2026-08-15",
+        "ratings": "eden-game-client-manual-entry-2026-08-15",
+        "abilities": "eden-game-client-manual-entry-2026-08-15",
+        "augments": "eden-game-client-manual-entry-2026-08-15",
+        "kit": "eden-game-client-manual-entry-2026-08-15"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Eden text dated 2026-08-15. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
