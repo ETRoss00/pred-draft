@@ -36,6 +36,10 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
     },
+    "gideon-game-client-manual-entry-2026-08-15": {
+      "label": "Gideon game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Gideon roles, class, ratings, ability text, and augments."
     "gadget-game-client-manual-entry-2026-08-15": {
       "label": "Gadget game-client manual entry",
       "url": null,
@@ -3653,32 +3657,235 @@
       "roles": [
         "midlane"
       ],
+      "classes": [
+        "mage"
+      ],
       "damage": "magical",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 2,
+        "abilityPower": 9,
+        "durability": 1,
+        "mobility": 5
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Portal Blast",
+          "kind": "basic attack",
+          "damageType": "mixed",
+          "description": "Ranged basic attack dealing 53.0/54.8/56.6/58.5/60.6/62.7/64.9/67.2/69.6/72.1/74.7/77.4/80.2/83.1/86.0/89.1/92.3/95.5 (+55% physical power) physical damage. Also deals (+2% max mana) magical damage on-hit.",
+          "scaling": {
+            "damage": [53, 54.8, 56.6, 58.5, 60.6, 62.7, 64.9, 67.2, 69.6, 72.1, 74.7, 77.4, 80.2, 83.1, 86, 89.1, 92.3, 95.5],
+            "physicalPowerRatio": 0.55,
+            "maxManaOnHitRatio": 0.02
+          },
+          "effects": [
+            "ranged-basic",
+            "mana-scaling",
+            "on-hit-magical-damage"
+          ],
+          "sourceRef": "gideon-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "passive",
+          "name": "Cosmic Power",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "Damaging an Enemy Hero with an ability empowers Gideon's next basic attack for 3s, allowing him to attach a cosmic tether to his Target. Tethered Enemies receive 40.0/49.0/58.0/67.0/76.0/85.0/94.0/103.0/112.0/121.0/130.0/139.0/148.0/157.0/166.0/175.0/184.0/193.0 (+9 per level) (+20% magical power) magical damage over 2.1s, after which they are Rooted for 1s. Additionally gain 1% Bonus Maximum Mana per 15 Magical Power.",
+          "scaling": {
+            "damageOverTime": [40, 49, 58, 67, 76, 85, 94, 103, 112, 121, 130, 139, 148, 157, 166, 175, 184, 193],
+            "damagePerLevel": 9,
+            "magicalPowerRatio": 0.2,
+            "empoweredWindow": 3,
+            "damageDuration": 2.1,
+            "rootDuration": 1,
+            "bonusMaxManaPercentPerMagicalPowerThreshold": 1,
+            "magicalPowerThreshold": 15
+          },
+          "effects": [
+            "empowered-basic",
+            "damage-over-time",
+            "root",
+            "hard-cc",
+            "mana-scaling"
+          ],
+          "sourceRef": "gideon-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "primary",
+          "name": "Cosmic Rift",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Rip down a meteor from the sky, dealing 110.0/155.0/200.0/245.0/290.0 (+60% magical power)(+5% max mana) magical damage to all Enemies caught in the area of impact.",
+          "scaling": {
+            "damage": [110, 155, 200, 245, 290],
+            "magicalPowerRatio": 0.6,
+            "maxManaRatio": 0.05
+          },
+          "cooldown": [12, 11.25, 10.5, 9.75, 9],
+          "effects": [
+            "area-damage",
+            "burst",
+            "waveclear",
+            "mana-scaling"
+          ],
+          "sourceRef": "gideon-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "secondary",
+          "name": "Torn Space",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Leap through a portal in spacetime, appearing at the target location, gaining (+50.0/75.0/100.0/125.0/150.0 max mana) increased Maximum Mana for 8s. The portal remains open for 5s. Allied Heroes can jump through the portal while it's active. Portal Distance: 800.0/875.0/950.0/1025.0/1100.0u.",
+          "scaling": {
+            "bonusMaxMana": [50, 75, 100, 125, 150],
+            "bonusMaxManaDuration": 8,
+            "portalDuration": 5,
+            "portalDistance": [800, 875, 950, 1025, 1100]
+          },
+          "cooldown": [24, 21.5, 19, 16.5, 14],
+          "effects": [
+            "mobility",
+            "blink",
+            "ally-mobility",
+            "escape",
+            "mana-scaling"
+          ],
+          "sourceRef": "gideon-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "alternate",
+          "name": "Void Breach",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Launch forward a comet, dealing 100.0/140.0/180.0/220.0/260.0 (+45% magical power)(+2% max mana) magical damage to all Enemies in its path and Slowing them by 35% for 1.25s. The comet explodes upon hitting an Enemy Hero, Terrain, or at max range. The Cooldown progresses 1% faster per 80 Max Mana.",
+          "scaling": {
+            "damage": [100, 140, 180, 220, 260],
+            "magicalPowerRatio": 0.45,
+            "maxManaRatio": 0.02,
+            "slowPercent": 35,
+            "slowDuration": 1.25,
+            "cooldownProgressPercentPerMaxManaThreshold": 1,
+            "maxManaThreshold": 80
+          },
+          "cooldown": [11, 10.5, 10, 9.5, 9],
+          "effects": [
+            "line-damage",
+            "poke",
+            "slow",
+            "mana-scaling",
+            "cooldown-scaling"
+          ],
+          "sourceRef": "gideon-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Black Hole",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "Unleash a black hole beneath Gideon for 3.5s that slowly drags nearby Enemies towards its center, dealing 520.0/780.0/1040.0 (+250% magical power) magical damage. After channeling for 2.75s, Gideon may act and the Black Hole cannot be cancelled. For each Enemy Hero hit by Black Hole, Gideon gains (+2% max mana) increased Maximum Mana for 8s.",
+          "scaling": {
+            "damage": [520, 780, 1040],
+            "magicalPowerRatio": 2.5,
+            "duration": 3.5,
+            "uncancellableAfter": 2.75,
+            "bonusMaxManaPerHeroHitRatio": 0.02,
+            "bonusMaxManaDuration": 8
+          },
+          "cooldown": [135, 120, 105],
+          "cost": [100, 150, 200],
+          "effects": [
+            "large-area-damage",
+            "pull",
+            "channel",
+            "zone-control",
+            "teamfight-ultimate",
+            "mana-scaling"
+          ],
+          "sourceRef": "gideon-game-client-manual-entry-2026-08-15"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Event Horizon",
+          "category": "damage",
+          "description": "Cosmic Rift deals an additional (+5% Target's Max Health) damage to Enemies in the center.",
+          "tags": [
+            "burst",
+            "max-health-damage",
+            "cosmic-rift"
+          ],
+          "sourceRef": "gideon-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "name": "Abyssal Mantle",
+          "category": "shield",
+          "description": "Upon activating Black Hole, gain a 50 (+75% magical power) Shield for 4s.",
+          "tags": [
+            "shield",
+            "ultimate",
+            "anti-burst",
+            "teamfight"
+          ],
+          "sourceRef": "gideon-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "name": "Infinite Impact",
+          "category": "range",
+          "description": "Void Breach has infinite range.",
+          "tags": [
+            "increased-range",
+            "poke",
+            "siege",
+            "void-breach"
+          ],
+          "sourceRef": "gideon-game-client-manual-entry-2026-08-15"
+        }
+      ],
       "threats": [
         "burst",
         "zone-control",
-        "mobility"
+        "mobility",
+        "poke",
+        "teamfight",
+        "mana-scaling",
+        "large-area-damage"
       ],
       "answers": [
         "waveclear",
         "anti-frontline",
-        "disengage"
+        "disengage",
+        "area-control",
+        "teamfight-zone",
+        "soft-engage",
+        "pick-setup",
+        "escape"
       ],
       "weaknesses": [
         "hard-cc",
-        "burst-vulnerable"
+        "burst-vulnerable",
+        "channel-interrupt",
+        "low-durability"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "gideon-game-client-manual-entry-2026-08-15",
+        "roles": "gideon-game-client-manual-entry-2026-08-15",
+        "classes": "gideon-game-client-manual-entry-2026-08-15",
+        "ratings": "gideon-game-client-manual-entry-2026-08-15",
+        "abilities": "gideon-game-client-manual-entry-2026-08-15",
+        "augments": "gideon-game-client-manual-entry-2026-08-15",
+        "kit": "gideon-game-client-manual-entry-2026-08-15"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Gideon text dated 2026-08-15. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
