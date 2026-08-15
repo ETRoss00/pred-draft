@@ -40,38 +40,47 @@
       "label": "Drongo game-client manual entry",
       "url": null,
       "use": "User-provided in-game text covering Drongo roles, class, ratings, ability text, and augments."
+    },
     "dekker-game-client-manual-entry-2026-08-09": {
       "label": "Dekker game-client manual entry",
       "url": null,
       "use": "User-provided in-game text covering Dekker roles, class, ratings, ability text, and augments."
+    },
     "crunch-game-client-manual-entry-2026-08-09": {
       "label": "Crunch game-client manual entry",
       "url": null,
       "use": "User-provided in-game text covering Crunch roles, class, ratings, ability text, and augments."
+    },
     "countess-game-client-manual-entry-2026-08-09": {
       "label": "Countess game-client manual entry",
       "url": null,
       "use": "User-provided in-game text covering Countess roles, class, ratings, ability text, and augments."
+    },
     "boris-game-client-manual-entry-2026-08-09": {
       "label": "Boris game-client manual entry",
       "url": null,
       "use": "User-provided in-game text covering Boris roles, class, ratings, ability text, and augments."
+    },
     "bayle-game-client-manual-entry-2026-08-09": {
       "label": "Bayle game-client manual entry",
       "url": null,
       "use": "User-provided in-game text covering Bayle roles, class, ratings, ability text, and augments."
+    },
     "aurora-game-client-manual-entry-2026-08-08": {
       "label": "Aurora game-client manual entry",
       "url": null,
       "use": "User-provided in-game text covering Aurora roles, class, ratings, ability text, and augments."
+    },
     "argus-game-client-manual-entry-2026-08-08": {
       "label": "Argus game-client manual entry",
       "url": null,
       "use": "User-provided in-game text covering Argus roles, class, ratings, ability text, and augments."
+    },
     "akeron-game-client-manual-entry-2026-08-08": {
       "label": "Akeron game-client manual entry",
       "url": null,
       "use": "User-provided in-game text covering Akeron roles, class, ratings, ability text, and augments."
+    },
     "adele-game-client-manual-entry-2026-08-08": {
       "label": "Adele game-client manual entry",
       "url": null,
@@ -286,13 +295,6 @@
             14,
             14
           ],
-          "cost": [
-            40,
-            45,
-            50,
-            55,
-            60
-          ],
           "effects": [
             "area-damage",
             "movement-speed",
@@ -338,13 +340,6 @@
             15.75,
             15
           ],
-          "cost": [
-            60,
-            60,
-            60,
-            60,
-            60
-          ],
           "effects": [
             "damage-reduction",
             "self-mitigation",
@@ -378,13 +373,6 @@
             11,
             9.75,
             8.5
-          ],
-          "cost": [
-            50,
-            55,
-            60,
-            65,
-            70
           ],
           "effects": [
             "mobility",
@@ -428,11 +416,6 @@
             120,
             100,
             80
-          ],
-          "cost": [
-            100,
-            100,
-            100
           ],
           "effects": [
             "area-control",
@@ -959,32 +942,6 @@
             "stunDuration": [1, 1.1, 1.1, 1.1, 1.2]
           },
           "cooldown": [16, 15, 14, 13, 12],
-            "damage": [
-              80,
-              120,
-              160,
-              200,
-              240
-            ],
-            "magicalPowerRatio": 0.5,
-            "stunDuration": [
-              1,
-              1.05,
-              1.1,
-              1.15,
-              1.2
-            ]
-          },
-          "cooldown": [
-            16,
-            15,
-            14,
-            13,
-            12
-          ],
-          "cost": [
-            50
-          ],
           "effects": [
             "area-damage",
             "stun",
@@ -1001,13 +958,6 @@
           "description": "Argus summons an Ether Crystal at the target location for 2s. The Crystal will Push Enemy Heroes from the center and Lift Allied Heroes into the air before producing a storm that deals 20.0/30.0/40.0/50.0/60.0 (+18% magical power) magical damage every 0.5s to nearby Enemies and Slows by 25.0/30.0/35.0/40.0/45.0% for 0.5s. After the duration the Crystal will implode, Pulling all Enemies within to the center.",
           "scaling": {
             "damagePerTick": [20, 30, 40, 50, 60],
-            "damagePerTick": [
-              15,
-              25,
-              35,
-              45,
-              55
-            ],
             "magicalPowerRatio": 0.18,
             "slowPercent": [
               25,
@@ -1020,20 +970,6 @@
             "tickRate": 0.5
           },
           "cooldown": [16, 15.5, 15, 14.5, 14],
-          "cooldown": [
-            16,
-            15.5,
-            15,
-            14.5,
-            14
-          ],
-          "cost": [
-            70,
-            80,
-            90,
-            100,
-            110
-          ],
           "effects": [
             "zone-control",
             "pull",
@@ -1062,16 +998,6 @@
             "channelDuration": 3.5
           },
           "cooldown": [3, 3, 3, 3, 3],
-          "cooldown": [
-            3
-          ],
-          "cost": [
-            12,
-            14,
-            16,
-            18,
-            20
-          ],
           "effects": [
             "homing-projectiles",
             "channeled-damage",
@@ -1088,11 +1014,6 @@
           "description": "After a short delay, Argus channels for up to 8s, gaining immunity to pushes and pulls whilst deploying his ultimate weapon to fire up to 3.0/4.0/5.0 powerful Energy Beams. Each beam deals 130.0/155.0/180.0 (+25% magical power) magical damage (increased by up to 150% based on the Target's missing health) and Slows Enemies hit by 60% for 0.5s.",
           "scaling": {
             "damagePerBeam": [130, 155, 180],
-            "damagePerBeam": [
-              100,
-              130,
-              160
-            ],
             "magicalPowerRatio": 0.25,
             "beams": [
               3,
@@ -1108,9 +1029,6 @@
             135,
             120,
             105
-          ],
-          "cost": [
-            100
           ],
           "effects": [
             "long-range-damage",
@@ -2843,7 +2761,6 @@
             "slowDuration": 1.25
           },
           "cooldown": [12, 11, 10, 9, 8],
-          "cost": [50, 50, 50, 50, 50],
           "effects": [
             "boomerang",
             "physical-damage",
