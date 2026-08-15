@@ -36,6 +36,10 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
     },
+    "grim-exe-game-client-manual-entry-2026-08-15": {
+      "label": "GRIM.exe game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering GRIM.exe roles, class, ratings, ability text, and augments."
     "greystone-game-client-manual-entry-2026-08-15": {
       "label": "Greystone game-client manual entry",
       "url": null,
@@ -4137,35 +4141,227 @@
       "id": "grim-exe",
       "name": "GRIM.exe",
       "roles": [
-        "carry",
-        "midlane"
+        "carry"
+      ],
+      "classes": [
+        "carry"
       ],
       "damage": "mixed",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 8,
+        "abilityPower": 7,
+        "durability": 3,
+        "mobility": 1
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "The Inverter",
+          "kind": "basic attack",
+          "damageType": "magical",
+          "description": "Ranged basic attack dealing 53.0/54.7/56.5/58.3/60.3/62.3/64.4/66.7/69.0/71.4/73.8/76.4/79.1/81.9/84.7/87.7/90.7/93.8 (+70% physical power) physical damage. Pulsefire modifies GRIM.exe's basic attacks to deal Magical Damage.",
+          "scaling": {
+            "damage": [53, 54.7, 56.5, 58.3, 60.3, 62.3, 64.4, 66.7, 69, 71.4, 73.8, 76.4, 79.1, 81.9, 84.7, 87.7, 90.7, 93.8],
+            "physicalPowerRatio": 0.7
+          },
+          "effects": [
+            "ranged-basic",
+            "magical-basic-attacks"
+          ],
+          "sourceRef": "grim-exe-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "passive",
+          "name": "Pulsefire",
+          "kind": "passive",
+          "damageType": "true",
+          "description": "GRIM.exe's basic attacks are modified to deal Magical Damage. GRIM.exe's basic attacks and abilities apply Pulsefire to Enemies hit for 4s. The next basic attack or ability will burst the Pulsefire and deal 15 (+15% physical power)(+30% magical power) true damage on-hit.",
+          "scaling": {
+            "pulsefireDuration": 4,
+            "trueDamage": 15,
+            "physicalPowerRatio": 0.15,
+            "magicalPowerRatio": 0.3
+          },
+          "effects": [
+            "magical-basic-attacks",
+            "mark",
+            "true-damage",
+            "on-hit-damage"
+          ],
+          "sourceRef": "grim-exe-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "primary",
+          "name": "Displacement Blast",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Fire an empowered shot forward that deals 30.0/75.0/120.0/165.0/210.0 (+105% physical power)(+100% magical power) magical damage. In Assault Mode, the shot is Lobbed and displaces Enemies away from the center of the explosion.",
+          "scaling": {
+            "damage": [30, 75, 120, 165, 210],
+            "physicalPowerRatio": 1.05,
+            "magicalPowerRatio": 1
+          },
+          "cooldown": [13, 12, 11, 10, 9],
+          "effects": [
+            "burst",
+            "poke",
+            "displacement",
+            "assault-mode-modifier"
+          ],
+          "sourceRef": "grim-exe-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "secondary",
+          "name": "Assault Mode",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Sentry Mode: Basic Attacks restore 8 mana and grant 6.0/8.5/11.0/13.5/16.0% attack speed for 3s, stacking up to 4 times. Stacks fall off individually. Assault Mode: Basic Attacks cost 30 mana, increase to 1650 Range and deal (+10% physical power)(+8% magical power) bonus magical damage on-hit, cleaving for 20.0/40.0/60.0/80.0/100.0% damage. This damage can critically strike.",
+          "scaling": {
+            "manaRestoreOnBasic": 8,
+            "attackSpeedPercent": [6, 8.5, 11, 13.5, 16],
+            "attackSpeedDuration": 3,
+            "attackSpeedMaxStacks": 4,
+            "assaultModeBasicManaCost": 30,
+            "assaultModeRange": 1650,
+            "bonusMagicalDamagePhysicalPowerRatio": 0.1,
+            "bonusMagicalDamageMagicalPowerRatio": 0.08,
+            "cleaveDamagePercent": [20, 40, 60, 80, 100]
+          },
+          "cooldown": [0.25],
+          "effects": [
+            "stance-toggle",
+            "sustained-dps",
+            "attack-speed",
+            "mana-management",
+            "increased-range",
+            "cleave"
+          ],
+          "sourceRef": "grim-exe-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "alternate",
+          "name": "Energy Shield",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "GRIM.exe activates a shield for 1.5s that blocks the next incoming enemy ability. If the shield successfully blocks an enemy ability, GRIM.exe restores 15.0/20.0/25.0/30.0/35.0% of his missing mana.",
+          "scaling": {
+            "shieldDuration": 1.5,
+            "missingManaRestorePercent": [15, 20, 25, 30, 35]
+          },
+          "cooldown": [26, 24, 22, 20, 18],
+          "effects": [
+            "spellshield",
+            "anti-pick",
+            "anti-burst",
+            "mana-restore",
+            "defensive-utility"
+          ],
+          "sourceRef": "grim-exe-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "ultimate",
+          "name": "GTFO",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "GRIM.exe slows himself by 60% and locks onto an enemy hero. After a short channel, a Gyro Targeted Force Orb is launched. The Orb will pass through the world and non-hero units, but can be blocked by enemy heroes. The Orb deals 300.0/520.0/740.0 (+135% physical power)(+110% magical power) magical damage.",
+          "scaling": {
+            "selfSlowPercent": 60,
+            "damage": [300, 520, 740],
+            "physicalPowerRatio": 1.35,
+            "magicalPowerRatio": 1.1
+          },
+          "cooldown": [105, 90, 75],
+          "effects": [
+            "lock-on",
+            "long-range-damage",
+            "burst",
+            "pick",
+            "blockable-by-heroes"
+          ],
+          "sourceRef": "grim-exe-game-client-manual-entry-2026-08-15"
+        }
+      ],
+      "augments": [
+        {
+          "name": "System Restore",
+          "category": "defense",
+          "description": "Blocking an Ability with Energy Shield restores 20 (+10% max health) Health and grants 20% Decaying Movement Speed over 2s.",
+          "tags": [
+            "spellshield",
+            "healing",
+            "mobility",
+            "anti-burst"
+          ],
+          "sourceRef": "grim-exe-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "name": "Reboot.exe",
+          "category": "cooldown",
+          "description": "Triggering Pulsefire reduces your Current Basic Ability Cooldowns by 10%, increased to 25% against Heroes.",
+          "tags": [
+            "cooldown-reduction",
+            "pulsefire",
+            "ability-uptime",
+            "hero-fighting"
+          ],
+          "sourceRef": "grim-exe-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "name": "Instant Reload",
+          "category": "execute",
+          "description": "GTFO now Executes Heroes that fall below 5% Max Health. When this occurs, GTFO may be re-cast for 8s.",
+          "tags": [
+            "execute",
+            "ultimate",
+            "reset",
+            "pick"
+          ],
+          "sourceRef": "grim-exe-game-client-manual-entry-2026-08-15"
+        }
+      ],
       "threats": [
         "sustained-dps",
         "poke",
-        "objective-control"
+        "objective-control",
+        "mixed-damage",
+        "true-damage",
+        "long-range-pick",
+        "spellshield"
       ],
       "answers": [
         "tank-shred",
         "poke",
-        "anti-frontline"
+        "anti-frontline",
+        "spellshield",
+        "anti-pick",
+        "sustained-dps",
+        "execute-pressure"
       ],
       "weaknesses": [
         "dive",
-        "low-mobility"
+        "low-mobility",
+        "mana-dependent",
+        "blockable-ultimate"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "grim-exe-game-client-manual-entry-2026-08-15",
+        "roles": "grim-exe-game-client-manual-entry-2026-08-15",
+        "classes": "grim-exe-game-client-manual-entry-2026-08-15",
+        "ratings": "grim-exe-game-client-manual-entry-2026-08-15",
+        "abilities": "grim-exe-game-client-manual-entry-2026-08-15",
+        "augments": "grim-exe-game-client-manual-entry-2026-08-15",
+        "kit": "grim-exe-game-client-manual-entry-2026-08-15"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game GRIM.exe text dated 2026-08-15. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
