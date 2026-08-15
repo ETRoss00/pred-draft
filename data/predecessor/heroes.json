@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "iggy-scorch-game-client-manual-entry-2026-08-15": {
+      "label": "Iggy & Scorch game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Iggy & Scorch roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -879,35 +884,240 @@
       "id": "iggy-scorch",
       "name": "Iggy & Scorch",
       "roles": [
-        "midlane",
-        "offlane"
+        "midlane"
+      ],
+      "classes": [
+        "mage"
       ],
       "damage": "magical",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 2,
+        "abilityPower": 10,
+        "durability": 2,
+        "mobility": 1
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Spew",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged basic attack dealing 49.0/51.9/54.9/58.1/61.4/64.9/68.5/72.3/76.3/80.4/84.6/89.0/93.6/98.3/103.2/108.2/113.4/118.7 (+55% physical power) physical damage.",
+          "scaling": {
+            "damage": [49, 51.9, 54.9, 58.1, 61.4, 64.9, 68.5, 72.3, 76.3, 80.4, 84.6, 89, 93.6, 98.3, 103.2, 108.2, 113.4, 118.7],
+            "physicalPowerRatio": 0.55
+          },
+          "effects": [
+            "ranged-basic",
+            "turret-targeting"
+          ],
+          "sourceRef": "iggy-scorch-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "passive",
+          "name": "Badlands Critter",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "Scorch hurls up oil with his basic attack that applies Slick to enemies hit, slowing them by 2.5% per stack for 3s, up to a maximum of 5 stacks. Enemies with any Slick that are damaged by Flame Turrets, Molotov or Inferno are Ignited for 3s taking 3.0/3.4/3.8/4.2/4.6/5.0/5.4/5.8/6.2/6.6/7.0/7.4/7.8/8.2/8.6/9.0/9.4/9.8 (+0.4 per level) (+3% magical power) magical damage per second per stack.",
+          "scaling": {
+            "slickSlowPercentPerStack": 2.5,
+            "slickDuration": 3,
+            "slickMaxStacks": 5,
+            "igniteDuration": 3,
+            "igniteDamagePerSecondPerStack": [3, 3.4, 3.8, 4.2, 4.6, 5, 5.4, 5.8, 6.2, 6.6, 7, 7.4, 7.8, 8.2, 8.6, 9, 9.4, 9.8],
+            "igniteDamagePerLevel": 0.4,
+            "magicalPowerRatio": 0.03
+          },
+          "effects": [
+            "slick",
+            "slow",
+            "ignite",
+            "damage-over-time",
+            "stacking-debuff"
+          ],
+          "sourceRef": "iggy-scorch-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "primary",
+          "name": "Flame Turret",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Iggy throws down a turret with 100 (+24 per Hero Level) (+10-32.5% magical power) Health that shoots homing fireballs at Enemy Targets within 1500 units. Each fireball deals 11.0/16.0/21.0/26.0/31.0 (+30% magical power) magical damage. Iggy can have up to 3 turrets placed. Hitting an enemy with Spew redirects turrets to attack that target if in range. They also gain 40% Attack Speed if the Target is an Enemy Hero, or when Iggy casts Inferno. Flame Turrets take 70% increased damage from Melee basic attacks.",
+          "scaling": {
+            "turretHealth": 100,
+            "turretHealthPerHeroLevel": 24,
+            "turretHealthMagicalPowerRatioRange": [0.1, 0.325],
+            "targetRange": 1500,
+            "fireballDamage": [11, 16, 21, 26, 31],
+            "magicalPowerRatio": 0.3,
+            "maxTurrets": 3,
+            "attackSpeedBonusPercent": 40,
+            "increasedDamageFromMeleeBasicsPercent": 70
+          },
+          "cooldown": [22, 20.5, 19, 17.5, 16],
+          "effects": [
+            "summon",
+            "turret",
+            "homing-projectiles",
+            "zone-control",
+            "objective-control"
+          ],
+          "sourceRef": "iggy-scorch-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "secondary",
+          "name": "Oil Spill",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Scorch hurls a ball of oil that rolls in the target direction dealing 70.0/105.0/140.0/175.0/210.0 (+50% magical power) magical damage to enemies hit. The oil will then remain for 5s, slowing enemies by 30.0/35.0/40.0/45.0/50.0%. When ignited by Iggy's fire abilities, the duration is refreshed and enemies take 10.0/15.0/20.0/25.0/30.0 (+12% magical power) magical damage every 0.5s.",
+          "scaling": {
+            "damage": [70, 105, 140, 175, 210],
+            "magicalPowerRatio": 0.5,
+            "oilDuration": 5,
+            "slowPercent": [30, 35, 40, 45, 50],
+            "ignitedDamagePerTick": [10, 15, 20, 25, 30],
+            "ignitedMagicalPowerRatio": 0.12,
+            "tickRate": 0.5
+          },
+          "cooldown": [14],
+          "effects": [
+            "rolling-projectile",
+            "slow",
+            "area-denial",
+            "ignite-synergy",
+            "damage-over-time"
+          ],
+          "sourceRef": "iggy-scorch-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "alternate",
+          "name": "Molotov",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Iggy flings a Molotov that deals 50.0/70.0/90.0/110.0/130.0 (+40% magical power) magical damage to enemies hit by the explosion. A Fire Field will remain where the explosion occurs, dealing 60.0/95.0/130.0/165.0/200.0 (+60% magical power) magical damage over 2.5s.",
+          "scaling": {
+            "explosionDamage": [50, 70, 90, 110, 130],
+            "explosionMagicalPowerRatio": 0.4,
+            "fireFieldDamage": [60, 95, 130, 165, 200],
+            "fireFieldMagicalPowerRatio": 0.6,
+            "fireFieldDuration": 2.5
+          },
+          "cooldown": [12, 11, 10, 9, 8],
+          "effects": [
+            "area-damage",
+            "fire-field",
+            "damage-over-time",
+            "poke",
+            "waveclear"
+          ],
+          "sourceRef": "iggy-scorch-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Inferno",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "Scorch unleashes a cone of flame gaining 20.0/25.0/30.0% Movement Speed and dealing 375.0/600.0/825.0 (+260% magical power) magical damage over 3s. At the end of the duration, or upon reactivation, Scorch will belch, instantly dealing 120.0/180.0/240.0 (+60% magical power) magical damage in the area and Knocking Back any Enemy Heroes present.",
+          "scaling": {
+            "movementSpeedPercent": [20, 25, 30],
+            "damage": [375, 600, 825],
+            "magicalPowerRatio": 2.6,
+            "damageDuration": 3,
+            "belchDamage": [120, 180, 240],
+            "belchMagicalPowerRatio": 0.6
+          },
+          "cooldown": [125, 105, 85],
+          "effects": [
+            "cone-damage",
+            "movement-speed",
+            "knockback",
+            "area-damage",
+            "teamfight-ultimate"
+          ],
+          "sourceRef": "iggy-scorch-game-client-manual-entry-2026-08-15"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Turret Maniac",
+          "category": "summon",
+          "description": "Increase your Maximum Number of Turrets to 4, but they have 20% less Health.",
+          "tags": [
+            "turret",
+            "summon",
+            "zone-control",
+            "objective-control"
+          ],
+          "sourceRef": "iggy-scorch-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "name": "Badlands Belch",
+          "category": "damage",
+          "description": "Belch deals an additional (+7.0/8.5/10.0% Target's Missing Health) damage and Knocks Back 30% further.",
+          "tags": [
+            "ultimate",
+            "missing-health-damage",
+            "knockback",
+            "execute-pressure"
+          ],
+          "sourceRef": "iggy-scorch-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "name": "Hold This!",
+          "category": "scaling",
+          "description": "Molotov permanently gains +5 Explosion Damage against Heroes each time its Explosion hits one.",
+          "tags": [
+            "molotov",
+            "scaling",
+            "hero-damage",
+            "poke"
+          ],
+          "sourceRef": "iggy-scorch-game-client-manual-entry-2026-08-15"
+        }
+      ],
       "threats": [
         "zone-control",
         "poke",
-        "waveclear"
+        "waveclear",
+        "damage-over-time",
+        "turrets",
+        "objective-control",
+        "area-denial"
       ],
       "answers": [
         "zone-control",
         "anti-engage",
-        "waveclear"
+        "waveclear",
+        "objective-control",
+        "siege",
+        "area-denial",
+        "sustained-zone-damage"
       ],
       "weaknesses": [
         "dive",
-        "low-mobility"
+        "low-mobility",
+        "turret-clear",
+        "burst-vulnerable"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "iggy-scorch-game-client-manual-entry-2026-08-15",
+        "roles": "iggy-scorch-game-client-manual-entry-2026-08-15",
+        "classes": "iggy-scorch-game-client-manual-entry-2026-08-15",
+        "ratings": "iggy-scorch-game-client-manual-entry-2026-08-15",
+        "abilities": "iggy-scorch-game-client-manual-entry-2026-08-15",
+        "augments": "iggy-scorch-game-client-manual-entry-2026-08-15",
+        "kit": "iggy-scorch-game-client-manual-entry-2026-08-15"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Iggy & Scorch text dated 2026-08-15. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
