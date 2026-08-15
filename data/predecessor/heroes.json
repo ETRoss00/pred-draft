@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "howitzer-game-client-manual-entry-2026-08-15": {
+      "label": "Howitzer game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Howitzer roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -844,35 +849,237 @@
       "id": "howitzer",
       "name": "Howitzer",
       "roles": [
-        "midlane",
-        "offlane"
+        "midlane"
+      ],
+      "classes": [
+        "mage"
       ],
       "damage": "magical",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 3,
+        "abilityPower": 8,
+        "durability": 2,
+        "mobility": 5
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Cannon",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged basic attack dealing 55.0/58.1/61.3/64.7/68.3/72.0/76.0/80.0/84.3/88.7/93.2/98.0/102.8/107.9/113.1/118.5/124.1/129.8 (+70% physical power) physical damage.",
+          "scaling": {
+            "damage": [55, 58.1, 61.3, 64.7, 68.3, 72, 76, 80, 84.3, 88.7, 93.2, 98, 102.8, 107.9, 113.1, 118.5, 124.1, 129.8],
+            "physicalPowerRatio": 0.7
+          },
+          "effects": [
+            "ranged-basic"
+          ],
+          "sourceRef": "howitzer-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "passive",
+          "name": "Armed Salvo",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "Howitzer's next basic attack deals 20.0/25.0/30.0/35.0/40.0/45.0/50.0/55.0/60.0/65.0/70.0/75.0/80.0/85.0/90.0/95.0/100.0/105.0 (+5 per level)(+32% magical power) bonus magical damage around the Target. Howitzer restores 20% of the damage dealt as mana, increasing to 100% against Enemy Heroes. Armed Salvo's cooldown is reduced by 5s each time Howitzer uses an ability.",
+          "scaling": {
+            "cooldown": [16, 15.5, 15, 14.5, 14, 13.5, 13, 12.5, 12, 11.5, 11, 10.5, 10, 9.5, 9, 8.5, 8, 7.5],
+            "bonusDamage": [20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105],
+            "bonusDamagePerLevel": 5,
+            "magicalPowerRatio": 0.32,
+            "manaRestoreDamagePercent": 20,
+            "manaRestoreDamagePercentAgainstHeroes": 100,
+            "cooldownReductionOnAbilityUse": 5
+          },
+          "effects": [
+            "empowered-basic",
+            "area-damage",
+            "mana-restore",
+            "ability-synergy",
+            "poke-sustain"
+          ],
+          "sourceRef": "howitzer-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "primary",
+          "name": "R2000 Missile",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Howitzer hovers for 1.3s and charges up a long range rocket over 0.6s that explodes on impact, dealing up to 100.0/145.0/190.0/235.0/280.0 (+80.0/85.0/90.0/95.0/100.0% magical power)(+50% physical power) magical damage to all Enemies in a small area. Damage increases from 65-100%, based on charge time.",
+          "scaling": {
+            "damage": [100, 145, 190, 235, 280],
+            "magicalPowerRatio": [0.8, 0.85, 0.9, 0.95, 1],
+            "physicalPowerRatio": 0.5,
+            "hoverDuration": 1.3,
+            "chargeDuration": 0.6,
+            "minChargeDamagePercent": 65,
+            "maxChargeDamagePercent": 100
+          },
+          "cooldown": [11, 10, 9, 8, 7],
+          "effects": [
+            "long-range-damage",
+            "poke",
+            "area-damage",
+            "burst",
+            "charge"
+          ],
+          "sourceRef": "howitzer-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "secondary",
+          "name": "Land Mine",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Lob a mine that will explode 2.5s after landing, dealing 90.0/125.0/160.0/195.0/230.0 (+50% magical power) magical damage to all Enemies in the area and Knocking Back any Enemy Heroes (and Howitzer) caught in the blast. Enemy Heroes are additionally Stunned for 0.5s. Explodes early upon reactivation.",
+          "scaling": {
+            "damage": [90, 125, 160, 195, 230],
+            "magicalPowerRatio": 0.5,
+            "detonationDelay": 2.5,
+            "stunDuration": 0.5
+          },
+          "cooldown": [20, 18, 16, 14, 12],
+          "effects": [
+            "delayed-damage",
+            "knockback",
+            "self-knockback",
+            "stun",
+            "hard-cc",
+            "disengage"
+          ],
+          "sourceRef": "howitzer-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "alternate",
+          "name": "H11 Cluster Grenades",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Launch a cluster of 11 proximity bombs that explode when an Enemy enters their zone, dealing 30.0/50.0/70.0/90.0/110.0 (+30% magical power) magical damage and Slowing them by 24.0/28.0/32.0/36.0/40.0% for 1s. Subsequent hits against the same Target deal 12.0/18.0/24.0/30.0/36.0 (+8% magical power) magical damage and reapply the Slow.",
+          "scaling": {
+            "bombs": 11,
+            "damage": [30, 50, 70, 90, 110],
+            "magicalPowerRatio": 0.3,
+            "slowPercent": [24, 28, 32, 36, 40],
+            "slowDuration": 1,
+            "subsequentHitDamage": [12, 18, 24, 30, 36],
+            "subsequentHitMagicalPowerRatio": 0.08
+          },
+          "cooldown": [17, 16.5, 16, 15.5, 15],
+          "effects": [
+            "zone-control",
+            "proximity-bombs",
+            "slow",
+            "area-denial",
+            "poke"
+          ],
+          "sourceRef": "howitzer-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Make It Rain",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "Thrust up into the sky, allowing Howitzer to move freely as he designates target locations to rain down 4 salvos of 8 missiles from above, dealing 544.0/768.0/992.0 (+240% magical power)(+120% physical power) magical damage over 4s. Missiles utilize laser guidance to home towards Howitzers painted target.",
+          "scaling": {
+            "salvos": 4,
+            "missilesPerSalvo": 8,
+            "damage": [544, 768, 992],
+            "magicalPowerRatio": 2.4,
+            "physicalPowerRatio": 1.2,
+            "damageDuration": 4
+          },
+          "cooldown": [135, 120, 105],
+          "effects": [
+            "airborne",
+            "large-area-damage",
+            "homing-projectiles",
+            "teamfight-ultimate",
+            "long-range-damage"
+          ],
+          "sourceRef": "howitzer-game-client-manual-entry-2026-08-15"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Blast Off!",
+          "category": "displacement",
+          "description": "Land Mine's cooldown is 15% lower and blasts Targets 30% further.",
+          "tags": [
+            "land-mine",
+            "cooldown-reduction",
+            "displacement",
+            "disengage"
+          ],
+          "sourceRef": "howitzer-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "name": "Combat Thrusters",
+          "category": "mobility",
+          "description": "Gain 30%/60%/115% Movement Speed during Make It Rain.",
+          "tags": [
+            "ultimate",
+            "mobility",
+            "reposition",
+            "teamfight"
+          ],
+          "sourceRef": "howitzer-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "name": "Sniper Shells",
+          "category": "sustain",
+          "description": "Howitzer's Basic Attacks grant him 4% Total Attack Speed and 1.5% Omnivamp for 4.5s, stacking up to 5 times.",
+          "tags": [
+            "basic-attacks",
+            "attack-speed",
+            "omnivamp",
+            "sustain"
+          ],
+          "sourceRef": "howitzer-game-client-manual-entry-2026-08-15"
+        }
+      ],
       "threats": [
         "poke",
         "burst",
-        "disengage"
+        "disengage",
+        "zone-control",
+        "long-range-damage",
+        "area-denial",
+        "artillery"
       ],
       "answers": [
         "poke",
         "waveclear",
-        "disengage"
+        "disengage",
+        "anti-engage",
+        "zone-control",
+        "area-control",
+        "siege"
       ],
       "weaknesses": [
         "hard-cc",
-        "dive"
+        "dive",
+        "low-durability",
+        "cooldown-dependent"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "howitzer-game-client-manual-entry-2026-08-15",
+        "roles": "howitzer-game-client-manual-entry-2026-08-15",
+        "classes": "howitzer-game-client-manual-entry-2026-08-15",
+        "ratings": "howitzer-game-client-manual-entry-2026-08-15",
+        "abilities": "howitzer-game-client-manual-entry-2026-08-15",
+        "augments": "howitzer-game-client-manual-entry-2026-08-15",
+        "kit": "howitzer-game-client-manual-entry-2026-08-15"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Howitzer text dated 2026-08-15. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
