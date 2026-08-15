@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "greystone-game-client-manual-entry-2026-08-15": {
+      "label": "Greystone game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Greystone roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -742,32 +747,238 @@
         "offlane",
         "jungle"
       ],
+      "classes": [
+        "fighter"
+      ],
       "damage": "physical",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 6,
+        "abilityPower": 5,
+        "durability": 7,
+        "mobility": 5
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Lightbringer",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 68.0/70.5/73.2/76.0/78.9/82.0/85.2/88.5/91.9/95.5/99.3/103.2/107.2/111.3/115.6/120.0/124.5/129.2 (+85% physical power) physical damage.",
+          "scaling": {
+            "damage": [68, 70.5, 73.2, 76, 78.9, 82, 85.2, 88.5, 91.9, 95.5, 99.3, 103.2, 107.2, 111.3, 115.6, 120, 124.5, 129.2],
+            "physicalPowerRatio": 0.85
+          },
+          "effects": [
+            "melee-basic"
+          ],
+          "sourceRef": "greystone-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "passive",
+          "name": "Stoicism",
+          "kind": "passive",
+          "damageType": "physical",
+          "description": "Deflect the next incoming basic attack every 15.0/14.4/13.8/13.2/12.6/12.0/11.4/10.8/10.2/9.6/9.0/8.4/7.8/7.2/6.6/6.0/5.4/4.8s. Additionally, Greystone regenerates (+0.1% max health) health per second and gains 4 (+0.5 per level) Physical Armor. These values are increased by 1% per 1% missing health, and the regeneration is doubled while below 50% max health.",
+          "scaling": {
+            "basicAttackDeflectCooldown": [15, 14.4, 13.8, 13.2, 12.6, 12, 11.4, 10.8, 10.2, 9.6, 9, 8.4, 7.8, 7.2, 6.6, 6, 5.4, 4.8],
+            "maxHealthRegenPerSecondRatio": 0.001,
+            "basePhysicalArmor": 4,
+            "physicalArmorPerLevel": 0.5,
+            "missingHealthAmpPercentPerPercentMissingHealth": 1,
+            "regenDoubledBelowHealthPercent": 50
+          },
+          "effects": [
+            "durability",
+            "basic-attack-deflect",
+            "health-regen",
+            "physical-armor",
+            "anti-basic-attack"
+          ],
+          "sourceRef": "greystone-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "primary",
+          "name": "Make Way",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Summon a fiery whirlwind that deals 90.0/145.0/200.0/255.0/310.0 (+90% physical power)(+80% magical power) physical damage over 4s. Enemies hit by Make Way have their Physical Armor Shredded by 4.0/5.0/6.0/7.0/8.0% for 4s, stacking up to 4 times.",
+          "scaling": {
+            "damage": [90, 145, 200, 255, 310],
+            "physicalPowerRatio": 0.9,
+            "magicalPowerRatio": 0.8,
+            "damageDuration": 4,
+            "physicalArmorShredPercent": [4, 5, 6, 7, 8],
+            "physicalArmorShredDuration": 4,
+            "physicalArmorShredMaxStacks": 4
+          },
+          "cooldown": [12, 11.5, 11, 10.5, 10],
+          "effects": [
+            "area-damage",
+            "damage-over-time",
+            "physical-armor-shred",
+            "anti-frontline",
+            "waveclear"
+          ],
+          "sourceRef": "greystone-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "secondary",
+          "name": "Sacred Oath",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Greystone bathes his sword in holy fire. His next Basic Attack within 5s is empowered with increased range and deals 10.0/50.0/90.0/130.0/170.0 (+20% physical power)(+5% max health) bonus physical damage, cleaving all Enemies in the area for 100% of the damage and Slowing them by 22.0/26.0/30.0/34.0/38.0% for 1.25s.",
+          "scaling": {
+            "bonusDamage": [10, 50, 90, 130, 170],
+            "physicalPowerRatio": 0.2,
+            "maxHealthRatio": 0.05,
+            "empoweredWindow": 5,
+            "cleaveDamagePercent": 100,
+            "slowPercent": [22, 26, 30, 34, 38],
+            "slowDuration": 1.25
+          },
+          "cooldown": [11, 10.5, 10, 9.5, 9],
+          "effects": [
+            "empowered-basic",
+            "cleave",
+            "slow",
+            "max-health-scaling",
+            "melee-pressure"
+          ],
+          "sourceRef": "greystone-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "alternate",
+          "name": "Assault The Gates",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Leap to a target location, dealing 85.0/130.0/175.0/220.0/265.0 (+100% physical power) physical damage to all Enemies in the area. Hitting an Enemy Hero or Camp Leader with Assault The Gates reduces its cooldown by 35% and grants Greystone 25% decaying movement speed for 2.5s.",
+          "scaling": {
+            "damage": [85, 130, 175, 220, 265],
+            "physicalPowerRatio": 1,
+            "cooldownReductionOnHeroOrCampLeaderHitPercent": 35,
+            "movementSpeedPercent": 25,
+            "movementSpeedDuration": 2.5
+          },
+          "cooldown": [18, 16.5, 15, 13.5, 12],
+          "effects": [
+            "mobility",
+            "leap",
+            "area-damage",
+            "engage",
+            "camp-clear"
+          ],
+          "sourceRef": "greystone-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Stone Forged Soul",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Greystone enters Stasis for 2.5s, restoring 14.0/16.0/18.0% (+2.5% magical power) of his maximum health (increased by up to 2.5x based on missing health) and Slowing nearby Enemies by up to 70%, based on proximity. After 2.5s, crash down, dealing 250.0/400.0/550.0 (+180% physical power)(+100% magical power) physical damage to all Enemies in the area.",
+          "scaling": {
+            "maxHealthRestorePercent": [14, 16, 18],
+            "magicalPowerHealRatio": 0.025,
+            "maxMissingHealthHealAmp": 2.5,
+            "stasisDuration": 2.5,
+            "maxSlowPercent": 70,
+            "damage": [250, 400, 550],
+            "physicalPowerRatio": 1.8,
+            "magicalPowerRatio": 1
+          },
+          "cooldown": [175, 160, 145],
+          "effects": [
+            "revive-like-stasis",
+            "heal",
+            "anti-burst",
+            "area-damage",
+            "slow",
+            "teamfight"
+          ],
+          "sourceRef": "greystone-game-client-manual-entry-2026-08-15"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Close Cut",
+          "category": "damage",
+          "description": "Make Way deals 20% increased damage to the nearest Enemy Unit.",
+          "tags": [
+            "damage",
+            "make-way",
+            "dueling",
+            "camp-clear"
+          ],
+          "sourceRef": "greystone-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "name": "Imperial Soul",
+          "category": "ultimate",
+          "description": "Stone Forged Soul deals 12% more damage and its radius is 20% larger.",
+          "tags": [
+            "ultimate",
+            "area-damage",
+            "teamfight",
+            "zone-control"
+          ],
+          "sourceRef": "greystone-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "name": "Tainted Oath",
+          "category": "anti-heal",
+          "description": "Sacred Oath applies 50% Blight to Enemies for 4.5s.",
+          "tags": [
+            "anti-heal",
+            "blight",
+            "sacred-oath",
+            "sustain-counter"
+          ],
+          "sourceRef": "greystone-game-client-manual-entry-2026-08-15"
+        }
+      ],
       "threats": [
         "frontline",
         "dive",
-        "sustain"
+        "sustain",
+        "anti-burst",
+        "physical-armor-shred",
+        "area-damage",
+        "melee-pressure"
       ],
       "answers": [
         "frontline",
         "anti-burst",
-        "engage"
+        "engage",
+        "physical-armor-shred",
+        "anti-basic-attack",
+        "anti-heal",
+        "teamfight",
+        "jungle-clear"
       ],
       "weaknesses": [
         "anti-heal",
-        "kite"
+        "kite",
+        "hard-cc",
+        "ranged-poke"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "greystone-game-client-manual-entry-2026-08-15",
+        "roles": "greystone-game-client-manual-entry-2026-08-15",
+        "classes": "greystone-game-client-manual-entry-2026-08-15",
+        "ratings": "greystone-game-client-manual-entry-2026-08-15",
+        "abilities": "greystone-game-client-manual-entry-2026-08-15",
+        "augments": "greystone-game-client-manual-entry-2026-08-15",
+        "kit": "greystone-game-client-manual-entry-2026-08-15"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Greystone text dated 2026-08-15. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
