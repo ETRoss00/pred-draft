@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "feng-mao-game-client-manual-entry-2026-08-15": {
+      "label": "Feng Mao game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Feng Mao roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -639,32 +644,243 @@
         "jungle",
         "offlane"
       ],
+      "classes": [
+        "assassin"
+      ],
       "damage": "physical",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 4,
+        "abilityPower": 7,
+        "durability": 3,
+        "mobility": 7
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Windwalker",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 62.0/64.1/66.3/68.6/71.1/73.6/76.3/79.1/82.0/85.0/88.1/91.3/94.6/98.1/101.6/105.3/109.1/113.0 (+75% physical power) physical damage.",
+          "scaling": {
+            "physicalDamage": [62, 64.1, 66.3, 68.6, 71.1, 73.6, 76.3, 79.1, 82, 85, 88.1, 91.3, 94.6, 98.1, 101.6, 105.3, 109.1, 113],
+            "physicalPowerRatio": 0.75
+          },
+          "effects": [
+            "melee-basic",
+            "physical-damage"
+          ],
+          "sourceRef": "feng-mao-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "passive",
+          "name": "Executioners Path",
+          "kind": "passive",
+          "damageType": "physical",
+          "description": "Upon achieving 1.0/3.0/5.0 Unique Hero Takedowns, permanently gain 3.0/7.0/12.0 bonus physical penetration. Additionally increase all Physical Penetration by 40%.",
+          "scaling": {
+            "uniqueHeroTakedownThresholds": [1, 3, 5],
+            "bonusPhysicalPenetration": [3, 7, 12],
+            "physicalPenetrationIncreasePercent": 40
+          },
+          "effects": [
+            "takedown-scaling",
+            "physical-penetration",
+            "permanent-stats",
+            "snowball",
+            "anti-frontline"
+          ],
+          "sourceRef": "feng-mao-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "primary",
+          "name": "Safeguard",
+          "kind": "primary ability",
+          "description": "Gain a Spellshield for 1.5s. Blocking an ability doubles the passive stat gain for 5s. Passive: Gain 8.0/11.0/14.0/17.0/20.0 physical power and 2.0/3.0/4.0/5.0/6.0% movement speed.",
+          "scaling": {
+            "spellshieldDuration": 1.5,
+            "blockedAbilityPassiveStatMultiplier": 2,
+            "blockedAbilityPassiveStatDuration": 5,
+            "passivePhysicalPower": [8, 11, 14, 17, 20],
+            "passiveMovementSpeedPercent": [2, 3, 4, 5, 6]
+          },
+          "cooldown": [22, 20, 18, 16, 14],
+          "effects": [
+            "spellshield",
+            "anti-cc",
+            "physical-power",
+            "movement-speed",
+            "dueling",
+            "engage-safety"
+          ],
+          "sourceRef": "feng-mao-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "secondary",
+          "name": "Hamstring",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Feng Mao swings his glaive twice, each time dealing 45.0/60.0/75.0/90.0/105.0 (+40% physical power) physical damage to all Enemies around him, Slowing them by 30% for 1s. Each hit's damage is increased by 25.0/35.0/45.0/55.0/65.0 (+25% physical power) if only one target is hit.",
+          "scaling": {
+            "hits": 2,
+            "physicalDamagePerHit": [45, 60, 75, 90, 105],
+            "physicalPowerRatio": 0.4,
+            "slowPercent": 30,
+            "slowDuration": 1,
+            "isolatedBonusDamagePerHit": [25, 35, 45, 55, 65],
+            "isolatedBonusPhysicalPowerRatio": 0.25
+          },
+          "cooldown": [9, 8.25, 7.5, 6.75, 6],
+          "effects": [
+            "area-damage",
+            "physical-damage",
+            "multi-hit",
+            "slow",
+            "isolated-target",
+            "dueling",
+            "waveclear"
+          ],
+          "sourceRef": "feng-mao-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "alternate",
+          "name": "Reaping Dash",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Dash forward, dealing 55.0/75.0/95.0/115.0/135.0 (+40% physical power)(+6% of the target's current health) physical damage to all Enemies in Feng Mao's path, and in a small area around the target location. The Current Cooldown is reduced by 80% when achieving a takedown.",
+          "scaling": {
+            "physicalDamage": [55, 75, 95, 115, 135],
+            "physicalPowerRatio": 0.4,
+            "targetCurrentHealthDamagePercent": 6,
+            "takedownCurrentCooldownReductionPercent": 80
+          },
+          "cooldown": [22, 20, 18, 16, 14],
+          "effects": [
+            "dash",
+            "mobility",
+            "area-damage",
+            "physical-damage",
+            "current-health-damage",
+            "takedown-reset",
+            "backline-access"
+          ],
+          "sourceRef": "feng-mao-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Earth Shatter",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Feng Mao slams his glaive into the ground, dealing 225.0/300.0/375.0 (+40% physical power) physical damage to all Enemies in the area. If an Enemy is below 250.0/475.0/600.0 (+40% physical power) (+480% physical penetration) health, execute them. Upon executing an Enemy Hero, Earth Shatter may be recast within 14s at no cost.",
+          "scaling": {
+            "physicalDamage": [225, 300, 375],
+            "physicalPowerRatio": 0.4,
+            "executeHealthThreshold": [250, 475, 600],
+            "executePhysicalPowerRatio": 0.4,
+            "executePhysicalPenetrationRatio": 4.8,
+            "recastWindowOnHeroExecute": 14
+          },
+          "cooldown": [105, 95, 85],
+          "effects": [
+            "area-damage",
+            "physical-damage",
+            "execute",
+            "reset-pressure",
+            "recast-on-kill",
+            "teamfight-finisher"
+          ],
+          "sourceRef": "feng-mao-game-client-manual-entry-2026-08-15"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Ichorous Glaive",
+          "category": "missing health sustain",
+          "description": "Killing Enemy Units restores 4% of Missing Health, increased to 35% for Earth Shatter Executions.",
+          "tags": [
+            "missing-health-heal",
+            "unit-kill",
+            "earth-shatter",
+            "execute-sustain",
+            "jungle-clear"
+          ],
+          "sourceRef": "feng-mao-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "name": "Imperial Duelist",
+          "category": "dueling",
+          "description": "Your Basic Attacks debuff Targets for 3s. Against debuffed Targets, deal 5% more damage and take 5% less damage.",
+          "tags": [
+            "basic-attack",
+            "debuff",
+            "damage-increase",
+            "damage-reduction",
+            "dueling"
+          ],
+          "sourceRef": "feng-mao-game-client-manual-entry-2026-08-15"
+        },
+        {
+          "name": "Seismic Smash",
+          "category": "ultimate control",
+          "description": "Earth Shatter also Knocks Up Enemies and Stuns for a short duration.",
+          "tags": [
+            "earth-shatter",
+            "knockup",
+            "stun",
+            "hard-cc",
+            "teamfight"
+          ],
+          "sourceRef": "feng-mao-game-client-manual-entry-2026-08-15"
+        }
+      ],
       "threats": [
         "dive",
         "burst",
-        "split-push"
+        "split-push",
+        "backline-access",
+        "execute",
+        "physical-penetration",
+        "reset-pressure",
+        "duelist"
       ],
       "answers": [
         "backline-access",
         "mobility",
-        "duelist"
+        "duelist",
+        "spellshield",
+        "anti-cc",
+        "execute-pressure",
+        "physical-penetration",
+        "anti-frontline",
+        "squishy-punish"
       ],
       "weaknesses": [
         "hard-cc",
-        "anti-burst"
+        "anti-burst",
+        "anti-shield",
+        "poke",
+        "peel",
+        "disengage",
+        "anti-heal"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "feng-mao-game-client-manual-entry-2026-08-15",
+        "roles": "feng-mao-game-client-manual-entry-2026-08-15",
+        "classes": "feng-mao-game-client-manual-entry-2026-08-15",
+        "ratings": "feng-mao-game-client-manual-entry-2026-08-15",
+        "abilities": "feng-mao-game-client-manual-entry-2026-08-15",
+        "augments": "feng-mao-game-client-manual-entry-2026-08-15",
+        "kit": "feng-mao-game-client-manual-entry-2026-08-15"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Feng Mao text dated 2026-08-15. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
