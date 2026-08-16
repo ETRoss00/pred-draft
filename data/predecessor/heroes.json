@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "kwang-game-client-manual-entry-2026-08-16": {
+      "label": "Kwang game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Kwang roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -1051,35 +1056,326 @@
       "id": "kwang",
       "name": "Kwang",
       "roles": [
-        "offlane",
-        "jungle"
+        "jungle",
+        "offlane"
       ],
-      "damage": "magical",
+      "classes": [
+        "fighter"
+      ],
+      "damage": "mixed",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 3,
+        "abilityPower": 7,
+        "durability": 5,
+        "mobility": 5
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Heavenly Blade",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 66.0/69.4/72.9/76.6/80.5/84.6/88.9/93.3/97.9/102.7/107.7/112.9/118.2/123.7/129.4/135.3/141.4/147.6 (+90% physical power) physical damage.",
+          "scaling": {
+            "damage": [
+              66,
+              69.4,
+              72.9,
+              76.6,
+              80.5,
+              84.6,
+              88.9,
+              93.3,
+              97.9,
+              102.7,
+              107.7,
+              112.9,
+              118.2,
+              123.7,
+              129.4,
+              135.3,
+              141.4,
+              147.6
+            ],
+            "physicalPowerRatio": 0.9
+          },
+          "effects": [
+            "melee-basic"
+          ],
+          "sourceRef": "kwang-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "passive",
+          "name": "Strike of the Heavens",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "When Kwang damages an Enemy with an ability his Heavenly Blade becomes Energized with electricity for 4s, stacking up to 3 times. Whilst Energized, Kwang gains 45% attack speed and his next basic attack strikes lightning from above dealing 10.0/12.0/14.0/16.0/18.0/21.0/24.0/27.0/30.0/33.0/37.0/41.0/45.0/49.0/53.0/57.0/62.0/67.0 (+4 per level)(+20% magical power) magical damage to the Target and nearby Enemies. If this damages an Enemy Hero, Kwang reduces his basic ability cooldowns by 0.5s per stack.",
+          "scaling": {
+            "energizedDuration": 4,
+            "maxStacks": 3,
+            "attackSpeedPercent": 45,
+            "damage": [
+              10,
+              12,
+              14,
+              16,
+              18,
+              21,
+              24,
+              27,
+              30,
+              33,
+              37,
+              41,
+              45,
+              49,
+              53,
+              57,
+              62,
+              67
+            ],
+            "damagePerLevel": 4,
+            "magicalPowerRatio": 0.2,
+            "cooldownReductionPerStack": 0.5
+          },
+          "effects": [
+            "empowered-basic",
+            "attack-speed",
+            "area-damage",
+            "cooldown-reduction",
+            "stacking-buff"
+          ],
+          "sourceRef": "kwang-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "primary",
+          "name": "Judgement of the Heavens",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Throw the Heavenly Blade at a target location to deal 90.0/115.0/140.0/165.0/190.0 (+40% magical power) magical damage. Enemies hit by the Blade will be Tethered to it for 1.3s. When in the world, the Blade grants vision in a small area around it. Recalling the Blade early will break the Tether.",
+          "cooldown": [
+            16,
+            15.25,
+            14.5,
+            13.75,
+            13
+          ],
+          "scaling": {
+            "damage": [
+              90,
+              115,
+              140,
+              165,
+              190
+            ],
+            "magicalPowerRatio": 0.4,
+            "tetherDuration": 1.3
+          },
+          "effects": [
+            "tether",
+            "vision",
+            "blade-placement",
+            "setup"
+          ],
+          "sourceRef": "kwang-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "secondary",
+          "name": "Surge of the Heavens",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Kwang dashes forward, becoming Unselectable and dealing 75.0/100.0/125.0/150.0/175.0 (+45% magical power) to all Enemy Units he passes through. When the Blade is in the world, if Kwang dashes within 300 units of its radius he will summon it back to his hand with a crash of lightning, dealing the damage to all nearby Enemy Units and Knocking them Up for 0.25s.",
+          "cooldown": [
+            14,
+            13.25,
+            12.5,
+            11.75,
+            11
+          ],
+          "scaling": {
+            "damage": [
+              75,
+              100,
+              125,
+              150,
+              175
+            ],
+            "magicalPowerRatio": 0.45,
+            "bladeRecallRadius": 300,
+            "knockupDuration": 0.25
+          },
+          "effects": [
+            "dash",
+            "mobility",
+            "unselectable",
+            "blade-recall",
+            "knockup",
+            "area-damage"
+          ],
+          "sourceRef": "kwang-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "alternate",
+          "name": "Light of the Heavens",
+          "kind": "alternate ability",
+          "damageType": "mixed",
+          "description": "Light strikes the Heavenly Blade, dealing damage to nearby Enemy Units. While holding the Blade, it deals 75.0/110.0/145.0/180.0/215.0 (+60% magical power)(+70% physical power) magical damage and grants Kwang a 65.0/95.0/125.0/155.0/185.0 (+40% magical power) (+9% max health) Shield for 2.5s. If the Blade is in the world, it deals 90.0/125.0/160.0/195.0/230.0 (+80% magical power)(+80% physical power) true damage instead.",
+          "cooldown": [
+            12,
+            11,
+            10,
+            9,
+            8
+          ],
+          "scaling": {
+            "heldBladeDamage": [
+              75,
+              110,
+              145,
+              180,
+              215
+            ],
+            "heldBladeMagicalPowerRatio": 0.6,
+            "heldBladePhysicalPowerRatio": 0.7,
+            "shield": [
+              65,
+              95,
+              125,
+              155,
+              185
+            ],
+            "shieldMagicalPowerRatio": 0.4,
+            "shieldMaxHealthRatio": 0.09,
+            "shieldDuration": 2.5,
+            "worldBladeDamage": [
+              90,
+              125,
+              160,
+              195,
+              230
+            ],
+            "worldBladeMagicalPowerRatio": 0.8,
+            "worldBladePhysicalPowerRatio": 0.8
+          },
+          "effects": [
+            "area-damage",
+            "shield",
+            "true-damage",
+            "blade-state"
+          ],
+          "sourceRef": "kwang-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Fury of the Heavens",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "Channel a strike with the Heavenly Blade, dealing 230.0/340.0/450.0 (+80% magical power) magical damage and applying a 45.0/55.0/65.0% Slow for 2s to nearby Enemy Units. If the Blade is in the world, Kwang will Teleport to it before striking.",
+          "cooldown": [
+            125,
+            105,
+            85
+          ],
+          "scaling": {
+            "damage": [
+              230,
+              340,
+              450
+            ],
+            "magicalPowerRatio": 0.8,
+            "slowPercent": [
+              45,
+              55,
+              65
+            ],
+            "slowDuration": 2
+          },
+          "effects": [
+            "area-damage",
+            "slow",
+            "teleport",
+            "blade-state",
+            "engage"
+          ],
+          "sourceRef": "kwang-game-client-manual-entry-2026-08-16"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Slayer of the Heavens",
+          "category": "damage",
+          "description": "Strike of the Heavens deals 25% more damage and reduces Cooldowns by 25% more.",
+          "tags": [
+            "strike-of-the-heavens",
+            "bonus-damage",
+            "cooldown-reduction",
+            "ability-uptime"
+          ],
+          "sourceRef": "kwang-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Aura of the Heavens",
+          "category": "sustain",
+          "description": "Gain 5% Omnivamp. Nearby Allied Heroes gain 4% Omnivamp.",
+          "tags": [
+            "omnivamp",
+            "team-sustain",
+            "aura",
+            "frontline"
+          ],
+          "sourceRef": "kwang-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Heavenly Tactician",
+          "category": "cooldown",
+          "description": "Fury of the Heavens' Cooldown is reduced by 20s and Kwang no longer retrieves his Heavenly Blade upon Recalling.",
+          "tags": [
+            "fury-of-the-heavens",
+            "cooldown-reduction",
+            "blade-placement",
+            "repositioning"
+          ],
+          "sourceRef": "kwang-game-client-manual-entry-2026-08-16"
+        }
+      ],
       "threats": [
         "engage",
         "frontline",
-        "pick"
+        "pick",
+        "mobility",
+        "area-control",
+        "mixed-damage",
+        "shielding"
       ],
       "answers": [
         "hard-cc",
         "frontline",
-        "anti-dive"
+        "anti-dive",
+        "mobility",
+        "anti-frontline",
+        "area-control",
+        "self-shield",
+        "team-sustain"
       ],
       "weaknesses": [
         "poke",
-        "tank-shred"
+        "tank-shred",
+        "anti-shield",
+        "anti-heal",
+        "range-pressure"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "kwang-game-client-manual-entry-2026-08-16",
+        "roles": "kwang-game-client-manual-entry-2026-08-16",
+        "kit": "kwang-game-client-manual-entry-2026-08-16",
+        "augments": "kwang-game-client-manual-entry-2026-08-16"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-16. User-provided role typo 'Offlnae' was normalized to offlane. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
