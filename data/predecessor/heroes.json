@@ -36,6 +36,10 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
     },
+    "rampage-game-client-manual-entry-2026-08-16": {
+      "label": "Rampage game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Rampage roles, class, ratings, ability text, and augments."
     "phase-game-client-manual-entry-2026-08-16": {
       "label": "Phase game-client manual entry",
       "url": null,
@@ -9800,35 +9804,330 @@
       "id": "rampage",
       "name": "Rampage",
       "roles": [
-        "jungle",
-        "offlane"
+        "jungle"
       ],
-      "damage": "physical",
+      "classes": [
+        "tank"
+      ],
+      "damage": "mixed",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 3,
+        "abilityPower": 3,
+        "durability": 10,
+        "mobility": 5
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Swipe",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 65.0/67.0/69.2/71.4/73.8/76.2/78.8/81.5/84.3/87.2/90.2/93.3/96.5/99.9/103.3/106.9/110.5/114.3 (+65% physical power) physical damage.",
+          "scaling": {
+            "damage": [
+              65,
+              67,
+              69.2,
+              71.4,
+              73.8,
+              76.2,
+              78.8,
+              81.5,
+              84.3,
+              87.2,
+              90.2,
+              93.3,
+              96.5,
+              99.9,
+              103.3,
+              106.9,
+              110.5,
+              114.3
+            ],
+            "physicalPowerRatio": 0.65
+          },
+          "effects": [
+            "melee-basic"
+          ],
+          "sourceRef": "rampage-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "passive",
+          "name": "King of the Jungle",
+          "kind": "passive",
+          "damageType": "physical",
+          "description": "Rampage gains (+0.1/0.1/0.1/0.1/0.2/0.2/0.2/0.2/0.2/0.2/0.3/0.3/0.3/0.3/0.3/0.3/0.3/0.4% max health) bonus health regeneration. This regeneration is doubled while in the Jungle. Upon being immobilized, Rampage gains 25 Tenacity for 4s and restores (+3% max health) of his maximum health over the same duration.",
+          "scaling": {
+            "maxHealthRegenPercent": [
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.2,
+              0.2,
+              0.2,
+              0.2,
+              0.2,
+              0.2,
+              0.3,
+              0.3,
+              0.3,
+              0.3,
+              0.3,
+              0.3,
+              0.3,
+              0.4
+            ],
+            "jungleRegenMultiplier": 2,
+            "tenacityOnImmobilized": 25,
+            "tenacityDuration": 4,
+            "immobilizedHealMaxHealthPercent": 3,
+            "immobilizedHealDuration": 4
+          },
+          "effects": [
+            "health-regeneration",
+            "jungle-sustain",
+            "tenacity",
+            "anti-cc",
+            "healing-over-time"
+          ],
+          "sourceRef": "rampage-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "primary",
+          "name": "Boulder Throw",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Rip a boulder from the earth and carry it for up to 5s. Rampage can throw the boulder, dealing 100.0/135.0/170.0/205.0/240.0 (+60% physical power)(+80% magical power) magical damage to all Enemies in its path, Stunning them for 1.2/1.3/1.3/1.4/1.4s. Shatters on contact with Enemy Heroes. Behemoth: Throw the boulder instantly.",
+          "cooldown": [
+            20,
+            18.5,
+            17,
+            15.5,
+            14
+          ],
+          "scaling": {
+            "damage": [
+              100,
+              135,
+              170,
+              205,
+              240
+            ],
+            "physicalPowerRatio": 0.6,
+            "magicalPowerRatio": 0.8,
+            "carryDuration": 5,
+            "stunDuration": [
+              1.2,
+              1.3,
+              1.3,
+              1.4,
+              1.4
+            ]
+          },
+          "effects": [
+            "projectile",
+            "stun",
+            "hard-cc",
+            "pick",
+            "behemoth-enhanced"
+          ],
+          "sourceRef": "rampage-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "secondary",
+          "name": "Rumble",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Pound the ground with each fist, dealing 50.0/75.0/100.0/125.0/150.0 (+50% physical power) physical damage over 2 hits to nearby Enemies and Slowing them by 30% (+0.4% max health) for 1s. Passive: Gain (+1.5/1.8/2.1/2.4/2.7% max health) Physical Power. Behemoth: Cooldown is reduced by 35%.",
+          "cooldown": [
+            9,
+            8,
+            7,
+            6,
+            5
+          ],
+          "scaling": {
+            "damage": [
+              50,
+              75,
+              100,
+              125,
+              150
+            ],
+            "physicalPowerRatio": 0.5,
+            "hits": 2,
+            "slowPercent": 30,
+            "slowMaxHealthRatio": 0.004,
+            "slowDuration": 1,
+            "physicalPowerFromMaxHealthPercent": [
+              1.5,
+              1.8,
+              2.1,
+              2.4,
+              2.7
+            ],
+            "behemothCooldownReductionPercent": 35
+          },
+          "effects": [
+            "area-damage",
+            "slow",
+            "max-health-scaling",
+            "frontline",
+            "behemoth-enhanced"
+          ],
+          "sourceRef": "rampage-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "alternate",
+          "name": "Pounce",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Leap forward before slamming down to the ground, dealing 80.0/110.0/140.0/170.0/200.0 (+5% max health) physical damage to nearby Enemies and launching damaged Heroes backwards. The leap can be cancelled early by basic attacking. Using Pounce while Boulder Throw is active causes it to shatter upon landing, dealing its effects in the area. Behemoth: Range increases by 65%.",
+          "cooldown": [
+            20,
+            19,
+            18,
+            17,
+            16
+          ],
+          "scaling": {
+            "damage": [
+              80,
+              110,
+              140,
+              170,
+              200
+            ],
+            "maxHealthRatio": 0.05,
+            "behemothRangeIncreasePercent": 65
+          },
+          "effects": [
+            "leap",
+            "mobility",
+            "area-damage",
+            "knockback",
+            "displacement",
+            "engage",
+            "boulder-combo",
+            "behemoth-enhanced"
+          ],
+          "sourceRef": "rampage-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Behemoth",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Become enraged, growing in size and altering Rampage's abilities for 10s. During this time he gains 200.0/450.0/700.0 maximum health and 5%(+10% magical power) Movement Speed. While Behemoth is active, Rampage restores 1.5/2.8/4.0% of his maximum health per second. This is increased by 4% for each Enemy Hero within a 1000 unit radius of Rampage.",
+          "cooldown": [
+            130,
+            120,
+            110
+          ],
+          "scaling": {
+            "duration": 10,
+            "bonusMaximumHealth": [
+              200,
+              450,
+              700
+            ],
+            "movementSpeedPercent": 5,
+            "movementSpeedMagicalPowerRatio": 0.1,
+            "maxHealthRegenPerSecondPercent": [
+              1.5,
+              2.8,
+              4
+            ],
+            "additionalRegenPerNearbyHeroPercent": 4,
+            "nearbyHeroRadius": 1000
+          },
+          "effects": [
+            "transformation",
+            "durability",
+            "bonus-health",
+            "movement-speed",
+            "health-regeneration",
+            "teamfight",
+            "frontline"
+          ],
+          "sourceRef": "rampage-game-client-manual-entry-2026-08-16"
+        }
+      ],
+      "augments": [
+        {
+          "name": "The Rumbling",
+          "category": "damage",
+          "description": "Rumble's Cooldown is refunded when it deals damage, but it deals 35% less damage, costs 5 more Mana, and Slows Rampage by 60% while active.",
+          "tags": [
+            "rumble",
+            "cooldown-refund",
+            "damage-tradeoff",
+            "self-slow"
+          ],
+          "sourceRef": "rampage-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Rock & Awe",
+          "category": "damage",
+          "description": "Boulder Throw deals 0-100% more damage, based on distance thrown (capped at 4000 units).",
+          "tags": [
+            "boulder-throw",
+            "distance-scaling",
+            "bonus-damage",
+            "poke"
+          ],
+          "sourceRef": "rampage-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Tiny Titan",
+          "category": "attack-speed",
+          "description": "Behemoth shrinks Rampage instead, granting him no Combat Penalty and 30.0/32.5/35.0% Total Attack Speed, but he receives 45% more damage.",
+          "tags": [
+            "behemoth",
+            "attack-speed",
+            "damage-taken-tradeoff"
+          ],
+          "sourceRef": "rampage-game-client-manual-entry-2026-08-16"
+        }
+      ],
       "threats": [
         "frontline",
         "engage",
-        "objective-control"
+        "objective-control",
+        "hard-cc",
+        "displacement",
+        "sustain",
+        "teamfight"
       ],
       "answers": [
         "frontline",
         "hard-cc",
-        "anti-burst"
+        "anti-burst",
+        "anti-cc",
+        "engage",
+        "peel",
+        "jungle-sustain"
       ],
       "weaknesses": [
         "anti-heal",
-        "tank-shred"
+        "tank-shred",
+        "poke",
+        "mobility-kite",
+        "max-health-damage"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "rampage-game-client-manual-entry-2026-08-16",
+        "roles": "rampage-game-client-manual-entry-2026-08-16",
+        "kit": "rampage-game-client-manual-entry-2026-08-16",
+        "augments": "rampage-game-client-manual-entry-2026-08-16"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-16. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
