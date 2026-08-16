@@ -36,6 +36,10 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
     },
+    "muriel-game-client-manual-entry-2026-08-16": {
+      "label": "Muriel game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Muriel roles, class, ratings, ability text, and augments."
     "murdock-game-client-manual-entry-2026-08-16": {
       "label": "Murdock game-client manual entry",
       "url": null,
@@ -8427,32 +8431,366 @@
       "roles": [
         "support"
       ],
+      "classes": [
+        "support"
+      ],
       "damage": "magical",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 3,
+        "abilityPower": 3,
+        "durability": 3,
+        "mobility": 2
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Orb",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged basic attack dealing 52.0/54.5/57.1/59.9/62.7/65.8/68.9/72.2/75.6/79.2/82.8/86.7/90.6/94.7/98.9/103.3/107.7/112.3 (+80% physical power) physical damage.",
+          "scaling": {
+            "damage": [
+              52,
+              54.5,
+              57.1,
+              59.9,
+              62.7,
+              65.8,
+              68.9,
+              72.2,
+              75.6,
+              79.2,
+              82.8,
+              86.7,
+              90.6,
+              94.7,
+              98.9,
+              103.3,
+              107.7,
+              112.3
+            ],
+            "physicalPowerRatio": 0.8
+          },
+          "effects": [
+            "ranged-basic"
+          ],
+          "sourceRef": "muriel-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "passive",
+          "name": "Sentinel",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "Muriel's damaging abilities reduce Enemy Healing by 25.0/25.0/25.0/25.0/25.0/25.0/35.0/35.0/35.0/35.0/35.0/35.0/45.0/45.0/45.0/45.0/45.0/45.0/35.0/45.0% for 4s. Allies affected by Muriel's abilities gain 12% (+0.5% per Level) increased Healing and Shielding Received for 4s.",
+          "scaling": {
+            "enemyHealingReductionPercent": [
+              25,
+              25,
+              25,
+              25,
+              25,
+              25,
+              35,
+              35,
+              35,
+              35,
+              35,
+              35,
+              45,
+              45,
+              45,
+              45,
+              45,
+              45,
+              35,
+              45
+            ],
+            "enemyHealingReductionDuration": 4,
+            "allyHealingAndShieldingReceivedPercent": 12,
+            "allyHealingAndShieldingReceivedPercentPerLevel": 0.5,
+            "allyBuffDuration": 4
+          },
+          "effects": [
+            "anti-heal",
+            "healing-received",
+            "shielding-received",
+            "ally-buff"
+          ],
+          "sourceRef": "muriel-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "primary",
+          "name": "Consecrated Ground",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Sanctify the ground with an angelic light for 6s. Allies within the area gain 10.0/12.5/15.0/17.5/20.0% Total Attack Speed and restore 60.0/80.0/100.0/120.0/140.0 (+20% magical power) Health over its lifetime. Enemies within the area have their Total Attack Speed reduced by 10.0/11.5/13.0/14.5/16.0% and receive 90.0/120.0/150.0/180.0/210.0 (+50% magical power) magical damage over its lifetime.",
+          "cooldown": [
+            26,
+            24.5,
+            23,
+            21.5,
+            20
+          ],
+          "scaling": {
+            "duration": 6,
+            "allyAttackSpeedPercent": [
+              10,
+              12.5,
+              15,
+              17.5,
+              20
+            ],
+            "allyHealing": [
+              60,
+              80,
+              100,
+              120,
+              140
+            ],
+            "allyHealingMagicalPowerRatio": 0.2,
+            "enemyAttackSpeedReductionPercent": [
+              10,
+              11.5,
+              13,
+              14.5,
+              16
+            ],
+            "enemyDamage": [
+              90,
+              120,
+              150,
+              180,
+              210
+            ],
+            "enemyDamageMagicalPowerRatio": 0.5
+          },
+          "effects": [
+            "area-control",
+            "team-buff",
+            "attack-speed",
+            "healing",
+            "attack-speed-reduction",
+            "damage-over-time"
+          ],
+          "sourceRef": "muriel-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "secondary",
+          "name": "Alacrity",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Throw an orb that applies a 80.0/120.0/160.0/200.0/240.0 (+60% magical power) shield to the first Allied Hero it touches, granting them 15.0/17.5/20.0/22.5/25.0% Decaying Movement Speed for 4s. Remains in the world for 8s if untouched.",
+          "cooldown": [
+            12,
+            11.5,
+            11,
+            10.5,
+            10
+          ],
+          "scaling": {
+            "shield": [
+              80,
+              120,
+              160,
+              200,
+              240
+            ],
+            "shieldMagicalPowerRatio": 0.6,
+            "movementSpeedPercent": [
+              15,
+              17.5,
+              20,
+              22.5,
+              25
+            ],
+            "movementSpeedDuration": 4,
+            "untouchedWorldDuration": 8
+          },
+          "effects": [
+            "shield",
+            "ally-movement-speed",
+            "peel",
+            "skillshot"
+          ],
+          "sourceRef": "muriel-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "alternate",
+          "name": "Serenity",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Charge a piercing bolt of energy for up to 4s that deals 70.0/105.0/140.0/175.0/210.0 (+50% magical power) magical damage to all Enemies in its path and Slows by 35% for 1.0/1.1/1.1/1.1/1.2s. If Muriel charges Serenity for 1.1s it reaches max charge and deals 98.0/147.0/196.0/245.0/294.0 (+70% magical power) magical damage and Stuns the target for 1.0/1.1/1.1/1.1/1.2s instead. If Muriel cancels the charge, 50% of the cooldown and 50% of the cost is refunded.",
+          "cooldown": [
+            13,
+            12.25,
+            11.5,
+            10.75,
+            10
+          ],
+          "scaling": {
+            "maxChargeDuration": 4,
+            "damage": [
+              70,
+              105,
+              140,
+              175,
+              210
+            ],
+            "magicalPowerRatio": 0.5,
+            "slowPercent": 35,
+            "slowDuration": [
+              1,
+              1.1,
+              1.1,
+              1.1,
+              1.2
+            ],
+            "maxChargeTime": 1.1,
+            "maxChargeDamage": [
+              98,
+              147,
+              196,
+              245,
+              294
+            ],
+            "maxChargeMagicalPowerRatio": 0.7,
+            "stunDuration": [
+              1,
+              1.1,
+              1.1,
+              1.1,
+              1.2
+            ],
+            "cancelCooldownRefundPercent": 50,
+            "cancelCostRefundPercent": 50
+          },
+          "effects": [
+            "charged-ability",
+            "piercing",
+            "slow",
+            "stun",
+            "hard-cc",
+            "refund"
+          ],
+          "sourceRef": "muriel-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Reversal Of Fortune",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "Prepare for flight, allowing Muriel to target an Allied Hero anywhere in the world, granting them 35% Damage Reduction and a 280.0/480.0/680.0 (+100% magical power) Shield for 2.5s as you soar to their location. On arrival, nearby Enemies take 100.0/160.0/220.0 (+40% magical power) magical damage and are Knocked Up for 0.5s.",
+          "cooldown": [
+            165,
+            150,
+            135
+          ],
+          "scaling": {
+            "damageReductionPercent": 35,
+            "shield": [
+              280,
+              480,
+              680
+            ],
+            "shieldMagicalPowerRatio": 1,
+            "shieldDuration": 2.5,
+            "arrivalDamage": [
+              100,
+              160,
+              220
+            ],
+            "arrivalDamageMagicalPowerRatio": 0.4,
+            "knockupDuration": 0.5
+          },
+          "effects": [
+            "global-presence",
+            "shield",
+            "damage-reduction",
+            "ally-target",
+            "knockup",
+            "peel",
+            "save"
+          ],
+          "sourceRef": "muriel-game-client-manual-entry-2026-08-16"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Circuit Reset",
+          "category": "cooldown",
+          "description": "Upon Shielding a Hero with Alacrity, reduce their Current Ability Cooldowns by 1.5s.",
+          "tags": [
+            "alacrity",
+            "shield",
+            "ally-cooldown-reduction",
+            "utility"
+          ],
+          "sourceRef": "muriel-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Sacrosanct",
+          "category": "utility",
+          "description": "Casting Reversal of Fortune on an Allied Hero immediately creates a Consecrated Ground at the current level at the target location.",
+          "tags": [
+            "reversal-of-fortune",
+            "consecrated-ground",
+            "global-presence",
+            "teamfight"
+          ],
+          "sourceRef": "muriel-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Essence Nullifier",
+          "category": "damage",
+          "description": "Serenity's Max Charge Damage also drains 10 (+3.0/4.5/6.0/7.5/9.0% Target's Current Mana) Mana, dealing it as true damage.",
+          "tags": [
+            "serenity",
+            "mana-drain",
+            "true-damage",
+            "max-charge"
+          ],
+          "sourceRef": "muriel-game-client-manual-entry-2026-08-16"
+        }
+      ],
       "threats": [
         "peel",
         "shields",
-        "global-presence"
+        "global-presence",
+        "anti-heal",
+        "team-buff",
+        "healing",
+        "hard-cc",
+        "save"
       ],
       "answers": [
         "peel",
         "anti-burst",
-        "shields"
+        "shields",
+        "anti-heal",
+        "team-sustain",
+        "global-save",
+        "attack-speed-buff",
+        "hard-cc"
       ],
       "weaknesses": [
         "hard-engage",
-        "low-damage"
+        "low-damage",
+        "anti-shield",
+        "anti-heal",
+        "low-mobility"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "muriel-game-client-manual-entry-2026-08-16",
+        "roles": "muriel-game-client-manual-entry-2026-08-16",
+        "kit": "muriel-game-client-manual-entry-2026-08-16",
+        "augments": "muriel-game-client-manual-entry-2026-08-16"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-16. Draft taxonomy tags are derived from the verified kit text. Sentinel anti-heal values were preserved exactly as provided, including the two post-level entries."
       }
     },
     {
