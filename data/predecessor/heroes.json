@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "revenant-game-client-manual-entry-2026-08-16": {
+      "label": "Revenant game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Revenant roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -1501,32 +1506,345 @@
       "roles": [
         "carry"
       ],
+      "classes": [
+        "carry"
+      ],
       "damage": "physical",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 8,
+        "abilityPower": 4,
+        "durability": 1,
+        "mobility": 1
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Fate",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged basic attack dealing 53.0/55.4/57.9/60.5/63.3/66.2/69.2/72.3/75.6/79.0/82.5/86.2/90.0/93.9/97.9/102.1/106.4/110.8 (+85% physical power) physical damage. The final round will always critically strike. After four basic attacks, Revenant will automatically reload.",
+          "scaling": {
+            "damage": [
+              53,
+              55.4,
+              57.9,
+              60.5,
+              63.3,
+              66.2,
+              69.2,
+              72.3,
+              75.6,
+              79,
+              82.5,
+              86.2,
+              90,
+              93.9,
+              97.9,
+              102.1,
+              106.4,
+              110.8
+            ],
+            "physicalPowerRatio": 0.85,
+            "magazineSize": 4
+          },
+          "effects": [
+            "ranged-basic",
+            "guaranteed-crit",
+            "reload"
+          ],
+          "sourceRef": "revenant-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "passive",
+          "name": "Bounty Hunter",
+          "kind": "passive",
+          "damageType": "physical",
+          "description": "Revenant's Physical Power is increased by 3.0/3.6/4.2/4.8/5.4/6.0/6.6/7.2/7.8/8.4/9.0/9.6/10.2/10.8/11.4/12.0/12.6/13.2% (+1% per 10% Critical Strike Chance)(+2% per 10% Bonus Attack Speed). Killing an Enemy Hero grants 25 (+25 per bounty stack) additional gold.",
+          "scaling": {
+            "physicalPowerIncreasePercent": [
+              3,
+              3.6,
+              4.2,
+              4.8,
+              5.4,
+              6,
+              6.6,
+              7.2,
+              7.8,
+              8.4,
+              9,
+              9.6,
+              10.2,
+              10.8,
+              11.4,
+              12,
+              12.6,
+              13.2
+            ],
+            "physicalPowerIncreasePer10CritChancePercent": 1,
+            "physicalPowerIncreasePer10BonusAttackSpeedPercent": 2,
+            "heroKillGold": 25,
+            "goldPerBountyStack": 25
+          },
+          "effects": [
+            "physical-power-scaling",
+            "crit-scaling",
+            "attack-speed-scaling",
+            "bonus-gold",
+            "snowball"
+          ],
+          "sourceRef": "revenant-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "primary",
+          "name": "Obliterate",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Unleash 10 ethereal missiles within a wide cone that home towards random Enemies. If a Target is Marked by Scar, the missiles prioritize them instead. Each missile deals 35.0/50.0/65.0/80.0/95.0 (+40.0/55.0/70.0/85.0/100.0% physical power) (+60.0/65.0/70.0/75.0/80.0% magical power) physical damage. Enemy Heroes and Monsters take 10% damage from missiles beyond the first.",
+          "cooldown": [
+            9,
+            9,
+            9,
+            9,
+            9
+          ],
+          "scaling": {
+            "missiles": 10,
+            "damagePerMissile": [
+              35,
+              50,
+              65,
+              80,
+              95
+            ],
+            "physicalPowerRatio": [
+              0.4,
+              0.55,
+              0.7,
+              0.85,
+              1
+            ],
+            "magicalPowerRatio": [
+              0.6,
+              0.65,
+              0.7,
+              0.75,
+              0.8
+            ],
+            "heroMonsterRepeatedMissileDamagePercent": 10
+          },
+          "effects": [
+            "homing-projectile",
+            "multi-hit",
+            "marked-target-priority",
+            "cone",
+            "burst",
+            "poke"
+          ],
+          "sourceRef": "revenant-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "secondary",
+          "name": "Scar",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Launch a cursed orb that deals 15.0/20.0/25.0/30.0/35.0 (+20% physical power) (+30% magical power) physical damage and apply 4 stacks of Marked for 6s. Dealing damage to a Marked Target deals 15.0/20.0/25.0/30.0/35.0 (+20% physical power) (+30% magical power) physical damage and consumes a stack. Upon consuming all stacks, the Target is Rooted for 1s.",
+          "cooldown": [
+            15,
+            14.25,
+            13.5,
+            12.75,
+            12
+          ],
+          "scaling": {
+            "damage": [
+              15,
+              20,
+              25,
+              30,
+              35
+            ],
+            "markedDamage": [
+              15,
+              20,
+              25,
+              30,
+              35
+            ],
+            "physicalPowerRatio": 0.2,
+            "magicalPowerRatio": 0.3,
+            "markedStacks": 4,
+            "markedDuration": 6,
+            "rootDuration": 1
+          },
+          "effects": [
+            "projectile",
+            "mark",
+            "bonus-damage",
+            "root",
+            "hard-cc",
+            "pick"
+          ],
+          "sourceRef": "revenant-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "alternate",
+          "name": "Hellfire Rounds",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Passive: Critical Damage is modified to 150.0/152.0/154.0/156.0/158.0/160.0%. Hand Cannon's final round deals bonus physical damage equal to 5.0/6.0/7.0/8.0/9.0/10.0% (+0.5% per Level) (+0.02% magical power) of the Target's missing health and removes Revenant's combat penalty if it hits, granting him 10% (+18% attack speed) Movement Speed for 2s. Active: Revenant reloads his Hand Cannon.",
+          "cooldown": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "scaling": {
+            "criticalDamagePercent": [
+              150,
+              152,
+              154,
+              156,
+              158,
+              160
+            ],
+            "finalRoundMissingHealthDamagePercent": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "missingHealthDamagePercentPerLevel": 0.5,
+            "missingHealthDamageMagicalPowerRatio": 0.0002,
+            "movementSpeedPercent": 10,
+            "movementSpeedAttackSpeedRatio": 0.18,
+            "movementSpeedDuration": 2
+          },
+          "effects": [
+            "critical-damage-modifier",
+            "missing-health-damage",
+            "reload",
+            "movement-speed",
+            "execute-pressure"
+          ],
+          "sourceRef": "revenant-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Reckoning",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Revenant pulls himself and his Target into the Nether Realm for 6.0/7.0/8.0s and Slows them by 80% for 0.7s. During this time, he steals 8.0/9.0/10.0% of their Physical & Magical Power. Killing his opponent inside the Nether Realm grants 2x the bonus gold gained from Bounty Hunter.",
+          "cooldown": [
+            145,
+            125,
+            105
+          ],
+          "scaling": {
+            "netherRealmDuration": [
+              6,
+              7,
+              8
+            ],
+            "slowPercent": 80,
+            "slowDuration": 0.7,
+            "physicalMagicalPowerStealPercent": [
+              8,
+              9,
+              10
+            ],
+            "bountyHunterGoldMultiplierOnKill": 2
+          },
+          "effects": [
+            "isolation",
+            "duel",
+            "slow",
+            "stat-steal",
+            "pick",
+            "bonus-gold"
+          ],
+          "sourceRef": "revenant-game-client-manual-entry-2026-08-16"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Quickdraw",
+          "category": "mobility",
+          "description": "Revenant reloads 35% faster and jumps 25% higher.",
+          "tags": [
+            "reload",
+            "jump-height",
+            "tempo"
+          ],
+          "sourceRef": "revenant-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Spectral Bounty",
+          "category": "snowball",
+          "description": "Reckoning now grants 3x Bounty Hunter gold and 4 (+25% of stolen stats) Physical & Magical Power on Kill.",
+          "tags": [
+            "reckoning",
+            "bonus-gold",
+            "stat-steal",
+            "snowball"
+          ],
+          "sourceRef": "revenant-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Hellfire Blast",
+          "category": "damage",
+          "description": "Helllfire Rounds' Fourth Shot deals 7% more damage and ignores 30% Bonus Physical Armor.",
+          "tags": [
+            "hellfire-rounds",
+            "fourth-shot",
+            "bonus-damage",
+            "armor-ignore"
+          ],
+          "sourceRef": "revenant-game-client-manual-entry-2026-08-16"
+        }
+      ],
       "threats": [
         "burst",
         "pick",
-        "sustained-dps"
+        "sustained-dps",
+        "execute",
+        "duelist",
+        "snowball",
+        "root"
       ],
       "answers": [
         "burst",
         "anti-squishy",
-        "duelist"
+        "duelist",
+        "pick",
+        "isolation",
+        "execute-pressure",
+        "anti-carry"
       ],
       "weaknesses": [
         "dive",
-        "low-mobility"
+        "low-mobility",
+        "burst-vulnerable",
+        "hard-cc",
+        "reload-window",
+        "frontline-pressure"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "revenant-game-client-manual-entry-2026-08-16",
+        "roles": "revenant-game-client-manual-entry-2026-08-16",
+        "kit": "revenant-game-client-manual-entry-2026-08-16",
+        "augments": "revenant-game-client-manual-entry-2026-08-16"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-16. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
