@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "narbash-game-client-manual-entry-2026-08-16": {
+      "label": "Narbash game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Narbash roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -1329,32 +1334,334 @@
       "roles": [
         "support"
       ],
+      "classes": [
+        "support"
+      ],
       "damage": "magical",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 2,
+        "abilityPower": 3,
+        "durability": 4,
+        "mobility": 3
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Drumclubs",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 58.0/62.1/66.3/70.8/75.5/80.5/85.6/91.0/96.6/102.4/108.4/114.6/121.1/127.8/134.6/141.7/149.1/156.6 (+100% physical power) physical damage.",
+          "scaling": {
+            "damage": [
+              58,
+              62.1,
+              66.3,
+              70.8,
+              75.5,
+              80.5,
+              85.6,
+              91,
+              96.6,
+              102.4,
+              108.4,
+              114.6,
+              121.1,
+              127.8,
+              134.6,
+              141.7,
+              149.1,
+              156.6
+            ],
+            "physicalPowerRatio": 1
+          },
+          "effects": [
+            "melee-basic"
+          ],
+          "sourceRef": "narbash-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "passive",
+          "name": "Mosh Pit",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "Narbash gains 2.0/2.5/3.0/3.5/4.0/4.5/5.0/5.5/6.0/6.5/7.0/7.5/8.0/8.5/9.0/9.5/10.0/10.5 (+0.5 per level) Physical Power, Physical Armor and Magical Armor for each nearby Allied or Enemy Hero within a 1700u radius.",
+          "scaling": {
+            "bonusPerNearbyHero": [
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              4.5,
+              5,
+              5.5,
+              6,
+              6.5,
+              7,
+              7.5,
+              8,
+              8.5,
+              9,
+              9.5,
+              10,
+              10.5
+            ],
+            "bonusPerLevel": 0.5,
+            "radius": 1700
+          },
+          "effects": [
+            "physical-power",
+            "physical-armor",
+            "magical-armor",
+            "nearby-hero-scaling",
+            "frontline"
+          ],
+          "sourceRef": "narbash-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "primary",
+          "name": "March!",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Bellow out a rallying war cry, granting Narbash an empowered version of Song of My People for himself and his nearby Allies for 3.0/3.3/3.5/3.8/4.0s. Speed: Gain 15.0/17.5/20.0/22.5/25.0% (+4.5% magical power) Movement Speed. Healing: Gain 15.0/20.0/25.0/30.0/35.0 (+20% magical power) Health Regeneration.",
+          "cooldown": [
+            15,
+            13.5,
+            12,
+            10.5,
+            9
+          ],
+          "scaling": {
+            "duration": [
+              3,
+              3.3,
+              3.5,
+              3.8,
+              4
+            ],
+            "movementSpeedPercent": [
+              15,
+              17.5,
+              20,
+              22.5,
+              25
+            ],
+            "movementSpeedMagicalPowerRatio": 0.045,
+            "healthRegeneration": [
+              15,
+              20,
+              25,
+              30,
+              35
+            ],
+            "healthRegenerationMagicalPowerRatio": 0.2
+          },
+          "effects": [
+            "team-buff",
+            "movement-speed",
+            "healing",
+            "aura-empower"
+          ],
+          "sourceRef": "narbash-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "secondary",
+          "name": "Song Of My People",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Toggle: Play a soothing beat, granting Narbash and his Allies additional Speed or Healing. Healing Aura: Grants 1.5/2.5/3.5/4.5/5.5 (+2% magical power) Health Regeneration. Speed Aura: Grants 4.5/5.5/6.5/7.5/8.5% (+3% haste) Movement Speed.",
+          "cooldown": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "scaling": {
+            "healingAuraHealthRegeneration": [
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5
+            ],
+            "healingAuraMagicalPowerRatio": 0.02,
+            "speedAuraMovementSpeedPercent": [
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              8.5
+            ],
+            "speedAuraHasteRatio": 0.03
+          },
+          "effects": [
+            "toggle",
+            "healing-aura",
+            "movement-speed-aura",
+            "team-sustain"
+          ],
+          "sourceRef": "narbash-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "alternate",
+          "name": "Thunk",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Toss a drumstick that deals 95.0/140.0/185.0/230.0/275.0 (+85% magical power)(+120% magical power) magical damage in a tiny area of effect, Knocking Back and Stunning the Enemies hit for 1.1/1.1/1.2/1.3/1.3s.",
+          "cooldown": [
+            14,
+            13,
+            12,
+            11,
+            10
+          ],
+          "scaling": {
+            "damage": [
+              95,
+              140,
+              185,
+              230,
+              275
+            ],
+            "magicalPowerRatio": 0.85,
+            "additionalMagicalPowerRatio": 1.2,
+            "stunDuration": [
+              1.1,
+              1.1,
+              1.2,
+              1.3,
+              1.3
+            ]
+          },
+          "effects": [
+            "knockback",
+            "stun",
+            "hard-cc",
+            "small-area-damage",
+            "pick"
+          ],
+          "sourceRef": "narbash-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Crash Bang Boom!",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "Narbash Slows himself by 30% and Channels a drum solo for 3s. Nearby Enemies receive 5.0/7.5/10.0 (+3% magical power)(+5% physical power) magical damage per hit and are Slowed by 5%, stacking up to 5 times. Enemies afflicted with maximum Slow stacks become Mesmerized instead. The final hit deals 80.0/150.0/220.0 (+70% magical power)(+100% physical power) magical damage, Knocking Up all Enemies and Stunning them for 0.5s.",
+          "cooldown": [
+            125,
+            105,
+            85
+          ],
+          "scaling": {
+            "selfSlowPercent": 30,
+            "channelDuration": 3,
+            "damagePerHit": [
+              5,
+              7.5,
+              10
+            ],
+            "damagePerHitMagicalPowerRatio": 0.03,
+            "damagePerHitPhysicalPowerRatio": 0.05,
+            "slowPercentPerStack": 5,
+            "maxSlowStacks": 5,
+            "finalHitDamage": [
+              80,
+              150,
+              220
+            ],
+            "finalHitMagicalPowerRatio": 0.7,
+            "finalHitPhysicalPowerRatio": 1,
+            "finalStunDuration": 0.5
+          },
+          "effects": [
+            "channel",
+            "area-damage",
+            "slow",
+            "mesmerize",
+            "knockup",
+            "stun",
+            "teamfight"
+          ],
+          "sourceRef": "narbash-game-client-manual-entry-2026-08-16"
+        }
+      ],
+      "augments": [
+        {
+          "name": "War Anthem",
+          "category": "damage",
+          "description": "Narbash's Abilities heal for 50% less. Healing Aura grants +5.0/7.0/9.0/11.0/13.0 Physical Power. March's Heal also grants +14.0/23.0/32.0/41.0/50.0 Physical Power.",
+          "tags": [
+            "healing-tradeoff",
+            "physical-power",
+            "healing-aura",
+            "march"
+          ],
+          "sourceRef": "narbash-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Thonk",
+          "category": "cooldown",
+          "description": "Thunk falls to the floor if it hits an Enemy. If Narbash picks it up he refunds 35% of its Cooldown and 50% of its Mana Cost.",
+          "tags": [
+            "thunk",
+            "cooldown-refund",
+            "mana-refund",
+            "pickup"
+          ],
+          "sourceRef": "narbash-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Percussive Tear",
+          "category": "damage",
+          "description": "Each hit of Crash Bang Boom! Shreds 2.5% Armors for 3s.",
+          "tags": [
+            "crash-bang-boom",
+            "armor-shred",
+            "teamfight",
+            "anti-frontline"
+          ],
+          "sourceRef": "narbash-game-client-manual-entry-2026-08-16"
+        }
+      ],
       "threats": [
         "sustain",
         "engage",
-        "peel"
+        "peel",
+        "hard-cc",
+        "teamfight",
+        "movement-speed",
+        "team-sustain"
       ],
       "answers": [
         "sustain",
         "hard-cc",
-        "anti-poke"
+        "anti-poke",
+        "peel",
+        "team-sustain",
+        "movement-speed",
+        "anti-frontline"
       ],
       "weaknesses": [
         "anti-heal",
-        "poke"
+        "poke",
+        "interrupt",
+        "low-mobility",
+        "range-pressure"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "narbash-game-client-manual-entry-2026-08-16",
+        "roles": "narbash-game-client-manual-entry-2026-08-16",
+        "kit": "narbash-game-client-manual-entry-2026-08-16",
+        "augments": "narbash-game-client-manual-entry-2026-08-16"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-16. Draft taxonomy tags are derived from the verified kit text. Thunk's two magical-power ratios were preserved as provided."
       }
     },
     {
