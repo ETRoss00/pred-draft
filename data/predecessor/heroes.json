@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "ikra-game-client-manual-entry-2026-08-16": {
+      "label": "Ikra game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Ikra roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -917,32 +922,247 @@
         "midlane",
         "support"
       ],
+      "classes": [
+        "mage"
+      ],
       "damage": "magical",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 3,
+        "abilityPower": 9,
+        "durability": 2,
+        "mobility": 2
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Fathom",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged basic attack dealing 55.0/58.1/61.3/64.7/68.3/72.0/76.0/80.0/84.3/88.7/93.2/98.0/102.8/107.9/113.1/118.5/124.1/129.8 (+70% physical power) physical damage.",
+          "scaling": {
+            "damage": [55, 58.1, 61.3, 64.7, 68.3, 72, 76, 80, 84.3, 88.7, 93.2, 98, 102.8, 107.9, 113.1, 118.5, 124.1, 129.8],
+            "physicalPowerRatio": 0.7
+          },
+          "effects": [
+            "ranged-basic",
+            "bubble-pop-trigger"
+          ],
+          "sourceRef": "ikra-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "passive",
+          "name": "Herald",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "Based on the chosen Eternal Category, empower Ikras abilities. Harbingers: Ikra's Fathom deals +(8% magical power) as magical damage. Hitting an Enemy with Fathom reduces the cooldown of Brine by 0.5s. Primarchs: Popping Hydroclasm now displaces Ikra. Gain 1% Movement Speed per 75 magical power. Dreadnoughts: Narcosis' Suspension duration is increased by 25% and restores 100% Health of the Hero Damage dealt by it. Sovereigns: Hydroclasm has 25% reduced Cooldown and Genesis is 25% larger. Divines: Hydroclasm's Bubbles project an aura that heals Ikra and Allied Heroes for 4.0/6.0/8.0/10.0/12.0/6.0/8.0/10.0/12.0 (+10% magical power) Health every second. Anomalies: Brine and Hydroclasm deal 3% of the Target's Maximum Health over 4s and apply 45% Anti Heal for the same duration.",
+          "scaling": {
+            "harbingersFathomMagicalPowerRatio": 0.08,
+            "harbingersBrineCooldownReductionOnFathomHit": 0.5,
+            "primarchsMovementSpeedPercentPerMagicalPowerThreshold": 1,
+            "primarchsMagicalPowerThreshold": 75,
+            "dreadnoughtsSuspensionDurationIncreasePercent": 25,
+            "dreadnoughtsHeroDamageHealingPercent": 100,
+            "sovereignsHydroclasmCooldownReductionPercent": 25,
+            "sovereignsGenesisSizeIncreasePercent": 25,
+            "divinesHealPerSecond": [4, 6, 8, 10, 12, 6, 8, 10, 12],
+            "divinesMagicalPowerRatio": 0.1,
+            "anomaliesMaxHealthDamagePercent": 3,
+            "anomaliesDamageDuration": 4,
+            "anomaliesAntiHealPercent": 45,
+            "anomaliesAntiHealDuration": 4
+          },
+          "effects": [
+            "eternal-category-scaling",
+            "bonus-magical-damage",
+            "cooldown-reduction",
+            "mobility",
+            "healing",
+            "anti-heal",
+            "max-health-damage"
+          ],
+          "sourceRef": "ikra-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "primary",
+          "name": "Narcosis",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Ikra unleashes a Water Sphere dealing 85.0/115.0/145.0/175.0/205.0 (+50% magical power) magical damage. The Sphere pierces through Enemy Units but stops on hitting an Enemy Hero, surrounding and Suspending them for 1.1s.",
+          "scaling": {
+            "damage": [85, 115, 145, 175, 205],
+            "magicalPowerRatio": 0.5,
+            "suspensionDuration": 1.1
+          },
+          "cooldown": [16, 15, 14, 13, 12],
+          "effects": [
+            "piercing-projectile",
+            "suspend",
+            "hard-cc",
+            "pick",
+            "setup"
+          ],
+          "sourceRef": "ikra-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "secondary",
+          "name": "Hydroclasm",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Ikra creates an Abyssal Bubble that Slows Enemies by 15% while they are in its radius. The Bubble can be popped by hitting it with either Fathom or Brine, dealing 25.0/35.0/45.0/55.0/65.0 (+10% magical power) magical damage to all Targets in a 520 Unit radius and restoring 30 Mana. The Bubble amplifies after 1.1s, increasing the damage dealt to 60.0/110.0/160.0/210.0/260.0 (+70% magical power) magical damage whilst Slowing all Targets hit by 40.0/45.0/50.0/55.0/60.0% for 1s. Popping a Bubble with Brine deals Brine's Damage as well as Hydroclasm's Damage. If the Bubble is amplified when popped by Brine, the total damage penetrates 40% of the Target's Magical Armor. Max Charges: 2.",
+          "scaling": {
+            "bubbleSlowPercent": 15,
+            "popDamage": [25, 35, 45, 55, 65],
+            "popMagicalPowerRatio": 0.1,
+            "popRadius": 520,
+            "manaRestore": 30,
+            "amplifyDelay": 1.1,
+            "amplifiedDamage": [60, 110, 160, 210, 260],
+            "amplifiedMagicalPowerRatio": 0.7,
+            "amplifiedSlowPercent": [40, 45, 50, 55, 60],
+            "amplifiedSlowDuration": 1,
+            "amplifiedBrineMagicalArmorPenetrationPercent": 40,
+            "maxCharges": 2
+          },
+          "cooldown": [15, 13.75, 12.5, 11.25, 10],
+          "effects": [
+            "zone-control",
+            "bubble",
+            "slow",
+            "area-damage",
+            "mana-restore",
+            "magical-armor-penetration"
+          ],
+          "sourceRef": "ikra-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "alternate",
+          "name": "Brine",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Ikra fires a quick Hydroblast dealing 80.0/115.0/150.0/185.0/220.0 (+45% magical power) magical damage to the first Enemy Target hit or popping the first Bubble it impacts. Whenever Brine kills an Enemy, Ikra gains 3.0/4.0/5.0/6.0/7.0 additional Gold. Killing Enemies by Popping Bubbles with Brine also grants this Gold.",
+          "scaling": {
+            "damage": [80, 115, 150, 185, 220],
+            "magicalPowerRatio": 0.45,
+            "bonusGoldOnKill": [3, 4, 5, 6, 7]
+          },
+          "cooldown": [7, 6.25, 5.5, 4.75, 4],
+          "effects": [
+            "projectile",
+            "bubble-pop-trigger",
+            "poke",
+            "last-hit-economy",
+            "low-cooldown-damage"
+          ],
+          "sourceRef": "ikra-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Genesis",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "Ikra rises into the sky for 1s and channels the tides before unleashing a surging Waterspout from his Trident that pierces Walls. The Waterspout deals 320.0/480.0/640.0 (+85% magical power) magical damage and Knocks Up Enemies hit. When Enemy Targets land from the Knock Up, they are Slowed by 50% for 1.25s.",
+          "scaling": {
+            "riseDuration": 1,
+            "damage": [320, 480, 640],
+            "magicalPowerRatio": 0.85,
+            "landingSlowPercent": 50,
+            "landingSlowDuration": 1.25
+          },
+          "cooldown": [130, 110, 90],
+          "effects": [
+            "wall-piercing",
+            "knockup",
+            "hard-cc",
+            "slow",
+            "teamfight-ultimate",
+            "long-range-damage"
+          ],
+          "sourceRef": "ikra-game-client-manual-entry-2026-08-16"
+        }
+      ],
+      "augments": [
+        {
+          "name": "The Gloom",
+          "category": "stealth",
+          "description": "Bubble radius grows up to 25% larger over 3s. Additionally Ikra and Allied Heroes become camouflaged when within a Bubble's Radius.",
+          "tags": [
+            "bubble",
+            "camouflage",
+            "area-control",
+            "team-utility"
+          ],
+          "sourceRef": "ikra-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Undertow",
+          "category": "control",
+          "description": "Enemy Heroes Suspended by Narcosis slowly travel towards Ikra and the cooldown is decreased by 1.5s when damaging an Enemy Hero.",
+          "tags": [
+            "narcosis",
+            "pull",
+            "pick",
+            "cooldown-reduction"
+          ],
+          "sourceRef": "ikra-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Cascade",
+          "category": "damage",
+          "description": "Fathom hits grant stacks. Upon reaching 5, your next direct Brine hit deals 10 (+20% magical power) Bonus Damage. Dealing Ability damage to Enemies grants 12% Attack Speed for 4s, once per ability, stacking up to 4 times.",
+          "tags": [
+            "fathom",
+            "brine",
+            "bonus-damage",
+            "attack-speed",
+            "stacking"
+          ],
+          "sourceRef": "ikra-game-client-manual-entry-2026-08-16"
+        }
+      ],
       "threats": [
         "zone-control",
         "sustain",
-        "poke"
+        "poke",
+        "hard-cc",
+        "anti-heal",
+        "max-health-damage",
+        "team-utility"
       ],
       "answers": [
         "anti-burst",
         "poke",
-        "zone-control"
+        "zone-control",
+        "hard-cc",
+        "anti-heal",
+        "healing",
+        "pick-setup",
+        "area-control"
       ],
       "weaknesses": [
         "anti-heal",
-        "dive"
+        "dive",
+        "low-mobility",
+        "burst-vulnerable"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "ikra-game-client-manual-entry-2026-08-16",
+        "roles": "ikra-game-client-manual-entry-2026-08-16",
+        "classes": "ikra-game-client-manual-entry-2026-08-16",
+        "ratings": "ikra-game-client-manual-entry-2026-08-16",
+        "abilities": "ikra-game-client-manual-entry-2026-08-16",
+        "augments": "ikra-game-client-manual-entry-2026-08-16",
+        "kit": "ikra-game-client-manual-entry-2026-08-16"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Ikra text dated 2026-08-16. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
