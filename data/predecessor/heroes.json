@@ -36,6 +36,10 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
     },
+    "neon-game-client-manual-entry-2026-08-16": {
+      "label": "Neon game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Neon roles, class, ratings, ability text, and augments."
     "narbash-game-client-manual-entry-2026-08-16": {
       "label": "Narbash game-client manual entry",
       "url": null,
@@ -9137,35 +9141,317 @@
       "id": "neon",
       "name": "Neon",
       "roles": [
-        "midlane",
-        "carry"
+        "midlane"
+      ],
+      "classes": [
+        "mage"
       ],
       "damage": "mixed",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 1,
+        "abilityPower": 8,
+        "durability": 3,
+        "mobility": 5
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Jolt",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged basic attack dealing 52.0/54.3/56.7/59.3/62.0/64.8/67.7/70.8/73.9/77.2/80.7/84.2/87.9/91.7/95.6/99.6/103.8/108.1 (+60% physical power) physical damage.",
+          "scaling": {
+            "damage": [
+              52,
+              54.3,
+              56.7,
+              59.3,
+              62,
+              64.8,
+              67.7,
+              70.8,
+              73.9,
+              77.2,
+              80.7,
+              84.2,
+              87.9,
+              91.7,
+              95.6,
+              99.6,
+              103.8,
+              108.1
+            ],
+            "physicalPowerRatio": 0.6
+          },
+          "effects": [
+            "ranged-basic"
+          ],
+          "sourceRef": "neon-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "passive",
+          "name": "Neural Network",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "Casting a Basic Ability grants one Thread. At 3 Threads, Neon's next basic ability becomes Overclocked, consuming the stacks to unleash a powerful additional effect.",
+          "scaling": {
+            "threadsPerBasicAbilityCast": 1,
+            "threadsRequired": 3
+          },
+          "effects": [
+            "thread-stacking",
+            "overclocked",
+            "basic-ability-enhance"
+          ],
+          "sourceRef": "neon-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "primary",
+          "name": "L.I.N.X",
+          "kind": "primary ability",
+          "damageType": "mixed",
+          "description": "Neon sends out a Data Construct, dealing 48.0/68.0/88.0/108.0/128.0 (+42.5% magical power) Magical Damage to enemies it passes through. The Data Construct then returns to Neon, dealing 48.0/68.0/88.0/108.0/128.0 (+42.5% magical power) True Damage on its way back. Overclocked: Before returning, the Data Construct emits a pulse at its maximum range, dealing 48.0/68.0/88.0/108.0/128.0 (+42.5% magical power) True Damage.",
+          "cooldown": [
+            10,
+            9.25,
+            8.5,
+            7.75,
+            7
+          ],
+          "scaling": {
+            "outgoingDamage": [
+              48,
+              68,
+              88,
+              108,
+              128
+            ],
+            "outgoingMagicalPowerRatio": 0.425,
+            "returnTrueDamage": [
+              48,
+              68,
+              88,
+              108,
+              128
+            ],
+            "returnMagicalPowerRatio": 0.425,
+            "overclockedPulseTrueDamage": [
+              48,
+              68,
+              88,
+              108,
+              128
+            ],
+            "overclockedPulseMagicalPowerRatio": 0.425
+          },
+          "effects": [
+            "line-damage",
+            "return-damage",
+            "true-damage",
+            "overclocked",
+            "poke"
+          ],
+          "sourceRef": "neon-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "secondary",
+          "name": "Data Burst",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Neon lobs a projectile. After 0.5s of landing or colliding with an enemy target, it detonates, dealing 85.0/120.0/155.0/190.0/225.0 (+60% magical power) Magical Damage and slowing targets by 35% for 1.0/1.1/1.2/1.3/1.4s. Overclocked: Targets are Mesmerized as well as Slowed.",
+          "cooldown": [
+            15,
+            14.5,
+            14,
+            13.5,
+            13
+          ],
+          "scaling": {
+            "detonationDelay": 0.5,
+            "damage": [
+              85,
+              120,
+              155,
+              190,
+              225
+            ],
+            "magicalPowerRatio": 0.6,
+            "slowPercent": 35,
+            "slowDuration": [
+              1,
+              1.1,
+              1.2,
+              1.3,
+              1.4
+            ]
+          },
+          "effects": [
+            "projectile",
+            "area-damage",
+            "slow",
+            "mesmerize",
+            "overclocked",
+            "zone-control"
+          ],
+          "sourceRef": "neon-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "alternate",
+          "name": "Erase Vector",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Dash in the current movement direction, Empowering your next Jolt within 3s to explode, dealing 65.0/90.0/115.0/140.0/165.0 (+40% magical power) bonus Magical Damage to the target and nearby enemies as well as Slowing them by 20% for 0.5s. Overclocked: Can be Recast once within 3s at no cost.",
+          "cooldown": [
+            18,
+            16.5,
+            15,
+            13.5,
+            12
+          ],
+          "scaling": {
+            "joltEmpowerDuration": 3,
+            "bonusDamage": [
+              65,
+              90,
+              115,
+              140,
+              165
+            ],
+            "magicalPowerRatio": 0.4,
+            "slowPercent": 20,
+            "slowDuration": 0.5,
+            "overclockedRecastWindow": 3
+          },
+          "effects": [
+            "dash",
+            "mobility",
+            "empowered-basic",
+            "area-damage",
+            "slow",
+            "overclocked",
+            "recast"
+          ],
+          "sourceRef": "neon-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Final Thread",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "Neon Overclocks her systems for 8s, gaining 15.0/20.0/25.0% Movement Speed, 50% Jump Height, and causing all her Basic Abilities to be Overclocked for the duration. Recast: During System Overdrive, Neon can recast this ability to jump upwards and launch an explosive bomb, dealing 140.0/210.0/280.0 (+55.0/60.0/65.0% magical power) magical damage, increased by up to 90% based on the target's missing health.",
+          "cooldown": [
+            125,
+            110,
+            95
+          ],
+          "scaling": {
+            "duration": 8,
+            "movementSpeedPercent": [
+              15,
+              20,
+              25
+            ],
+            "jumpHeightPercent": 50,
+            "recastDamage": [
+              140,
+              210,
+              280
+            ],
+            "recastMagicalPowerRatio": [
+              0.55,
+              0.6,
+              0.65
+            ],
+            "maxMissingHealthDamageIncreasePercent": 90
+          },
+          "effects": [
+            "overclocked",
+            "movement-speed",
+            "jump-height",
+            "recast",
+            "burst",
+            "missing-health-scaling"
+          ],
+          "sourceRef": "neon-game-client-manual-entry-2026-08-16"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Ghost in the Machine",
+          "category": "mobility",
+          "description": "After dashing with Erase Vector, become invisible for 1s.",
+          "tags": [
+            "erase-vector",
+            "invisible",
+            "mobility",
+            "survivability"
+          ],
+          "sourceRef": "neon-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "RAM",
+          "category": "scaling",
+          "description": "Gain 5 Magical Power and 25% Base Mana Regen on takedown, stacking infinitely. At 3 stacks gain 5% Movement Speed. Upon death, lost 50% of stacks rounded up.",
+          "tags": [
+            "takedown",
+            "magical-power",
+            "mana-regen",
+            "movement-speed",
+            "stacking"
+          ],
+          "sourceRef": "neon-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Dox",
+          "category": "utility",
+          "description": "Replace your trinket with Dox, granting you 5% increased Magical Power & 15% increased Maximum Mana. Activating it allows you to see nearby Enemy Heroes within 3000u for 4s.",
+          "tags": [
+            "trinket-replacement",
+            "magical-power",
+            "maximum-mana",
+            "enemy-reveal",
+            "vision"
+          ],
+          "sourceRef": "neon-game-client-manual-entry-2026-08-16"
+        }
+      ],
       "threats": [
         "poke",
         "mobility",
-        "burst"
+        "burst",
+        "true-damage",
+        "overclocked",
+        "area-control",
+        "missing-health-damage"
       ],
       "answers": [
         "poke",
         "mobility",
-        "waveclear"
+        "waveclear",
+        "true-damage",
+        "burst",
+        "vision",
+        "anti-frontline"
       ],
       "weaknesses": [
         "hard-cc",
-        "burst-vulnerable"
+        "burst-vulnerable",
+        "low-durability",
+        "silence",
+        "range-pressure"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "neon-game-client-manual-entry-2026-08-16",
+        "roles": "neon-game-client-manual-entry-2026-08-16",
+        "kit": "neon-game-client-manual-entry-2026-08-16",
+        "augments": "neon-game-client-manual-entry-2026-08-16"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-16. Draft taxonomy tags are derived from the verified kit text. Neon was corrected from the prototype midlane/carry role entry to verified midlane-only."
       }
     },
     {
