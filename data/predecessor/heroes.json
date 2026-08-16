@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "sevarog-game-client-manual-entry-2026-08-16": {
+      "label": "Sevarog game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Sevarog roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -1606,32 +1611,325 @@
         "offlane",
         "jungle"
       ],
+      "classes": [
+        "tank"
+      ],
       "damage": "magical",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 1,
+        "abilityPower": 6,
+        "durability": 7,
+        "mobility": 5
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "The Harbinger",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 63.0/66.0/69.2/72.5/76.0/79.7/83.5/87.5/91.6/95.9/100.4/105.0/109.8/114.7/119.8/125.1/130.5/136.1 (+75% physical power) physical damage.",
+          "scaling": {
+            "damage": [
+              63,
+              66,
+              69.2,
+              72.5,
+              76,
+              79.7,
+              83.5,
+              87.5,
+              91.6,
+              95.9,
+              100.4,
+              105,
+              109.8,
+              114.7,
+              119.8,
+              125.1,
+              130.5,
+              136.1
+            ],
+            "physicalPowerRatio": 0.75
+          },
+          "effects": [
+            "melee-basic"
+          ],
+          "sourceRef": "sevarog-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "passive",
+          "name": "Reaper of Souls",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "Sevarog gains Souls when he Kills an Enemy with an ability. Each Soul grants 2 bonus health. Sevarog reaches an additional Tier of power at 40.0/80.0/120.0/160.0 Souls, gaining 40.0/80.0/180.0/350.0 bonus health and new effects: Tier 1: +5% Omnivamp. Tier 2: Gain an Aura that Shreds nearby Enemy Heroes' Magical Armor by 15%. Tier 3: Siphon grants 2x Maximum Health from Stealing. Tier 4: Reflect 10% of damage taken to nearby enemies.",
+          "scaling": {
+            "bonusHealthPerSoul": 2,
+            "soulTierThresholds": [
+              40,
+              80,
+              120,
+              160
+            ],
+            "tierBonusHealth": [
+              40,
+              80,
+              180,
+              350
+            ],
+            "tierOneOmnivampPercent": 5,
+            "tierTwoMagicalArmorShredPercent": 15,
+            "tierThreeSiphonHealthStealMultiplier": 2,
+            "tierFourDamageReflectPercent": 10
+          },
+          "effects": [
+            "soul-stacking",
+            "durability-scaling",
+            "bonus-health",
+            "omnivamp",
+            "magical-armor-shred",
+            "health-steal-amplifier",
+            "damage-reflect"
+          ],
+          "sourceRef": "sevarog-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "primary",
+          "name": "Siphon",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Strike forward with a spectral hand, dealing 80.0/95.0/110.0/125.0/140.0 (+4% max health)(+40% magical power) magical damage to all Enemies. Deals 30.0/35.0/40.0/45.0/50.0 additional damage to Monsters. If Siphon damages an Enemy Hero, Sevarog steals 1.8/2.0/2.2/2.4/2.6% of their Maximum Health for 15s.",
+          "cooldown": [
+            6.6,
+            5.7,
+            4.8,
+            3.9,
+            3
+          ],
+          "scaling": {
+            "damage": [
+              80,
+              95,
+              110,
+              125,
+              140
+            ],
+            "maxHealthRatio": 0.04,
+            "magicalPowerRatio": 0.4,
+            "monsterAdditionalDamage": [
+              30,
+              35,
+              40,
+              45,
+              50
+            ],
+            "maximumHealthStealPercent": [
+              1.8,
+              2,
+              2.2,
+              2.4,
+              2.6
+            ],
+            "maximumHealthStealDuration": 15
+          },
+          "effects": [
+            "cleave",
+            "max-health-scaling",
+            "monster-damage",
+            "maximum-health-steal",
+            "soul-stacking-tool",
+            "frontline"
+          ],
+          "sourceRef": "sevarog-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "secondary",
+          "name": "Subjugate",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Call down a miasma of dark energy, dealing 60.0/75.0/90.0/105.0/120.0 (+40% magical power) magical damage to all Enemies in the area, Slowing them by 30% and Chaining them to the center for 2s. If a Chained target leaves the zone, they take 75.0/90.0/105.0/120.0/135.0 (+60% magical power) magical damage and are Stunned for 1.25s.",
+          "cooldown": [
+            16,
+            15,
+            14,
+            13,
+            12
+          ],
+          "scaling": {
+            "damage": [
+              60,
+              75,
+              90,
+              105,
+              120
+            ],
+            "magicalPowerRatio": 0.4,
+            "slowPercent": 30,
+            "chainDuration": 2,
+            "breakoutDamage": [
+              75,
+              90,
+              105,
+              120,
+              135
+            ],
+            "breakoutMagicalPowerRatio": 0.6,
+            "stunDuration": 1.25
+          },
+          "effects": [
+            "area-damage",
+            "slow",
+            "chain",
+            "zone-control",
+            "stun",
+            "hard-cc",
+            "peel"
+          ],
+          "sourceRef": "sevarog-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "alternate",
+          "name": "Phantom Rush",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Sevarog dashes forward through the air, dealing 40.0/60.0/80.0/100.0/120.0 (+2.5% max health) magical damage to all Enemies he passes through and Fearing them for 1s.",
+          "cooldown": [
+            20,
+            19.5,
+            19,
+            18.5,
+            18
+          ],
+          "scaling": {
+            "damage": [
+              40,
+              60,
+              80,
+              100,
+              120
+            ],
+            "maxHealthRatio": 0.025,
+            "fearDuration": 1
+          },
+          "effects": [
+            "dash",
+            "mobility",
+            "pass-through-damage",
+            "fear",
+            "hard-cc",
+            "engage"
+          ],
+          "sourceRef": "sevarog-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Colossal Blow",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "Deliver a heavy blow from Sevarog's hammer, dealing 200.0/330.0/460.0 (+75% magical power) magical damage to all Enemies in front of him. Enemy Heroes struck by the blow are Knocked Back, sending them flying. At maximum rank, Colossal Blow Executes Minions.",
+          "cooldown": [
+            125,
+            95,
+            65
+          ],
+          "scaling": {
+            "damage": [
+              200,
+              330,
+              460
+            ],
+            "magicalPowerRatio": 0.75
+          },
+          "effects": [
+            "cone-damage",
+            "knockback",
+            "displacement",
+            "peel",
+            "engage",
+            "minion-execute"
+          ],
+          "sourceRef": "sevarog-game-client-manual-entry-2026-08-16"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Unholy Pursuit",
+          "category": "mobility",
+          "description": "Phantom Rush grants 2 Souls when it damages a Hero. Its Cooldown also resets when Colossal Blow hits a Hero.",
+          "tags": [
+            "phantom-rush",
+            "souls",
+            "hero-hit",
+            "cooldown-reset",
+            "colossal-blow"
+          ],
+          "sourceRef": "sevarog-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Grim Harvest",
+          "category": "execute",
+          "description": "Siphon now Executes Enemies that fall below 6% Max Health.",
+          "tags": [
+            "siphon",
+            "execute",
+            "max-health-threshold",
+            "soul-stacking"
+          ],
+          "sourceRef": "sevarog-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Gravebreaker",
+          "category": "structure",
+          "description": "Colossal Blow damages Towers for 25% of their Max Health. Its Knock Back is also 15% stronger, with each Soul Tier increasing this by 35% more.",
+          "tags": [
+            "colossal-blow",
+            "tower-damage",
+            "knockback",
+            "soul-tier-scaling",
+            "objective-pressure"
+          ],
+          "sourceRef": "sevarog-game-client-manual-entry-2026-08-16"
+        }
+      ],
       "threats": [
         "frontline",
         "scaling",
-        "engage"
+        "engage",
+        "zone-control",
+        "hard-cc",
+        "displacement",
+        "sustain",
+        "objective-pressure"
       ],
       "answers": [
         "frontline",
         "anti-burst",
-        "hard-cc"
+        "hard-cc",
+        "peel",
+        "engage",
+        "anti-frontline",
+        "magical-armor-shred",
+        "scaling-tank"
       ],
       "weaknesses": [
         "weak-early",
-        "tank-shred"
+        "tank-shred",
+        "anti-heal",
+        "poke",
+        "mobility-kite",
+        "stack-denial"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "sevarog-game-client-manual-entry-2026-08-16",
+        "roles": "sevarog-game-client-manual-entry-2026-08-16",
+        "kit": "sevarog-game-client-manual-entry-2026-08-16",
+        "augments": "sevarog-game-client-manual-entry-2026-08-16"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-16. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
