@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "khaimera-game-client-manual-entry-2026-08-16": {
+      "label": "Khaimera game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Khaimera roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -985,32 +990,239 @@
       "roles": [
         "jungle"
       ],
+      "classes": [
+        "fighter"
+      ],
       "damage": "physical",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 7,
+        "abilityPower": 3,
+        "durability": 6,
+        "mobility": 3
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Rage & Spirit",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 65.0/68.2/71.6/75.2/78.9/82.8/86.9/91.2/95.6/100.2/105.0/109.9/115.0/120.3/125.8/131.4/137.2/143.2 (+85% physical power) physical damage. Grants 4 Rage on hit.",
+          "scaling": {
+            "damage": [65, 68.2, 71.6, 75.2, 78.9, 82.8, 86.9, 91.2, 95.6, 100.2, 105, 109.9, 115, 120.3, 125.8, 131.4, 137.2, 143.2],
+            "physicalPowerRatio": 0.85,
+            "rageOnHit": 4
+          },
+          "effects": [
+            "melee-basic",
+            "rage-generation"
+          ],
+          "sourceRef": "khaimera-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "passive",
+          "name": "Ancestral Fury",
+          "kind": "passive",
+          "damageType": "physical",
+          "description": "Damaging Enemy Heroes or Jungle Monsters grants Khaimera Rage. Khaimera gains 0.1/0.1/0.2/0.2/0.3/0.3/0.4/0.4/0.5/0.6/0.7/0.8/0.9/1.0/1.1/1.2/1.4/1.5-1.5(+0.3% magical power) Health Regeneration (based on Level) and his Cooldowns progress 0.5% faster per 1 Rage. While above 50 Rage, Khaimera gains 8% Movement Speed. Rage decays at a rate of 25 per second after not attacking for 2.5s.",
+          "scaling": {
+            "healthRegen": [0.1, 0.1, 0.2, 0.2, 0.3, 0.3, 0.4, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.4, 1.5],
+            "magicalPowerRegenRatio": 0.003,
+            "cooldownProgressPercentPerRage": 0.5,
+            "movementSpeedRageThreshold": 50,
+            "movementSpeedPercent": 8,
+            "rageDecayPerSecond": 25,
+            "rageDecayDelay": 2.5
+          },
+          "effects": [
+            "rage",
+            "health-regen",
+            "cooldown-acceleration",
+            "movement-speed",
+            "jungle-sustain"
+          ],
+          "sourceRef": "khaimera-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "primary",
+          "name": "Unleash",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Unleash Khaimera's primal spirit for 3s, granting him maximum attack speed for 5 successful attacks. Khaimera gains an additional attack for every 30 Magical Power owned. Each basic attack deals {Unleash_Damage} (+54.0/58.0/62.0/66.0/70.0% physical power)(+12% magical power) physical damage, applies on-hit effects at 65% effectiveness and Cleaves nearby Enemies for 75% damage.",
+          "scaling": {
+            "duration": 3,
+            "successfulAttacks": 5,
+            "additionalAttackMagicalPowerThreshold": 30,
+            "physicalPowerRatio": [0.54, 0.58, 0.62, 0.66, 0.7],
+            "magicalPowerRatio": 0.12,
+            "onHitEffectivenessPercent": 65,
+            "cleaveDamagePercent": 75
+          },
+          "cooldown": [9, 8.5, 8, 7.5, 7],
+          "effects": [
+            "attack-speed-cap",
+            "basic-attack-enhance",
+            "on-hit",
+            "cleave",
+            "sustained-dps"
+          ],
+          "sourceRef": "khaimera-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "secondary",
+          "name": "Invigorate",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Khaimera instantly Cleanses all Debuffs and Heals himself for 5.0/7.0/9.0/11.0/13.0% of his maximum health (+1.5x current health regeneration). Cleansing grants Crowd Control Immunity for 0.25s.",
+          "scaling": {
+            "maxHealthHealPercent": [5, 7, 9, 11, 13],
+            "currentHealthRegenerationMultiplier": 1.5,
+            "crowdControlImmunityDuration": 0.25
+          },
+          "cooldown": [27, 25.5, 24, 22.5, 21],
+          "effects": [
+            "cleanse",
+            "healing",
+            "cc-immunity",
+            "anti-cc",
+            "sustain"
+          ],
+          "sourceRef": "khaimera-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "alternate",
+          "name": "Ambush",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Leap to an Enemy Hero or Monster, dealing 75.0/105.0/135.0/165.0/195.0 (+70% physical power) physical damage and Slowing them by 25.0/30.0/35.0/40.0/45.0% for 1.35s. Deals up to 2x damage based on the Target's missing health. Grants 15 Rage on hit.",
+          "scaling": {
+            "damage": [75, 105, 135, 165, 195],
+            "physicalPowerRatio": 0.7,
+            "slowPercent": [25, 30, 35, 40, 45],
+            "slowDuration": 1.35,
+            "maxMissingHealthDamageMultiplier": 2,
+            "rageOnHit": 15
+          },
+          "cooldown": [15, 14, 13, 12, 11],
+          "effects": [
+            "leap",
+            "mobility",
+            "slow",
+            "missing-health-damage",
+            "rage-generation",
+            "gank"
+          ],
+          "sourceRef": "khaimera-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Cull",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "After a brief channel, Khaimera slices all Enemies in front of him, Stunning them for 1.25s and dealing 200.0/400.0/600.0 (+200% physical power)(+100% magical power) physical damage over 6 hits. The final hit Slows by 25% for 1.25s. Grants 20 Rage stacks for each Enemy Hero or Monster hit.",
+          "scaling": {
+            "stunDuration": 1.25,
+            "damage": [200, 400, 600],
+            "physicalPowerRatio": 2,
+            "magicalPowerRatio": 1,
+            "hits": 6,
+            "finalHitSlowPercent": 25,
+            "finalHitSlowDuration": 1.25,
+            "ragePerHeroOrMonsterHit": 20
+          },
+          "cooldown": [140, 100, 60],
+          "effects": [
+            "stun",
+            "hard-cc",
+            "multi-hit",
+            "slow",
+            "rage-generation",
+            "teamfight"
+          ],
+          "sourceRef": "khaimera-game-client-manual-entry-2026-08-16"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Feral Ambush",
+          "category": "mobility",
+          "description": "Ambush's range is increased by 10%.",
+          "tags": [
+            "ambush",
+            "range",
+            "gank",
+            "mobility"
+          ],
+          "sourceRef": "khaimera-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Jungle Invasion",
+          "category": "jungle",
+          "description": "Based on Hero Level, gain 3-17 Physical Power while in the Jungle. Increases to 6-34 in the Enemy Jungle.",
+          "tags": [
+            "jungle",
+            "physical-power",
+            "invade",
+            "counter-jungle"
+          ],
+          "sourceRef": "khaimera-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Lane Lurker",
+          "category": "lane",
+          "description": "Ancestral Fury also grants Rage against Minions, but its Health Regen is reduced by 25%/15%/5%/0% (at level 1.0/6.0/11.0/16.0).",
+          "tags": [
+            "rage",
+            "minions",
+            "lane-pressure",
+            "regen-tradeoff"
+          ],
+          "sourceRef": "khaimera-game-client-manual-entry-2026-08-16"
+        }
+      ],
       "threats": [
         "dive",
         "sustain",
-        "objective-control"
+        "objective-control",
+        "dueling",
+        "jungle-invade",
+        "cleanse",
+        "sustained-dps"
       ],
       "answers": [
         "anti-burst",
         "duelist",
-        "objective-control"
+        "objective-control",
+        "jungle-clear",
+        "anti-cc",
+        "sustain",
+        "gank",
+        "stickiness"
       ],
       "weaknesses": [
         "anti-heal",
-        "hard-cc"
+        "hard-cc",
+        "kite",
+        "burst-before-rage"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "khaimera-game-client-manual-entry-2026-08-16",
+        "roles": "khaimera-game-client-manual-entry-2026-08-16",
+        "classes": "khaimera-game-client-manual-entry-2026-08-16",
+        "ratings": "khaimera-game-client-manual-entry-2026-08-16",
+        "abilities": "khaimera-game-client-manual-entry-2026-08-16",
+        "augments": "khaimera-game-client-manual-entry-2026-08-16",
+        "kit": "khaimera-game-client-manual-entry-2026-08-16"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game Khaimera text dated 2026-08-16. Recommendation tags are derived from the source-backed kit."
       }
     },
     {
