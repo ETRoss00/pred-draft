@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "legion-game-client-manual-entry-2026-08-16": {
+      "label": "Legion game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Legion roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -1086,35 +1091,329 @@
       "id": "legion",
       "name": "Legion",
       "roles": [
-        "jungle",
-        "offlane"
+        "carry"
+      ],
+      "classes": [
+        "carry"
       ],
       "damage": "physical",
-      "range": "melee",
+      "range": "ranged",
+      "ratings": {
+        "basicAttack": 8,
+        "abilityPower": 5,
+        "durability": 3,
+        "mobility": 2
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "K-75 Storm Rifle",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged basic attack dealing 20.0/21.2/22.4/23.6/25.0/26.4/27.9/29.4/31.0/32.6/34.3/36.1/37.9/39.8/41.8/43.8/45.9/48.0 (+17% physical power) Physical Damage. This damage is increased by +1.35% per 1 Physical Penetration owned. If Legion does not fire for 1.25 seconds, the rifle's ammo will gradually replenish. When the magazine is empty, Legion reloads his rifle.",
+          "scaling": {
+            "damage": [
+              20,
+              21.2,
+              22.4,
+              23.6,
+              25,
+              26.4,
+              27.9,
+              29.4,
+              31,
+              32.6,
+              34.3,
+              36.1,
+              37.9,
+              39.8,
+              41.8,
+              43.8,
+              45.9,
+              48
+            ],
+            "physicalPowerRatio": 0.17,
+            "physicalPenetrationDamageIncreasePercentPerPoint": 1.35,
+            "ammoReplenishDelay": 1.25
+          },
+          "effects": [
+            "ranged-basic",
+            "magazine",
+            "reload",
+            "physical-penetration-scaling"
+          ],
+          "sourceRef": "legion-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "passive",
+          "name": "Ballistic Calibration",
+          "kind": "passive",
+          "damageType": "physical",
+          "description": "Legion converts 1% Bonus Attack Speed into 0.75 Ability Haste. Legion also gains bonuses based on purchased Item stats: 100 Physical Power increases Saturation Charge Slow Duration by 0.75s. 30 Physical Penetration increases Orbital Sanction's Radius by 33%. 50 Ability Haste makes Frag Order deal 8% of the Target's Missing Health as Physical Damage. 90 Magical Power increases Rally Point's Heal by 50%.",
+          "scaling": {
+            "bonusAttackSpeedToAbilityHasteRatio": 0.75,
+            "physicalPowerThreshold": 100,
+            "saturationChargeSlowDurationBonus": 0.75,
+            "physicalPenetrationThreshold": 30,
+            "orbitalSanctionRadiusIncreasePercent": 33,
+            "abilityHasteThreshold": 50,
+            "fragOrderMissingHealthDamagePercent": 8,
+            "magicalPowerThreshold": 90,
+            "rallyPointHealIncreasePercent": 50
+          },
+          "effects": [
+            "stat-conversion",
+            "item-stat-scaling",
+            "ability-haste",
+            "missing-health-damage",
+            "radius-increase",
+            "healing-amp"
+          ],
+          "sourceRef": "legion-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "primary",
+          "name": "Saturation Charge",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Legion fires a heavy payload that deploys 10 Cluster Mines upon hitting the world, Enemies or by reactivation. Each Cluster Mine deals 35.0/45.0/55.0/65.0/75.0 (+50% physical power) (+40% magical power) Physical Damage and Slows Enemies hit by 40% for 1s. Consecutive Mine hits on the same Enemy deal 25% Damage.",
+          "cooldown": [
+            20,
+            19,
+            18,
+            17,
+            16
+          ],
+          "scaling": {
+            "clusterMines": 10,
+            "damage": [
+              35,
+              45,
+              55,
+              65,
+              75
+            ],
+            "physicalPowerRatio": 0.5,
+            "magicalPowerRatio": 0.4,
+            "slowPercent": 40,
+            "slowDuration": 1,
+            "consecutiveHitDamagePercent": 25
+          },
+          "effects": [
+            "cluster-mines",
+            "area-control",
+            "slow",
+            "physical-damage",
+            "reactivation"
+          ],
+          "sourceRef": "legion-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "secondary",
+          "name": "Rally Point",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Legion calls in a standard and becomes Unstoppable for 0.5s, dealing 20.0/25.0/30.0/35.0/40.0 (+20% physical power) Physical Damage whilst Knocking Back nearby Enemies. The Standard rallies nearby Allies for 8s if they remain within 1500 units. Allies gain 8% Movement Speed and heal for 5.0/8.0/11.0/14.0/17.0 (+95% physical penetration) (+8% magical power) Health every Second. Additionally, Enemy Wards are Revealed. Legion gains Infinite Ammo.",
+          "cooldown": [
+            30,
+            28.5,
+            27,
+            25.5,
+            24
+          ],
+          "scaling": {
+            "unstoppableDuration": 0.5,
+            "damage": [
+              20,
+              25,
+              30,
+              35,
+              40
+            ],
+            "physicalPowerRatio": 0.2,
+            "standardDuration": 8,
+            "allyRadius": 1500,
+            "allyMovementSpeedPercent": 8,
+            "healPerSecond": [
+              5,
+              8,
+              11,
+              14,
+              17
+            ],
+            "healPhysicalPenetrationRatio": 0.95,
+            "healMagicalPowerRatio": 0.08
+          },
+          "effects": [
+            "unstoppable",
+            "knockback",
+            "team-buff",
+            "movement-speed",
+            "healing",
+            "ward-reveal",
+            "infinite-ammo"
+          ],
+          "sourceRef": "legion-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "alternate",
+          "name": "Frag Order",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Legion cooks a Grenade with a 2.2s fuse, reducing the time before detonation based on duration held. Throw the Grenade causing an explosion that deals 70.0/110.0/150.0/190.0/230.0 (+60.0/65.0/70.0/75.0/80.0% physical power) (+40% magical power) Physical Damage and Launches Legion or Enemies hit. The Grenade automatically explodes after 0.2s if it is near an Enemy. When cooked for the full duration, it will explode in Legion's hand. If Legion is Stunned, Killed or cancels the ability whilst cooking the Grenade, it drops to the floor.",
+          "cooldown": [
+            16,
+            15,
+            14,
+            13,
+            12
+          ],
+          "scaling": {
+            "fuseDuration": 2.2,
+            "damage": [
+              70,
+              110,
+              150,
+              190,
+              230
+            ],
+            "physicalPowerRatio": [
+              0.6,
+              0.65,
+              0.7,
+              0.75,
+              0.8
+            ],
+            "magicalPowerRatio": 0.4,
+            "proximityExplosionDelay": 0.2
+          },
+          "effects": [
+            "grenade",
+            "launch",
+            "self-launch",
+            "area-damage",
+            "cooked-ability",
+            "self-risk"
+          ],
+          "sourceRef": "legion-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Orbital Sanction",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Legion lobs a target designator that deploys upon landing. After a 0.75s delay, an Orbital Beam blasts the designated location, tracking Enemy Targets, prioritising Heroes. Enemy Targets within the blast take 28.0/47.0/66.0 (+26% physical power) (+10% magical power) Physical Damage every 0.25s. The Orbital Beam persists for 6.0/7.5/9.0s. If there are no Enemy Targets within 2000 units, the blast remains stationary.",
+          "cooldown": [
+            140,
+            125,
+            110
+          ],
+          "scaling": {
+            "deploymentDelay": 0.75,
+            "tickDamage": [
+              28,
+              47,
+              66
+            ],
+            "physicalPowerRatio": 0.26,
+            "magicalPowerRatio": 0.1,
+            "tickInterval": 0.25,
+            "duration": [
+              6,
+              7.5,
+              9
+            ],
+            "stationaryRangeThreshold": 2000
+          },
+          "effects": [
+            "target-designator",
+            "tracking-damage",
+            "area-control",
+            "damage-over-time",
+            "hero-priority"
+          ],
+          "sourceRef": "legion-game-client-manual-entry-2026-08-16"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Press the Advantage",
+          "category": "attack-speed",
+          "description": "Upon achieving a Takedown, a Rally Point is spawned at the dead Targets location. Rally Point no longer grants Health Regeneration but increases Legions Rate of Fire by 12.0/18.0/22.0/26.0/30.0% and grants Allies 10.0/12.5/15.0/17.5/20.0% Attack Speed.",
+          "tags": [
+            "rally-point",
+            "takedown",
+            "rate-of-fire",
+            "team-attack-speed",
+            "snowball"
+          ],
+          "sourceRef": "legion-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Scorched Earth",
+          "category": "damage",
+          "description": "Frag Order and Saturation Charge Mines create Napalm zones upon exploding and Orbital Sanction creates one every 0.5s. Napalm zones deal 5 (+6% Bonus Physical Power) Physical Damage per 0.5s and last 3s.",
+          "tags": [
+            "frag-order",
+            "saturation-charge",
+            "orbital-sanction",
+            "napalm",
+            "area-control",
+            "damage-over-time"
+          ],
+          "sourceRef": "legion-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Heavy Caliber",
+          "category": "damage",
+          "description": "Basic Attack Timer is increased to 0.75s, but deal 310% damage and have 100 increased range. Magazine Size is decreased to 6.",
+          "tags": [
+            "basic-attack",
+            "burst",
+            "increased-range",
+            "magazine",
+            "tradeoff"
+          ],
+          "sourceRef": "legion-game-client-manual-entry-2026-08-16"
+        }
+      ],
       "threats": [
-        "engage",
-        "frontline",
-        "objective-control"
+        "sustained-dps",
+        "area-control",
+        "poke",
+        "team-buff",
+        "objective-control",
+        "physical-penetration-scaling",
+        "damage-over-time"
       ],
       "answers": [
-        "frontline",
-        "hard-cc",
-        "anti-burst"
+        "anti-frontline",
+        "zone-control",
+        "team-sustain",
+        "ward-reveal",
+        "ranged-pressure",
+        "objective-control",
+        "anti-dive"
       ],
       "weaknesses": [
-        "kite",
-        "anti-heal"
+        "dive",
+        "burst-vulnerable",
+        "low-mobility",
+        "hard-cc",
+        "anti-heal",
+        "range-pressure"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "legion-game-client-manual-entry-2026-08-16",
+        "roles": "legion-game-client-manual-entry-2026-08-16",
+        "kit": "legion-game-client-manual-entry-2026-08-16",
+        "augments": "legion-game-client-manual-entry-2026-08-16"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-16. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
