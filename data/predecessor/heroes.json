@@ -36,6 +36,10 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
     },
+    "murdock-game-client-manual-entry-2026-08-16": {
+      "label": "Murdock game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Murdock roles, class, ratings, ability text, and augments."
     "mourn-game-client-manual-entry-2026-08-16": {
       "label": "Mourn game-client manual entry",
       "url": null,
@@ -8119,32 +8123,302 @@
       "roles": [
         "carry"
       ],
+      "classes": [
+        "carry"
+      ],
       "damage": "physical",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 8,
+        "abilityPower": 3,
+        "durability": 3,
+        "mobility": 2
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "The Enforcer",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged basic attack dealing 55.0/57.8/60.8/63.9/67.1/70.5/74.0/77.8/81.6/85.6/89.8/94.0/98.5/103.1/107.8/112.8/117.8/123.0 (+85% physical power) physical damage.",
+          "scaling": {
+            "damage": [
+              55,
+              57.8,
+              60.8,
+              63.9,
+              67.1,
+              70.5,
+              74,
+              77.8,
+              81.6,
+              85.6,
+              89.8,
+              94,
+              98.5,
+              103.1,
+              107.8,
+              112.8,
+              117.8,
+              123
+            ],
+            "physicalPowerRatio": 0.85
+          },
+          "effects": [
+            "ranged-basic"
+          ],
+          "sourceRef": "murdock-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "passive",
+          "name": "Shots Fired",
+          "kind": "passive",
+          "damageType": "physical",
+          "description": "Landing 5 successful Basic Attacks will cause Murdock's next Basic Attack to have 400 increased range and deal (+36-60% physical) bonus damage.",
+          "scaling": {
+            "basicAttacksRequired": 5,
+            "bonusRange": 400,
+            "minBonusPhysicalPowerRatio": 0.36,
+            "maxBonusPhysicalPowerRatio": 0.6
+          },
+          "effects": [
+            "empowered-basic",
+            "increased-range",
+            "bonus-damage",
+            "poke"
+          ],
+          "sourceRef": "murdock-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "primary",
+          "name": "Static Trap",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Place a trap that arms after a short delay, dealing 40.0/80.0/120.0/160.0/200.0 (+100% physical power)(+120% magical power) magical damage to any Enemy Hero that steps on it and Rooting them for 1.25s. Traps last for 40.0/45.0/50.0/55.0/60.0s and up to 3.0/3.0/4.0/4.0/5.0 may be placed at one time. Max Charges: 2.",
+          "cooldown": [
+            24,
+            20,
+            16,
+            12,
+            8
+          ],
+          "scaling": {
+            "damage": [
+              40,
+              80,
+              120,
+              160,
+              200
+            ],
+            "physicalPowerRatio": 1,
+            "magicalPowerRatio": 1.2,
+            "rootDuration": 1.25,
+            "trapDuration": [
+              40,
+              45,
+              50,
+              55,
+              60
+            ],
+            "maxActiveTraps": [
+              3,
+              3,
+              4,
+              4,
+              5
+            ],
+            "maxCharges": 2
+          },
+          "effects": [
+            "trap",
+            "root",
+            "hard-cc",
+            "zone-control",
+            "charges"
+          ],
+          "sourceRef": "murdock-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "secondary",
+          "name": "Hot Pursuit",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Murdock activates his sirens, granting him 25% decaying movement speed for 4s. During this time, Murdock gains 15.0/20.0/25.0/30.0/35.0% attack speed, stacking on re-activation up to 5 times. Cooldown Resets on Takedown.",
+          "cooldown": [
+            22,
+            20,
+            18,
+            16,
+            14
+          ],
+          "scaling": {
+            "movementSpeedPercent": 25,
+            "movementSpeedDuration": 4,
+            "attackSpeedPercent": [
+              15,
+              20,
+              25,
+              30,
+              35
+            ],
+            "maxAttackSpeedStacks": 5,
+            "cooldownResetOnTakedown": true
+          },
+          "effects": [
+            "movement-speed",
+            "attack-speed",
+            "stacking-buff",
+            "takedown-reset",
+            "mobility"
+          ],
+          "sourceRef": "murdock-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "alternate",
+          "name": "Buckshot",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Discharge a Terrain piercing shotgun blast, dealing 60.0/85.0/110.0/135.0/160.0 (+100.0/120.0/140.0/160.0/180.0% physical power) physical damage to all Enemies hit, decreasing by up to 50% based on distance and Shredding their physical armor by 15% for 4s. The blast Pushes Enemies Back, its force increasing at close range.",
+          "cooldown": [
+            15,
+            13.5,
+            12,
+            10.5,
+            9
+          ],
+          "scaling": {
+            "damage": [
+              60,
+              85,
+              110,
+              135,
+              160
+            ],
+            "physicalPowerRatio": [
+              1,
+              1.2,
+              1.4,
+              1.6,
+              1.8
+            ],
+            "maxDistanceDamageReductionPercent": 50,
+            "physicalArmorShredPercent": 15,
+            "physicalArmorShredDuration": 4
+          },
+          "effects": [
+            "terrain-piercing",
+            "area-damage",
+            "physical-armor-shred",
+            "push",
+            "self-peel"
+          ],
+          "sourceRef": "murdock-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Long Arm of the Law",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Murdock kneels, preparing an energized sniper shot with unlimited range that can travel through anything. While targeting, using the Alternate Ability input will zoom the scope inwards. Upon firing, it deals 250.0/400.0/550.0 (+115% physical power)(+100% magical power) physical damage to all Enemies in its path, ignoring any physical armor.",
+          "cooldown": [
+            145,
+            120,
+            95
+          ],
+          "scaling": {
+            "damage": [
+              250,
+              400,
+              550
+            ],
+            "physicalPowerRatio": 1.15,
+            "magicalPowerRatio": 1
+          },
+          "effects": [
+            "global-range",
+            "terrain-piercing",
+            "line-damage",
+            "physical-armor-ignore",
+            "snipe",
+            "execute-pressure"
+          ],
+          "sourceRef": "murdock-game-client-manual-entry-2026-08-16"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Sting Operation",
+          "category": "utility",
+          "description": "Murdock gains 2 additional Max Static Trap Charges and Static Traps are 20% larger.",
+          "tags": [
+            "static-trap",
+            "charges",
+            "larger-area",
+            "zone-control"
+          ],
+          "sourceRef": "murdock-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Justice's Reach",
+          "category": "damage",
+          "description": "Shots Fired now pierces units and has +250 additional range.",
+          "tags": [
+            "shots-fired",
+            "pierce",
+            "increased-range",
+            "poke"
+          ],
+          "sourceRef": "murdock-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Martial Law",
+          "category": "damage",
+          "description": "Long Arm Of The Law deals 15% more damage and grants +50 gold on Hero Kill.",
+          "tags": [
+            "long-arm-of-the-law",
+            "bonus-damage",
+            "gold",
+            "hero-kill"
+          ],
+          "sourceRef": "murdock-game-client-manual-entry-2026-08-16"
+        }
+      ],
       "threats": [
         "sustained-dps",
         "pick",
-        "poke"
+        "poke",
+        "zone-control",
+        "global-pressure",
+        "physical-armor-shred",
+        "burst"
       ],
       "answers": [
         "tank-shred",
         "poke",
-        "objective-control"
+        "objective-control",
+        "self-peel",
+        "zone-control",
+        "pick",
+        "global-pressure"
       ],
       "weaknesses": [
         "dive",
-        "low-mobility"
+        "low-mobility",
+        "burst-vulnerable",
+        "hard-cc",
+        "trap-clear"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "murdock-game-client-manual-entry-2026-08-16",
+        "roles": "murdock-game-client-manual-entry-2026-08-16",
+        "kit": "murdock-game-client-manual-entry-2026-08-16",
+        "augments": "murdock-game-client-manual-entry-2026-08-16"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-16. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
