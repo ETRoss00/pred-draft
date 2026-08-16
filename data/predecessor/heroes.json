@@ -36,6 +36,10 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
     },
+    "phase-game-client-manual-entry-2026-08-16": {
+      "label": "Phase game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Phase roles, class, ratings, ability text, and augments."
     "neon-game-client-manual-entry-2026-08-16": {
       "label": "Neon game-client manual entry",
       "url": null,
@@ -9460,32 +9464,336 @@
       "roles": [
         "support"
       ],
+      "classes": [
+        "support"
+      ],
       "damage": "magical",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 1,
+        "abilityPower": 2,
+        "durability": 3,
+        "mobility": 2
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Pulse Bolt",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged basic attack dealing 54.0/57.1/60.3/63.7/67.3/71.0/75.0/79.0/83.3/87.7/92.2/97.0/101.8/106.9/112.1/117.5/123.1/128.8 (+55% physical power) (+15% magical power) physical damage.",
+          "scaling": {
+            "damage": [
+              54,
+              57.1,
+              60.3,
+              63.7,
+              67.3,
+              71,
+              75,
+              79,
+              83.3,
+              87.7,
+              92.2,
+              97,
+              101.8,
+              106.9,
+              112.1,
+              117.5,
+              123.1,
+              128.8
+            ],
+            "physicalPowerRatio": 0.55,
+            "magicalPowerRatio": 0.15
+          },
+          "effects": [
+            "ranged-basic"
+          ],
+          "sourceRef": "phase-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "passive",
+          "name": "Essence Catalyst",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "After casting an ability, restores 12.0/16.0/20.0/24.0/28.0/32.0/36.0/40.0/44.0/48.0/52.0/56.0/60.0/64.0/68.0/72.0/76.0/80.0 (+40% magical power) health over 3s. Linked allies receive the same healing. This effect does not stack. Additionally, Phase's Blink costs 40 mana but has a reduced Cooldown of 60s. Upon use, it increases her damage dealt by 15% for 3s.",
+          "scaling": {
+            "healing": [
+              12,
+              16,
+              20,
+              24,
+              28,
+              32,
+              36,
+              40,
+              44,
+              48,
+              52,
+              56,
+              60,
+              64,
+              68,
+              72,
+              76,
+              80
+            ],
+            "magicalPowerRatio": 0.4,
+            "healingDuration": 3,
+            "blinkManaCost": 40,
+            "blinkCooldown": 60,
+            "blinkDamageIncreasePercent": 15,
+            "blinkDamageIncreaseDuration": 3
+          },
+          "effects": [
+            "healing-over-time",
+            "linked-ally-healing",
+            "blink-modifier",
+            "damage-increase"
+          ],
+          "sourceRef": "phase-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "primary",
+          "name": "Psychic Flare",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Blast a flare of psychic energy around Phase and her Linked Ally, dealing 75.0/110.0/145.0/180.0/215.0 (+80% magical power) magical damage and Blinding Enemies that are facing it for 1.0/1.1/1.1/1.1/1.2s. Enemies take 40% damage from a second flare. Damaging an Enemy Hero with Psychic Flare reduces Phase's Blink Cooldown to 2.5s.",
+          "cooldown": [
+            14,
+            13,
+            12,
+            11,
+            10
+          ],
+          "scaling": {
+            "damage": [
+              75,
+              110,
+              145,
+              180,
+              215
+            ],
+            "magicalPowerRatio": 0.8,
+            "blindDuration": [
+              1,
+              1.1,
+              1.1,
+              1.1,
+              1.2
+            ],
+            "secondFlareDamagePercent": 40,
+            "blinkCooldownOnHeroDamage": 2.5
+          },
+          "effects": [
+            "linked-ally-cast",
+            "area-damage",
+            "blind",
+            "anti-basic-attack",
+            "blink-cooldown-reduction",
+            "peel"
+          ],
+          "sourceRef": "phase-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "secondary",
+          "name": "Energy Lance",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Channel a beam of energy dealing 80.0/120.0/160.0/200.0/240.0 (+90% magical power) magical damage over 2.5s. Each instance of damage applies a stacking 3% Slow that lasts 0.6s. Upon reaching 8 stacks the target is Rooted for 1.0/1.1/1.1/1.1/1.2s.",
+          "cooldown": [
+            20,
+            18,
+            16,
+            14,
+            12
+          ],
+          "scaling": {
+            "damage": [
+              80,
+              120,
+              160,
+              200,
+              240
+            ],
+            "magicalPowerRatio": 0.9,
+            "channelDuration": 2.5,
+            "slowPercentPerStack": 3,
+            "slowDuration": 0.6,
+            "rootStacksRequired": 8,
+            "rootDuration": [
+              1,
+              1.1,
+              1.1,
+              1.1,
+              1.2
+            ]
+          },
+          "effects": [
+            "channel",
+            "beam",
+            "stacking-slow",
+            "root",
+            "hard-cc",
+            "pick"
+          ],
+          "sourceRef": "phase-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "alternate",
+          "name": "Telekinetic Link",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Create a Link between yourself and an Ally, granting both Heroes 4.0/5.0/6.0/7.0/8.0% increased Physical Power and Magical Power. If reactivated, Phase will Pull the Linked Ally towards her. The Link will turn Pink if any Ally wanders too far out of range and will break if they do not return within 1s. Allies that are Immobilized cannot be Pulled.",
+          "cooldown": [
+            24,
+            22,
+            20,
+            18,
+            16
+          ],
+          "scaling": {
+            "physicalPowerIncreasePercent": [
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "magicalPowerIncreasePercent": [
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "outOfRangeBreakDelay": 1
+          },
+          "effects": [
+            "ally-link",
+            "physical-power-buff",
+            "magical-power-buff",
+            "ally-pull",
+            "peel",
+            "save"
+          ],
+          "sourceRef": "phase-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Hyperflux",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "Phase overcharges herself and her Linked Ally, granting both 40.0/60.0/80.0% attack speed, 40.0/60.0/80.0 ability haste and 135% decaying movement speed for 8s.",
+          "cooldown": [
+            125,
+            105,
+            85
+          ],
+          "cost": [
+            100
+          ],
+          "scaling": {
+            "attackSpeedPercent": [
+              40,
+              60,
+              80
+            ],
+            "abilityHaste": [
+              40,
+              60,
+              80
+            ],
+            "movementSpeedPercent": 135,
+            "duration": 8
+          },
+          "effects": [
+            "linked-ally-buff",
+            "attack-speed",
+            "ability-haste",
+            "movement-speed",
+            "teamfight",
+            "engage"
+          ],
+          "sourceRef": "phase-game-client-manual-entry-2026-08-16"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Psychic Support",
+          "category": "mana",
+          "description": "Essence Catalyst also restores your Linked Ally's Mana by (+12% Target's Missing Mana) over the duration.",
+          "tags": [
+            "essence-catalyst",
+            "linked-ally",
+            "mana-restore",
+            "sustain"
+          ],
+          "sourceRef": "phase-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Final Flash",
+          "category": "damage",
+          "description": "Energy Lance is 30% shorter but deals 20.0/30.0/40.0/50.0/70.0% more damage.",
+          "tags": [
+            "energy-lance",
+            "range-tradeoff",
+            "bonus-damage",
+            "burst"
+          ],
+          "sourceRef": "phase-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Kindred Surge",
+          "category": "healing",
+          "description": "Hyperflux grants 10% more Movement Speed and (+1.2% max health) Health Regen for its duration.",
+          "tags": [
+            "hyperflux",
+            "movement-speed",
+            "health-regen",
+            "linked-ally"
+          ],
+          "sourceRef": "phase-game-client-manual-entry-2026-08-16"
+        }
+      ],
       "threats": [
         "peel",
         "sustain",
-        "pick"
+        "pick",
+        "blind",
+        "root",
+        "ally-save",
+        "team-buff",
+        "mobility"
       ],
       "answers": [
         "peel",
         "anti-dive",
-        "sustain"
+        "sustain",
+        "ally-save",
+        "anti-basic-attack",
+        "hard-cc",
+        "team-buff",
+        "engage"
       ],
       "weaknesses": [
         "anti-heal",
-        "burst-vulnerable"
+        "burst-vulnerable",
+        "hard-cc",
+        "link-break",
+        "low-damage"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "phase-game-client-manual-entry-2026-08-16",
+        "roles": "phase-game-client-manual-entry-2026-08-16",
+        "kit": "phase-game-client-manual-entry-2026-08-16",
+        "augments": "phase-game-client-manual-entry-2026-08-16"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-16. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
