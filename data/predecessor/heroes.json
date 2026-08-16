@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "mourn-game-client-manual-entry-2026-08-16": {
+      "label": "Mourn game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Mourn roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -1224,35 +1229,337 @@
       "id": "mourn",
       "name": "Mourn",
       "roles": [
-        "offlane",
         "support"
       ],
-      "damage": "physical",
+      "classes": [
+        "tank"
+      ],
+      "damage": "mixed",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 3,
+        "abilityPower": 6,
+        "durability": 8,
+        "mobility": 1
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Clobber",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 63.0/66.2/69.6/73.2/76.9/80.8/84.9/89.2/93.6/98.2/103.0/107.9/113.0/118.3/123.8/129.4/135.2/141.2 (+85% physical power) physical damage.",
+          "scaling": {
+            "damage": [
+              63,
+              66.2,
+              69.6,
+              73.2,
+              76.9,
+              80.8,
+              84.9,
+              89.2,
+              93.6,
+              98.2,
+              103,
+              107.9,
+              113,
+              118.3,
+              123.8,
+              129.4,
+              135.2,
+              141.2
+            ],
+            "physicalPowerRatio": 0.85
+          },
+          "effects": [
+            "melee-basic"
+          ],
+          "sourceRef": "mourn-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "passive",
+          "name": "Extract",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "Mourn's next basic attack will deal an additional 20.0/28.0/36.0/44.0/52.0/60.0/68.0/76.0/84.0/92.0/100.0/108.0/116.0/124.0/132.0/140.0/148.0/156.0 (+50% magical power)(+90% physical power)(+6% max health) magical damage to all targets hit. Damaging an Enemy Target will restore (3%/5%/7%/9% Maximum Health) Health.",
+          "scaling": {
+            "bonusDamage": [
+              20,
+              28,
+              36,
+              44,
+              52,
+              60,
+              68,
+              76,
+              84,
+              92,
+              100,
+              108,
+              116,
+              124,
+              132,
+              140,
+              148,
+              156
+            ],
+            "magicalPowerRatio": 0.5,
+            "physicalPowerRatio": 0.9,
+            "maxHealthDamageRatio": 0.06,
+            "maxHealthRestorePercent": [
+              3,
+              5,
+              7,
+              9
+            ]
+          },
+          "effects": [
+            "empowered-basic",
+            "area-damage",
+            "healing",
+            "max-health-scaling"
+          ],
+          "sourceRef": "mourn-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "primary",
+          "name": "Contagion",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Mourn vomits magical bugs that attach to nearby Heroes and Monsters. Mourn and Allied Heroes hit restore 3.0/6.0/9.0/12.0/15.0 (+7% magical power) health every 0.5s for 3s, gaining 5 (+8% Physical Armor) Physical Armor and 5 (+8% Magical Armor) Magical Armor for the same duration. Enemies take 8.0/12.0/16.0/20.0/24.0 (+8% magical power) magical damage every 0.5s for 3s and have their Base Physical Armor and Base Magical Armor reduced by 5 and their Bonus Physical Armor and Bonus Magical Armor reduced by 12%.",
+          "cooldown": [
+            15,
+            14.25,
+            13.5,
+            12.75,
+            12
+          ],
+          "scaling": {
+            "allyHealPerTick": [
+              3,
+              6,
+              9,
+              12,
+              15
+            ],
+            "allyHealMagicalPowerRatio": 0.07,
+            "tickInterval": 0.5,
+            "duration": 3,
+            "physicalArmor": 5,
+            "physicalArmorRatio": 0.08,
+            "magicalArmor": 5,
+            "magicalArmorRatio": 0.08,
+            "enemyDamagePerTick": [
+              8,
+              12,
+              16,
+              20,
+              24
+            ],
+            "enemyDamageMagicalPowerRatio": 0.08,
+            "baseArmorReduction": 5,
+            "bonusArmorReductionPercent": 12
+          },
+          "effects": [
+            "healing-over-time",
+            "ally-armor",
+            "damage-over-time",
+            "armor-reduction",
+            "anti-frontline",
+            "team-sustain"
+          ],
+          "sourceRef": "mourn-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "secondary",
+          "name": "Beguile",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Mourn channels energy into his fist for up to 2.1s, expanding up to 800u over 1.5s. While channeling, Mourn gains 20% Damage Reduction and Slows himself by 30%. At the end of the duration, or upon reactivation, Enemies within take 80.0/110.0/140.0/170.0/200.0 (+45% magical power) magical damage and are Mesmerized for 0.45-1.2s (based on 0-1.5s channel duration).",
+          "cooldown": [
+            18,
+            17.25,
+            16.5,
+            15.75,
+            15
+          ],
+          "scaling": {
+            "maxChannelDuration": 2.1,
+            "maxRadius": 800,
+            "radiusGrowthDuration": 1.5,
+            "damageReductionPercent": 20,
+            "selfSlowPercent": 30,
+            "damage": [
+              80,
+              110,
+              140,
+              170,
+              200
+            ],
+            "magicalPowerRatio": 0.45,
+            "minMesmerizeDuration": 0.45,
+            "maxMesmerizeDuration": 1.2
+          },
+          "effects": [
+            "channel",
+            "damage-reduction",
+            "self-slow",
+            "area-damage",
+            "mesmerize",
+            "hard-cc",
+            "reactivation"
+          ],
+          "sourceRef": "mourn-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "alternate",
+          "name": "Abduct",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Channel for up to 3s, Slowing yourself by 25% and wind up your vines, increasing their range over 1s. After 3s the ability will be cancelled and go on a 50% cooldown. Confirm to unleash the vines that will collide with the first enemy target hit dealing 80.0/125.0/170.0/215.0/260.0 (+85% magical power) magical damage, Pulling them towards Mourn and Slowing them by 90% for 0.75s.",
+          "cooldown": [
+            18,
+            17,
+            16,
+            15,
+            14
+          ],
+          "cost": [
+            70
+          ],
+          "scaling": {
+            "maxChannelDuration": 3,
+            "selfSlowPercent": 25,
+            "rangeGrowthDuration": 1,
+            "cancelCooldownPercent": 50,
+            "damage": [
+              80,
+              125,
+              170,
+              215,
+              260
+            ],
+            "magicalPowerRatio": 0.85,
+            "targetSlowPercent": 90,
+            "targetSlowDuration": 0.75
+          },
+          "effects": [
+            "channel",
+            "pull",
+            "pick",
+            "slow",
+            "single-target-control",
+            "self-slow"
+          ],
+          "sourceRef": "mourn-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Eclipse",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "Mourn absorbs light from the map for 4s, causing all Enemy Heroes to have massively reduced vision. Additionally, Mourn applies Contagion to all Heroes in the world and gains 40.0/60.0/80.0% Movement Speed for the duration.",
+          "cooldown": [
+            155,
+            135,
+            115
+          ],
+          "scaling": {
+            "duration": 4,
+            "movementSpeedPercent": [
+              40,
+              60,
+              80
+            ]
+          },
+          "effects": [
+            "vision-reduction",
+            "global-contagion",
+            "movement-speed",
+            "teamfight",
+            "global-presence"
+          ],
+          "sourceRef": "mourn-game-client-manual-entry-2026-08-16"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Nightmare Extractor",
+          "category": "cooldown",
+          "description": "Casting an Ability reduces the Cooldown of Extract by 20%.",
+          "tags": [
+            "extract",
+            "cooldown-reduction",
+            "ability-cast",
+            "sustain"
+          ],
+          "sourceRef": "mourn-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Nightstalker",
+          "category": "mobility",
+          "description": "Eclipse's bonus Movement Speed is increased to 70%/120%/200%.",
+          "tags": [
+            "eclipse",
+            "movement-speed",
+            "engage",
+            "teamfight"
+          ],
+          "sourceRef": "mourn-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Dreadful Roots",
+          "category": "mobility",
+          "description": "If Abduct hits Terrain, Mourn pulls himself towards it.",
+          "tags": [
+            "abduct",
+            "terrain",
+            "self-pull",
+            "mobility"
+          ],
+          "sourceRef": "mourn-game-client-manual-entry-2026-08-16"
+        }
+      ],
       "threats": [
         "frontline",
         "peel",
-        "engage"
+        "engage",
+        "pick",
+        "healing",
+        "armor-reduction",
+        "vision-reduction",
+        "teamfight"
       ],
       "answers": [
         "frontline",
         "peel",
-        "anti-dive"
+        "anti-dive",
+        "team-sustain",
+        "hard-cc",
+        "pick",
+        "anti-frontline",
+        "vision-denial"
       ],
       "weaknesses": [
         "poke",
-        "tank-shred"
+        "tank-shred",
+        "anti-heal",
+        "low-mobility",
+        "range-pressure",
+        "interrupt"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "mourn-game-client-manual-entry-2026-08-16",
+        "roles": "mourn-game-client-manual-entry-2026-08-16",
+        "kit": "mourn-game-client-manual-entry-2026-08-16",
+        "augments": "mourn-game-client-manual-entry-2026-08-16"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-16. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
