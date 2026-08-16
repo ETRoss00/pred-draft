@@ -36,6 +36,10 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
     },
+    "serath-game-client-manual-entry-2026-08-16": {
+      "label": "Serath game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Serath roles, class, ratings, ability text, and augments."
     "scarlett-game-client-manual-entry-2026-08-16": {
       "label": "Scarlett game-client manual entry",
       "url": null,
@@ -11532,32 +11536,323 @@
         "jungle",
         "offlane"
       ],
-      "damage": "physical",
+      "classes": [
+        "assassin"
+      ],
+      "damage": "mixed",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 8,
+        "abilityPower": 5,
+        "durability": 1,
+        "mobility": 8
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "The Nephilim",
+          "kind": "basic attack",
+          "damageType": "mixed",
+          "description": "Melee basic attack dealing 55.0/56.8/58.7/60.8/62.9/65.1/67.4/69.8/72.3/74.9/77.6/80.4/83.3/86.3/89.3/92.5/95.8/99.2 (+70% physical power) physical damage. Additionally deals (+15% magical power) magical damage on-hit.",
+          "scaling": {
+            "damage": [
+              55,
+              56.8,
+              58.7,
+              60.8,
+              62.9,
+              65.1,
+              67.4,
+              69.8,
+              72.3,
+              74.9,
+              77.6,
+              80.4,
+              83.3,
+              86.3,
+              89.3,
+              92.5,
+              95.8,
+              99.2
+            ],
+            "physicalPowerRatio": 0.7,
+            "magicalOnHitPowerRatio": 0.15
+          },
+          "effects": [
+            "melee-basic",
+            "magical-on-hit",
+            "mixed-damage"
+          ],
+          "sourceRef": "serath-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "passive",
+          "name": "Fallen Grace",
+          "kind": "passive",
+          "damageType": "mixed",
+          "description": "Takedowns on Enemy Heroes leave behind a demonic visage for 10s. Upon touching it, Serath activates Heresy at no cost and reduces her current basic ability cooldowns by 65%.",
+          "scaling": {
+            "visageDuration": 10,
+            "basicAbilityCooldownReductionPercent": 65
+          },
+          "effects": [
+            "takedown-reset",
+            "demonic-visage",
+            "free-ultimate-state",
+            "cooldown-reduction",
+            "snowball"
+          ],
+          "sourceRef": "serath-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "primary",
+          "name": "Heaven's Fury",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Serath marks a Target and vanishes, striking Enemies at their location 5 times. Each strike deals 40.0/60.0/80.0/100.0/120.0 (+20% physical power) physical damage and applies on-hit effects at 40% effectiveness. Additional strikes against the same Target deal 30% damage. Deals 40.0/50.0/60.0/70.0/80.0 bonus damage to Monsters. On her final strike, Serath will teleport to the marked Target's location based on her current position. If the marked Target dies, Serath teleports immediately.",
+          "cooldown": [
+            18,
+            17.25,
+            16.5,
+            15.75,
+            15
+          ],
+          "scaling": {
+            "strikes": 5,
+            "damagePerStrike": [
+              40,
+              60,
+              80,
+              100,
+              120
+            ],
+            "physicalPowerRatio": 0.2,
+            "onHitEffectivenessPercent": 40,
+            "sameTargetAdditionalStrikeDamagePercent": 30,
+            "monsterBonusDamage": [
+              40,
+              50,
+              60,
+              70,
+              80
+            ]
+          },
+          "effects": [
+            "mark",
+            "vanish",
+            "multi-hit",
+            "on-hit",
+            "teleport",
+            "backline-access",
+            "monster-damage"
+          ],
+          "sourceRef": "serath-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "secondary",
+          "name": "Ascend",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Serath rises up into the air and hovers for up to 1.8s. During this time, she can target an area up to 1350 units away. Upon confirmation, she dives down and deals 80.0/100.0/120.0/140.0/160.0 (+80% physical power)(+50% magical power) physical damage. Serath automatically dives to the ground after 1.8s",
+          "cooldown": [
+            16,
+            15.5,
+            15,
+            14.5,
+            14
+          ],
+          "scaling": {
+            "hoverDuration": 1.8,
+            "targetRange": 1350,
+            "damage": [
+              80,
+              100,
+              120,
+              140,
+              160
+            ],
+            "physicalPowerRatio": 0.8,
+            "magicalPowerRatio": 0.5
+          },
+          "effects": [
+            "hover",
+            "airborne",
+            "dive",
+            "mobility",
+            "area-damage",
+            "engage"
+          ],
+          "sourceRef": "serath-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "alternate",
+          "name": "Chastise",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Serath claps her wings in front of her dealing 80.0/105.0/130.0/155.0/180.0 (+50% physical power)(+40% magical power) magical damage, Slowing them by 40% for 1.25s and applying on-hit effects to all Enemy Units hit at 100% effectiveness. Chastise cast speed increases with additional attack speed and resets Serath's basic attack cooldown on use.",
+          "cooldown": [
+            11,
+            10.25,
+            9.5,
+            8.75,
+            8
+          ],
+          "scaling": {
+            "damage": [
+              80,
+              105,
+              130,
+              155,
+              180
+            ],
+            "physicalPowerRatio": 0.5,
+            "magicalPowerRatio": 0.4,
+            "slowPercent": 40,
+            "slowDuration": 1.25,
+            "onHitEffectivenessPercent": 100
+          },
+          "effects": [
+            "cone-damage",
+            "slow",
+            "on-hit",
+            "attack-speed-scaling",
+            "basic-attack-reset",
+            "duelist"
+          ],
+          "sourceRef": "serath-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Heresy",
+          "kind": "ultimate ability",
+          "damageType": "mixed",
+          "description": "Serath takes demonic form, dealing 60.0/90.0/120.0 (+50% physical power)(+80% magical power) physical damage to nearby Enemies and setting them ablaze. For the next 7s, she gains 20.0/25.0/30.0% movement speed, 20.0/40.0/60.0% attack speed, and empowers her basic attack with Infernal Strikes. Infernal Strikes sets Enemy Units ablaze on-hit, dealing 15.0/30.0/45.0 (+25% physical power)(+20% magical power) true damage on-hit over 2s.",
+          "cooldown": [
+            125,
+            105,
+            85
+          ],
+          "scaling": {
+            "activationDamage": [
+              60,
+              90,
+              120
+            ],
+            "activationPhysicalPowerRatio": 0.5,
+            "activationMagicalPowerRatio": 0.8,
+            "duration": 7,
+            "movementSpeedPercent": [
+              20,
+              25,
+              30
+            ],
+            "attackSpeedPercent": [
+              20,
+              40,
+              60
+            ],
+            "infernalStrikesTrueDamage": [
+              15,
+              30,
+              45
+            ],
+            "infernalStrikesPhysicalPowerRatio": 0.25,
+            "infernalStrikesMagicalPowerRatio": 0.2,
+            "infernalStrikesDuration": 2
+          },
+          "effects": [
+            "transformation",
+            "area-damage",
+            "ablaze",
+            "movement-speed",
+            "attack-speed",
+            "empowered-basic",
+            "true-damage",
+            "on-hit",
+            "teamfight"
+          ],
+          "sourceRef": "serath-game-client-manual-entry-2026-08-16"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Vital Resonance",
+          "category": "healing",
+          "description": "Fallen Grace's Visages restore (+170% physical power) Health on pick-up.",
+          "tags": [
+            "fallen-grace",
+            "visage",
+            "health-restore",
+            "physical-power-scaling",
+            "sustain"
+          ],
+          "sourceRef": "serath-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Wrath Unleashed",
+          "category": "attack-speed",
+          "description": "Applying an On-Hit Effect to an Enemy Hero grants +0.75% Attack Speed for 3s, stacking infinitely.",
+          "tags": [
+            "on-hit",
+            "attack-speed",
+            "hero-hit",
+            "stacking",
+            "sustained-dps"
+          ],
+          "sourceRef": "serath-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Crushing Descent",
+          "category": "control",
+          "description": "Ascend now Stuns for 0.2s when it deals damage.",
+          "tags": [
+            "ascend",
+            "stun",
+            "hard-cc",
+            "engage"
+          ],
+          "sourceRef": "serath-game-client-manual-entry-2026-08-16"
+        }
+      ],
       "threats": [
         "dive",
         "sustained-dps",
-        "split-push"
+        "split-push",
+        "backline-access",
+        "on-hit",
+        "mobility",
+        "snowball",
+        "true-damage"
       ],
       "answers": [
         "backline-access",
         "tank-shred",
-        "mobility"
+        "mobility",
+        "duelist",
+        "sustained-dps",
+        "on-hit",
+        "execute-followup",
+        "jungle-clear"
       ],
       "weaknesses": [
         "hard-cc",
-        "anti-burst"
+        "anti-burst",
+        "burst-vulnerable",
+        "anti-heal",
+        "anti-basic-attack",
+        "frontline-peel"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "serath-game-client-manual-entry-2026-08-16",
+        "roles": "serath-game-client-manual-entry-2026-08-16",
+        "kit": "serath-game-client-manual-entry-2026-08-16",
+        "augments": "serath-game-client-manual-entry-2026-08-16"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-16. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
