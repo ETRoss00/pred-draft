@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "renna-game-client-manual-entry-2026-08-16": {
+      "label": "Renna game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Renna roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -1467,32 +1472,304 @@
       "roles": [
         "midlane"
       ],
+      "classes": [
+        "mage"
+      ],
       "damage": "magical",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 1,
+        "abilityPower": 7,
+        "durability": 2,
+        "mobility": 3
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Vow",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged basic attack dealing 54.0/56.5/59.2/62.0/64.9/68.0/71.2/74.5/77.9/81.5/85.3/89.2/93.2/97.3/101.6/106.0/110.5/115.2 (+55% physical power) physical damage.",
+          "scaling": {
+            "damage": [
+              54,
+              56.5,
+              59.2,
+              62,
+              64.9,
+              68,
+              71.2,
+              74.5,
+              77.9,
+              81.5,
+              85.3,
+              89.2,
+              93.2,
+              97.3,
+              101.6,
+              106,
+              110.5,
+              115.2
+            ],
+            "physicalPowerRatio": 0.55
+          },
+          "effects": [
+            "ranged-basic"
+          ],
+          "sourceRef": "renna-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "passive",
+          "name": "Echoes of the Damned",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "Entities that die near Renna have a chance of leaving behind their Essence that can be consumed by moving nearby. Heroes always leave behind Essence. Essence enhances Renna's abilities directly. If Renna Jumps while mid-air, she will begin to hover, falling slowly.",
+          "scaling": {
+            "heroEssenceDropChancePercent": 100
+          },
+          "effects": [
+            "essence-scaling",
+            "hero-takedown-scaling",
+            "hover",
+            "air-mobility"
+          ],
+          "sourceRef": "renna-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "primary",
+          "name": "Mortal Coil",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Launch a Soul Orb that deploys upon contact with a Hero or the World. Once deployed, the Soul Orb attacks nearby Enemy Targets, pulling them in and dealing 70.0/100.0/130.0/160.0/190.0 (+50% magical power) magical damage over 4s. Enemies that take damage from Soul Orb while below 6% (+1% per 30 Essence) health are executed. Renna is healed for 16.0/18.0/20.0/22.0/24.0% of her damage dealt to Targets attached to the Soul Orb. Healing is 8% effective against Minions and Monsters. The radius is increased by 1% per 10 Essence.",
+          "cooldown": [
+            18,
+            17.5,
+            17,
+            16.5,
+            16
+          ],
+          "scaling": {
+            "damage": [
+              70,
+              100,
+              130,
+              160,
+              190
+            ],
+            "magicalPowerRatio": 0.5,
+            "damageDuration": 4,
+            "executeHealthPercent": 6,
+            "executeHealthPercentPer30Essence": 1,
+            "selfHealingDamageDealtPercent": [
+              16,
+              18,
+              20,
+              22,
+              24
+            ],
+            "minionMonsterHealingEffectivenessPercent": 8,
+            "radiusIncreasePercentPer10Essence": 1
+          },
+          "effects": [
+            "deployable",
+            "soul-orb",
+            "pull",
+            "area-damage",
+            "execute",
+            "self-healing",
+            "essence-scaling",
+            "zone-control"
+          ],
+          "sourceRef": "renna-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "secondary",
+          "name": "Stupor",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Renna shifts upwards and prepares to launch a ball of demonic energy. Upon re-activating or after 1.5s, Renna will launch the orb that explodes on contact dealing 70.0/95.0/120.0/145.0/170.0 (+50% magical power) damage and mesmerizing Targets hit for 1.0/1.1/1.1/1.1/1.2s. Deals an additional 1% of the Target's Current Health as Magical Damage per 30 Essence.",
+          "cooldown": [
+            18,
+            17.25,
+            16.5,
+            15.75,
+            15
+          ],
+          "scaling": {
+            "damage": [
+              70,
+              95,
+              120,
+              145,
+              170
+            ],
+            "magicalPowerRatio": 0.5,
+            "autoLaunchDelay": 1.5,
+            "mesmerizeDuration": [
+              1,
+              1.1,
+              1.1,
+              1.1,
+              1.2
+            ],
+            "currentHealthDamagePercentPer30Essence": 1
+          },
+          "effects": [
+            "projectile",
+            "area-damage",
+            "mesmerize",
+            "hard-cc",
+            "current-health-damage",
+            "essence-scaling",
+            "self-lift"
+          ],
+          "sourceRef": "renna-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "alternate",
+          "name": "Soulfire",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Swing your weapon to fire 3 piercing projectile waves over 1.5s that each deal 50.0/57.0/64.0/71.0/78.0 (+21% magical power) damage. Swings faster to create an additional projectile within the same duration per 50 Essence.",
+          "cooldown": [
+            11,
+            9.5,
+            8,
+            6.5,
+            5
+          ],
+          "scaling": {
+            "projectiles": 3,
+            "duration": 1.5,
+            "damagePerProjectile": [
+              50,
+              57,
+              64,
+              71,
+              78
+            ],
+            "magicalPowerRatio": 0.21,
+            "additionalProjectilePerEssence": 50
+          },
+          "effects": [
+            "piercing-projectile",
+            "multi-hit",
+            "poke",
+            "waveclear",
+            "essence-scaling"
+          ],
+          "sourceRef": "renna-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Abyssal Rift",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "After a 1.5s channel, Renna teleports to the Target location and summons an infernal singularity above herself for 5s that unleashes projectiles every 0.5s at nearby Targets that deal 60.0/82.0/104.0 (+25% magical power) magical damage. Lasts 0.5s longer per 50 Essence.",
+          "cooldown": [
+            145,
+            120,
+            95
+          ],
+          "scaling": {
+            "channelDuration": 1.5,
+            "duration": 5,
+            "projectileInterval": 0.5,
+            "damagePerProjectile": [
+              60,
+              82,
+              104
+            ],
+            "magicalPowerRatio": 0.25,
+            "durationIncreasePer50Essence": 0.5
+          },
+          "effects": [
+            "teleport",
+            "singularity",
+            "multi-hit",
+            "area-damage",
+            "teamfight",
+            "essence-scaling"
+          ],
+          "sourceRef": "renna-game-client-manual-entry-2026-08-16"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Communion",
+          "category": "healing",
+          "description": "Mortal Coil no longer Executes but has 20% increased Radius. Ally Heroes now heal themselves upon damaging targets in its area, at 100% effectiveness.",
+          "tags": [
+            "mortal-coil",
+            "execute-tradeoff",
+            "radius-increase",
+            "ally-healing",
+            "team-sustain"
+          ],
+          "sourceRef": "renna-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Netherward",
+          "category": "shield",
+          "description": "Upon using Soulfire, gain a 40 (+40% magical power) Shield for 2s.",
+          "tags": [
+            "soulfire",
+            "shield",
+            "self-defense"
+          ],
+          "sourceRef": "renna-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Vital Essence",
+          "category": "sustain",
+          "description": "Picking up Essence grants +4 gold and restores 3.5% Missing Health and Mana.",
+          "tags": [
+            "essence",
+            "gold",
+            "health-restore",
+            "mana-restore",
+            "sustain"
+          ],
+          "sourceRef": "renna-game-client-manual-entry-2026-08-16"
+        }
+      ],
       "threats": [
-        "burst",
         "poke",
-        "zone-control"
+        "zone-control",
+        "execute",
+        "sustain",
+        "teamfight",
+        "scaling",
+        "hard-cc"
       ],
       "answers": [
-        "burst",
         "poke",
-        "waveclear"
+        "waveclear",
+        "zone-control",
+        "anti-sustain",
+        "execute",
+        "self-sustain",
+        "teamfight"
       ],
       "weaknesses": [
         "dive",
-        "low-mobility"
+        "low-mobility",
+        "hard-cc",
+        "anti-heal",
+        "burst-vulnerable",
+        "early-pressure"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "renna-game-client-manual-entry-2026-08-16",
+        "roles": "renna-game-client-manual-entry-2026-08-16",
+        "kit": "renna-game-client-manual-entry-2026-08-16",
+        "augments": "renna-game-client-manual-entry-2026-08-16"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-16. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
