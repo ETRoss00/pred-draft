@@ -36,6 +36,10 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
     },
+    "morigesh-game-client-manual-entry-2026-08-16": {
+      "label": "Morigesh game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Morigesh roles, class, ratings, ability text, and augments."
     "maco-game-client-manual-entry-2026-08-16": {
       "label": "Maco game-client manual entry",
       "url": null,
@@ -7475,32 +7479,297 @@
       "roles": [
         "midlane"
       ],
+      "classes": [
+        "mage"
+      ],
       "damage": "magical",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 1,
+        "abilityPower": 8,
+        "durability": 3,
+        "mobility": 3
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Fetid Dagger",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged basic attack dealing 50.0/52.8/55.8/58.9/62.1/65.5/69.0/72.8/76.6/80.6/84.8/89.0/93.5/98.1/102.8/107.8/112.8/118.0 (+55% physical power) physical damage.",
+          "scaling": {
+            "damage": [
+              50,
+              52.8,
+              55.8,
+              58.9,
+              62.1,
+              65.5,
+              69,
+              72.8,
+              76.6,
+              80.6,
+              84.8,
+              89,
+              93.5,
+              98.1,
+              102.8,
+              107.8,
+              112.8,
+              118
+            ],
+            "physicalPowerRatio": 0.55
+          },
+          "effects": [
+            "ranged-basic",
+            "pestilence-refresh"
+          ],
+          "sourceRef": "morigesh-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "passive",
+          "name": "Pestilence",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "Morigesh's damaging abilities apply Pestilence for 3s, dealing 0.14% (+0.05% per 100 Magical Power) of the target's maximum health as magical damage every 0.5s, stacking up to 4 times. Fetid Daggers refreshes the duration of Pestilence when it damages a target afflicted by it.",
+          "scaling": {
+            "duration": 3,
+            "maxHealthDamagePercentPerTick": 0.14,
+            "maxHealthDamagePercentPer100MagicalPower": 0.05,
+            "tickInterval": 0.5,
+            "maxStacks": 4
+          },
+          "effects": [
+            "damage-over-time",
+            "max-health-damage",
+            "stacking-debuff",
+            "basic-attack-refresh"
+          ],
+          "sourceRef": "morigesh-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "primary",
+          "name": "Hive",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Throw a hive of insects that explodes dealing 100.0/140.0/180.0/220.0/260.0 (+65% magical power) magical damage and Slowing targets hit by 50%, decaying over 3s.",
+          "cooldown": [
+            14,
+            13,
+            12,
+            11,
+            10
+          ],
+          "scaling": {
+            "damage": [
+              100,
+              140,
+              180,
+              220,
+              260
+            ],
+            "magicalPowerRatio": 0.65,
+            "slowPercent": 50,
+            "slowDecayDuration": 3
+          },
+          "effects": [
+            "area-damage",
+            "slow",
+            "poke",
+            "pestilence-application"
+          ],
+          "sourceRef": "morigesh-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "secondary",
+          "name": "Swarm",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Become the swarm, gaining 50% decaying Movement Speed and 12% (+1.5% magical power) Damage Reduction for 3.5s. Passing through Enemy Units deals 110.0/150.0/190.0/230.0/270.0 (+75% magical power) magical damage and restores health equal to 30% of the pre-mitigated damage dealt. Healing is reduced by 75% against Minions. Swarm's effect is fully refreshed if it damages an Enemy Hero, and its duration is extended by 0.5s when colliding with Non-Heroes. Morigesh also gains an additional 25% Decaying Movement Speed over 1s when colliding with Non-Heroes.",
+          "cooldown": [
+            24,
+            22,
+            20,
+            18,
+            16
+          ],
+          "scaling": {
+            "movementSpeedPercent": 50,
+            "damageReductionPercent": 12,
+            "damageReductionMagicalPowerRatio": 0.015,
+            "duration": 3.5,
+            "damage": [
+              110,
+              150,
+              190,
+              230,
+              270
+            ],
+            "magicalPowerRatio": 0.75,
+            "healingPercentOfPreMitigatedDamage": 30,
+            "minionHealingReductionPercent": 75,
+            "nonHeroDurationExtension": 0.5,
+            "nonHeroMovementSpeedPercent": 25,
+            "nonHeroMovementSpeedDuration": 1
+          },
+          "effects": [
+            "mobility",
+            "movement-speed",
+            "damage-reduction",
+            "healing",
+            "refresh-on-hero-hit",
+            "pestilence-application"
+          ],
+          "sourceRef": "morigesh-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "alternate",
+          "name": "Mark",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Select an Enemy Target to deal 60.0/80.0/100.0/120.0/140.0 (+45% magical power) magical damage and, if they are a Hero, Mark them. Damaging Enemy Targets with Mark absorbs part of their soul restoring 8.0/18.0/28.0/38.0/48.0 (+20% magical power) Health, increasing by 15% against Heroes for each stack of Pestilence they possess. Killing an Enemy Unit with Mark refunds 50% of its cooldown, and 65% of the Mana spent.",
+          "cooldown": [
+            8,
+            7.25,
+            6.5,
+            5.75,
+            5
+          ],
+          "scaling": {
+            "damage": [
+              60,
+              80,
+              100,
+              120,
+              140
+            ],
+            "magicalPowerRatio": 0.45,
+            "heal": [
+              8,
+              18,
+              28,
+              38,
+              48
+            ],
+            "healMagicalPowerRatio": 0.2,
+            "heroHealingIncreasePercentPerPestilenceStack": 15,
+            "cooldownRefundOnUnitKillPercent": 50,
+            "manaRefundOnUnitKillPercent": 65
+          },
+          "effects": [
+            "mark",
+            "targeted-damage",
+            "healing",
+            "cooldown-refund",
+            "mana-refund",
+            "curse-setup",
+            "pestilence-application"
+          ],
+          "sourceRef": "morigesh-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Curse",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "After a brief channel, Summon a horde of insects to stab the Marked target, dealing 300.0/430.0/560.0 (+80% magical power) magical damage. The Mark is removed upon casting this ability.",
+          "cooldown": [
+            135,
+            105,
+            75
+          ],
+          "scaling": {
+            "damage": [
+              300,
+              430,
+              560
+            ],
+            "magicalPowerRatio": 0.8
+          },
+          "effects": [
+            "marked-target-damage",
+            "single-target-burst",
+            "global-pressure",
+            "mark-consume"
+          ],
+          "sourceRef": "morigesh-game-client-manual-entry-2026-08-16"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Spirit Shred",
+          "category": "damage",
+          "description": "Morigesh's Basic Attacks Shred 3.5% Magical Armor for 4s, stacking up to 5 times.",
+          "tags": [
+            "basic-attack",
+            "magical-armor-shred",
+            "stacking-debuff",
+            "anti-frontline"
+          ],
+          "sourceRef": "morigesh-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Ritual Of Death",
+          "category": "healing",
+          "description": "Curse heals Morigesh for 70%/80%/90% of damage dealt. Takedowns also decrease Curse's Cooldown by 20s.",
+          "tags": [
+            "curse",
+            "healing",
+            "takedown",
+            "cooldown-reduction",
+            "sustain"
+          ],
+          "sourceRef": "morigesh-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Cursed Infestation",
+          "category": "damage",
+          "description": "Hive deals 12% more damage and has 10% increased range.",
+          "tags": [
+            "hive",
+            "bonus-damage",
+            "increased-range",
+            "poke"
+          ],
+          "sourceRef": "morigesh-game-client-manual-entry-2026-08-16"
+        }
+      ],
       "threats": [
         "poke",
         "burst",
-        "pick"
+        "pick",
+        "damage-over-time",
+        "max-health-damage",
+        "single-target-burst",
+        "sustain"
       ],
       "answers": [
         "poke",
         "anti-squishy",
-        "waveclear"
+        "waveclear",
+        "anti-frontline",
+        "sustained-damage",
+        "pick",
+        "self-sustain"
       ],
       "weaknesses": [
         "dive",
-        "low-mobility"
+        "low-mobility",
+        "burst-vulnerable",
+        "anti-heal",
+        "cleanse"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "morigesh-game-client-manual-entry-2026-08-16",
+        "roles": "morigesh-game-client-manual-entry-2026-08-16",
+        "kit": "morigesh-game-client-manual-entry-2026-08-16",
+        "augments": "morigesh-game-client-manual-entry-2026-08-16"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-16. Draft taxonomy tags are derived from the verified kit text. Spirit Shred, Ritual Of Death, and Cursed Infestation were encoded as augments from the provided post-ultimate entries."
       }
     },
     {
