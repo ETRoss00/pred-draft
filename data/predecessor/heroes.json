@@ -36,6 +36,10 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
     },
+    "riktor-game-client-manual-entry-2026-08-16": {
+      "label": "Riktor game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Riktor roles, class, ratings, ability text, and augments."
     "revenant-game-client-manual-entry-2026-08-16": {
       "label": "Revenant game-client manual entry",
       "url": null,
@@ -10796,34 +10800,299 @@
       "name": "Riktor",
       "roles": [
         "support",
-        "offlane"
+        "jungle"
+      ],
+      "classes": [
+        "tank"
       ],
       "damage": "magical",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 1,
+        "abilityPower": 6,
+        "durability": 8,
+        "mobility": 2
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Whip",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 64.0/67.3/70.8/74.4/78.2/82.2/86.4/90.7/95.3/100.0/104.8/109.9/115.1/120.5/126.1/131.9/137.8/143.9 (+95% physical power) physical damage.",
+          "scaling": {
+            "damage": [
+              64,
+              67.3,
+              70.8,
+              74.4,
+              78.2,
+              82.2,
+              86.4,
+              90.7,
+              95.3,
+              100,
+              104.8,
+              109.9,
+              115.1,
+              120.5,
+              126.1,
+              131.9,
+              137.8,
+              143.9
+            ],
+            "physicalPowerRatio": 0.95
+          },
+          "effects": [
+            "melee-basic"
+          ],
+          "sourceRef": "riktor-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "passive",
+          "name": "Suspended Sentence",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "When Riktor Immobilizes or Silences an Enemy Hero with his Abilities, he halts their cooldown progression for the duration of the effect.",
+          "effects": [
+            "cooldown-progression-halt",
+            "anti-caster",
+            "silence-synergy",
+            "immobilize-synergy"
+          ],
+          "sourceRef": "riktor-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "primary",
+          "name": "Shock Therapy",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Swing an electrified whip that destroys enemy shields before dealing 80.0/115.0/150.0/185.0/220.0 (+70% physical power)(+60% magical power) magical damage and Silencing them for 0.8s.",
+          "cooldown": [
+            10,
+            9.5,
+            9,
+            8.5,
+            8
+          ],
+          "scaling": {
+            "damage": [
+              80,
+              115,
+              150,
+              185,
+              220
+            ],
+            "physicalPowerRatio": 0.7,
+            "magicalPowerRatio": 0.6,
+            "silenceDuration": 0.8
+          },
+          "effects": [
+            "shield-break",
+            "silence",
+            "anti-caster",
+            "anti-shield",
+            "damage"
+          ],
+          "sourceRef": "riktor-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "secondary",
+          "name": "Electrocute",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Emit an electrical aura for 4.5s, granting Riktor a 20 (+8.0/9.5/11.0/12.5/14.0% max health) (+35% magical power) Shield and 6.0/7.0/8.0/9.0/10.0% Movement Speed for the duration. The electrical aura deals 60.0/95.0/130.0/165.0/200.0 (+6% max health) (+35% magical power) magical damage to all nearby Enemies over the duration. If Riktor takes damage while the aura is active, he emits a pulse of energy that deals another tick of damage at 75% effectiveness. This can only occur once every 0.5s.",
+          "cooldown": [
+            15,
+            13.75,
+            12.5,
+            11.25,
+            10
+          ],
+          "scaling": {
+            "duration": 4.5,
+            "baseShield": 20,
+            "shieldMaxHealthPercent": [
+              8,
+              9.5,
+              11,
+              12.5,
+              14
+            ],
+            "shieldMagicalPowerRatio": 0.35,
+            "movementSpeedPercent": [
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "damage": [
+              60,
+              95,
+              130,
+              165,
+              200
+            ],
+            "damageMaxHealthRatio": 0.06,
+            "damageMagicalPowerRatio": 0.35,
+            "pulseDamageEffectivenessPercent": 75,
+            "pulseInterval": 0.5
+          },
+          "effects": [
+            "shield",
+            "movement-speed",
+            "aura-damage",
+            "max-health-scaling",
+            "frontline",
+            "durability"
+          ],
+          "sourceRef": "riktor-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "alternate",
+          "name": "Riplash",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Launch Riktor's chain forward, attaching to the first Enemy hit, dealing 10.0/50.0/90.0/130.0/170.0 (+100% magical power) (+10% of the Target's Max Health) magical damage and Pulling them towards him.",
+          "cooldown": [
+            20,
+            18.75,
+            17.5,
+            16.25,
+            15
+          ],
+          "scaling": {
+            "damage": [
+              10,
+              50,
+              90,
+              130,
+              170
+            ],
+            "magicalPowerRatio": 1,
+            "targetMaxHealthRatio": 0.1
+          },
+          "effects": [
+            "hook",
+            "pull",
+            "pick",
+            "displacement",
+            "max-health-damage",
+            "engage"
+          ],
+          "sourceRef": "riktor-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Skewer",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "Unleash a torrent of chains from Riktor, dealing 110.0/190.0/270.0 (+45% magical power) magical damage to all Enemies in front of him and Suppressing them for 1.3s. After the Supression expires Riktor rips the chains out, repeating the damage.",
+          "cooldown": [
+            125,
+            105,
+            85
+          ],
+          "scaling": {
+            "damage": [
+              110,
+              190,
+              270
+            ],
+            "magicalPowerRatio": 0.45,
+            "suppressDuration": 1.3,
+            "damageInstances": 2
+          },
+          "effects": [
+            "suppression",
+            "hard-cc",
+            "area-damage",
+            "teamfight",
+            "peel",
+            "engage"
+          ],
+          "sourceRef": "riktor-game-client-manual-entry-2026-08-16"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Warden's Leash",
+          "category": "utility",
+          "description": "Riplash now also hooks Allies, refunding 60% of its Cooldown and 60% of its Cost on Ally hit.",
+          "tags": [
+            "riplash",
+            "ally-hook",
+            "cooldown-refund",
+            "cost-refund",
+            "save"
+          ],
+          "sourceRef": "riktor-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Wanton Warden",
+          "category": "healing",
+          "description": "Regenerate Health equal to 4-7% of damage taken over 5s. Increases with Hero Level.",
+          "tags": [
+            "health-regeneration",
+            "damage-taken",
+            "durability",
+            "frontline"
+          ],
+          "sourceRef": "riktor-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Zap O' 9-Chains",
+          "category": "damage",
+          "description": "On Ability Cast, Riktor's next Basic Attack within 3s zaps 9 nearby Enemies, dealing 15 (+5 per Level)(+25% magical power)(+30% physical power) Damage.",
+          "tags": [
+            "ability-cast",
+            "empowered-basic",
+            "multi-target",
+            "damage"
+          ],
+          "sourceRef": "riktor-game-client-manual-entry-2026-08-16"
+        }
+      ],
       "threats": [
         "pick",
         "engage",
-        "frontline"
+        "frontline",
+        "hard-cc",
+        "silence",
+        "suppression",
+        "anti-shield",
+        "displacement"
       ],
       "answers": [
         "hard-cc",
         "pick",
-        "frontline"
+        "frontline",
+        "anti-caster",
+        "anti-shield",
+        "peel",
+        "engage",
+        "tank"
       ],
       "weaknesses": [
         "poke",
-        "missed-engage"
+        "missed-engage",
+        "low-mobility",
+        "range-disadvantage",
+        "tank-shred",
+        "cooldown-reliant"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "riktor-game-client-manual-entry-2026-08-16",
+        "roles": "riktor-game-client-manual-entry-2026-08-16",
+        "kit": "riktor-game-client-manual-entry-2026-08-16",
+        "augments": "riktor-game-client-manual-entry-2026-08-16"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-16. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
