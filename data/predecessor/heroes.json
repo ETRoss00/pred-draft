@@ -36,6 +36,10 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
     },
+    "kira-game-client-manual-entry-2026-08-16": {
+      "label": "Kira game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Kira roles, class, ratings, ability text, and augments."
     "khaimera-game-client-manual-entry-2026-08-16": {
       "label": "Khaimera game-client manual entry",
       "url": null,
@@ -5829,32 +5833,332 @@
       "roles": [
         "carry"
       ],
+      "classes": [
+        "carry"
+      ],
       "damage": "physical",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 8,
+        "abilityPower": 4,
+        "durability": 2,
+        "mobility": 5
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Wrath",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged basic attack dealing 54.0/56.5/59.0/61.7/64.6/67.6/70.7/73.9/77.3/80.8/84.4/88.2/92.1/96.1/100.2/104.5/109.0/113.5 (+80% physical power) physical damage.",
+          "scaling": {
+            "damage": [
+              54,
+              56.5,
+              59,
+              61.7,
+              64.6,
+              67.6,
+              70.7,
+              73.9,
+              77.3,
+              80.8,
+              84.4,
+              88.2,
+              92.1,
+              96.1,
+              100.2,
+              104.5,
+              109,
+              113.5
+            ],
+            "physicalPowerRatio": 0.8
+          },
+          "effects": [
+            "ranged-basic"
+          ],
+          "sourceRef": "kira-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "passive",
+          "name": "Nevermore",
+          "kind": "passive",
+          "damageType": "physical",
+          "description": "Nevermore activates every 15.0/14.5/14.0/13.5/13.0/12.5/12.0/11.5/11.0/10.5/10.0/9.5/9.0/8.5/8.0/7.5/7.0/6.5s (-0.5 per Level), empowering Kira. While empowered, Kira's next Basic Attack or Mercy blast fires a Raven at the target that explodes on impact, dealing (+7% of the Target's Current Health) physical damage to all targets in a small area.",
+          "scaling": {
+            "cooldown": [
+              15,
+              14.5,
+              14,
+              13.5,
+              13,
+              12.5,
+              12,
+              11.5,
+              11,
+              10.5,
+              10,
+              9.5,
+              9,
+              8.5,
+              8,
+              7.5,
+              7,
+              6.5
+            ],
+            "cooldownPerLevel": -0.5,
+            "currentHealthDamagePercent": 7
+          },
+          "effects": [
+            "empowered-basic",
+            "area-damage",
+            "current-health-damage",
+            "poke"
+          ],
+          "sourceRef": "kira-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "primary",
+          "name": "Dusk",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Passive: Apply Vengeance to enemies by dealing basic attack or ability damage, increasing damage you deal to them by 0.75% for 3.5s, stacking infinitely. Active: Purify all Enemy Units afflicted with Vengeance, dealing 45.0/65.0/85.0/105.0/125.0 physical damage, plus an additional 6.0/8.0/10.0/12.0/14.0 (+12% physical power) damage per stack, and Slowing them by 10.0/15.0/20.0/25.0/30.0% for 1s. The cooldown is reset if Dusk kills any target.",
+          "cooldown": [
+            13,
+            12,
+            11,
+            10,
+            9
+          ],
+          "scaling": {
+            "vengeanceDamageAmpPercentPerStack": 0.75,
+            "vengeanceDuration": 3.5,
+            "damage": [
+              45,
+              65,
+              85,
+              105,
+              125
+            ],
+            "damagePerStack": [
+              6,
+              8,
+              10,
+              12,
+              14
+            ],
+            "damagePerStackPhysicalPowerRatio": 0.12,
+            "slowPercent": [
+              10,
+              15,
+              20,
+              25,
+              30
+            ],
+            "slowDuration": 1,
+            "cooldownResetOnKill": true
+          },
+          "effects": [
+            "vengeance",
+            "stacking-debuff",
+            "burst",
+            "slow",
+            "cooldown-reset",
+            "execute-pressure"
+          ],
+          "sourceRef": "kira-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "secondary",
+          "name": "Shadow Glide",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Dash 475.0/525.0/575.0/625.0/675.0 units in your current movement direction, becoming briefly Unselectable and gaining an additional 5.0/10.0/15.0/20.0/25.0 Bonus Physical Power for 4s, stacking up to 5 times. Cooldown Resets on Takedown.",
+          "cooldown": [
+            22,
+            21,
+            20,
+            19,
+            18
+          ],
+          "cost": [
+            50
+          ],
+          "scaling": {
+            "dashDistance": [
+              475,
+              525,
+              575,
+              625,
+              675
+            ],
+            "bonusPhysicalPower": [
+              5,
+              10,
+              15,
+              20,
+              25
+            ],
+            "bonusPhysicalPowerDuration": 4,
+            "maxBonusPhysicalPowerStacks": 5
+          },
+          "effects": [
+            "dash",
+            "mobility",
+            "unselectable",
+            "bonus-physical-power",
+            "takedown-reset"
+          ],
+          "sourceRef": "kira-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "alternate",
+          "name": "Mercy",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Equip Mercy to fire a powerful shot dealing 20.0/25.0/30.0/35.0/40.0 (+74.0/78.0/82.0/86.0/90.0% physical power) physical damage and applying 3 stacks of Vengeance to the Target. Mercy benefits from Lifesteal, can Critically Strike, and applies on-hit effects.",
+          "cooldown": [
+            8.5,
+            7.5,
+            6.5,
+            5.5,
+            4.5
+          ],
+          "scaling": {
+            "damage": [
+              20,
+              25,
+              30,
+              35,
+              40
+            ],
+            "physicalPowerRatio": [
+              0.74,
+              0.78,
+              0.82,
+              0.86,
+              0.9
+            ],
+            "vengeanceStacksApplied": 3
+          },
+          "effects": [
+            "empowered-shot",
+            "vengeance",
+            "lifesteal",
+            "critical-strike",
+            "on-hit"
+          ],
+          "sourceRef": "kira-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Purge",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Unleash a torrent of arrows and bullets for 2.5s, dealing 225.0/330.0/435.0 (+460% physical power) physical damage to all nearby Enemies over the duration and reducing their healing by 45% for 2s. These attacks benefit from lifesteal and can critically strike. While Purge is active, Kira cannot attack or cast abilities, except Shadow Glide, and is Slowed by 30%.",
+          "cooldown": [
+            125,
+            115,
+            105
+          ],
+          "scaling": {
+            "duration": 2.5,
+            "damage": [
+              225,
+              330,
+              435
+            ],
+            "physicalPowerRatio": 4.6,
+            "healingReductionPercent": 45,
+            "healingReductionDuration": 2,
+            "selfSlowPercent": 30
+          },
+          "effects": [
+            "area-damage",
+            "anti-heal",
+            "lifesteal",
+            "critical-strike",
+            "channeled-damage",
+            "shadow-glide-allowed"
+          ],
+          "sourceRef": "kira-game-client-manual-entry-2026-08-16"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Bringer Of Mercy",
+          "category": "cooldown",
+          "description": "Mercy costs 10 less Mana and reduces Kira's Current Ability Cooldowns by 0.75s upon dealing damage.",
+          "tags": [
+            "mercy",
+            "mana-cost-reduction",
+            "cooldown-reduction",
+            "ability-uptime"
+          ],
+          "sourceRef": "kira-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Lenore",
+          "category": "damage",
+          "description": "Shadow Glide refreshes the cooldown of Nevermore and it deals (+30% physical power) bonus Damage.",
+          "tags": [
+            "shadow-glide",
+            "nevermore",
+            "cooldown-refresh",
+            "bonus-damage"
+          ],
+          "sourceRef": "kira-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Siphoning Purge",
+          "category": "healing",
+          "description": "Purge Heals for 25% of its damage dealt to Heroes.",
+          "tags": [
+            "purge",
+            "healing",
+            "hero-damage",
+            "sustain"
+          ],
+          "sourceRef": "kira-game-client-manual-entry-2026-08-16"
+        }
+      ],
       "threats": [
         "sustained-dps",
         "burst",
-        "mobility"
+        "mobility",
+        "anti-heal",
+        "current-health-damage",
+        "vengeance-stacking",
+        "reset-pressure"
       ],
       "answers": [
         "tank-shred",
         "mobility",
-        "anti-frontline"
+        "anti-frontline",
+        "anti-heal",
+        "sustained-dps",
+        "burst",
+        "cleanup",
+        "self-peel"
       ],
       "weaknesses": [
         "hard-cc",
-        "burst-vulnerable"
+        "burst-vulnerable",
+        "dive",
+        "low-durability",
+        "range-pressure"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "kira-game-client-manual-entry-2026-08-16",
+        "roles": "kira-game-client-manual-entry-2026-08-16",
+        "kit": "kira-game-client-manual-entry-2026-08-16",
+        "augments": "kira-game-client-manual-entry-2026-08-16"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-16. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
