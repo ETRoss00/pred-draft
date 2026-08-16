@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "lt-belica-game-client-manual-entry-2026-08-16": {
+      "label": "Lt. Belica game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Lt. Belica roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -1124,32 +1129,306 @@
         "midlane",
         "support"
       ],
+      "classes": [
+        "mage"
+      ],
       "damage": "magical",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 1,
+        "abilityPower": 10,
+        "durability": 1,
+        "mobility": 1
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "OA-S3000 SMG",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged basic attack that fires 3 rounds, each dealing 21.0/22.2/23.4/24.6/26.0/27.4/28.9/30.4/32.0/33.6/35.3/37.1/38.9/40.8/42.8/44.8/46.9/49.0 (+25% physical power) physical damage.",
+          "scaling": {
+            "rounds": 3,
+            "damagePerRound": [
+              21,
+              22.2,
+              23.4,
+              24.6,
+              26,
+              27.4,
+              28.9,
+              30.4,
+              32,
+              33.6,
+              35.3,
+              37.1,
+              38.9,
+              40.8,
+              42.8,
+              44.8,
+              46.9,
+              49
+            ],
+            "physicalPowerRatio": 0.25
+          },
+          "effects": [
+            "ranged-basic",
+            "multi-hit"
+          ],
+          "sourceRef": "lt-belica-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "passive",
+          "name": "Innovation",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "Lt. Belica's abilities gain additional strength at maximum rank. Additionally, she gains 10 Ability Haste each time she maxes out an ability.",
+          "scaling": {
+            "abilityHastePerMaxedAbility": 10
+          },
+          "effects": [
+            "max-rank-upgrade",
+            "ability-haste",
+            "scaling"
+          ],
+          "sourceRef": "lt-belica-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "primary",
+          "name": "Seismic Assault",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Slam the ground, sending forth a seismic wave that erupts after 0.5s, dealing 100.0/145.0/190.0/235.0/280.0 (+60% magical power) magical damage to all Enemies in its path, Knocking Up and Stunning them for 1s. Innovation: Stun duration increases to 1.4s.",
+          "cooldown": [
+            18,
+            16.5,
+            15,
+            13.5,
+            12
+          ],
+          "scaling": {
+            "eruptionDelay": 0.5,
+            "damage": [
+              100,
+              145,
+              190,
+              235,
+              280
+            ],
+            "magicalPowerRatio": 0.6,
+            "stunDuration": 1,
+            "innovationStunDuration": 1.4
+          },
+          "effects": [
+            "knockup",
+            "stun",
+            "wave",
+            "hard-cc",
+            "innovation-upgrade"
+          ],
+          "sourceRef": "lt-belica-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "secondary",
+          "name": "Void Drone",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Deploy a drone for 12s that grants vision in the area and drains 2.0/2.8/3.5/4.3/5.0% of nearby Enemy Heroes' Current Mana each second. The drone zaps nearby Heroes if they cast an ability, or if Lt. Belica damages them with an ability, dealing 60.0/70.0/80.0/90.0/100.0 (+20% magical power) magical damage and draining 2.5% of the Target's Maximum Mana. Innovation: Zap Max Mana drain increases to 6%.",
+          "cooldown": [
+            34,
+            31,
+            28,
+            25,
+            22
+          ],
+          "scaling": {
+            "duration": 12,
+            "currentManaDrainPerSecondPercent": [
+              2,
+              2.8,
+              3.5,
+              4.3,
+              5
+            ],
+            "zapDamage": [
+              60,
+              70,
+              80,
+              90,
+              100
+            ],
+            "zapMagicalPowerRatio": 0.2,
+            "zapMaxManaDrainPercent": 2.5,
+            "innovationZapMaxManaDrainPercent": 6
+          },
+          "effects": [
+            "drone",
+            "vision",
+            "mana-drain",
+            "anti-caster",
+            "triggered-damage",
+            "innovation-upgrade"
+          ],
+          "sourceRef": "lt-belica-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "alternate",
+          "name": "Void Bomb",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Place a bomb that detonates after a short delay, dealing 100.0/140.0/180.0/220.0/260.0 (+70% magical power) magical damage. Restores 6.0/7.0/8.0/9.0/10.0 Mana for each Enemy hit. Innovation: Detonate a second time after a short delay, dealing 80 (+30% magical power) magical damage.",
+          "cooldown": [
+            10,
+            9.25,
+            8.5,
+            7.75,
+            7
+          ],
+          "scaling": {
+            "damage": [
+              100,
+              140,
+              180,
+              220,
+              260
+            ],
+            "magicalPowerRatio": 0.7,
+            "manaRestorePerEnemyHit": [
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "innovationSecondDetonationDamage": 80,
+            "innovationSecondDetonationMagicalPowerRatio": 0.3
+          },
+          "effects": [
+            "bomb",
+            "area-damage",
+            "mana-restore",
+            "burst",
+            "innovation-upgrade"
+          ],
+          "sourceRef": "lt-belica-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Neural Disruptor",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "Unleash a heavy blast from Lt. Belica's sidearm, dealing 200.0/325.0/450.0 (+65% magical power) magical damage and silencing them for 0.5s. Damage increases by 25.0/30.0/35.0% of the Target's Missing Mana. For Manaless Heroes, the damage increases by 20.0/25.0/30.0% of the Target's Missing Health. Innovation: Resets Cooldown upon killing an Enemy Hero with the blast.",
+          "cooldown": [
+            125,
+            105,
+            85
+          ],
+          "scaling": {
+            "damage": [
+              200,
+              325,
+              450
+            ],
+            "magicalPowerRatio": 0.65,
+            "silenceDuration": 0.5,
+            "missingManaDamagePercent": [
+              25,
+              30,
+              35
+            ],
+            "manalessMissingHealthDamagePercent": [
+              20,
+              25,
+              30
+            ],
+            "innovationCooldownResetOnHeroKill": true
+          },
+          "effects": [
+            "single-target-burst",
+            "silence",
+            "missing-mana-damage",
+            "missing-health-damage",
+            "execute-pressure",
+            "cooldown-reset",
+            "innovation-upgrade"
+          ],
+          "sourceRef": "lt-belica-game-client-manual-entry-2026-08-16"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Devastating Bombs",
+          "category": "damage",
+          "description": "Void Bomb deals 15% more damage to Isolated Targets.",
+          "tags": [
+            "void-bomb",
+            "isolated-target",
+            "bonus-damage",
+            "burst"
+          ],
+          "sourceRef": "lt-belica-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Combat Veteran",
+          "category": "scaling",
+          "description": "Passively gain +0.1-3 Experience each second. Increases with Hero Level.",
+          "tags": [
+            "experience",
+            "scaling",
+            "passive-income"
+          ],
+          "sourceRef": "lt-belica-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Pulsefire Rounds",
+          "category": "damage",
+          "description": "Lt. Belica's Basic Attacks also deal (+10% magical power)(+12% physical power) Damage On-Hit.",
+          "tags": [
+            "basic-attack",
+            "on-hit",
+            "magical-power-scaling",
+            "physical-power-scaling"
+          ],
+          "sourceRef": "lt-belica-game-client-manual-entry-2026-08-16"
+        }
+      ],
       "threats": [
         "pick",
         "burst",
-        "poke"
+        "poke",
+        "hard-cc",
+        "anti-caster",
+        "mana-drain",
+        "zone-control",
+        "scaling"
       ],
       "answers": [
         "hard-cc",
         "burst",
-        "anti-caster"
+        "anti-caster",
+        "vision",
+        "mana-pressure",
+        "zone-control",
+        "interrupt"
       ],
       "weaknesses": [
         "dive",
-        "burst-vulnerable"
+        "burst-vulnerable",
+        "low-mobility",
+        "low-durability",
+        "long-cooldowns"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "lt-belica-game-client-manual-entry-2026-08-16",
+        "roles": "lt-belica-game-client-manual-entry-2026-08-16",
+        "kit": "lt-belica-game-client-manual-entry-2026-08-16",
+        "augments": "lt-belica-game-client-manual-entry-2026-08-16"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-16. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
