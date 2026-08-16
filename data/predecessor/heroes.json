@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "scarlett-game-client-manual-entry-2026-08-16": {
+      "label": "Scarlett game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Scarlett roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -1562,6 +1567,432 @@
         "roleStatus": "needs-review",
         "kitStatus": "prototype",
         "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "scarlett",
+      "name": "Scarlett",
+      "roles": [
+        "offlane",
+        "jungle"
+      ],
+      "classes": [
+        "fighter"
+      ],
+      "damage": "physical",
+      "range": "melee",
+      "ratings": {
+        "basicAttack": 4,
+        "abilityPower": 7,
+        "durability": 4,
+        "mobility": 7
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Cindara",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack chain dealing 61.0/63.2/65.6/68.1/70.7/73.4/76.2/79.2/82.3/85.5/88.8/92.2/95.8/99.5/103.3/107.2/111.2/115.4 (+80% physical power) physical damage. Chain Attack Rate: 2x/2x/1.05x. Chain Damage: 0.5x/0.5x/1.1x. Third Strike: Restores 5 Energy On-Hit. Increased to 10 against Heroes. Empowered: Equip your Lantern for 1 attack, slamming it forward in a line.",
+          "scaling": {
+            "damage": [
+              61,
+              63.2,
+              65.6,
+              68.1,
+              70.7,
+              73.4,
+              76.2,
+              79.2,
+              82.3,
+              85.5,
+              88.8,
+              92.2,
+              95.8,
+              99.5,
+              103.3,
+              107.2,
+              111.2,
+              115.4
+            ],
+            "physicalPowerRatio": 0.8,
+            "chainAttackRate": [
+              2,
+              2,
+              1.05
+            ],
+            "chainDamageMultiplier": [
+              0.5,
+              0.5,
+              1.1
+            ],
+            "thirdStrikeEnergyRestore": 5,
+            "thirdStrikeHeroEnergyRestore": 10
+          },
+          "effects": [
+            "melee-basic",
+            "attack-chain",
+            "energy-restore",
+            "empowered-basic",
+            "line-attack"
+          ],
+          "sourceRef": "scarlett-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "passive",
+          "name": "Last Light",
+          "kind": "passive",
+          "damageType": "physical",
+          "description": "Scarlett uses Energy instead of Mana: Max Energy: 200.0/400.0/600.0/800.0/1000.0/1200.0/1400.0/1600.0/1800.0/2000.0/2200.0/2400.0/2600.0/2800.0/3000.0/3200.0/3400.0/3600.0. Energy Regen: 10.0/20.0/30.0/40.0/50.0/60.0/70.0/80.0/90.0/100.0/110.0/120.0/130.0/140.0/150.0/160.0/170.0/180.0 per second. On Takedown: Scarlett restores 100 Energy immediately. Scarlett also converts every 35 Bonus Mana she acquires into 1 Physical Power.",
+          "scaling": {
+            "maxEnergy": [
+              200,
+              400,
+              600,
+              800,
+              1000,
+              1200,
+              1400,
+              1600,
+              1800,
+              2000,
+              2200,
+              2400,
+              2600,
+              2800,
+              3000,
+              3200,
+              3400,
+              3600
+            ],
+            "energyRegenPerSecond": [
+              10,
+              20,
+              30,
+              40,
+              50,
+              60,
+              70,
+              80,
+              90,
+              100,
+              110,
+              120,
+              130,
+              140,
+              150,
+              160,
+              170,
+              180
+            ],
+            "takedownEnergyRestore": 100,
+            "bonusManaPerPhysicalPower": 35
+          },
+          "effects": [
+            "energy-resource",
+            "takedown-reset",
+            "physical-power-conversion",
+            "scaling"
+          ],
+          "sourceRef": "scarlett-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "primary",
+          "name": "Ashen Vow",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Scarlett channels for a short duration, before swinging her Lantern around her, dealing 50.0/75.0/100.0/125.0/150.0 (+60% physical power) physical damage to all Enemies in the area. Outer Edge hits deal 25.0/50.0/75.0/100.0/125.0 (+100% physical power) additional damage and Slow targets hit by 35.0/37.5/40.0/42.5/45.0% for 1.25s. Outer Edge hits on Enemy Heroes or Camp Leaders Empower Scarlett's next Cindara attack for 4s, causing it to now damage all Enemies in a line in front of her, dealing 15 (+12% physical power) (+2.0/2.5/3.0/3.5/4.0% Target's Max Health) bonus damage, and restoring 35.0/45.0/55.0 Energy upon hitting an Enemy Hero or Camp Leader. Empowered Cindara damage is reduced by 50% against Minions and is capped against Monsters. Ablaze: Empowered Cindara's bonus damage is increased by 1.5x.",
+          "cooldown": [
+            9,
+            8.25,
+            7.5,
+            6.75,
+            6
+          ],
+          "cost": [
+            50
+          ],
+          "scaling": {
+            "damage": [
+              50,
+              75,
+              100,
+              125,
+              150
+            ],
+            "physicalPowerRatio": 0.6,
+            "outerEdgeAdditionalDamage": [
+              25,
+              50,
+              75,
+              100,
+              125
+            ],
+            "outerEdgePhysicalPowerRatio": 1,
+            "outerEdgeSlowPercent": [
+              35,
+              37.5,
+              40,
+              42.5,
+              45
+            ],
+            "slowDuration": 1.25,
+            "empoweredCindaraDuration": 4,
+            "empoweredCindaraBaseDamage": 15,
+            "empoweredCindaraPhysicalPowerRatio": 0.12,
+            "empoweredCindaraTargetMaxHealthPercent": [
+              2,
+              2.5,
+              3,
+              3.5,
+              4
+            ],
+            "empoweredCindaraEnergyRestore": [
+              35,
+              45,
+              55
+            ],
+            "minionDamageReductionPercent": 50,
+            "ablazeBonusDamageMultiplier": 1.5
+          },
+          "effects": [
+            "channel",
+            "area-damage",
+            "outer-edge",
+            "slow",
+            "empowered-basic",
+            "max-health-damage",
+            "energy-restore",
+            "ablaze-enhanced"
+          ],
+          "sourceRef": "scarlett-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "secondary",
+          "name": "First Intent",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Scarlett dashes forward with a decisive, fiery strike that deals 65.0/85.0/105.0/125.0/145.0 (+80% physical power) physical damage to all Enemies in her path and receives a 20.0/70.0/120.0/170.0/220.0 (+40.0/45.0/50.0/55.0/60.0% physical power) Shield for 3s. Each time Scarlett hits an Enemy Hero or Camp Leader with First Intent she refreshes her Shield's duration and increases its size by 60%, and restores 50 Energy.",
+          "cooldown": [
+            16,
+            15,
+            14,
+            13,
+            12
+          ],
+          "scaling": {
+            "damage": [
+              65,
+              85,
+              105,
+              125,
+              145
+            ],
+            "physicalPowerRatio": 0.8,
+            "shield": [
+              20,
+              70,
+              120,
+              170,
+              220
+            ],
+            "shieldPhysicalPowerRatio": [
+              0.4,
+              0.45,
+              0.5,
+              0.55,
+              0.6
+            ],
+            "shieldDuration": 3,
+            "shieldIncreaseOnHeroCampLeaderHitPercent": 60,
+            "energyRestoreOnHeroCampLeaderHit": 50
+          },
+          "effects": [
+            "dash",
+            "mobility",
+            "path-damage",
+            "shield",
+            "shield-refresh",
+            "energy-restore",
+            "engage"
+          ],
+          "sourceRef": "scarlett-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "alternate",
+          "name": "Minueta",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Scarlett twirls in her current movement direction, with its speed increasing based on current momentum. Scarlett then stabs forward 3 times, with each dealing 21.0/31.0/41.0/51.0/61.0 (+24.0/28.5/33.0/37.5/42.0% physical power) physical damage. The final stab deals up to 100% bonus damage based on the Target's Missing Health. Stabs benefit from Lifesteal and can Critically Strike at 60% effectiveness. Ablaze: Number of Stabs is increased to 4, dealing 15% more damage overall.",
+          "cooldown": [
+            7,
+            6.25,
+            5.5,
+            4.75,
+            4
+          ],
+          "scaling": {
+            "stabs": 3,
+            "damagePerStab": [
+              21,
+              31,
+              41,
+              51,
+              61
+            ],
+            "physicalPowerRatio": [
+              0.24,
+              0.285,
+              0.33,
+              0.375,
+              0.42
+            ],
+            "finalStabMissingHealthBonusDamagePercent": 100,
+            "criticalStrikeEffectivenessPercent": 60,
+            "ablazeStabs": 4,
+            "ablazeOverallDamageIncreasePercent": 15
+          },
+          "effects": [
+            "mobility",
+            "momentum-scaling",
+            "multi-hit",
+            "missing-health-damage",
+            "lifesteal",
+            "critical-strike",
+            "ablaze-enhanced"
+          ],
+          "sourceRef": "scarlett-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Swan Song",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Scarlett strikes forward with her lantern, with its chain Restraining the first Enemy Hero hit for 1.4s, and Slowing nearby Enemies by 65% for 1s. Scarlett then backflips into the air, becoming Unstoppable for the duration of the Restrain, and ignites her Blade before striking down at her target, dealing 180.0/280.0/350.0 (+100% physical power) physical damage. Enemies near the Restrained Hero also receive 100% of the strike's damage. After striking, Scarlett's Blade remains Ablaze for 8.0/10.0/12.0s, granting her +150 Basic Attack Range, 5 Energy Regen, 20.0/32.0/44.0 (+12% physical power) Physical Power, and enhancing certain abilities for the duration.",
+          "cooldown": [
+            125,
+            105,
+            85
+          ],
+          "scaling": {
+            "restrainDuration": 1.4,
+            "nearbySlowPercent": 65,
+            "nearbySlowDuration": 1,
+            "damage": [
+              180,
+              280,
+              350
+            ],
+            "physicalPowerRatio": 1,
+            "nearbyDamagePercent": 100,
+            "ablazeDuration": [
+              8,
+              10,
+              12
+            ],
+            "ablazeBasicAttackRange": 150,
+            "ablazeEnergyRegen": 5,
+            "ablazePhysicalPower": [
+              20,
+              32,
+              44
+            ],
+            "ablazePhysicalPowerRatio": 0.12
+          },
+          "effects": [
+            "restrain",
+            "hard-cc",
+            "slow",
+            "unstoppable",
+            "area-damage",
+            "ablaze",
+            "range-increase",
+            "physical-power-buff",
+            "teamfight"
+          ],
+          "sourceRef": "scarlett-game-client-manual-entry-2026-08-16"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Scarlet Dawn",
+          "category": "cooldown",
+          "description": "Ability, Empowered Cindara, and Third Strike hits on Heroes/Camp Leaders reduce First Intent's Cooldown by 8%, reduced to 5% for Minueta hits.",
+          "tags": [
+            "first-intent",
+            "cooldown-reduction",
+            "hero-hit",
+            "camp-leader-hit",
+            "tempo"
+          ],
+          "sourceRef": "scarlett-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Coup De Grace",
+          "category": "healing",
+          "description": "Swan Song marks the Restrained target. If they die within 8.0/10.0/12.0s, Ablaze extends by 5s, and a fiery zone appears beneath them for 5s that heals Yourself and Allies by 100.0/150.0/200.0 (+65% physical power) each second.",
+          "tags": [
+            "swan-song",
+            "marked-target",
+            "ablaze-extension",
+            "healing-zone",
+            "team-sustain"
+          ],
+          "sourceRef": "scarlett-game-client-manual-entry-2026-08-16"
+        },
+        {
+          "name": "Volcaic Slam",
+          "category": "damage",
+          "description": "Empowered Cindara leaves behind a rupture that erupts after 0.5s. The eruption deals 20 (+4 per Level) (+25% physical power) Damage to Enemies and Slows by 40% for 1.25s.",
+          "tags": [
+            "empowered-cindara",
+            "rupture",
+            "delayed-damage",
+            "slow",
+            "zone-control"
+          ],
+          "sourceRef": "scarlett-game-client-manual-entry-2026-08-16"
+        }
+      ],
+      "threats": [
+        "dive",
+        "mobility",
+        "sustained-dps",
+        "burst",
+        "duelist",
+        "max-health-damage",
+        "execute-pressure",
+        "teamfight"
+      ],
+      "answers": [
+        "backline-access",
+        "mobility",
+        "duelist",
+        "anti-frontline",
+        "shielding",
+        "hard-cc",
+        "sustain",
+        "objective-control"
+      ],
+      "weaknesses": [
+        "hard-cc",
+        "anti-shield",
+        "anti-heal",
+        "poke",
+        "range-disadvantage",
+        "energy-management"
+      ],
+      "sourceRefs": {
+        "roster": "scarlett-game-client-manual-entry-2026-08-16",
+        "roles": "scarlett-game-client-manual-entry-2026-08-16",
+        "kit": "scarlett-game-client-manual-entry-2026-08-16",
+        "augments": "scarlett-game-client-manual-entry-2026-08-16"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-16. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
