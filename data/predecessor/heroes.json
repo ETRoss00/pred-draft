@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "skylar-game-client-manual-entry-2026-08-17": {
+      "label": "Skylar game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Skylar roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -1673,35 +1678,332 @@
       "id": "skylar",
       "name": "Skylar",
       "roles": [
-        "carry",
-        "midlane"
+        "carry"
+      ],
+      "classes": [
+        "carry"
       ],
       "damage": "physical",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 8,
+        "abilityPower": 6,
+        "durability": 1,
+        "mobility": 6
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Starfire",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged basic attack dealing 54.0/55.8/57.7/59.6/61.7/63.9/66.1/68.5/71.0/73.5/76.2/78.9/81.7/84.7/87.7/90.8/94.0/97.3 (+70% physical power) physical damage.",
+          "scaling": {
+            "damage": [
+              54,
+              55.8,
+              57.7,
+              59.6,
+              61.7,
+              63.9,
+              66.1,
+              68.5,
+              71,
+              73.5,
+              76.2,
+              78.9,
+              81.7,
+              84.7,
+              87.7,
+              90.8,
+              94,
+              97.3
+            ],
+            "physicalPowerRatio": 0.7
+          },
+          "effects": [
+            "ranged-basic"
+          ],
+          "sourceRef": "skylar-game-client-manual-entry-2026-08-17"
+        },
+        {
+          "slot": "passive",
+          "name": "Dissonance",
+          "kind": "passive",
+          "damageType": "physical",
+          "description": "Skylar gains additional Jump Height. Killing an Enemy Unit makes it explode after 0.75s, dealing 30 (+5 per level) physical damage to nearby targets. Explosions from Enemy Heroes are 3x larger and deal 3x more damage.",
+          "scaling": {
+            "explosionDelay": 0.75,
+            "explosionDamage": 30,
+            "explosionDamagePerLevel": 5,
+            "heroExplosionSizeMultiplier": 3,
+            "heroExplosionDamageMultiplier": 3
+          },
+          "effects": [
+            "jump-height",
+            "death-explosion",
+            "area-damage",
+            "waveclear",
+            "teamfight"
+          ],
+          "sourceRef": "skylar-game-client-manual-entry-2026-08-17"
+        },
+        {
+          "slot": "primary",
+          "name": "Plasma Grenade",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Launch a bouncing nano bubble that attaches to the first target hit for 0.75s and deals 20.0/30.0/40.0/50.0/60.0 (+20% physical power) physical damage. After the duration, the target and nearby enemies take 70.0/100.0/130.0/160.0/190.0 (+145% physical power)(+80% magical power) physical damage and are Slowed by 40.0/45.0/50.0/55.0/60.0% for 1s.",
+          "cooldown": [
+            14,
+            12.75,
+            11.5,
+            10.25,
+            9
+          ],
+          "scaling": {
+            "attachDuration": 0.75,
+            "attachDamage": [
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "attachPhysicalPowerRatio": 0.2,
+            "explosionDamage": [
+              70,
+              100,
+              130,
+              160,
+              190
+            ],
+            "explosionPhysicalPowerRatio": 1.45,
+            "explosionMagicalPowerRatio": 0.8,
+            "slowPercent": [
+              40,
+              45,
+              50,
+              55,
+              60
+            ],
+            "slowDuration": 1
+          },
+          "effects": [
+            "bouncing-projectile",
+            "attach",
+            "delayed-explosion",
+            "area-damage",
+            "slow",
+            "poke",
+            "pick"
+          ],
+          "sourceRef": "skylar-game-client-manual-entry-2026-08-17"
+        },
+        {
+          "slot": "secondary",
+          "name": "Air Assault",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Skylar thrusts upwards in her current movement direction, gaining the ability to hover for 3.75s. During this time, Skylar's basic attack range is increased by +100. Dealing damage while hovering also fires a missile that deals 15.0/20.0/25.0/30.0/35.0 (+25% physical power)(+15% magical power) physical damage to the same target. This can only occur intermittently with Hypercharge but the time decreases with bonus attack speed.",
+          "cooldown": [
+            24,
+            22,
+            20,
+            18,
+            16
+          ],
+          "scaling": {
+            "hoverDuration": 3.75,
+            "basicAttackRangeIncrease": 100,
+            "missileDamage": [
+              15,
+              20,
+              25,
+              30,
+              35
+            ],
+            "missilePhysicalPowerRatio": 0.25,
+            "missileMagicalPowerRatio": 0.15
+          },
+          "effects": [
+            "thrust",
+            "hover",
+            "mobility",
+            "range-increase",
+            "missile",
+            "bonus-attack-speed-scaling",
+            "airborne-pressure"
+          ],
+          "sourceRef": "skylar-game-client-manual-entry-2026-08-17"
+        },
+        {
+          "slot": "alternate",
+          "name": "Hypercharge",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Skylar hypercharges Starfire for 5s (refreshes on Hero Takedown): Convert bonus attack speed into on-hit physical damage and attack at a fixed rate of 10 attacks per second while also ignoring 20% of your Target's Bonus Physical Armor. Starfire's damage is modified to 1.0/2.5/4.0/5.5/7.0 (+10% physical power)(+4% magical power)(+11% attack speed) per instance and it applies on-hit effects at 10% effectiveness. Damaging Enemy Units with Hypercharge increases its damage by 1% for 1s, stacking up to 25 times. Passive: Basic Attacks deal 4.0/8.0/12.0/16.0/20.0 (+10% physical power) bonus physical damage on-hit.",
+          "cooldown": [
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "scaling": {
+            "duration": 5,
+            "fixedAttacksPerSecond": 10,
+            "bonusPhysicalArmorIgnorePercent": 20,
+            "modifiedDamage": [
+              1,
+              2.5,
+              4,
+              5.5,
+              7
+            ],
+            "modifiedDamagePhysicalPowerRatio": 0.1,
+            "modifiedDamageMagicalPowerRatio": 0.04,
+            "modifiedDamageAttackSpeedRatio": 0.11,
+            "onHitEffectivenessPercent": 10,
+            "damageIncreasePerStackPercent": 1,
+            "damageIncreaseDuration": 1,
+            "maxDamageStacks": 25,
+            "passiveBonusOnHitDamage": [
+              4,
+              8,
+              12,
+              16,
+              20
+            ],
+            "passiveBonusOnHitPhysicalPowerRatio": 0.1
+          },
+          "effects": [
+            "attack-speed-conversion",
+            "fixed-attack-rate",
+            "bonus-armor-ignore",
+            "on-hit",
+            "stacking-damage",
+            "takedown-refresh",
+            "sustained-dps",
+            "tank-shred"
+          ],
+          "sourceRef": "skylar-game-client-manual-entry-2026-08-17"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Atomiser",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Channel for a short period of time before firing a large orb of unstable energy. The orb stops on the first hero hit, exploding, dealing 200.0/330.0/460.0 (+150% physical power)(+90% magical power)(+20.0/25.0/30.0% of target's missing health) physical damage.",
+          "cooldown": [
+            125,
+            105,
+            85
+          ],
+          "scaling": {
+            "damage": [
+              200,
+              330,
+              460
+            ],
+            "physicalPowerRatio": 1.5,
+            "magicalPowerRatio": 0.9,
+            "targetMissingHealthPercent": [
+              20,
+              25,
+              30
+            ]
+          },
+          "effects": [
+            "channel",
+            "large-projectile",
+            "hero-collision",
+            "area-damage",
+            "missing-health-damage",
+            "burst",
+            "execute-pressure"
+          ],
+          "sourceRef": "skylar-game-client-manual-entry-2026-08-17"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Assault MK-II",
+          "category": "mobility",
+          "description": "Air Assault hovers for 0.5s longer and fires an additional missile with each attack.",
+          "tags": [
+            "air-assault",
+            "hover",
+            "additional-missile",
+            "airborne-pressure"
+          ],
+          "sourceRef": "skylar-game-client-manual-entry-2026-08-17"
+        },
+        {
+          "name": "Plasma Barrage",
+          "category": "damage",
+          "description": "Plasma Grenade reduces its own Cooldown by 3.5s when attaching to an Enemy Hero. On explosion, it also deals (+6% Target's Missing Health) Damage.",
+          "tags": [
+            "plasma-grenade",
+            "cooldown-reduction",
+            "hero-hit",
+            "missing-health-damage",
+            "burst"
+          ],
+          "sourceRef": "skylar-game-client-manual-entry-2026-08-17"
+        },
+        {
+          "name": "Atomised Artillery",
+          "category": "damage",
+          "description": "Atomiser fires 3 blasts in succession, each dealing 60% of the original damage.",
+          "tags": [
+            "atomiser",
+            "multi-shot",
+            "burst",
+            "damage-split"
+          ],
+          "sourceRef": "skylar-game-client-manual-entry-2026-08-17"
+        }
+      ],
       "threats": [
         "poke",
         "mobility",
-        "sustained-dps"
+        "sustained-dps",
+        "tank-shred",
+        "burst",
+        "execute-pressure",
+        "airborne-pressure",
+        "on-hit"
       ],
       "answers": [
         "poke",
         "tank-shred",
-        "mobility"
+        "mobility",
+        "sustained-dps",
+        "anti-frontline",
+        "burst",
+        "objective-control",
+        "backline-damage"
       ],
       "weaknesses": [
         "hard-cc",
-        "burst-vulnerable"
+        "burst-vulnerable",
+        "dive",
+        "anti-basic-attack",
+        "low-durability",
+        "silence"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "skylar-game-client-manual-entry-2026-08-17",
+        "roles": "skylar-game-client-manual-entry-2026-08-17",
+        "kit": "skylar-game-client-manual-entry-2026-08-17",
+        "augments": "skylar-game-client-manual-entry-2026-08-17"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-17. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
