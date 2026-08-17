@@ -36,6 +36,10 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
     },
+    "shinbi-game-client-manual-entry-2026-08-17": {
+      "label": "Shinbi game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Shinbi roles, class, ratings, ability text, and augments."
     "sevarog-game-client-manual-entry-2026-08-16": {
       "label": "Sevarog game-client manual entry",
       "url": null,
@@ -12194,32 +12198,319 @@
         "offlane",
         "jungle"
       ],
-      "damage": "magical",
+      "classes": [
+        "assassin"
+      ],
+      "damage": "mixed",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 3,
+        "abilityPower": 8,
+        "durability": 2,
+        "mobility": 6
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Kiba",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 47.0/49.5/52.2/55.0/57.9/61.0/64.2/67.5/70.9/74.5/78.3/82.2/86.2/90.3/94.6/99.0/103.5/108.2 (+80% physical power) physical damage.",
+          "scaling": {
+            "damage": [
+              47,
+              49.5,
+              52.2,
+              55,
+              57.9,
+              61,
+              64.2,
+              67.5,
+              70.9,
+              74.5,
+              78.3,
+              82.2,
+              86.2,
+              90.3,
+              94.6,
+              99,
+              103.5,
+              108.2
+            ],
+            "physicalPowerRatio": 0.8
+          },
+          "effects": [
+            "melee-basic"
+          ],
+          "sourceRef": "shinbi-game-client-manual-entry-2026-08-17"
+        },
+        {
+          "slot": "passive",
+          "name": "Biting Melody",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "Shinbi's Basic Attacks deal an additional 12 (+10% physical power)(+10% magical power) magical damage on-hit. Every 10s (-0.4s per Level), Shinbi's next Basic Attack applies Biting Melody for 2.5x damage, applying Track to the target, and restoring 20.0/26.0/32.0/38.0/44.0/50.0/56.0/62.0/68.0/74.0/80.0/86.0/92.0/98.0/104.0/110.0/116.0/122.0 (+6 per Level) Mana.",
+          "scaling": {
+            "onHitDamage": 12,
+            "physicalPowerRatio": 0.1,
+            "magicalPowerRatio": 0.1,
+            "empoweredCooldown": 10,
+            "empoweredCooldownReductionPerLevel": 0.4,
+            "empoweredDamageMultiplier": 2.5,
+            "manaRestore": [
+              20,
+              26,
+              32,
+              38,
+              44,
+              50,
+              56,
+              62,
+              68,
+              74,
+              80,
+              86,
+              92,
+              98,
+              104,
+              110,
+              116,
+              122
+            ],
+            "manaRestorePerLevel": 6
+          },
+          "effects": [
+            "magical-on-hit",
+            "empowered-basic",
+            "track",
+            "mana-restore",
+            "duelist"
+          ],
+          "sourceRef": "shinbi-game-client-manual-entry-2026-08-17"
+        },
+        {
+          "slot": "primary",
+          "name": "Line Tempo",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Summon a Spirit Wolf that runs in a straight line towards your reticule and passes through all Enemy Targets dealing 80.0/120.0/160.0/200.0/240.0 (+55% magical power) magical damage. After hitting a target, deals 60% damage to subsequent Minions.",
+          "cooldown": [
+            7,
+            6,
+            5,
+            4,
+            3
+          ],
+          "scaling": {
+            "damage": [
+              80,
+              120,
+              160,
+              200,
+              240
+            ],
+            "magicalPowerRatio": 0.55,
+            "subsequentMinionDamagePercent": 60
+          },
+          "effects": [
+            "spirit-wolf",
+            "line-projectile",
+            "piercing-projectile",
+            "poke",
+            "waveclear"
+          ],
+          "sourceRef": "shinbi-game-client-manual-entry-2026-08-17"
+        },
+        {
+          "slot": "secondary",
+          "name": "Circle Rhythm",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "After a short delay, summon 4 Spirit Wolves that circle Shinbi for 2.4s, granting 20% decaying movement speed and a 45.0/65.0/85.0/105.0/125.0 (+35% magical power) shield for the same duration and after the wolves expire. The wolves deal 30.0/42.0/54.0/66.0/78.0 (+22% magical power) magical damage per hit, up to 3 times.",
+          "cooldown": [
+            16,
+            14.5,
+            13,
+            11.5,
+            10
+          ],
+          "scaling": {
+            "wolves": 4,
+            "duration": 2.4,
+            "movementSpeedPercent": 20,
+            "shield": [
+              45,
+              65,
+              85,
+              105,
+              125
+            ],
+            "shieldMagicalPowerRatio": 0.35,
+            "damagePerHit": [
+              30,
+              42,
+              54,
+              66,
+              78
+            ],
+            "damageMagicalPowerRatio": 0.22,
+            "maxHits": 3
+          },
+          "effects": [
+            "spirit-wolves",
+            "area-damage",
+            "shield",
+            "movement-speed",
+            "self-defense",
+            "multi-hit"
+          ],
+          "sourceRef": "shinbi-game-client-manual-entry-2026-08-17"
+        },
+        {
+          "slot": "alternate",
+          "name": "Rushing Beat",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Shinbi dashes forward through the air, dealing 50.0/85.0/120.0/155.0/190.0 (+55% magical power) magical damage to all Enemies she passes through. Max Charges: 2",
+          "cooldown": [
+            14,
+            12.5,
+            11,
+            9.5,
+            8
+          ],
+          "scaling": {
+            "damage": [
+              50,
+              85,
+              120,
+              155,
+              190
+            ],
+            "magicalPowerRatio": 0.55,
+            "maxCharges": 2
+          },
+          "effects": [
+            "dash",
+            "mobility",
+            "pass-through-damage",
+            "charges",
+            "engage",
+            "escape"
+          ],
+          "sourceRef": "shinbi-game-client-manual-entry-2026-08-17"
+        },
+        {
+          "slot": "ultimate",
+          "name": "All-Kill!",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "Passive: Shinbi applies a Mark to Enemy Heroes that she damages with her abilities, lasting for 6s. Additionally, each time Shinbi damages a Hero with an ability she gains a stack of Track for 6s, stacking up to 8 times. Upon reaching maximum Track stacks, Shinbi can activate this ability. Active: Shinbi summons a pack of 8 Spirit Wolves above each currently Marked Enemy Hero. The pack attacks their target, dealing 44.0/68.0/92.0 (+16% magical power) magical damage per Spirit Wolf.",
+          "cooldown": [
+            125,
+            105,
+            85
+          ],
+          "scaling": {
+            "markDuration": 6,
+            "trackDuration": 6,
+            "maxTrackStacks": 8,
+            "spiritWolvesPerMarkedHero": 8,
+            "damagePerSpiritWolf": [
+              44,
+              68,
+              92
+            ],
+            "magicalPowerRatio": 0.16
+          },
+          "effects": [
+            "mark",
+            "track",
+            "stack-gated",
+            "spirit-wolves",
+            "multi-target",
+            "burst",
+            "execute-followup"
+          ],
+          "sourceRef": "shinbi-game-client-manual-entry-2026-08-17"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Allegro",
+          "category": "mobility",
+          "description": "Rushing Beat's Cooldown is 20% lower.",
+          "tags": [
+            "rushing-beat",
+            "cooldown-reduction",
+            "mobility"
+          ],
+          "sourceRef": "shinbi-game-client-manual-entry-2026-08-17"
+        },
+        {
+          "name": "Crescendo",
+          "category": "damage",
+          "description": "Shinbi's final Basic Attack within her chain deals Magical Damage and 15 (+35% magical power)(+30% physical power) bonus damage.",
+          "tags": [
+            "basic-attack-chain",
+            "magical-damage",
+            "bonus-damage",
+            "mixed-scaling"
+          ],
+          "sourceRef": "shinbi-game-client-manual-entry-2026-08-17"
+        },
+        {
+          "name": "Encore",
+          "category": "cooldown",
+          "description": "If a Target dies while being damaged by All Kill, the Cooldown is reset.",
+          "tags": [
+            "all-kill",
+            "cooldown-reset",
+            "takedown",
+            "snowball"
+          ],
+          "sourceRef": "shinbi-game-client-manual-entry-2026-08-17"
+        }
+      ],
       "threats": [
         "dive",
         "burst",
-        "split-push"
+        "split-push",
+        "mobility",
+        "poke",
+        "shielding",
+        "multi-target-burst",
+        "duelist"
       ],
       "answers": [
         "mobility",
         "burst",
-        "duelist"
+        "duelist",
+        "backline-access",
+        "waveclear",
+        "self-shield",
+        "snowball",
+        "anti-squishy"
       ],
       "weaknesses": [
         "hard-cc",
-        "anti-burst"
+        "anti-burst",
+        "burst-vulnerable",
+        "anti-shield",
+        "silence",
+        "frontline-peel"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "shinbi-game-client-manual-entry-2026-08-17",
+        "roles": "shinbi-game-client-manual-entry-2026-08-17",
+        "kit": "shinbi-game-client-manual-entry-2026-08-17",
+        "augments": "shinbi-game-client-manual-entry-2026-08-17"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-17. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
