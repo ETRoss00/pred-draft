@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "sparrow-game-client-manual-entry-2026-08-18": {
+      "label": "Sparrow game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Sparrow roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -1710,32 +1715,313 @@
       "roles": [
         "carry"
       ],
+      "classes": [
+        "carry"
+      ],
       "damage": "physical",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 10,
+        "abilityPower": 3,
+        "durability": 1,
+        "mobility": 1
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Heartpiercer",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged basic attack dealing 57.0/59.5/62.2/65.0/67.9/71.0/74.2/77.5/80.9/84.5/88.3/92.2/96.2/100.3/104.6/109.0/113.5/118.2 (+80% physical power) physical damage.",
+          "scaling": {
+            "damage": [
+              57,
+              59.5,
+              62.2,
+              65,
+              67.9,
+              71,
+              74.2,
+              77.5,
+              80.9,
+              84.5,
+              88.3,
+              92.2,
+              96.2,
+              100.3,
+              104.6,
+              109,
+              113.5,
+              118.2
+            ],
+            "physicalPowerRatio": 0.8
+          },
+          "effects": [
+            "ranged-basic"
+          ],
+          "sourceRef": "sparrow-game-client-manual-entry-2026-08-18"
+        },
+        {
+          "slot": "passive",
+          "name": "Relentless",
+          "kind": "passive",
+          "damageType": "physical",
+          "description": "Sparrow's Basic Attacks and Abilities apply stacks of Relentless to Enemy Units. Her Basic Attacks against Targets afflicted by Relentless deal an additional 0.25% of their maximum health as bonus physical damage On-Hit, per stack. Relentless stacks last for 3s, stacking up to 8 times.",
+          "scaling": {
+            "maxHealthDamagePercentPerStack": 0.25,
+            "stackDuration": 3,
+            "maxStacks": 8
+          },
+          "effects": [
+            "stacking-debuff",
+            "max-health-damage",
+            "on-hit",
+            "tank-shred",
+            "sustained-dps"
+          ],
+          "sourceRef": "sparrow-game-client-manual-entry-2026-08-18"
+        },
+        {
+          "slot": "primary",
+          "name": "Hail of Arrows",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Release a volley of arrows that rain down over 2.5s, dealing 100.0/130.0/160.0/190.0/220.0 (+100% physical power)(+80% magical power) physical damage to all Enemies in the area over 8 hits. Enemies struck by Hail Of Arrows are Slowed by 35.0/37.5/40.0/42.5/45.0% (+5% magical power) for 0.5s.",
+          "cooldown": [
+            18,
+            16,
+            14,
+            12,
+            10
+          ],
+          "scaling": {
+            "damage": [
+              100,
+              130,
+              160,
+              190,
+              220
+            ],
+            "physicalPowerRatio": 1,
+            "magicalPowerRatio": 0.8,
+            "duration": 2.5,
+            "hits": 8,
+            "slowPercent": [
+              35,
+              37.5,
+              40,
+              42.5,
+              45
+            ],
+            "slowMagicalPowerRatio": 0.05,
+            "slowDuration": 0.5
+          },
+          "effects": [
+            "area-damage",
+            "multi-hit",
+            "slow",
+            "zone-control",
+            "waveclear",
+            "relentless-application"
+          ],
+          "sourceRef": "sparrow-game-client-manual-entry-2026-08-18"
+        },
+        {
+          "slot": "secondary",
+          "name": "Heightened Senses",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Sparrow vanishes from the battlefield, entering Stealth and gaining 30 (+15% magical power) Movement Speed for 1.5s. Upon, reappearing, she gains 25.0/30.0/35.0/40.0/45.0% Attack Speed for 6s. Every second subsequent basics attack against the same target while Heightened Senses is active deals (+15% physical power) bonus physical damage and applies an additional stack of Relentless.",
+          "cooldown": [
+            22,
+            21,
+            20,
+            19,
+            18
+          ],
+          "scaling": {
+            "movementSpeed": 30,
+            "movementSpeedMagicalPowerRatio": 0.15,
+            "movementSpeedDuration": 1.5,
+            "attackSpeedPercent": [
+              25,
+              30,
+              35,
+              40,
+              45
+            ],
+            "attackSpeedDuration": 6,
+            "bonusDamagePhysicalPowerRatio": 0.15
+          },
+          "effects": [
+            "stealth",
+            "movement-speed",
+            "attack-speed",
+            "bonus-damage",
+            "additional-relentless-stack",
+            "reposition"
+          ],
+          "sourceRef": "sparrow-game-client-manual-entry-2026-08-18"
+        },
+        {
+          "slot": "alternate",
+          "name": "Piercing Shot",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Charge a Terrain piercing arrow, reaching 50-100% maximum power after 1s and dealing up to 80.0/115.0/150.0/185.0/220.0 (+140.0/148.0/156.0/164.0/172.0% physical power) physical damage to all Enemies in its path. Targets afflicted by Relentless receive 8% additional damage per stack and Targets beyond the first take 60% damage.",
+          "cooldown": [
+            16,
+            15,
+            14,
+            13,
+            12
+          ],
+          "scaling": {
+            "chargeTime": 1,
+            "minimumPowerPercent": 50,
+            "maximumPowerPercent": 100,
+            "damage": [
+              80,
+              115,
+              150,
+              185,
+              220
+            ],
+            "physicalPowerRatio": [
+              1.4,
+              1.48,
+              1.56,
+              1.64,
+              1.72
+            ],
+            "additionalDamagePerRelentlessStackPercent": 8,
+            "subsequentTargetDamagePercent": 60
+          },
+          "effects": [
+            "charged-shot",
+            "terrain-piercing",
+            "line-damage",
+            "relentless-scaling",
+            "poke",
+            "burst"
+          ],
+          "sourceRef": "sparrow-game-client-manual-entry-2026-08-18"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Inner Fire",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Unleash a barrage of fanned arrows, firing 12.0/14.0/16.0 volleys over 3.5s. The center arrow deals (+75% physical power)(+40% magical power) physical damage. Side arrows deal (+58% physical power)(+30% magical power) damage instead. Inner Fire's arrows pierce Enemy Units, can Critically Strike and apply On-Hit effects at 30% effectiveness.",
+          "cooldown": [
+            135,
+            120,
+            105
+          ],
+          "scaling": {
+            "volleys": [
+              12,
+              14,
+              16
+            ],
+            "duration": 3.5,
+            "centerArrowPhysicalPowerRatio": 0.75,
+            "centerArrowMagicalPowerRatio": 0.4,
+            "sideArrowPhysicalPowerRatio": 0.58,
+            "sideArrowMagicalPowerRatio": 0.3,
+            "onHitEffectivenessPercent": 30
+          },
+          "effects": [
+            "fanned-arrows",
+            "multi-hit",
+            "piercing-projectile",
+            "critical-strike",
+            "on-hit",
+            "sustained-dps",
+            "teamfight"
+          ],
+          "sourceRef": "sparrow-game-client-manual-entry-2026-08-18"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Endless Hunt",
+          "category": "snowball",
+          "description": "Takedowns reset Sparrow's Basic Ability Cooldowns and permanently grant 1 Physical Penetration.",
+          "tags": [
+            "takedown",
+            "cooldown-reset",
+            "physical-penetration",
+            "snowball"
+          ],
+          "sourceRef": "sparrow-game-client-manual-entry-2026-08-18"
+        },
+        {
+          "name": "Sun Shards",
+          "category": "damage",
+          "description": "Sparrow's basic attacks ricochet 1.0/2.0/3.0/4.0 times, dealing (+20% physical power) Damage and applying On-Hit effects at 35% effectiveness.",
+          "tags": [
+            "basic-attacks",
+            "ricochet",
+            "on-hit",
+            "multi-target",
+            "physical-power-scaling"
+          ],
+          "sourceRef": "sparrow-game-client-manual-entry-2026-08-18"
+        },
+        {
+          "name": "Inner Fury",
+          "category": "damage",
+          "description": "Inner Fire now releases a fan of 5 arrows, has 8% more range, and fires 2 more volleys.",
+          "tags": [
+            "inner-fire",
+            "fan-arrows",
+            "range-increase",
+            "additional-volleys",
+            "teamfight"
+          ],
+          "sourceRef": "sparrow-game-client-manual-entry-2026-08-18"
+        }
+      ],
       "threats": [
         "sustained-dps",
         "scaling",
-        "objective-control"
+        "objective-control",
+        "tank-shred",
+        "on-hit",
+        "teamfight",
+        "late-scaling",
+        "multi-target"
       ],
       "answers": [
         "tank-shred",
         "objective-control",
-        "late-scaling"
+        "late-scaling",
+        "sustained-dps",
+        "anti-frontline",
+        "teamfight",
+        "structure-pressure",
+        "waveclear"
       ],
       "weaknesses": [
         "dive",
-        "low-mobility"
+        "low-mobility",
+        "burst-vulnerable",
+        "hard-cc",
+        "anti-basic-attack",
+        "silence"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "sparrow-game-client-manual-entry-2026-08-18",
+        "roles": "sparrow-game-client-manual-entry-2026-08-18",
+        "kit": "sparrow-game-client-manual-entry-2026-08-18",
+        "augments": "sparrow-game-client-manual-entry-2026-08-18"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-18. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
