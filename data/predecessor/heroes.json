@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "terra-game-client-manual-entry-2026-08-18": {
+      "label": "Terra game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Terra roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -1781,32 +1786,377 @@
         "offlane",
         "jungle"
       ],
+      "classes": [
+        "fighter"
+      ],
       "damage": "physical",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 3,
+        "abilityPower": 7,
+        "durability": 6,
+        "mobility": 5
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Skullsplitter",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 67.0/70.3/73.8/77.4/81.2/85.2/89.4/93.7/98.3/103.0/107.8/112.9/118.1/123.5/129.1/134.9/140.8/146.9 (+100% physical power) physical damage.",
+          "scaling": {
+            "damage": [
+              67,
+              70.3,
+              73.8,
+              77.4,
+              81.2,
+              85.2,
+              89.4,
+              93.7,
+              98.3,
+              103,
+              107.8,
+              112.9,
+              118.1,
+              123.5,
+              129.1,
+              134.9,
+              140.8,
+              146.9
+            ],
+            "physicalPowerRatio": 1
+          },
+          "effects": [
+            "melee-basic",
+            "physical-damage"
+          ],
+          "sourceRef": "terra-game-client-manual-entry-2026-08-18"
+        },
+        {
+          "slot": "passive",
+          "name": "Hersir",
+          "kind": "passive",
+          "damageType": "physical",
+          "description": "Terra gains stacks of Hersir when damaging Enemies with her Basic Attacks and Abilities, up to a maximum of 5. At maximum stacks, Terra's next Basic Ability is Empowered with additional effects. Entering the Base grants Terra maximum Hersir stacks instantly. Terra also gains 10% increased Armors while under a Tower.",
+          "scaling": {
+            "maxStacks": 5,
+            "towerArmorIncreasePercent": 10
+          },
+          "effects": [
+            "stacking-resource",
+            "empowered-abilities",
+            "armor-increase",
+            "tower-fighting",
+            "durability"
+          ],
+          "sourceRef": "terra-game-client-manual-entry-2026-08-18"
+        },
+        {
+          "slot": "primary",
+          "name": "Ruthless Assault",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Terra spins her axe, striking all Enemies around her before slashing forward a second time. Each strike deals 50.0/80.0/110.0/140.0/170.0 (+35% physical armor)(+35% magical armor) physical damage. Enemy Hero hits refund 10% of the cooldown per strike. Empowered: Terra strikes three times, with the third strike dealing an additional (+5.0/6.0/7.0/8.0/9.0 Target's Max Health)% damage to all Enemies in front of her.",
+          "cooldown": [
+            13,
+            11.75,
+            10.5,
+            9.25,
+            8
+          ],
+          "scaling": {
+            "damagePerStrike": [
+              50,
+              80,
+              110,
+              140,
+              170
+            ],
+            "physicalArmorRatio": 0.35,
+            "magicalArmorRatio": 0.35,
+            "cooldownRefundPerHeroStrikePercent": 10,
+            "empoweredStrikeCount": 3,
+            "empoweredThirdStrikeTargetMaxHealthPercent": [
+              5,
+              6,
+              7,
+              8,
+              9
+            ]
+          },
+          "effects": [
+            "area-damage",
+            "multi-hit",
+            "armor-scaling",
+            "cooldown-refund",
+            "empowered",
+            "target-max-health-damage",
+            "anti-frontline"
+          ],
+          "sourceRef": "terra-game-client-manual-entry-2026-08-18"
+        },
+        {
+          "slot": "secondary",
+          "name": "Highland Hurl",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Throw a spectral axe, dealing 80.0/115.0/150.0/185.0/220.0 (+30% physical armor)(+30% magical armor) physical damage to all Enemies in its path. Enemies hit by Highland Hurl are Slowed by 30% for 1.0/1.1/1.1/1.1/1.2s. and have their Physical Armor reduced by 20% for 4.5s. Empowered: Roots Enemies instead for 1.0/1.1/1.1/1.1/1.2s.",
+          "cooldown": [
+            13.5,
+            12.5,
+            11.5,
+            10.5,
+            9.5
+          ],
+          "scaling": {
+            "damage": [
+              80,
+              115,
+              150,
+              185,
+              220
+            ],
+            "physicalArmorRatio": 0.3,
+            "magicalArmorRatio": 0.3,
+            "slowPercent": 30,
+            "slowDuration": [
+              1,
+              1.1,
+              1.1,
+              1.1,
+              1.2
+            ],
+            "physicalArmorReductionPercent": 20,
+            "physicalArmorReductionDuration": 4.5,
+            "empoweredRootDuration": [
+              1,
+              1.1,
+              1.1,
+              1.1,
+              1.2
+            ]
+          },
+          "effects": [
+            "line-damage",
+            "armor-scaling",
+            "slow",
+            "physical-armor-reduction",
+            "armor-shred",
+            "empowered",
+            "root",
+            "hard-cc"
+          ],
+          "sourceRef": "terra-game-client-manual-entry-2026-08-18"
+        },
+        {
+          "slot": "alternate",
+          "name": "Wild Rush",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Terra becomes Unstoppable and Channels for up to 3.5s before dashing. She deals 27.0/48.0/69.0/90.0/111.0 (+37.5% physical armor) (+37.5% magical armor) physical damage to all Enemies in her path, stopping if she collides with a Hero. Enemies hit are Knocked Back for 0.25s. For the first 1.25s, dash range and damage increases, dealing up to 81.0/144.0/207.0/270.0/333.0 (+112.5% physical armor) (+112.5% magical armor) physical damage. Empowered: On Enemy hit, gain a 5.0/65.0/125.0/185.0/245.0 (+10.0/12.0/14.0/16.0/18.0% max health) shield for 3.5s.",
+          "cooldown": [
+            18,
+            17,
+            16,
+            15,
+            14
+          ],
+          "scaling": {
+            "channelDuration": 3.5,
+            "baseDamage": [
+              27,
+              48,
+              69,
+              90,
+              111
+            ],
+            "basePhysicalArmorRatio": 0.375,
+            "baseMagicalArmorRatio": 0.375,
+            "knockbackDuration": 0.25,
+            "chargeRampDuration": 1.25,
+            "maxDamage": [
+              81,
+              144,
+              207,
+              270,
+              333
+            ],
+            "maxPhysicalArmorRatio": 1.125,
+            "maxMagicalArmorRatio": 1.125,
+            "empoweredShield": [
+              5,
+              65,
+              125,
+              185,
+              245
+            ],
+            "empoweredShieldMaxHealthPercent": [
+              10,
+              12,
+              14,
+              16,
+              18
+            ],
+            "empoweredShieldDuration": 3.5
+          },
+          "effects": [
+            "unstoppable",
+            "channel",
+            "dash",
+            "mobility",
+            "path-damage",
+            "armor-scaling",
+            "knockback",
+            "displacement",
+            "engage",
+            "empowered",
+            "shield"
+          ],
+          "sourceRef": "terra-game-client-manual-entry-2026-08-18"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Unstoppable Force",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Terra's helmet slams down, Cleansing all debuffs and disabling Enemy Towers within 1650u for 4.0/4.5/5.0s. When this occurs, she instantly gains maximum Hersir stacks and Slows all nearby Enemy Units by 60%, decaying over 2s. For the next 8.0/9.0/10.0s, Terra gains 16.0/30.0/44.0 Physical Armor, 16.0/30.0/44.0 Magical Armor and 40.0/70.0/100.0 Tenacity. Passive: Gain 6.0/9.0/12.0 Physical Armor and 6.0/9.0/12.0 Magical Armor.",
+          "cooldown": [
+            135,
+            120,
+            105
+          ],
+          "scaling": {
+            "towerDisableRadius": 1650,
+            "towerDisableDuration": [
+              4,
+              4.5,
+              5
+            ],
+            "slowPercent": 60,
+            "slowDecayDuration": 2,
+            "buffDuration": [
+              8,
+              9,
+              10
+            ],
+            "activePhysicalArmor": [
+              16,
+              30,
+              44
+            ],
+            "activeMagicalArmor": [
+              16,
+              30,
+              44
+            ],
+            "activeTenacity": [
+              40,
+              70,
+              100
+            ],
+            "passivePhysicalArmor": [
+              6,
+              9,
+              12
+            ],
+            "passiveMagicalArmor": [
+              6,
+              9,
+              12
+            ]
+          },
+          "effects": [
+            "cleanse",
+            "debuff-cleanse",
+            "tower-disable",
+            "max-stacks",
+            "slow",
+            "armor-buff",
+            "tenacity",
+            "durability",
+            "anti-cc",
+            "dive"
+          ],
+          "sourceRef": "terra-game-client-manual-entry-2026-08-18"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Axe Retrieval",
+          "category": "damage",
+          "description": "Highland Hurl deals 15% more damage and can now be picked up, reducing its Cooldown by 45%.",
+          "tags": [
+            "highland-hurl",
+            "damage-increase",
+            "cooldown-reduction",
+            "pickup"
+          ],
+          "sourceRef": "terra-game-client-manual-entry-2026-08-18"
+        },
+        {
+          "name": "Iron Resolve",
+          "category": "durability",
+          "description": "Wild Rush grants 25.0/27.5/30.0/32.5/35.0% Damage Reduction while it is Channeling.",
+          "tags": [
+            "wild-rush",
+            "damage-reduction",
+            "channel",
+            "durability",
+            "engage"
+          ],
+          "sourceRef": "terra-game-client-manual-entry-2026-08-18"
+        },
+        {
+          "name": "Hersir's Will",
+          "category": "utility",
+          "description": "While Unstoppable Force is active, gain a stack of Hersir every 0.5s.",
+          "tags": [
+            "unstoppable-force",
+            "hersir",
+            "stack-generation",
+            "empowered-abilities"
+          ],
+          "sourceRef": "terra-game-client-manual-entry-2026-08-18"
+        }
+      ],
       "threats": [
         "frontline",
         "engage",
-        "anti-cc"
+        "anti-cc",
+        "armor-scaling",
+        "displacement",
+        "tower-dive",
+        "anti-frontline"
       ],
       "answers": [
         "frontline",
         "anti-burst",
-        "anti-dive"
+        "anti-dive",
+        "anti-cc",
+        "hard-cc",
+        "armor-shred",
+        "cleanse",
+        "disengage",
+        "anti-frontline"
       ],
       "weaknesses": [
         "kite",
-        "tank-shred"
+        "tank-shred",
+        "poke",
+        "cooldown-reliant"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "terra-game-client-manual-entry-2026-08-18",
+        "roles": "terra-game-client-manual-entry-2026-08-18",
+        "kit": "terra-game-client-manual-entry-2026-08-18",
+        "augments": "terra-game-client-manual-entry-2026-08-18"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-18. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
