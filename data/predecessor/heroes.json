@@ -36,6 +36,10 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
     },
+    "steel-game-client-manual-entry-2026-08-18": {
+      "label": "Steel game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Steel roles, class, ratings, ability text, and augments."
     "sparrow-game-client-manual-entry-2026-08-18": {
       "label": "Sparrow game-client manual entry",
       "url": null,
@@ -13172,36 +13176,326 @@
       "id": "steel",
       "name": "Steel",
       "roles": [
-        "support",
-        "offlane"
+        "offlane",
+        "support"
       ],
-      "damage": "physical",
+      "classes": [
+        "tank"
+      ],
+      "damage": "mixed",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 1,
+        "abilityPower": 4,
+        "durability": 8,
+        "mobility": 6
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Punch",
+          "kind": "basic attack",
+          "damageType": "mixed",
+          "description": "Alternate between Light and Heavy Melee basic attacks. Light Attacks deal 25 (+36% physical power) physical damage. Heavy Attacks deal 69 (+100% magical power) physical damage.",
+          "scaling": {
+            "lightAttackDamage": 25,
+            "lightAttackPhysicalPowerRatio": 0.36,
+            "heavyAttackDamage": 69,
+            "heavyAttackMagicalPowerRatio": 1
+          },
+          "effects": [
+            "melee-basic",
+            "attack-chain",
+            "light-attack",
+            "heavy-attack",
+            "mixed-damage"
+          ],
+          "sourceRef": "steel-game-client-manual-entry-2026-08-18"
+        },
+        {
+          "slot": "passive",
+          "name": "Cybernetic Shell",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "Steel passively shields himself for 7% of his maximum health. The shield lasts until destroyed and refreshes if Steel has not taken damage in the last 10.0/10.0/10.0/10.0/10.0/9.0/9.0/9.0/9.0/9.0/8.0/8.0/8.0/8.0/8.0/7.0/7.0/7.0s. Additionally Steel gains (+10% bonus Magical Armor) Physical Armor and (+10% bonus Physical Armor) Magical armor.",
+          "scaling": {
+            "shieldMaxHealthPercent": 7,
+            "shieldRefreshOutOfCombatSeconds": [
+              10,
+              10,
+              10,
+              10,
+              10,
+              9,
+              9,
+              9,
+              9,
+              9,
+              8,
+              8,
+              8,
+              8,
+              8,
+              7,
+              7,
+              7
+            ],
+            "physicalArmorFromBonusMagicalArmorRatio": 0.1,
+            "magicalArmorFromBonusPhysicalArmorRatio": 0.1
+          },
+          "effects": [
+            "shield",
+            "persistent-shield",
+            "out-of-combat-refresh",
+            "armor-conversion",
+            "durability",
+            "frontline"
+          ],
+          "sourceRef": "steel-game-client-manual-entry-2026-08-18"
+        },
+        {
+          "slot": "primary",
+          "name": "Bull Rush",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Steel charges forward, becoming Unstoppable for the duration of the dash and dealing 85.0/125.0/165.0/205.0/245.0 (+5% max health)(+70% magical power) magical damage to all Enemies in his path. Enemy Heroes struck by Bull Rush are Knocked Back. Monsters and Minions are Stunned for 2s.",
+          "cooldown": [
+            15,
+            14,
+            13,
+            12,
+            11
+          ],
+          "scaling": {
+            "damage": [
+              85,
+              125,
+              165,
+              205,
+              245
+            ],
+            "maxHealthRatio": 0.05,
+            "magicalPowerRatio": 0.7,
+            "monsterMinionStunDuration": 2
+          },
+          "effects": [
+            "dash",
+            "mobility",
+            "unstoppable",
+            "path-damage",
+            "knockback",
+            "displacement",
+            "stun",
+            "engage",
+            "peel"
+          ],
+          "sourceRef": "steel-game-client-manual-entry-2026-08-18"
+        },
+        {
+          "slot": "secondary",
+          "name": "Force Shield",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Deploy a disruptive wall of energy, blocking all incoming Enemy Projectiles for 4s. When an Enemy Hero first passes through the wall, they take 50.0/75.0/100.0/125.0/150.0 (+30% magical power) magical damage and are Slowed by 25.0/30.0/35.0/40.0/45.0% for 0.75s.",
+          "cooldown": [
+            28,
+            25,
+            22,
+            19,
+            16
+          ],
+          "scaling": {
+            "duration": 4,
+            "damage": [
+              50,
+              75,
+              100,
+              125,
+              150
+            ],
+            "magicalPowerRatio": 0.3,
+            "slowPercent": [
+              25,
+              30,
+              35,
+              40,
+              45
+            ],
+            "slowDuration": 0.75
+          },
+          "effects": [
+            "projectile-block",
+            "wall",
+            "anti-projectile",
+            "area-denial",
+            "damage",
+            "slow",
+            "peel",
+            "zone-control"
+          ],
+          "sourceRef": "steel-game-client-manual-entry-2026-08-18"
+        },
+        {
+          "slot": "alternate",
+          "name": "Shield Bash",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Swipe forward with Steel's shield, dealing 35.0/65.0/95.0/125.0/155.0 (+50% magical power) (+5.0/5.5/6.0/6.5/7.0% of the Target's maximum health) magical damage to all Enemies in front of him and Stunning them for 0.5s. Deals 30.0/35.0/40.0/45.0/50.0 additional damage to Monsters.",
+          "cooldown": [
+            10,
+            9.5,
+            9,
+            8.5,
+            8
+          ],
+          "scaling": {
+            "damage": [
+              35,
+              65,
+              95,
+              125,
+              155
+            ],
+            "magicalPowerRatio": 0.5,
+            "targetMaxHealthPercent": [
+              5,
+              5.5,
+              6,
+              6.5,
+              7
+            ],
+            "stunDuration": 0.5,
+            "monsterAdditionalDamage": [
+              30,
+              35,
+              40,
+              45,
+              50
+            ]
+          },
+          "effects": [
+            "cone-damage",
+            "target-max-health-damage",
+            "stun",
+            "hard-cc",
+            "monster-damage",
+            "peel",
+            "anti-frontline"
+          ],
+          "sourceRef": "steel-game-client-manual-entry-2026-08-18"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Shield Slam",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "Leap into the sky, crashing down at the target location to deal 200.0/320.0/440.0 (+90% magical power) magical damage to all Enemies in the area, Knocking them Up and Stunning them for 1.5s.",
+          "cooldown": [
+            135,
+            115,
+            95
+          ],
+          "scaling": {
+            "damage": [
+              200,
+              320,
+              440
+            ],
+            "magicalPowerRatio": 0.9,
+            "stunDuration": 1.5
+          },
+          "effects": [
+            "leap",
+            "area-damage",
+            "knockup",
+            "stun",
+            "hard-cc",
+            "engage",
+            "teamfight",
+            "peel"
+          ],
+          "sourceRef": "steel-game-client-manual-entry-2026-08-18"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Heavy Metal",
+          "category": "damage",
+          "description": "Heavy Punches and Shield Bash deal Bonus Magical Damage On-Hit equal to 10% of your Total Physical Armor and Magical Armor.",
+          "tags": [
+            "heavy-punch",
+            "shield-bash",
+            "armor-scaling",
+            "bonus-magical-damage",
+            "on-hit"
+          ],
+          "sourceRef": "steel-game-client-manual-entry-2026-08-18"
+        },
+        {
+          "name": "Colossal Crash",
+          "category": "control",
+          "description": "Shield Slam's has 10% longer range, its area of effect is 10% larger, and Knocks Back Enemies on impact instead.",
+          "tags": [
+            "shield-slam",
+            "range-increase",
+            "area-increase",
+            "knockback",
+            "displacement"
+          ],
+          "sourceRef": "steel-game-client-manual-entry-2026-08-18"
+        },
+        {
+          "name": "Adaptive Force",
+          "category": "utility",
+          "description": "Force Shield's Cooldown is 3s lower and now has 2 charges, but is reduced in size.",
+          "tags": [
+            "force-shield",
+            "cooldown-reduction",
+            "charges",
+            "size-tradeoff",
+            "anti-projectile"
+          ],
+          "sourceRef": "steel-game-client-manual-entry-2026-08-18"
+        }
+      ],
       "threats": [
         "engage",
         "frontline",
-        "peel"
+        "peel",
+        "hard-cc",
+        "anti-projectile",
+        "displacement",
+        "teamfight",
+        "anti-frontline"
       ],
       "answers": [
         "hard-cc",
         "frontline",
         "anti-dive",
-        "engage"
+        "engage",
+        "peel",
+        "anti-projectile",
+        "zone-control",
+        "anti-frontline"
       ],
       "weaknesses": [
         "poke",
-        "tank-shred"
+        "tank-shred",
+        "cooldown-reliant",
+        "anti-shield",
+        "mobility-kite"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "steel-game-client-manual-entry-2026-08-18",
+        "roles": "steel-game-client-manual-entry-2026-08-18",
+        "kit": "steel-game-client-manual-entry-2026-08-18",
+        "augments": "steel-game-client-manual-entry-2026-08-18"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-18. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
