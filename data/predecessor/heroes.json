@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "the-fey-game-client-manual-entry-2026-08-19": {
+      "label": "The Fey game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering The Fey roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -1813,35 +1818,294 @@
       "id": "the-fey",
       "name": "The Fey",
       "roles": [
-        "midlane",
-        "support"
+        "midlane"
+      ],
+      "classes": [
+        "mage"
       ],
       "damage": "magical",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 1,
+        "abilityPower": 10,
+        "durability": 1,
+        "mobility": 1
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Floret",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged basic attack dealing 55.0/57.4/59.8/62.4/65.1/68.0/71.0/74.0/77.3/80.6/84.1/87.7/91.4/95.3/99.3/103.4/107.6/112.0 (+55% physical power) physical damage.",
+          "scaling": {
+            "damage": [
+              55,
+              57.4,
+              59.8,
+              62.4,
+              65.1,
+              68,
+              71,
+              74,
+              77.3,
+              80.6,
+              84.1,
+              87.7,
+              91.4,
+              95.3,
+              99.3,
+              103.4,
+              107.6,
+              112
+            ],
+            "physicalPowerRatio": 0.55
+          },
+          "effects": [
+            "ranged-basic",
+            "physical-damage"
+          ],
+          "sourceRef": "the-fey-game-client-manual-entry-2026-08-19"
+        },
+        {
+          "slot": "passive",
+          "name": "Nature's Vengeance",
+          "kind": "passive",
+          "damageType": "magical",
+          "description": "Each time The Fey achieves a Takedown she spawns an Untamed Growth from the Enemy Hero's corpse and gains 30% movement speed for 3s.",
+          "scaling": {
+            "movementSpeedPercent": 30,
+            "movementSpeedDuration": 3
+          },
+          "effects": [
+            "takedown-trigger",
+            "untamed-growth",
+            "movement-speed",
+            "reset-tempo",
+            "zone-control"
+          ],
+          "sourceRef": "the-fey-game-client-manual-entry-2026-08-19"
+        },
+        {
+          "slot": "primary",
+          "name": "Bramble Patch",
+          "kind": "primary ability",
+          "damageType": "magical",
+          "description": "Summon a patch of thorny brambles, dealing 90.0/130.0/170.0/210.0/250.0 (+70% magical power) magical damage to all Enemies that touch them and Slowing them by 35% for 0.5s. Allies within the brambles gain 15% movement speed for 0.5s. Bramble Patch persists for 5s before wilting.",
+          "cooldown": [
+            12,
+            11.5,
+            11,
+            10.5,
+            10
+          ],
+          "scaling": {
+            "damage": [
+              90,
+              130,
+              170,
+              210,
+              250
+            ],
+            "magicalPowerRatio": 0.7,
+            "slowPercent": 35,
+            "slowDuration": 0.5,
+            "allyMovementSpeedPercent": 15,
+            "allyMovementSpeedDuration": 0.5,
+            "duration": 5
+          },
+          "effects": [
+            "area-damage",
+            "persistent-zone",
+            "slow",
+            "ally-movement-speed",
+            "zone-control",
+            "waveclear",
+            "anti-engage"
+          ],
+          "sourceRef": "the-fey-game-client-manual-entry-2026-08-19"
+        },
+        {
+          "slot": "secondary",
+          "name": "Harvest Nettles",
+          "kind": "secondary ability",
+          "damageType": "magical",
+          "description": "Throw an orb of energy, dealing 80.0/120.0/160.0/200.0/240.0 (+55% magical power) magical damage. Hitting the same Target within 8s deals 20% increased damage, stacking up to 4 times. Harvest Nettles refunds 75% of its mana cost upon hitting an Enemy Hero or Killing a Unit.",
+          "cooldown": [
+            5,
+            4.5,
+            4,
+            3.5,
+            3
+          ],
+          "scaling": {
+            "damage": [
+              80,
+              120,
+              160,
+              200,
+              240
+            ],
+            "magicalPowerRatio": 0.55,
+            "repeatHitWindow": 8,
+            "repeatDamageIncreasePercent": 20,
+            "maxRepeatStacks": 4,
+            "manaRefundPercent": 75
+          },
+          "effects": [
+            "projectile",
+            "poke",
+            "stacking-damage",
+            "mana-refund",
+            "single-target-pressure",
+            "scaling-damage"
+          ],
+          "sourceRef": "the-fey-game-client-manual-entry-2026-08-19"
+        },
+        {
+          "slot": "alternate",
+          "name": "Untamed Growth",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Hurl a small plant that deals 100.0/150.0/200.0/250.0/300.0 (+100% magical power) magical damage over time to all Enemies in the area, exploding after 2s. Untamed Growth deals 50% of its damage over its lifetime, and 50% upon exploding.",
+          "cooldown": [
+            14,
+            12.5,
+            11,
+            9.5,
+            8
+          ],
+          "scaling": {
+            "damage": [
+              100,
+              150,
+              200,
+              250,
+              300
+            ],
+            "magicalPowerRatio": 1,
+            "explosionDelay": 2,
+            "lifetimeDamagePercent": 50,
+            "explosionDamagePercent": 50
+          },
+          "effects": [
+            "area-damage",
+            "damage-over-time",
+            "delayed-explosion",
+            "zone-control",
+            "waveclear",
+            "teamfight"
+          ],
+          "sourceRef": "the-fey-game-client-manual-entry-2026-08-19"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Fly Trap",
+          "kind": "ultimate ability",
+          "damageType": "magical",
+          "description": "Plant a magical seedling, awakening a giant fly trap that attaches itself to all nearby Enemy Heroes. After a brief delay, it Pulls its victims inward, dealing 250.0/375.0/500.0 (+100% magical power) magical damage and Stunning them for 1s.",
+          "cooldown": [
+            125,
+            110,
+            95
+          ],
+          "scaling": {
+            "damage": [
+              250,
+              375,
+              500
+            ],
+            "magicalPowerRatio": 1,
+            "stunDuration": 1
+          },
+          "effects": [
+            "area-control",
+            "attach",
+            "pull",
+            "displacement",
+            "stun",
+            "hard-cc",
+            "teamfight",
+            "engage",
+            "anti-engage"
+          ],
+          "sourceRef": "the-fey-game-client-manual-entry-2026-08-19"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Natural Infusion",
+          "category": "tempo",
+          "description": "Damaging Heroes with Harvest Nettles grants 10 Ability Haste for 6s, stacking infinitely.",
+          "tags": [
+            "harvest-nettles",
+            "ability-haste",
+            "stacking",
+            "hero-damage",
+            "tempo"
+          ],
+          "sourceRef": "the-fey-game-client-manual-entry-2026-08-19"
+        },
+        {
+          "name": "Wild Growth",
+          "category": "range",
+          "description": "Bramble Patch has 30% more range.",
+          "tags": [
+            "bramble-patch",
+            "range-increase",
+            "zone-control"
+          ],
+          "sourceRef": "the-fey-game-client-manual-entry-2026-08-19"
+        },
+        {
+          "name": "Verdant Embrace",
+          "category": "healing",
+          "description": "Untamed Growth also Heals Yourself and Allies for 30 (+24% magical power) over its duration. Healing repeats on Explosion.",
+          "tags": [
+            "untamed-growth",
+            "healing",
+            "ally-heal",
+            "explosion",
+            "sustain"
+          ],
+          "sourceRef": "the-fey-game-client-manual-entry-2026-08-19"
+        }
+      ],
       "threats": [
         "zone-control",
         "poke",
-        "engage"
+        "engage",
+        "teamfight",
+        "area-control",
+        "scaling-damage"
       ],
       "answers": [
         "zone-control",
         "waveclear",
-        "anti-engage"
+        "anti-engage",
+        "hard-cc",
+        "displacement",
+        "poke",
+        "area-denial"
       ],
       "weaknesses": [
         "dive",
-        "low-mobility"
+        "low-mobility",
+        "burst",
+        "low-durability",
+        "silence"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "the-fey-game-client-manual-entry-2026-08-19",
+        "roles": "the-fey-game-client-manual-entry-2026-08-19",
+        "kit": "the-fey-game-client-manual-entry-2026-08-19",
+        "augments": "the-fey-game-client-manual-entry-2026-08-19"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-19. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
