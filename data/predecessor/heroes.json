@@ -36,6 +36,10 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
     },
+    "wraith-game-client-manual-entry-2026-08-20": {
+      "label": "Wraith game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Wraith roles, class, ratings, ability text, and augments."
     "twinblast-game-client-manual-entry-2026-08-19": {
       "label": "Twinblast game-client manual entry",
       "url": null,
@@ -14473,32 +14477,331 @@
         "carry",
         "midlane"
       ],
+      "classes": [
+        "carry"
+      ],
       "damage": "mixed",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 4,
+        "abilityPower": 8,
+        "durability": 1,
+        "mobility": 3
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "The Neutralizer",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged basic attack dealing 57.0/59.2/61.6/64.1/66.7/69.4/72.2/75.2/78.3/81.5/84.8/88.2/91.8/95.5/99.3/103.2/107.2/111.4 (+90% physical power) (+20% magical power) physical damage.",
+          "scaling": {
+            "damage": [
+              57,
+              59.2,
+              61.6,
+              64.1,
+              66.7,
+              69.4,
+              72.2,
+              75.2,
+              78.3,
+              81.5,
+              84.8,
+              88.2,
+              91.8,
+              95.5,
+              99.3,
+              103.2,
+              107.2,
+              111.4
+            ],
+            "physicalPowerRatio": 0.9,
+            "magicalPowerRatio": 0.2
+          },
+          "effects": [
+            "ranged-basic",
+            "physical-damage",
+            "hybrid-scaling"
+          ],
+          "sourceRef": "wraith-game-client-manual-entry-2026-08-20"
+        },
+        {
+          "slot": "passive",
+          "name": "Who's There?",
+          "kind": "passive",
+          "damageType": "mixed",
+          "description": "Wraith's Vision Item becomes a Sonar Drone that will become Camouflaged upon deployment, revealing Enemies within 1000 units. Sonar Drone can detect Enemy Heroes through walls.",
+          "cooldown": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "scaling": {
+            "revealRadius": 1000
+          },
+          "effects": [
+            "vision-item-replacement",
+            "sonar-drone",
+            "camouflage",
+            "reveal",
+            "wall-detection",
+            "scouting",
+            "anti-stealth"
+          ],
+          "sourceRef": "wraith-game-client-manual-entry-2026-08-20"
+        },
+        {
+          "slot": "primary",
+          "name": "Peekaboo!",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Launch a piercing Nanite Grenade that deals 40.0/60.0/80.0/100.0/120.0 (+60% physical power)(+50% magical power) physical damage to all Units hit, Slowing them by 35% for 1.25s. Units hit are also Marked for 3.5s, Revealing them. Knock, Knock! is enhanced against Marked Units, dealing an extra 5.5/6.0/6.5/7.0/7.5% (+1.5% per 100 Magical Power) of their maximum health as bonus magical damage.",
+          "cooldown": [
+            13,
+            12.25,
+            11.5,
+            10.75,
+            10
+          ],
+          "scaling": {
+            "damage": [
+              40,
+              60,
+              80,
+              100,
+              120
+            ],
+            "physicalPowerRatio": 0.6,
+            "magicalPowerRatio": 0.5,
+            "slowPercent": 35,
+            "slowDuration": 1.25,
+            "markDuration": 3.5,
+            "markedKnockKnockTargetMaxHealthPercent": [
+              5.5,
+              6,
+              6.5,
+              7,
+              7.5
+            ],
+            "markedKnockKnockMagicalPowerPer100RatioPercent": 1.5
+          },
+          "effects": [
+            "pierce",
+            "line-damage",
+            "physical-damage",
+            "slow",
+            "mark",
+            "reveal",
+            "sniper-setup",
+            "target-max-health-damage",
+            "poke",
+            "pick"
+          ],
+          "sourceRef": "wraith-game-client-manual-entry-2026-08-20"
+        },
+        {
+          "slot": "secondary",
+          "name": "Surprise, Surprise!",
+          "kind": "secondary ability",
+          "damageType": "mixed",
+          "description": "After a short delay, enter Camouflage and gain 25% movement speed and one enhanced Jump for 3s. Takedowns will reset the cooldown of Surprise, Surprise! Passive: Gain 10.0/14.0/18.0/22.0/26.0% Physical Penetration",
+          "cooldown": [
+            23,
+            21.5,
+            20,
+            18.5,
+            17
+          ],
+          "scaling": {
+            "movementSpeedPercent": 25,
+            "duration": 3,
+            "physicalPenetrationPercent": [
+              10,
+              14,
+              18,
+              22,
+              26
+            ]
+          },
+          "effects": [
+            "camouflage",
+            "movement-speed",
+            "enhanced-jump",
+            "takedown-reset",
+            "physical-penetration",
+            "reposition",
+            "self-peel"
+          ],
+          "sourceRef": "wraith-game-client-manual-entry-2026-08-20"
+        },
+        {
+          "slot": "alternate",
+          "name": "Knock, Knock!",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Fire a long-range sniper shot that deals 20.0/35.0/50.0/65.0/80.0 (+110% physical power)(+70% magical power) physical damage to the first Enemy Unit hit. Damage is increased by 100% against Enemy Minions. Knock, Knock! benefits from lifesteal. If Knock, Knock! Kills, or Damages a marked Unit, 35% of the Mana Cost is refunded and its Cooldown is decreased by 75%.",
+          "cooldown": [
+            11,
+            9.75,
+            8.5,
+            7.25,
+            6
+          ],
+          "scaling": {
+            "damage": [
+              20,
+              35,
+              50,
+              65,
+              80
+            ],
+            "physicalPowerRatio": 1.1,
+            "magicalPowerRatio": 0.7,
+            "minionDamageIncreasePercent": 100,
+            "manaRefundPercent": 35,
+            "cooldownDecreasePercent": 75
+          },
+          "effects": [
+            "long-range",
+            "sniper-shot",
+            "single-target-damage",
+            "physical-damage",
+            "lifesteal",
+            "execute-followup",
+            "mana-refund",
+            "cooldown-reduction",
+            "mark-synergy",
+            "poke",
+            "pick"
+          ],
+          "sourceRef": "wraith-game-client-manual-entry-2026-08-20"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Back It Up!",
+          "kind": "ultimate ability",
+          "damageType": "mixed",
+          "description": "Wraith can choose an Enemy Hero he can see up to 1550.0/1650.0/1750.0 units, marking their location from 2s prior. After a 1.5s delay they will enter Limbo and Teleport back to this location.",
+          "cooldown": [
+            135,
+            115,
+            95
+          ],
+          "scaling": {
+            "range": [
+              1550,
+              1650,
+              1750
+            ],
+            "rewindSeconds": 2,
+            "delay": 1.5
+          },
+          "effects": [
+            "targeted-utility",
+            "vision-required",
+            "mark-location",
+            "limbo",
+            "teleport-back",
+            "displacement",
+            "pick",
+            "anti-dive",
+            "catch"
+          ],
+          "sourceRef": "wraith-game-client-manual-entry-2026-08-20"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Mystic Marksman",
+          "category": "damage",
+          "description": "Knock, Knock! deals Magical Damage instead.",
+          "tags": [
+            "knock-knock",
+            "damage-conversion",
+            "magical-damage",
+            "sniper-shot"
+          ],
+          "sourceRef": "wraith-game-client-manual-entry-2026-08-20"
+        },
+        {
+          "name": "Illusionist",
+          "category": "utility",
+          "description": "Surprise, Surprise! grants its effects to nearby Allied Heroes, but its Cooldown is 10% higher.",
+          "tags": [
+            "surprise-surprise",
+            "ally-buff",
+            "camouflage",
+            "movement-speed",
+            "cooldown-tradeoff"
+          ],
+          "sourceRef": "wraith-game-client-manual-entry-2026-08-20"
+        },
+        {
+          "name": "Sniper's Bounty",
+          "category": "economy",
+          "description": "Killing Blows from Knock Knock! grant +6 gold, increased to +40 gold for Heroes.",
+          "tags": [
+            "knock-knock",
+            "killing-blow",
+            "bonus-gold",
+            "hero-kill"
+          ],
+          "sourceRef": "wraith-game-client-manual-entry-2026-08-20"
+        }
+      ],
       "threats": [
         "pick",
         "poke",
-        "burst"
+        "burst",
+        "vision-control",
+        "camouflage",
+        "long-range",
+        "reveal"
       ],
       "answers": [
         "pick",
         "poke",
-        "anti-squishy"
+        "anti-squishy",
+        "vision-control",
+        "anti-stealth",
+        "catch",
+        "anti-dive",
+        "reveal"
       ],
       "weaknesses": [
         "dive",
-        "low-mobility"
+        "low-mobility",
+        "hard-cc",
+        "burst-vulnerable",
+        "frontline-pressure"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "wraith-game-client-manual-entry-2026-08-20",
+        "roles": "wraith-game-client-manual-entry-2026-08-20",
+        "kit": "wraith-game-client-manual-entry-2026-08-20",
+        "augments": "wraith-game-client-manual-entry-2026-08-20"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-20. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
