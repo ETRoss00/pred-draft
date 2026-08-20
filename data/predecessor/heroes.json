@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "twinblast-game-client-manual-entry-2026-08-19": {
+      "label": "Twinblast game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Twinblast roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -1850,32 +1855,280 @@
       "roles": [
         "carry"
       ],
+      "classes": [
+        "carry"
+      ],
       "damage": "physical",
       "range": "ranged",
+      "ratings": {
+        "basicAttack": 7,
+        "abilityPower": 6,
+        "durability": 1,
+        "mobility": 6
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "LUNARI 4.0",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Ranged basic attack that fires two projectiles, each dealing 33 (+42.5% physical power) physical damage and applying on-hit effects at 55% effectiveness.",
+          "scaling": {
+            "projectiles": 2,
+            "damagePerProjectile": 33,
+            "physicalPowerRatioPerProjectile": 0.425,
+            "onHitEffectivenessPercent": 55
+          },
+          "effects": [
+            "ranged-basic",
+            "multi-projectile",
+            "physical-damage",
+            "on-hit"
+          ],
+          "sourceRef": "twinblast-game-client-manual-entry-2026-08-19"
+        },
+        {
+          "slot": "passive",
+          "name": "Gunslinger",
+          "kind": "passive",
+          "damageType": "physical",
+          "description": "Casting an ability grants TwinBlast 20% increased Total Attack Speed and will cause his next basic attack within 4s to fire three times for a total of 142.5% damage, with each shot applying on-hit effects at 60% effectiveness.",
+          "scaling": {
+            "totalAttackSpeedIncreasePercent": 20,
+            "empoweredAttackWindow": 4,
+            "empoweredShots": 3,
+            "empoweredTotalDamagePercent": 142.5,
+            "empoweredOnHitEffectivenessPercent": 60
+          },
+          "effects": [
+            "attack-speed",
+            "empowered-basic",
+            "multi-shot",
+            "on-hit",
+            "sustained-dps"
+          ],
+          "sourceRef": "twinblast-game-client-manual-entry-2026-08-19"
+        },
+        {
+          "slot": "primary",
+          "name": "Vaporize",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "TwinBlast charges and fires two superheated piercing projectiles in the target direction, dealing a total of 100.0/140.0/180.0/220.0/260.0 (+90% physical power)(+120% magical power) physical damage and applying on-hit effects to all Enemy Units hit at 170% effectiveness.",
+          "cooldown": [
+            13,
+            11.25,
+            9.5,
+            7.75,
+            6
+          ],
+          "scaling": {
+            "projectiles": 2,
+            "totalDamage": [
+              100,
+              140,
+              180,
+              220,
+              260
+            ],
+            "physicalPowerRatio": 0.9,
+            "magicalPowerRatio": 1.2,
+            "onHitEffectivenessPercent": 170
+          },
+          "effects": [
+            "line-damage",
+            "pierce",
+            "multi-projectile",
+            "physical-damage",
+            "on-hit",
+            "poke",
+            "waveclear"
+          ],
+          "sourceRef": "twinblast-game-client-manual-entry-2026-08-19"
+        },
+        {
+          "slot": "secondary",
+          "name": "Rocket Dash",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Passive: When TwinBlast deals damage to an Enemy Hero with a Basic Attack or Ability, Rocket Dash's cooldown is decreased by 8.0/9.0/10.0/11.0/12.0%. Reduced to 3.2/3.6/4.0/4.4/4.8% when damaging Non-Heroes. Active: TwinBlast dashes in his current movement direction.",
+          "cooldown": [
+            22,
+            22,
+            22,
+            22,
+            22
+          ],
+          "scaling": {
+            "heroDamageCooldownDecreasePercent": [
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "nonHeroDamageCooldownDecreasePercent": [
+              3.2,
+              3.6,
+              4,
+              4.4,
+              4.8
+            ]
+          },
+          "effects": [
+            "dash",
+            "mobility",
+            "cooldown-reduction",
+            "damage-trigger",
+            "self-reposition"
+          ],
+          "sourceRef": "twinblast-game-client-manual-entry-2026-08-19"
+        },
+        {
+          "slot": "alternate",
+          "name": "Vortex Grenade",
+          "kind": "alternate ability",
+          "damageType": "magical",
+          "description": "Launch a grenade in target direction that explodes upon contact with an Enemy Target, dealing 35.0/60.0/85.0/110.0/135.0 (+40% physical power) magical damage in a small area and Slowing by 30% for 0.75s. Max Charges: 2",
+          "cooldown": [
+            10.5,
+            9.5,
+            8.5,
+            7.5,
+            6.5
+          ],
+          "scaling": {
+            "damage": [
+              35,
+              60,
+              85,
+              110,
+              135
+            ],
+            "physicalPowerRatio": 0.4,
+            "slowPercent": 30,
+            "slowDuration": 0.75,
+            "maxCharges": 2
+          },
+          "effects": [
+            "projectile",
+            "grenade",
+            "area-damage",
+            "magical-damage",
+            "slow",
+            "charges",
+            "poke"
+          ],
+          "sourceRef": "twinblast-game-client-manual-entry-2026-08-19"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Ventilate",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Transform your guns into fully automatic machine guns, unleashing a barrage of 30 (+10% Total Attack Speed) bullets over 3s dealing 15.0/20.0/25.0 (+9% physical power)(+9% magical power) physical damage per bullet. Can Critically Strike at 75% effectiveness.",
+          "cooldown": [
+            125,
+            105,
+            85
+          ],
+          "scaling": {
+            "baseBullets": 30,
+            "totalAttackSpeedBulletRatio": 0.1,
+            "duration": 3,
+            "damagePerBullet": [
+              15,
+              20,
+              25
+            ],
+            "physicalPowerRatioPerBullet": 0.09,
+            "magicalPowerRatioPerBullet": 0.09,
+            "criticalStrikeEffectivenessPercent": 75
+          },
+          "effects": [
+            "channeled-damage",
+            "multi-hit",
+            "physical-damage",
+            "critical-strike",
+            "sustained-dps",
+            "teamfight"
+          ],
+          "sourceRef": "twinblast-game-client-manual-entry-2026-08-19"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Grenadier",
+          "category": "utility",
+          "description": "Vortex Grenades has 1 additional Max Charge. Rocket Dash grants 1 charge on use.",
+          "tags": [
+            "vortex-grenade",
+            "rocket-dash",
+            "additional-charge",
+            "grenade",
+            "mobility"
+          ],
+          "sourceRef": "twinblast-game-client-manual-entry-2026-08-19"
+        },
+        {
+          "name": "Amplified Burst",
+          "category": "range",
+          "description": "Vaporize has 15% more range.",
+          "tags": [
+            "vaporize",
+            "range-increase",
+            "poke",
+            "pierce"
+          ],
+          "sourceRef": "twinblast-game-client-manual-entry-2026-08-19"
+        },
+        {
+          "name": "Spray 'N Pray",
+          "category": "damage",
+          "description": "Ventilate deals 50% more damage, but has reduced accuracy at longer ranges.",
+          "tags": [
+            "ventilate",
+            "damage-increase",
+            "accuracy-tradeoff",
+            "sustained-dps"
+          ],
+          "sourceRef": "twinblast-game-client-manual-entry-2026-08-19"
+        }
+      ],
       "threats": [
         "mobility",
         "sustained-dps",
-        "poke"
+        "poke",
+        "on-hit",
+        "multi-hit",
+        "physical-carry"
       ],
       "answers": [
         "mobility",
         "poke",
-        "tank-shred"
+        "tank-shred",
+        "sustained-dps",
+        "waveclear",
+        "kite"
       ],
       "weaknesses": [
         "hard-cc",
-        "burst-vulnerable"
+        "burst-vulnerable",
+        "dive",
+        "anti-basic-attack",
+        "anti-mobility"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "twinblast-game-client-manual-entry-2026-08-19",
+        "roles": "twinblast-game-client-manual-entry-2026-08-19",
+        "kit": "twinblast-game-client-manual-entry-2026-08-19",
+        "augments": "twinblast-game-client-manual-entry-2026-08-19"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-19. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
