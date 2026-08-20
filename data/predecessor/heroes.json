@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "wukong-game-client-manual-entry-2026-08-20": {
+      "label": "Wukong game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Wukong roles, class, ratings, ability text, and augments."
     }
   },
   "validRoles": [
@@ -1917,35 +1922,353 @@
       "id": "wukong",
       "name": "Wukong",
       "roles": [
-        "offlane",
         "jungle"
+      ],
+      "classes": [
+        "fighter"
       ],
       "damage": "physical",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 7,
+        "abilityPower": 7,
+        "durability": 3,
+        "mobility": 10
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Ruyi Jingu Bang",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 60.0/63.4/66.9/70.6/74.5/78.6/82.9/87.3/91.9/96.7/101.7/106.9/112.2/117.7/123.4/129.3/135.4/141.6 (+80% physical power) physical damage.",
+          "scaling": {
+            "damage": [
+              60,
+              63.4,
+              66.9,
+              70.6,
+              74.5,
+              78.6,
+              82.9,
+              87.3,
+              91.9,
+              96.7,
+              101.7,
+              106.9,
+              112.2,
+              117.7,
+              123.4,
+              129.3,
+              135.4,
+              141.6
+            ],
+            "physicalPowerRatio": 0.8
+          },
+          "effects": [
+            "melee-basic",
+            "physical-damage"
+          ],
+          "sourceRef": "wukong-game-client-manual-entry-2026-08-20"
+        },
+        {
+          "slot": "passive",
+          "name": "Somersault",
+          "kind": "passive",
+          "damageType": "physical",
+          "description": "Double Jump to leap into the air.",
+          "cooldown": [
+            19,
+            18.25,
+            17.5,
+            16.75,
+            16,
+            15.25,
+            14.5,
+            13.75,
+            13,
+            12.25,
+            11.5,
+            10.75,
+            10,
+            9.25,
+            8.5,
+            7.75,
+            7,
+            6.25
+          ],
+          "effects": [
+            "double-jump",
+            "mobility",
+            "vertical-mobility",
+            "self-reposition"
+          ],
+          "sourceRef": "wukong-game-client-manual-entry-2026-08-20"
+        },
+        {
+          "slot": "primary",
+          "name": "Cloudwalker/Pole Vault",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Spirit: Wukong gains 6.0/7.0/8.0/9.0/10.0/11.0% movement speed and creates a trail of cloud, walkable by allies for 4s. Body: Wukong leaps in the current movement direction gaining 20.0/24.0/28.0/32.0/36.0/40.0% (+60% physical penetration) Attack Speed for 4s.",
+          "cooldown": [
+            15,
+            14.6,
+            14.2,
+            13.8,
+            13.4,
+            13
+          ],
+          "scaling": {
+            "spiritMovementSpeedPercent": [
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "spiritCloudDuration": 4,
+            "bodyAttackSpeedPercent": [
+              20,
+              24,
+              28,
+              32,
+              36,
+              40
+            ],
+            "bodyPhysicalPenetrationToAttackSpeedRatio": 0.6,
+            "bodyAttackSpeedDuration": 4
+          },
+          "effects": [
+            "stance",
+            "spirit-stance",
+            "body-stance",
+            "movement-speed",
+            "ally-terrain",
+            "leap",
+            "attack-speed",
+            "mobility",
+            "chase"
+          ],
+          "sourceRef": "wukong-game-client-manual-entry-2026-08-20"
+        },
+        {
+          "slot": "secondary",
+          "name": "Cyclebreaker/High Impact",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Spirit: Wukong spins his staff around himself gaining 25% (+50% physical penetration) Damage Reduction for the duration. Afterwards he throws the staff forward dealing 60.0/80.0/100.0/120.0/140.0/160.0 (+70% physical power) damage and Stunning for 0.8s. Body: Wukong enlarges his staff and slams down to the ground dealing 60.0/100.0/140.0/180.0/220.0/260.0 (+135% physical power) damage and slowing by 40% for 0.75. This damage is increased by drop distance up to 1500 units. Minions receive 60% less damage.",
+          "cooldown": [
+            14,
+            13,
+            12,
+            11,
+            10,
+            9
+          ],
+          "scaling": {
+            "spiritDamageReductionPercent": 25,
+            "spiritPhysicalPenetrationToDamageReductionRatio": 0.5,
+            "spiritDamage": [
+              60,
+              80,
+              100,
+              120,
+              140,
+              160
+            ],
+            "spiritPhysicalPowerRatio": 0.7,
+            "spiritStunDuration": 0.8,
+            "bodyDamage": [
+              60,
+              100,
+              140,
+              180,
+              220,
+              260
+            ],
+            "bodyPhysicalPowerRatio": 1.35,
+            "bodySlowPercent": 40,
+            "bodySlowDuration": 0.75,
+            "bodyDropDistanceDamageCap": 1500,
+            "minionDamageReductionPercent": 60
+          },
+          "effects": [
+            "stance",
+            "spirit-stance",
+            "body-stance",
+            "damage-reduction",
+            "line-damage",
+            "stun",
+            "hard-cc",
+            "slam",
+            "slow",
+            "drop-distance-scaling",
+            "engage"
+          ],
+          "sourceRef": "wukong-game-client-manual-entry-2026-08-20"
+        },
+        {
+          "slot": "alternate",
+          "name": "Windsurge/Force Push",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Spirit: Wukong dashes forward dealing 60.0/90.0/120.0/150.0/180.0/210.0 (+90% physical power) damage and Slowing everything hit by 40% for 0.5s. Body: Wukong enlarges his staff sending it forward dealing 60.0/85.0/110.0/135.0/160.0/185.0 (+100% physical power) damage, Slowing for 30% for 0.75s and forcing away all enemies and Clones.",
+          "cooldown": [
+            18,
+            17.2,
+            16.4,
+            15.6,
+            14.8,
+            14
+          ],
+          "scaling": {
+            "spiritDamage": [
+              60,
+              90,
+              120,
+              150,
+              180,
+              210
+            ],
+            "spiritPhysicalPowerRatio": 0.9,
+            "spiritSlowPercent": 40,
+            "spiritSlowDuration": 0.5,
+            "bodyDamage": [
+              60,
+              85,
+              110,
+              135,
+              160,
+              185
+            ],
+            "bodyPhysicalPowerRatio": 1,
+            "bodySlowPercent": 30,
+            "bodySlowDuration": 0.75
+          },
+          "effects": [
+            "stance",
+            "spirit-stance",
+            "body-stance",
+            "dash",
+            "line-damage",
+            "slow",
+            "force-away",
+            "displacement",
+            "clone-displacement",
+            "mobility",
+            "peel"
+          ],
+          "sourceRef": "wukong-game-client-manual-entry-2026-08-20"
+        },
+        {
+          "slot": "ultimate",
+          "name": "84000 Hairs",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Switch between Body and Spirit Stances. Upon damaging Enemies 5 times, a hair leaps from Wukong and lands, spawning a Clone. Clones deal (+12% physical power) physical damage per hit and have 16% (max health) Health. Wukong may have up to 2.0/3.0/4.0/5.0 clones at one time. Leaving combat will reset the counter.",
+          "scaling": {
+            "damageHitsToSpawnClone": 5,
+            "clonePhysicalPowerRatioPerHit": 0.12,
+            "cloneMaxHealthPercent": 16,
+            "maxClones": [
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          "effects": [
+            "stance-switch",
+            "body-stance",
+            "spirit-stance",
+            "clone",
+            "clone-generation",
+            "multi-unit-pressure",
+            "sustained-dps",
+            "split-push",
+            "objective-pressure"
+          ],
+          "sourceRef": "wukong-game-client-manual-entry-2026-08-20"
+        }
+      ],
+      "augments": [
+        {
+          "name": "From Up High",
+          "category": "damage",
+          "description": "High Impact's Height Damage is no longer capped to 1500u, now dealing more damage at greater heights.",
+          "tags": [
+            "high-impact",
+            "height-damage",
+            "uncapped-scaling",
+            "damage-increase"
+          ],
+          "sourceRef": "wukong-game-client-manual-entry-2026-08-20"
+        },
+        {
+          "name": "Masterful Mimicry",
+          "category": "utility",
+          "description": "Gain 1 more Max Clone and generate a stack of Hair every 5.5s.",
+          "tags": [
+            "clone",
+            "max-clone",
+            "hair-generation",
+            "split-push",
+            "sustained-pressure"
+          ],
+          "sourceRef": "wukong-game-client-manual-entry-2026-08-20"
+        },
+        {
+          "name": "Prosperous Path",
+          "category": "economy",
+          "description": "Body Stance: Kills grant +4 gold. Spirit Stance: Kills restore +2.5% Missing Health.",
+          "tags": [
+            "body-stance",
+            "spirit-stance",
+            "bonus-gold",
+            "missing-health-restore",
+            "jungle-clear"
+          ],
+          "sourceRef": "wukong-game-client-manual-entry-2026-08-20"
+        }
+      ],
       "threats": [
         "split-push",
         "dive",
-        "sustained-dps"
+        "sustained-dps",
+        "mobility",
+        "clone-pressure",
+        "objective-pressure",
+        "chase"
       ],
       "answers": [
         "split-push",
         "mobility",
-        "tank-shred"
+        "tank-shred",
+        "chase",
+        "disengage",
+        "objective-pressure",
+        "sustained-dps"
       ],
       "weaknesses": [
         "hard-cc",
-        "anti-burst"
+        "anti-burst",
+        "anti-mobility",
+        "burst-vulnerable",
+        "clone-clear"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "wukong-game-client-manual-entry-2026-08-20",
+        "roles": "wukong-game-client-manual-entry-2026-08-20",
+        "kit": "wukong-game-client-manual-entry-2026-08-20",
+        "augments": "wukong-game-client-manual-entry-2026-08-20"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-20. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
