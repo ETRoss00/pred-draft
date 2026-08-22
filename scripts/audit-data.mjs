@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
 const dataset = JSON.parse(await readFile(new URL("../data/predecessor/heroes.json", import.meta.url), "utf8"));
+const crestDataset = JSON.parse(await readFile(new URL("../data/predecessor/crests.json", import.meta.url), "utf8"));
 const errors = [];
 const warnings = [];
 const validRoles = new Set(dataset.validRoles);
@@ -77,8 +78,44 @@ for (const hero of dataset.heroes) {
   if (hero.verification?.augmentStatus === "source-backed" && !hero.augments) errors.push(`[augments] ${hero.name} augment status is source-backed but no augments are present.`);
 }
 
+const validCrestRoles = new Set(crestDataset.validCrestRoles);
+const validCrestStatuses = new Set(crestDataset.validVerificationStatuses);
+const seenCrestIds = new Set();
+const seenCrestNames = new Set();
+const crestRoleCoverage = Object.fromEntries(crestDataset.validCrestRoles.map((role) => [role, 0]));
+
+for (const crest of crestDataset.crests) {
+  if (!crest.id) errors.push(`[crests.id] ${crest.name ?? "Unknown"} is missing a stable id.`);
+  if (!crest.name) errors.push(`[crests.name] ${crest.id ?? "Unknown"} is missing a display name.`);
+
+  if (seenCrestIds.has(crest.id)) errors.push(`[crests.id] duplicate id: ${crest.id}.`);
+  if (seenCrestNames.has(crest.name)) errors.push(`[crests.name] duplicate crest name: ${crest.name}.`);
+  seenCrestIds.add(crest.id);
+  seenCrestNames.add(crest.name);
+
+  if (!validCrestRoles.has(crest.role)) errors.push(`[crests.role] ${crest.name} has invalid crest role: ${crest.role}.`);
+  else crestRoleCoverage[crest.role] += 1;
+
+  if (!crest.purpose) errors.push(`[crests.purpose] ${crest.name} is missing a purpose.`);
+  if (!crest.stats || !Object.keys(crest.stats).length) warnings.push(`[crests.stats] ${crest.name} has no stat block.`);
+  for (const [stat, value] of Object.entries(crest.stats ?? {})) {
+    if (!Number.isFinite(value) || value < 0) errors.push(`[crests.stats.${stat}] ${crest.name} stat must be a non-negative number.`);
+  }
+
+  if (!crest.active?.name) errors.push(`[crests.active] ${crest.name} active is missing a name.`);
+  if (!Number.isFinite(crest.active?.cooldown) || crest.active.cooldown <= 0) errors.push(`[crests.active.cooldown] ${crest.name} active cooldown must be a positive number.`);
+  if (!crest.active?.description) errors.push(`[crests.active.description] ${crest.name} active is missing description text.`);
+  if (!Array.isArray(crest.active?.effects) || crest.active.effects.length === 0) warnings.push(`[crests.active.effects] ${crest.name} active has no effect tags.`);
+  if (!Array.isArray(crest.tags) || crest.tags.length === 0) warnings.push(`[crests.tags] ${crest.name} has no recommendation tags.`);
+  if (!Array.isArray(crest.answers) || crest.answers.length === 0) warnings.push(`[crests.answers] ${crest.name} has no draft answer tags.`);
+  if (!crest.sourceRef) errors.push(`[crests.sourceRef] ${crest.name} is missing sourceRef.`);
+  if (!validCrestStatuses.has(crest.verification?.status)) errors.push(`[crests.verification.status] ${crest.name} has invalid verification status: ${crest.verification?.status}.`);
+}
+
 assert.equal(dataset.schemaVersion, 2, "heroes.json schemaVersion must be 2");
 assert.ok(dataset.heroes.length > 0, "heroes.json must contain heroes");
+assert.equal(crestDataset.schemaVersion, 1, "crests.json schemaVersion must be 1");
+assert.ok(crestDataset.crests.length > 0, "crests.json must contain crests");
 
 const fullyVerified = dataset.heroes.filter((hero) =>
   hero.verification?.roleStatus === "source-backed" &&
@@ -93,6 +130,8 @@ console.log(`Predecessor hero data audit`);
 console.log(`Heroes: ${dataset.heroes.length}`);
 console.log(`Fully verified heroes: ${fullyVerified.length}`);
 console.log(`Role coverage: ${Object.entries(roleCoverage).map(([role, count]) => `${role}=${count}`).join(", ")}`);
+console.log(`Crests: ${crestDataset.crests.length}`);
+console.log(`Crest role coverage: ${Object.entries(crestRoleCoverage).map(([role, count]) => `${role}=${count}`).join(", ")}`);
 console.log(`Warnings: ${warnings.length}`);
 console.log(`Errors: ${errors.length}`);
 

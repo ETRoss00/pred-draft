@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "game": "Predecessor",
+  "patch": "unknown-current",
+  "lastManualReview": null,
+  "sources": {
+    "carry-crests-manual-entry-2026-08-22": {
+      "label": "Carry crests manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering carry crest purpose, stats, active names, cooldowns, and effects."
+    }
+  },
+  "validCrestRoles": [
+    "carry"
+  ],
+  "validVerificationStatuses": [
+    "source-backed",
+    "needs-review",
+    "prototype"
+  ],
+  "crests": [
+    {
+      "id": "eviscerator",
+      "name": "Eviscerator",
+      "role": "carry",
+      "purpose": "Anti-Tank",
+      "stats": {
+        "physicalPower": 12,
+        "attackSpeed": 15,
+        "lifesteal": 7
+      },
+      "active": {
+        "name": "Rending Strikes",
+        "cooldown": 90,
+        "description": "Gain 20% Attack Speed and 8% Omnivamp for 6s. Empower your Basic Attacks to deal (+10% physical power) Damage On-Hit for 6s.",
+        "duration": 6,
+        "scaling": {
+          "attackSpeed": 20,
+          "omnivamp": 8,
+          "onHitPhysicalPowerRatio": 0.1
+        },
+        "effects": [
+          "attack-speed",
+          "omnivamp",
+          "on-hit",
+          "basic-attack-empower"
+        ]
+      },
+      "tags": [
+        "anti-tank",
+        "frontline-shred",
+        "sustained-dps",
+        "dueling"
+      ],
+      "answers": [
+        "frontline",
+        "durability",
+        "long-fights"
+      ],
+      "sourceRef": "carry-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "liberator",
+      "name": "Liberator",
+      "role": "carry",
+      "purpose": "Cleanse",
+      "stats": {
+        "physicalPower": 12,
+        "attackSpeed": 15,
+        "lifesteal": 7
+      },
+      "active": {
+        "name": "Purifying Guard",
+        "cooldown": 180,
+        "description": "Cleanse all Debuffs. Gain a 80 (+100% physical power) Shield for 2.5s.",
+        "duration": 2.5,
+        "scaling": {
+          "shield": 80,
+          "shieldPhysicalPowerRatio": 1
+        },
+        "effects": [
+          "cleanse",
+          "shield",
+          "anti-cc",
+          "survivability"
+        ]
+      },
+      "tags": [
+        "cleanse",
+        "anti-cc",
+        "anti-burst",
+        "self-shield"
+      ],
+      "answers": [
+        "hard-cc",
+        "pick",
+        "burst"
+      ],
+      "sourceRef": "carry-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "pacifier",
+      "name": "Pacifier",
+      "role": "carry",
+      "purpose": "Multi kill",
+      "stats": {
+        "physicalPower": 12,
+        "attackSpeed": 15,
+        "lifesteal": 7
+      },
+      "active": {
+        "name": "Adrenalize",
+        "cooldown": 135,
+        "description": "Dash a short distance. Empower your next Physical Damage Instance within 3s. Deals 30 (+25% physical power) Damage. Increased by 2.5x against Targets below 20% Max Health. Killing a Hero within 3s allows Adrenalize to be recast for 6s.",
+        "duration": 3,
+        "recastWindow": 6,
+        "scaling": {
+          "damage": 30,
+          "physicalPowerRatio": 0.25,
+          "lowHealthThreshold": 20,
+          "lowHealthDamageMultiplier": 2.5
+        },
+        "effects": [
+          "dash",
+          "damage-empower",
+          "execute-pressure",
+          "recast-on-kill"
+        ]
+      },
+      "tags": [
+        "multi-kill",
+        "execute-pressure",
+        "mobility",
+        "snowball"
+      ],
+      "answers": [
+        "low-health-targets",
+        "cleanup",
+        "reset-fights"
+      ],
+      "sourceRef": "carry-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "exodus",
+      "name": "Exodus",
+      "role": "carry",
+      "purpose": "Disruption",
+      "stats": {
+        "physicalPower": 12,
+        "attackSpeed": 15,
+        "lifesteal": 7
+      },
+      "active": {
+        "name": "Eviction Grenade",
+        "cooldown": 90,
+        "description": "Lob a grenade that pierces Enemy Units. Explodes upon hitting Terrain. Deals 90 (+80% physical power) Damage and Stuns for 0.1s. Launches Back Enemy Heroes. Launched Heroes take 20% more damage from you for 1s.",
+        "duration": 1,
+        "scaling": {
+          "damage": 90,
+          "physicalPowerRatio": 0.8,
+          "stunDuration": 0.1,
+          "damageAmp": 20
+        },
+        "effects": [
+          "pierce",
+          "stun",
+          "knockback",
+          "damage-amplification"
+        ]
+      },
+      "tags": [
+        "disruption",
+        "peel",
+        "damage-amp",
+        "anti-dive"
+      ],
+      "answers": [
+        "dive",
+        "engage",
+        "pick"
+      ],
+      "sourceRef": "carry-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry crest manual entry on 2026-08-22."
+      }
+    }
+  ]
+}
