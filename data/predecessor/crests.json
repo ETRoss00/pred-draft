@@ -23,13 +23,19 @@
       "label": "Tank crests manual entry",
       "url": null,
       "use": "User-provided in-game text covering tank crest purpose, stats, active names, cooldowns, and effects."
+    },
+    "fighter-crests-manual-entry-2026-08-22": {
+      "label": "Fighter crests manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering fighter crest purpose, stats, active names, cooldowns, and effects."
     }
   },
   "validCrestRoles": [
     "carry",
     "support",
     "mage",
-    "tank"
+    "tank",
+    "fighter"
   ],
   "validVerificationStatuses": [
     "source-backed",
@@ -1254,6 +1260,189 @@
       "verification": {
         "status": "source-backed",
         "notes": "Fully encoded from user-provided tank crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "brutallax",
+      "name": "Brutallax",
+      "role": "fighter",
+      "purpose": "Cleanse",
+      "stats": {
+        "physicalPower": 12,
+        "maxHealth": 100,
+        "omnivamp": 4
+      },
+      "active": {
+        "name": "Purifying Rage",
+        "cooldown": 165,
+        "description": "Cleanse all Debuffs. Gain 100 Tenacity for 4s. Successful Basic Attacks extend this duration by 0.5s On-Hit.",
+        "duration": 4,
+        "scaling": {
+          "tenacity": 100,
+          "onHitDurationExtension": 0.5
+        },
+        "effects": [
+          "cleanse",
+          "tenacity",
+          "anti-cc",
+          "basic-attack-extension"
+        ]
+      },
+      "tags": [
+        "cleanse",
+        "anti-cc",
+        "dueling",
+        "frontline"
+      ],
+      "answers": [
+        "hard-cc",
+        "debuffs",
+        "pick",
+        "lockdown"
+      ],
+      "sourceRef": "fighter-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "iceskorn-talons",
+      "name": "Iceskorn Talons",
+      "role": "fighter",
+      "purpose": "Dueling",
+      "stats": {
+        "physicalPower": 12,
+        "maxHealth": 100,
+        "omnivamp": 4
+      },
+      "active": {
+        "name": "Glacial Colosseum",
+        "cooldown": 45,
+        "description": "Create an Ice Sheet around you for 8s. Allies on the sheet gain 12% Physical Power for 3s. They also gain 12% Movement Speed for 3s. Enemy Units on the sheet are Slowed by 10%.",
+        "duration": 8,
+        "scaling": {
+          "allyPhysicalPower": 12,
+          "allyMovementSpeed": 12,
+          "allyBuffDuration": 3,
+          "enemySlow": 10
+        },
+        "effects": [
+          "ice-sheet",
+          "ally-physical-power",
+          "ally-movement-speed",
+          "slow"
+        ]
+      },
+      "tags": [
+        "dueling",
+        "zone-control",
+        "team-buff",
+        "slow"
+      ],
+      "answers": [
+        "duelist",
+        "melee-fights",
+        "objective-control",
+        "kite"
+      ],
+      "sourceRef": "fighter-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "judgement",
+      "name": "Judgement",
+      "role": "fighter",
+      "purpose": "Area Damage",
+      "stats": {
+        "physicalPower": 12,
+        "maxHealth": 100,
+        "omnivamp": 4
+      },
+      "active": {
+        "name": "Thunder Cleaver",
+        "cooldown": 10,
+        "description": "24-10s cooldown. Deal 70 (+30% physical power) Damage in an area around you. On Hero hit, Heal (+30% physical power) (+8% max health). Subsequent Hero hits Heal for 50% effectiveness.",
+        "scaling": {
+          "cooldownMin": 10,
+          "cooldownMax": 24,
+          "damage": 70,
+          "physicalPowerRatio": 0.3,
+          "healPhysicalPowerRatio": 0.3,
+          "healMaxHealthRatio": 0.08,
+          "subsequentHeroHealingEffectiveness": 50
+        },
+        "effects": [
+          "area-damage",
+          "healing",
+          "hero-hit-heal",
+          "sustain"
+        ]
+      },
+      "tags": [
+        "area-damage",
+        "sustain",
+        "brawling",
+        "teamfight"
+      ],
+      "answers": [
+        "clustered-enemies",
+        "long-fights",
+        "frontline",
+        "attrition"
+      ],
+      "sourceRef": "fighter-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter crest manual entry on 2026-08-22. Variable 24-10s cooldown preserved in description and scaling fields."
+      }
+    },
+    {
+      "id": "gravitum",
+      "name": "Gravitum",
+      "role": "fighter",
+      "purpose": "Disruption",
+      "stats": {
+        "physicalPower": 12,
+        "maxHealth": 100,
+        "omnivamp": 4
+      },
+      "active": {
+        "name": "Polarity Blast",
+        "cooldown": 100,
+        "description": "Fire a Projectile of Unstable Energy. Pierces Non-Heroes and has infinite range. Deals 80 (+20% physical damage) Damage. Grounds the first Hero hit for 2s.",
+        "duration": 2,
+        "scaling": {
+          "damage": 80,
+          "physicalDamageRatio": 0.2,
+          "groundDuration": 2
+        },
+        "effects": [
+          "projectile",
+          "pierce-non-heroes",
+          "infinite-range",
+          "ground"
+        ]
+      },
+      "tags": [
+        "disruption",
+        "ground",
+        "anti-mobility",
+        "pick"
+      ],
+      "answers": [
+        "mobility",
+        "dive",
+        "escape",
+        "engage"
+      ],
+      "sourceRef": "fighter-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter crest manual entry on 2026-08-22."
       }
     }
   ]

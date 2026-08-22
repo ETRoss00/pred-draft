@@ -2,7 +2,7 @@ import crestData from "./crests.json";
 
 import type { VerificationStatus } from "./audit";
 
-export type CrestRole = "carry" | "support" | "mage" | "tank";
+export type CrestRole = "carry" | "support" | "mage" | "tank" | "fighter";
 
 export type CrestActive = {
   name: string;
