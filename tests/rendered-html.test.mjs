@@ -104,6 +104,11 @@ test("keeps the kit data in a source-audited data folder", async () => {
   assert.match(items, /"Fist Of Razuul"/);
   assert.match(items, /"Raiment of Renewal"/);
   assert.match(items, /"Cursed Scroll"/);
+  assert.match(items, /"Volcanica"/);
+  assert.match(items, /"Gaia Greaves"/);
+  assert.match(items, /"Tainted Blade"/);
+  assert.match(items, /"Mutilator"/);
+  assert.match(items, /"Aegis Of Agawar"/);
   assert.match(audit, /auditHeroData/);
   assert.match(audit, /fullyVerifiedHeroes/);
   assert.match(crestAudit, /auditCrestData/);
