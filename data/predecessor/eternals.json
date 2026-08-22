@@ -1,0 +1,538 @@
+{
+  "schemaVersion": 1,
+  "game": "Predecessor",
+  "patch": "unknown-current",
+  "lastManualReview": null,
+  "sources": {
+    "harbinger-carry-eternals-manual-entry-2026-08-22": {
+      "label": "Harbinger carry Eternals manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Harbinger carry Eternal traits and Minor Blessing options."
+    }
+  },
+  "validEternalCategories": [
+    "harbinger",
+    "primarch",
+    "dreadnought",
+    "sovereign",
+    "divine",
+    "anomaly"
+  ],
+  "validEternalRoles": [
+    "carry",
+    "support",
+    "mage",
+    "tank",
+    "fighter",
+    "assassin"
+  ],
+  "validVerificationStatuses": [
+    "source-backed",
+    "needs-review",
+    "prototype"
+  ],
+  "eternals": [
+    {
+      "id": "marrow",
+      "name": "Marrow",
+      "category": "harbinger",
+      "role": "carry",
+      "mainTrait": {
+        "name": "Marrow",
+        "description": "Heal for 6%/7%/8%/9% of damage dealt to Heroes, increased up to 15%/20%/25%/30% based on your Missing Health. 65% Effectiveness for AoE Attacks, 15% against Monsters.",
+        "scaling": {
+          "heroDamageHealingMin": 6,
+          "heroDamageHealingMax": 9,
+          "missingHealthHealingMin": 15,
+          "missingHealthHealingMax": 30,
+          "aoeEffectiveness": 65,
+          "monsterEffectiveness": 15
+        },
+        "effects": [
+          "hero-damage-healing",
+          "missing-health-scaling",
+          "aoe-reduced-effectiveness",
+          "monster-reduced-effectiveness"
+        ],
+        "tags": [
+          "sustain",
+          "lifesteal",
+          "missing-health-scaling"
+        ]
+      },
+      "minorBlessing1": [
+        {
+          "id": "marrow-leech",
+          "name": "Leech",
+          "description": "Steal 200% Base Health Regen from Enemy Heroes within 550 Units.",
+          "scaling": {
+            "baseHealthRegenSteal": 200,
+            "range": 550
+          },
+          "effects": [
+            "health-regeneration-steal",
+            "nearby-enemy-heroes"
+          ],
+          "tags": [
+            "sustain",
+            "dueling",
+            "close-range"
+          ]
+        },
+        {
+          "id": "marrow-blood-bank",
+          "name": "Blood Bank",
+          "description": "Store 100% of Hero Damage as Charges for 3s. Gain +0.75% Lifesteal per 100 Charges.",
+          "scaling": {
+            "heroDamageStored": 100,
+            "chargeDuration": 3,
+            "lifestealPerCharges": 0.75,
+            "chargeStep": 100
+          },
+          "effects": [
+            "hero-damage-charges",
+            "lifesteal",
+            "scaling-sustain"
+          ],
+          "tags": [
+            "lifesteal",
+            "scaling",
+            "long-fights"
+          ]
+        },
+        {
+          "id": "marrow-taste-of-iron",
+          "name": "Taste of Iron",
+          "description": "Dealing DoT Damage to Enemy Heroes grants +6% Damage for 3s.",
+          "scaling": {
+            "damageIncrease": 6,
+            "duration": 3
+          },
+          "effects": [
+            "damage-over-time",
+            "damage-amplification",
+            "hero-damage"
+          ],
+          "tags": [
+            "dot",
+            "damage-amplification",
+            "pressure"
+          ]
+        }
+      ],
+      "minorBlessing2": [
+        {
+          "id": "marrow-roses",
+          "name": "Roses",
+          "description": "Hero Kills increase Marrow's Healing by 50% for 8s. Takedowns grant +20 Bonus Gold per previous Takedown. Max: 5 Takedowns.",
+          "scaling": {
+            "healingIncrease": 50,
+            "duration": 8,
+            "bonusGoldPerPreviousTakedown": 20,
+            "maxTakedowns": 5
+          },
+          "effects": [
+            "hero-kill",
+            "healing-amplification",
+            "bonus-gold",
+            "takedown-scaling"
+          ],
+          "tags": [
+            "snowball",
+            "multi-kill",
+            "sustain"
+          ]
+        },
+        {
+          "id": "marrow-jealousy",
+          "name": "Jealousy",
+          "description": "While at or below 100%-20% Health, deal +1%-8% Damage.",
+          "scaling": {
+            "healthThresholdHigh": 100,
+            "healthThresholdLow": 20,
+            "damageIncreaseMin": 1,
+            "damageIncreaseMax": 8
+          },
+          "effects": [
+            "health-threshold",
+            "damage-amplification",
+            "missing-health-scaling"
+          ],
+          "tags": [
+            "damage-amplification",
+            "dueling",
+            "low-health-fights"
+          ]
+        },
+        {
+          "id": "marrow-the-maw",
+          "name": "The Maw",
+          "description": "Basic Attacks deal +10% Bonus True Damage against Targets below 40% Max Health.",
+          "scaling": {
+            "bonusTrueDamage": 10,
+            "targetHealthThreshold": 40
+          },
+          "effects": [
+            "basic-attack",
+            "true-damage",
+            "low-health-target"
+          ],
+          "tags": [
+            "execute-pressure",
+            "basic-attack",
+            "true-damage"
+          ]
+        }
+      ],
+      "tags": [
+        "sustain",
+        "lifesteal",
+        "snowball",
+        "carry"
+      ],
+      "answers": [
+        "poke",
+        "extended-fights",
+        "dueling",
+        "low-health-fights"
+      ],
+      "sourceRef": "harbinger-carry-eternals-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided Harbinger carry Eternal manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "vermis",
+      "name": "Vermis",
+      "category": "harbinger",
+      "role": "carry",
+      "mainTrait": {
+        "name": "Vermis",
+        "description": "Landing 3 Basic Attacks on an Enemy Hero within 2.5s deals 3% (+0.25% per Level) Max Health as Physical Damage On-Hit.",
+        "scaling": {
+          "requiredBasicAttacks": 3,
+          "window": 2.5,
+          "maxHealthDamage": 3,
+          "maxHealthDamagePerLevel": 0.25
+        },
+        "effects": [
+          "basic-attack",
+          "hero-hit",
+          "max-health-damage",
+          "physical-damage",
+          "on-hit"
+        ],
+        "tags": [
+          "anti-tank",
+          "on-hit",
+          "basic-attack"
+        ]
+      },
+      "minorBlessing1": [
+        {
+          "id": "vermis-serration",
+          "name": "Serration",
+          "description": "Vermis deals an additional (+3.5% Target's Missing Health) Damage.",
+          "scaling": {
+            "targetMissingHealthDamage": 3.5
+          },
+          "effects": [
+            "missing-health-damage",
+            "bonus-damage"
+          ],
+          "tags": [
+            "execute-pressure",
+            "burst",
+            "anti-tank"
+          ]
+        },
+        {
+          "id": "vermis-crush",
+          "name": "Crush",
+          "description": "Immobilizing an Enemy Hero deals 8% Max Health as Bonus Physical Damage. 8s CD per Target.",
+          "scaling": {
+            "maxHealthDamage": 8,
+            "cooldownPerTarget": 8
+          },
+          "effects": [
+            "immobilize",
+            "max-health-damage",
+            "physical-damage",
+            "per-target-cooldown"
+          ],
+          "tags": [
+            "cc-synergy",
+            "anti-tank",
+            "burst"
+          ]
+        },
+        {
+          "id": "vermis-mechadrive",
+          "name": "Mechadrive",
+          "description": "Basic Attacks reduce your Secondary Ability's Current Cooldown by 10% On-Hit. Reduced to 5% against Non-Heroes.",
+          "scaling": {
+            "secondaryCooldownReduction": 10,
+            "nonHeroCooldownReduction": 5
+          },
+          "effects": [
+            "basic-attack",
+            "secondary-cooldown-reduction",
+            "on-hit"
+          ],
+          "tags": [
+            "cooldown-reduction",
+            "basic-attack",
+            "tempo"
+          ]
+        }
+      ],
+      "minorBlessing2": [
+        {
+          "id": "vermis-melting-point",
+          "name": "Melting Point",
+          "description": "Deal +10% Damage to Targets with more than 125 Physical Armor.",
+          "scaling": {
+            "damageIncrease": 10,
+            "physicalArmorThreshold": 125
+          },
+          "effects": [
+            "armor-threshold",
+            "damage-amplification",
+            "anti-tank"
+          ],
+          "tags": [
+            "frontline-shred",
+            "anti-tank",
+            "damage-amplification"
+          ]
+        },
+        {
+          "id": "vermis-breach",
+          "name": "Breach",
+          "description": "Ultimate Damage reduces an Enemy Hero's Physical Armor by 35% for 4s.",
+          "scaling": {
+            "physicalArmorReduction": 35,
+            "duration": 4
+          },
+          "effects": [
+            "ultimate-damage",
+            "physical-armor-reduction",
+            "hero-hit"
+          ],
+          "tags": [
+            "armor-shred",
+            "ultimate-synergy",
+            "teamfight"
+          ]
+        },
+        {
+          "id": "vermis-sub-surface",
+          "name": "Sub-Surface",
+          "description": "Take 7% less Damage from AoE Abilities.",
+          "scaling": {
+            "aoeDamageReduction": 7
+          },
+          "effects": [
+            "aoe-damage-reduction",
+            "anti-burst"
+          ],
+          "tags": [
+            "anti-burst",
+            "survivability",
+            "teamfight"
+          ]
+        }
+      ],
+      "tags": [
+        "anti-tank",
+        "on-hit",
+        "basic-attack",
+        "carry"
+      ],
+      "answers": [
+        "frontline",
+        "tank-heavy",
+        "extended-fights",
+        "armor-stacking"
+      ],
+      "sourceRef": "harbinger-carry-eternals-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided Harbinger carry Eternal manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "weald",
+      "name": "Weald",
+      "category": "harbinger",
+      "role": "carry",
+      "mainTrait": {
+        "name": "Weald",
+        "description": "Damaging an Enemy Hero below 30% Health fires 4 (+1 per 25% Bonus Attack Speed) Projectiles, each dealing 8 (+1 per Level) True Damage and applying On-Hit effects at 30% Effectiveness. 8s CD per Hero.",
+        "scaling": {
+          "targetHealthThreshold": 30,
+          "projectiles": 4,
+          "bonusAttackSpeedStep": 25,
+          "projectilesPerBonusAttackSpeedStep": 1,
+          "trueDamage": 8,
+          "trueDamagePerLevel": 1,
+          "onHitEffectiveness": 30,
+          "cooldownPerHero": 8
+        },
+        "effects": [
+          "low-health-target",
+          "projectiles",
+          "true-damage",
+          "on-hit",
+          "per-hero-cooldown"
+        ],
+        "tags": [
+          "execute-pressure",
+          "on-hit",
+          "true-damage"
+        ]
+      },
+      "minorBlessing1": [
+        {
+          "id": "weald-forage",
+          "name": "Forage",
+          "description": "Gain 4 additional Gold and 4 additional XP per Minion or Monster Kill.",
+          "scaling": {
+            "bonusGold": 4,
+            "bonusXp": 4
+          },
+          "effects": [
+            "minion-kill",
+            "monster-kill",
+            "bonus-gold",
+            "bonus-xp"
+          ],
+          "tags": [
+            "scaling",
+            "farm",
+            "economy"
+          ]
+        },
+        {
+          "id": "weald-dryads-boon",
+          "name": "Dryad's Boon",
+          "description": "Basic Attacks decrease Basic Ability Cooldowns by 0.2s On-Hit.",
+          "scaling": {
+            "basicAbilityCooldownReduction": 0.2
+          },
+          "effects": [
+            "basic-attack",
+            "basic-ability-cooldown-reduction",
+            "on-hit"
+          ],
+          "tags": [
+            "cooldown-reduction",
+            "basic-attack",
+            "tempo"
+          ]
+        },
+        {
+          "id": "weald-natural-resistance",
+          "name": "Natural Resistance",
+          "description": "Cleanse all Crowd Control and gain +400 Tenacity when below 25% Maximum Health. Cleanse: 20s CD.",
+          "scaling": {
+            "healthThreshold": 25,
+            "tenacity": 400
+          },
+          "cooldown": 20,
+          "effects": [
+            "cleanse",
+            "crowd-control",
+            "tenacity",
+            "low-health"
+          ],
+          "tags": [
+            "cleanse",
+            "anti-disruption",
+            "survivability"
+          ]
+        }
+      ],
+      "minorBlessing2": [
+        {
+          "id": "weald-wind-rider",
+          "name": "Wind-Rider",
+          "description": "Gain 20% Total Attack Speed for 4s after using a Dash, Leap, Teleport or upon leaving Stealth.",
+          "scaling": {
+            "totalAttackSpeed": 20,
+            "duration": 4
+          },
+          "effects": [
+            "dash",
+            "leap",
+            "teleport",
+            "stealth-exit",
+            "attack-speed"
+          ],
+          "tags": [
+            "mobility-synergy",
+            "attack-speed",
+            "dueling"
+          ]
+        },
+        {
+          "id": "weald-barkskin",
+          "name": "Barkskin",
+          "description": "Deal 3 (+1 per Level) Physical Damage to Enemy Heroes that Basic Attack you. This Damage triggers On-Hit Effects at 50% effectiveness.",
+          "scaling": {
+            "damage": 3,
+            "damagePerLevel": 1,
+            "onHitEffectiveness": 50
+          },
+          "effects": [
+            "basic-attack-retaliation",
+            "physical-damage",
+            "on-hit"
+          ],
+          "tags": [
+            "retaliation",
+            "dueling",
+            "anti-basic-attack"
+          ]
+        },
+        {
+          "id": "weald-taproot",
+          "name": "Taproot",
+          "description": "Basic Attacks restore 1 (+8% Bonus Physical Power) Health On-Hit.",
+          "scaling": {
+            "healthOnHit": 1,
+            "bonusPhysicalPowerRatio": 0.08
+          },
+          "effects": [
+            "basic-attack",
+            "health-on-hit",
+            "physical-power-scaling"
+          ],
+          "tags": [
+            "sustain",
+            "basic-attack",
+            "dueling"
+          ]
+        }
+      ],
+      "tags": [
+        "execute-pressure",
+        "on-hit",
+        "scaling",
+        "carry"
+      ],
+      "answers": [
+        "low-health-targets",
+        "basic-attack-duels",
+        "scaling",
+        "cc-heavy"
+      ],
+      "sourceRef": "harbinger-carry-eternals-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided Harbinger carry Eternal manual entry on 2026-08-22."
+      }
+    }
+  ]
+}

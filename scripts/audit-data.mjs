@@ -4,6 +4,7 @@ import { readFile } from "node:fs/promises";
 const dataset = JSON.parse(await readFile(new URL("../data/predecessor/heroes.json", import.meta.url), "utf8"));
 const crestDataset = JSON.parse(await readFile(new URL("../data/predecessor/crests.json", import.meta.url), "utf8"));
 const itemDataset = JSON.parse(await readFile(new URL("../data/predecessor/items.json", import.meta.url), "utf8"));
+const eternalDataset = JSON.parse(await readFile(new URL("../data/predecessor/eternals.json", import.meta.url), "utf8"));
 const errors = [];
 const warnings = [];
 const validRoles = new Set(dataset.validRoles);
@@ -163,12 +164,47 @@ for (const item of itemDataset.items) {
   if (!validItemStatuses.has(item.verification?.status)) errors.push(`[items.verification.status] ${item.name} has invalid verification status: ${item.verification?.status}.`);
 }
 
+const validEternalCategories = new Set(eternalDataset.validEternalCategories);
+const validEternalRoles = new Set(eternalDataset.validEternalRoles);
+const validEternalStatuses = new Set(eternalDataset.validVerificationStatuses);
+const seenEternalIds = new Set();
+const seenEternalNames = new Set();
+const eternalCategoryCoverage = Object.fromEntries(eternalDataset.validEternalCategories.map((category) => [category, 0]));
+const eternalRoleCoverage = Object.fromEntries(eternalDataset.validEternalRoles.map((role) => [role, 0]));
+
+for (const eternal of eternalDataset.eternals) {
+  if (!eternal.id) errors.push(`[eternals.id] ${eternal.name ?? "Unknown"} is missing a stable id.`);
+  if (!eternal.name) errors.push(`[eternals.name] ${eternal.id ?? "Unknown"} is missing a display name.`);
+
+  if (seenEternalIds.has(eternal.id)) errors.push(`[eternals.id] duplicate id: ${eternal.id}.`);
+  if (seenEternalNames.has(eternal.name)) errors.push(`[eternals.name] duplicate Eternal name: ${eternal.name}.`);
+  seenEternalIds.add(eternal.id);
+  seenEternalNames.add(eternal.name);
+
+  if (!validEternalCategories.has(eternal.category)) errors.push(`[eternals.category] ${eternal.name} has invalid Eternal category: ${eternal.category}.`);
+  else eternalCategoryCoverage[eternal.category] += 1;
+
+  if (!validEternalRoles.has(eternal.role)) errors.push(`[eternals.role] ${eternal.name} has invalid Eternal role: ${eternal.role}.`);
+  else eternalRoleCoverage[eternal.role] += 1;
+
+  validateEternalTrait(eternal.name, "mainTrait", eternal.mainTrait);
+  validateEternalBlessingGroup(eternal.name, "minorBlessing1", eternal.minorBlessing1);
+  validateEternalBlessingGroup(eternal.name, "minorBlessing2", eternal.minorBlessing2);
+
+  if (!Array.isArray(eternal.tags) || eternal.tags.length === 0) warnings.push(`[eternals.tags] ${eternal.name} has no recommendation tags.`);
+  if (!Array.isArray(eternal.answers) || eternal.answers.length === 0) warnings.push(`[eternals.answers] ${eternal.name} has no draft answer tags.`);
+  if (!eternal.sourceRef) errors.push(`[eternals.sourceRef] ${eternal.name} is missing sourceRef.`);
+  if (!validEternalStatuses.has(eternal.verification?.status)) errors.push(`[eternals.verification.status] ${eternal.name} has invalid verification status: ${eternal.verification?.status}.`);
+}
+
 assert.equal(dataset.schemaVersion, 2, "heroes.json schemaVersion must be 2");
 assert.ok(dataset.heroes.length > 0, "heroes.json must contain heroes");
 assert.equal(crestDataset.schemaVersion, 1, "crests.json schemaVersion must be 1");
 assert.ok(crestDataset.crests.length > 0, "crests.json must contain crests");
 assert.equal(itemDataset.schemaVersion, 1, "items.json schemaVersion must be 1");
 assert.ok(itemDataset.items.length > 0, "items.json must contain items");
+assert.equal(eternalDataset.schemaVersion, 1, "eternals.json schemaVersion must be 1");
+assert.ok(eternalDataset.eternals.length > 0, "eternals.json must contain Eternals");
 
 const fullyVerified = dataset.heroes.filter((hero) =>
   hero.verification?.roleStatus === "source-backed" &&
@@ -187,6 +223,9 @@ console.log(`Crests: ${crestDataset.crests.length}`);
 console.log(`Crest role coverage: ${Object.entries(crestRoleCoverage).map(([role, count]) => `${role}=${count}`).join(", ")}`);
 console.log(`Items: ${itemDataset.items.length}`);
 console.log(`Item role coverage: ${Object.entries(itemRoleCoverage).map(([role, count]) => `${role}=${count}`).join(", ")}`);
+console.log(`Eternals: ${eternalDataset.eternals.length}`);
+console.log(`Eternal category coverage: ${Object.entries(eternalCategoryCoverage).map(([category, count]) => `${category}=${count}`).join(", ")}`);
+console.log(`Eternal role coverage: ${Object.entries(eternalRoleCoverage).map(([role, count]) => `${role}=${count}`).join(", ")}`);
 console.log(`Warnings: ${warnings.length}`);
 console.log(`Errors: ${errors.length}`);
 
@@ -200,4 +239,37 @@ if (errors.length) {
   console.error("\nErrors");
   errors.forEach((error) => console.error(`- ${error}`));
   process.exit(1);
+}
+
+function validateEternalBlessingGroup(eternalName, field, blessings) {
+  if (!Array.isArray(blessings)) {
+    errors.push(`[eternals.${field}] ${eternalName} blessing group must be an array.`);
+    return;
+  }
+  if (blessings.length !== 3) errors.push(`[eternals.${field}] ${eternalName} blessing group must contain exactly 3 options.`);
+
+  const seenBlessings = new Set();
+  for (const blessing of blessings) {
+    if (!blessing.id) errors.push(`[eternals.${field}] ${eternalName} has a blessing missing a stable id.`);
+    if (seenBlessings.has(blessing.id)) errors.push(`[eternals.${field}] ${eternalName} has duplicate blessing id: ${blessing.id}.`);
+    seenBlessings.add(blessing.id);
+    validateEternalTrait(eternalName, field, blessing);
+  }
+}
+
+function validateEternalTrait(eternalName, field, trait) {
+  if (!trait) {
+    errors.push(`[eternals.${field}] ${eternalName} trait is missing.`);
+    return;
+  }
+  if (!trait.name) errors.push(`[eternals.${field}] ${eternalName} trait is missing a name.`);
+  if (!trait.description) errors.push(`[eternals.${field}] ${eternalName} ${trait.name || "trait"} is missing description text.`);
+  if (trait.cooldown !== undefined && (!Number.isFinite(trait.cooldown) || trait.cooldown <= 0)) {
+    errors.push(`[eternals.${field}.cooldown] ${eternalName} ${trait.name || "trait"} cooldown must be a positive number.`);
+  }
+  for (const [scale, value] of Object.entries(trait.scaling ?? {})) {
+    if (!Number.isFinite(value) || value < 0) errors.push(`[eternals.${field}.scaling.${scale}] ${eternalName} scaling value must be a non-negative number.`);
+  }
+  if (!Array.isArray(trait.effects) || trait.effects.length === 0) warnings.push(`[eternals.${field}] ${eternalName} ${trait.name || "trait"} has no effect tags.`);
+  if (!Array.isArray(trait.tags) || trait.tags.length === 0) warnings.push(`[eternals.${field}] ${eternalName} ${trait.name || "trait"} has no recommendation tags.`);
 }
