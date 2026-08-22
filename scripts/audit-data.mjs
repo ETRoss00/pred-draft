@@ -26,6 +26,9 @@ for (const hero of dataset.heroes) {
     if (!validRoles.has(role)) errors.push(`[roles] ${hero.name} has invalid role: ${role}.`);
     else roleCoverage[role] += 1;
   }
+  for (const role of hero.flexRoles ?? []) {
+    if (!validRoles.has(role)) errors.push(`[flexRoles] ${hero.name} has invalid flex role: ${role}.`);
+  }
 
   if (!validDamage.has(hero.damage)) errors.push(`[damage] ${hero.name} has invalid damage type: ${hero.damage}.`);
   if (!validRange.has(hero.range)) errors.push(`[range] ${hero.name} has invalid range type: ${hero.range}.`);

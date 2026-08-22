@@ -31,6 +31,7 @@ export type Hero = {
   id: string;
   name: string;
   roles: Role[];
+  flexRoles?: Role[];
   classes?: string[];
   damage: Damage;
   range: RangeType;
@@ -111,6 +112,9 @@ export function auditHeroData(dataset: HeroDataSet = data): AuditReport {
     hero.roles.forEach((role) => {
       if (!validRoles.has(role)) errors.push(issue("error", hero.name, "roles", `Invalid role: ${role}.`));
       else roleCoverage[role as Role] += 1;
+    });
+    hero.flexRoles?.forEach((role) => {
+      if (!validRoles.has(role)) errors.push(issue("error", hero.name, "flexRoles", `Invalid flex role: ${role}.`));
     });
 
     if (!validDamage.has(hero.damage)) errors.push(issue("error", hero.name, "damage", `Invalid damage type: ${hero.damage}.`));
