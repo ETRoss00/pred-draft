@@ -2,7 +2,7 @@ import crestData from "./crests.json";
 
 import type { VerificationStatus } from "./audit";
 
-export type CrestRole = "carry" | "support";
+export type CrestRole = "carry" | "support" | "mage";
 
 export type CrestActive = {
   name: string;
@@ -32,9 +32,12 @@ export type Crest = {
     lifesteal?: number;
     omnivamp?: number;
     maxHealth?: number;
+    maxMana?: number;
     healthRegeneration?: number;
     manaRegeneration?: number;
     gold?: number;
+    abilityHaste?: number;
+    magicalLifesteal?: number;
   };
   active?: CrestActive;
   passives?: CrestPassive[];
