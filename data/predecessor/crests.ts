@@ -2,7 +2,7 @@ import crestData from "./crests.json";
 
 import type { VerificationStatus } from "./audit";
 
-export type CrestRole = "carry" | "support" | "mage";
+export type CrestRole = "carry" | "support" | "mage" | "tank";
 
 export type CrestActive = {
   name: string;
@@ -28,6 +28,8 @@ export type Crest = {
   stats: {
     physicalPower?: number;
     magicalPower?: number;
+    physicalArmor?: number;
+    magicalArmor?: number;
     attackSpeed?: number;
     lifesteal?: number;
     omnivamp?: number;

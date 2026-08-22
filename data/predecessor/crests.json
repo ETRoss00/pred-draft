@@ -18,12 +18,18 @@
       "label": "Mage crests manual entry",
       "url": null,
       "use": "User-provided in-game text covering mage crest purpose, stats, active names, cooldowns, effects, and passives."
+    },
+    "tank-crests-manual-entry-2026-08-22": {
+      "label": "Tank crests manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering tank crest purpose, stats, active names, cooldowns, and effects."
     }
   },
   "validCrestRoles": [
     "carry",
     "support",
-    "mage"
+    "mage",
+    "tank"
   ],
   "validVerificationStatuses": [
     "source-backed",
@@ -1065,6 +1071,189 @@
       "verification": {
         "status": "source-backed",
         "notes": "Fully encoded from user-provided mage crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "nyr-warboots",
+      "name": "Nyr Warboots",
+      "role": "tank",
+      "purpose": "Mobility",
+      "stats": {
+        "maxHealth": 180,
+        "physicalArmor": 8,
+        "magicalArmor": 5
+      },
+      "active": {
+        "name": "Resilience",
+        "cooldown": 75,
+        "description": "Gain 50% Decaying Movement Speed for 5s. Regenerate 3% of your Max Health every second for 5s.",
+        "duration": 5,
+        "scaling": {
+          "movementSpeed": 50,
+          "maxHealthRegenPerSecond": 3
+        },
+        "effects": [
+          "movement-speed",
+          "health-regeneration",
+          "mobility",
+          "sustain"
+        ]
+      },
+      "tags": [
+        "mobility",
+        "sustain",
+        "engage",
+        "disengage"
+      ],
+      "answers": [
+        "poke",
+        "kite",
+        "engage",
+        "attrition"
+      ],
+      "sourceRef": "tank-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided tank crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "razorback",
+      "name": "Razorback",
+      "role": "tank",
+      "purpose": "Reflect Damage",
+      "stats": {
+        "maxHealth": 180,
+        "physicalArmor": 8,
+        "magicalArmor": 5
+      },
+      "active": {
+        "name": "Echidna",
+        "cooldown": 100,
+        "description": "Gain 20% Physical Armor and Magical Armor for 5s. Reflect 15% of Pre-Mitigated Damage received from Heroes as Damage.",
+        "duration": 5,
+        "scaling": {
+          "physicalArmorPercent": 20,
+          "magicalArmorPercent": 20,
+          "preMitigatedDamageReflect": 15
+        },
+        "effects": [
+          "armor-increase",
+          "damage-reflect",
+          "anti-burst",
+          "frontline"
+        ]
+      },
+      "tags": [
+        "reflect-damage",
+        "durability",
+        "frontline",
+        "anti-burst"
+      ],
+      "answers": [
+        "burst",
+        "sustained-dps",
+        "dive",
+        "focus-fire"
+      ],
+      "sourceRef": "tank-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided tank crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "saphirs-mantle",
+      "name": "Saphir's Mantle",
+      "role": "tank",
+      "purpose": "Sustained Durability",
+      "stats": {
+        "maxHealth": 180,
+        "physicalArmor": 8,
+        "magicalArmor": 5
+      },
+      "active": {
+        "name": "Atlas",
+        "cooldown": 75,
+        "description": "Increase your Size and Max Health by 10% for 6s. Deal 60 (+1.25% max health) Damage to nearby Heroes. After the duration, permanently increase your Max Health by 20% of the Damage dealt.",
+        "duration": 6,
+        "scaling": {
+          "sizeIncrease": 10,
+          "maxHealthIncrease": 10,
+          "damage": 60,
+          "maxHealthDamageRatio": 0.0125,
+          "permanentMaxHealthFromDamage": 20
+        },
+        "effects": [
+          "max-health-increase",
+          "size-increase",
+          "area-damage",
+          "permanent-health-scaling"
+        ]
+      },
+      "tags": [
+        "sustained-durability",
+        "health-scaling",
+        "frontline",
+        "area-damage"
+      ],
+      "answers": [
+        "frontline",
+        "long-fights",
+        "objective-control",
+        "attrition"
+      ],
+      "sourceRef": "tank-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided tank crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "gamma-gloop",
+      "name": "Gamma Gloop",
+      "role": "tank",
+      "purpose": "Mobility",
+      "stats": {
+        "maxHealth": 180,
+        "physicalArmor": 8,
+        "magicalArmor": 5
+      },
+      "active": {
+        "name": "Gob Glue",
+        "cooldown": 120,
+        "description": "Deal 80 (+3% max health) Damage in a 550u radius around you. Grounds Enemies hit for 1.5s. Create a field of Goo for 5s that Slows Enemies by 30%. If Gob Glue is activated while mid-air: Leap into the air in your current movement direction. Gob Glue's effects then trigger upon landing.",
+        "duration": 5,
+        "scaling": {
+          "damage": 80,
+          "maxHealthDamageRatio": 0.03,
+          "radius": 550,
+          "groundDuration": 1.5,
+          "slow": 30
+        },
+        "effects": [
+          "area-damage",
+          "ground",
+          "slow-field",
+          "air-cast-leap"
+        ]
+      },
+      "tags": [
+        "mobility",
+        "ground",
+        "zone-control",
+        "anti-dive"
+      ],
+      "answers": [
+        "mobility",
+        "dive",
+        "engage",
+        "zone-control"
+      ],
+      "sourceRef": "tank-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided tank crest manual entry on 2026-08-22."
       }
     }
   ]
