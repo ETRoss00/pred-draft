@@ -18,12 +18,18 @@
       "label": "Mage items manual entry",
       "url": null,
       "use": "User-provided in-game text covering mage item purpose, stats, passives, cooldowns, effects, and restrictions."
+    },
+    "tank-items-manual-entry-2026-08-22": {
+      "label": "Tank items manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering tank item purpose, stats, passives, cooldowns, effects, and restrictions."
     }
   },
   "validItemRoles": [
     "carry",
     "support",
-    "mage"
+    "mage",
+    "tank"
   ],
   "validVerificationStatuses": [
     "source-backed",
@@ -3686,6 +3692,1058 @@
       "verification": {
         "status": "source-backed",
         "notes": "Fully encoded from user-provided mage item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "flux-matrix",
+      "name": "Flux Matrix",
+      "role": "tank",
+      "purpose": "Offensive Aura",
+      "stats": {
+        "maxHealth": 300,
+        "magicalArmor": 45,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Unstable Shackles",
+          "description": "Nearby Enemy Heroes take 10% additional Magical Damage and have their Tenacity decreased by 50%.",
+          "scaling": {
+            "magicalDamageTakenIncrease": 10,
+            "tenacityReduction": 50
+          },
+          "effects": [
+            "offensive-aura",
+            "magical-damage-amplification",
+            "tenacity-reduction"
+          ]
+        }
+      ],
+      "tags": [
+        "offensive-aura",
+        "magical-damage-amp",
+        "tenacity-reduction",
+        "magical-armor"
+      ],
+      "answers": [
+        "magical-damage",
+        "hard-cc",
+        "teamfight",
+        "frontline"
+      ],
+      "sourceRef": "tank-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided tank item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "unbroken-will",
+      "name": "Unbroken Will",
+      "role": "tank",
+      "purpose": "Anti Disruption",
+      "stats": {
+        "maxHealth": 400,
+        "magicalArmor": 45,
+        "tenacity": 70
+      },
+      "passives": [
+        {
+          "name": "Undying",
+          "description": "On being Immobilized: Increase your Physical Armor by 25% for 2.5s. Increase your Magical Armor by 25% for 2.5s.",
+          "scaling": {
+            "physicalArmorIncrease": 25,
+            "magicalArmorIncrease": 25,
+            "duration": 2.5
+          },
+          "effects": [
+            "immobilized-trigger",
+            "physical-armor-percent",
+            "magical-armor-percent",
+            "anti-cc"
+          ]
+        }
+      ],
+      "tags": [
+        "anti-disruption",
+        "tenacity",
+        "armor-boost",
+        "magical-armor"
+      ],
+      "answers": [
+        "hard-cc",
+        "lockdown",
+        "pick",
+        "burst"
+      ],
+      "sourceRef": "tank-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided tank item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "fire-blossom",
+      "name": "Fire Blossom",
+      "role": "tank",
+      "purpose": "Area Damage",
+      "stats": {
+        "maxHealth": 350,
+        "physicalArmor": 50
+      },
+      "passives": [
+        {
+          "name": "Heatwave",
+          "description": "Burn nearby Enemy Units: Deals 15 (+0.7% max health) Damage each second.",
+          "scaling": {
+            "damagePerSecond": 15,
+            "maxHealthDamageRatio": 0.007
+          },
+          "effects": [
+            "area-damage",
+            "burn",
+            "max-health-scaling"
+          ]
+        },
+        {
+          "name": "Firestorm",
+          "description": "When Heatwave damages a Target: Deals 6.25% more damage each second, up to 50%. Resets after not damaging the Target for 2.5s.",
+          "scaling": {
+            "damageIncreasePerSecond": 6.25,
+            "maxDamageIncrease": 50,
+            "resetAfter": 2.5
+          },
+          "effects": [
+            "area-damage-ramp",
+            "damage-amplification",
+            "reset-window"
+          ]
+        }
+      ],
+      "tags": [
+        "area-damage",
+        "burn",
+        "physical-armor",
+        "waveclear"
+      ],
+      "answers": [
+        "melee-fights",
+        "clustered-enemies",
+        "waveclear",
+        "frontline"
+      ],
+      "sourceRef": "tank-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided tank item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "elafrost",
+      "name": "Elafrost",
+      "role": "tank",
+      "purpose": "Area Damage",
+      "stats": {
+        "maxHealth": 300,
+        "physicalArmor": 45,
+        "manaRegeneration": 125,
+        "abilityHaste": 15
+      },
+      "passives": [
+        {
+          "name": "Frostblade",
+          "cooldown": 1.5,
+          "description": "On Ability Cast: Empower your next Basic Attack within 4s. Deal 70 (+2% max health) Damage On-Hit around the Target. Slows by 35% for 1.25s. Damage is increased by 60% against Monsters.",
+          "scaling": {
+            "window": 4,
+            "damage": 70,
+            "maxHealthDamageRatio": 0.02,
+            "slow": 35,
+            "slowDuration": 1.25,
+            "monsterDamageIncrease": 60
+          },
+          "effects": [
+            "ability-cast",
+            "empowered-basic-attack",
+            "area-damage",
+            "slow"
+          ]
+        }
+      ],
+      "tags": [
+        "area-damage",
+        "spellblade",
+        "slow",
+        "monster-damage"
+      ],
+      "answers": [
+        "clustered-enemies",
+        "jungle-clear",
+        "melee-fights",
+        "objective-control"
+      ],
+      "sourceRef": "tank-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided tank item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "void-helm",
+      "name": "Void Helm",
+      "role": "tank",
+      "purpose": "Anti Magic",
+      "stats": {
+        "maxHealth": 400,
+        "magicalArmor": 45,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Abyssal Gift",
+          "description": "Heal 20% more from all sources.",
+          "scaling": {
+            "healingIncrease": 20
+          },
+          "effects": [
+            "healing-amplification",
+            "all-sources"
+          ]
+        }
+      ],
+      "tags": [
+        "anti-magic",
+        "healing-amplification",
+        "magical-armor",
+        "sustain"
+      ],
+      "answers": [
+        "magical-damage",
+        "poke",
+        "attrition",
+        "sustain"
+      ],
+      "sourceRef": "tank-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided tank item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "giants-ring",
+      "name": "Giant's Ring",
+      "role": "tank",
+      "purpose": "Reduced Cooldowns",
+      "stats": {
+        "maxHealth": 300,
+        "physicalArmor": 50,
+        "abilityHaste": 15
+      },
+      "passives": [
+        {
+          "name": "Retribution",
+          "cooldown": 0.5,
+          "description": "When hit by Basic Attacks: Reduce your Non-Ultimate Cooldowns by 0.25s.",
+          "scaling": {
+            "cooldownReduction": 0.25
+          },
+          "effects": [
+            "basic-attack-taken",
+            "cooldown-reduction",
+            "non-ultimate"
+          ]
+        },
+        {
+          "name": "Gigantism",
+          "cooldown": 30,
+          "description": "On casting your Ultimate: Gain 15% Hero Size. Mitigate 5% of damage taken. Double the effectiveness of Retribution for 6s.",
+          "scaling": {
+            "heroSize": 15,
+            "damageMitigation": 5,
+            "duration": 6
+          },
+          "effects": [
+            "ultimate-cast",
+            "size-increase",
+            "damage-mitigation",
+            "retribution-empower"
+          ]
+        }
+      ],
+      "tags": [
+        "cooldown-reduction",
+        "physical-armor",
+        "ultimate-synergy",
+        "anti-basic-attack"
+      ],
+      "answers": [
+        "basic-attack",
+        "frontline",
+        "long-fights",
+        "teamfight"
+      ],
+      "sourceRef": "tank-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided tank item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "catalytic-drive",
+      "name": "Catalytic Drive",
+      "role": "tank",
+      "purpose": "Scaling",
+      "stats": {
+        "maxHealth": 250,
+        "magicalArmor": 40,
+        "healthRegeneration": 80,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Deconstruct",
+          "cooldown": 15,
+          "description": "Against Minions & Small Monsters: Your next Basic Attack On-Hit Executes them. Deals 60 (+5% max health) Damage to nearby Enemies. Heals you for 30 (+3% max health). Grants you +8 bonus Gold.",
+          "scaling": {
+            "damage": 60,
+            "maxHealthDamageRatio": 0.05,
+            "healing": 30,
+            "maxHealthHealingRatio": 0.03,
+            "bonusGold": 8
+          },
+          "effects": [
+            "minion-execute",
+            "small-monster-execute",
+            "area-damage",
+            "gold"
+          ]
+        },
+        {
+          "name": "Converter",
+          "description": "Upon Executing 20 Units: Enter Base to Evolve this item into Cybernetic Drive.",
+          "scaling": {
+            "requiredExecutions": 20
+          },
+          "effects": [
+            "execute-stacking",
+            "evolve"
+          ]
+        }
+      ],
+      "tags": [
+        "scaling",
+        "evolve",
+        "waveclear",
+        "gold"
+      ],
+      "answers": [
+        "lane-pressure",
+        "jungle-clear",
+        "scaling"
+      ],
+      "sourceRef": "tank-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided tank item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "cybernetic-drive",
+      "name": "Cybernetic Drive",
+      "role": "tank",
+      "purpose": "Defense",
+      "stats": {
+        "maxHealth": 250,
+        "magicalArmor": 45,
+        "healthRegeneration": 100,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Lesser Deconstruct",
+          "cooldown": 15,
+          "description": "Against Minions & Small Monsters: Your next Basic Attack On-Hit Executes them. Deals 80 (+5% max health) Damage to nearby Enemies. Heals you for 30 (+3% max health).",
+          "scaling": {
+            "damage": 80,
+            "maxHealthDamageRatio": 0.05,
+            "healing": 30,
+            "maxHealthHealingRatio": 0.03
+          },
+          "effects": [
+            "minion-execute",
+            "small-monster-execute",
+            "area-damage",
+            "healing"
+          ]
+        },
+        {
+          "name": "Cybernetic Conversion",
+          "description": "Gain 12% Total Physical Armor. Gain 12% Total Magical Armor.",
+          "scaling": {
+            "totalPhysicalArmor": 12,
+            "totalMagicalArmor": 12
+          },
+          "effects": [
+            "physical-armor-percent",
+            "magical-armor-percent",
+            "defense"
+          ]
+        }
+      ],
+      "tags": [
+        "defense",
+        "armor-scaling",
+        "waveclear",
+        "health-regen"
+      ],
+      "answers": [
+        "frontline",
+        "mixed-damage",
+        "scaling"
+      ],
+      "sourceRef": "tank-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided tank item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "inquisition",
+      "name": "Inquisition",
+      "role": "tank",
+      "purpose": "Area Damage",
+      "stats": {
+        "maxHealth": 275,
+        "maxMana": 200,
+        "magicalArmor": 40,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Psywave",
+          "cooldown": 1.5,
+          "description": "On Ability Cast: Emit a wave of energy. Deals 65 (+1.5% max health) Damage to Enemies in the area. Damage is increased by 45% against Monsters.",
+          "scaling": {
+            "damage": 65,
+            "maxHealthDamageRatio": 0.015,
+            "monsterDamageIncrease": 45
+          },
+          "effects": [
+            "ability-cast",
+            "area-damage",
+            "monster-damage"
+          ]
+        }
+      ],
+      "tags": [
+        "area-damage",
+        "magical-armor",
+        "waveclear",
+        "ability-cast"
+      ],
+      "answers": [
+        "clustered-enemies",
+        "jungle-clear",
+        "objective-control"
+      ],
+      "sourceRef": "tank-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided tank item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "transference",
+      "name": "Transference",
+      "role": "tank",
+      "purpose": "Shielding",
+      "stats": {
+        "maxHealth": 200,
+        "physicalArmor": 40,
+        "magicalArmor": 35,
+        "healShieldPower": 10
+      },
+      "passives": [
+        {
+          "name": "Shield Transference",
+          "description": "Upon Shields expiring: 50% of its remaining value is restored as Health over 3s. Reduced to 25% for Ally Shields.",
+          "scaling": {
+            "selfShieldHealthRestore": 50,
+            "allyShieldHealthRestore": 25,
+            "duration": 3
+          },
+          "effects": [
+            "shield-expire",
+            "healing",
+            "ally-shield-reduction"
+          ]
+        },
+        {
+          "name": "Ionizing Charge",
+          "description": "While Shielded: Gain 8% Movement Speed. Gain 10% increased Armors.",
+          "scaling": {
+            "movementSpeed": 8,
+            "armorIncrease": 10
+          },
+          "effects": [
+            "while-shielded",
+            "movement-speed",
+            "armor-increase"
+          ]
+        }
+      ],
+      "tags": [
+        "shielding",
+        "healing",
+        "armor",
+        "mobility"
+      ],
+      "answers": [
+        "shield-comps",
+        "poke",
+        "burst",
+        "frontline"
+      ],
+      "sourceRef": "tank-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided tank item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "frostguard",
+      "name": "Frostguard",
+      "role": "tank",
+      "purpose": "Defense",
+      "stats": {
+        "maxHealth": 200,
+        "physicalArmor": 40,
+        "magicalArmor": 40
+      },
+      "passives": [
+        {
+          "name": "Chilling Presence",
+          "description": "On being near Enemy Heroes: Apply a stack of Stifle every 1s.",
+          "scaling": {
+            "stackInterval": 1
+          },
+          "effects": [
+            "near-enemy",
+            "stacking-debuff",
+            "stifle"
+          ]
+        },
+        {
+          "name": "Stifle",
+          "description": "On being hit by a Basic Attack: Reduce the Source's Attack Speed by 3.5% for 2.5s. Stacks up to 5 times.",
+          "scaling": {
+            "attackSpeedReductionPerStack": 3.5,
+            "duration": 2.5,
+            "maxStacks": 5
+          },
+          "effects": [
+            "basic-attack-taken",
+            "attack-speed-reduction",
+            "stacking-debuff"
+          ]
+        }
+      ],
+      "tags": [
+        "defense",
+        "anti-basic-attack",
+        "attack-speed-reduction",
+        "armor"
+      ],
+      "answers": [
+        "basic-attack",
+        "carry-threat",
+        "duelist",
+        "frontline"
+      ],
+      "sourceRef": "tank-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided tank item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "tainted-bastion",
+      "name": "Tainted Bastion",
+      "role": "tank",
+      "purpose": "Anti Heal",
+      "stats": {
+        "maxHealth": 250,
+        "magicalArmor": 45,
+        "healthRegeneration": 80,
+        "abilityHaste": 8
+      },
+      "passives": [
+        {
+          "name": "Blighted Veil",
+          "description": "On taking Magical Damage: Reduce the Source's Healing by 45% for 3s.",
+          "scaling": {
+            "antiHeal": 45,
+            "duration": 3
+          },
+          "effects": [
+            "magical-damage-taken",
+            "anti-heal"
+          ]
+        },
+        {
+          "name": "Colossus",
+          "description": "Mitigate 3.5% of damage taken. Doubled against Blighted Targets.",
+          "scaling": {
+            "damageMitigation": 3.5,
+            "blightedMultiplier": 2
+          },
+          "effects": [
+            "damage-mitigation",
+            "blighted-target-bonus"
+          ]
+        }
+      ],
+      "tags": [
+        "anti-heal",
+        "anti-magic",
+        "damage-mitigation",
+        "health-regen"
+      ],
+      "answers": [
+        "healing",
+        "magical-damage",
+        "sustain",
+        "lifesteal"
+      ],
+      "sourceRef": "tank-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided tank item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "tainted-guard",
+      "name": "Tainted Guard",
+      "role": "tank",
+      "purpose": "Anti Heal",
+      "stats": {
+        "maxHealth": 250,
+        "physicalArmor": 55,
+        "abilityHaste": 8
+      },
+      "passives": [
+        {
+          "name": "Blighted Thorns",
+          "description": "On being hit by a Basic Attack: Reduce the Source's Healing by 45% for 3s. Apply a Bleed dealing 30 (+30% physical armor) Damage over 3s.",
+          "scaling": {
+            "antiHeal": 45,
+            "duration": 3,
+            "bleedDamage": 30,
+            "physicalArmorRatio": 0.3
+          },
+          "effects": [
+            "basic-attack-taken",
+            "anti-heal",
+            "bleed",
+            "physical-armor-scaling"
+          ]
+        }
+      ],
+      "tags": [
+        "anti-heal",
+        "physical-armor",
+        "anti-basic-attack",
+        "bleed"
+      ],
+      "answers": [
+        "healing",
+        "lifesteal",
+        "basic-attack",
+        "carry-threat"
+      ],
+      "sourceRef": "tank-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided tank item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "stonewall",
+      "name": "Stonewall",
+      "role": "tank",
+      "purpose": "Defense",
+      "stats": {
+        "maxHealth": 275,
+        "physicalArmor": 70,
+        "healthRegeneration": 100
+      },
+      "passives": [
+        {
+          "name": "Bulwark",
+          "description": "Mitigate 5 (+5% physical armor)% of Physical Damage.",
+          "scaling": {
+            "basePhysicalDamageMitigation": 5,
+            "physicalArmorRatio": 0.05
+          },
+          "effects": [
+            "physical-damage-mitigation",
+            "physical-armor-scaling"
+          ]
+        }
+      ],
+      "tags": [
+        "defense",
+        "physical-armor",
+        "physical-mitigation",
+        "health-regen"
+      ],
+      "answers": [
+        "physical-damage",
+        "carry-threat",
+        "frontline"
+      ],
+      "sourceRef": "tank-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided tank item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "fist-of-razuul",
+      "name": "Fist Of Razuul",
+      "role": "tank",
+      "purpose": "Dueling",
+      "stats": {
+        "maxHealth": 550,
+        "abilityHaste": 20
+      },
+      "passives": [
+        {
+          "name": "Razuul's Might",
+          "description": "When dealing or receiving damage: For the next 3s, generate a stack each second. Upon reaching 4 stacks, Empower your next Basic Attack. Deals (+2.5% max health) bonus Damage, increased by 2x on Heroes & Monsters. Heal for 50% of bonus damage dealt.",
+          "scaling": {
+            "stackDuration": 3,
+            "requiredStacks": 4,
+            "maxHealthDamageRatio": 0.025,
+            "heroMonsterMultiplier": 2,
+            "healingFromBonusDamage": 50
+          },
+          "effects": [
+            "combat-stacks",
+            "empowered-basic-attack",
+            "max-health-damage",
+            "healing"
+          ]
+        },
+        {
+          "name": "Minion Crusher",
+          "description": "Deal 25% increased damage to Minions.",
+          "scaling": {
+            "minionDamageIncrease": 25
+          },
+          "effects": [
+            "minion-damage"
+          ]
+        }
+      ],
+      "tags": [
+        "dueling",
+        "health",
+        "sustain",
+        "minion-damage"
+      ],
+      "answers": [
+        "melee-fights",
+        "long-fights",
+        "lane-pressure"
+      ],
+      "sourceRef": "tank-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided tank item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "crystalline-cuirass",
+      "name": "Crystalline Cuirass",
+      "role": "tank",
+      "purpose": "Anti Magic",
+      "stats": {
+        "maxHealth": 300,
+        "magicalArmor": 60,
+        "movementSpeed": 3
+      },
+      "passives": [
+        {
+          "name": "Celestial Carapace",
+          "description": "On taking Magical Damage: Gain a stack of Celestite for 5s. Stacks up to 5 times. Stacks can only be gained once every 0.5s.",
+          "scaling": {
+            "duration": 5,
+            "maxStacks": 5,
+            "stackCooldown": 0.5
+          },
+          "effects": [
+            "magical-damage-taken",
+            "stacking-buff",
+            "magical-armor"
+          ]
+        },
+        {
+          "name": "Celestite",
+          "description": "Gain 5 Magical Armor per stack. At 5 stacks gain 12% Movement Speed.",
+          "scaling": {
+            "magicalArmorPerStack": 5,
+            "movementSpeedAtMaxStacks": 12
+          },
+          "effects": [
+            "magical-armor",
+            "movement-speed",
+            "stacking-buff"
+          ]
+        }
+      ],
+      "tags": [
+        "anti-magic",
+        "magical-armor",
+        "movement-speed",
+        "stacking"
+      ],
+      "answers": [
+        "magical-damage",
+        "poke",
+        "chase"
+      ],
+      "sourceRef": "tank-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided tank item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "raiment-of-renewal",
+      "name": "Raiment of Renewal",
+      "role": "tank",
+      "purpose": "Sustain",
+      "stats": {
+        "maxHealth": 700,
+        "healthRegeneration": 50,
+        "abilityHaste": 15,
+        "tenacity": 80
+      },
+      "passives": [
+        {
+          "name": "Regenerator",
+          "description": "While Out Of Combat: Regenerate 3% of your Missing Health each second.",
+          "scaling": {
+            "missingHealthRegenPerSecond": 3
+          },
+          "effects": [
+            "out-of-combat",
+            "missing-health-regeneration"
+          ]
+        },
+        {
+          "name": "Synthesis",
+          "description": "For each Level: Gain 5% additional Base Health Regen.",
+          "scaling": {
+            "baseHealthRegenPerLevel": 5
+          },
+          "effects": [
+            "level-scaling",
+            "base-health-regeneration"
+          ]
+        }
+      ],
+      "tags": [
+        "sustain",
+        "health",
+        "tenacity",
+        "out-of-combat"
+      ],
+      "answers": [
+        "poke",
+        "attrition",
+        "hard-cc",
+        "frontline"
+      ],
+      "sourceRef": "tank-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided tank item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "wardens-faith",
+      "name": "Warden's Faith",
+      "role": "tank",
+      "purpose": "Anti Crit",
+      "stats": {
+        "maxHealth": 300,
+        "physicalArmor": 70
+      },
+      "passives": [
+        {
+          "name": "Stalwart",
+          "description": "Take 20% less damage from Critical Strikes.",
+          "scaling": {
+            "criticalDamageReduction": 20
+          },
+          "effects": [
+            "anti-crit",
+            "critical-damage-reduction"
+          ]
+        },
+        {
+          "name": "Mocking Presence",
+          "description": "Nearby Enemy Heroes have their Physical Power reduced by 8%.",
+          "scaling": {
+            "physicalPowerReduction": 8
+          },
+          "effects": [
+            "aura",
+            "physical-power-reduction"
+          ]
+        }
+      ],
+      "tags": [
+        "anti-crit",
+        "physical-armor",
+        "physical-power-reduction",
+        "aura"
+      ],
+      "answers": [
+        "crit-build",
+        "carry-threat",
+        "physical-damage"
+      ],
+      "sourceRef": "tank-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided tank item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "vainglory",
+      "name": "Vainglory",
+      "role": "tank",
+      "purpose": "Defense",
+      "stats": {
+        "maxHealth": 200,
+        "physicalArmor": 45,
+        "magicalArmor": 35
+      },
+      "passives": [
+        {
+          "name": "Pride",
+          "cooldown": 0.5,
+          "description": "Upon dealing or taking Hero Damage: Gain a stack of Vanity for 4s. Each stack grants +0.5% increased Armors. Max Stacks: 10.",
+          "scaling": {
+            "duration": 4,
+            "armorIncreasePerStack": 0.5,
+            "maxStacks": 10
+          },
+          "effects": [
+            "hero-damage",
+            "damage-taken",
+            "stacking-buff",
+            "armor-increase"
+          ]
+        },
+        {
+          "name": "In Vain",
+          "description": "While at Max Vanity stacks: Gain an additional 10% increased Armors.",
+          "scaling": {
+            "armorIncreaseAtMaxStacks": 10
+          },
+          "effects": [
+            "max-stacks",
+            "armor-increase"
+          ]
+        }
+      ],
+      "tags": [
+        "defense",
+        "armor-stacking",
+        "mixed-armor",
+        "teamfight"
+      ],
+      "answers": [
+        "mixed-damage",
+        "long-fights",
+        "frontline"
+      ],
+      "sourceRef": "tank-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided tank item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "cursed-scroll",
+      "name": "Cursed Scroll",
+      "role": "tank",
+      "purpose": "Cursed",
+      "stats": {
+        "attackSpeed": 20,
+        "physicalArmor": 45,
+        "magicalArmor": 30,
+        "healthRegeneration": 150
+      },
+      "passives": [
+        {
+          "name": "Curse of Pain",
+          "description": "On Basic Attack: Deal 20 (+3.5% max health) Damage to yourself and the Enemy Target. This damage cannot hurt you below 35% Health.",
+          "scaling": {
+            "damage": 20,
+            "maxHealthDamageRatio": 0.035,
+            "selfDamageHealthFloor": 35
+          },
+          "effects": [
+            "basic-attack",
+            "self-damage",
+            "max-health-damage",
+            "cursed"
+          ]
+        },
+        {
+          "name": "Forbidden Art",
+          "description": "For every 100 Health you are missing: Gain +2% Attack Speed. Gain +25% Base Health Regen.",
+          "scaling": {
+            "missingHealthStep": 100,
+            "attackSpeedPerStep": 2,
+            "baseHealthRegenPerStep": 25
+          },
+          "effects": [
+            "missing-health-scaling",
+            "attack-speed",
+            "base-health-regeneration",
+            "cursed"
+          ]
+        }
+      ],
+      "restrictions": [
+        {
+          "description": "Limited to 1 Cursed Item.",
+          "effects": [
+            "limited-cursed-item"
+          ]
+        }
+      ],
+      "tags": [
+        "cursed",
+        "attack-speed",
+        "armor",
+        "health-regen"
+      ],
+      "answers": [
+        "dueling",
+        "long-fights",
+        "basic-attack"
+      ],
+      "sourceRef": "tank-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided tank item manual entry on 2026-08-22."
       }
     }
   ]
