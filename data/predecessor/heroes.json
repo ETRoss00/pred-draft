@@ -36,6 +36,10 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
     },
+    "yurei-game-client-manual-entry-2026-08-22": {
+      "label": "Yurei game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Yurei roles, class, ratings, ability text, and augments."
     "yin-game-client-manual-entry-2026-08-22": {
       "label": "Yin game-client manual entry",
       "url": null,
@@ -15495,35 +15499,355 @@
       "id": "yurei",
       "name": "Yurei",
       "roles": [
-        "jungle",
-        "offlane"
+        "jungle"
       ],
-      "damage": "magical",
+      "classes": [
+        "assassin"
+      ],
+      "damage": "physical",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 4,
+        "abilityPower": 8,
+        "durability": 3,
+        "mobility": 6
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Kokoroken",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 60.0/62.2/64.6/67.1/69.7/72.4/75.2/78.2/81.3/84.5/87.8/91.2/94.8/98.5/102.3/106.2/110.2/114.4 (+65% physical power) physical damage.",
+          "scaling": {
+            "damage": [
+              60,
+              62.2,
+              64.6,
+              67.1,
+              69.7,
+              72.4,
+              75.2,
+              78.2,
+              81.3,
+              84.5,
+              87.8,
+              91.2,
+              94.8,
+              98.5,
+              102.3,
+              106.2,
+              110.2,
+              114.4
+            ],
+            "physicalPowerRatio": 0.65
+          },
+          "effects": [
+            "melee-basic",
+            "physical-damage"
+          ],
+          "sourceRef": "yurei-game-client-manual-entry-2026-08-22"
+        },
+        {
+          "slot": "passive",
+          "name": "Hallowed Strikes",
+          "kind": "passive",
+          "damageType": "physical",
+          "description": "Casting an ability grants you ranged (850u) basic attacks and 30.0/30.0/30.0/30.0/30.0/36.0/36.0/36.0/36.0/36.0/42.0/42.0/42.0/42.0/42.0/48.0/48.0/48.0% attack speed for the next two basic attacks. These attacks deal (+8% physical power) bonus physical damage and bounce 2 times, dealing 15.0/15.0/15.0/15.0/15.0/20.0/20.0/20.0/20.0/20.0/25.0/25.0/25.0/25.0/25.0/30.0/30.0/30.0% damage to targets hit.",
+          "scaling": {
+            "range": 850,
+            "empoweredBasicAttacks": 2,
+            "attackSpeedPercent": [
+              30,
+              30,
+              30,
+              30,
+              30,
+              36,
+              36,
+              36,
+              36,
+              36,
+              42,
+              42,
+              42,
+              42,
+              42,
+              48,
+              48,
+              48
+            ],
+            "bonusPhysicalPowerRatio": 0.08,
+            "bounces": 2,
+            "bounceDamagePercent": [
+              15,
+              15,
+              15,
+              15,
+              15,
+              20,
+              20,
+              20,
+              20,
+              20,
+              25,
+              25,
+              25,
+              25,
+              25,
+              30,
+              30,
+              30
+            ]
+          },
+          "effects": [
+            "ability-cast-trigger",
+            "ranged-basic",
+            "attack-speed",
+            "bonus-damage",
+            "bounce",
+            "jungle-clear",
+            "sustained-dps"
+          ],
+          "sourceRef": "yurei-game-client-manual-entry-2026-08-22"
+        },
+        {
+          "slot": "primary",
+          "name": "Anima Burst",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Perform a spinning kick that deals 70.0/90.0/110.0/130.0/150.0 (+70% physical power) physical damage to nearby enemies and apply Soul Rip to them for 4s. If cast in-air, you will additionaly leap upwards in your current movement direction. Heal 20.0/35.0/50.0/65.0/80.0 (+75% physical power) health, increased by 0-50% based on missing health if an Enemy Hero or Monster is hit.",
+          "cooldown": [
+            13,
+            13,
+            13,
+            13,
+            13
+          ],
+          "scaling": {
+            "damage": [
+              70,
+              90,
+              110,
+              130,
+              150
+            ],
+            "physicalPowerRatio": 0.7,
+            "soulRipDuration": 4,
+            "healing": [
+              20,
+              35,
+              50,
+              65,
+              80
+            ],
+            "healingPhysicalPowerRatio": 0.75,
+            "missingHealthHealingIncreaseMaxPercent": 50
+          },
+          "effects": [
+            "area-damage",
+            "physical-damage",
+            "soul-rip",
+            "healing",
+            "missing-health-scaling",
+            "air-cast",
+            "vertical-mobility",
+            "jungle-sustain"
+          ],
+          "sourceRef": "yurei-game-client-manual-entry-2026-08-22"
+        },
+        {
+          "slot": "secondary",
+          "name": "Severance",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Rush forwards, dealing 55.0/75.0/95.0/115.0/135.0 (+115% physical power) physical damage to targets hit. Colliding with a target affected by Soul Rip consumes it to reset the cooldown of Severance and tear their Soul from the target for 4s. Souls linger around their hosts with 8% of their maximum health and share any damage dealt to them with their host. Consuming Soul Rip with a Soul still active will refresh its health.",
+          "cooldown": [
+            20,
+            19,
+            18,
+            17,
+            16
+          ],
+          "scaling": {
+            "damage": [
+              55,
+              75,
+              95,
+              115,
+              135
+            ],
+            "physicalPowerRatio": 1.15,
+            "soulDuration": 4,
+            "soulMaxHealthPercent": 8
+          },
+          "effects": [
+            "dash",
+            "mobility",
+            "physical-damage",
+            "soul-rip-consume",
+            "cooldown-reset",
+            "soul-tear",
+            "damage-share",
+            "burst",
+            "chase"
+          ],
+          "sourceRef": "yurei-game-client-manual-entry-2026-08-22"
+        },
+        {
+          "slot": "alternate",
+          "name": "Whispering Echoes",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Launch three projectiles that explode, each dealing 30.0/40.0/50.0/60.0/70.0 (+35% physical power) damage to targets hit and apply Soul Rip to them for 4s.",
+          "cooldown": [
+            11,
+            10.5,
+            10,
+            9.5,
+            9
+          ],
+          "scaling": {
+            "projectiles": 3,
+            "damagePerProjectile": [
+              30,
+              40,
+              50,
+              60,
+              70
+            ],
+            "physicalPowerRatioPerProjectile": 0.35,
+            "soulRipDuration": 4
+          },
+          "effects": [
+            "ranged",
+            "multi-projectile",
+            "explosion",
+            "physical-damage",
+            "soul-rip",
+            "poke",
+            "setup"
+          ],
+          "sourceRef": "yurei-game-client-manual-entry-2026-08-22"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Soulstorm",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Channel for 1.5s, dealing 75.0/125.0/175.0 (+50% physical power) physical damage to nearby enemies and applying Soul Rip to them. At the end of the duration, pull all targets towards you, tear their spirits and strike downwards, dealing 130.0/215.0/300.0 (+80% physical power) physical damage and reset the cooldown of Severence.",
+          "cooldown": [
+            140,
+            125,
+            110
+          ],
+          "scaling": {
+            "channelDuration": 1.5,
+            "channelDamage": [
+              75,
+              125,
+              175
+            ],
+            "channelPhysicalPowerRatio": 0.5,
+            "strikeDamage": [
+              130,
+              215,
+              300
+            ],
+            "strikePhysicalPowerRatio": 0.8
+          },
+          "effects": [
+            "channel",
+            "area-damage",
+            "physical-damage",
+            "soul-rip",
+            "pull",
+            "displacement",
+            "soul-tear",
+            "cooldown-reset",
+            "teamfight",
+            "burst"
+          ],
+          "sourceRef": "yurei-game-client-manual-entry-2026-08-22"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Hallowed Reverberation",
+          "category": "range",
+          "description": "Hallowed Strikes gains 150 additional range and bounces 2 more times.",
+          "tags": [
+            "hallowed-strikes",
+            "range-increase",
+            "additional-bounces",
+            "jungle-clear",
+            "sustained-dps"
+          ],
+          "sourceRef": "yurei-game-client-manual-entry-2026-08-22"
+        },
+        {
+          "name": "Soul Weaver",
+          "category": "durability",
+          "description": "Soul Storm grants 20% (+5% per Hero Hit) Damage Reduction while active, and its Cooldown is 10% lower.",
+          "tags": [
+            "soulstorm",
+            "damage-reduction",
+            "hero-hit-scaling",
+            "cooldown-reduction",
+            "teamfight"
+          ],
+          "sourceRef": "yurei-game-client-manual-entry-2026-08-22"
+        },
+        {
+          "name": "Ephemeral Surge",
+          "category": "utility",
+          "description": "Destroying Torn Spirits restores 3% of your Maximum Mana and grants 25% Decaying Movement Speed over 2.5s.",
+          "tags": [
+            "torn-spirit",
+            "mana-restore",
+            "movement-speed",
+            "soul-tear",
+            "tempo"
+          ],
+          "sourceRef": "yurei-game-client-manual-entry-2026-08-22"
+        }
+      ],
       "threats": [
         "dive",
         "burst",
-        "sustain"
+        "sustain",
+        "soul-rip",
+        "mobility",
+        "jungle-clear",
+        "pick"
       ],
       "answers": [
         "mobility",
         "burst",
-        "anti-burst"
+        "anti-burst",
+        "sustain",
+        "chase",
+        "teamfight",
+        "pick"
       ],
       "weaknesses": [
         "anti-heal",
-        "hard-cc"
+        "hard-cc",
+        "burst-vulnerable",
+        "anti-mobility",
+        "cooldown-reliant"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "yurei-game-client-manual-entry-2026-08-22",
+        "roles": "yurei-game-client-manual-entry-2026-08-22",
+        "kit": "yurei-game-client-manual-entry-2026-08-22",
+        "augments": "yurei-game-client-manual-entry-2026-08-22"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-22. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
