@@ -19,6 +19,11 @@
       "url": null,
       "use": "Draft-engine tags created for MVP behavior only; not source-backed yet."
     },
+    "flex-role-manual-entry-2026-08-22": {
+      "label": "Flex role manual entry",
+      "url": null,
+      "use": "User-provided list of non-primary flex roles to surface as off-role draft options."
+    },
     "argus-game-client-screenshots-2026-08-02": {
       "label": "Argus game-client screenshots",
       "url": null,
@@ -300,6 +305,8 @@
         "support",
         "offlane"
       ],
+      "flexRoles": [
+        "jungle"
       "classes": [
         "tank"
       ],
@@ -6572,6 +6579,11 @@
           "sourceRef": "kwang-game-client-manual-entry-2026-08-16"
         }
       ],
+      "flexRoles": [
+        "support"
+      ],
+      "damage": "magical",
+      "range": "melee",
       "threats": [
         "engage",
         "frontline",
@@ -8479,6 +8491,11 @@
           "sourceRef": "murdock-game-client-manual-entry-2026-08-16"
         }
       ],
+      "flexRoles": [
+        "support"
+      ],
+      "damage": "magical",
+      "range": "ranged",
       "threats": [
         "sustained-dps",
         "pick",
@@ -8889,6 +8906,17 @@
       "id": "narbash",
       "name": "Narbash",
       "roles": [
+        "carry"
+      ],
+      "flexRoles": [
+        "midlane"
+      ],
+      "damage": "mixed",
+      "range": "ranged",
+      "threats": [
+        "sustained-dps",
+        "poke",
+        "objective-control"
         "support"
       ],
       "classes": [
@@ -9542,6 +9570,10 @@
       "id": "phase",
       "name": "Phase",
       "roles": [
+        "midlane"
+      ],
+      "flexRoles": [
+        "offlane"
         "support"
       ],
       "classes": [
@@ -9880,6 +9912,12 @@
       "id": "rampage",
       "name": "Rampage",
       "roles": [
+        "midlane"
+      ],
+      "flexRoles": [
+        "support",
+        "offlane",
+        "jungle"
         "jungle"
       ],
       "classes": [
@@ -10473,6 +10511,11 @@
           "sourceRef": "renna-game-client-manual-entry-2026-08-16"
         }
       ],
+      "flexRoles": [
+        "offlane"
+      ],
+      "damage": "physical",
+      "range": "melee",
       "threats": [
         "poke",
         "zone-control",
@@ -10866,6 +10909,8 @@
         "support",
         "jungle"
       ],
+      "flexRoles": [
+        "support"
       "classes": [
         "tank"
       ],
@@ -11870,6 +11915,11 @@
           "sourceRef": "serath-game-client-manual-entry-2026-08-16"
         }
       ],
+      "flexRoles": [
+        "offlane"
+      ],
+      "damage": "magical",
+      "range": "ranged",
       "threats": [
         "dive",
         "sustained-dps",
@@ -11915,6 +11965,13 @@
       "id": "sevarog",
       "name": "Sevarog",
       "roles": [
+        "support"
+      ],
+      "flexRoles": [
+        "offlane",
+        "jungle"
+      ],
+      "damage": "physical",
         "offlane",
         "jungle"
       ],
@@ -12899,6 +12956,26 @@
       "roles": [
         "carry"
       ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "rampage",
+      "name": "Rampage",
+      "roles": [
+        "jungle"
+      ],
+      "flexRoles": [
+        "offlane"
       "classes": [
         "carry"
       ],
@@ -13167,6 +13244,11 @@
           "sourceRef": "sparrow-game-client-manual-entry-2026-08-18"
         }
       ],
+      "flexRoles": [
+        "support"
+      ],
+      "damage": "magical",
+      "range": "ranged",
       "threats": [
         "sustained-dps",
         "scaling",
@@ -13494,6 +13576,11 @@
           "sourceRef": "steel-game-client-manual-entry-2026-08-18"
         }
       ],
+      "flexRoles": [
+        "jungle"
+      ],
+      "damage": "magical",
+      "range": "melee",
       "threats": [
         "engage",
         "frontline",
@@ -14785,6 +14872,11 @@
           "sourceRef": "wraith-game-client-manual-entry-2026-08-20"
         }
       ],
+      "flexRoles": [
+        "jungle"
+      ],
+      "damage": "physical",
+      "range": "melee",
       "threats": [
         "pick",
         "poke",
@@ -14841,6 +14933,37 @@
         "durability": 3,
         "mobility": 10
       },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "the-fey",
+      "name": "The Fey",
+      "roles": [
+        "midlane"
+      ],
+      "flexRoles": [
+        "support"
+      ],
+      "damage": "magical",
+      "range": "ranged",
+      "threats": [
+        "zone-control",
+        "poke",
+        "engage"
+      ],
+      "answers": [
+        "zone-control",
+        "waveclear",
+        "anti-engage"
+      ],
+      "weaknesses": [
+        "dive",
+        "low-mobility"
       "abilities": [
         {
           "slot": "basic",
@@ -15183,6 +15306,8 @@
       "roles": [
         "jungle"
       ],
+      "flexRoles": [
+        "offlane"
       "classes": [
         "carry"
       ],
@@ -15509,6 +15634,8 @@
       "roles": [
         "jungle"
       ],
+      "flexRoles": [
+        "offlane"
       "classes": [
         "assassin"
       ],
@@ -15779,6 +15906,26 @@
           "sourceRef": "yurei-game-client-manual-entry-2026-08-22"
         }
       ],
+      "sourceRefs": {
+        "roster": "official-hero-gallery",
+        "roles": "needs-source-review",
+        "kit": "prototype-kit-taxonomy"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "needs-review",
+        "kitStatus": "prototype",
+        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+      }
+    },
+    {
+      "id": "yurei",
+      "name": "Yurei",
+      "roles": [
+        "jungle"
+      ],
+      "flexRoles": [
+        "offlane"
       "augments": [
         {
           "name": "Hallowed Reverberation",
