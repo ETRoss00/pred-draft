@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 
 const dataset = JSON.parse(await readFile(new URL("../data/predecessor/heroes.json", import.meta.url), "utf8"));
 const crestDataset = JSON.parse(await readFile(new URL("../data/predecessor/crests.json", import.meta.url), "utf8"));
+const itemDataset = JSON.parse(await readFile(new URL("../data/predecessor/items.json", import.meta.url), "utf8"));
 const errors = [];
 const warnings = [];
 const validRoles = new Set(dataset.validRoles);
@@ -120,10 +121,57 @@ for (const crest of crestDataset.crests) {
   if (!validCrestStatuses.has(crest.verification?.status)) errors.push(`[crests.verification.status] ${crest.name} has invalid verification status: ${crest.verification?.status}.`);
 }
 
+const validItemRoles = new Set(itemDataset.validItemRoles);
+const validItemStatuses = new Set(itemDataset.validVerificationStatuses);
+const seenItemIds = new Set();
+const seenItemNames = new Set();
+const itemRoleCoverage = Object.fromEntries(itemDataset.validItemRoles.map((role) => [role, 0]));
+
+for (const item of itemDataset.items) {
+  if (!item.id) errors.push(`[items.id] ${item.name ?? "Unknown"} is missing a stable id.`);
+  if (!item.name) errors.push(`[items.name] ${item.id ?? "Unknown"} is missing a display name.`);
+
+  if (seenItemIds.has(item.id)) errors.push(`[items.id] duplicate id: ${item.id}.`);
+  if (seenItemNames.has(item.name)) errors.push(`[items.name] duplicate item name: ${item.name}.`);
+  seenItemIds.add(item.id);
+  seenItemNames.add(item.name);
+
+  if (!validItemRoles.has(item.role)) errors.push(`[items.role] ${item.name} has invalid item role: ${item.role}.`);
+  else itemRoleCoverage[item.role] += 1;
+
+  if (!item.purpose) errors.push(`[items.purpose] ${item.name} is missing a purpose.`);
+  if (!item.stats || !Object.keys(item.stats).length) warnings.push(`[items.stats] ${item.name} has no stat block.`);
+  for (const [stat, value] of Object.entries(item.stats ?? {})) {
+    if (!Number.isFinite(value) || value < 0) errors.push(`[items.stats.${stat}] ${item.name} stat must be a non-negative number.`);
+  }
+
+  if (!Array.isArray(item.passives) || item.passives.length === 0) errors.push(`[items.passives] ${item.name} source-backed item is missing passive details.`);
+  for (const passive of item.passives ?? []) {
+    if (!passive.name) errors.push(`[items.passives] ${item.name} has a passive missing a name.`);
+    if (!passive.description) errors.push(`[items.passives] ${item.name} ${passive.name || "passive"} is missing description text.`);
+    if (passive.cooldown !== undefined && (!Number.isFinite(passive.cooldown) || passive.cooldown <= 0)) {
+      errors.push(`[items.passives.cooldown] ${item.name} ${passive.name || "passive"} cooldown must be a positive number.`);
+    }
+    if (!Array.isArray(passive.effects) || passive.effects.length === 0) warnings.push(`[items.passives] ${item.name} ${passive.name || "passive"} has no effect tags.`);
+  }
+
+  for (const restriction of item.restrictions ?? []) {
+    if (!restriction.description) errors.push(`[items.restrictions] ${item.name} has a restriction missing description text.`);
+    if (!Array.isArray(restriction.effects) || restriction.effects.length === 0) warnings.push(`[items.restrictions] ${item.name} restriction has no effect tags.`);
+  }
+
+  if (!Array.isArray(item.tags) || item.tags.length === 0) warnings.push(`[items.tags] ${item.name} has no recommendation tags.`);
+  if (!Array.isArray(item.answers) || item.answers.length === 0) warnings.push(`[items.answers] ${item.name} has no draft answer tags.`);
+  if (!item.sourceRef) errors.push(`[items.sourceRef] ${item.name} is missing sourceRef.`);
+  if (!validItemStatuses.has(item.verification?.status)) errors.push(`[items.verification.status] ${item.name} has invalid verification status: ${item.verification?.status}.`);
+}
+
 assert.equal(dataset.schemaVersion, 2, "heroes.json schemaVersion must be 2");
 assert.ok(dataset.heroes.length > 0, "heroes.json must contain heroes");
 assert.equal(crestDataset.schemaVersion, 1, "crests.json schemaVersion must be 1");
 assert.ok(crestDataset.crests.length > 0, "crests.json must contain crests");
+assert.equal(itemDataset.schemaVersion, 1, "items.json schemaVersion must be 1");
+assert.ok(itemDataset.items.length > 0, "items.json must contain items");
 
 const fullyVerified = dataset.heroes.filter((hero) =>
   hero.verification?.roleStatus === "source-backed" &&
@@ -140,6 +188,8 @@ console.log(`Fully verified heroes: ${fullyVerified.length}`);
 console.log(`Role coverage: ${Object.entries(roleCoverage).map(([role, count]) => `${role}=${count}`).join(", ")}`);
 console.log(`Crests: ${crestDataset.crests.length}`);
 console.log(`Crest role coverage: ${Object.entries(crestRoleCoverage).map(([role, count]) => `${role}=${count}`).join(", ")}`);
+console.log(`Items: ${itemDataset.items.length}`);
+console.log(`Item role coverage: ${Object.entries(itemRoleCoverage).map(([role, count]) => `${role}=${count}`).join(", ")}`);
 console.log(`Warnings: ${warnings.length}`);
 console.log(`Errors: ${errors.length}`);
 

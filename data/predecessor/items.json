@@ -1,0 +1,1096 @@
+{
+  "schemaVersion": 1,
+  "game": "Predecessor",
+  "patch": "unknown-current",
+  "lastManualReview": null,
+  "sources": {
+    "carry-items-manual-entry-2026-08-22": {
+      "label": "Carry items manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering carry item purpose, stats, passives, cooldowns, effects, and restrictions."
+    }
+  },
+  "validItemRoles": [
+    "carry"
+  ],
+  "validVerificationStatuses": [
+    "source-backed",
+    "needs-review",
+    "prototype"
+  ],
+  "items": [
+    {
+      "id": "nuclear-rounds",
+      "name": "Nuclear Rounds",
+      "role": "carry",
+      "purpose": "Damage Amplification",
+      "stats": {
+        "attackSpeed": 55,
+        "criticalChance": 20,
+        "abilityHaste": 20
+      },
+      "passives": [
+        {
+          "name": "Havoc",
+          "description": "Based on Critical Strike Chance: Increase Ability Damage by 10-20%.",
+          "scaling": {
+            "abilityDamageMin": 10,
+            "abilityDamageMax": 20
+          },
+          "effects": [
+            "ability-damage-amplification",
+            "critical-chance-scaling"
+          ]
+        }
+      ],
+      "tags": [
+        "damage-amplification",
+        "crit-scaling",
+        "ability-damage",
+        "haste"
+      ],
+      "answers": [
+        "burst-window",
+        "hybrid-carry",
+        "ability-carry"
+      ],
+      "sourceRef": "carry-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "onixian-quiver",
+      "name": "Onixian Quiver",
+      "role": "carry",
+      "purpose": "Dueling",
+      "stats": {
+        "attackSpeed": 55,
+        "criticalChance": 20,
+        "lifesteal": 7
+      },
+      "passives": [
+        {
+          "name": "Multishot",
+          "description": "On Ranged Basic Attack: Fire 2 additional projectiles. Each deals 8-30% (increases with Range) (physical power) Damage. Can Critically Strike and apply Lifesteal.",
+          "scaling": {
+            "additionalProjectiles": 2,
+            "physicalPowerDamageMin": 8,
+            "physicalPowerDamageMax": 30
+          },
+          "effects": [
+            "ranged-basic-attack",
+            "additional-projectiles",
+            "critical-strike",
+            "lifesteal"
+          ]
+        },
+        {
+          "name": "Onixia",
+          "description": "On Melee Heroes only: Increase your Total Critical Strike Chance by 25%. Gain 1% Damage Mitigation for every 10% Missing Health.",
+          "scaling": {
+            "meleeCriticalChance": 25,
+            "damageMitigationPerMissingHealthStep": 1,
+            "missingHealthStep": 10
+          },
+          "effects": [
+            "melee-only",
+            "critical-chance",
+            "damage-mitigation",
+            "missing-health-scaling"
+          ]
+        }
+      ],
+      "tags": [
+        "dueling",
+        "multi-hit",
+        "crit",
+        "lifesteal"
+      ],
+      "answers": [
+        "single-target",
+        "long-fights",
+        "duelist",
+        "ranged-dps"
+      ],
+      "sourceRef": "carry-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "spectra",
+      "name": "Spectra",
+      "role": "carry",
+      "purpose": "On-hit",
+      "stats": {
+        "attackSpeed": 50,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Radiant Strikes",
+          "description": "On Basic Attacks: Deal 20 Damage On-Hit. Reduces the Cooldown of Prisma by 3s. Applies a stack of Prism to Heroes & Monsters for 2.5s, stacking up to 3 times. If the Target has 3 Prism stacks on them, trigger Prisma.",
+          "scaling": {
+            "onHitDamage": 20,
+            "prismaCooldownReduction": 3,
+            "prismDuration": 2.5,
+            "maxPrismStacks": 3
+          },
+          "effects": [
+            "on-hit",
+            "cooldown-reduction",
+            "stacking-debuff",
+            "proc-trigger"
+          ]
+        },
+        {
+          "name": "Prisma",
+          "cooldown": 10,
+          "description": "Deals 30 (+4 per Level) Damage. Increases from 1x-2.5x based on Target's Missing Health.",
+          "scaling": {
+            "damage": 30,
+            "damagePerLevel": 4,
+            "missingHealthMultiplierMin": 1,
+            "missingHealthMultiplierMax": 2.5
+          },
+          "effects": [
+            "proc-damage",
+            "level-scaling",
+            "missing-health-scaling"
+          ]
+        }
+      ],
+      "tags": [
+        "on-hit",
+        "attack-speed",
+        "missing-health-damage",
+        "proc"
+      ],
+      "answers": [
+        "frontline",
+        "long-fights",
+        "cleanup"
+      ],
+      "sourceRef": "carry-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "ashbringer",
+      "name": "Ashbringer",
+      "role": "carry",
+      "purpose": "Reduced Cooldowns",
+      "stats": {
+        "physicalPower": 45,
+        "attackSpeed": 25,
+        "criticalChance": 20,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Chrono Strikes",
+          "description": "On Successful Basic Attack: Decrease current Non-Ultimate Cooldowns by 8% On-Hit. Reduced to 4% against Non-Heroes. Only triggers once per ability. Critical Strikes grant 1.5x the cooldown reduction.",
+          "scaling": {
+            "cooldownReductionHero": 8,
+            "cooldownReductionNonHero": 4,
+            "criticalCooldownReductionMultiplier": 1.5
+          },
+          "effects": [
+            "basic-attack",
+            "cooldown-reduction",
+            "critical-scaling",
+            "non-ultimate"
+          ]
+        }
+      ],
+      "tags": [
+        "cooldown-reduction",
+        "crit",
+        "ability-uptime",
+        "attack-speed"
+      ],
+      "answers": [
+        "cooldown-reliant",
+        "long-fights",
+        "skirmish"
+      ],
+      "sourceRef": "carry-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "necrosis",
+      "name": "Necrosis",
+      "role": "carry",
+      "purpose": "Ultimate Damage",
+      "stats": {
+        "physicalPower": 40,
+        "attackSpeed": 35,
+        "criticalChance": 20
+      },
+      "passives": [
+        {
+          "name": "Necro's Edge",
+          "description": "Gain 25 Ultimate Haste.",
+          "scaling": {
+            "ultimateHaste": 25
+          },
+          "effects": [
+            "ultimate-haste"
+          ]
+        },
+        {
+          "name": "Matter Disruptor",
+          "description": "Your Ultimate Ability deals 15% more damage.",
+          "scaling": {
+            "ultimateDamageAmplification": 15
+          },
+          "effects": [
+            "ultimate-damage-amplification"
+          ]
+        }
+      ],
+      "tags": [
+        "ultimate-damage",
+        "ultimate-haste",
+        "crit",
+        "attack-speed"
+      ],
+      "answers": [
+        "ultimate-reliant",
+        "burst-window",
+        "teamfight"
+      ],
+      "sourceRef": "carry-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "dust-devil",
+      "name": "Dust Devil",
+      "role": "carry",
+      "purpose": "Mobility",
+      "stats": {
+        "physicalPower": 30,
+        "attackSpeed": 30,
+        "criticalChance": 20,
+        "movementSpeed": 4
+      },
+      "passives": [
+        {
+          "name": "Menace",
+          "description": "On Basic Attacking Heroes: Gain 3% Attack Speed for 3s. Stacks up to 5 times. At 5 stacks gain 10% Movement Speed. Critical Strikes grant 2 stacks.",
+          "scaling": {
+            "attackSpeedPerStack": 3,
+            "duration": 3,
+            "maxStacks": 5,
+            "movementSpeedAtMaxStacks": 10,
+            "criticalStrikeStacks": 2
+          },
+          "effects": [
+            "basic-attack",
+            "attack-speed-stacking",
+            "movement-speed",
+            "critical-scaling"
+          ]
+        }
+      ],
+      "tags": [
+        "mobility",
+        "attack-speed",
+        "crit",
+        "kiting"
+      ],
+      "answers": [
+        "dive",
+        "kite",
+        "chase",
+        "skirmish"
+      ],
+      "sourceRef": "carry-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "equinox",
+      "name": "Equinox",
+      "role": "carry",
+      "purpose": "Sustain",
+      "stats": {
+        "physicalPower": 40,
+        "attackSpeed": 30,
+        "criticalChance": 20,
+        "tenacity": 80
+      },
+      "passives": [
+        {
+          "name": "Adamance",
+          "cooldown": 90,
+          "description": "On going below 40% Health: Gain a 350-750 Shield for 4s. Shield size increases with Level.",
+          "scaling": {
+            "healthThreshold": 40,
+            "shieldMin": 350,
+            "shieldMax": 750,
+            "duration": 4
+          },
+          "effects": [
+            "low-health-trigger",
+            "shield",
+            "level-scaling",
+            "survivability"
+          ]
+        }
+      ],
+      "tags": [
+        "sustain",
+        "shield",
+        "anti-burst",
+        "tenacity"
+      ],
+      "answers": [
+        "burst",
+        "dive",
+        "hard-cc",
+        "all-in"
+      ],
+      "sourceRef": "carry-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "storm-breaker",
+      "name": "Storm Breaker",
+      "role": "carry",
+      "purpose": "Area Damage",
+      "stats": {
+        "physicalPower": 40,
+        "attackSpeed": 30
+      },
+      "passives": [
+        {
+          "name": "Electric Momentum",
+          "description": "While moving or landing Basic Attacks: Generate stacks of Momentum. At 100 stacks empower your next Basic Attack On-Hit. Release a bolt of lightning that chains to 7 Targets. Deal 70 (+20% physical power) Damage. Applies On-Hit effects.",
+          "scaling": {
+            "requiredMomentum": 100,
+            "chainTargets": 7,
+            "damage": 70,
+            "physicalPowerRatio": 0.2
+          },
+          "effects": [
+            "momentum",
+            "empowered-basic-attack",
+            "chain-lightning",
+            "on-hit"
+          ]
+        }
+      ],
+      "tags": [
+        "area-damage",
+        "waveclear",
+        "on-hit",
+        "chain-damage"
+      ],
+      "answers": [
+        "clustered-enemies",
+        "waveclear",
+        "objective-control"
+      ],
+      "sourceRef": "carry-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "tainted-rounds",
+      "name": "Tainted Rounds",
+      "role": "carry",
+      "purpose": "Anti Heal",
+      "stats": {
+        "physicalPower": 35,
+        "attackSpeed": 30,
+        "criticalChance": 20
+      },
+      "passives": [
+        {
+          "name": "Blighted Strikes",
+          "description": "On Successful Basic Attacks: Reduce the Target's Healing by 45% for 3s. Deal (+10% physical power) (+20% critical chance) Damage On-Hit. Increases by up to 100% as the Target's Health decreases.",
+          "scaling": {
+            "antiHeal": 45,
+            "duration": 3,
+            "physicalPowerRatio": 0.1,
+            "criticalChanceRatio": 0.2,
+            "missingHealthDamageIncreaseMax": 100
+          },
+          "effects": [
+            "basic-attack",
+            "anti-heal",
+            "on-hit",
+            "missing-health-scaling"
+          ]
+        }
+      ],
+      "tags": [
+        "anti-heal",
+        "on-hit",
+        "crit",
+        "attack-speed"
+      ],
+      "answers": [
+        "healing",
+        "lifesteal",
+        "sustain",
+        "frontline"
+      ],
+      "sourceRef": "carry-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "plasma-blade",
+      "name": "Plasma Blade",
+      "role": "carry",
+      "purpose": "Offense",
+      "stats": {
+        "physicalPower": 35,
+        "magicalPower": 45,
+        "attackSpeed": 30,
+        "criticalChance": 20
+      },
+      "passives": [
+        {
+          "name": "Vibro Cutter",
+          "description": "On Basic Attacking Heroes: Gain 4% Critical Strike Chance for 3s. Stacks up to 5 times.",
+          "scaling": {
+            "criticalChancePerStack": 4,
+            "duration": 3,
+            "maxStacks": 5
+          },
+          "effects": [
+            "basic-attack",
+            "critical-chance-stacking",
+            "hybrid-stats"
+          ]
+        }
+      ],
+      "tags": [
+        "offense",
+        "hybrid",
+        "crit-stacking",
+        "attack-speed"
+      ],
+      "answers": [
+        "extended-trades",
+        "hybrid-carry",
+        "duelist"
+      ],
+      "sourceRef": "carry-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "ruination",
+      "name": "Ruination",
+      "role": "carry",
+      "purpose": "Damage Over Time",
+      "stats": {
+        "physicalPower": 70,
+        "criticalChance": 20,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Spirit Bleed",
+          "cooldown": 15,
+          "description": "Upon successful On-Hit Attack: Apply a bleed that drains Mana by 30 (+8% Target's Max Mana) over 4s. Deals True Damage equal to 80% of the Mana Drained. Damaging the Target with an Ability while Spirit Bleed is active will refresh its duration.",
+          "scaling": {
+            "manaDrain": 30,
+            "targetMaxManaRatio": 0.08,
+            "duration": 4,
+            "trueDamageFromManaDrained": 80
+          },
+          "effects": [
+            "on-hit",
+            "damage-over-time",
+            "mana-drain",
+            "true-damage"
+          ]
+        }
+      ],
+      "tags": [
+        "damage-over-time",
+        "mana-drain",
+        "true-damage",
+        "crit"
+      ],
+      "answers": [
+        "mana-users",
+        "long-fights",
+        "frontline",
+        "attrition"
+      ],
+      "sourceRef": "carry-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "lightning-hawk",
+      "name": "Lightning Hawk",
+      "role": "carry",
+      "purpose": "Poke",
+      "stats": {
+        "physicalPower": 55,
+        "attackSpeed": 25,
+        "criticalChance": 20
+      },
+      "passives": [
+        {
+          "name": "Chilling Momentum",
+          "description": "While moving or landing Basic Attacks: Generate stacks of Momentum. At 100 stacks empower your next Basic Attack On-Hit. Deal 40 (+20% physical power) Damage. Slows by 20% for 0.75s.",
+          "scaling": {
+            "requiredMomentum": 100,
+            "damage": 40,
+            "physicalPowerRatio": 0.2,
+            "slow": 20,
+            "slowDuration": 0.75
+          },
+          "effects": [
+            "momentum",
+            "empowered-basic-attack",
+            "on-hit",
+            "slow"
+          ]
+        }
+      ],
+      "tags": [
+        "poke",
+        "slow",
+        "crit",
+        "chase"
+      ],
+      "answers": [
+        "kite",
+        "low-mobility",
+        "chase",
+        "pick"
+      ],
+      "sourceRef": "carry-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "viper",
+      "name": "Viper",
+      "role": "carry",
+      "purpose": "Physical Shred",
+      "stats": {
+        "physicalPower": 35,
+        "attackSpeed": 30,
+        "physicalPenetration": 8
+      },
+      "passives": [
+        {
+          "name": "Corrode",
+          "description": "On damaging a Hero: Reduce their Physical Armor by 4.5% for 3s. Stacks up to 6 times. At 6 stacks they become Eroded.",
+          "scaling": {
+            "physicalArmorReduction": 4.5,
+            "duration": 3,
+            "maxStacks": 6
+          },
+          "effects": [
+            "hero-damage",
+            "physical-armor-shred",
+            "stacking-debuff",
+            "eroded"
+          ]
+        },
+        {
+          "name": "Diligence",
+          "description": "Against Eroded Heroes: Deal 10% increased On-Hit and Ability damage.",
+          "scaling": {
+            "onHitAndAbilityDamageIncrease": 10
+          },
+          "effects": [
+            "eroded-target",
+            "on-hit-damage-amplification",
+            "ability-damage-amplification"
+          ]
+        }
+      ],
+      "tags": [
+        "physical-shred",
+        "armor-reduction",
+        "attack-speed",
+        "damage-amplification"
+      ],
+      "answers": [
+        "frontline",
+        "armor",
+        "tanks",
+        "long-fights"
+      ],
+      "sourceRef": "carry-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "resolution",
+      "name": "Resolution",
+      "role": "carry",
+      "purpose": "Scaling Mana",
+      "stats": {
+        "physicalPower": 40,
+        "attackSpeed": 20,
+        "physicalPenetration": 9,
+        "maxMana": 350
+      },
+      "passives": [
+        {
+          "name": "Darksteel",
+          "description": "On Successful Basic Attacks: Deal (+2.5% max mana) Damage On-Hit.",
+          "scaling": {
+            "maxManaDamageRatio": 0.025
+          },
+          "effects": [
+            "basic-attack",
+            "on-hit",
+            "max-mana-scaling"
+          ]
+        },
+        {
+          "name": "Potent Font",
+          "description": "On Killing any Unit: Gain 5 Max Mana. Camp Leaders grant 15. Stacks up to 400. At 400, gain (+2.5% max mana) Physical Power.",
+          "scaling": {
+            "maxManaPerUnitKill": 5,
+            "maxManaPerCampLeader": 15,
+            "maxStacks": 400,
+            "physicalPowerMaxManaRatio": 0.025
+          },
+          "effects": [
+            "unit-kill",
+            "max-mana-stacking",
+            "camp-leader-bonus",
+            "physical-power-scaling"
+          ]
+        }
+      ],
+      "tags": [
+        "scaling-mana",
+        "on-hit",
+        "stacking",
+        "physical-penetration"
+      ],
+      "answers": [
+        "scaling",
+        "long-fights",
+        "mana-scaling"
+      ],
+      "sourceRef": "carry-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "sky-splitter",
+      "name": "Sky Splitter",
+      "role": "carry",
+      "purpose": "Anti Heal",
+      "stats": {
+        "physicalPower": 35,
+        "attackSpeed": 30,
+        "lifesteal": 7
+      },
+      "passives": [
+        {
+          "name": "Rend",
+          "description": "On Successful Basic Attacks: Deal 5% of Target's Current Health as Damage On-Hit. Reduced to 3.5% for Ranged Heroes. Minimum of 12 Damage.",
+          "scaling": {
+            "currentHealthDamage": 5,
+            "rangedCurrentHealthDamage": 3.5,
+            "minimumDamage": 12
+          },
+          "effects": [
+            "basic-attack",
+            "on-hit",
+            "current-health-damage",
+            "ranged-reduction"
+          ]
+        }
+      ],
+      "tags": [
+        "anti-tank",
+        "current-health-damage",
+        "on-hit",
+        "lifesteal"
+      ],
+      "answers": [
+        "frontline",
+        "tanks",
+        "high-health",
+        "long-fights"
+      ],
+      "sourceRef": "carry-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry item manual entry on 2026-08-22. User-provided purpose says Anti Heal; encoded effects reflect the supplied current-health damage text."
+      }
+    },
+    {
+      "id": "demolisher",
+      "name": "Demolisher",
+      "role": "carry",
+      "purpose": "Anti Tank",
+      "stats": {
+        "physicalPower": 45,
+        "criticalChance": 20
+      },
+      "passives": [
+        {
+          "name": "Puncture",
+          "description": "Ignore 25% of Physical Armor.",
+          "scaling": {
+            "physicalArmorIgnore": 25
+          },
+          "effects": [
+            "physical-armor-ignore"
+          ]
+        },
+        {
+          "name": "Trauma",
+          "description": "Additionally, your Basic Attacks and Critical Strikes ignore 30% of Bonus Physical Armor.",
+          "scaling": {
+            "bonusPhysicalArmorIgnore": 30
+          },
+          "effects": [
+            "basic-attack",
+            "critical-strike",
+            "bonus-physical-armor-ignore"
+          ]
+        }
+      ],
+      "tags": [
+        "anti-tank",
+        "armor-ignore",
+        "crit",
+        "frontline-shred"
+      ],
+      "answers": [
+        "frontline",
+        "armor",
+        "tanks",
+        "durability"
+      ],
+      "sourceRef": "carry-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "vanquisher",
+      "name": "Vanquisher",
+      "role": "carry",
+      "purpose": "Burst",
+      "stats": {
+        "physicalPower": 50,
+        "physicalPenetration": 12,
+        "criticalChance": 20
+      },
+      "passives": [
+        {
+          "name": "Annihilate",
+          "description": "On taking a Hero below 5% Health: Execute them.",
+          "scaling": {
+            "executeThreshold": 5
+          },
+          "effects": [
+            "execute",
+            "low-health-threshold",
+            "hero-only"
+          ]
+        }
+      ],
+      "tags": [
+        "burst",
+        "execute",
+        "physical-penetration",
+        "crit"
+      ],
+      "answers": [
+        "squishy",
+        "cleanup",
+        "low-health-targets",
+        "burst-window"
+      ],
+      "sourceRef": "carry-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "solaris",
+      "name": "Solaris",
+      "role": "carry",
+      "purpose": "On-Hit",
+      "stats": {
+        "physicalPower": 50,
+        "criticalChance": 20,
+        "maxMana": 350,
+        "abilityHaste": 15
+      },
+      "passives": [
+        {
+          "name": "Solarblade",
+          "cooldown": 1.5,
+          "description": "On Ability Cast: Empower your next Basic Attack within 4s. Deal 45 (+35% physical power) Damage On-Hit. Can Critically Strike. Heals you for 50% of damage dealt.",
+          "scaling": {
+            "window": 4,
+            "damage": 45,
+            "physicalPowerRatio": 0.35,
+            "healingFromDamage": 50
+          },
+          "effects": [
+            "ability-cast",
+            "empowered-basic-attack",
+            "on-hit",
+            "healing"
+          ]
+        }
+      ],
+      "tags": [
+        "on-hit",
+        "spellblade",
+        "healing",
+        "crit"
+      ],
+      "answers": [
+        "skirmish",
+        "ability-carry",
+        "sustain",
+        "burst-window"
+      ],
+      "sourceRef": "carry-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "scattershot",
+      "name": "Scattershot",
+      "role": "carry",
+      "purpose": "Area Damage",
+      "stats": {
+        "physicalPower": 50,
+        "attackSpeed": 25,
+        "criticalChance": 20
+      },
+      "passives": [
+        {
+          "name": "Scatter",
+          "cooldown": 0.65,
+          "description": "Upon successful On-Hit Attack: Summon 2 projectiles from the Target. These home towards the closest Enemies. Each deals (+40% physical power) Damage. Applies On-Hit effects at 50% effectiveness. Can Critically Strike and deals 1.5x damage to Minions.",
+          "scaling": {
+            "projectiles": 2,
+            "physicalPowerRatio": 0.4,
+            "onHitEffectiveness": 50,
+            "minionDamageMultiplier": 1.5
+          },
+          "effects": [
+            "on-hit",
+            "homing-projectiles",
+            "area-damage",
+            "critical-strike"
+          ]
+        }
+      ],
+      "tags": [
+        "area-damage",
+        "on-hit",
+        "waveclear",
+        "crit"
+      ],
+      "answers": [
+        "clustered-enemies",
+        "waveclear",
+        "objective-control",
+        "minions"
+      ],
+      "sourceRef": "carry-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "cursed-ring",
+      "name": "Cursed Ring",
+      "role": "carry",
+      "purpose": "Cursed",
+      "stats": {
+        "physicalPower": 35,
+        "magicalPower": 35,
+        "attackSpeed": 35
+      },
+      "passives": [
+        {
+          "name": "Curse of Swiftness",
+          "description": "Increase your Total Attack Speed by 1.2x. Your Basic Attacks deal 25% less damage.",
+          "scaling": {
+            "totalAttackSpeedMultiplier": 1.2,
+            "basicAttackDamageReduction": 25
+          },
+          "effects": [
+            "attack-speed-multiplier",
+            "basic-attack-damage-penalty",
+            "cursed"
+          ]
+        },
+        {
+          "name": "Broken Chains",
+          "description": "Increase the Attacks per Second Cap from 3 to 4.",
+          "scaling": {
+            "attacksPerSecondCap": 4
+          },
+          "effects": [
+            "attack-speed-cap-increase",
+            "cursed"
+          ]
+        }
+      ],
+      "restrictions": [
+        {
+          "description": "Limited to 1 Cursed Item.",
+          "effects": [
+            "limited-cursed-item"
+          ]
+        }
+      ],
+      "tags": [
+        "cursed",
+        "attack-speed",
+        "hybrid",
+        "attack-speed-cap"
+      ],
+      "answers": [
+        "on-hit-build",
+        "attack-speed-scaling",
+        "hybrid-carry"
+      ],
+      "sourceRef": "carry-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "terminus",
+      "name": "Terminus",
+      "role": "carry",
+      "purpose": "Sustain",
+      "stats": {
+        "physicalPower": 60,
+        "criticalChance": 20,
+        "lifesteal": 15
+      },
+      "passives": [
+        {
+          "name": "Anon",
+          "description": "On Overhealing from Lifesteal: Convert excess Healing into a Shield. Max Shield size: (+100% physical power). The Shield slowly decays 15s after leaving combat.",
+          "scaling": {
+            "maxShieldPhysicalPowerRatio": 1,
+            "decayAfterLeavingCombat": 15
+          },
+          "effects": [
+            "lifesteal-overheal",
+            "shield",
+            "physical-power-scaling",
+            "combat-decay"
+          ]
+        }
+      ],
+      "tags": [
+        "sustain",
+        "lifesteal",
+        "shield",
+        "crit"
+      ],
+      "answers": [
+        "poke",
+        "attrition",
+        "long-fights",
+        "anti-burst"
+      ],
+      "sourceRef": "carry-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "imperator",
+      "name": "Imperator",
+      "role": "carry",
+      "purpose": "Crit Amplification",
+      "stats": {
+        "physicalPower": 65,
+        "criticalChance": 20
+      },
+      "passives": [
+        {
+          "name": "Precision",
+          "description": "Critical Strikes deal 30% more damage.",
+          "scaling": {
+            "criticalStrikeDamageIncrease": 30
+          },
+          "effects": [
+            "critical-strike",
+            "critical-damage-amplification"
+          ]
+        }
+      ],
+      "tags": [
+        "crit-amplification",
+        "burst",
+        "physical-power",
+        "critical-damage"
+      ],
+      "answers": [
+        "squishy",
+        "late-game",
+        "burst-window",
+        "crit-build"
+      ],
+      "sourceRef": "carry-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided carry item manual entry on 2026-08-22."
+      }
+    }
+  ]
+}
