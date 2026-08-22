@@ -23,13 +23,19 @@
       "label": "Tank items manual entry",
       "url": null,
       "use": "User-provided in-game text covering tank item purpose, stats, passives, cooldowns, effects, and restrictions."
+    },
+    "fighter-items-manual-entry-2026-08-22": {
+      "label": "Fighter items manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering fighter item purpose, stats, passives, cooldowns, effects, and restrictions."
     }
   },
   "validItemRoles": [
     "carry",
     "support",
     "mage",
-    "tank"
+    "tank",
+    "fighter"
   ],
   "validVerificationStatuses": [
     "source-backed",
@@ -4744,6 +4750,1121 @@
       "verification": {
         "status": "source-backed",
         "notes": "Fully encoded from user-provided tank item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "volcanica",
+      "name": "Volcanica",
+      "role": "fighter",
+      "purpose": "Reduced Cooldowns",
+      "stats": {
+        "physicalPower": 30,
+        "maxHealth": 300,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Hellstorm",
+          "description": "On Ability Cast: Reduce your other current Basic Ability Cooldowns by 0.5s. Increased to 1.5s when casting your Ultimate Ability.",
+          "scaling": {
+            "basicAbilityCooldownReduction": 0.5,
+            "ultimateCastCooldownReduction": 1.5,
+            "stanceSwitcherEffectiveness": 40
+          },
+          "effects": [
+            "ability-cast",
+            "cooldown-reduction",
+            "ultimate-synergy"
+          ]
+        }
+      ],
+      "restrictions": [
+        {
+          "description": "Hellstorm has 40% effectiveness for Stance Switchers.",
+          "effects": [
+            "stance-switcher-reduced-effectiveness"
+          ]
+        }
+      ],
+      "tags": [
+        "reduced-cooldowns",
+        "ability-cast",
+        "fighter",
+        "haste"
+      ],
+      "answers": [
+        "ability-heavy",
+        "combo-fighter",
+        "cooldown-cycling"
+      ],
+      "sourceRef": "fighter-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "gaia-greaves",
+      "name": "Gaia Greaves",
+      "role": "fighter",
+      "purpose": "Mobility",
+      "stats": {
+        "maxHealth": 300,
+        "physicalArmor": 45,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Tremor",
+          "description": "Move to generate up to 100 stacks. Stacks grant up to 40 Movement Speed. Basic Attacks expend all stacks for bonus Damage, dealing up to 40 (+60% physical power)(+5% max health) Damage. Lose 50 stacks per second while Slowed or Immobilized.",
+          "scaling": {
+            "maxStacks": 100,
+            "movementSpeedAtMaxStacks": 40,
+            "maxDamage": 40,
+            "physicalPowerRatio": 0.6,
+            "maxHealthRatio": 0.05,
+            "stacksLostPerSecond": 50
+          },
+          "effects": [
+            "movement-stacks",
+            "movement-speed",
+            "basic-attack",
+            "bonus-damage",
+            "max-health-scaling"
+          ]
+        },
+        {
+          "name": "Unburden",
+          "description": "Increase your Jump Height by 65%.",
+          "scaling": {
+            "jumpHeightIncrease": 65
+          },
+          "effects": [
+            "jump-height",
+            "mobility"
+          ]
+        }
+      ],
+      "tags": [
+        "mobility",
+        "armor",
+        "health",
+        "basic-attack-proc"
+      ],
+      "answers": [
+        "engage",
+        "stickiness",
+        "rotation-speed"
+      ],
+      "sourceRef": "fighter-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "tyranny",
+      "name": "Tyranny",
+      "role": "fighter",
+      "purpose": "Reduced Cooldowns",
+      "stats": {
+        "physicalPower": 40,
+        "maxHealth": 300,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Oppression",
+          "description": "On casting your Ultimate: Gain 30% Decaying Movement Speed over 4s. Gain 20 Ability Haste for 8s. Takedowns within this time re-trigger Oppression.",
+          "cooldown": 45,
+          "scaling": {
+            "decayingMovementSpeed": 30,
+            "movementSpeedDuration": 4,
+            "abilityHaste": 20,
+            "abilityHasteDuration": 8
+          },
+          "effects": [
+            "ultimate-cast",
+            "movement-speed",
+            "ability-haste",
+            "takedown-refresh"
+          ]
+        },
+        {
+          "name": "Tyrant's Edge",
+          "description": "Gain 20 Ultimate Haste.",
+          "scaling": {
+            "ultimateHaste": 20
+          },
+          "effects": [
+            "ultimate-haste"
+          ]
+        }
+      ],
+      "tags": [
+        "reduced-cooldowns",
+        "ultimate-haste",
+        "movement-speed",
+        "teamfight"
+      ],
+      "answers": [
+        "ultimate-reliant",
+        "teamfight-reset",
+        "engage"
+      ],
+      "sourceRef": "fighter-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "vyzar-carapace",
+      "name": "Vyzar Carapace",
+      "role": "fighter",
+      "purpose": "Dueling",
+      "stats": {
+        "physicalPower": 45,
+        "maxHealth": 225,
+        "abilityHaste": 15
+      },
+      "passives": [
+        {
+          "name": "Shell Shock",
+          "description": "Against Enemy Heroes: Basic Attacks and Abilities apply a stack of Scorn. Apply 3 stacks to a Hero to trigger Shell Smash. Scorn can only be applied once per ability.",
+          "scaling": {
+            "scornStacksToTrigger": 3
+          },
+          "effects": [
+            "hero-damage",
+            "basic-attack",
+            "ability-damage",
+            "stacking"
+          ]
+        },
+        {
+          "name": "Shell Smash",
+          "description": "Deals 60-170 Damage, based on Level. Gain a 50 (+12% max health) Shield for 3s.",
+          "cooldown": 15,
+          "scaling": {
+            "damageMin": 60,
+            "damageMax": 170,
+            "shield": 50,
+            "maxHealthShieldRatio": 0.12,
+            "shieldDuration": 3
+          },
+          "effects": [
+            "damage-proc",
+            "level-scaling",
+            "shield",
+            "max-health-scaling"
+          ]
+        }
+      ],
+      "tags": [
+        "dueling",
+        "shield",
+        "damage-proc",
+        "haste"
+      ],
+      "answers": [
+        "long-fights",
+        "bruiser-duel",
+        "trade-patterns"
+      ],
+      "sourceRef": "fighter-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "draconum",
+      "name": "Draconum",
+      "role": "fighter",
+      "purpose": "Sustained Fighting",
+      "stats": {
+        "physicalPower": 45,
+        "physicalArmor": 40,
+        "abilityHaste": 15
+      },
+      "passives": [
+        {
+          "name": "Surge",
+          "description": "On dealing damage to Heroes or Monsters: Gain 2% increased Healing for 5s. Stacks up to 10 times.",
+          "scaling": {
+            "healingIncreasePerStack": 2,
+            "duration": 5,
+            "maxStacks": 10
+          },
+          "effects": [
+            "hero-damage",
+            "monster-damage",
+            "healing-amplification",
+            "stacking"
+          ]
+        },
+        {
+          "name": "Flow",
+          "description": "On Takedown: Restore (+120% physical power)(+6% max health) Health.",
+          "scaling": {
+            "physicalPowerHealingRatio": 1.2,
+            "maxHealthHealingRatio": 0.06
+          },
+          "effects": [
+            "takedown",
+            "healing",
+            "physical-power-scaling",
+            "max-health-scaling"
+          ]
+        }
+      ],
+      "tags": [
+        "sustained-fighting",
+        "healing",
+        "armor",
+        "haste"
+      ],
+      "answers": [
+        "extended-fights",
+        "frontline",
+        "snowball-fights"
+      ],
+      "sourceRef": "fighter-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "legacy",
+      "name": "Legacy",
+      "role": "fighter",
+      "purpose": "Cleanse",
+      "stats": {
+        "physicalPower": 35,
+        "maxHealth": 225,
+        "magicalArmor": 40,
+        "tenacity": 75
+      },
+      "passives": [
+        {
+          "name": "Tenacious Bravery",
+          "description": "On going below 40% Health: Self Cleanse. Gain CC Immunity for 3s.",
+          "cooldown": 120,
+          "scaling": {
+            "healthThreshold": 40,
+            "ccImmunityDuration": 3
+          },
+          "effects": [
+            "low-health",
+            "cleanse",
+            "cc-immunity",
+            "anti-disruption"
+          ]
+        }
+      ],
+      "tags": [
+        "cleanse",
+        "anti-disruption",
+        "tenacity",
+        "magical-armor"
+      ],
+      "answers": [
+        "cc-heavy",
+        "pick-comps",
+        "burst-survival"
+      ],
+      "sourceRef": "fighter-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "overlord",
+      "name": "Overlord",
+      "role": "fighter",
+      "purpose": "Area Damage",
+      "stats": {
+        "physicalPower": 30,
+        "maxHealth": 275
+      },
+      "passives": [
+        {
+          "name": "Colossal Cleave",
+          "description": "On Successful Basic Attack: Deal (+1% max health) Damage. Deal (+30% physical power) (+2.5% max health) Damage around the Target. Damage decreases from 100% to 50% based on distance.",
+          "scaling": {
+            "singleTargetMaxHealthRatio": 0.01,
+            "cleavePhysicalPowerRatio": 0.3,
+            "cleaveMaxHealthRatio": 0.025,
+            "distanceFalloffMin": 50,
+            "distanceFalloffMax": 100
+          },
+          "effects": [
+            "basic-attack",
+            "cleave",
+            "area-damage",
+            "max-health-scaling",
+            "physical-power-scaling"
+          ]
+        },
+        {
+          "name": "Devourer",
+          "description": "On Killing an Enemy Unit: Permanently gain 1 Health. Camp Leaders grant 3. Heroes grant 5. Upon reaching 100 stacks, gain an additional 125 Health.",
+          "scaling": {
+            "healthPerUnitKill": 1,
+            "healthPerCampLeader": 3,
+            "healthPerHero": 5,
+            "stackThreshold": 100,
+            "bonusHealthAtThreshold": 125
+          },
+          "effects": [
+            "unit-kill",
+            "health-stacking",
+            "scaling"
+          ]
+        }
+      ],
+      "tags": [
+        "area-damage",
+        "cleave",
+        "health-scaling",
+        "waveclear"
+      ],
+      "answers": [
+        "frontline",
+        "waveclear",
+        "bruiser-scaling"
+      ],
+      "sourceRef": "fighter-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "salvation",
+      "name": "Salvation",
+      "role": "fighter",
+      "purpose": "Anti Burst",
+      "stats": {
+        "physicalPower": 40,
+        "maxHealth": 375,
+        "tenacity": 75
+      },
+      "passives": [
+        {
+          "name": "Aegis",
+          "description": "On going below 30% Health: Gain a (+22%) Shield for 6s. Reduced to 50% Effectiveness for Ranged Heroes. Gain 10% Omnivamp for 6s.",
+          "cooldown": 60,
+          "scaling": {
+            "healthThreshold": 30,
+            "shieldRatio": 0.22,
+            "shieldDuration": 6,
+            "rangedEffectiveness": 50,
+            "omnivamp": 10,
+            "omnivampDuration": 6
+          },
+          "effects": [
+            "low-health",
+            "shield",
+            "omnivamp",
+            "anti-burst"
+          ]
+        }
+      ],
+      "tags": [
+        "anti-burst",
+        "shield",
+        "omnivamp",
+        "tenacity"
+      ],
+      "answers": [
+        "burst-survival",
+        "dive",
+        "extended-fights"
+      ],
+      "sourceRef": "fighter-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "citadel",
+      "name": "Citadel",
+      "role": "fighter",
+      "purpose": "Teamfight Durability",
+      "stats": {
+        "physicalPower": 35,
+        "maxHealth": 300,
+        "physicalArmor": 40
+      },
+      "passives": [
+        {
+          "name": "Fortification",
+          "description": "For each nearby Enemy Hero: Gain 5 Physical Armor.",
+          "scaling": {
+            "physicalArmorPerNearbyHero": 5
+          },
+          "effects": [
+            "nearby-enemy-heroes",
+            "physical-armor",
+            "teamfight"
+          ]
+        },
+        {
+          "name": "Intimidation",
+          "description": "Nearby Enemy Heroes: Have their Physical Armor decreased by 20%.",
+          "scaling": {
+            "enemyPhysicalArmorReduction": 20
+          },
+          "effects": [
+            "aura",
+            "physical-armor-reduction",
+            "teamfight"
+          ]
+        }
+      ],
+      "tags": [
+        "teamfight-durability",
+        "physical-armor",
+        "armor-shred",
+        "aura"
+      ],
+      "answers": [
+        "frontline",
+        "physical-team",
+        "teamfight"
+      ],
+      "sourceRef": "fighter-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "earthshaker",
+      "name": "Earthshaker",
+      "role": "fighter",
+      "purpose": "Sustained Fighting",
+      "stats": {
+        "physicalPower": 45,
+        "maxHealth": 300,
+        "abilityHaste": 15
+      },
+      "passives": [
+        {
+          "name": "Battleborn",
+          "description": "On dealing damage to Heroes or Monsters: Increase your Ability Damage dealt by 1.25% for 3s. Stacks up to 10 times. Melee Heroes gain Stacks twice as fast.",
+          "scaling": {
+            "abilityDamageIncreasePerStack": 1.25,
+            "duration": 3,
+            "maxStacks": 10,
+            "meleeStackRateMultiplier": 2
+          },
+          "effects": [
+            "hero-damage",
+            "monster-damage",
+            "ability-damage-amplification",
+            "stacking",
+            "melee-synergy"
+          ]
+        }
+      ],
+      "tags": [
+        "sustained-fighting",
+        "ability-damage",
+        "stacking",
+        "haste"
+      ],
+      "answers": [
+        "long-fights",
+        "ability-bruiser",
+        "monster-fights"
+      ],
+      "sourceRef": "fighter-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "mistmeadow-buckler",
+      "name": "Mistmeadow Buckler",
+      "role": "fighter",
+      "purpose": "Anti Magic",
+      "stats": {
+        "physicalPower": 45,
+        "magicalArmor": 40,
+        "healthRegeneration": 100,
+        "abilityHaste": 15
+      },
+      "passives": [
+        {
+          "name": "Mistwood Guard",
+          "description": "Gain 100 charges. Regenerate 5 charges each second. While at 100 charges, gain 15 Magical Armor.",
+          "scaling": {
+            "maxCharges": 100,
+            "chargeRegenPerSecond": 5,
+            "magicalArmorAtMaxCharges": 15
+          },
+          "effects": [
+            "charges",
+            "magical-armor",
+            "regeneration"
+          ]
+        },
+        {
+          "name": "Bark Skin",
+          "description": "On taking Magical Damage: Consume Mistwood Guard charges. Block 1 Damage for each charge consumed. Can block up to 50% of the Damage received.",
+          "scaling": {
+            "damageBlockedPerCharge": 1,
+            "maxDamageBlockedPercent": 50
+          },
+          "effects": [
+            "magical-damage-mitigation",
+            "charges",
+            "anti-magic"
+          ]
+        }
+      ],
+      "tags": [
+        "anti-magic",
+        "magical-armor",
+        "health-regen",
+        "haste"
+      ],
+      "answers": [
+        "magic-burst",
+        "poke",
+        "mage-heavy"
+      ],
+      "sourceRef": "fighter-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "rebirth",
+      "name": "Rebirth",
+      "role": "fighter",
+      "purpose": "Resurrection",
+      "stats": {
+        "physicalPower": 50,
+        "maxHealth": 275
+      },
+      "passives": [
+        {
+          "name": "Mechanica",
+          "description": "Upon Dying: After 3s, Resurrect with 50% Base Health & Max Mana.",
+          "cooldown": 270,
+          "scaling": {
+            "resurrectionDelay": 3,
+            "baseHealthRestore": 50,
+            "maxManaRestore": 50
+          },
+          "effects": [
+            "death-trigger",
+            "resurrection",
+            "health-restore",
+            "mana-restore"
+          ]
+        }
+      ],
+      "tags": [
+        "resurrection",
+        "anti-burst",
+        "health",
+        "physical-power"
+      ],
+      "answers": [
+        "dive",
+        "late-fight-insurance",
+        "high-value-target"
+      ],
+      "sourceRef": "fighter-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "basilisk",
+      "name": "Basilisk",
+      "role": "fighter",
+      "purpose": "Physical Shred",
+      "stats": {
+        "physicalPower": 40,
+        "maxHealth": 275,
+        "abilityHaste": 20
+      },
+      "passives": [
+        {
+          "name": "Corrode",
+          "description": "On damaging a Hero: Reduce their Physical Armor by 4.5% for 3s. Stacks up to 6 times. At 6 stacks they become Eroded.",
+          "scaling": {
+            "physicalArmorReductionPerStack": 4.5,
+            "duration": 3,
+            "maxStacks": 6
+          },
+          "effects": [
+            "hero-damage",
+            "physical-armor-reduction",
+            "stacking",
+            "eroded"
+          ]
+        },
+        {
+          "name": "Eminence",
+          "description": "Upon damaging an Eroded Hero: Gain 8% Movement Speed for 2s.",
+          "scaling": {
+            "movementSpeed": 8,
+            "duration": 2
+          },
+          "effects": [
+            "eroded-target",
+            "movement-speed"
+          ]
+        }
+      ],
+      "tags": [
+        "physical-shred",
+        "armor-shred",
+        "movement-speed",
+        "haste"
+      ],
+      "answers": [
+        "frontline-shred",
+        "physical-team",
+        "extended-fights"
+      ],
+      "sourceRef": "fighter-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "berserkers-axe",
+      "name": "Berserker's Axe",
+      "role": "fighter",
+      "purpose": "Mobility",
+      "stats": {
+        "physicalPower": 45,
+        "maxHealth": 275,
+        "abilityHaste": 15,
+        "movementSpeed": 3
+      },
+      "passives": [
+        {
+          "name": "Blitz",
+          "description": "On Dashing or Leaping: Empower your next Basic Attack within 3s. Deal 50 (+40% physical power) Damage. Slows by 55% for 1s.",
+          "cooldown": 8,
+          "scaling": {
+            "window": 3,
+            "damage": 50,
+            "physicalPowerRatio": 0.4,
+            "slow": 55,
+            "slowDuration": 1
+          },
+          "effects": [
+            "dash",
+            "leap",
+            "empowered-basic-attack",
+            "slow",
+            "physical-power-scaling"
+          ]
+        },
+        {
+          "name": "Mist Runner",
+          "description": "On crossing a Fog Wall: Gain 15% Movement Speed for 1.5s.",
+          "scaling": {
+            "movementSpeed": 15,
+            "duration": 1.5
+          },
+          "effects": [
+            "fog-wall",
+            "movement-speed"
+          ]
+        }
+      ],
+      "tags": [
+        "mobility",
+        "dash-synergy",
+        "slow",
+        "haste"
+      ],
+      "answers": [
+        "stickiness",
+        "engage",
+        "jungle-fighting"
+      ],
+      "sourceRef": "fighter-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "tainted-blade",
+      "name": "Tainted Blade",
+      "role": "fighter",
+      "purpose": "Anti Heal",
+      "stats": {
+        "physicalPower": 40,
+        "maxHealth": 250,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Blighted Strikes",
+          "description": "On dealing Physical Damage: Reduce the Target's Healing by 45% for 3s.",
+          "scaling": {
+            "healingReduction": 45,
+            "duration": 3
+          },
+          "effects": [
+            "physical-damage",
+            "anti-heal"
+          ]
+        },
+        {
+          "name": "Hex",
+          "description": "On dealing Ability Damage to a Blighted Target: Cause them to take 5% more damage for 3s.",
+          "scaling": {
+            "damageTakenIncrease": 5,
+            "duration": 3
+          },
+          "effects": [
+            "ability-damage",
+            "blighted-target",
+            "damage-amplification"
+          ]
+        }
+      ],
+      "tags": [
+        "anti-heal",
+        "damage-amplification",
+        "physical-power",
+        "haste"
+      ],
+      "answers": [
+        "healing-comps",
+        "sustain-comps",
+        "bruiser-pressure"
+      ],
+      "sourceRef": "fighter-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "absolution",
+      "name": "Absolution",
+      "role": "fighter",
+      "purpose": "Anti Disruption",
+      "stats": {
+        "physicalPower": 30,
+        "attackSpeed": 35,
+        "magicalArmor": 40,
+        "tenacity": 75
+      },
+      "passives": [
+        {
+          "name": "Bravery",
+          "description": "On being Immobilized: Gain 25% Damage Mitigation. Gain 40% Movement Speed. Lasts 3s.",
+          "cooldown": 45,
+          "scaling": {
+            "damageMitigation": 25,
+            "movementSpeed": 40,
+            "duration": 3
+          },
+          "effects": [
+            "immobilized",
+            "damage-mitigation",
+            "movement-speed",
+            "anti-disruption"
+          ]
+        }
+      ],
+      "tags": [
+        "anti-disruption",
+        "tenacity",
+        "attack-speed",
+        "magical-armor"
+      ],
+      "answers": [
+        "cc-heavy",
+        "pick-comps",
+        "magic-threats"
+      ],
+      "sourceRef": "fighter-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "augmentation",
+      "name": "Augmentation",
+      "role": "fighter",
+      "purpose": "On-Hit",
+      "stats": {
+        "physicalPower": 35,
+        "attackSpeed": 25,
+        "maxHealth": 225,
+        "abilityHaste": 20
+      },
+      "passives": [
+        {
+          "name": "True Strike",
+          "description": "On Ability Cast: Empower your next Basic Attack within 4s. Deal (+90% Base Physical Power) Damage On-Hit.",
+          "cooldown": 1.5,
+          "scaling": {
+            "window": 4,
+            "basePhysicalPowerRatio": 0.9
+          },
+          "effects": [
+            "ability-cast",
+            "empowered-basic-attack",
+            "on-hit",
+            "base-physical-power-scaling"
+          ]
+        }
+      ],
+      "tags": [
+        "on-hit",
+        "spellblade",
+        "attack-speed",
+        "haste"
+      ],
+      "answers": [
+        "combo-fighter",
+        "basic-attack-weaving",
+        "dueling"
+      ],
+      "sourceRef": "fighter-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "rapture",
+      "name": "Rapture",
+      "role": "fighter",
+      "purpose": "On-Hit",
+      "stats": {
+        "attackSpeed": 30,
+        "maxHealth": 300,
+        "omnivamp": 7
+      },
+      "passives": [
+        {
+          "name": "Nearsight",
+          "description": "While within 475u of an Enemy Unit: Your Basic Attacks deal 20 (+3% max health)(+15% physical power) Damage On-Hit to them.",
+          "scaling": {
+            "range": 475,
+            "damage": 20,
+            "maxHealthRatio": 0.03,
+            "physicalPowerRatio": 0.15
+          },
+          "effects": [
+            "close-range",
+            "basic-attack",
+            "on-hit",
+            "max-health-scaling",
+            "physical-power-scaling"
+          ]
+        }
+      ],
+      "tags": [
+        "on-hit",
+        "close-range",
+        "omnivamp",
+        "attack-speed"
+      ],
+      "answers": [
+        "dueling",
+        "melee-fighter",
+        "long-fights"
+      ],
+      "sourceRef": "fighter-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "solstice",
+      "name": "Solstice",
+      "role": "fighter",
+      "purpose": "Burst",
+      "stats": {
+        "physicalPower": 40,
+        "physicalArmor": 30,
+        "magicalArmor": 30
+      },
+      "passives": [
+        {
+          "name": "Pendulum",
+          "description": "Gain 25 stacks each second, up to 100 Max. Takedowns grant you Max stacks.",
+          "scaling": {
+            "stacksPerSecond": 25,
+            "maxStacks": 100
+          },
+          "effects": [
+            "stacking",
+            "takedown",
+            "burst-setup"
+          ]
+        },
+        {
+          "name": "Mornfall",
+          "description": "On Basic Attack: Consume all Pendulum stacks. Deal 10 Damage, increased by (+0-55% physical power), based on stacks consumed. Damage is increased by 2x at Max stacks. Heals for 135% of the damage dealt to Heroes.",
+          "scaling": {
+            "baseDamage": 10,
+            "physicalPowerRatioMax": 0.55,
+            "maxStackDamageMultiplier": 2,
+            "heroDamageHealing": 135
+          },
+          "effects": [
+            "basic-attack",
+            "burst",
+            "physical-power-scaling",
+            "healing"
+          ]
+        }
+      ],
+      "tags": [
+        "burst",
+        "armor",
+        "basic-attack-proc",
+        "healing"
+      ],
+      "answers": [
+        "pick",
+        "dueling",
+        "frontloaded-damage"
+      ],
+      "sourceRef": "fighter-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "mutilator",
+      "name": "Mutilator",
+      "role": "fighter",
+      "purpose": "Anti Tank",
+      "stats": {
+        "physicalPower": 45,
+        "abilityHaste": 15,
+        "omnivamp": 12
+      },
+      "passives": [
+        {
+          "name": "Mutilate",
+          "description": "On Successsful Basic Attacks: Deal 1% of their Max Health as Damage.",
+          "scaling": {
+            "maxHealthDamageRatio": 0.01
+          },
+          "effects": [
+            "basic-attack",
+            "max-health-damage",
+            "anti-tank"
+          ]
+        },
+        {
+          "name": "Devour",
+          "description": "Ability Hits on Heroes: Apply Mutilate 3 times (once per ability).",
+          "scaling": {
+            "mutilateApplications": 3
+          },
+          "effects": [
+            "ability-hit",
+            "hero-damage",
+            "max-health-damage"
+          ]
+        }
+      ],
+      "tags": [
+        "anti-tank",
+        "max-health-damage",
+        "omnivamp",
+        "haste"
+      ],
+      "answers": [
+        "frontline-shred",
+        "tank-heavy",
+        "sustained-fighting"
+      ],
+      "sourceRef": "fighter-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "aegis-of-agawar",
+      "name": "Aegis Of Agawar",
+      "role": "fighter",
+      "purpose": "Offense",
+      "stats": {
+        "physicalPower": 20,
+        "maxHealth": 400,
+        "criticalChance": 15
+      },
+      "passives": [
+        {
+          "name": "Bludgeon",
+          "description": "Gain (+2.5% max health) Physical Power.",
+          "scaling": {
+            "maxHealthPhysicalPowerRatio": 0.025
+          },
+          "effects": [
+            "max-health-scaling",
+            "physical-power"
+          ]
+        },
+        {
+          "name": "Agawar's Protection",
+          "description": "Gain 10% Total Physical Armor. Gain 10% Total Magical Armor. While below 40% Health: Gain 20% Total Physical Armor instead. Gain 20% Total Magical Armor instead.",
+          "scaling": {
+            "totalPhysicalArmor": 10,
+            "totalMagicalArmor": 10,
+            "lowHealthThreshold": 40,
+            "lowHealthTotalPhysicalArmor": 20,
+            "lowHealthTotalMagicalArmor": 20
+          },
+          "effects": [
+            "armor-amplification",
+            "low-health",
+            "physical-armor",
+            "magical-armor"
+          ]
+        }
+      ],
+      "tags": [
+        "offense",
+        "health-scaling",
+        "crit",
+        "armor-amplification"
+      ],
+      "answers": [
+        "bruiser-damage",
+        "frontline",
+        "low-health-fights"
+      ],
+      "sourceRef": "fighter-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided fighter item manual entry on 2026-08-22."
       }
     }
   ]

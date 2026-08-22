@@ -2,7 +2,7 @@ import itemData from "./items.json";
 
 import type { VerificationStatus } from "./audit";
 
-export type ItemRole = "carry" | "support" | "mage" | "tank";
+export type ItemRole = "carry" | "support" | "mage" | "tank" | "fighter";
 
 export type ItemPassive = {
   name: string;
