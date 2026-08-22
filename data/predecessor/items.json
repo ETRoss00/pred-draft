@@ -8,10 +8,16 @@
       "label": "Carry items manual entry",
       "url": null,
       "use": "User-provided in-game text covering carry item purpose, stats, passives, cooldowns, effects, and restrictions."
+    },
+    "support-items-manual-entry-2026-08-22": {
+      "label": "Support items manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering support item purpose, stats, passives, cooldowns, effects, and restrictions."
     }
   },
   "validItemRoles": [
-    "carry"
+    "carry",
+    "support"
   ],
   "validVerificationStatuses": [
     "source-backed",
@@ -1090,6 +1096,1087 @@
       "verification": {
         "status": "source-backed",
         "notes": "Fully encoded from user-provided carry item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "warp-stream",
+      "name": "Warp Stream",
+      "role": "support",
+      "purpose": "Mobility",
+      "stats": {
+        "maxHealth": 400,
+        "maxMana": 400,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Tele-Blink",
+          "cooldown": 120,
+          "description": "Replace your Blink with Tele-Blink. Tele-Blink has a reduced Cooldown. Upon taking damage, Tele-Blink cannot be used for 2.5s.",
+          "scaling": {
+            "damageLockout": 2.5
+          },
+          "effects": [
+            "blink-replacement",
+            "mobility",
+            "reduced-cooldown",
+            "damage-lockout"
+          ]
+        },
+        {
+          "name": "Quantum Edge",
+          "description": "Gain 25 Ultimate Haste.",
+          "scaling": {
+            "ultimateHaste": 25
+          },
+          "effects": [
+            "ultimate-haste"
+          ]
+        }
+      ],
+      "tags": [
+        "mobility",
+        "ultimate-haste",
+        "reposition",
+        "support"
+      ],
+      "answers": [
+        "dive",
+        "engage",
+        "disengage",
+        "pick"
+      ],
+      "sourceRef": "support-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "tainted-totem",
+      "name": "Tainted Totem",
+      "role": "support",
+      "purpose": "Anti Heal",
+      "stats": {
+        "magicalPower": 45,
+        "maxHealth": 200,
+        "manaRegeneration": 125,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Blighted Touch",
+          "description": "On dealing damage: Reduce the Target's Healing by 45% for 3s.",
+          "scaling": {
+            "antiHeal": 45,
+            "duration": 3
+          },
+          "effects": [
+            "damage-trigger",
+            "anti-heal",
+            "debuff"
+          ]
+        },
+        {
+          "name": "Blighted Well",
+          "description": "On Healing and Shielding Allies: Grant them Blighted Touch for 4s.",
+          "scaling": {
+            "duration": 4
+          },
+          "effects": [
+            "heal-trigger",
+            "shield-trigger",
+            "ally-buff",
+            "anti-heal-grant"
+          ]
+        }
+      ],
+      "tags": [
+        "anti-heal",
+        "healing-counter",
+        "support",
+        "debuff"
+      ],
+      "answers": [
+        "healing",
+        "lifesteal",
+        "sustain",
+        "frontline"
+      ],
+      "sourceRef": "support-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "crescelia",
+      "name": "Crescelia",
+      "role": "support",
+      "purpose": "Increased Gold",
+      "stats": {
+        "magicalPower": 45,
+        "manaRegeneration": 125,
+        "abilityHaste": 15
+      },
+      "passives": [
+        {
+          "name": "Moonblade",
+          "cooldown": 1.5,
+          "description": "On Ability Cast: Empower your next Basic Attack within 4s. Deal 50 (+20% magical power) Damage On-Hit. Damaging a Hero with this effect grants you +12 gold.",
+          "scaling": {
+            "window": 4,
+            "damage": 50,
+            "magicalPowerRatio": 0.2,
+            "goldOnHeroDamage": 12
+          },
+          "effects": [
+            "ability-cast",
+            "empowered-basic-attack",
+            "on-hit",
+            "gold-generation"
+          ]
+        }
+      ],
+      "tags": [
+        "gold",
+        "spellblade",
+        "on-hit",
+        "support-economy"
+      ],
+      "answers": [
+        "scaling",
+        "poke",
+        "lane-pressure"
+      ],
+      "sourceRef": "support-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "dawnstar",
+      "name": "Dawnstar",
+      "role": "support",
+      "purpose": "Defensive Aura",
+      "stats": {
+        "maxHealth": 225,
+        "healthRegeneration": 100,
+        "physicalArmor": 30,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Debilitating Strikes",
+          "description": "On Basic Attacking Heroes: Reduce their damage dealt by 2.5% for 3s. Stacks up to 5 times. Melee basic attacks apply 2 stacks.",
+          "scaling": {
+            "damageDealtReductionPerStack": 2.5,
+            "duration": 3,
+            "maxStacks": 5,
+            "meleeStacks": 2
+          },
+          "effects": [
+            "basic-attack",
+            "damage-reduction-debuff",
+            "stacking-debuff",
+            "melee-bonus"
+          ]
+        },
+        {
+          "name": "Crusader",
+          "description": "On Immobilizing Heroes: Gain 30% Attack Speed for 3s. Apply 1 stack of Debilitating Strikes to the Target.",
+          "scaling": {
+            "attackSpeed": 30,
+            "duration": 3,
+            "debilitatingStacks": 1
+          },
+          "effects": [
+            "immobilize-trigger",
+            "attack-speed",
+            "debilitating-strikes"
+          ]
+        }
+      ],
+      "tags": [
+        "defensive-aura",
+        "damage-reduction",
+        "physical-armor",
+        "immobilize-synergy"
+      ],
+      "answers": [
+        "physical-damage",
+        "dive",
+        "burst",
+        "duelist"
+      ],
+      "sourceRef": "support-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support item manual entry on 2026-08-22. Passive name normalized from provided 'Crusader-' text."
+      }
+    },
+    {
+      "id": "void-conduit",
+      "name": "Void Conduit",
+      "role": "support",
+      "purpose": "Defensive Aura",
+      "stats": {
+        "maxHealth": 250,
+        "magicalArmor": 40,
+        "abilityHaste": 10,
+        "movementSpeed": 3
+      },
+      "passives": [
+        {
+          "name": "Relativity",
+          "description": "While near an Ally Hero, you both gain +6% Omnivamp and +1.25% Missing Mana Regen each second.",
+          "scaling": {
+            "omnivamp": 6,
+            "missingManaRegenPerSecond": 1.25
+          },
+          "effects": [
+            "near-ally",
+            "omnivamp",
+            "missing-mana-regeneration",
+            "defensive-aura"
+          ]
+        }
+      ],
+      "tags": [
+        "defensive-aura",
+        "magical-armor",
+        "omnivamp",
+        "mana-sustain"
+      ],
+      "answers": [
+        "magical-damage",
+        "poke",
+        "attrition",
+        "long-fights"
+      ],
+      "sourceRef": "support-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "truesilver-bracelet",
+      "name": "Truesilver Bracelet",
+      "role": "support",
+      "purpose": "Anti Disruption",
+      "stats": {
+        "magicalPower": 35,
+        "maxHealth": 200,
+        "manaRegeneration": 75,
+        "healShieldPower": 10
+      },
+      "passives": [
+        {
+          "name": "Reprisal",
+          "cooldown": 40,
+          "description": "On casting your Ultimate: Gain a 100 (+18% max health) Shield for 4s. While the Shield holds you are CC Immune. When removed, it explodes dealing Damage equal to 40% of the initial Shield.",
+          "scaling": {
+            "shield": 100,
+            "maxHealthShieldRatio": 0.18,
+            "duration": 4,
+            "explosionDamageFromInitialShield": 40
+          },
+          "effects": [
+            "ultimate-cast",
+            "shield",
+            "cc-immunity",
+            "explosion"
+          ]
+        }
+      ],
+      "tags": [
+        "anti-disruption",
+        "shield",
+        "cc-immunity",
+        "ultimate-synergy"
+      ],
+      "answers": [
+        "hard-cc",
+        "disruption",
+        "dive",
+        "burst"
+      ],
+      "sourceRef": "support-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "frosted-lure",
+      "name": "Frosted Lure",
+      "role": "support",
+      "purpose": "Defense",
+      "stats": {
+        "maxHealth": 325,
+        "physicalArmor": 40,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Frostwave",
+          "cooldown": 45,
+          "description": "On being near Enemy Heroes for 4s: Deal 80 (+4% max health) Damage to nearby Heroes. Slows by 40% for 1.5s. Shields you for 150% of the damage dealt for 4s.",
+          "scaling": {
+            "nearEnemyDuration": 4,
+            "damage": 80,
+            "maxHealthDamageRatio": 0.04,
+            "slow": 40,
+            "slowDuration": 1.5,
+            "shieldFromDamage": 150,
+            "shieldDuration": 4
+          },
+          "effects": [
+            "near-enemy",
+            "area-damage",
+            "slow",
+            "self-shield"
+          ]
+        }
+      ],
+      "tags": [
+        "defense",
+        "physical-armor",
+        "slow",
+        "self-shield"
+      ],
+      "answers": [
+        "dive",
+        "melee-engage",
+        "physical-damage",
+        "clustered-enemies"
+      ],
+      "sourceRef": "support-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "windcaller",
+      "name": "Windcaller",
+      "role": "support",
+      "purpose": "Mobility",
+      "stats": {
+        "magicalPower": 45,
+        "manaRegeneration": 100,
+        "movementSpeed": 3,
+        "healShieldPower": 12
+      },
+      "passives": [
+        {
+          "name": "Zephyr",
+          "cooldown": 8,
+          "description": "On Healing or Shielding an Ally: You both gain 8% Movement Speed for 1.5s. Cooldown is per Target.",
+          "scaling": {
+            "movementSpeed": 8,
+            "duration": 1.5
+          },
+          "effects": [
+            "heal-trigger",
+            "shield-trigger",
+            "movement-speed",
+            "per-target-cooldown"
+          ]
+        }
+      ],
+      "tags": [
+        "mobility",
+        "heal-shield-synergy",
+        "movement-speed",
+        "support"
+      ],
+      "answers": [
+        "kite",
+        "disengage",
+        "chase",
+        "poke"
+      ],
+      "sourceRef": "support-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "tainted-charm",
+      "name": "Tainted Charm",
+      "role": "support",
+      "purpose": "Anti Heal",
+      "stats": {
+        "maxHealth": 375,
+        "manaRegeneration": 125,
+        "abilityHaste": 10,
+        "tenacity": 75
+      },
+      "passives": [
+        {
+          "name": "Blighted Presence",
+          "description": "While near Enemy Heroes: Reduce their Healing by 45%. Slow them by 12%.",
+          "scaling": {
+            "antiHeal": 45,
+            "slow": 12
+          },
+          "effects": [
+            "near-enemy",
+            "anti-heal",
+            "slow",
+            "aura"
+          ]
+        }
+      ],
+      "tags": [
+        "anti-heal",
+        "aura",
+        "tenacity",
+        "slow"
+      ],
+      "answers": [
+        "healing",
+        "lifesteal",
+        "sustain",
+        "melee-fights"
+      ],
+      "sourceRef": "support-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "crystal-tear",
+      "name": "Crystal Tear",
+      "role": "support",
+      "purpose": "Utility",
+      "stats": {
+        "magicalPower": 40,
+        "abilityHaste": 10,
+        "manaRegeneration": 150,
+        "healShieldPower": 12
+      },
+      "passives": [
+        {
+          "name": "Elation",
+          "description": "On Healing or Shielding Heroes: You both gain 30 Magical Power for 5s. You both gain 15 Ability Haste for 5s.",
+          "scaling": {
+            "magicalPower": 30,
+            "abilityHaste": 15,
+            "duration": 5
+          },
+          "effects": [
+            "heal-trigger",
+            "shield-trigger",
+            "magical-power",
+            "ability-haste"
+          ]
+        }
+      ],
+      "tags": [
+        "utility",
+        "heal-shield-synergy",
+        "ally-buff",
+        "ability-haste"
+      ],
+      "answers": [
+        "caster-allies",
+        "poke",
+        "shielding",
+        "healing"
+      ],
+      "sourceRef": "support-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support item manual entry on 2026-08-22. User text used 'State'; encoded as stats."
+      }
+    },
+    {
+      "id": "dynamo",
+      "name": "Dynamo",
+      "role": "support",
+      "purpose": "Magical Shred",
+      "stats": {
+        "maxHealth": 300,
+        "physicalArmor": 30,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Immobilizer",
+          "description": "On Immobilizing an Enemy: They take 8% more damage for 2.5s.",
+          "scaling": {
+            "damageTakenIncrease": 8,
+            "duration": 2.5
+          },
+          "effects": [
+            "immobilize-trigger",
+            "damage-amplification",
+            "debuff"
+          ]
+        },
+        {
+          "name": "Adaptive Aggression",
+          "description": "Gain 20 Physical Power. When your Magical Power > Bonus Physical Power, gain 30 Magical Power instead.",
+          "scaling": {
+            "physicalPower": 20,
+            "magicalPower": 30
+          },
+          "effects": [
+            "adaptive-stat",
+            "physical-power",
+            "magical-power"
+          ]
+        }
+      ],
+      "tags": [
+        "magical-shred",
+        "damage-amplification",
+        "immobilize-synergy",
+        "physical-armor"
+      ],
+      "answers": [
+        "lockdown",
+        "burst-window",
+        "teamfight",
+        "pick"
+      ],
+      "sourceRef": "support-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support item manual entry on 2026-08-22. Purpose kept as Magical Shred; effect text encodes general damage amplification."
+      }
+    },
+    {
+      "id": "marshal",
+      "name": "Marshal",
+      "role": "support",
+      "purpose": "On-Hit Aura",
+      "stats": {
+        "magicalPower": 45,
+        "manaRegeneration": 100,
+        "abilityHaste": 15
+      },
+      "passives": [
+        {
+          "name": "Sheriff",
+          "description": "Buff yourself and nearby Heroes to gain 15% Attack Speed and deal 10 (+1 Per Level) Damage On-Hit.",
+          "scaling": {
+            "attackSpeed": 15,
+            "onHitDamage": 10,
+            "onHitDamagePerLevel": 1
+          },
+          "effects": [
+            "aura",
+            "attack-speed",
+            "on-hit",
+            "ally-buff"
+          ]
+        }
+      ],
+      "tags": [
+        "on-hit-aura",
+        "attack-speed",
+        "ally-buff",
+        "support"
+      ],
+      "answers": [
+        "basic-attack-allies",
+        "objective-control",
+        "long-fights"
+      ],
+      "sourceRef": "support-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "enras-blessing",
+      "name": "Enra's Blessing",
+      "role": "support",
+      "purpose": "Anti Disruption",
+      "stats": {
+        "magicalPower": 40,
+        "maxHealth": 225,
+        "maxMana": 250,
+        "abilityHaste": 15
+      },
+      "passives": [
+        {
+          "name": "Enra's Protection",
+          "cooldown": 15,
+          "description": "When within 1000u of an Ally Hero, if they are Immobilized: Grant them a 50 (+30% magical power)(+8% max health) Shield for 3.5s. Cooldown is per Target.",
+          "scaling": {
+            "range": 1000,
+            "shield": 50,
+            "magicalPowerRatio": 0.3,
+            "maxHealthShieldRatio": 0.08,
+            "duration": 3.5
+          },
+          "effects": [
+            "near-ally",
+            "immobilize-response",
+            "ally-shield",
+            "per-target-cooldown"
+          ]
+        }
+      ],
+      "tags": [
+        "anti-disruption",
+        "ally-shield",
+        "anti-cc",
+        "support"
+      ],
+      "answers": [
+        "hard-cc",
+        "pick",
+        "dive",
+        "lockdown"
+      ],
+      "sourceRef": "support-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "luxforge-lantern",
+      "name": "Luxforge Lantern",
+      "role": "support",
+      "purpose": "Scaling",
+      "stats": {
+        "physicalPower": 30,
+        "maxHealth": 200,
+        "abilityHaste": 15
+      },
+      "passives": [
+        {
+          "name": "Lumos",
+          "description": "On Takedown or Ward Kill, gain stacks. Stacks permanently grant +1 Physical Power. Takedowns: 2 stacks. Ward Kills: 2 stacks. Max Stacks: 30.",
+          "scaling": {
+            "physicalPowerPerStack": 1,
+            "takedownStacks": 2,
+            "wardKillStacks": 2,
+            "maxStacks": 30
+          },
+          "effects": [
+            "takedown",
+            "ward-kill",
+            "permanent-stat-stacking",
+            "physical-power"
+          ]
+        },
+        {
+          "name": "The Wanderer",
+          "description": "While out of combat: Gain 7% Movement Speed.",
+          "scaling": {
+            "movementSpeed": 7
+          },
+          "effects": [
+            "out-of-combat",
+            "movement-speed",
+            "roaming"
+          ]
+        }
+      ],
+      "tags": [
+        "scaling",
+        "roaming",
+        "ward-kill",
+        "physical-power"
+      ],
+      "answers": [
+        "roam",
+        "vision-control",
+        "scaling",
+        "snowball"
+      ],
+      "sourceRef": "support-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "hexbound-bracers",
+      "name": "Hexbound Bracers",
+      "role": "support",
+      "purpose": "Mana Regen",
+      "stats": {
+        "maxHealth": 375,
+        "maxMana": 300,
+        "abilityHaste": 15,
+        "healShieldPower": 10
+      },
+      "passives": [
+        {
+          "name": "Mana Reactor",
+          "description": "Restore Mana equal to 15% of damage taken. Reduced to 5% when damaged by Non-Heroes. Based on your Missing Mana, gain 1-3 additional Mana Regen.",
+          "scaling": {
+            "manaFromHeroDamageTaken": 15,
+            "manaFromNonHeroDamageTaken": 5,
+            "manaRegenMin": 1,
+            "manaRegenMax": 3
+          },
+          "effects": [
+            "damage-taken",
+            "mana-restore",
+            "missing-mana-scaling",
+            "mana-regeneration"
+          ]
+        },
+        {
+          "name": "Hexed Guard",
+          "description": "Take 5 (+1 per Level) less damage from Hero Basic Attacks.",
+          "scaling": {
+            "basicAttackDamageReduction": 5,
+            "damageReductionPerLevel": 1
+          },
+          "effects": [
+            "hero-basic-attack",
+            "damage-reduction",
+            "level-scaling"
+          ]
+        }
+      ],
+      "tags": [
+        "mana-regen",
+        "durability",
+        "heal-shield-power",
+        "anti-basic-attack"
+      ],
+      "answers": [
+        "poke",
+        "basic-attack",
+        "attrition",
+        "mana-pressure"
+      ],
+      "sourceRef": "support-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "vanguardian",
+      "name": "Vanguardian",
+      "role": "support",
+      "purpose": "Defensive Aura",
+      "stats": {
+        "physicalArmor": 35,
+        "magicalArmor": 35,
+        "abilityHaste": 10,
+        "tenacity": 75
+      },
+      "passives": [
+        {
+          "name": "Guardian",
+          "description": "Nearby Allied Heroes gain 15 Physical Armor and 12 Magical Armor.",
+          "scaling": {
+            "allyPhysicalArmor": 15,
+            "allyMagicalArmor": 12
+          },
+          "effects": [
+            "aura",
+            "ally-physical-armor",
+            "ally-magical-armor",
+            "defensive-aura"
+          ]
+        }
+      ],
+      "tags": [
+        "defensive-aura",
+        "armor-aura",
+        "tenacity",
+        "team-defense"
+      ],
+      "answers": [
+        "burst",
+        "mixed-damage",
+        "teamfight",
+        "dive"
+      ],
+      "sourceRef": "support-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "everbloom",
+      "name": "Everbloom",
+      "role": "support",
+      "purpose": "Healing and Shielding",
+      "stats": {
+        "magicalPower": 45,
+        "maxHealth": 200,
+        "healShieldPower": 10
+      },
+      "passives": [
+        {
+          "name": "Divine Protection",
+          "description": "On Healing or Shielding an Ally: Grant them 5% Damage Mitigation and 20 Tenacity for 2s.",
+          "scaling": {
+            "damageMitigation": 5,
+            "tenacity": 20,
+            "duration": 2
+          },
+          "effects": [
+            "heal-trigger",
+            "shield-trigger",
+            "damage-mitigation",
+            "tenacity"
+          ]
+        }
+      ],
+      "tags": [
+        "healing",
+        "shielding",
+        "damage-mitigation",
+        "anti-cc"
+      ],
+      "answers": [
+        "burst",
+        "hard-cc",
+        "dive",
+        "poke"
+      ],
+      "sourceRef": "support-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "lunaria",
+      "name": "Lunaria",
+      "role": "support",
+      "purpose": "Healing and Shielding",
+      "stats": {
+        "magicalPower": 55,
+        "abilityHaste": 10,
+        "healShieldPower": 15
+      },
+      "passives": [
+        {
+          "name": "Incandescence",
+          "description": "On dealing damage to Heroes: Gain charges equal to 25% of damage dealt. Charge Limit: 100-250, based on Level.",
+          "scaling": {
+            "chargeFromDamage": 25,
+            "chargeLimitMin": 100,
+            "chargeLimitMax": 250
+          },
+          "effects": [
+            "hero-damage",
+            "charge-generation",
+            "level-scaling"
+          ]
+        },
+        {
+          "name": "Mending",
+          "description": "On Healing or Shielding an Ally Hero: Consume all Incandescence charges. Heal them for the amount. Prioritizes Lowest Health Target.",
+          "effects": [
+            "heal-trigger",
+            "shield-trigger",
+            "charge-spender",
+            "lowest-health-priority"
+          ]
+        }
+      ],
+      "tags": [
+        "healing",
+        "shielding",
+        "charge-healing",
+        "heal-shield-power"
+      ],
+      "answers": [
+        "poke",
+        "attrition",
+        "low-health-ally",
+        "sustain"
+      ],
+      "sourceRef": "support-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "xenia",
+      "name": "Xenia",
+      "role": "support",
+      "purpose": "Shielding",
+      "stats": {
+        "maxHealth": 200,
+        "physicalArmor": 30,
+        "magicalArmor": 25,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Xenos Guard",
+          "cooldown": 10,
+          "description": "When within 200u to an Ally Hero: Grant them a 50 (+10% max health)(+5 per Level) Shield for 4s. Cooldown is per Target.",
+          "scaling": {
+            "range": 200,
+            "shield": 50,
+            "maxHealthShieldRatio": 0.1,
+            "shieldPerLevel": 5,
+            "duration": 4
+          },
+          "effects": [
+            "near-ally",
+            "ally-shield",
+            "per-target-cooldown",
+            "level-scaling"
+          ]
+        }
+      ],
+      "restrictions": [
+        {
+          "description": "Subsequent applications to the same Hero within 10s are 50% effective.",
+          "effects": [
+            "repeat-application-reduction",
+            "same-hero-window"
+          ]
+        }
+      ],
+      "tags": [
+        "shielding",
+        "team-defense",
+        "armor",
+        "anti-burst"
+      ],
+      "answers": [
+        "burst",
+        "dive",
+        "frontline",
+        "teamfight"
+      ],
+      "sourceRef": "support-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "galaxy-greaves",
+      "name": "Galaxy Greaves",
+      "role": "support",
+      "purpose": "Mobility",
+      "stats": {
+        "physicalArmor": 30,
+        "magicalArmor": 30,
+        "manaRegeneration": 100,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "ZeroG",
+          "description": "While moving: Generate stacks of ZeroG. At 100 stacks your next jump has increased height.",
+          "scaling": {
+            "requiredStacks": 100
+          },
+          "effects": [
+            "movement",
+            "stacking-buff",
+            "jump-height",
+            "mobility"
+          ]
+        },
+        {
+          "name": "Celerity",
+          "description": "While out of combat: Gain 7% Movement Speed.",
+          "scaling": {
+            "movementSpeed": 7
+          },
+          "effects": [
+            "out-of-combat",
+            "movement-speed",
+            "roaming"
+          ]
+        }
+      ],
+      "tags": [
+        "mobility",
+        "roaming",
+        "armor",
+        "jump-height"
+      ],
+      "answers": [
+        "roam",
+        "engage",
+        "disengage",
+        "rotation"
+      ],
+      "sourceRef": "support-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "devotion",
+      "name": "Devotion",
+      "role": "support",
+      "purpose": "Anti Magic",
+      "stats": {
+        "magicalPower": 40,
+        "magicalArmor": 35,
+        "manaRegeneration": 80,
+        "healShieldPower": 10
+      },
+      "passives": [
+        {
+          "name": "Fidelity",
+          "description": "Your Heals and Shields are 10% stronger on Allied Heroes that are below 40% Health.",
+          "scaling": {
+            "healShieldIncrease": 10,
+            "allyHealthThreshold": 40
+          },
+          "effects": [
+            "healing",
+            "shielding",
+            "low-health-ally",
+            "amplification"
+          ]
+        },
+        {
+          "name": "Mystica",
+          "description": "Upon taking magical damage: If the incoming damage instance is greater than 150, reduce it by 15%.",
+          "scaling": {
+            "damageThreshold": 150,
+            "damageReduction": 15
+          },
+          "effects": [
+            "magical-damage-taken",
+            "damage-reduction",
+            "anti-magic"
+          ]
+        }
+      ],
+      "tags": [
+        "anti-magic",
+        "healing",
+        "shielding",
+        "magical-armor"
+      ],
+      "answers": [
+        "magical-damage",
+        "poke",
+        "low-health-ally",
+        "burst"
+      ],
+      "sourceRef": "support-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support item manual entry on 2026-08-22."
       }
     }
   ]
