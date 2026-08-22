@@ -1600,6 +1600,51 @@
         "status": "source-backed",
         "notes": "Fully encoded from user-provided assassin crest manual entry on 2026-08-22."
       }
+    },
+    {
+      "id": "ortus",
+      "name": "Ortus",
+      "role": "assassin",
+      "purpose": "Multi Kill",
+      "stats": {
+        "physicalPower": 12,
+        "physicalPenetration": 5,
+        "abilityHaste": 8
+      },
+      "active": {
+        "name": "Limit Breaker",
+        "cooldown": 90,
+        "description": "Gain 20% Movement Speed and 10% Physical Power for 7s. Takedowns within 7s permanently grant 3 Physical Power and refreshes the duration.",
+        "duration": 7,
+        "scaling": {
+          "movementSpeed": 20,
+          "physicalPowerPercent": 10,
+          "permanentPhysicalPowerOnTakedown": 3
+        },
+        "effects": [
+          "movement-speed",
+          "physical-power",
+          "permanent-stat-stacking",
+          "duration-refresh-on-takedown"
+        ]
+      },
+      "tags": [
+        "multi-kill",
+        "snowball",
+        "mobility",
+        "physical-power"
+      ],
+      "answers": [
+        "cleanup",
+        "reset-fights",
+        "squishy",
+        "skirmish"
+      ],
+      "sourceRef": "assassin-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided assassin crest manual entry on 2026-08-22."
+      }
     }
   ]
 }
