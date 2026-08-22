@@ -36,6 +36,10 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
     },
+    "yin-game-client-manual-entry-2026-08-22": {
+      "label": "Yin game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Yin roles, class, ratings, ability text, and augments."
     "wukong-game-client-manual-entry-2026-08-20": {
       "label": "Wukong game-client manual entry",
       "url": null,
@@ -15165,35 +15169,326 @@
       "id": "yin",
       "name": "Yin",
       "roles": [
-        "carry",
-        "offlane"
+        "jungle"
+      ],
+      "classes": [
+        "carry"
       ],
       "damage": "physical",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 9,
+        "abilityPower": 3,
+        "durability": 3,
+        "mobility": 6
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Silksong",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 60.0/61.8/63.6/65.5/67.6/69.7/71.9/74.2/76.6/79.1/81.7/84.4/87.2/90.1/93.0/96.1/99.3/102.5 (+75% physical power) physical damage.",
+          "scaling": {
+            "damage": [
+              60,
+              61.8,
+              63.6,
+              65.5,
+              67.6,
+              69.7,
+              71.9,
+              74.2,
+              76.6,
+              79.1,
+              81.7,
+              84.4,
+              87.2,
+              90.1,
+              93,
+              96.1,
+              99.3,
+              102.5
+            ],
+            "physicalPowerRatio": 0.75
+          },
+          "effects": [
+            "melee-basic",
+            "physical-damage"
+          ],
+          "sourceRef": "yin-game-client-manual-entry-2026-08-22"
+        },
+        {
+          "slot": "passive",
+          "name": "Rising Storm",
+          "kind": "passive",
+          "damageType": "physical",
+          "description": "Yin's basic attacks against Heroes or Monsters grant her a stack of Rising Storm per Target hit for 3s, stacking up to 6 times, with the duration refreshing on subsequent attacks. Each stack grants 3.0/4.0/5.0/6.0% Total Attack Speed, for a maximum of 18.0/24.0/30.0/36.0% Total Attack Speed.",
+          "scaling": {
+            "stackDuration": 3,
+            "maxStacks": 6,
+            "totalAttackSpeedPerStackPercent": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "maxTotalAttackSpeedPercent": [
+              18,
+              24,
+              30,
+              36
+            ]
+          },
+          "effects": [
+            "attack-speed",
+            "stacking-buff",
+            "basic-attack-scaling",
+            "hero-hit",
+            "monster-hit",
+            "sustained-dps",
+            "jungle-clear"
+          ],
+          "sourceRef": "yin-game-client-manual-entry-2026-08-22"
+        },
+        {
+          "slot": "primary",
+          "name": "Lash Kick",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Yin swings her whip 1350 units to pull herself to a target or the world; If the Target is an Enemy, she deals 30.0/55.0/80.0/105.0/130.0 (+100% physical power)(+80% magical power) physical damage, Slows them by 90% for 0.6s, and generates 2 stacks of Rising Storm. She then leaps in a direction of her choice.",
+          "cooldown": [
+            23,
+            20,
+            17,
+            14,
+            11
+          ],
+          "scaling": {
+            "range": 1350,
+            "damage": [
+              30,
+              55,
+              80,
+              105,
+              130
+            ],
+            "physicalPowerRatio": 1,
+            "magicalPowerRatio": 0.8,
+            "slowPercent": 90,
+            "slowDuration": 0.6,
+            "risingStormStacksGenerated": 2
+          },
+          "effects": [
+            "mobility",
+            "pull-self",
+            "terrain-target",
+            "enemy-target",
+            "leap",
+            "physical-damage",
+            "slow",
+            "stack-generation",
+            "engage",
+            "chase"
+          ],
+          "sourceRef": "yin-game-client-manual-entry-2026-08-22"
+        },
+        {
+          "slot": "secondary",
+          "name": "Windburn",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Passive: Every third successful consecutive basic attack will deal 2.0/2.5/3.0/3.5/4.0% of the target's maximum health as bonus physical damage and heals Yin for +(10.0/12.0/14.0/16.0/18.0% physical power) Health. Active: Yin extends her whip, increasing the range of her basic attack to 1100 units and gaining 30.0/40.0/50.0/60.0/70.0% cleave for 6s.",
+          "cooldown": [
+            13,
+            12,
+            11,
+            10,
+            9
+          ],
+          "scaling": {
+            "passiveTriggerAttackCount": 3,
+            "targetMaxHealthDamagePercent": [
+              2,
+              2.5,
+              3,
+              3.5,
+              4
+            ],
+            "healPhysicalPowerPercent": [
+              10,
+              12,
+              14,
+              16,
+              18
+            ],
+            "activeBasicAttackRange": 1100,
+            "cleavePercent": [
+              30,
+              40,
+              50,
+              60,
+              70
+            ],
+            "duration": 6
+          },
+          "effects": [
+            "buff",
+            "basic-attack-enhance",
+            "target-max-health-damage",
+            "healing",
+            "range-increase",
+            "cleave",
+            "sustained-dps",
+            "anti-frontline",
+            "jungle-clear"
+          ],
+          "sourceRef": "yin-game-client-manual-entry-2026-08-22"
+        },
+        {
+          "slot": "alternate",
+          "name": "Backlash",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Yin cracks her whip, Pushing away nearby Enemies. Deals 20.0/40.0/60.0/80.0/100.0 (+100% physical power)(+60% magical power) physical damage and creates a sphere of pressure around her for 0.8s. If Enemy projectiles hit the sphere, they are reflected toward the target location.",
+          "cooldown": [
+            11.5,
+            10.75,
+            10,
+            9.25,
+            8.5
+          ],
+          "scaling": {
+            "damage": [
+              20,
+              40,
+              60,
+              80,
+              100
+            ],
+            "physicalPowerRatio": 1,
+            "magicalPowerRatio": 0.6,
+            "pressureSphereDuration": 0.8
+          },
+          "effects": [
+            "utility",
+            "area-damage",
+            "push",
+            "displacement",
+            "projectile-reflect",
+            "anti-projectile",
+            "peel",
+            "anti-poke"
+          ],
+          "sourceRef": "yin-game-client-manual-entry-2026-08-22"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Quelling Gale",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Yin surrounds herself in gale winds. For 5s, the winds will apply a 10% Slow to Enemies within and grants Yin 10% movement speed. Enemy projectiles that travel through it are halted.",
+          "cooldown": [
+            125,
+            105,
+            85
+          ],
+          "scaling": {
+            "duration": 5,
+            "slowPercent": 10,
+            "movementSpeedPercent": 10
+          },
+          "effects": [
+            "area-control",
+            "slow",
+            "movement-speed",
+            "projectile-halt",
+            "anti-projectile",
+            "anti-poke",
+            "teamfight",
+            "peel"
+          ],
+          "sourceRef": "yin-game-client-manual-entry-2026-08-22"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Energy Transfer",
+          "category": "durability",
+          "description": "Deflecting a projectile grants 20% Decaying Movement Speed over 2s and a 44-350 Shield for 3s.",
+          "tags": [
+            "projectile-deflect",
+            "movement-speed",
+            "shield",
+            "anti-projectile",
+            "durability"
+          ],
+          "sourceRef": "yin-game-client-manual-entry-2026-08-22"
+        },
+        {
+          "name": "Serpent's Blessing",
+          "category": "mobility",
+          "description": "Lash Kick's Cooldown is reduced by 50% when used on Terrain.",
+          "tags": [
+            "lash-kick",
+            "terrain-target",
+            "cooldown-reduction",
+            "mobility",
+            "chase"
+          ],
+          "sourceRef": "yin-game-client-manual-entry-2026-08-22"
+        },
+        {
+          "name": "Storm of Salvation",
+          "category": "healing",
+          "description": "Windburn lasts for 1s longer and grants (+0.75% Missing Health) Healing On-Hit while active. Healing is 20% effective against Non-Heroes.",
+          "tags": [
+            "windburn",
+            "duration-increase",
+            "healing-on-hit",
+            "missing-health-healing",
+            "sustain"
+          ],
+          "sourceRef": "yin-game-client-manual-entry-2026-08-22"
+        }
+      ],
       "threats": [
         "duelist",
         "anti-projectile",
-        "sustained-dps"
+        "sustained-dps",
+        "mobility",
+        "anti-poke",
+        "anti-frontline",
+        "jungle-clear"
       ],
       "answers": [
         "anti-poke",
         "duelist",
-        "mobility"
+        "mobility",
+        "anti-projectile",
+        "projectile-reflect",
+        "projectile-halt",
+        "sustain",
+        "tank-shred"
       ],
       "weaknesses": [
         "hard-cc",
-        "burst-vulnerable"
+        "burst-vulnerable",
+        "anti-heal",
+        "melee-risk",
+        "cooldown-reliant"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "yin-game-client-manual-entry-2026-08-22",
+        "roles": "yin-game-client-manual-entry-2026-08-22",
+        "kit": "yin-game-client-manual-entry-2026-08-22",
+        "augments": "yin-game-client-manual-entry-2026-08-22"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-22. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
