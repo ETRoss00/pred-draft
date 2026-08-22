@@ -2,7 +2,7 @@ import crestData from "./crests.json";
 
 import type { VerificationStatus } from "./audit";
 
-export type CrestRole = "carry";
+export type CrestRole = "carry" | "support";
 
 export type CrestActive = {
   name: string;
@@ -11,6 +11,12 @@ export type CrestActive = {
   duration?: number;
   recastWindow?: number;
   scaling?: Record<string, number>;
+  effects: string[];
+};
+
+export type CrestPassive = {
+  name: string;
+  description: string;
   effects: string[];
 };
 
@@ -25,8 +31,13 @@ export type Crest = {
     attackSpeed?: number;
     lifesteal?: number;
     omnivamp?: number;
+    maxHealth?: number;
+    healthRegeneration?: number;
+    manaRegeneration?: number;
+    gold?: number;
   };
-  active: CrestActive;
+  active?: CrestActive;
+  passives?: CrestPassive[];
   tags: string[];
   answers: string[];
   sourceRef: string;
@@ -87,14 +98,26 @@ export function auditCrestData(dataset: CrestDataSet = data): CrestAuditReport {
       }
     });
 
-    if (!crest.active?.name) errors.push(issue("error", crest.name, "active", "Crest active is missing a name."));
-    if (!Number.isFinite(crest.active?.cooldown) || crest.active.cooldown <= 0) {
-      errors.push(issue("error", crest.name, "active.cooldown", "Crest active cooldown must be a positive number."));
+    if (crest.verification?.status === "source-backed" && !crest.active) {
+      errors.push(issue("error", crest.name, "active", "Source-backed crest is missing active details."));
     }
-    if (!crest.active?.description) errors.push(issue("error", crest.name, "active.description", "Crest active is missing description text."));
-    if (!Array.isArray(crest.active?.effects) || !crest.active.effects.length) {
-      warnings.push(issue("warning", crest.name, "active.effects", "Crest active has no effect tags."));
+    if (crest.active) {
+      if (!crest.active.name) errors.push(issue("error", crest.name, "active", "Crest active is missing a name."));
+      if (!Number.isFinite(crest.active.cooldown) || crest.active.cooldown <= 0) {
+        errors.push(issue("error", crest.name, "active.cooldown", "Crest active cooldown must be a positive number."));
+      }
+      if (!crest.active.description) errors.push(issue("error", crest.name, "active.description", "Crest active is missing description text."));
+      if (!Array.isArray(crest.active.effects) || !crest.active.effects.length) {
+        warnings.push(issue("warning", crest.name, "active.effects", "Crest active has no effect tags."));
+      }
     }
+    crest.passives?.forEach((passive) => {
+      if (!passive.name) errors.push(issue("error", crest.name, "passives", "Crest passive is missing a name."));
+      if (!passive.description) errors.push(issue("error", crest.name, "passives", `${passive.name || "Passive"} is missing description text.`));
+      if (!Array.isArray(passive.effects) || !passive.effects.length) {
+        warnings.push(issue("warning", crest.name, "passives", `${passive.name || "Passive"} has no effect tags.`));
+      }
+    });
 
     if (!crest.tags.length) warnings.push(issue("warning", crest.name, "tags", "Crest has no recommendation tags."));
     if (!crest.answers.length) warnings.push(issue("warning", crest.name, "answers", "Crest has no draft answer tags."));

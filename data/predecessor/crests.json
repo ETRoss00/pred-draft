@@ -8,10 +8,16 @@
       "label": "Carry crests manual entry",
       "url": null,
       "use": "User-provided in-game text covering carry crest purpose, stats, active names, cooldowns, and effects."
+    },
+    "support-crests-manual-entry-2026-08-22": {
+      "label": "Support crests manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering support crest purpose, stats, active names, cooldowns, effects, and passives."
     }
   },
   "validCrestRoles": [
-    "carry"
+    "carry",
+    "support"
   ],
   "validVerificationStatuses": [
     "source-backed",
@@ -195,6 +201,478 @@
       "verification": {
         "status": "source-backed",
         "notes": "Fully encoded from user-provided carry crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "leafsong",
+      "name": "Leafsong",
+      "role": "support",
+      "purpose": "Mobility",
+      "stats": {
+        "maxHealth": 120,
+        "healthRegeneration": 50,
+        "gold": 1.8
+      },
+      "active": {
+        "name": "Phantom Rush",
+        "cooldown": 100,
+        "description": "Increase the Movement Speed of nearby Allies by 30% for 4s. They are also immune to Slows and can pass through Heroes for 4s.",
+        "duration": 4,
+        "scaling": {
+          "allyMovementSpeed": 30
+        },
+        "effects": [
+          "ally-movement-speed",
+          "slow-immunity",
+          "unit-phasing",
+          "team-mobility"
+        ]
+      },
+      "passives": [
+        {
+          "name": "Visionary",
+          "description": "Gain Solstone. Increase Ward Cap from 2 to 3.",
+          "effects": [
+            "solstone",
+            "ward-cap"
+          ]
+        },
+        {
+          "name": "Pacifist",
+          "description": "Receive diminishing Gold from Minion kills.",
+          "effects": [
+            "support-gold-rule",
+            "minion-gold-penalty"
+          ]
+        }
+      ],
+      "tags": [
+        "mobility",
+        "engage",
+        "disengage",
+        "slow-immunity"
+      ],
+      "answers": [
+        "slow",
+        "kite",
+        "engage",
+        "disengage"
+      ],
+      "sourceRef": "support-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "reclamation",
+      "name": "Reclamation",
+      "role": "support",
+      "purpose": "Cleanse",
+      "stats": {
+        "maxHealth": 100,
+        "manaRegeneration": 40,
+        "gold": 1.8
+      },
+      "passives": [
+        {
+          "name": "Visionary",
+          "description": "Gain Solstone. Increase Ward Cap from 2 to 3.",
+          "effects": [
+            "solstone",
+            "ward-cap"
+          ]
+        },
+        {
+          "name": "Pacifist",
+          "description": "Receive diminishing Gold from Minion kills.",
+          "effects": [
+            "support-gold-rule",
+            "minion-gold-penalty"
+          ]
+        }
+      ],
+      "tags": [
+        "cleanse",
+        "anti-cc",
+        "support"
+      ],
+      "answers": [
+        "hard-cc",
+        "debuffs",
+        "pick"
+      ],
+      "sourceRef": "support-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "needs-review",
+        "notes": "User-provided entry included purpose, stats, and support passives on 2026-08-22, but did not include active name, cooldown, or cleanse effect text."
+      }
+    },
+    {
+      "id": "rift-walkers",
+      "name": "Rift Walkers",
+      "role": "support",
+      "purpose": "Engage",
+      "stats": {
+        "maxHealth": 120,
+        "healthRegeneration": 50,
+        "gold": 1.8
+      },
+      "active": {
+        "name": "Rift Snatcher",
+        "cooldown": 120,
+        "description": "Dash forward a short distance. Pull nearby Heroes towards you.",
+        "effects": [
+          "dash",
+          "pull",
+          "engage",
+          "teamfight-setup"
+        ]
+      },
+      "passives": [
+        {
+          "name": "Visionary",
+          "description": "Gain Solstone. Increase Ward Cap from 2 to 3.",
+          "effects": [
+            "solstone",
+            "ward-cap"
+          ]
+        },
+        {
+          "name": "Pacifist",
+          "description": "Receive diminishing Gold from Minion kills.",
+          "effects": [
+            "support-gold-rule",
+            "minion-gold-penalty"
+          ]
+        }
+      ],
+      "tags": [
+        "engage",
+        "pull",
+        "mobility",
+        "teamfight-setup"
+      ],
+      "answers": [
+        "backline-access",
+        "low-mobility",
+        "objective-control"
+      ],
+      "sourceRef": "support-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "sanctification",
+      "name": "Sanctification",
+      "role": "support",
+      "purpose": "Shielding",
+      "stats": {
+        "maxHealth": 120,
+        "healthRegeneration": 50,
+        "gold": 1.8
+      },
+      "active": {
+        "name": "Safeguard",
+        "cooldown": 120,
+        "description": "Grants yourself and nearby Heroes a 150 (+8%) Shield for 3s. While the Shield holds, Heroes gain 50% Tenacity.",
+        "duration": 3,
+        "scaling": {
+          "shield": 150,
+          "shieldRatio": 0.08,
+          "tenacity": 50
+        },
+        "effects": [
+          "shield",
+          "ally-shield",
+          "tenacity",
+          "anti-cc"
+        ]
+      },
+      "passives": [
+        {
+          "name": "Visionary",
+          "description": "Gain Solstone. Increase Ward Cap from 2 to 3.",
+          "effects": [
+            "solstone",
+            "ward-cap"
+          ]
+        },
+        {
+          "name": "Pacifist",
+          "description": "Receive diminishing Gold from Minion kills.",
+          "effects": [
+            "support-gold-rule",
+            "minion-gold-penalty"
+          ]
+        }
+      ],
+      "tags": [
+        "shielding",
+        "anti-burst",
+        "tenacity",
+        "team-defense"
+      ],
+      "answers": [
+        "burst",
+        "hard-cc",
+        "dive"
+      ],
+      "sourceRef": "support-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "silentium",
+      "name": "Silentium",
+      "role": "support",
+      "purpose": "Disruption",
+      "stats": {
+        "maxHealth": 100,
+        "manaRegeneration": 40,
+        "gold": 1.8
+      },
+      "active": {
+        "name": "Muzzle",
+        "cooldown": 135,
+        "description": "Silence a Hero for 0.75s. Deals 100 (+20% magical power) Damage.",
+        "duration": 0.75,
+        "scaling": {
+          "damage": 100,
+          "magicalPowerRatio": 0.2,
+          "silenceDuration": 0.75
+        },
+        "effects": [
+          "silence",
+          "single-target-damage",
+          "disruption",
+          "anti-caster"
+        ]
+      },
+      "passives": [
+        {
+          "name": "Visionary",
+          "description": "Gain Solstone. Increase Ward Cap from 2 to 3.",
+          "effects": [
+            "solstone",
+            "ward-cap"
+          ]
+        },
+        {
+          "name": "Pacifist",
+          "description": "Receive diminishing Gold from Minion kills.",
+          "effects": [
+            "support-gold-rule",
+            "minion-gold-penalty"
+          ]
+        }
+      ],
+      "tags": [
+        "disruption",
+        "silence",
+        "anti-caster",
+        "pick"
+      ],
+      "answers": [
+        "channel",
+        "caster",
+        "engage",
+        "pick"
+      ],
+      "sourceRef": "support-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "tranquility",
+      "name": "Tranquility",
+      "role": "support",
+      "purpose": "Healing",
+      "stats": {
+        "maxHealth": 100,
+        "manaRegeneration": 40,
+        "gold": 1.8
+      },
+      "active": {
+        "name": "Grace",
+        "cooldown": 40,
+        "description": "Heal yourself and nearby Heroes by 150 (+70% magical power). Also grant 10% Damage Mitigation for 2s.",
+        "duration": 2,
+        "scaling": {
+          "healing": 150,
+          "magicalPowerRatio": 0.7,
+          "damageMitigation": 10
+        },
+        "effects": [
+          "healing",
+          "ally-healing",
+          "damage-mitigation",
+          "sustain"
+        ]
+      },
+      "passives": [
+        {
+          "name": "Visionary",
+          "description": "Gain Solstone. Increase Ward Cap from 2 to 3.",
+          "effects": [
+            "solstone",
+            "ward-cap"
+          ]
+        },
+        {
+          "name": "Pacifist",
+          "description": "Receive diminishing Gold from Minion kills.",
+          "effects": [
+            "support-gold-rule",
+            "minion-gold-penalty"
+          ]
+        }
+      ],
+      "tags": [
+        "healing",
+        "sustain",
+        "anti-poke",
+        "damage-mitigation"
+      ],
+      "answers": [
+        "poke",
+        "attrition",
+        "burst"
+      ],
+      "sourceRef": "support-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "florescence",
+      "name": "Florescence",
+      "role": "support",
+      "purpose": "Cleanse",
+      "stats": {
+        "maxHealth": 120,
+        "healthRegeneration": 50,
+        "gold": 1.8
+      },
+      "active": {
+        "name": "Starshroom",
+        "cooldown": 65,
+        "description": "Place a bouncy Starshroom for 150s. Heroes at the location are immediately bounced up. Heroes that Jump onto the Starshroom bounce off of it. Each Hero can only bounce on it once every 5s. Disappears 12s after being bounced on.",
+        "duration": 150,
+        "scaling": {
+          "perHeroBounceCooldown": 5,
+          "disappearAfterBounce": 12
+        },
+        "effects": [
+          "deployable",
+          "bounce",
+          "vertical-mobility",
+          "team-mobility"
+        ]
+      },
+      "passives": [
+        {
+          "name": "Visionary",
+          "description": "Gain Solstone. Increase Ward Cap from 2 to 3.",
+          "effects": [
+            "solstone",
+            "ward-cap"
+          ]
+        },
+        {
+          "name": "Pacifist",
+          "description": "Receive diminishing Gold from Minion kills.",
+          "effects": [
+            "support-gold-rule",
+            "minion-gold-penalty"
+          ]
+        }
+      ],
+      "tags": [
+        "cleanse",
+        "mobility",
+        "deployable",
+        "reposition"
+      ],
+      "answers": [
+        "zone-control",
+        "engage",
+        "disengage"
+      ],
+      "sourceRef": "support-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "pygmy-dust",
+      "name": "Pygmy Dust",
+      "role": "support",
+      "purpose": "Shrink Effect",
+      "stats": {
+        "maxHealth": 100,
+        "manaRegeneration": 40,
+        "gold": 1.8
+      },
+      "active": {
+        "name": "Minimize",
+        "cooldown": 120,
+        "description": "Shrink yourself or a target Hero for 3.5s. Allies gain 40% Decaying Movement Speed. Enemies are Slowed by 40% and deal 30% less damage.",
+        "duration": 3.5,
+        "scaling": {
+          "allyMovementSpeed": 40,
+          "enemySlow": 40,
+          "enemyDamageReduction": 30
+        },
+        "effects": [
+          "shrink",
+          "ally-movement-speed",
+          "slow",
+          "damage-reduction-debuff"
+        ]
+      },
+      "passives": [
+        {
+          "name": "Visionary",
+          "description": "Gain Solstone. Increase Ward Cap from 2 to 3.",
+          "effects": [
+            "solstone",
+            "ward-cap"
+          ]
+        },
+        {
+          "name": "Pacifist",
+          "description": "Receive diminishing Gold from Minion kills.",
+          "effects": [
+            "support-gold-rule",
+            "minion-gold-penalty"
+          ]
+        }
+      ],
+      "tags": [
+        "shrink",
+        "anti-dive",
+        "slow",
+        "damage-reduction"
+      ],
+      "answers": [
+        "dive",
+        "burst",
+        "duelist",
+        "engage"
+      ],
+      "sourceRef": "support-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided support crest manual entry on 2026-08-22."
       }
     }
   ]
