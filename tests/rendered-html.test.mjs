@@ -42,8 +42,10 @@ test("keeps the kit data in a source-audited data folder", async () => {
   const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
   const heroes = await readFile(new URL("../data/predecessor/heroes.json", import.meta.url), "utf8");
   const crests = await readFile(new URL("../data/predecessor/crests.json", import.meta.url), "utf8");
+  const items = await readFile(new URL("../data/predecessor/items.json", import.meta.url), "utf8");
   const audit = await readFile(new URL("../data/predecessor/audit.ts", import.meta.url), "utf8");
   const crestAudit = await readFile(new URL("../data/predecessor/crests.ts", import.meta.url), "utf8");
+  const itemAudit = await readFile(new URL("../data/predecessor/items.ts", import.meta.url), "utf8");
   const layout = await readFile(new URL("../app/layout.tsx", import.meta.url), "utf8");
   const packageJson = await readFile(new URL("../package.json", import.meta.url), "utf8");
 
@@ -81,9 +83,16 @@ test("keeps the kit data in a source-audited data folder", async () => {
   assert.match(crests, /"Witchstalker"/);
   assert.match(crests, /"Abyssal Dart"/);
   assert.match(crests, /"Ortus"/);
+  assert.match(items, /"schemaVersion": 1/);
+  assert.match(items, /"Nuclear Rounds"/);
+  assert.match(items, /"Onixian Quiver"/);
+  assert.match(items, /"Tainted Rounds"/);
+  assert.match(items, /"Sky Splitter"/);
+  assert.match(items, /"Imperator"/);
   assert.match(audit, /auditHeroData/);
   assert.match(audit, /fullyVerifiedHeroes/);
   assert.match(crestAudit, /auditCrestData/);
+  assert.match(itemAudit, /auditItemData/);
   assert.match(page, /const counterRules = \[/);
   assert.match(page, /peels dive/);
   assert.match(page, /frontline shred/);
