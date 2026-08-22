@@ -13,6 +13,11 @@
       "label": "Divine support Eternals manual entry",
       "url": null,
       "use": "User-provided in-game text covering Divine support Eternal traits and Minor Blessing options."
+    },
+    "sovereign-mage-eternals-manual-entry-2026-08-22": {
+      "label": "Sovereign mage Eternals manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Sovereign mage Eternal traits and Minor Blessing options."
     }
   },
   "validEternalCategories": [
@@ -1020,6 +1025,325 @@
       "verification": {
         "status": "source-backed",
         "notes": "Fully encoded from user-provided Divine support Eternal manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "vesh",
+      "name": "Vesh",
+      "category": "sovereign",
+      "role": "mage",
+      "mainTrait": {
+        "name": "Vesh",
+        "description": "Ability Damage dealt to Enemy Heroes deals +7% (+0.4% per Minute) of that Damage as a 3s DoT.",
+        "scaling": {
+          "damageAsDot": 7,
+          "damageAsDotPerMinute": 0.4,
+          "dotDuration": 3
+        },
+        "effects": [
+          "ability-damage",
+          "hero-damage",
+          "damage-over-time",
+          "time-scaling"
+        ],
+        "tags": [
+          "dot",
+          "ability-damage",
+          "scaling"
+        ]
+      },
+      "minorBlessing1": [
+        {
+          "id": "vesh-lich",
+          "name": "Lich",
+          "description": "Gain 8% (+0.5% per Level) Magical Lifesteal.",
+          "scaling": {
+            "magicalLifesteal": 8,
+            "magicalLifestealPerLevel": 0.5
+          },
+          "effects": [
+            "magical-lifesteal",
+            "level-scaling"
+          ],
+          "tags": [
+            "sustain",
+            "magical-lifesteal",
+            "scaling"
+          ]
+        },
+        {
+          "id": "vesh-tithe-of-death",
+          "name": "Tithe of Death",
+          "description": "Takedowns restore 15% Max Mana and permanently grant 2 Ability Haste. Max: 30 Ability Haste.",
+          "scaling": {
+            "maxManaRestore": 15,
+            "abilityHastePerTakedown": 2,
+            "maxAbilityHaste": 30
+          },
+          "effects": [
+            "takedown",
+            "max-mana-restore",
+            "permanent-ability-haste"
+          ],
+          "tags": [
+            "snowball",
+            "mana-sustain",
+            "cooldown-scaling"
+          ]
+        },
+        {
+          "id": "vesh-the-tenth-seal",
+          "name": "The Tenth Seal",
+          "description": "At Level 10, gain +5% Ultimate Damage and +25 Ultimate Ability Haste.",
+          "scaling": {
+            "triggerLevel": 10,
+            "ultimateDamageIncrease": 5,
+            "ultimateAbilityHaste": 25
+          },
+          "effects": [
+            "level-threshold",
+            "ultimate-damage",
+            "ultimate-haste"
+          ],
+          "tags": [
+            "ultimate-synergy",
+            "power-spike",
+            "burst"
+          ]
+        }
+      ],
+      "minorBlessing2": [
+        {
+          "id": "vesh-mind-rot",
+          "name": "Mind Rot",
+          "description": "Vesh also deals 2% of the Target's Current Health over the Duration.",
+          "scaling": {
+            "currentHealthDamage": 2
+          },
+          "effects": [
+            "current-health-damage",
+            "damage-over-time"
+          ],
+          "tags": [
+            "anti-frontline",
+            "dot",
+            "poke"
+          ]
+        },
+        {
+          "id": "vesh-phylactery",
+          "name": "Phylactery",
+          "description": "Casting your Ultimate grants a 15% Max Mana Shield and 100% Cooldown Progression for 3s.",
+          "scaling": {
+            "maxManaShield": 15,
+            "cooldownProgression": 100,
+            "duration": 3
+          },
+          "effects": [
+            "ultimate-cast",
+            "max-mana-shield",
+            "cooldown-progression"
+          ],
+          "tags": [
+            "ultimate-synergy",
+            "anti-burst",
+            "cooldown-reduction"
+          ]
+        },
+        {
+          "id": "vesh-millennia",
+          "name": "Millennia",
+          "description": "Every 60 Seconds, gain +1% Ultimate Damage.",
+          "scaling": {
+            "intervalSeconds": 60,
+            "ultimateDamageIncrease": 1
+          },
+          "effects": [
+            "time-scaling",
+            "ultimate-damage"
+          ],
+          "tags": [
+            "scaling",
+            "ultimate-synergy",
+            "burst"
+          ]
+        }
+      ],
+      "tags": [
+        "mage",
+        "dot",
+        "ability-damage",
+        "ultimate-synergy",
+        "scaling"
+      ],
+      "answers": [
+        "poke",
+        "frontline",
+        "extended-fights",
+        "ultimate-burst"
+      ],
+      "sourceRef": "sovereign-mage-eternals-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided Sovereign mage Eternal manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "xyris",
+      "name": "Xyris",
+      "category": "sovereign",
+      "role": "mage",
+      "mainTrait": {
+        "name": "Xyris",
+        "description": "Deal +3% Damage. Deal an additional +0.4% Damage per 10 Units killed, up to a limit of 400 Units.",
+        "scaling": {
+          "damageIncrease": 3,
+          "damageIncreasePerUnitStep": 0.4,
+          "unitStep": 10,
+          "maxUnits": 400
+        },
+        "effects": [
+          "damage-amplification",
+          "unit-kill-scaling"
+        ],
+        "tags": [
+          "scaling",
+          "damage-amplification",
+          "farm"
+        ]
+      },
+      "minorBlessing1": [
+        {
+          "id": "xyris-furor",
+          "name": "Furor",
+          "description": "Entering Hero Combat grants 20% Total Attack Speed for 4s.",
+          "scaling": {
+            "totalAttackSpeed": 20,
+            "duration": 4
+          },
+          "effects": [
+            "hero-combat",
+            "attack-speed"
+          ],
+          "tags": [
+            "attack-speed",
+            "dueling",
+            "combat-entry"
+          ]
+        },
+        {
+          "id": "xyris-dominance",
+          "name": "Dominance",
+          "description": "Takedowns restore 100 (+15% Missing Health) Health.",
+          "scaling": {
+            "healthRestore": 100,
+            "missingHealthRatio": 0.15
+          },
+          "effects": [
+            "takedown",
+            "health-restore",
+            "missing-health-scaling"
+          ],
+          "tags": [
+            "snowball",
+            "sustain",
+            "multi-kill"
+          ]
+        },
+        {
+          "id": "xyris-iron-will",
+          "name": "Iron Will",
+          "description": "Restore Health equal to 3% of Basic Attack Damage dealt. Increased to 6% for Critical Strikes.",
+          "scaling": {
+            "basicAttackDamageHealing": 3,
+            "criticalStrikeDamageHealing": 6
+          },
+          "effects": [
+            "basic-attack",
+            "health-restore",
+            "critical-strike"
+          ],
+          "tags": [
+            "sustain",
+            "basic-attack",
+            "crit-synergy"
+          ]
+        }
+      ],
+      "minorBlessing2": [
+        {
+          "id": "xyris-cull-the-weak",
+          "name": "Cull the Weak",
+          "description": "Deal +7% Damage to Minions and Monsters. Restore 1% Missing Mana on Unit kill.",
+          "scaling": {
+            "minionMonsterDamageIncrease": 7,
+            "missingManaRestoreOnUnitKill": 1
+          },
+          "effects": [
+            "minion-damage",
+            "monster-damage",
+            "unit-kill",
+            "missing-mana-restore"
+          ],
+          "tags": [
+            "farm",
+            "jungle-clear",
+            "mana-sustain"
+          ]
+        },
+        {
+          "id": "xyris-bone-collector",
+          "name": "Bone Collector",
+          "description": "Upon killing 150 Units, permanently gain 20% Critical Strike Chance.",
+          "scaling": {
+            "requiredUnitKills": 150,
+            "criticalStrikeChance": 20
+          },
+          "effects": [
+            "unit-kill-threshold",
+            "critical-strike-chance"
+          ],
+          "tags": [
+            "scaling",
+            "crit",
+            "farm"
+          ]
+        },
+        {
+          "id": "xyris-eviscerate",
+          "name": "Eviscerate",
+          "description": "Deal +15% Damage to Targets above 80% Health.",
+          "scaling": {
+            "damageIncrease": 15,
+            "targetHealthThreshold": 80
+          },
+          "effects": [
+            "high-health-target",
+            "damage-amplification"
+          ],
+          "tags": [
+            "burst",
+            "poke",
+            "opening-damage"
+          ]
+        }
+      ],
+      "tags": [
+        "mage",
+        "damage-amplification",
+        "scaling",
+        "basic-attack"
+      ],
+      "answers": [
+        "scaling",
+        "farm",
+        "poke",
+        "dueling"
+      ],
+      "sourceRef": "sovereign-mage-eternals-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided Sovereign mage Eternal manual entry on 2026-08-22."
       }
     }
   ]
