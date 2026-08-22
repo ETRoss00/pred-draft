@@ -102,10 +102,18 @@ for (const crest of crestDataset.crests) {
     if (!Number.isFinite(value) || value < 0) errors.push(`[crests.stats.${stat}] ${crest.name} stat must be a non-negative number.`);
   }
 
-  if (!crest.active?.name) errors.push(`[crests.active] ${crest.name} active is missing a name.`);
-  if (!Number.isFinite(crest.active?.cooldown) || crest.active.cooldown <= 0) errors.push(`[crests.active.cooldown] ${crest.name} active cooldown must be a positive number.`);
-  if (!crest.active?.description) errors.push(`[crests.active.description] ${crest.name} active is missing description text.`);
-  if (!Array.isArray(crest.active?.effects) || crest.active.effects.length === 0) warnings.push(`[crests.active.effects] ${crest.name} active has no effect tags.`);
+  if (crest.verification?.status === "source-backed" && !crest.active) errors.push(`[crests.active] ${crest.name} source-backed crest is missing active details.`);
+  if (crest.active) {
+    if (!crest.active.name) errors.push(`[crests.active] ${crest.name} active is missing a name.`);
+    if (!Number.isFinite(crest.active.cooldown) || crest.active.cooldown <= 0) errors.push(`[crests.active.cooldown] ${crest.name} active cooldown must be a positive number.`);
+    if (!crest.active.description) errors.push(`[crests.active.description] ${crest.name} active is missing description text.`);
+    if (!Array.isArray(crest.active.effects) || crest.active.effects.length === 0) warnings.push(`[crests.active.effects] ${crest.name} active has no effect tags.`);
+  }
+  for (const passive of crest.passives ?? []) {
+    if (!passive.name) errors.push(`[crests.passives] ${crest.name} has a passive missing a name.`);
+    if (!passive.description) errors.push(`[crests.passives] ${crest.name} ${passive.name || "passive"} is missing description text.`);
+    if (!Array.isArray(passive.effects) || passive.effects.length === 0) warnings.push(`[crests.passives] ${crest.name} ${passive.name || "passive"} has no effect tags.`);
+  }
   if (!Array.isArray(crest.tags) || crest.tags.length === 0) warnings.push(`[crests.tags] ${crest.name} has no recommendation tags.`);
   if (!Array.isArray(crest.answers) || crest.answers.length === 0) warnings.push(`[crests.answers] ${crest.name} has no draft answer tags.`);
   if (!crest.sourceRef) errors.push(`[crests.sourceRef] ${crest.name} is missing sourceRef.`);
