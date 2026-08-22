@@ -41,7 +41,9 @@ test("server-renders the draft companion shell", async () => {
 test("keeps the kit data in a source-audited data folder", async () => {
   const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
   const heroes = await readFile(new URL("../data/predecessor/heroes.json", import.meta.url), "utf8");
+  const crests = await readFile(new URL("../data/predecessor/crests.json", import.meta.url), "utf8");
   const audit = await readFile(new URL("../data/predecessor/audit.ts", import.meta.url), "utf8");
+  const crestAudit = await readFile(new URL("../data/predecessor/crests.ts", import.meta.url), "utf8");
   const layout = await readFile(new URL("../app/layout.tsx", import.meta.url), "utf8");
   const packageJson = await readFile(new URL("../package.json", import.meta.url), "utf8");
 
@@ -54,8 +56,14 @@ test("keeps the kit data in a source-audited data folder", async () => {
   assert.match(heroes, /"name": "Infinite Obliteration"/);
   assert.match(heroes, /"roleStatus": "needs-review"/);
   assert.match(heroes, /"roleStatus": "source-backed"/);
+  assert.match(crests, /"schemaVersion": 1/);
+  assert.match(crests, /"Eviscerator"/);
+  assert.match(crests, /"Liberator"/);
+  assert.match(crests, /"Pacifier"/);
+  assert.match(crests, /"Exodus"/);
   assert.match(audit, /auditHeroData/);
   assert.match(audit, /fullyVerifiedHeroes/);
+  assert.match(crestAudit, /auditCrestData/);
   assert.match(page, /const counterRules = \[/);
   assert.match(page, /peels dive/);
   assert.match(page, /frontline shred/);

@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { auditHeroData, heroes, predecessorHeroData, roles, type Hero, type Role } from "@/data/predecessor/audit";
+import { auditCrestData } from "@/data/predecessor/crests";
 
 type Advice = {
   name: string;
@@ -148,6 +149,7 @@ export default function Home() {
   const comp = useMemo(() => analyze(enemyNames), [enemyNames]);
   const locked = heroes.find((hero) => hero.name === lockedHero);
   const audit = useMemo(() => auditHeroData(), []);
+  const crestAudit = useMemo(() => auditCrestData(), []);
 
   const recommendations = useMemo(
     () =>
@@ -282,6 +284,9 @@ export default function Home() {
                 <h2 className="text-sm font-black uppercase tracking-[0.12em]">Data audit</h2>
                 <p className="mt-1 text-sm font-semibold text-[#665f52]">
                   {audit.heroCount} heroes / {audit.fullyVerifiedHeroes} fully verified / {audit.errors.length} errors
+                </p>
+                <p className="mt-1 text-xs font-bold text-[#665f52]">
+                  {crestAudit.crestCount} crests / {crestAudit.sourceBackedCrests} source-backed / {crestAudit.errors.length} crest errors
                 </p>
               </div>
               <button
