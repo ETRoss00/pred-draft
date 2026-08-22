@@ -28,6 +28,11 @@
       "label": "Fighter crests manual entry",
       "url": null,
       "use": "User-provided in-game text covering fighter crest purpose, stats, active names, cooldowns, and effects."
+    },
+    "assassin-crests-manual-entry-2026-08-22": {
+      "label": "Assassin crests manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering assassin crest purpose, stats, active names, cooldowns, effects, and passives."
     }
   },
   "validCrestRoles": [
@@ -35,7 +40,8 @@
     "support",
     "mage",
     "tank",
-    "fighter"
+    "fighter",
+    "assassin"
   ],
   "validVerificationStatuses": [
     "source-backed",
@@ -1443,6 +1449,156 @@
       "verification": {
         "status": "source-backed",
         "notes": "Fully encoded from user-provided fighter crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "nex",
+      "name": "Nex",
+      "role": "assassin",
+      "purpose": "Burst",
+      "stats": {
+        "physicalPower": 12,
+        "physicalPenetration": 5,
+        "abilityHaste": 8
+      },
+      "active": {
+        "name": "Reap",
+        "cooldown": 90,
+        "description": "Dash a short distance and deal (+100% physical power) Damage to nearby Heroes. Damage is increased with Sow charge. Slows by 80% for 1s.",
+        "duration": 1,
+        "scaling": {
+          "physicalPowerRatio": 1,
+          "slow": 80,
+          "slowDuration": 1
+        },
+        "effects": [
+          "dash",
+          "area-damage",
+          "burst",
+          "slow"
+        ]
+      },
+      "passives": [
+        {
+          "name": "Sow",
+          "description": "On damaging Heroes: Store 18% of the damage as Sow. Store 8% for AoE Abilities. Sow is stored for 4s.",
+          "effects": [
+            "stored-damage",
+            "hero-damage",
+            "aoe-reduced-storage",
+            "burst-setup"
+          ]
+        }
+      ],
+      "tags": [
+        "burst",
+        "dash",
+        "execute-pressure",
+        "slow"
+      ],
+      "answers": [
+        "squishy",
+        "low-mobility",
+        "burst-window",
+        "cleanup"
+      ],
+      "sourceRef": "assassin-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided assassin crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "witchstalker",
+      "name": "Witchstalker",
+      "role": "assassin",
+      "purpose": "Cleanse",
+      "stats": {
+        "physicalPower": 12,
+        "physicalPenetration": 5,
+        "abilityHaste": 8
+      },
+      "active": {
+        "name": "Purifying Strike",
+        "cooldown": 165,
+        "description": "Cleanse all Debuffs. Empower your next Damage Instance within 8s. Deal 4% Target Max Health as Damage. Double the Damage if a Debuff is Cleansed. Heal equal to the Damage dealt.",
+        "duration": 8,
+        "scaling": {
+          "targetMaxHealthDamage": 4,
+          "cleansedDebuffDamageMultiplier": 2,
+          "healingFromDamage": 100
+        },
+        "effects": [
+          "cleanse",
+          "damage-empower",
+          "target-max-health-damage",
+          "healing"
+        ]
+      },
+      "tags": [
+        "cleanse",
+        "anti-cc",
+        "burst",
+        "self-healing"
+      ],
+      "answers": [
+        "hard-cc",
+        "debuffs",
+        "duelist",
+        "frontline"
+      ],
+      "sourceRef": "assassin-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided assassin crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "abyssal-dart",
+      "name": "Abyssal Dart",
+      "role": "assassin",
+      "purpose": "Mobility",
+      "stats": {
+        "physicalPower": 12,
+        "physicalPenetration": 5,
+        "abilityHaste": 8
+      },
+      "active": {
+        "name": "Preyseeker",
+        "cooldown": 90,
+        "description": "Fire a piercing dart that deals 10 Damage. If it hits an Enemy Hero, Mark them for 2.5s. Reactivate Preyseeker to Teleport to the Marked Target. Deal 80 (+20% physical power) Damage on arrival. Slows by 70% for 1s.",
+        "duration": 2.5,
+        "recastWindow": 2.5,
+        "scaling": {
+          "dartDamage": 10,
+          "arrivalDamage": 80,
+          "physicalPowerRatio": 0.2,
+          "slow": 70,
+          "slowDuration": 1
+        },
+        "effects": [
+          "pierce",
+          "mark",
+          "teleport",
+          "slow"
+        ]
+      },
+      "tags": [
+        "mobility",
+        "target-access",
+        "pick",
+        "slow"
+      ],
+      "answers": [
+        "backline-access",
+        "low-mobility",
+        "escape",
+        "pick"
+      ],
+      "sourceRef": "assassin-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided assassin crest manual entry on 2026-08-22."
       }
     }
   ]
