@@ -28,6 +28,11 @@
       "label": "Fighter items manual entry",
       "url": null,
       "use": "User-provided in-game text covering fighter item purpose, stats, passives, cooldowns, effects, and restrictions."
+    },
+    "assassin-items-manual-entry-2026-08-22": {
+      "label": "Assassin items manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering assassin item purpose, stats, passives, cooldowns, effects, and restrictions."
     }
   },
   "validItemRoles": [
@@ -35,7 +40,8 @@
     "support",
     "mage",
     "tank",
-    "fighter"
+    "fighter",
+    "assassin"
   ],
   "validVerificationStatuses": [
     "source-backed",
@@ -5865,6 +5871,1039 @@
       "verification": {
         "status": "source-backed",
         "notes": "Fully encoded from user-provided fighter item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "echelon-cloak",
+      "name": "Echelon Cloak",
+      "role": "assassin",
+      "purpose": "Utility",
+      "stats": {
+        "physicalPower": 45,
+        "attackSpeed": 25,
+        "maxHealth": 250,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Shadow",
+          "description": "On standing still and unharmed for 2s: Become Camouflaged. Moving 800u from this location, casting an ability, or receiving damage ends this effect.",
+          "cooldown": 10,
+          "scaling": {
+            "standStillDuration": 2,
+            "breakDistance": 800
+          },
+          "effects": [
+            "standing-still",
+            "camouflage",
+            "stealth",
+            "utility"
+          ]
+        },
+        {
+          "name": "Unseen Threat",
+          "description": "While Camouflaged: Gain 1% of your Missing Health and Mana every second. Increase your damage dealt by 8%. Lasts 3s after exiting Camouflage.",
+          "scaling": {
+            "missingHealthPerSecond": 1,
+            "missingManaPerSecond": 1,
+            "damageIncrease": 8,
+            "lingerDuration": 3
+          },
+          "effects": [
+            "camouflage",
+            "missing-health-restore",
+            "missing-mana-restore",
+            "damage-amplification"
+          ]
+        }
+      ],
+      "tags": [
+        "utility",
+        "camouflage",
+        "damage-amplification",
+        "sustain"
+      ],
+      "answers": [
+        "pick-comps",
+        "ambush",
+        "roaming"
+      ],
+      "sourceRef": "assassin-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided assassin item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "manta-scythe",
+      "name": "Manta Scythe",
+      "role": "assassin",
+      "purpose": "Scaling",
+      "stats": {
+        "physicalPower": 30,
+        "physicalPenetration": 10,
+        "attackSpeed": 25,
+        "lifesteal": 7
+      },
+      "passives": [
+        {
+          "name": "Insatiable Harvest",
+          "description": "On Basic Attack: Deal 1.5x damage to Minions and Small Monsters. Upon killing Siege Minions and Camp Leaders, permanently gain +0.5 Physical Power.",
+          "scaling": {
+            "minionSmallMonsterDamageMultiplier": 1.5,
+            "physicalPowerPerSiegeOrCampLeaderKill": 0.5
+          },
+          "effects": [
+            "basic-attack",
+            "minion-damage",
+            "monster-damage",
+            "physical-power-stacking"
+          ]
+        },
+        {
+          "name": "Divide & Conquer",
+          "description": "Against Enemy Units within 2500u: If they have no Ally within 1000u of themselves, deal 8% more damage to them.",
+          "scaling": {
+            "searchRange": 2500,
+            "allyIsolationRange": 1000,
+            "isolatedDamageIncrease": 8
+          },
+          "effects": [
+            "isolation",
+            "damage-amplification",
+            "dueling"
+          ]
+        }
+      ],
+      "tags": [
+        "scaling",
+        "isolation",
+        "lifesteal",
+        "attack-speed"
+      ],
+      "answers": [
+        "split-push",
+        "isolated-targets",
+        "farm-scaling"
+      ],
+      "sourceRef": "assassin-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided assassin item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "mesmer",
+      "name": "Mesmer",
+      "role": "assassin",
+      "purpose": "Spell Shield",
+      "stats": {
+        "physicalPower": 55,
+        "maxHealth": 250,
+        "physicalPenetration": 10
+      },
+      "passives": [
+        {
+          "name": "Vengeful Shroud",
+          "description": "Gain a Spell Shield that blocks the next Ability.",
+          "cooldown": 60,
+          "effects": [
+            "spell-shield",
+            "anti-disruption"
+          ]
+        }
+      ],
+      "tags": [
+        "spell-shield",
+        "anti-disruption",
+        "health",
+        "penetration"
+      ],
+      "answers": [
+        "pick-comps",
+        "mage-threats",
+        "engage-safety"
+      ],
+      "sourceRef": "assassin-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided assassin item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "malady",
+      "name": "Malady",
+      "role": "assassin",
+      "purpose": "Burst",
+      "stats": {
+        "physicalPower": 50,
+        "physicalPenetration": 12,
+        "abilityHaste": 8
+      },
+      "passives": [
+        {
+          "name": "Parting Gift",
+          "description": "On Killing a Unit: Cause them to explode. Deals Damage based on their Max Health.",
+          "cooldown": 2,
+          "effects": [
+            "unit-kill",
+            "explosion",
+            "area-damage",
+            "max-health-scaling"
+          ]
+        },
+        {
+          "name": "Demise",
+          "description": "On damaging a Hero below 40% Health: Deal 20 (+15% physical power) Damage. Gain a stack of Demise. Damage increases by 4 per stack of Demise. Takedowns reset the Cooldown.",
+          "cooldown": 45,
+          "scaling": {
+            "healthThreshold": 40,
+            "damage": 20,
+            "physicalPowerRatio": 0.15,
+            "damagePerStack": 4
+          },
+          "effects": [
+            "low-health-target",
+            "burst",
+            "physical-power-scaling",
+            "stacking",
+            "takedown-reset"
+          ]
+        }
+      ],
+      "tags": [
+        "burst",
+        "execute-pressure",
+        "area-damage",
+        "penetration"
+      ],
+      "answers": [
+        "squishy-targets",
+        "snowball",
+        "waveclear"
+      ],
+      "sourceRef": "assassin-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided assassin item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "demon-edge",
+      "name": "Demon Edge",
+      "role": "assassin",
+      "purpose": "Anti Shield",
+      "stats": {
+        "physicalPower": 45,
+        "physicalPenetration": 10,
+        "maxHealth": 200,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Demonic",
+          "description": "On damaging a Shielded Target: Gain 20% Movement Speed for 2s. Deal 45% bonus Damage. Does not exceed the size of the Shield.",
+          "scaling": {
+            "movementSpeed": 20,
+            "duration": 2,
+            "bonusDamageAgainstShield": 45
+          },
+          "effects": [
+            "shielded-target",
+            "anti-shield",
+            "movement-speed",
+            "bonus-damage"
+          ]
+        }
+      ],
+      "tags": [
+        "anti-shield",
+        "movement-speed",
+        "penetration",
+        "haste"
+      ],
+      "answers": [
+        "shield-comps",
+        "support-shields",
+        "dueling"
+      ],
+      "sourceRef": "assassin-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided assassin item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "dread",
+      "name": "Dread",
+      "role": "assassin",
+      "purpose": "Anti Magic",
+      "stats": {
+        "physicalPower": 55,
+        "physicalPenetration": 12,
+        "magicalArmor": 40
+      },
+      "passives": [
+        {
+          "name": "Vital Shield",
+          "description": "On receiving Magical Damage from a Hero: Block 25% of Magical Damage for 3s. Vital Shield returns after not taking Hero Damage for 20s.",
+          "scaling": {
+            "magicalDamageBlocked": 25,
+            "duration": 3,
+            "resetAfterNoHeroDamage": 20
+          },
+          "effects": [
+            "magical-damage",
+            "anti-magic",
+            "damage-block"
+          ]
+        }
+      ],
+      "tags": [
+        "anti-magic",
+        "magical-armor",
+        "penetration",
+        "burst-survival"
+      ],
+      "answers": [
+        "mage-threats",
+        "magic-burst",
+        "dive-safety"
+      ],
+      "sourceRef": "assassin-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided assassin item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "mindrazor",
+      "name": "Mindrazor",
+      "role": "assassin",
+      "purpose": "Area Damage",
+      "stats": {
+        "physicalPower": 45,
+        "maxMana": 300,
+        "abilityHaste": 15
+      },
+      "passives": [
+        {
+          "name": "Razor Cleave",
+          "description": "On Successful Basic Attack: Deal (+40% physical power) Damage around the Target. Damage decreases from 100% to 50% based on distance.",
+          "scaling": {
+            "physicalPowerRatio": 0.4,
+            "distanceFalloffMin": 50,
+            "distanceFalloffMax": 100
+          },
+          "effects": [
+            "basic-attack",
+            "cleave",
+            "area-damage",
+            "physical-power-scaling"
+          ]
+        },
+        {
+          "name": "Technician",
+          "description": "Gain (+2% max mana) Physical Power.",
+          "scaling": {
+            "maxManaPhysicalPowerRatio": 0.02
+          },
+          "effects": [
+            "max-mana-scaling",
+            "physical-power"
+          ]
+        }
+      ],
+      "tags": [
+        "area-damage",
+        "mana-scaling",
+        "cleave",
+        "haste"
+      ],
+      "answers": [
+        "waveclear",
+        "jungle-clear",
+        "physical-scaling"
+      ],
+      "sourceRef": "assassin-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided assassin item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "nightfall",
+      "name": "Nightfall",
+      "role": "assassin",
+      "purpose": "Sustain",
+      "stats": {
+        "physicalPower": 50,
+        "physicalPenetration": 10,
+        "omnivamp": 8
+      },
+      "passives": [
+        {
+          "name": "Eclipse",
+          "description": "Abilities Heal for 6% of damage dealt to Heroes.",
+          "scaling": {
+            "abilityDamageHealing": 6
+          },
+          "effects": [
+            "ability-damage",
+            "healing",
+            "hero-damage"
+          ]
+        },
+        {
+          "name": "Dusk Reaver",
+          "description": "On Takedown: Gain a 200-400 Shield for 3.5s. Shield size increases with Level.",
+          "scaling": {
+            "shieldMin": 200,
+            "shieldMax": 400,
+            "shieldDuration": 3.5
+          },
+          "effects": [
+            "takedown",
+            "shield",
+            "level-scaling"
+          ]
+        }
+      ],
+      "tags": [
+        "sustain",
+        "omnivamp",
+        "shield",
+        "penetration"
+      ],
+      "answers": [
+        "multi-kill",
+        "skirmish",
+        "extended-fights"
+      ],
+      "sourceRef": "assassin-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided assassin item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "envy",
+      "name": "Envy",
+      "role": "assassin",
+      "purpose": "Dueling",
+      "stats": {
+        "physicalPower": 45,
+        "physicalPenetration": 10,
+        "maxMana": 250
+      },
+      "passives": [
+        {
+          "name": "Sacrificial Strike",
+          "description": "On Dashing, Leaping or exiting Camo: Your next Basic Attack within 2.5s will Critically Strike.",
+          "scaling": {
+            "window": 2.5
+          },
+          "effects": [
+            "dash",
+            "leap",
+            "camo-exit",
+            "empowered-basic-attack",
+            "critical-strike"
+          ]
+        },
+        {
+          "name": "Hush",
+          "description": "On using Sacrificial Strike on a Hero: Silence them for 0.8s.",
+          "cooldown": 60,
+          "scaling": {
+            "silenceDuration": 0.8
+          },
+          "effects": [
+            "hero-hit",
+            "silence",
+            "anti-cast"
+          ]
+        }
+      ],
+      "tags": [
+        "dueling",
+        "silence",
+        "crit",
+        "mobility-synergy"
+      ],
+      "answers": [
+        "casters",
+        "pick-comps",
+        "assassin-trades"
+      ],
+      "sourceRef": "assassin-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided assassin item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "tainted-trident",
+      "name": "Tainted Trident",
+      "role": "assassin",
+      "purpose": "Anti Heal",
+      "stats": {
+        "physicalPower": 45,
+        "physicalPenetration": 11,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Blighted Strikes",
+          "description": "On dealing Physical Damage: Reduce the Target's Healing by 45% for 3s.",
+          "scaling": {
+            "healingReduction": 45,
+            "duration": 3
+          },
+          "effects": [
+            "physical-damage",
+            "anti-heal"
+          ]
+        },
+        {
+          "name": "Woundseeker",
+          "description": "On dealing Ability Damage to a Blighted Unit: Deal 3 (+6% physical penetration)% additional Damage.",
+          "scaling": {
+            "baseDamage": 3,
+            "physicalPenetrationRatio": 0.06
+          },
+          "effects": [
+            "ability-damage",
+            "blighted-target",
+            "bonus-damage",
+            "physical-penetration-scaling"
+          ]
+        }
+      ],
+      "tags": [
+        "anti-heal",
+        "penetration",
+        "ability-damage",
+        "haste"
+      ],
+      "answers": [
+        "healing-comps",
+        "sustain-comps",
+        "burst-window"
+      ],
+      "sourceRef": "assassin-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided assassin item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "penumbra",
+      "name": "Penumbra",
+      "role": "assassin",
+      "purpose": "Multi Kill",
+      "stats": {
+        "physicalPower": 50,
+        "maxHealth": 200,
+        "physicalPenetration": 8,
+        "abilityHaste": 20
+      },
+      "passives": [
+        {
+          "name": "Essence Reaper",
+          "description": "On Takedown: Reduce Non-Ultimate Cooldowns by 4s.",
+          "scaling": {
+            "nonUltimateCooldownReduction": 4
+          },
+          "effects": [
+            "takedown",
+            "cooldown-reduction",
+            "multi-kill"
+          ]
+        }
+      ],
+      "tags": [
+        "multi-kill",
+        "cooldown-reset",
+        "health",
+        "haste"
+      ],
+      "answers": [
+        "snowball",
+        "cleanup",
+        "teamfight-reset"
+      ],
+      "sourceRef": "assassin-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided assassin item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "spear-of-desolation",
+      "name": "Spear Of Desolation",
+      "role": "assassin",
+      "purpose": "Damage Amplification",
+      "stats": {
+        "physicalPower": 45,
+        "physicalPenetration": 12,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Final Hour",
+          "description": "On casting your Ultimate: Deal 10% increased damage for 6s.",
+          "scaling": {
+            "damageIncrease": 10,
+            "duration": 6
+          },
+          "effects": [
+            "ultimate-cast",
+            "damage-amplification"
+          ]
+        },
+        {
+          "name": "Razor's Edge",
+          "description": "Gain 25 Ultimate Haste.",
+          "scaling": {
+            "ultimateHaste": 25
+          },
+          "effects": [
+            "ultimate-haste"
+          ]
+        }
+      ],
+      "tags": [
+        "damage-amplification",
+        "ultimate-haste",
+        "penetration",
+        "burst"
+      ],
+      "answers": [
+        "ultimate-reliant",
+        "burst-window",
+        "pick"
+      ],
+      "sourceRef": "assassin-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided assassin item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "deathstalker",
+      "name": "Deathstalker",
+      "role": "assassin",
+      "purpose": "Physical Shred",
+      "stats": {
+        "physicalPower": 45,
+        "physicalPenetration": 10,
+        "attackSpeed": 20
+      },
+      "passives": [
+        {
+          "name": "Virulent Strikes",
+          "description": "On Basic Attacking Heroes: Shred 3 Physical Armor for 3s. Stacks up to 4 times.",
+          "scaling": {
+            "physicalArmorShredPerStack": 3,
+            "duration": 3,
+            "maxStacks": 4
+          },
+          "effects": [
+            "basic-attack",
+            "hero-hit",
+            "physical-armor-shred",
+            "stacking"
+          ]
+        },
+        {
+          "name": "Onslaught",
+          "description": "Gain (+100% physical penetration) Attack Speed.",
+          "scaling": {
+            "physicalPenetrationAttackSpeedRatio": 1
+          },
+          "effects": [
+            "physical-penetration-scaling",
+            "attack-speed"
+          ]
+        }
+      ],
+      "tags": [
+        "physical-shred",
+        "attack-speed",
+        "penetration",
+        "basic-attack"
+      ],
+      "answers": [
+        "frontline-shred",
+        "dueling",
+        "physical-team"
+      ],
+      "sourceRef": "assassin-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided assassin item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "omen",
+      "name": "Omen",
+      "role": "assassin",
+      "purpose": "Reduced Cooldowns",
+      "stats": {
+        "physicalPower": 50,
+        "physicalPenetration": 10,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Bestial Momentum",
+          "description": "While moving or landing Basic Attacks: Generate stacks of Momentum. At 100 stacks empower your next Basic Attack On-Hit. Deal 30 (+20% physical power) Damage. Reduce your Non-Ultimate Cooldowns by 20%.",
+          "scaling": {
+            "maxStacks": 100,
+            "damage": 30,
+            "physicalPowerRatio": 0.2,
+            "nonUltimateCooldownReduction": 20
+          },
+          "effects": [
+            "movement-stacks",
+            "basic-attack",
+            "on-hit",
+            "cooldown-reduction",
+            "physical-power-scaling"
+          ]
+        }
+      ],
+      "tags": [
+        "reduced-cooldowns",
+        "momentum",
+        "penetration",
+        "basic-attack-proc"
+      ],
+      "answers": [
+        "cooldown-cycling",
+        "skirmish",
+        "mobility"
+      ],
+      "sourceRef": "assassin-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided assassin item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "painweaver",
+      "name": "Painweaver",
+      "role": "assassin",
+      "purpose": "Burst",
+      "stats": {
+        "physicalPower": 55,
+        "physicalPenetration": 10,
+        "movementSpeed": 3
+      },
+      "passives": [
+        {
+          "name": "Splice",
+          "description": "On Ability Cast: Gain 2 Physical Penetration for 4s. Gain 2% Movement Speed for 4s. Stacks up to 4 times.",
+          "scaling": {
+            "physicalPenetrationPerStack": 2,
+            "movementSpeedPerStack": 2,
+            "duration": 4,
+            "maxStacks": 4
+          },
+          "effects": [
+            "ability-cast",
+            "physical-penetration",
+            "movement-speed",
+            "stacking"
+          ]
+        }
+      ],
+      "tags": [
+        "burst",
+        "movement-speed",
+        "penetration",
+        "ability-cast"
+      ],
+      "answers": [
+        "combo-assassin",
+        "pick",
+        "chase"
+      ],
+      "sourceRef": "assassin-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided assassin item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "syonic-echo",
+      "name": "Syonic Echo",
+      "role": "assassin",
+      "purpose": "Dueling",
+      "stats": {
+        "physicalPower": 60,
+        "abilityHaste": 15,
+        "lifesteal": 15
+      },
+      "passives": [
+        {
+          "name": "Duplicity",
+          "description": "On Ability Cast: Your next 3 Basic Attacks within 3s gain 30% Total Attack Speed.",
+          "scaling": {
+            "empoweredBasicAttacks": 3,
+            "window": 3,
+            "totalAttackSpeed": 30
+          },
+          "effects": [
+            "ability-cast",
+            "basic-attack",
+            "attack-speed",
+            "dueling"
+          ]
+        },
+        {
+          "name": "Close Combat",
+          "description": "On Melee Heroes only: Activating Duplicity resets your Basic Attack Cooldown.",
+          "effects": [
+            "melee-only",
+            "basic-attack-reset"
+          ]
+        }
+      ],
+      "tags": [
+        "dueling",
+        "lifesteal",
+        "attack-speed",
+        "ability-cast"
+      ],
+      "answers": [
+        "melee-assassin",
+        "basic-attack-weaving",
+        "long-fights"
+      ],
+      "sourceRef": "assassin-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided assassin item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "alternator",
+      "name": "Alternator",
+      "role": "assassin",
+      "purpose": "Scaling",
+      "stats": {
+        "physicalPower": 50,
+        "physicalPenetration": 10,
+        "maxMana": 300,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Alternate Reality",
+          "description": "Your Alternate Ability deals 15% more damage.",
+          "scaling": {
+            "alternateAbilityDamageIncrease": 15
+          },
+          "effects": [
+            "alternate-ability",
+            "damage-amplification"
+          ]
+        },
+        {
+          "name": "Adeptus",
+          "description": "Damage Heroes with your Alternate Ability: Upon triggering Adeptus, gain a stack (once per ability). Upon reaching 15 stacks, return to Base to Evolve this item into Alternata.",
+          "scaling": {
+            "stacksToEvolve": 15
+          },
+          "effects": [
+            "alternate-ability",
+            "hero-damage",
+            "stacking",
+            "evolves"
+          ]
+        }
+      ],
+      "tags": [
+        "scaling",
+        "alternate-ability",
+        "damage-amplification",
+        "evolves"
+      ],
+      "answers": [
+        "alternate-focused",
+        "ability-scaling",
+        "midgame-evolution"
+      ],
+      "sourceRef": "assassin-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided assassin item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "alternata",
+      "name": "Alternata",
+      "role": "assassin",
+      "purpose": "Enhanced Ability",
+      "stats": {
+        "physicalPower": 50,
+        "physicalPenetration": 12,
+        "maxMana": 350,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Alternate Reality",
+          "description": "Your Alternate Ability deals 15% more damage.",
+          "scaling": {
+            "alternateAbilityDamageIncrease": 15
+          },
+          "effects": [
+            "alternate-ability",
+            "damage-amplification"
+          ]
+        },
+        {
+          "name": "Nata Style",
+          "description": "Upon using your Alternate Ability: Reduce your other current Basic Ability Cooldowns by 12%.",
+          "scaling": {
+            "otherBasicAbilityCooldownReduction": 12
+          },
+          "effects": [
+            "alternate-ability",
+            "cooldown-reduction",
+            "enhanced-ability"
+          ]
+        }
+      ],
+      "tags": [
+        "enhanced-ability",
+        "alternate-ability",
+        "cooldown-reduction",
+        "penetration"
+      ],
+      "answers": [
+        "alternate-focused",
+        "cooldown-cycling",
+        "ability-burst"
+      ],
+      "sourceRef": "assassin-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided assassin item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "infernum",
+      "name": "Infernum",
+      "role": "assassin",
+      "purpose": "Burst",
+      "stats": {
+        "physicalPower": 45,
+        "physicalPenetration": 9,
+        "maxMana": 250,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Cinder",
+          "description": "Damaging Abilities and Basic Attacks: Apply stacks of Kindling to Enemy Units for 2.5s. At 4 stacks, ignite them. Deals 4 (+1.5% physical power)% of their Max Health as Damage over 2s.",
+          "scaling": {
+            "kindlingDuration": 2.5,
+            "stacksToIgnite": 4,
+            "maxHealthDamageBase": 4,
+            "physicalPowerRatio": 0.015,
+            "damageDuration": 2
+          },
+          "effects": [
+            "ability-damage",
+            "basic-attack",
+            "stacking",
+            "max-health-damage",
+            "damage-over-time"
+          ]
+        },
+        {
+          "name": "Furnace",
+          "description": "Based on Enemy Bonus Armor: For each point, Cinder deals 0.65% more Damage.",
+          "scaling": {
+            "cinderDamageIncreasePerBonusArmor": 0.65
+          },
+          "effects": [
+            "bonus-armor-scaling",
+            "damage-amplification"
+          ]
+        }
+      ],
+      "tags": [
+        "burst",
+        "damage-over-time",
+        "max-health-damage",
+        "penetration"
+      ],
+      "answers": [
+        "bruisers",
+        "frontline-pressure",
+        "hybrid-combos"
+      ],
+      "sourceRef": "assassin-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided assassin item manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "the-perforator",
+      "name": "The Perforator",
+      "role": "assassin",
+      "purpose": "Anti Tank",
+      "stats": {
+        "physicalPower": 45,
+        "physicalPenetration": 8,
+        "abilityHaste": 15
+      },
+      "passives": [
+        {
+          "name": "Chilling Spells",
+          "description": "On dealing Ability Damage: Slows by 10% for 1s.",
+          "scaling": {
+            "slow": 10,
+            "duration": 1
+          },
+          "effects": [
+            "ability-damage",
+            "slow"
+          ]
+        },
+        {
+          "name": "Puncture",
+          "description": "Ignore 30% of Physical Armor.",
+          "scaling": {
+            "physicalArmorIgnore": 30
+          },
+          "effects": [
+            "physical-armor-ignore",
+            "anti-tank"
+          ]
+        }
+      ],
+      "tags": [
+        "anti-tank",
+        "armor-ignore",
+        "slow",
+        "haste"
+      ],
+      "answers": [
+        "frontline-shred",
+        "tank-heavy",
+        "ability-assassin"
+      ],
+      "sourceRef": "assassin-items-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided assassin item manual entry on 2026-08-22."
       }
     }
   ]
