@@ -65,6 +65,10 @@ test("keeps the kit data in a source-audited data folder", async () => {
   assert.match(crests, /"Rift Walkers"/);
   assert.match(crests, /"Tranquility"/);
   assert.match(crests, /"Pygmy Dust"/);
+  assert.match(crests, /"Epoch"/);
+  assert.match(crests, /"Obelisk"/);
+  assert.match(crests, /"Time-Flux Band"/);
+  assert.match(crests, /"Winter's Fury"/);
   assert.match(audit, /auditHeroData/);
   assert.match(audit, /fullyVerifiedHeroes/);
   assert.match(crestAudit, /auditCrestData/);

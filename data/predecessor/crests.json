@@ -13,11 +13,17 @@
       "label": "Support crests manual entry",
       "url": null,
       "use": "User-provided in-game text covering support crest purpose, stats, active names, cooldowns, effects, and passives."
+    },
+    "mage-crests-manual-entry-2026-08-22": {
+      "label": "Mage crests manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering mage crest purpose, stats, active names, cooldowns, effects, and passives."
     }
   },
   "validCrestRoles": [
     "carry",
-    "support"
+    "support",
+    "mage"
   ],
   "validVerificationStatuses": [
     "source-backed",
@@ -684,6 +690,381 @@
       "verification": {
         "status": "source-backed",
         "notes": "Fully encoded from user-provided support crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "epoch",
+      "name": "Epoch",
+      "role": "mage",
+      "purpose": "Stasis",
+      "stats": {
+        "magicalPower": 30,
+        "maxMana": 200,
+        "abilityHaste": 8
+      },
+      "active": {
+        "name": "Stasis Device",
+        "cooldown": 165,
+        "description": "Enter Stasis for 2.5s.",
+        "duration": 2.5,
+        "effects": [
+          "stasis",
+          "self-protection",
+          "anti-burst",
+          "anti-dive"
+        ]
+      },
+      "tags": [
+        "stasis",
+        "anti-burst",
+        "survivability",
+        "self-peel"
+      ],
+      "answers": [
+        "burst",
+        "dive",
+        "pick",
+        "execute-pressure"
+      ],
+      "sourceRef": "mage-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided mage crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "obelisk",
+      "name": "Obelisk",
+      "role": "mage",
+      "purpose": "Burst",
+      "stats": {
+        "magicalPower": 30,
+        "maxHealth": 100,
+        "abilityHaste": 8
+      },
+      "active": {
+        "name": "Condemn",
+        "cooldown": 12,
+        "description": "Enhanced Basic Attack. Deal 50 (+15% magical power) Damage. If the Target dies within 3s, collect a Soul. Damage increases by 6 for each Soul collected.",
+        "duration": 3,
+        "scaling": {
+          "damage": 50,
+          "magicalPowerRatio": 0.15,
+          "damagePerSoul": 6
+        },
+        "effects": [
+          "enhanced-basic-attack",
+          "burst",
+          "soul-stacking",
+          "scaling-damage"
+        ]
+      },
+      "passives": [
+        {
+          "name": "Soul Stealer",
+          "description": "Souls collected grant 1 Magical Power.",
+          "effects": [
+            "soul-stacking",
+            "magical-power-scaling"
+          ]
+        }
+      ],
+      "tags": [
+        "burst",
+        "scaling",
+        "enhanced-basic",
+        "snowball"
+      ],
+      "answers": [
+        "squishy",
+        "scaling",
+        "cleanup"
+      ],
+      "sourceRef": "mage-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided mage crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "soulbearer",
+      "name": "Soulbearer",
+      "role": "mage",
+      "purpose": "Sustained Fighting",
+      "stats": {
+        "magicalPower": 30,
+        "maxMana": 200,
+        "abilityHaste": 8
+      },
+      "active": {
+        "name": "Anima",
+        "cooldown": 120,
+        "description": "Gain a 100 (+35 magical power) (+6% max mana) Shield for 8s. Gain 20% Magical Lifesteal and 10% Movement Speed for 8s.",
+        "duration": 8,
+        "scaling": {
+          "shield": 100,
+          "shieldMagicalPowerRatio": 0.35,
+          "shieldMaxManaRatio": 0.06,
+          "magicalLifesteal": 20,
+          "movementSpeed": 10
+        },
+        "effects": [
+          "shield",
+          "magical-lifesteal",
+          "movement-speed",
+          "sustain"
+        ]
+      },
+      "tags": [
+        "sustained-fighting",
+        "shield",
+        "magical-lifesteal",
+        "mobility"
+      ],
+      "answers": [
+        "poke",
+        "attrition",
+        "burst",
+        "long-fights"
+      ],
+      "sourceRef": "mage-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided mage crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "tempest",
+      "name": "Tempest",
+      "role": "mage",
+      "purpose": "Sustained Fighting",
+      "stats": {
+        "magicalPower": 30,
+        "maxHealth": 100,
+        "abilityHaste": 8
+      },
+      "active": {
+        "name": "Overcharge",
+        "cooldown": 90,
+        "description": "Deal 15 (+15% magical power) Damage to 3 nearby Heroes every second for 7s. Heal equal to 35% of the damage dealt. Additional hits against the same Target deal 20% Damage.",
+        "duration": 7,
+        "scaling": {
+          "damagePerSecond": 15,
+          "magicalPowerRatio": 0.15,
+          "maxTargets": 3,
+          "healingFromDamage": 35,
+          "repeatHitDamage": 20
+        },
+        "effects": [
+          "area-damage",
+          "multi-target",
+          "healing",
+          "sustained-damage"
+        ]
+      },
+      "tags": [
+        "sustained-fighting",
+        "area-damage",
+        "healing",
+        "teamfight"
+      ],
+      "answers": [
+        "frontline",
+        "long-fights",
+        "clustered-enemies",
+        "attrition"
+      ],
+      "sourceRef": "mage-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided mage crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "time-flux-band",
+      "name": "Time-Flux Band",
+      "role": "mage",
+      "purpose": "Reduced Cooldowns",
+      "stats": {
+        "magicalPower": 30,
+        "maxMana": 200,
+        "abilityHaste": 8
+      },
+      "active": {
+        "name": "Turntable",
+        "cooldown": 120,
+        "description": "Mark your current location. Gain 15% Movement Speed for 4s. After 4s: Teleport to the Mark and reset your Basic Ability Cooldowns.",
+        "duration": 4,
+        "scaling": {
+          "movementSpeed": 15
+        },
+        "effects": [
+          "location-mark",
+          "movement-speed",
+          "teleport",
+          "basic-ability-reset"
+        ]
+      },
+      "tags": [
+        "cooldown-reset",
+        "mobility",
+        "reposition",
+        "combo"
+      ],
+      "answers": [
+        "cooldown-reliant",
+        "poke",
+        "burst-window",
+        "reposition"
+      ],
+      "sourceRef": "mage-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided mage crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "typhoon",
+      "name": "Typhoon",
+      "role": "mage",
+      "purpose": "Mobility",
+      "stats": {
+        "magicalPower": 30,
+        "maxHealth": 100,
+        "abilityHaste": 8
+      },
+      "active": {
+        "name": "Mirage",
+        "cooldown": 35,
+        "description": "When at 4 stacks of Cyclone: Dash a short distance.",
+        "effects": [
+          "dash",
+          "mobility",
+          "cyclone-stack-spender"
+        ]
+      },
+      "passives": [
+        {
+          "name": "Cyclone",
+          "description": "On Successful Basic Attacks: Gain a stack of Cyclone On-Hit for 3s. Each stack increases your Attack Speed by 3 (+3.5% magical power)%. Stacks up to 4 times.",
+          "effects": [
+            "on-hit",
+            "attack-speed",
+            "stacking-buff",
+            "mobility-enabler"
+          ]
+        }
+      ],
+      "tags": [
+        "mobility",
+        "attack-speed",
+        "on-hit",
+        "self-peel"
+      ],
+      "answers": [
+        "dive",
+        "skillshots",
+        "low-mobility",
+        "chase"
+      ],
+      "sourceRef": "mage-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided mage crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "voidgazer",
+      "name": "Voidgazer",
+      "role": "mage",
+      "purpose": "Burst",
+      "stats": {
+        "magicalPower": 30,
+        "maxMana": 200,
+        "abilityHaste": 8
+      },
+      "active": {
+        "name": "Eldritch Grasp",
+        "cooldown": 90,
+        "description": "Fire a projectile of Void Miasma. Pierces Non-Heroes. Deals 100 (+35% magical power) Damage. Applies a 35% Slow for 2s. Deal 15% more damage to targets hit for 3s.",
+        "duration": 3,
+        "scaling": {
+          "damage": 100,
+          "magicalPowerRatio": 0.35,
+          "slow": 35,
+          "slowDuration": 2,
+          "damageAmp": 15
+        },
+        "effects": [
+          "projectile",
+          "pierce-non-heroes",
+          "slow",
+          "damage-amplification"
+        ]
+      },
+      "tags": [
+        "burst",
+        "damage-amp",
+        "slow",
+        "pick"
+      ],
+      "answers": [
+        "low-mobility",
+        "pick",
+        "burst-window",
+        "single-target"
+      ],
+      "sourceRef": "mage-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided mage crest manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "winters-fury",
+      "name": "Winter's Fury",
+      "role": "mage",
+      "purpose": "Disruption",
+      "stats": {
+        "magicalPower": 30,
+        "maxHealth": 100,
+        "abilityHaste": 8
+      },
+      "active": {
+        "name": "Chillrend",
+        "cooldown": 105,
+        "description": "Release a sphere of icey energy that expands over 3s. Deals 100 (+20% magical power) Damage to Enemies inside the zone. Applies a 50% Decaying Slow over 2.5s. Damaged Enemies take 10% more Magical Damage for 3s.",
+        "duration": 3,
+        "scaling": {
+          "damage": 100,
+          "magicalPowerRatio": 0.2,
+          "slow": 50,
+          "slowDuration": 2.5,
+          "magicalDamageAmp": 10
+        },
+        "effects": [
+          "zone-control",
+          "slow",
+          "magical-damage-amplification",
+          "disruption"
+        ]
+      },
+      "tags": [
+        "disruption",
+        "zone-control",
+        "slow",
+        "magical-damage-amp"
+      ],
+      "answers": [
+        "engage",
+        "dive",
+        "clustered-enemies",
+        "objective-control"
+      ],
+      "sourceRef": "mage-crests-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided mage crest manual entry on 2026-08-22."
       }
     }
   ]
