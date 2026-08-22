@@ -36,6 +36,10 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
     },
+    "zarus-game-client-manual-entry-2026-08-22": {
+      "label": "Zarus game-client manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Zarus roles, class, ratings, ability text, and augments."
     "yurei-game-client-manual-entry-2026-08-22": {
       "label": "Yurei game-client manual entry",
       "url": null,
@@ -15857,32 +15861,340 @@
         "offlane",
         "jungle"
       ],
+      "classes": [
+        "fighter"
+      ],
       "damage": "physical",
       "range": "melee",
+      "ratings": {
+        "basicAttack": 5,
+        "abilityPower": 5,
+        "durability": 5,
+        "mobility": 6
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Nyrian Spear",
+          "kind": "basic attack",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 64.0/66.9/70.0/73.3/76.7/80.3/84.0/87.9/91.9/96.1/100.5/105.0/109.7/114.5/119.5/124.6/129.9/135.4 (+75% physical power) physical damage.",
+          "scaling": {
+            "damage": [
+              64,
+              66.9,
+              70,
+              73.3,
+              76.7,
+              80.3,
+              84,
+              87.9,
+              91.9,
+              96.1,
+              100.5,
+              105,
+              109.7,
+              114.5,
+              119.5,
+              124.6,
+              129.9,
+              135.4
+            ],
+            "physicalPowerRatio": 0.75
+          },
+          "effects": [
+            "melee-basic",
+            "physical-damage"
+          ],
+          "sourceRef": "zarus-game-client-manual-entry-2026-08-22"
+        },
+        {
+          "slot": "passive",
+          "name": "Gladiator",
+          "kind": "passive",
+          "damageType": "physical",
+          "description": "Gain a stack of Gladiator when dealing damage with Basic Attacks or Abilities to Non-Minions, stacking up to 8 times. Each stack grants 1% increased Physical Power. After exiting combat for 5s, stacks will fall off once per second, restoring (+0.3/0.3/0.3/0.3/0.3/0.6/0.6/0.6/0.6/0.6/1.2/1.2/1.2/1.2/1.2/2.4/2.4/2.4%/0.6%/1.2%/2.4% max health) Health per stack consumed.",
+          "scaling": {
+            "maxStacks": 8,
+            "physicalPowerIncreasePercentPerStack": 1,
+            "outOfCombatDelay": 5,
+            "stackFalloffInterval": 1,
+            "healthRestoreMaxHealthPercentPerStack": [
+              0.3,
+              0.3,
+              0.3,
+              0.3,
+              0.3,
+              0.6,
+              0.6,
+              0.6,
+              0.6,
+              0.6,
+              1.2,
+              1.2,
+              1.2,
+              1.2,
+              1.2,
+              2.4,
+              2.4,
+              2.4
+            ]
+          },
+          "effects": [
+            "stacking-buff",
+            "physical-power",
+            "non-minion-trigger",
+            "out-of-combat-healing",
+            "sustain",
+            "duelist"
+          ],
+          "sourceRef": "zarus-game-client-manual-entry-2026-08-22"
+        },
+        {
+          "slot": "primary",
+          "name": "Barricade",
+          "kind": "primary ability",
+          "damageType": "physical",
+          "description": "Unfold a shield for 1.5s, reducing incoming damage by 75%. Upon recasting or after the duration, swing the shield dealing 54.0/70.0/86.0/102.0/118.0 (+90% physical power) physical damage increased up to 135.0/175.0/215.0/255.0/295.0 (+225% physical power) and Stunning targets hit for 0.75s.",
+          "cooldown": [
+            18,
+            17.5,
+            17,
+            16.5,
+            16
+          ],
+          "scaling": {
+            "shieldDuration": 1.5,
+            "damageReductionPercent": 75,
+            "damage": [
+              54,
+              70,
+              86,
+              102,
+              118
+            ],
+            "physicalPowerRatio": 0.9,
+            "maxDamage": [
+              135,
+              175,
+              215,
+              255,
+              295
+            ],
+            "maxPhysicalPowerRatio": 2.25,
+            "stunDuration": 0.75
+          },
+          "effects": [
+            "shield",
+            "damage-reduction",
+            "recast",
+            "physical-damage",
+            "stun",
+            "hard-cc",
+            "frontline",
+            "duelist",
+            "anti-burst"
+          ],
+          "sourceRef": "zarus-game-client-manual-entry-2026-08-22"
+        },
+        {
+          "slot": "secondary",
+          "name": "Evade",
+          "kind": "secondary ability",
+          "damageType": "physical",
+          "description": "Dash in your current movement direction, gaining 20% movement speed for 1s and 12.0/16.0/20.0/24.0/28.0% (+20% magical power) Attack Speed for 3.5s. If cast in-air, you will additionally dash slightly upwards in your current movement direction.",
+          "cooldown": [
+            16,
+            15,
+            14,
+            13,
+            12
+          ],
+          "scaling": {
+            "movementSpeedPercent": 20,
+            "movementSpeedDuration": 1,
+            "attackSpeedPercent": [
+              12,
+              16,
+              20,
+              24,
+              28
+            ],
+            "magicalPowerToAttackSpeedRatio": 0.2,
+            "attackSpeedDuration": 3.5
+          },
+          "effects": [
+            "dash",
+            "mobility",
+            "movement-speed",
+            "attack-speed",
+            "air-cast",
+            "vertical-mobility",
+            "chase",
+            "self-reposition"
+          ],
+          "sourceRef": "zarus-game-client-manual-entry-2026-08-22"
+        },
+        {
+          "slot": "alternate",
+          "name": "Spear of Nyr",
+          "kind": "alternate ability",
+          "damageType": "physical",
+          "description": "Channel to throw a spear, dealing 70.0/105.0/140.0/175.0/210.0 (+125% physical power)(+80% magical power) physical damage to Enemies hit, increased by 100% against targets below 20% maximum health. Deals 75% damage to Minions & Monsters. Releasing within 0.2s will thrust the spear forward, dealing 85% damage and refunding 60% of the cooldown.",
+          "cooldown": [
+            13,
+            12.25,
+            11.5,
+            10.75,
+            10
+          ],
+          "scaling": {
+            "damage": [
+              70,
+              105,
+              140,
+              175,
+              210
+            ],
+            "physicalPowerRatio": 1.25,
+            "magicalPowerRatio": 0.8,
+            "lowHealthThresholdPercent": 20,
+            "lowHealthDamageIncreasePercent": 100,
+            "minionMonsterDamagePercent": 75,
+            "quickReleaseWindow": 0.2,
+            "quickReleaseDamagePercent": 85,
+            "quickReleaseCooldownRefundPercent": 60
+          },
+          "effects": [
+            "channel",
+            "spear-throw",
+            "line-damage",
+            "physical-damage",
+            "execute-pressure",
+            "low-health-damage",
+            "quick-release",
+            "cooldown-refund",
+            "poke",
+            "finisher"
+          ],
+          "sourceRef": "zarus-game-client-manual-entry-2026-08-22"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Coliseum",
+          "kind": "ultimate ability",
+          "damageType": "physical",
+          "description": "Leap at an Enemy Hero, dealing 200.0/325.0/450.0 (+100% physical power) physical damage. A Coliseum is then summoned for 4s, Zarus gains maximum stacks of Gladiator and its bonus is doubled. If the target is killed within the duration, you will permanently gain 5.0/8.0/11.0 Physical Power.",
+          "cooldown": [
+            150,
+            135,
+            120
+          ],
+          "scaling": {
+            "damage": [
+              200,
+              325,
+              450
+            ],
+            "physicalPowerRatio": 1,
+            "coliseumDuration": 4,
+            "permanentPhysicalPowerOnKill": [
+              5,
+              8,
+              11
+            ]
+          },
+          "effects": [
+            "leap",
+            "enemy-hero-target",
+            "physical-damage",
+            "arena",
+            "max-stacks",
+            "gladiator-bonus-doubled",
+            "permanent-stat-gain",
+            "duelist",
+            "pick",
+            "all-in"
+          ],
+          "sourceRef": "zarus-game-client-manual-entry-2026-08-22"
+        }
+      ],
+      "augments": [
+        {
+          "name": "The Ascended",
+          "category": "scaling",
+          "description": "Gain +5 Health and +1 Physical Power every minute.",
+          "tags": [
+            "scaling",
+            "health",
+            "physical-power",
+            "time-scaling"
+          ],
+          "sourceRef": "zarus-game-client-manual-entry-2026-08-22"
+        },
+        {
+          "name": "Master Of Spears",
+          "category": "damage",
+          "description": "Spear Of Nyr's Cooldown is only 50% longer when thrown.",
+          "tags": [
+            "spear-of-nyr",
+            "cooldown",
+            "throw",
+            "poke",
+            "finisher"
+          ],
+          "sourceRef": "zarus-game-client-manual-entry-2026-08-22"
+        },
+        {
+          "name": "Flow State",
+          "category": "mobility",
+          "description": "Evade's Cooldown is 15% lower and its Cooldown resets on Takedown.",
+          "tags": [
+            "evade",
+            "cooldown-reduction",
+            "takedown-reset",
+            "mobility",
+            "chase"
+          ],
+          "sourceRef": "zarus-game-client-manual-entry-2026-08-22"
+        }
+      ],
       "threats": [
         "engage",
         "duelist",
-        "frontline"
+        "frontline",
+        "hard-cc",
+        "sustain",
+        "pick",
+        "scaling"
       ],
       "answers": [
         "hard-cc",
         "frontline",
-        "duelist"
+        "duelist",
+        "anti-burst",
+        "engage",
+        "chase",
+        "finisher"
       ],
       "weaknesses": [
         "poke",
-        "tank-shred"
+        "tank-shred",
+        "anti-heal",
+        "cooldown-reliant",
+        "kite"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
-        "kit": "prototype-kit-taxonomy"
+        "roster": "zarus-game-client-manual-entry-2026-08-22",
+        "roles": "zarus-game-client-manual-entry-2026-08-22",
+        "kit": "zarus-game-client-manual-entry-2026-08-22",
+        "augments": "zarus-game-client-manual-entry-2026-08-22"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
-        "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "roleStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Fully encoded from user-provided in-game manual entry on 2026-08-22. Draft taxonomy tags are derived from the verified kit text."
       }
     },
     {
