@@ -8,6 +8,11 @@
       "label": "Harbinger carry Eternals manual entry",
       "url": null,
       "use": "User-provided in-game text covering Harbinger carry Eternal traits and Minor Blessing options."
+    },
+    "divine-support-eternals-manual-entry-2026-08-22": {
+      "label": "Divine support Eternals manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Divine support Eternal traits and Minor Blessing options."
     }
   },
   "validEternalCategories": [
@@ -532,6 +537,489 @@
       "verification": {
         "status": "source-backed",
         "notes": "Fully encoded from user-provided Harbinger carry Eternal manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "exarch",
+      "name": "Exarch",
+      "category": "divine",
+      "role": "support",
+      "mainTrait": {
+        "name": "Exarch",
+        "description": "Heals or Shields grant the Target, including self, +10% Total Attack Speed and +10% Magic Damage On-Hit for 4s.",
+        "scaling": {
+          "totalAttackSpeed": 10,
+          "magicDamageOnHit": 10,
+          "duration": 4
+        },
+        "effects": [
+          "heal-trigger",
+          "shield-trigger",
+          "attack-speed",
+          "magic-damage-on-hit"
+        ],
+        "tags": [
+          "buffing",
+          "on-hit-support",
+          "attack-speed"
+        ]
+      },
+      "minorBlessing1": [
+        {
+          "id": "exarch-illumination",
+          "name": "Illumination",
+          "description": "Gain Health Regen equal to your Bonus Mana Regen.",
+          "scaling": {
+            "bonusManaRegenToHealthRegenRatio": 1
+          },
+          "effects": [
+            "health-regeneration",
+            "bonus-mana-regeneration-scaling"
+          ],
+          "tags": [
+            "sustain",
+            "mana-regen-scaling"
+          ]
+        },
+        {
+          "id": "exarch-preservation",
+          "name": "Preservation",
+          "description": "Healing or Shielding you receive is increased by 10%.",
+          "scaling": {
+            "healingShieldingReceivedIncrease": 10
+          },
+          "effects": [
+            "healing-received",
+            "shielding-received"
+          ],
+          "tags": [
+            "survivability",
+            "self-sustain"
+          ]
+        },
+        {
+          "id": "exarch-revelation",
+          "name": "Revelation",
+          "description": "Ability casts reduce Basic Ability Cooldowns by 0.3s.",
+          "scaling": {
+            "basicAbilityCooldownReduction": 0.3
+          },
+          "effects": [
+            "ability-cast",
+            "basic-ability-cooldown-reduction"
+          ],
+          "tags": [
+            "cooldown-reduction",
+            "tempo"
+          ]
+        }
+      ],
+      "minorBlessing2": [
+        {
+          "id": "exarch-fervour",
+          "name": "Fervour",
+          "description": "Basic Attacks against Enemy Heroes heal you and Allies within 1000 Units for 2 (+0.5 per level)(+5% Magical Power).",
+          "scaling": {
+            "healing": 2,
+            "healingPerLevel": 0.5,
+            "magicalPowerRatio": 0.05,
+            "allyRange": 1000
+          },
+          "effects": [
+            "basic-attack",
+            "hero-hit",
+            "ally-healing",
+            "magical-power-scaling"
+          ],
+          "tags": [
+            "healing",
+            "basic-attack",
+            "team-sustain"
+          ]
+        },
+        {
+          "id": "exarch-omnipresent",
+          "name": "Omnipresent",
+          "description": "Gain 7% Movement Speed when Out Of Combat.",
+          "scaling": {
+            "movementSpeed": 7
+          },
+          "effects": [
+            "out-of-combat",
+            "movement-speed"
+          ],
+          "tags": [
+            "mobility",
+            "roaming"
+          ]
+        },
+        {
+          "id": "exarch-delayed-fate",
+          "name": "Delayed Fate",
+          "description": "20% of Ability Damage taken is dealt as a 3s DoT instead.",
+          "scaling": {
+            "delayedAbilityDamage": 20,
+            "dotDuration": 3
+          },
+          "effects": [
+            "ability-damage-taken",
+            "damage-delay",
+            "damage-over-time"
+          ],
+          "tags": [
+            "anti-burst",
+            "survivability"
+          ]
+        }
+      ],
+      "tags": [
+        "support",
+        "healing",
+        "shielding",
+        "attack-speed",
+        "on-hit"
+      ],
+      "answers": [
+        "ally-basic-attackers",
+        "poke",
+        "ability-burst",
+        "roaming"
+      ],
+      "sourceRef": "divine-support-eternals-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided Divine support Eternal manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "lotus",
+      "name": "Lotus",
+      "category": "divine",
+      "role": "support",
+      "mainTrait": {
+        "name": "Lotus",
+        "description": "Every 2 Minutes and for each Takedown you achieve, randomly gain +1% Damage, +4 Ability Haste, +0.75% Movement Speed, or +1.5% Max Health.",
+        "scaling": {
+          "intervalMinutes": 2,
+          "damage": 1,
+          "abilityHaste": 4,
+          "movementSpeed": 0.75,
+          "maxHealth": 1.5
+        },
+        "effects": [
+          "time-scaling",
+          "takedown",
+          "random-stat-growth",
+          "damage",
+          "ability-haste",
+          "movement-speed",
+          "max-health"
+        ],
+        "tags": [
+          "scaling",
+          "snowball",
+          "mixed-stats"
+        ]
+      },
+      "minorBlessing1": [
+        {
+          "id": "lotus-early-bloom",
+          "name": "Early Bloom",
+          "description": "Level Up again at Level 12.",
+          "scaling": {
+            "triggerLevel": 12,
+            "bonusLevels": 1
+          },
+          "effects": [
+            "level-scaling",
+            "bonus-level"
+          ],
+          "tags": [
+            "scaling",
+            "power-spike"
+          ]
+        },
+        {
+          "id": "lotus-flawless",
+          "name": "Flawless",
+          "description": "Ability hits on Enemy Heroes heal you and Allies within 1000 Units for 8 (+10% Magical Power). Once per cast.",
+          "scaling": {
+            "healing": 8,
+            "magicalPowerRatio": 0.1,
+            "allyRange": 1000
+          },
+          "effects": [
+            "ability-hit",
+            "hero-hit",
+            "ally-healing",
+            "magical-power-scaling"
+          ],
+          "tags": [
+            "healing",
+            "team-sustain",
+            "spell-poke"
+          ]
+        },
+        {
+          "id": "lotus-masterpiece",
+          "name": "Masterpiece",
+          "description": "Kills grant +4% Damage and +5% Movement Speed for 12s.",
+          "scaling": {
+            "damageIncrease": 4,
+            "movementSpeed": 5,
+            "duration": 12
+          },
+          "effects": [
+            "kill",
+            "damage-amplification",
+            "movement-speed"
+          ],
+          "tags": [
+            "snowball",
+            "multi-kill",
+            "mobility"
+          ]
+        }
+      ],
+      "minorBlessing2": [
+        {
+          "id": "lotus-immaculate",
+          "name": "Immaculate",
+          "description": "Gain +12% Damage Reduction while above 85% Health.",
+          "scaling": {
+            "damageReduction": 12,
+            "healthThreshold": 85
+          },
+          "effects": [
+            "high-health",
+            "damage-reduction"
+          ],
+          "tags": [
+            "anti-poke",
+            "survivability"
+          ]
+        },
+        {
+          "id": "lotus-prima-donna",
+          "name": "Prima Donna",
+          "description": "Deal +10% bonus Damage to Enemy Heroes, but take +6% Damage from all sources.",
+          "scaling": {
+            "heroDamageIncrease": 10,
+            "damageTakenIncrease": 6
+          },
+          "effects": [
+            "hero-damage",
+            "damage-amplification",
+            "increased-damage-taken"
+          ],
+          "tags": [
+            "high-risk",
+            "damage-amplification",
+            "pressure"
+          ]
+        },
+        {
+          "id": "lotus-fragrance",
+          "name": "Fragrance",
+          "description": "Deal +4% Magical Damage and +12% True Damage to Enemy Heroes within 800 Units.",
+          "scaling": {
+            "range": 800,
+            "magicalDamageIncrease": 4,
+            "trueDamageIncrease": 12
+          },
+          "effects": [
+            "nearby-enemy-heroes",
+            "magical-damage-amplification",
+            "true-damage-amplification"
+          ],
+          "tags": [
+            "close-range",
+            "damage-amplification",
+            "teamfight"
+          ]
+        }
+      ],
+      "tags": [
+        "support",
+        "scaling",
+        "snowball",
+        "damage-amplification"
+      ],
+      "answers": [
+        "scaling",
+        "teamfight",
+        "poke",
+        "snowball"
+      ],
+      "sourceRef": "divine-support-eternals-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided Divine support Eternal manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "pilow",
+      "name": "Pilow",
+      "category": "divine",
+      "role": "support",
+      "mainTrait": {
+        "name": "Pilow",
+        "description": "Decrease your Size by 10%. Upon casting an Ability, nearby Enemy Heroes within a 600u radius are Debuffed, causing them to deal 4% less Damage for 3.5s, stacking up to 3 times.",
+        "scaling": {
+          "sizeReduction": 10,
+          "radius": 600,
+          "enemyDamageReductionPerStack": 4,
+          "duration": 3.5,
+          "maxStacks": 3
+        },
+        "effects": [
+          "size-reduction",
+          "ability-cast",
+          "enemy-damage-reduction",
+          "stacking",
+          "nearby-enemy-heroes"
+        ],
+        "tags": [
+          "defensive-aura",
+          "anti-burst",
+          "teamfight"
+        ]
+      },
+      "minorBlessing1": [
+        {
+          "id": "pilow-bioluminescence",
+          "name": "Bioluminescence",
+          "description": "Enemies you damage take 3% bonus Damage and are Revealed for 4s.",
+          "scaling": {
+            "damageTakenIncrease": 3,
+            "revealDuration": 4
+          },
+          "effects": [
+            "enemy-damage",
+            "damage-amplification",
+            "reveal"
+          ],
+          "tags": [
+            "reveal",
+            "damage-amplification",
+            "pick"
+          ]
+        },
+        {
+          "id": "pilow-harmonic-currents",
+          "name": "Harmonic Currents",
+          "description": "Casting an Ability restores 2% of your Missing Health and Missing Mana.",
+          "scaling": {
+            "missingHealthRestore": 2,
+            "missingManaRestore": 2
+          },
+          "effects": [
+            "ability-cast",
+            "missing-health-restore",
+            "missing-mana-restore"
+          ],
+          "tags": [
+            "sustain",
+            "mana-sustain",
+            "tempo"
+          ]
+        },
+        {
+          "id": "pilow-diffusion",
+          "name": "Diffusion",
+          "description": "Increases the Radius of Pilow's Debuff Pulse by 50% and the Duration by 1.5s.",
+          "scaling": {
+            "radiusIncrease": 50,
+            "durationIncrease": 1.5
+          },
+          "effects": [
+            "radius-increase",
+            "duration-increase",
+            "debuff-pulse"
+          ],
+          "tags": [
+            "teamfight",
+            "aura",
+            "anti-burst"
+          ]
+        }
+      ],
+      "minorBlessing2": [
+        {
+          "id": "pilow-neurotoxin",
+          "name": "Neurotoxin",
+          "description": "Pilow additionally increases Damage Enemies take by 2% per stack.",
+          "scaling": {
+            "damageTakenIncreasePerStack": 2
+          },
+          "effects": [
+            "stacking",
+            "damage-amplification",
+            "enemy-debuff"
+          ],
+          "tags": [
+            "damage-amplification",
+            "teamfight",
+            "debuff"
+          ]
+        },
+        {
+          "id": "pilow-convection",
+          "name": "Convection",
+          "description": "Gain 4 Physical Armor and 4 Magical Armor for every active stack of Pilow on nearby Enemy Heroes.",
+          "scaling": {
+            "physicalArmorPerStack": 4,
+            "magicalArmorPerStack": 4
+          },
+          "effects": [
+            "stacking",
+            "physical-armor",
+            "magical-armor",
+            "nearby-enemy-heroes"
+          ],
+          "tags": [
+            "durability",
+            "teamfight",
+            "frontline-support"
+          ]
+        },
+        {
+          "id": "pilow-lil-sucker",
+          "name": "Lil Sucker",
+          "description": "Basic Attacks steal 2% of the Target's Movement Speed for 3s, stacking up to 3 times.",
+          "scaling": {
+            "movementSpeedStealPerStack": 2,
+            "duration": 3,
+            "maxStacks": 3
+          },
+          "effects": [
+            "basic-attack",
+            "movement-speed-steal",
+            "stacking"
+          ],
+          "tags": [
+            "peel",
+            "stickiness",
+            "dueling"
+          ]
+        }
+      ],
+      "tags": [
+        "support",
+        "debuff",
+        "damage-reduction",
+        "teamfight"
+      ],
+      "answers": [
+        "dive",
+        "burst",
+        "teamfight",
+        "pick-comps"
+      ],
+      "sourceRef": "divine-support-eternals-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided Divine support Eternal manual entry on 2026-08-22."
       }
     }
   ]
