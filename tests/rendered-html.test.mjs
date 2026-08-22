@@ -43,9 +43,11 @@ test("keeps the kit data in a source-audited data folder", async () => {
   const heroes = await readFile(new URL("../data/predecessor/heroes.json", import.meta.url), "utf8");
   const crests = await readFile(new URL("../data/predecessor/crests.json", import.meta.url), "utf8");
   const items = await readFile(new URL("../data/predecessor/items.json", import.meta.url), "utf8");
+  const eternals = await readFile(new URL("../data/predecessor/eternals.json", import.meta.url), "utf8");
   const audit = await readFile(new URL("../data/predecessor/audit.ts", import.meta.url), "utf8");
   const crestAudit = await readFile(new URL("../data/predecessor/crests.ts", import.meta.url), "utf8");
   const itemAudit = await readFile(new URL("../data/predecessor/items.ts", import.meta.url), "utf8");
+  const eternalAudit = await readFile(new URL("../data/predecessor/eternals.ts", import.meta.url), "utf8");
   const layout = await readFile(new URL("../app/layout.tsx", import.meta.url), "utf8");
   const packageJson = await readFile(new URL("../package.json", import.meta.url), "utf8");
 
@@ -114,10 +116,18 @@ test("keeps the kit data in a source-audited data folder", async () => {
   assert.match(items, /"Nightfall"/);
   assert.match(items, /"Tainted Trident"/);
   assert.match(items, /"The Perforator"/);
+  assert.match(eternals, /"schemaVersion": 1/);
+  assert.match(eternals, /"Marrow"/);
+  assert.match(eternals, /"Blood Bank"/);
+  assert.match(eternals, /"Vermis"/);
+  assert.match(eternals, /"Mechadrive"/);
+  assert.match(eternals, /"Weald"/);
+  assert.match(eternals, /"Natural Resistance"/);
   assert.match(audit, /auditHeroData/);
   assert.match(audit, /fullyVerifiedHeroes/);
   assert.match(crestAudit, /auditCrestData/);
   assert.match(itemAudit, /auditItemData/);
+  assert.match(eternalAudit, /auditEternalData/);
   assert.match(page, /const counterRules = \[/);
   assert.match(page, /peels dive/);
   assert.match(page, /frontline shred/);

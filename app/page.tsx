@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { auditHeroData, heroes, predecessorHeroData, roles, type Hero, type Role } from "@/data/predecessor/audit";
 import { auditCrestData } from "@/data/predecessor/crests";
+import { auditEternalData } from "@/data/predecessor/eternals";
 
 type Advice = {
   name: string;
@@ -152,6 +153,7 @@ export default function Home() {
   const locked = heroes.find((hero) => hero.name === lockedHero);
   const audit = useMemo(() => auditHeroData(), []);
   const crestAudit = useMemo(() => auditCrestData(), []);
+  const eternalAudit = useMemo(() => auditEternalData(), []);
 
   const recommendations = useMemo(
     () =>
@@ -289,6 +291,9 @@ export default function Home() {
                 </p>
                 <p className="mt-1 text-xs font-bold text-[#665f52]">
                   {crestAudit.crestCount} crests / {crestAudit.sourceBackedCrests} source-backed / {crestAudit.errors.length} crest errors
+                </p>
+                <p className="mt-1 text-xs font-bold text-[#665f52]">
+                  {eternalAudit.eternalCount} Eternals / {eternalAudit.sourceBackedEternals} source-backed / {eternalAudit.errors.length} Eternal errors
                 </p>
               </div>
               <button
