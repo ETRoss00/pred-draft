@@ -34,6 +34,12 @@ for (const hero of dataset.heroes) {
   }
 
   if (!validDamage.has(hero.damage)) errors.push(`[damage] ${hero.name} has invalid damage type: ${hero.damage}.`);
+  else {
+    const inferredDamage = inferPrimaryKitDamage(hero);
+    if (hero.damage !== inferredDamage) {
+      errors.push(`[damage] ${hero.name} primary kit damage should be ${inferredDamage}, got ${hero.damage}. Basic attack damage is excluded.`);
+    }
+  }
   if (!validRange.has(hero.range)) errors.push(`[range] ${hero.name} has invalid range type: ${hero.range}.`);
 
   if (hero.ratings) {
@@ -245,6 +251,58 @@ if (errors.length) {
   console.error("\nErrors");
   errors.forEach((error) => console.error(`- ${error}`));
   process.exit(1);
+}
+
+function inferPrimaryKitDamage(hero) {
+  const abilities = hero.abilities?.filter((ability) => ability.slot !== "basic") ?? [];
+  if (!abilities.length) return hero.damage;
+
+  const score = abilities.reduce(
+    (totals, ability) => {
+      const abilityScore = scoreAbilityDamage(ability);
+      totals.physical += abilityScore.physical;
+      totals.magical += abilityScore.magical;
+      return totals;
+    },
+    { physical: 0, magical: 0 },
+  );
+
+  if (score.physical === 0 && score.magical === 0) return hero.damage;
+  if (score.physical === 0) return "magical";
+  if (score.magical === 0) return "physical";
+
+  const high = Math.max(score.physical, score.magical);
+  const low = Math.min(score.physical, score.magical);
+  return low / high >= 0.45 ? "mixed" : score.magical > score.physical ? "magical" : "physical";
+}
+
+function scoreAbilityDamage(ability) {
+  const text = [
+    ability.description,
+    ability.kind,
+    ...(ability.effects ?? []),
+    ...Object.keys(ability.scaling ?? {}),
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  let physical = 0;
+  let magical = 0;
+
+  if (ability.damageType === "physical") physical += 3;
+  if (ability.damageType === "magical") magical += 3;
+
+  physical += countMatches(text, [/physical damage/g, /physical-damage/g]) * 2;
+  magical += countMatches(text, [/magical damage/g, /magic damage/g, /magical-damage/g, /magic-damage/g]) * 2;
+
+  physical += countMatches(text, [/physical power/g, /physical-power/g, /physicalpowerratio/g]);
+  magical += countMatches(text, [/magical power/g, /magical-power/g, /magicalpowerratio/g]);
+
+  return { physical, magical };
+}
+
+function countMatches(text, patterns) {
+  return patterns.reduce((count, pattern) => count + (text.match(pattern)?.length ?? 0), 0);
 }
 
 function validateEternalBlessingGroup(eternalName, field, blessings) {

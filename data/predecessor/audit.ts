@@ -89,6 +89,29 @@ export const predecessorHeroData = data;
 export const heroes = data.heroes;
 export const roles = data.validRoles as Role[];
 
+export function inferPrimaryKitDamage(hero: Pick<Hero, "abilities" | "damage">): Damage {
+  const abilities = hero.abilities?.filter((ability) => ability.slot !== "basic") ?? [];
+  if (!abilities.length) return hero.damage;
+
+  const score = abilities.reduce(
+    (totals, ability) => {
+      const abilityScore = scoreAbilityDamage(ability);
+      totals.physical += abilityScore.physical;
+      totals.magical += abilityScore.magical;
+      return totals;
+    },
+    { physical: 0, magical: 0 },
+  );
+
+  if (score.physical === 0 && score.magical === 0) return hero.damage;
+  if (score.physical === 0) return "magical";
+  if (score.magical === 0) return "physical";
+
+  const high = Math.max(score.physical, score.magical);
+  const low = Math.min(score.physical, score.magical);
+  return low / high >= 0.45 ? "mixed" : score.magical > score.physical ? "magical" : "physical";
+}
+
 export function auditHeroData(dataset: HeroDataSet = data): AuditReport {
   const validRoles = new Set(dataset.validRoles);
   const validDamage = new Set(dataset.validDamageTypes);
@@ -119,6 +142,12 @@ export function auditHeroData(dataset: HeroDataSet = data): AuditReport {
     });
 
     if (!validDamage.has(hero.damage)) errors.push(issue("error", hero.name, "damage", `Invalid damage type: ${hero.damage}.`));
+    else {
+      const inferredDamage = inferPrimaryKitDamage(hero);
+      if (hero.damage !== inferredDamage) {
+        errors.push(issue("error", hero.name, "damage", `Primary kit damage should be ${inferredDamage}, got ${hero.damage}. Basic attack damage is excluded.`));
+      }
+    }
     if (!validRange.has(hero.range)) errors.push(issue("error", hero.name, "range", `Invalid range type: ${hero.range}.`));
 
     if (hero.ratings) {
@@ -184,6 +213,35 @@ export function auditHeroData(dataset: HeroDataSet = data): AuditReport {
     errors,
     roleCoverage,
   };
+}
+
+function scoreAbilityDamage(ability: HeroAbility): { physical: number; magical: number } {
+  const text = [
+    ability.description,
+    ability.kind,
+    ...(ability.effects ?? []),
+    ...Object.keys(ability.scaling ?? {}),
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  let physical = 0;
+  let magical = 0;
+
+  if (ability.damageType === "physical") physical += 3;
+  if (ability.damageType === "magical") magical += 3;
+
+  physical += countMatches(text, [/physical damage/g, /physical-damage/g]) * 2;
+  magical += countMatches(text, [/magical damage/g, /magic damage/g, /magical-damage/g, /magic-damage/g]) * 2;
+
+  physical += countMatches(text, [/physical power/g, /physical-power/g, /physicalpowerratio/g]);
+  magical += countMatches(text, [/magical power/g, /magical-power/g, /magicalpowerratio/g]);
+
+  return { physical, magical };
+}
+
+function countMatches(text: string, patterns: RegExp[]): number {
+  return patterns.reduce((count, pattern) => count + (text.match(pattern)?.length ?? 0), 0);
 }
 
 function issue(severity: AuditIssue["severity"], hero: string | undefined, field: string, message: string): AuditIssue {

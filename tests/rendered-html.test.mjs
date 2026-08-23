@@ -46,6 +46,7 @@ test("keeps the kit data in a source-audited data folder", async () => {
   const eternals = await readFile(new URL("../data/predecessor/eternals.json", import.meta.url), "utf8");
   const heroData = JSON.parse(heroes);
   const audit = await readFile(new URL("../data/predecessor/audit.ts", import.meta.url), "utf8");
+  const auditScript = await readFile(new URL("../scripts/audit-data.mjs", import.meta.url), "utf8");
   const crestAudit = await readFile(new URL("../data/predecessor/crests.ts", import.meta.url), "utf8");
   const itemAudit = await readFile(new URL("../data/predecessor/items.ts", import.meta.url), "utf8");
   const eternalAudit = await readFile(new URL("../data/predecessor/eternals.ts", import.meta.url), "utf8");
@@ -75,6 +76,25 @@ test("keeps the kit data in a source-audited data folder", async () => {
   assert.match(heroes, /"name": "Argus"[\s\S]*?"name": "Dread Nova"[\s\S]*?"cooldown": \[[\s\S]*?16[\s\S]*?15[\s\S]*?14[\s\S]*?13[\s\S]*?12/);
   assert.match(heroes, /"name": "Gadget"[\s\S]*?"damage": "magical"/);
   assert.match(heroes, /"name": "Howitzer"[\s\S]*?"damage": "magical"/);
+  const heroByName = new Map(heroData.heroes.map((hero) => [hero.name, hero]));
+  for (const [name, damage] of [
+    ["Akeron", "magical"],
+    ["Aurora", "magical"],
+    ["Boris", "magical"],
+    ["Crunch", "physical"],
+    ["Dekker", "magical"],
+    ["GRIM.exe", "magical"],
+    ["Kwang", "magical"],
+    ["Mourn", "physical"],
+    ["Rampage", "magical"],
+    ["Riktor", "magical"],
+    ["Sevarog", "magical"],
+    ["Shinbi", "magical"],
+    ["Steel", "magical"],
+    ["TwinBlast", "mixed"],
+  ]) {
+    assert.equal(heroByName.get(name)?.damage, damage, `${name} should use primary kit damage inferred from non-basic abilities`);
+  }
   const staleWeaknessTags = new Set(["burst-vulnerable", "cc-vulnerable", "low-damage", "mana-dependent", "needs-matchup-review"]);
   assert.deepEqual(
     heroData.heroes.flatMap((hero) => hero.weaknesses.filter((tag) => staleWeaknessTags.has(tag))),
@@ -178,6 +198,11 @@ test("keeps the kit data in a source-audited data folder", async () => {
   assert.match(eternals, /"Satariel"/);
   assert.match(eternals, /"Psychosis"/);
   assert.match(audit, /auditHeroData/);
+  assert.match(audit, /inferPrimaryKitDamage/);
+  assert.match(audit, /ability\.slot !== "basic"/);
+  assert.match(audit, /Basic attack damage is excluded/);
+  assert.match(auditScript, /function inferPrimaryKitDamage/);
+  assert.match(auditScript, /ability\.slot !== "basic"/);
   assert.match(audit, /fullyVerifiedHeroes/);
   assert.match(audit, /sourceBackedKits/);
   assert.match(crestAudit, /auditCrestData/);

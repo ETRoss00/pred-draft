@@ -488,7 +488,7 @@
         "offlane",
         "jungle"
       ],
-      "damage": "mixed",
+      "damage": "magical",
       "range": "melee",
       "threats": [
         "burst",
@@ -959,7 +959,7 @@
         "jungle",
         "support"
       ],
-      "damage": "mixed",
+      "damage": "magical",
       "range": "melee",
       "threats": [
         "dive",
@@ -1288,7 +1288,7 @@
       "roles": [
         "jungle"
       ],
-      "damage": "mixed",
+      "damage": "magical",
       "range": "melee",
       "threats": [
         "dive",
@@ -1614,7 +1614,7 @@
         "offlane",
         "jungle"
       ],
-      "damage": "mixed",
+      "damage": "physical",
       "range": "melee",
       "threats": [
         "dive",
@@ -1771,7 +1771,7 @@
       "roles": [
         "support"
       ],
-      "damage": "mixed",
+      "damage": "magical",
       "range": "ranged",
       "threats": [
         "objective-control",
@@ -2876,7 +2876,7 @@
         "carry",
         "midlane"
       ],
-      "damage": "mixed",
+      "damage": "magical",
       "range": "ranged",
       "threats": [
         "poke"
@@ -4149,7 +4149,7 @@
         "offlane",
         "support"
       ],
-      "damage": "mixed",
+      "damage": "magical",
       "range": "melee",
       "threats": [
         "dive",
@@ -4934,7 +4934,7 @@
         "offlane",
         "jungle"
       ],
-      "damage": "mixed",
+      "damage": "physical",
       "range": "melee",
       "threats": [
         "frontline",
@@ -5890,7 +5890,7 @@
         "jungle",
         "offlane"
       ],
-      "damage": "mixed",
+      "damage": "magical",
       "range": "melee",
       "threats": [
         "dive",
@@ -6372,7 +6372,7 @@
         "support",
         "jungle"
       ],
-      "damage": "mixed",
+      "damage": "magical",
       "range": "melee",
       "threats": [
         "frontline",
@@ -7025,7 +7025,7 @@
         "offlane",
         "jungle"
       ],
-      "damage": "mixed",
+      "damage": "magical",
       "range": "melee",
       "threats": [
         "dive",
@@ -7189,7 +7189,7 @@
         "offlane",
         "jungle"
       ],
-      "damage": "mixed",
+      "damage": "magical",
       "range": "melee",
       "threats": [
         "dive",
@@ -7656,7 +7656,7 @@
         "support",
         "jungle"
       ],
-      "damage": "mixed",
+      "damage": "magical",
       "range": "melee",
       "threats": [
         "dive",
@@ -8143,7 +8143,7 @@
       "roles": [
         "carry"
       ],
-      "damage": "physical",
+      "damage": "mixed",
       "range": "ranged",
       "threats": [
         "dive"
