@@ -480,6 +480,7 @@
             14
           ],
           "effects": [
+            "movement-speed",
             "area-damage",
             "movement-speed",
             "mesmerize",
@@ -3296,6 +3297,8 @@
         }
       ],
       "threats": [
+        "objective-control",
+        "pick",
         "poke",
         "burst",
         "mobility",
@@ -3306,6 +3309,9 @@
         "backline-access"
       ],
       "answers": [
+        "anti-engage",
+        "disengage",
+        "hard-cc",
         "poke",
         "waveclear",
         "anti-frontline",
@@ -3600,7 +3606,7 @@
       "classes": [
         "mage"
       ],
-      "damage": "magical",
+      "damage": "mixed",
       "range": "ranged",
       "ratings": {
         "basicAttack": 1,
@@ -4767,7 +4773,7 @@
       "classes": [
         "mage"
       ],
-      "damage": "magical",
+      "damage": "mixed",
       "range": "ranged",
       "ratings": {
         "basicAttack": 3,
@@ -5004,7 +5010,7 @@
       "classes": [
         "mage"
       ],
-      "damage": "magical",
+      "damage": "mixed",
       "range": "ranged",
       "ratings": {
         "basicAttack": 2,
@@ -12958,16 +12964,138 @@
         "carry"
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
+        "roster": "mourn-manual-entry-2026-08-23",
         "roles": "verified-combined-hero-roles-2026-08-23",
-        "kit": "prototype-kit-taxonomy"
+        "kit": "mourn-manual-entry-2026-08-23"
       },
       "verification": {
         "rosterStatus": "source-backed",
         "roleStatus": "source-backed",
-        "kitStatus": "prototype",
-        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
-      }
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Converted from user-provided text entry. Recommendation tags are derived only from verified ability and augment effects."
+      },
+      "classes": [
+        "tank"
+      ],
+      "ratings": {
+        "basicAttack": 3,
+        "abilityPower": 6,
+        "durability": 8,
+        "mobility": 1
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Clobber",
+          "kind": "melee",
+          "damageType": "physical",
+          "description": "User-verified text entry for Mourn's Clobber. Encoded effects: melee basic, physical damage.",
+          "effects": [
+            "melee-basic",
+            "physical-damage"
+          ],
+          "sourceRef": "mourn-manual-entry-2026-08-23"
+        },
+        {
+          "slot": "passive",
+          "name": "Extract",
+          "kind": "healing",
+          "damageType": "physical",
+          "description": "User-verified text entry for Mourn's Extract. Encoded effects: empowered basic, max health damage, healing.",
+          "effects": [
+            "empowered-basic",
+            "max-health-damage",
+            "healing"
+          ],
+          "sourceRef": "mourn-manual-entry-2026-08-23"
+        },
+        {
+          "slot": "primary",
+          "name": "Contagion",
+          "kind": "complex",
+          "damageType": "physical",
+          "description": "User-verified text entry for Mourn's Contagion. Encoded effects: ally healing, armor buff, enemy armor shred, damage over time.",
+          "effects": [
+            "ally-healing",
+            "armor-buff",
+            "enemy-armor-shred",
+            "damage-over-time"
+          ],
+          "sourceRef": "mourn-manual-entry-2026-08-23"
+        },
+        {
+          "slot": "secondary",
+          "name": "Beguile",
+          "kind": "utility",
+          "damageType": "physical",
+          "description": "User-verified text entry for Mourn's Beguile. Encoded effects: damage reduction, mesmerize, area control.",
+          "effects": [
+            "damage-reduction",
+            "mesmerize",
+            "area-control"
+          ],
+          "sourceRef": "mourn-manual-entry-2026-08-23"
+        },
+        {
+          "slot": "alternate",
+          "name": "Abduct",
+          "kind": "utility",
+          "damageType": "physical",
+          "description": "User-verified text entry for Mourn's Abduct. Encoded effects: pull, slow, hook.",
+          "effects": [
+            "pull",
+            "slow",
+            "hook"
+          ],
+          "sourceRef": "mourn-manual-entry-2026-08-23"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Eclipse",
+          "kind": "utility",
+          "damageType": "physical",
+          "description": "User-verified text entry for Mourn's Eclipse. Encoded effects: vision denial, global contagion, movement speed.",
+          "effects": [
+            "vision-denial",
+            "global-contagion",
+            "movement-speed"
+          ],
+          "sourceRef": "mourn-manual-entry-2026-08-23"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Nightmare Extractor",
+          "category": "kit-modifier",
+          "description": "User-verified text entry for Mourn's Nightmare Extractor augment.",
+          "tags": [
+            "kit-modifier"
+          ],
+          "sourceRef": "mourn-manual-entry-2026-08-23"
+        },
+        {
+          "name": "Nightstalker",
+          "category": "kit-modifier",
+          "description": "User-verified text entry for Mourn's Nightstalker augment.",
+          "tags": [
+            "kit-modifier"
+          ],
+          "sourceRef": "mourn-manual-entry-2026-08-23"
+        },
+        {
+          "name": "Dreadful Roots",
+          "category": "kit-modifier",
+          "description": "User-verified text entry for Mourn's Dreadful Roots augment.",
+          "tags": [
+            "hard-cc"
+          ],
+          "sourceRef": "mourn-manual-entry-2026-08-23"
+        }
+      ]
     },
     {
       "id": "rampage",
@@ -15908,16 +16036,137 @@
         }
       ],
       "sourceRefs": {
-        "roster": "official-hero-gallery",
+        "roster": "yin-manual-entry-2026-08-23",
         "roles": "verified-combined-hero-roles-2026-08-23",
-        "kit": "prototype-kit-taxonomy"
+        "kit": "yin-manual-entry-2026-08-23"
       },
       "verification": {
         "rosterStatus": "source-backed",
         "roleStatus": "source-backed",
-        "kitStatus": "prototype",
-        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
-      }
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Converted from user-provided text entry. Recommendation tags are derived only from verified ability and augment effects."
+      },
+      "classes": [
+        "carry"
+      ],
+      "ratings": {
+        "basicAttack": 9,
+        "abilityPower": 3,
+        "durability": 3,
+        "mobility": 6
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Silksong",
+          "kind": "melee",
+          "damageType": "physical",
+          "description": "User-verified text entry for Yin's Silksong. Encoded effects: melee basic, physical damage.",
+          "effects": [
+            "melee-basic",
+            "physical-damage"
+          ],
+          "sourceRef": "yin-manual-entry-2026-08-23"
+        },
+        {
+          "slot": "passive",
+          "name": "Rising Storm",
+          "kind": "damage",
+          "damageType": "physical",
+          "description": "User-verified text entry for Yin's Rising Storm. Encoded effects: attack speed, stacking buff.",
+          "effects": [
+            "attack-speed",
+            "stacking-buff"
+          ],
+          "sourceRef": "yin-manual-entry-2026-08-23"
+        },
+        {
+          "slot": "primary",
+          "name": "Lash Kick",
+          "kind": "mobility",
+          "damageType": "physical",
+          "description": "User-verified text entry for Yin's Lash Kick. Encoded effects: pull self, slow, leap.",
+          "effects": [
+            "pull-self",
+            "slow",
+            "leap"
+          ],
+          "sourceRef": "yin-manual-entry-2026-08-23"
+        },
+        {
+          "slot": "secondary",
+          "name": "Windburn",
+          "kind": "buff",
+          "damageType": "physical",
+          "description": "User-verified text entry for Yin's Windburn. Encoded effects: range, cleave, max health damage, healing.",
+          "effects": [
+            "range",
+            "cleave",
+            "max-health-damage",
+            "healing"
+          ],
+          "sourceRef": "yin-manual-entry-2026-08-23"
+        },
+        {
+          "slot": "alternate",
+          "name": "Backlash",
+          "kind": "utility",
+          "damageType": "physical",
+          "description": "User-verified text entry for Yin's Backlash. Encoded effects: push, projectile reflect, physical damage.",
+          "effects": [
+            "push",
+            "projectile-reflect",
+            "physical-damage"
+          ],
+          "sourceRef": "yin-manual-entry-2026-08-23"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Quelling Gale",
+          "kind": "complex",
+          "damageType": "physical",
+          "description": "User-verified text entry for Yin's Quelling Gale. Encoded effects: projectile block, slow, movement speed.",
+          "effects": [
+            "projectile-block",
+            "slow",
+            "movement-speed"
+          ],
+          "sourceRef": "yin-manual-entry-2026-08-23"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Energy Transfer",
+          "category": "kit-modifier",
+          "description": "User-verified text entry for Yin's Energy Transfer augment.",
+          "tags": [
+            "kit-modifier"
+          ],
+          "sourceRef": "yin-manual-entry-2026-08-23"
+        },
+        {
+          "name": "Serpent's Blessing",
+          "category": "kit-modifier",
+          "description": "User-verified text entry for Yin's Serpent's Blessing augment.",
+          "tags": [
+            "kit-modifier"
+          ],
+          "sourceRef": "yin-manual-entry-2026-08-23"
+        },
+        {
+          "name": "Storm of Salvation",
+          "category": "kit-modifier",
+          "description": "User-verified text entry for Yin's Storm of Salvation augment.",
+          "tags": [
+            "kit-modifier"
+          ],
+          "sourceRef": "yin-manual-entry-2026-08-23"
+        }
+      ]
     },
     {
       "id": "yurei",
@@ -16321,6 +16570,7 @@
         "scaling"
       ],
       "answers": [
+        "anti-burst",
         "hard-cc",
         "frontline",
         "duelist",
@@ -16532,7 +16782,7 @@
         }
       ],
       "threats": [
-        "sustain",
+        "objective-control",
         "peel",
         "hard-cc",
         "pick",
@@ -16540,6 +16790,10 @@
         "revive"
       ],
       "answers": [
+        "anti-engage",
+        "hard-cc",
+        "mobility",
+        "peel",
         "sustain",
         "anti-poke",
         "anti-burst",
