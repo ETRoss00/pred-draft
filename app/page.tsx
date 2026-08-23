@@ -72,6 +72,10 @@ function plan(title: string, threats: string[], items: string[], note: string) {
   return { title, threats, items, note };
 }
 
+function hasSourceBackedKit(hero?: Hero) {
+  return hero?.verification.kitStatus === "source-backed";
+}
+
 
 function analyze(enemyPicks: EnemyPick[]) {
   const enemies = enemyPicks
@@ -82,10 +86,12 @@ function analyze(enemyPicks: EnemyPick[]) {
     })
     .filter(Boolean) as Array<EnemyPick & { hero: Hero }>;
 
+  const verifiedEnemies = enemies.filter(({ hero }) => hasSourceBackedKit(hero));
+  const unverifiedEnemies = enemies.filter(({ hero }) => !hasSourceBackedKit(hero));
   const counts = new Map<string, number>();
   const damage = { physical: 0, magical: 0, mixed: 0 };
 
-  enemies.forEach(({ hero }) => {
+  verifiedEnemies.forEach(({ hero }) => {
     damage[hero.damage] += 1;
     [...hero.threats, ...hero.weaknesses].forEach((tag) => {
       counts.set(tag, (counts.get(tag) ?? 0) + 1);
@@ -94,6 +100,8 @@ function analyze(enemyPicks: EnemyPick[]) {
 
   return {
     enemies,
+    verifiedEnemies,
+    unverifiedEnemies,
     damage,
     topTraits: [...counts.entries()]
       .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
@@ -126,7 +134,7 @@ function scoreHero(hero: Hero, enemyPicks: EnemyPick[], role: Role | "flex", loc
     }
   });
 
-  comp.enemies.forEach(({ hero: enemyHero, role: enemyRole }) => {
+  comp.verifiedEnemies.forEach(({ hero: enemyHero, role: enemyRole }) => {
     hero.threats.forEach((threat) => {
       if (enemyHero.weaknesses.includes(threat)) {
         score += 6;
@@ -137,7 +145,7 @@ function scoreHero(hero: Hero, enemyPicks: EnemyPick[], role: Role | "flex", loc
   });
 
   if (role !== "flex") {
-    comp.enemies.forEach(({ hero: enemyHero, role: enemyRole }) => {
+    comp.verifiedEnemies.forEach(({ hero: enemyHero, role: enemyRole }) => {
       const matchupWeight = roleMatchupWeights[role][enemyRole] ?? 0;
       if (!matchupWeight) return;
 
@@ -182,6 +190,7 @@ function scoreHero(hero: Hero, enemyPicks: EnemyPick[], role: Role | "flex", loc
 
 function recommendBuild(enemyPicks: EnemyPick[], lockedHero?: Hero) {
   const comp = analyze(enemyPicks);
+  const verifiedLockedHero = hasSourceBackedKit(lockedHero) ? lockedHero : undefined;
   return buildPlans
     .map((build) => ({
       ...build,
@@ -191,8 +200,10 @@ function recommendBuild(enemyPicks: EnemyPick[], lockedHero?: Hero) {
     .slice(0, 3)
     .map((build) => ({
       ...build,
-      heroNote: lockedHero
-        ? `${lockedHero.name} brings ${lockedHero.answers.slice(0, 2).join(" and ")}. Build to cover the remaining draft pressure.`
+      heroNote: verifiedLockedHero
+        ? `${verifiedLockedHero.name} brings ${verifiedLockedHero.answers.slice(0, 2).join(" and ")}. Build to cover the remaining draft pressure.`
+        : lockedHero
+          ? `${lockedHero.name} needs text-sourced kit encoding before augment advice can be tailored.`
         : "Lock a hero to tailor this into a tighter item order.",
     }));
 }
@@ -214,15 +225,16 @@ export default function Home() {
   const audit = useMemo(() => auditHeroData(), []);
   const crestAudit = useMemo(() => auditCrestData(), []);
   const eternalAudit = useMemo(() => auditEternalData(), []);
+  const sourceBackedKitHeroes = useMemo(() => heroes.filter(hasSourceBackedKit), []);
 
   const recommendations = useMemo(
     () =>
-      heroes
+      sourceBackedKitHeroes
         .map((hero) => scoreHero(hero, enemyPicks, role, lockedHero))
         .filter((advice) => advice.score > 0 && advice.reasons.length)
         .sort((a, b) => b.score - a.score || a.name.localeCompare(b.name))
         .slice(0, 8),
-    [enemyPicks, role, lockedHero],
+    [enemyPicks, role, lockedHero, sourceBackedKitHeroes],
   );
 
   const builds = useMemo(() => recommendBuild(enemyPicks, locked), [enemyPicks, locked]);
@@ -344,7 +356,7 @@ export default function Home() {
           <section className="rounded-lg border border-[#2b29231a] bg-[#191712] p-3 text-white shadow-sm">
             <div className="mb-3 flex items-center justify-between">
               <h2 className="text-sm font-black uppercase tracking-[0.12em]">Enemy read</h2>
-              <span className="rounded-md bg-white/10 px-2 py-1 text-xs font-bold">{comp.enemies.length ? "Live" : "Waiting"}</span>
+              <span className="rounded-md bg-white/10 px-2 py-1 text-xs font-bold">{comp.verifiedEnemies.length ? "Live" : "Waiting"}</span>
             </div>
             {comp.topTraits.length ? (
               <div className="flex flex-wrap gap-2">
@@ -355,7 +367,12 @@ export default function Home() {
                 ))}
               </div>
             ) : (
-              <p className="text-sm text-[#e9dfcf]">Add enemy picks to reveal draft pressure.</p>
+              <p className="text-sm text-[#e9dfcf]">Add text-sourced enemy kits to reveal draft pressure.</p>
+            )}
+            {comp.unverifiedEnemies.length > 0 && (
+              <p className="mt-3 rounded-md bg-white/10 px-3 py-2 text-xs font-bold text-[#f4dfb0]">
+                {comp.unverifiedEnemies.length} selected enemy {comp.unverifiedEnemies.length === 1 ? "kit is" : "kits are"} quarantined until text-sourced.
+              </p>
             )}
           </section>
 
@@ -365,6 +382,9 @@ export default function Home() {
                 <h2 className="text-sm font-black uppercase tracking-[0.12em]">Data audit</h2>
                 <p className="mt-1 text-sm font-semibold text-[#665f52]">
                   {audit.heroCount} heroes / {audit.fullyVerifiedHeroes} fully verified / {audit.errors.length} errors
+                </p>
+                <p className="mt-1 text-xs font-bold text-[#665f52]">
+                  {sourceBackedKitHeroes.length} heroes available for verified kit recommendations / {audit.prototypeKits} prototype kits quarantined
                 </p>
                 <p className="mt-1 text-xs font-bold text-[#665f52]">
                   {crestAudit.crestCount} crests / {crestAudit.sourceBackedCrests} source-backed / {crestAudit.errors.length} crest errors
@@ -390,7 +410,7 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="rounded-md bg-[#fff5cf] px-3 py-2 text-sm font-semibold text-[#5f4610]">
-                  Current patch: {predecessorHeroData.patch}. Role and kit fields marked as needs-review are visible here until checked against current game data.
+                  Current patch: {predecessorHeroData.patch}. Prototype hero kit tags are visible for audit only and are not used for recommendations.
                 </p>
                 {[...audit.errors, ...audit.warnings].slice(0, 8).map((issue, index) => (
                   <p key={`${issue.severity}-${issue.hero}-${issue.field}-${index}`} className="rounded-md bg-[#f4e0d9] px-3 py-2 text-xs font-bold text-[#8a3524]">
@@ -413,10 +433,16 @@ export default function Home() {
                   className="h-9 w-36 rounded-md border border-[#2b29231a] bg-white px-3 text-sm"
                 />
               </div>
-              {(search ? filteredHeroes.map((hero) => scoreHero(hero, enemyPicks, role, lockedHero)).filter((advice) => advice.score > -50) : recommendations).map((advice) => (
+              {(search
+                ? filteredHeroes
+                    .filter(hasSourceBackedKit)
+                    .map((hero) => scoreHero(hero, enemyPicks, role, lockedHero))
+                    .filter((advice) => advice.score > -50)
+                : recommendations
+              ).map((advice) => (
                 <Recommendation key={advice.name} advice={advice} />
               ))}
-              {!recommendations.length && <EmptyState text="Add at least one enemy pick to get kit-based counter recommendations." />}
+              {!recommendations.length && <EmptyState text="Add at least one enemy pick with text-sourced kit data to get verified counter recommendations." />}
             </section>
           ) : (
             <section className="space-y-3">

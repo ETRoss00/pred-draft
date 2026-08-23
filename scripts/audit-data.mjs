@@ -217,10 +217,13 @@ const fullyVerified = dataset.heroes.filter((hero) =>
   hero.verification?.augmentStatus === "source-backed" &&
   hero.verification?.kitStatus === "source-backed"
 );
+const sourceBackedKits = dataset.heroes.filter((hero) => hero.verification?.kitStatus === "source-backed");
 
 console.log(`Predecessor hero data audit`);
 console.log(`Heroes: ${dataset.heroes.length}`);
 console.log(`Fully verified heroes: ${fullyVerified.length}`);
+console.log(`Verified kit recommendation heroes: ${sourceBackedKits.length}`);
+console.log(`Prototype kits quarantined from scoring: ${dataset.heroes.length - sourceBackedKits.length}`);
 console.log(`Role coverage: ${Object.entries(roleCoverage).map(([role, count]) => `${role}=${count}`).join(", ")}`);
 console.log(`Crests: ${crestDataset.crests.length}`);
 console.log(`Crest role coverage: ${Object.entries(crestRoleCoverage).map(([role, count]) => `${role}=${count}`).join(", ")}`);
