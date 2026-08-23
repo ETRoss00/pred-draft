@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "game": "Predecessor",
   "patch": "unknown-current",
-  "lastManualReview": null,
+  "lastManualReview": "2026-08-23",
   "sources": {
     "official-hero-gallery": {
       "label": "Official Predecessor Hero Gallery",
@@ -35,6 +35,11 @@
         "C:/Users/erict/Downloads/Mobile Devices/1000001808.jpg",
         "C:/Users/erict/Downloads/Mobile Devices/1000001809.jpg"
       ]
+    },
+    "verified-combined-hero-roles-2026-08-23": {
+      "label": "Verified combined hero roles",
+      "url": null,
+      "use": "User-verified primary roles plus accepted flex roles combined for draft filtering."
     }
   },
   "validRoles": [
@@ -72,7 +77,8 @@
       "name": "Adele",
       "roles": [
         "support",
-        "offlane"
+        "offlane",
+        "jungle"
       ],
       "damage": "physical",
       "range": "melee",
@@ -93,20 +99,21 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
       "id": "akeron",
       "name": "Akeron",
       "roles": [
+        "offlane",
         "jungle"
       ],
       "damage": "physical",
@@ -127,20 +134,21 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
       "id": "argus",
       "name": "Argus",
       "roles": [
+        "midlane",
         "support"
       ],
       "classes": [
@@ -186,12 +194,32 @@
           "damageType": "magical",
           "description": "Argus lobs an unstable orb of energy. Upon landing it explodes, dealing 80/120/160/200/240 (+50%) magical damage to all nearby Targets and Stuns them for 1/1.05/1.1/1.15/1.2s.",
           "scaling": {
-            "damage": [80, 120, 160, 200, 240],
+            "damage": [
+              80,
+              120,
+              160,
+              200,
+              240
+            ],
             "magicalPowerRatio": 0.5,
-            "stunDuration": [1, 1.05, 1.1, 1.15, 1.2]
+            "stunDuration": [
+              1,
+              1.05,
+              1.1,
+              1.15,
+              1.2
+            ]
           },
-          "cooldown": [16, 15, 14, 13, 12],
-          "cost": [50],
+          "cooldown": [
+            16,
+            15,
+            14,
+            13,
+            12
+          ],
+          "cost": [
+            50
+          ],
           "effects": [
             "area-damage",
             "stun",
@@ -207,14 +235,38 @@
           "damageType": "magical",
           "description": "Argus summons an Ether Crystal at the target location for 2s. The Crystal will Push Enemy Heroes from the center and Lift Allied Heroes into the air before producing a storm that deals 15/25/35/45/55 (+18%) magical damage every 0.5s to nearby Enemies and Slows by 25/30/35/40/45% for 0.5s. After the duration the Crystal will implode, Pulling all Enemies within to the center.",
           "scaling": {
-            "damagePerTick": [15, 25, 35, 45, 55],
+            "damagePerTick": [
+              15,
+              25,
+              35,
+              45,
+              55
+            ],
             "magicalPowerRatio": 0.18,
-            "slowPercent": [25, 30, 35, 40, 45],
+            "slowPercent": [
+              25,
+              30,
+              35,
+              40,
+              45
+            ],
             "duration": 2,
             "tickRate": 0.5
           },
-          "cooldown": [16, 15.5, 15, 14.5, 14],
-          "cost": [70, 80, 90, 100, 110],
+          "cooldown": [
+            16,
+            15.5,
+            15,
+            14.5,
+            14
+          ],
+          "cost": [
+            70,
+            80,
+            90,
+            100,
+            110
+          ],
           "effects": [
             "zone-control",
             "pull",
@@ -232,12 +284,26 @@
           "damageType": "magical",
           "description": "Argus fires homing projectiles from his Abyssal Staff for up to 3.5s. Each projectile consumes mana and deals 13/20/27/34/41 (+18%) per blast. At maximum rank, Particle Shredder can be used indefinitely.",
           "scaling": {
-            "damagePerBlast": [13, 20, 27, 34, 41],
+            "damagePerBlast": [
+              13,
+              20,
+              27,
+              34,
+              41
+            ],
             "magicalPowerRatio": 0.18,
             "channelDuration": 3.5
           },
-          "cooldown": [3],
-          "cost": [12, 14, 16, 18, 20],
+          "cooldown": [
+            3
+          ],
+          "cost": [
+            12,
+            14,
+            16,
+            18,
+            20
+          ],
           "effects": [
             "homing-projectiles",
             "channeled-damage",
@@ -253,16 +319,30 @@
           "damageType": "magical",
           "description": "After a short delay, Argus channels for up to 8s, gaining immunity to pushes and pulls whilst deploying his ultimate weapon to fire up to 3/4/5 powerful Energy Beams. Each beam deals 100/130/160 (+25%) magical damage (increased by up to 150% based on the Target's missing health) and Slows Enemies hit by 60% for 0.5s.",
           "scaling": {
-            "damagePerBeam": [100, 130, 160],
+            "damagePerBeam": [
+              100,
+              130,
+              160
+            ],
             "magicalPowerRatio": 0.25,
-            "beams": [3, 4, 5],
+            "beams": [
+              3,
+              4,
+              5
+            ],
             "maxMissingHealthAmpPercent": 150,
             "slowPercent": 60,
             "slowDuration": 0.5,
             "channelDuration": 8
           },
-          "cooldown": [135, 120, 105],
-          "cost": [100],
+          "cooldown": [
+            135,
+            120,
+            105
+          ],
+          "cost": [
+            100
+          ],
           "effects": [
             "long-range-damage",
             "execute-pressure",
@@ -334,7 +414,7 @@
       ],
       "sourceRefs": {
         "roster": "argus-game-client-screenshots-2026-08-02",
-        "roles": "argus-game-client-screenshots-2026-08-02",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "classes": "argus-game-client-screenshots-2026-08-02",
         "ratings": "argus-game-client-screenshots-2026-08-02",
         "abilities": "argus-game-client-screenshots-2026-08-02",
@@ -349,7 +429,7 @@
         "abilityStatus": "source-backed",
         "augmentStatus": "source-backed",
         "kitStatus": "source-backed",
-        "notes": "Fully encoded from user-provided in-game Argus screenshots dated 2026-08-02. Recommendation tags are derived from the source-backed kit."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -357,7 +437,8 @@
       "name": "Aurora",
       "roles": [
         "offlane",
-        "jungle"
+        "jungle",
+        "support"
       ],
       "damage": "magical",
       "range": "melee",
@@ -378,14 +459,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -413,21 +494,20 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
       "id": "boris",
       "name": "Boris",
       "roles": [
-        "offlane",
         "jungle"
       ],
       "damage": "physical",
@@ -448,22 +528,23 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
       "id": "countess",
       "name": "Countess",
       "roles": [
+        "jungle",
         "midlane",
-        "jungle"
+        "offlane"
       ],
       "damage": "magical",
       "range": "melee",
@@ -483,14 +564,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -518,22 +599,21 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
       "id": "dekker",
       "name": "Dekker",
       "roles": [
-        "support",
-        "midlane"
+        "support"
       ],
       "damage": "magical",
       "range": "ranged",
@@ -553,14 +633,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -587,22 +667,21 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
       "id": "eden",
       "name": "Eden",
       "roles": [
-        "carry",
-        "midlane"
+        "carry"
       ],
       "damage": "magical",
       "range": "ranged",
@@ -622,14 +701,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -657,21 +736,22 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
       "id": "gadget",
       "name": "Gadget",
       "roles": [
-        "midlane"
+        "midlane",
+        "support"
       ],
       "damage": "magical",
       "range": "ranged",
@@ -691,14 +771,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -725,14 +805,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -760,14 +840,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -795,14 +875,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -830,22 +910,21 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
       "id": "howitzer",
       "name": "Howitzer",
       "roles": [
-        "midlane",
-        "offlane"
+        "midlane"
       ],
       "damage": "magical",
       "range": "ranged",
@@ -865,14 +944,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -900,14 +979,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -915,7 +994,9 @@
       "name": "Ikra",
       "roles": [
         "midlane",
-        "support"
+        "support",
+        "offlane",
+        "jungle"
       ],
       "damage": "magical",
       "range": "ranged",
@@ -935,14 +1016,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -969,21 +1050,22 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
       "id": "khaimera",
       "name": "Khaimera",
       "roles": [
-        "jungle"
+        "jungle",
+        "offlane"
       ],
       "damage": "physical",
       "range": "melee",
@@ -1003,14 +1085,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -1037,22 +1119,23 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
       "id": "kwang",
       "name": "Kwang",
       "roles": [
+        "jungle",
         "offlane",
-        "jungle"
+        "support"
       ],
       "damage": "magical",
       "range": "melee",
@@ -1072,22 +1155,21 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
       "id": "legion",
       "name": "Legion",
       "roles": [
-        "jungle",
-        "offlane"
+        "carry"
       ],
       "damage": "physical",
       "range": "melee",
@@ -1107,14 +1189,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -1142,22 +1224,21 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
       "id": "maco",
       "name": "Maco",
       "roles": [
-        "support",
-        "midlane"
+        "support"
       ],
       "damage": "magical",
       "range": "ranged",
@@ -1176,21 +1257,22 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
       "id": "morigesh",
       "name": "Morigesh",
       "roles": [
-        "midlane"
+        "midlane",
+        "offlane"
       ],
       "damage": "magical",
       "range": "ranged",
@@ -1210,22 +1292,23 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
       "id": "mourn",
       "name": "Mourn",
       "roles": [
+        "support",
         "offlane",
-        "support"
+        "jungle"
       ],
       "damage": "physical",
       "range": "melee",
@@ -1245,14 +1328,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -1279,14 +1362,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -1313,14 +1396,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -1347,22 +1430,21 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
       "id": "neon",
       "name": "Neon",
       "roles": [
-        "midlane",
-        "carry"
+        "midlane"
       ],
       "damage": "mixed",
       "range": "ranged",
@@ -1382,14 +1464,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -1416,14 +1498,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -1451,21 +1533,22 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
       "id": "renna",
       "name": "Renna",
       "roles": [
-        "midlane"
+        "midlane",
+        "support"
       ],
       "damage": "magical",
       "range": "ranged",
@@ -1485,14 +1568,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -1519,14 +1602,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -1534,7 +1617,7 @@
       "name": "Riktor",
       "roles": [
         "support",
-        "offlane"
+        "jungle"
       ],
       "damage": "magical",
       "range": "melee",
@@ -1554,14 +1637,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -1589,14 +1672,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -1624,14 +1707,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -1659,22 +1742,21 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
       "id": "skylar",
       "name": "Skylar",
       "roles": [
-        "carry",
-        "midlane"
+        "carry"
       ],
       "damage": "physical",
       "range": "ranged",
@@ -1694,14 +1776,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -1728,22 +1810,23 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
       "id": "steel",
       "name": "Steel",
       "roles": [
+        "offlane",
         "support",
-        "offlane"
+        "jungle"
       ],
       "damage": "physical",
       "range": "melee",
@@ -1764,14 +1847,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -1799,14 +1882,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -1834,14 +1917,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -1868,14 +1951,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -1903,22 +1986,22 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
       "id": "wukong",
       "name": "Wukong",
       "roles": [
-        "offlane",
-        "jungle"
+        "jungle",
+        "offlane"
       ],
       "damage": "physical",
       "range": "melee",
@@ -1938,21 +2021,21 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
       "id": "yin",
       "name": "Yin",
       "roles": [
-        "carry",
+        "jungle",
         "offlane"
       ],
       "damage": "physical",
@@ -1973,14 +2056,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -2008,14 +2091,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -2043,22 +2126,21 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
       "id": "zinx",
       "name": "Zinx",
       "roles": [
-        "support",
-        "offlane"
+        "support"
       ],
       "damage": "magical",
       "range": "ranged",
@@ -2078,14 +2160,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     }
   ]

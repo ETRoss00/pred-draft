@@ -56,10 +56,14 @@ test("keeps the kit data in a source-audited data folder", async () => {
   assert.match(heroes, /"schemaVersion": 2/);
   assert.match(heroes, /"official-hero-gallery"/);
   assert.match(heroes, /"argus-game-client-screenshots-2026-08-02"/);
+  assert.match(heroes, /"verified-combined-hero-roles-2026-08-23"/);
   assert.match(heroes, /"name": "Disintegrate"/);
   assert.match(heroes, /"name": "Infinite Obliteration"/);
-  assert.match(heroes, /"roleStatus": "needs-review"/);
+  assert.match(heroes, /"name": "Argus"[\s\S]*?"roles": \[[\s\S]*?"midlane"[\s\S]*?"support"/);
+  assert.match(heroes, /"name": "Yin"[\s\S]*?"roles": \[[\s\S]*?"jungle"[\s\S]*?"offlane"/);
+  assert.match(heroes, /"name": "Legion"[\s\S]*?"roles": \[[\s\S]*?"carry"/);
   assert.match(heroes, /"roleStatus": "source-backed"/);
+  assert.doesNotMatch(heroes, /"roleStatus": "needs-review"/);
   assert.match(crests, /"schemaVersion": 1/);
   assert.match(crests, /"Eviscerator"/);
   assert.match(crests, /"Liberator"/);
