@@ -109,7 +109,9 @@ function scoreHero(hero: Hero, enemyPicks: EnemyPick[], role: Role | "flex", loc
   const reasons = new Set<string>();
   const tags = new Set<string>();
 
-  if (role !== "flex" && !hero.roles.includes(role)) score -= 100;
+  if (role !== "flex" && !hero.roles.includes(role)) {
+    score += hero.flexRoles?.includes(role) ? -25 : -100;
+  }
   if (hero.name === lockedName) score -= 100;
   if (enemyNames.includes(hero.name)) score -= 100;
 
@@ -171,7 +173,7 @@ function scoreHero(hero: Hero, enemyPicks: EnemyPick[], role: Role | "flex", loc
 
   return {
     name: hero.name,
-    role: hero.roles.join(" / "),
+    role: hero.flexRoles?.length ? `${hero.roles.join(" / ")} (+ ${hero.flexRoles.join(" / ")})` : hero.roles.join(" / "),
     score,
     reasons: [...reasons].slice(0, 4),
     tags: [...tags].slice(0, 5),
