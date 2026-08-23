@@ -237,6 +237,15 @@ test("keeps the kit data in a source-audited data folder", async () => {
   assert.match(page, /scoreAugment/);
   assert.match(page, /augmentTextSignals/);
   assert.match(page, /roleMatchupWeights\[role\]\[enemyRole\]/);
+  assert.match(page, /recommendEternalPaths/);
+  assert.match(page, /scoreEternalPath/);
+  assert.match(page, /scoreEternalOption/);
+  assert.match(page, /pickBestBlessing/);
+  assert.match(page, /Eternal and blessings/);
+  assert.match(page, /Blessing 1/);
+  assert.match(page, /Blessing 2/);
+  assert.match(page, /eternalRoleByClass/);
+  assert.match(page, /eternalThreatAnswers/);
   assert.match(page, /formatAugmentCategory/);
   assert.match(page, /isPlaceholderAugmentDescription/);
   assert.match(page, /hero-specific option/);

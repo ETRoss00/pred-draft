@@ -3,8 +3,7 @@
 import { useMemo, useState } from "react";
 import { auditHeroData, heroes, predecessorHeroData, roles, type Hero, type HeroAugment, type Role } from "@/data/predecessor/audit";
 import { auditCrestData } from "@/data/predecessor/crests";
-import { auditEternalData } from "@/data/predecessor/eternals";
-import { auditItemData, items, type Item, type ItemRole } from "@/data/predecessor/items";
+import { auditEternalData, eternals, type Eternal, type EternalBlessing, type EternalRole, type EternalTrait } from "@/data/predecessor/eternals";
 
 type Advice = {
   name: string;
@@ -30,18 +29,17 @@ type AugmentAdvice = {
   tags: string[];
 };
 
-type BuildPhase = "early" | "mid" | "late";
-
-type BuildSlot = {
-  position: number;
-  phase: BuildPhase;
-  title: string;
-  purpose: "augment-synergy" | "lane-counter" | "role-identity" | "team-counter";
+type EternalPathAdvice = {
+  eternal: Eternal;
+  score: number;
+  reasons: string[];
+  tags: string[];
+  blessing1: EternalOptionAdvice;
+  blessing2: EternalOptionAdvice;
 };
 
-type BuildItemAdvice = {
-  slot: BuildSlot;
-  item: Item;
+type EternalOptionAdvice = {
+  option: EternalTrait | EternalBlessing;
   score: number;
   reasons: string[];
   tags: string[];
@@ -122,7 +120,7 @@ function augmentSignal(words: string[], tags: string[]) {
   return { words, tags };
 }
 
-const itemRoleByClass: Record<string, ItemRole> = {
+const eternalRoleByClass: Record<string, EternalRole> = {
   carry: "carry",
   support: "support",
   mage: "mage",
@@ -131,39 +129,23 @@ const itemRoleByClass: Record<string, ItemRole> = {
   assassin: "assassin",
 };
 
-const laneFallbackItemRole: Partial<Record<Role, ItemRole>> = {
+const laneFallbackEternalRole: Partial<Record<Role, EternalRole>> = {
   carry: "carry",
   support: "support",
 };
 
-const roleIdentityTags: Record<ItemRole, string[]> = {
-  carry: ["damage-amplification", "crit", "attack-speed", "on-hit", "physical-power", "physical-penetration", "sustained-damage"],
-  support: ["healing", "shielding", "heal-shield-power", "defensive-aura", "ally-buff", "utility", "anti-disruption"],
-  mage: ["damage-amplification", "magical-power", "magical-penetration", "ability-haste", "burst", "poke"],
-  tank: ["defense", "durability", "health", "armor", "physical-armor", "magical-armor", "damage-mitigation", "teamfight-durability"],
-  fighter: ["sustain", "sustained-fighting", "dueling", "health", "physical-power", "ability-haste", "omnivamp"],
-  assassin: ["burst", "physical-penetration", "mobility", "cooldown-reduction", "pick", "snowball", "execute"],
-};
-
-const laneMatchupTargets: Partial<Record<Role, EnemyRole[]>> = {
-  carry: ["support", "carry"],
-  support: ["support", "carry"],
-  midlane: ["midlane", "jungle"],
-  jungle: ["jungle", "midlane", "carry", "support", "offlane"],
-  offlane: ["offlane"],
-};
-
-const buildThreatAnswers: Array<{ threat: string; tags: string[]; reason: string }> = [
-  { threat: "sustain", tags: ["anti-heal", "healing-counter"], reason: "counters enemy sustain" },
-  { threat: "frontline", tags: ["anti-tank", "frontline-shred", "armor-ignore", "max-health-damage", "current-health-damage"], reason: "breaks frontline" },
-  { threat: "burst", tags: ["anti-burst", "burst-survival", "shield", "spell-shield", "defense"], reason: "protects from burst" },
-  { threat: "hard-cc", tags: ["cleanse", "anti-cc", "cc-immunity", "anti-disruption", "tenacity"], reason: "covers crowd control" },
-  { threat: "poke", tags: ["sustain", "healing", "shielding", "anti-poke", "mana-sustain"], reason: "stabilizes poke pressure" },
-  { threat: "dive", tags: ["anti-burst", "defense", "mobility", "reposition", "shield"], reason: "survives dive pressure" },
-  { threat: "mobility", tags: ["slow", "anti-mobility", "stickiness", "chase"], reason: "checks mobility" },
-  { threat: "zone-control", tags: ["mobility", "poke", "long-range", "area-damage"], reason: "answers zone control" },
-  { threat: "objective-control", tags: ["objective-control", "monster-damage", "teamfight", "frontline-shred"], reason: "helps contest objectives" },
-  { threat: "scaling", tags: ["snowball", "burst", "damage-amplification", "early-pressure"], reason: "pressures scaling" },
+const physicalDefenseTags = ["anti-carry", "anti-basic-attack", "armor", "frontline", "damage-reduction", "survivability"];
+const magicalDefenseTags = ["anti-magic", "anti-caster", "shielding", "anti-burst", "mana-sustain"];
+const eternalThreatAnswers: Array<{ threat: string; tags: string[]; reason: string }> = [
+  { threat: "sustain", tags: ["anti-heal", "sustain-counter", "burst"], reason: "cuts enemy sustain" },
+  { threat: "frontline", tags: ["anti-tank", "frontline-shred", "armor-shred"], reason: "answers frontline" },
+  { threat: "poke", tags: ["anti-poke", "sustain", "healing", "shielding"], reason: "stabilizes poke lanes" },
+  { threat: "burst", tags: ["anti-burst", "shield", "shielding", "survivability"], reason: "softens burst windows" },
+  { threat: "hard-cc", tags: ["anti-disruption", "cleanse", "anti-slow"], reason: "protects into crowd control" },
+  { threat: "mobility", tags: ["anti-mobility", "peel", "stickiness"], reason: "checks mobile heroes" },
+  { threat: "dive", tags: ["peel", "anti-burst", "frontline", "survivability"], reason: "survives dive pressure" },
+  { threat: "scaling", tags: ["snowball", "early-pressure", "opening-damage", "pressure"], reason: "pressures scaling drafts" },
+  { threat: "objective-control", tags: ["objective-control", "objective-pressure", "teamfight"], reason: "contests objectives" },
 ];
 
 
@@ -563,6 +545,152 @@ function inferAugmentTags(augment: HeroAugment) {
   return [...tags];
 }
 
+function recommendEternalPaths(enemyPicks: EnemyPick[], lockedHero?: Hero, role: Role | "flex" = "flex"): EternalPathAdvice[] {
+  if (!hasSourceBackedKit(lockedHero)) return [];
+
+  const comp = analyze(enemyPicks);
+  const preferredRoles = inferPreferredEternalRoles(lockedHero, role);
+  const sourceBackedEternals = eternals.filter((eternal) => eternal.verification.status === "source-backed");
+  const eligibleEternals = preferredRoles.size ? sourceBackedEternals.filter((eternal) => preferredRoles.has(eternal.role)) : sourceBackedEternals;
+  const pool = eligibleEternals.length ? eligibleEternals : sourceBackedEternals;
+
+  return pool
+    .map((eternal) => scoreEternalPath(eternal, comp, lockedHero, preferredRoles))
+    .sort((a, b) => b.score - a.score || a.eternal.name.localeCompare(b.eternal.name))
+    .slice(0, 3);
+}
+
+function scoreEternalPath(
+  eternal: Eternal,
+  comp: ReturnType<typeof analyze>,
+  lockedHero: Hero,
+  preferredRoles: Set<EternalRole>,
+): EternalPathAdvice {
+  const reasons = new Set<string>();
+  const tags = collectEternalTags(eternal, eternal.mainTrait);
+  const main = scoreEternalOption(eternal.mainTrait, comp, lockedHero, eternal);
+  const blessing1 = pickBestBlessing(eternal.minorBlessing1, comp, lockedHero, eternal);
+  const blessing2 = pickBestBlessing(eternal.minorBlessing2, comp, lockedHero, eternal);
+  let score = main.score + Math.round((blessing1.score + blessing2.score) / 2);
+
+  main.reasons.forEach((reason) => reasons.add(reason));
+  if (preferredRoles.has(eternal.role)) {
+    score += 18;
+    reasons.add(`${eternal.role} Eternal fit`);
+  }
+
+  const heroSynergy = tags.filter((tag) => lockedHero.threats.includes(tag) || lockedHero.answers.includes(tag));
+  if (heroSynergy.length) {
+    score += Math.min(heroSynergy.length * 2, 8);
+    reasons.add(`${lockedHero.name} kit synergy`);
+  }
+
+  if (!reasons.size) reasons.add("solid default path");
+
+  return {
+    eternal,
+    score,
+    reasons: [...reasons].slice(0, 3),
+    tags: tags.slice(0, 5),
+    blessing1,
+    blessing2,
+  };
+}
+
+function pickBestBlessing(blessings: EternalBlessing[], comp: ReturnType<typeof analyze>, lockedHero: Hero, eternal: Eternal) {
+  return blessings
+    .map((blessing) => scoreEternalOption(blessing, comp, lockedHero, eternal))
+    .sort((a, b) => b.score - a.score || a.option.name.localeCompare(b.option.name))[0];
+}
+
+function scoreEternalOption(option: EternalTrait | EternalBlessing, comp: ReturnType<typeof analyze>, lockedHero: Hero, eternal: Eternal): EternalOptionAdvice {
+  const reasons = new Set<string>();
+  const tags = collectEternalTags(eternal, option);
+  let score = scoreEternalTags(tags, comp, reasons);
+
+  const eternalSynergy = tags.filter((tag) => eternal.tags.includes(tag) || eternal.answers.includes(tag));
+  if (eternalSynergy.length) {
+    score += Math.min(eternalSynergy.length * 2, 8);
+    reasons.add(`${eternal.name} synergy`);
+  }
+
+  const heroSynergy = tags.filter((tag) => lockedHero.threats.includes(tag) || lockedHero.answers.includes(tag));
+  if (heroSynergy.length) {
+    score += Math.min(heroSynergy.length * 2, 8);
+    reasons.add(`${lockedHero.name} kit synergy`);
+  }
+
+  if (!reasons.size) {
+    score += 1;
+    reasons.add("reliable default");
+  }
+
+  return {
+    option,
+    score,
+    reasons: [...reasons].slice(0, 2),
+    tags: tags.slice(0, 5),
+  };
+}
+
+function scoreEternalTags(tags: string[], comp: ReturnType<typeof analyze>, reasons: Set<string>) {
+  let score = 0;
+
+  tags.forEach((tag) => {
+    const count = comp.counts.get(tag) ?? 0;
+    if (!count) return;
+    score += count * 4;
+    reasons.add(`leans into ${tag.replaceAll("-", " ")}`);
+  });
+
+  counterRules.forEach((counter) => {
+    const threatCount = comp.counts.get(counter.threat) ?? 0;
+    if (!threatCount) return;
+    const matchingAnswers = counter.answers.filter((answer) => tags.includes(answer));
+    if (!matchingAnswers.length) return;
+    score += threatCount * (matchingAnswers.length > 1 ? 9 : 6);
+    reasons.add(counter.reason);
+  });
+
+  eternalThreatAnswers.forEach((counter) => {
+    const threatCount = comp.counts.get(counter.threat) ?? 0;
+    if (!threatCount || !counter.tags.some((tag) => tags.includes(tag))) return;
+    score += threatCount * 7;
+    reasons.add(counter.reason);
+  });
+
+  if (comp.damage.physical >= 3 && physicalDefenseTags.some((tag) => tags.includes(tag))) {
+    score += 8;
+    reasons.add("physical damage insurance");
+  }
+  if (comp.damage.magical >= 3 && magicalDefenseTags.some((tag) => tags.includes(tag))) {
+    score += 8;
+    reasons.add("magical damage insurance");
+  }
+
+  return score;
+}
+
+function inferPreferredEternalRoles(hero: Hero, role: Role | "flex") {
+  const preferred = new Set<EternalRole>();
+
+  hero.classes?.forEach((className) => {
+    const eternalRole = eternalRoleByClass[className.toLowerCase()];
+    if (eternalRole) preferred.add(eternalRole);
+  });
+
+  if (role !== "flex") {
+    const laneRole = laneFallbackEternalRole[role];
+    if (laneRole) preferred.add(laneRole);
+  }
+
+  return preferred;
+}
+
+function collectEternalTags(eternal: Eternal, option: EternalTrait | EternalBlessing) {
+  return [...new Set([...eternal.tags, ...eternal.answers, ...option.tags, ...option.effects])];
+}
+
 function formatAugmentCategory(category: string) {
   return category === "kit-modifier" ? "" : category.replaceAll("-", " ");
 }
@@ -575,8 +703,8 @@ function formatRole(role: EnemyRole) {
   return role === "unknown" ? "enemy" : role;
 }
 
-function formatBuildPurpose(purpose: BuildSlot["purpose"]) {
-  return purpose.replaceAll("-", " ");
+function formatEternalLabel(label: string) {
+  return label.replaceAll("-", " ");
 }
 
 export default function Home() {
@@ -606,7 +734,7 @@ export default function Home() {
   );
 
   const augmentOptions = useMemo(() => recommendAugments(enemyPicks, locked, role), [enemyPicks, locked, role]);
-  const builds = useMemo(() => recommendBuild(enemyPicks, locked, role, augmentOptions[0]), [enemyPicks, locked, role, augmentOptions]);
+  const eternalPaths = useMemo(() => recommendEternalPaths(enemyPicks, locked, role), [enemyPicks, locked, role]);
   const availableHeroes = heroes.filter((hero) => !enemyNames.includes(hero.name));
   const filteredHeroes = availableHeroes.filter((hero) => hero.name.toLowerCase().includes(search.toLowerCase()));
 
@@ -858,31 +986,33 @@ export default function Home() {
                 )}
               </div>
               <div className="space-y-2">
-                <h3 className="text-xs font-black uppercase tracking-[0.12em] text-[#665f52]">Phased match build</h3>
-                {builds.length ? (
-                  builds.map((build) => (
-                    <article key={`${build.slot.position}-${build.item.id}`} className="rounded-lg border border-[#2b29231a] bg-white p-4 shadow-sm">
+                <h3 className="text-xs font-black uppercase tracking-[0.12em] text-[#665f52]">Eternal and blessings</h3>
+                {eternalPaths.length ? (
+                  eternalPaths.map((path) => (
+                    <article key={path.eternal.id} className="rounded-lg border border-[#2b29231a] bg-white p-4 shadow-sm">
                       <div className="flex items-start justify-between gap-3">
                         <div>
-                          <p className="text-[10px] font-black uppercase tracking-[0.12em] text-[#665f52]">
-                            {build.slot.phase} game / {build.slot.title}
-                          </p>
-                          <h4 className="mt-1 text-lg font-black">{build.item.name}</h4>
+                          <h4 className="text-lg font-black">{path.eternal.name}</h4>
                           <p className="mt-1 text-xs font-black uppercase tracking-[0.12em] text-[#8a3524]">
-                            {formatBuildPurpose(build.slot.purpose)} / {build.item.purpose}
+                            {path.eternal.category} / {path.eternal.role}
                           </p>
                         </div>
-                        <span className="rounded-md bg-[#8a3524] px-2 py-1 text-xs font-black text-white">fit {build.score}</span>
+                        <span className="rounded-md bg-[#191712] px-2 py-1 text-xs font-black text-white">fit {path.score}</span>
                       </div>
+                      <p className="mt-3 text-sm text-[#665f52]">{path.eternal.mainTrait.description}</p>
                       <div className="mt-3 flex flex-wrap gap-2">
-                        {build.reasons.map((reason) => (
+                        {path.reasons.map((reason) => (
                           <span key={reason} className="rounded-md bg-[#e9f0dd] px-2 py-1 text-xs font-black text-[#273713]">
                             {reason}
                           </span>
                         ))}
                       </div>
-                      <div className="mt-2 flex flex-wrap gap-2">
-                        {build.tags.map((tag) => (
+                      <div className="mt-3 grid gap-2">
+                        <EternalOptionCard label="Blessing 1" advice={path.blessing1} />
+                        <EternalOptionCard label="Blessing 2" advice={path.blessing2} />
+                      </div>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {path.tags.map((tag) => (
                           <span key={tag} className="rounded-md bg-[#f4e0d9] px-2 py-1 text-[11px] font-bold text-[#8a3524]">
                             {tag.replaceAll("-", " ")}
                           </span>
@@ -891,14 +1021,62 @@ export default function Home() {
                     </article>
                   ))
                 ) : (
-                  <EmptyState text={`${locked?.name ?? "This hero"} needs a verified kit before the app can recommend a phased item build.`} />
+                  <EmptyState text={`${locked?.name ?? "This hero"} needs a verified kit before the app can recommend Eternals and blessings.`} />
                 )}
               </div>
+              {builds.map((build) => (
+                <article key={build.title} className="rounded-lg border border-[#2b29231a] bg-white p-4 shadow-sm">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <h3 className="text-lg font-black">{build.title}</h3>
+                      <p className="mt-1 text-sm text-[#665f52]">{build.note}</p>
+                    </div>
+                    <span className="rounded-md bg-[#8a3524] px-2 py-1 text-xs font-black text-white">score {build.score}</span>
+                  </div>
+                  <div className="mt-3 grid gap-2">
+                    {build.items.map((item) => (
+                      <p key={item} className="rounded-md bg-[#faf1dc] px-3 py-2 text-sm font-bold capitalize">
+                        {item}
+                      </p>
+                    ))}
+                  </div>
+                  <p className="mt-3 text-sm text-[#665f52]">{build.heroNote}</p>
+                </article>
+              ))}
             </section>
           )}
         </div>
       </section>
     </main>
+  );
+}
+
+function EternalOptionCard({ label, advice }: { label: string; advice: EternalOptionAdvice }) {
+  return (
+    <div className="rounded-md bg-[#faf8f3] px-3 py-2">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p className="text-[10px] font-black uppercase tracking-[0.12em] text-[#665f52]">{label}</p>
+          <h5 className="mt-1 text-sm font-black">{advice.option.name}</h5>
+        </div>
+        <span className="rounded-md bg-[#8a3524] px-2 py-1 text-[10px] font-black text-white">fit {advice.score}</span>
+      </div>
+      <p className="mt-2 text-xs font-semibold text-[#665f52]">{advice.option.description}</p>
+      <div className="mt-2 flex flex-wrap gap-2">
+        {advice.reasons.map((reason) => (
+          <span key={reason} className="rounded-md bg-[#e9f0dd] px-2 py-1 text-[11px] font-black text-[#273713]">
+            {reason}
+          </span>
+        ))}
+      </div>
+      <div className="mt-2 flex flex-wrap gap-2">
+        {advice.tags.slice(0, 4).map((tag) => (
+          <span key={tag} className="rounded-md bg-white px-2 py-1 text-[10px] font-bold text-[#8a3524]">
+            {formatEternalLabel(tag)}
+          </span>
+        ))}
+      </div>
+    </div>
   );
 }
 
