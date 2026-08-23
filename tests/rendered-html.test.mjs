@@ -161,10 +161,15 @@ test("keeps the kit data in a source-audited data folder", async () => {
   assert.match(eternals, /"Psychosis"/);
   assert.match(audit, /auditHeroData/);
   assert.match(audit, /fullyVerifiedHeroes/);
+  assert.match(audit, /sourceBackedKits/);
   assert.match(crestAudit, /auditCrestData/);
   assert.match(itemAudit, /auditItemData/);
   assert.match(eternalAudit, /auditEternalData/);
   assert.match(page, /const counterRules = \[/);
+  assert.match(page, /function hasSourceBackedKit/);
+  assert.match(page, /verifiedEnemies/);
+  assert.match(page, /sourceBackedKitHeroes/);
+  assert.match(page, /Prototype hero kit tags are visible for audit only and are not used for recommendations/);
   assert.match(page, /const roleMatchupWeights/);
   assert.match(page, /matchup answer/);
   assert.match(page, /peels dive/);

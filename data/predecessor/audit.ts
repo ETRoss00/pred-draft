@@ -74,6 +74,7 @@ export type AuditIssue = {
 export type AuditReport = {
   heroCount: number;
   sourceBackedRoles: number;
+  sourceBackedKits: number;
   fullyVerifiedHeroes: number;
   prototypeKits: number;
   warnings: AuditIssue[];
@@ -172,6 +173,7 @@ export function auditHeroData(dataset: HeroDataSet = data): AuditReport {
   return {
     heroCount: dataset.heroes.length,
     sourceBackedRoles: dataset.heroes.filter((hero) => hero.verification.roleStatus === "source-backed").length,
+    sourceBackedKits: dataset.heroes.filter((hero) => hero.verification.kitStatus === "source-backed").length,
     fullyVerifiedHeroes: dataset.heroes.filter(isFullyVerified).length,
     prototypeKits: dataset.heroes.filter((hero) => hero.verification.kitStatus !== "source-backed").length,
     warnings,
