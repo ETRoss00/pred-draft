@@ -221,6 +221,10 @@ test("keeps the kit data in a source-audited data folder", async () => {
   assert.match(page, /frontline shred/);
   assert.match(page, /recommendBuild/);
   assert.match(page, /recommendAugments/);
+  assert.match(page, /scoreAugment/);
+  assert.match(page, /augmentTextSignals/);
+  assert.match(page, /roleMatchupWeights\[role\]\[enemyRole\]/);
+  assert.match(page, /needs full augment text for matchup weighting/);
   assert.match(page, /Actual augment options/);
   assert.match(page, /lockedHero\.augments/);
   assert.match(page, /augment\.description/);

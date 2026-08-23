@@ -87,6 +87,26 @@ function hasSourceBackedKit(hero?: Hero) {
   return hero?.verification.kitStatus === "source-backed";
 }
 
+const augmentTextSignals = [
+  augmentSignal(["cooldown", "cooldowns", "recast", "refresh", "reset", "flow state"], ["cooldown-reduction", "multikill"]),
+  augmentSignal(["movement speed", "dash", "leap", "blink", "range", "longer", "further", "mobility"], ["mobility"]),
+  augmentSignal(["stun", "root", "knock", "pull", "push", "restrain", "ground", "silence", "cc"], ["hard-cc", "disruption"]),
+  augmentSignal(["heal", "healing", "lifesteal", "omnivamp", "regen", "siphon"], ["sustain"]),
+  augmentSignal(["shield", "barrier", "damage reduction", "mitigation", "tenacity", "armor"], ["anti-burst", "frontline"]),
+  augmentSignal(["ultimate", "ult", "obliteration", "colosseum", "purge"], ["ultimate", "teamfight"]),
+  augmentSignal(["attack speed", "basic attack", "on-hit", "ricochet", "shards"], ["sustained-dps", "tank-shred"]),
+  augmentSignal(["execute", "missing health", "below", "burst"], ["burst", "pick"]),
+  augmentSignal(["gold", "xp", "level", "stacks", "permanent", "ascended"], ["scaling"]),
+  augmentSignal(["area", "zone", "field", "explosion", "barrage", "grenade"], ["zone-control", "area-damage"]),
+  augmentSignal(["spear", "projectile", "sniper", "infinite", "range"], ["poke", "pick"]),
+  augmentSignal(["cleanse", "immune", "immunity"], ["anti-burst", "disengage"]),
+  augmentSignal(["anti heal", "blight"], ["anti-heal"]),
+];
+
+function augmentSignal(words: string[], tags: string[]) {
+  return { words, tags };
+}
+
 
 function analyze(enemyPicks: EnemyPick[]) {
   const enemies = enemyPicks
@@ -219,36 +239,69 @@ function recommendBuild(enemyPicks: EnemyPick[], lockedHero?: Hero) {
     }));
 }
 
-function recommendAugments(enemyPicks: EnemyPick[], lockedHero?: Hero): AugmentAdvice[] {
+function recommendAugments(enemyPicks: EnemyPick[], lockedHero?: Hero, role: Role | "flex" = "flex"): AugmentAdvice[] {
   if (!lockedHero?.augments?.length || lockedHero.verification.augmentStatus !== "source-backed") return [];
 
   const comp = analyze(enemyPicks);
   return lockedHero.augments
-    .map((augment) => scoreAugment(augment, comp.counts))
+    .map((augment) => scoreAugment(augment, comp, lockedHero, role))
     .sort((a, b) => b.score - a.score || a.name.localeCompare(b.name));
 }
 
-function scoreAugment(augment: HeroAugment, traitCounts: Map<string, number>): AugmentAdvice {
+function scoreAugment(augment: HeroAugment, comp: ReturnType<typeof analyze>, lockedHero: Hero, role: Role | "flex"): AugmentAdvice {
   let score = 0;
   const reasons = new Set<string>();
+  const augmentTags = inferAugmentTags(augment);
 
   counterRules.forEach((counter) => {
-    const threatCount = traitCounts.get(counter.threat) ?? 0;
+    const threatCount = comp.counts.get(counter.threat) ?? 0;
     if (!threatCount) return;
 
-    if (augment.tags.includes(counter.threat)) {
-      score += threatCount * 3;
+    if (augmentTags.includes(counter.threat)) {
+      score += threatCount * 5;
       reasons.add(`leans into ${counter.threat.replaceAll("-", " ")}`);
     }
 
-    const matchingAnswers = counter.answers.filter((answer) => augment.tags.includes(answer));
+    const matchingAnswers = counter.answers.filter((answer) => augmentTags.includes(answer));
     if (matchingAnswers.length) {
-      score += threatCount * (matchingAnswers.length > 1 ? 6 : 4);
+      score += threatCount * (matchingAnswers.length > 1 ? 11 : 7);
       reasons.add(counter.reason);
     }
   });
 
-  if (score === 0) reasons.add("hero-specific option");
+  comp.verifiedEnemies.forEach(({ hero: enemyHero, role: enemyRole }) => {
+    const matchupWeight = role === "flex" ? 0.75 : (roleMatchupWeights[role][enemyRole] ?? 0.45);
+    const enemyTraits = [...enemyHero.threats, ...enemyHero.weaknesses];
+
+    counterRules.forEach((counter) => {
+      if (!enemyTraits.includes(counter.threat)) return;
+
+      const matchingAnswers = counter.answers.filter((answer) => augmentTags.includes(answer));
+      if (!matchingAnswers.length) return;
+
+      score += Math.round(matchupWeight * (matchingAnswers.length > 1 ? 10 : 7));
+      reasons.add(`${formatRole(enemyRole)} matchup answer`);
+    });
+
+    lockedHero.threats.forEach((threat) => {
+      if (!augmentTags.includes(threat) || !enemyHero.weaknesses.includes(threat)) return;
+      score += Math.round(matchupWeight * 6);
+      reasons.add(`${formatRole(enemyRole)} pressure`);
+    });
+  });
+
+  const heroSynergyTags = augmentTags.filter((tag) => lockedHero.answers.includes(tag) || lockedHero.threats.includes(tag));
+  if (heroSynergyTags.length) {
+    score += Math.min(heroSynergyTags.length * 2, 6);
+    reasons.add(`${lockedHero.name} kit synergy`);
+  }
+
+  if (score === 0 && augment.tags.includes("kit-modifier")) {
+    score = 1;
+    reasons.add("needs full augment text for matchup weighting");
+  } else if (score === 0) {
+    reasons.add("hero-specific option");
+  }
 
   return {
     name: augment.name,
@@ -256,8 +309,21 @@ function scoreAugment(augment: HeroAugment, traitCounts: Map<string, number>): A
     description: augment.description,
     score,
     reasons: [...reasons].slice(0, 3),
-    tags: augment.tags,
+    tags: augmentTags,
   };
+}
+
+function inferAugmentTags(augment: HeroAugment) {
+  const tags = new Set(augment.tags.filter((tag) => tag !== "kit-modifier"));
+  const text = `${augment.name} ${augment.category} ${augment.description} ${augment.tags.join(" ")}`.toLowerCase();
+
+  augmentTextSignals.forEach((signal) => {
+    if (!signal.words.some((word) => text.includes(word))) return;
+    signal.tags.forEach((tag) => tags.add(tag));
+  });
+
+  if (!tags.size) augment.tags.forEach((tag) => tags.add(tag));
+  return [...tags];
 }
 
 function formatRole(role: EnemyRole) {
@@ -290,7 +356,7 @@ export default function Home() {
   );
 
   const builds = useMemo(() => recommendBuild(enemyPicks, locked), [enemyPicks, locked]);
-  const augmentOptions = useMemo(() => recommendAugments(enemyPicks, locked), [enemyPicks, locked]);
+  const augmentOptions = useMemo(() => recommendAugments(enemyPicks, locked, role), [enemyPicks, locked, role]);
   const availableHeroes = heroes.filter((hero) => !enemyNames.includes(hero.name));
   const filteredHeroes = availableHeroes.filter((hero) => hero.name.toLowerCase().includes(search.toLowerCase()));
 
