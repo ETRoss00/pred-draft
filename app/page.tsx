@@ -36,6 +36,13 @@ type EternalAdvice = {
   tags: string[];
 };
 
+type BlessingAdvice = {
+  blessing: EternalBlessing;
+  score: number;
+  reasons: string[];
+  tags: string[];
+};
+
 type BuildPhase = "early" | "mid" | "late";
 
 type BuildSlot = {
@@ -539,6 +546,49 @@ function scoreEternal(eternal: Eternal, comp: ReturnType<typeof analyze>, locked
   };
 }
 
+function recommendBlessings(blessings: EternalBlessing[] | undefined, enemyPicks: EnemyPick[], lockedHero?: Hero, selectedAugment?: AugmentAdvice) {
+  if (!blessings?.length || !hasSourceBackedKit(lockedHero)) return [];
+
+  const comp = analyze(enemyPicks);
+  return blessings
+    .map((blessing) => scoreBlessing(blessing, comp, lockedHero, selectedAugment))
+    .sort((a, b) => b.score - a.score || a.blessing.name.localeCompare(b.blessing.name));
+}
+
+function scoreBlessing(blessing: EternalBlessing, comp: ReturnType<typeof analyze>, lockedHero: Hero, selectedAugment?: AugmentAdvice): BlessingAdvice {
+  const tags = [...new Set([...blessing.tags, ...blessing.effects])];
+  const reasons = new Set<string>();
+  let score = 0;
+
+  buildThreatAnswers.forEach((counter) => {
+    const threatCount = comp.counts.get(counter.threat) ?? 0;
+    if (!threatCount || !counter.tags.some((tag) => tags.includes(tag))) return;
+    score += threatCount * 6;
+    reasons.add(counter.reason);
+  });
+
+  const kitMatches = tags.filter((tag) => lockedHero.threats.includes(tag) || lockedHero.answers.includes(tag));
+  if (kitMatches.length) {
+    score += Math.min(kitMatches.length * 5, 15);
+    reasons.add(`${lockedHero.name} kit synergy`);
+  }
+
+  const augmentMatches = selectedAugment ? selectedAugment.tags.filter((tag) => tags.includes(tag)) : [];
+  if (augmentMatches.length) {
+    score += Math.min(augmentMatches.length * 6, 12);
+    reasons.add("augment synergy");
+  }
+
+  if (!reasons.size) reasons.add("general blessing fit");
+
+  return {
+    blessing,
+    score,
+    reasons: [...reasons].slice(0, 3),
+    tags: tags.slice(0, 5),
+  };
+}
+
 function inferPreferredEternalRoles(hero: Hero, role: Role | "flex") {
   const preferred = new Set<EternalRole>();
 
@@ -691,13 +741,21 @@ export default function Home() {
   const eternalOptions = useMemo(() => recommendEternals(enemyPicks, locked, role), [enemyPicks, locked, role]);
   const selectedEternalAdvice = eternalOptions.find((advice) => advice.eternal.id === selectedEternalId);
   const selectedEternal = selectedEternalAdvice?.eternal;
-  const selectedMinorBlessing1 = selectedEternal?.minorBlessing1.find((blessing) => blessing.id === selectedMinorBlessing1Id);
-  const selectedMinorBlessing2 = selectedEternal?.minorBlessing2.find((blessing) => blessing.id === selectedMinorBlessing2Id);
+  const minorBlessing1Options = useMemo(() => recommendBlessings(selectedEternal?.minorBlessing1, enemyPicks, locked, selectedAugment), [selectedEternal, enemyPicks, locked, selectedAugment]);
+  const minorBlessing2Options = useMemo(() => recommendBlessings(selectedEternal?.minorBlessing2, enemyPicks, locked, selectedAugment), [selectedEternal, enemyPicks, locked, selectedAugment]);
+  const selectedMinorBlessing1Advice = minorBlessing1Options.find((advice) => advice.blessing.id === selectedMinorBlessing1Id);
+  const selectedMinorBlessing2Advice = minorBlessing2Options.find((advice) => advice.blessing.id === selectedMinorBlessing2Id);
+  const selectedMinorBlessing1 = selectedMinorBlessing1Advice?.blessing;
+  const selectedMinorBlessing2 = selectedMinorBlessing2Advice?.blessing;
   const buildReady = Boolean(locked && selectedAugment && selectedEternal && selectedMinorBlessing1 && selectedMinorBlessing2);
   const builds = useMemo(
     () => (buildReady ? recommendBuild(enemyPicks, locked, role, selectedAugment) : []),
     [buildReady, enemyPicks, locked, role, selectedAugment],
   );
+  const visibleAugmentOptions = selectedAugment ? [selectedAugment] : augmentOptions;
+  const visibleEternalOptions = selectedEternalAdvice ? [selectedEternalAdvice] : eternalOptions;
+  const visibleMinorBlessing1Options = selectedMinorBlessing1Advice ? [selectedMinorBlessing1Advice] : minorBlessing1Options;
+  const visibleMinorBlessing2Options = selectedMinorBlessing2Advice ? [selectedMinorBlessing2Advice] : minorBlessing2Options;
   const availableHeroes = heroes.filter((hero) => !enemyNames.includes(hero.name));
   const filteredHeroes = availableHeroes.filter((hero) => hero.name.toLowerCase().includes(search.toLowerCase()));
 
@@ -719,134 +777,137 @@ export default function Home() {
 
         <div className="flex-1 space-y-5 px-4 py-5">
           <div className="grid gap-5 lg:grid-cols-2">
-            <div className="space-y-5">
-              <section className="rounded-lg border border-[#2b29231a] bg-white p-3 shadow-sm">
-                <label className="mb-2 block text-sm font-black uppercase tracking-[0.12em]" htmlFor="my-role">
-                  My role
-                </label>
-                <select
-                  id="my-role"
-                  value={role}
-                  onChange={(event) => setRole(event.target.value as Role)}
-                  className="h-11 w-full rounded-md border border-[#2b29231a] bg-[#faf8f3] px-3 text-sm font-semibold capitalize"
-                >
-                  {roles.map((item) => (
-                    <option key={item} value={item}>
-                      {item}
-                    </option>
-                  ))}
-                </select>
-              </section>
+            <section className="rounded-lg border border-[#2b29231a] bg-white p-3 shadow-sm">
+              <label className="mb-2 block text-sm font-black uppercase tracking-[0.12em]" htmlFor="my-role">
+                My role
+              </label>
+              <select
+                id="my-role"
+                value={role}
+                onChange={(event) => setRole(event.target.value as Role)}
+                className="h-11 w-full rounded-md border border-[#2b29231a] bg-[#faf8f3] px-3 text-sm font-semibold capitalize"
+              >
+                {roles.map((item) => (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </section>
 
-              <section className="rounded-lg border border-[#2b29231a] bg-white p-3 shadow-sm">
-                <label className="mb-2 block text-sm font-black uppercase tracking-[0.12em]" htmlFor="locked-hero">
-                  My hero
-                </label>
-                <select
-                  id="locked-hero"
-                  value={lockedHero}
-                  onChange={(event) => {
-                    setLockedHero(event.target.value);
-                    setSelectedAugmentName("");
-                    setSelectedEternalId("");
-                    setSelectedMinorBlessing1Id("");
-                    setSelectedMinorBlessing2Id("");
-                  }}
-                  className="h-11 w-full rounded-md border border-[#2b29231a] bg-[#faf8f3] px-3 text-sm font-semibold"
-                >
-                  <option value="">Choose during draft</option>
-                  {availableHeroes.map((hero) => (
-                    <option key={hero.name} value={hero.name}>
-                      {hero.name} ({hero.roles.join("/")})
-                    </option>
+            <section className="rounded-lg border border-[#2b29231a] bg-[#191712] p-3 text-white shadow-sm">
+              <div className="mb-3 flex items-center justify-between">
+                <h2 className="text-sm font-black uppercase tracking-[0.12em]">Enemy read</h2>
+                <span className="rounded-md bg-white/10 px-2 py-1 text-xs font-bold">{comp.verifiedEnemies.length ? "Live" : "Waiting"}</span>
+              </div>
+              {comp.topTraits.length ? (
+                <div className="flex flex-wrap gap-2">
+                  {comp.topTraits.map(([trait, count]) => (
+                    <span key={trait} className="rounded-md bg-[#f1d08a] px-2 py-1 text-xs font-black text-[#191712]">
+                      {trait.replaceAll("-", " ")} x{count}
+                    </span>
                   ))}
-                </select>
-              </section>
-
-              {!lockedHero && (
-                <section className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <h2 className="text-sm font-black uppercase tracking-[0.12em]">Counter picks</h2>
-                    <input
-                      value={search}
-                      onChange={(event) => setSearch(event.target.value)}
-                      placeholder="Filter heroes"
-                      className="h-9 w-36 rounded-md border border-[#2b29231a] bg-white px-3 text-sm"
-                    />
-                  </div>
-                  {(search
-                    ? filteredHeroes
-                        .filter(hasSourceBackedKit)
-                        .map((hero) => scoreHero(hero, enemyPicks, role, lockedHero))
-                        .filter((advice) => advice.score > -50)
-                    : recommendations
-                  ).map((advice) => (
-                    <Recommendation key={advice.name} advice={advice} />
-                  ))}
-                  {!recommendations.length && <EmptyState text="Add at least one enemy pick with text-sourced kit data to get verified counter recommendations." />}
-                </section>
+                </div>
+              ) : (
+                <p className="text-sm text-[#e9dfcf]">Add text-sourced enemy kits to reveal draft pressure.</p>
               )}
-            </div>
+              {comp.unverifiedEnemies.length > 0 && (
+                <p className="mt-3 rounded-md bg-white/10 px-3 py-2 text-xs font-bold text-[#f4dfb0]">
+                  {comp.unverifiedEnemies.length} selected enemy {comp.unverifiedEnemies.length === 1 ? "kit is" : "kits are"} quarantined until text-sourced.
+                </p>
+              )}
+            </section>
 
-            <div className="space-y-5">
-              <section className="rounded-lg border border-[#2b29231a] bg-[#191712] p-3 text-white shadow-sm">
-                <div className="mb-3 flex items-center justify-between">
-                  <h2 className="text-sm font-black uppercase tracking-[0.12em]">Enemy read</h2>
-                  <span className="rounded-md bg-white/10 px-2 py-1 text-xs font-bold">{comp.verifiedEnemies.length ? "Live" : "Waiting"}</span>
-                </div>
-                {comp.topTraits.length ? (
-                  <div className="flex flex-wrap gap-2">
-                    {comp.topTraits.map(([trait, count]) => (
-                      <span key={trait} className="rounded-md bg-[#f1d08a] px-2 py-1 text-xs font-black text-[#191712]">
-                        {trait.replaceAll("-", " ")} x{count}
-                      </span>
+            <section className="rounded-lg border border-[#2b29231a] bg-white p-3 shadow-sm">
+              <label className="mb-2 block text-sm font-black uppercase tracking-[0.12em]" htmlFor="locked-hero">
+                My hero
+              </label>
+              <select
+                id="locked-hero"
+                value={lockedHero}
+                onChange={(event) => {
+                  setLockedHero(event.target.value);
+                  setSelectedAugmentName("");
+                  setSelectedEternalId("");
+                  setSelectedMinorBlessing1Id("");
+                  setSelectedMinorBlessing2Id("");
+                }}
+                className="h-11 w-full rounded-md border border-[#2b29231a] bg-[#faf8f3] px-3 text-sm font-semibold"
+              >
+                <option value="">Choose during draft</option>
+                {availableHeroes.map((hero) => (
+                  <option key={hero.name} value={hero.name}>
+                    {hero.name} ({hero.roles.join("/")})
+                  </option>
+                ))}
+              </select>
+            </section>
+
+            <section className="rounded-lg border border-[#2b29231a] bg-white p-3 shadow-sm">
+              <h2 className="mb-3 text-sm font-black uppercase tracking-[0.12em]">Enemy team</h2>
+              <div className="grid gap-2">
+                {enemyPicks.map((pick, index) => (
+                  <select
+                    key={index}
+                    value={pick.name}
+                    onChange={(event) => {
+                      const next = [...enemyPicks];
+                      next[index] = { role: "unknown", name: event.target.value };
+                      setEnemyPicks(next);
+                    }}
+                    className="h-11 rounded-md border border-[#2b29231a] bg-[#faf8f3] px-3 text-sm font-semibold"
+                    aria-label={`Enemy pick ${index + 1}`}
+                  >
+                    <option value="">Enemy pick {index + 1}</option>
+                    {heroes.map((hero) => (
+                      <option key={hero.name} value={hero.name} disabled={enemyNames.includes(hero.name) && pick.name !== hero.name}>
+                        {hero.name}
+                      </option>
                     ))}
-                  </div>
-                ) : (
-                  <p className="text-sm text-[#e9dfcf]">Add text-sourced enemy kits to reveal draft pressure.</p>
-                )}
-                {comp.unverifiedEnemies.length > 0 && (
-                  <p className="mt-3 rounded-md bg-white/10 px-3 py-2 text-xs font-bold text-[#f4dfb0]">
-                    {comp.unverifiedEnemies.length} selected enemy {comp.unverifiedEnemies.length === 1 ? "kit is" : "kits are"} quarantined until text-sourced.
-                  </p>
-                )}
-              </section>
-
-              <section className="rounded-lg border border-[#2b29231a] bg-white p-3 shadow-sm">
-                <h2 className="mb-3 text-sm font-black uppercase tracking-[0.12em]">Enemy team</h2>
-                <div className="grid gap-2">
-                  {enemyPicks.map((pick, index) => (
-                    <select
-                      key={index}
-                      value={pick.name}
-                      onChange={(event) => {
-                        const next = [...enemyPicks];
-                        next[index] = { role: "unknown", name: event.target.value };
-                        setEnemyPicks(next);
-                      }}
-                      className="h-11 rounded-md border border-[#2b29231a] bg-[#faf8f3] px-3 text-sm font-semibold"
-                      aria-label={`Enemy pick ${index + 1}`}
-                    >
-                      <option value="">Enemy pick {index + 1}</option>
-                      {heroes.map((hero) => (
-                        <option key={hero.name} value={hero.name} disabled={enemyNames.includes(hero.name) && pick.name !== hero.name}>
-                          {hero.name}
-                        </option>
-                      ))}
-                    </select>
-                  ))}
-                </div>
-              </section>
-            </div>
+                  </select>
+                ))}
+              </div>
+            </section>
           </div>
+
+          {!lockedHero && (
+            <section className="space-y-3">
+              <div className="flex items-center justify-between">
+                <h2 className="text-sm font-black uppercase tracking-[0.12em]">Counter picks</h2>
+                <input
+                  value={search}
+                  onChange={(event) => setSearch(event.target.value)}
+                  placeholder="Filter heroes"
+                  className="h-9 w-36 rounded-md border border-[#2b29231a] bg-white px-3 text-sm"
+                />
+              </div>
+              {(search
+                ? filteredHeroes
+                    .filter(hasSourceBackedKit)
+                    .map((hero) => scoreHero(hero, enemyPicks, role, lockedHero))
+                    .filter((advice) => advice.score > -50)
+                : recommendations
+              ).map((advice) => (
+                <Recommendation key={advice.name} advice={advice} />
+              ))}
+              {!recommendations.length && <EmptyState text="Add at least one enemy pick with text-sourced kit data to get verified counter recommendations." />}
+            </section>
+          )}
 
           {lockedHero && (
             <section className="space-y-5">
               <div className="space-y-2">
-                <h2 className="text-sm font-black uppercase tracking-[0.12em]">Recommended augments</h2>
+                <div className="flex items-center justify-between gap-3">
+                  <h2 className="text-sm font-black uppercase tracking-[0.12em]">Recommended augments</h2>
+                  {selectedAugment && (
+                    <button className="rounded-md border border-[#191712] px-3 py-1 text-xs font-bold" onClick={() => setSelectedAugmentName("")}>
+                      Change
+                    </button>
+                  )}
+                </div>
                 {augmentOptions.length ? (
                   <div className="grid gap-3 lg:grid-cols-3">
-                    {augmentOptions.map((augment) => {
+                    {visibleAugmentOptions.map((augment) => {
                       const category = formatAugmentCategory(augment.category);
                       const showDescription = !isPlaceholderAugmentDescription(augment.description);
                       const selected = selectedAugmentName === augment.name;
@@ -866,7 +927,7 @@ export default function Home() {
                               <h3 className="text-lg font-black">{augment.name}</h3>
                               {category && <p className="mt-1 text-xs font-black uppercase tracking-[0.12em] text-[#8a3524]">{category}</p>}
                             </div>
-                            <span className="rounded-md bg-[#191712] px-2 py-1 text-xs font-black text-white">fit {augment.score}</span>
+                            <span className="rounded-md bg-[#191712] px-2 py-1 text-xs font-black text-white">score {augment.score}</span>
                           </div>
                           {showDescription && <p className="mt-3 text-sm text-[#665f52]">{augment.description}</p>}
                           <TagList tags={augment.reasons} tone="reason" />
@@ -881,11 +942,25 @@ export default function Home() {
               </div>
 
               <div className="space-y-2">
-                <h2 className="text-sm font-black uppercase tracking-[0.12em]">Recommended Eternals</h2>
+                <div className="flex items-center justify-between gap-3">
+                  <h2 className="text-sm font-black uppercase tracking-[0.12em]">Recommended Eternals</h2>
+                  {selectedEternalAdvice && (
+                    <button
+                      className="rounded-md border border-[#191712] px-3 py-1 text-xs font-bold"
+                      onClick={() => {
+                        setSelectedEternalId("");
+                        setSelectedMinorBlessing1Id("");
+                        setSelectedMinorBlessing2Id("");
+                      }}
+                    >
+                      Change
+                    </button>
+                  )}
+                </div>
                 {eternalOptions.length ? (
                   <>
                     <div className="grid gap-3 lg:grid-cols-3">
-                      {eternalOptions.map((advice) => {
+                      {visibleEternalOptions.map((advice) => {
                         const selected = selectedEternalId === advice.eternal.id;
 
                         return (
@@ -905,11 +980,11 @@ export default function Home() {
                             <div className="flex items-start justify-between gap-3">
                               <div>
                                 <h3 className="text-lg font-black">{advice.eternal.name}</h3>
-                                <p className="mt-1 text-xs font-black uppercase tracking-[0.12em] text-[#8a3524]">
-                                  {advice.eternal.category} / {advice.eternal.role}
-                                </p>
-                              </div>
-                              <span className="rounded-md bg-[#191712] px-2 py-1 text-xs font-black text-white">fit {advice.score}</span>
+                              <p className="mt-1 text-xs font-black uppercase tracking-[0.12em] text-[#8a3524]">
+                                {advice.eternal.category} / {advice.eternal.role}
+                              </p>
+                            </div>
+                              <span className="rounded-md bg-[#191712] px-2 py-1 text-xs font-black text-white">score {advice.score}</span>
                             </div>
                             <p className="mt-3 text-sm text-[#665f52]">{advice.eternal.mainTrait.name}</p>
                             <TagList tags={advice.reasons} tone="reason" />
@@ -923,15 +998,17 @@ export default function Home() {
                       <div className="grid gap-3 lg:grid-cols-2">
                         <BlessingGroup
                           title="Minor blessing 1"
-                          blessings={selectedEternal.minorBlessing1}
+                          blessings={visibleMinorBlessing1Options}
                           selectedId={selectedMinorBlessing1Id}
                           onSelect={setSelectedMinorBlessing1Id}
+                          onClear={() => setSelectedMinorBlessing1Id("")}
                         />
                         <BlessingGroup
                           title="Minor blessing 2"
-                          blessings={selectedEternal.minorBlessing2}
+                          blessings={visibleMinorBlessing2Options}
                           selectedId={selectedMinorBlessing2Id}
                           onSelect={setSelectedMinorBlessing2Id}
+                          onClear={() => setSelectedMinorBlessing2Id("")}
                         />
                       </div>
                     )}
@@ -1009,32 +1086,47 @@ function BlessingGroup({
   blessings,
   selectedId,
   onSelect,
+  onClear,
 }: {
   title: string;
-  blessings: EternalBlessing[];
+  blessings: BlessingAdvice[];
   selectedId: string;
   onSelect: (id: string) => void;
+  onClear: () => void;
 }) {
   return (
     <section className="rounded-lg border border-[#2b29231a] bg-white p-4 shadow-sm">
-      <h3 className="text-xs font-black uppercase tracking-[0.12em] text-[#665f52]">{title}</h3>
+      <div className="flex items-center justify-between gap-3">
+        <h3 className="text-xs font-black uppercase tracking-[0.12em] text-[#665f52]">{title}</h3>
+        {selectedId && (
+          <button className="rounded-md border border-[#191712] px-3 py-1 text-xs font-bold" onClick={onClear}>
+            Change
+          </button>
+        )}
+      </div>
       <div className="mt-3 space-y-2">
-        {blessings.map((blessing) => {
-          const selected = selectedId === blessing.id;
+        {blessings.map((advice) => {
+          const selected = selectedId === advice.blessing.id;
 
           return (
             <button
-              key={blessing.id}
+              key={advice.blessing.id}
               type="button"
               aria-pressed={selected}
-              onClick={() => onSelect(blessing.id)}
+              onClick={() => onSelect(advice.blessing.id)}
               className={`w-full rounded-md border p-3 text-left transition ${
                 selected ? "border-[#8a3524] bg-[#fff5cf] ring-2 ring-[#8a3524]" : "border-[#2b29231a] bg-[#faf8f3]"
               }`}
             >
-              <p className="font-black">{blessing.name}</p>
-              <p className="mt-1 text-sm text-[#665f52]">{blessing.description}</p>
-              <TagList tags={[...blessing.tags, ...blessing.effects].slice(0, 5)} />
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <p className="font-black">{advice.blessing.name}</p>
+                  <p className="mt-1 text-sm text-[#665f52]">{advice.blessing.description}</p>
+                </div>
+                <span className="rounded-md bg-[#191712] px-2 py-1 text-xs font-black text-white">score {advice.score}</span>
+              </div>
+              <TagList tags={advice.reasons} tone="reason" />
+              <TagList tags={advice.tags} />
             </button>
           );
         })}

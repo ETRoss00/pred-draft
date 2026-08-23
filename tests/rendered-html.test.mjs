@@ -249,10 +249,16 @@ test("keeps the kit data in a source-audited data folder", async () => {
   assert.match(page, /Recommended Eternals/);
   assert.match(page, /recommendEternals/);
   assert.match(page, /scoreEternal/);
+  assert.match(page, /recommendBlessings/);
+  assert.match(page, /scoreBlessing/);
   assert.match(page, /selectedAugmentName/);
   assert.match(page, /selectedEternalId/);
   assert.match(page, /selectedMinorBlessing1Id/);
   assert.match(page, /selectedMinorBlessing2Id/);
+  assert.match(page, /visibleAugmentOptions/);
+  assert.match(page, /visibleEternalOptions/);
+  assert.match(page, /visibleMinorBlessing1Options/);
+  assert.match(page, /visibleMinorBlessing2Options/);
   assert.match(page, /buildReady/);
   assert.match(page, /Choose my role, hero, augment, Eternal, and both minor blessings to unlock the item build/);
   assert.match(page, /Enemy team/);
