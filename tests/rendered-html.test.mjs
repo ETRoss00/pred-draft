@@ -133,6 +133,12 @@ test("keeps the kit data in a source-audited data folder", async () => {
   assert.match(eternals, /"The Tenth Seal"/);
   assert.match(eternals, /"Xyris"/);
   assert.match(eternals, /"Bone Collector"/);
+  assert.match(eternals, /"Idrisil"/);
+  assert.match(eternals, /"Diamond Tip"/);
+  assert.match(eternals, /"Knell"/);
+  assert.match(eternals, /"Resonant Repair"/);
+  assert.match(eternals, /"Krix"/);
+  assert.match(eternals, /"Festering Wounds"/);
   assert.match(audit, /auditHeroData/);
   assert.match(audit, /fullyVerifiedHeroes/);
   assert.match(crestAudit, /auditCrestData/);

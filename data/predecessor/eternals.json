@@ -18,6 +18,11 @@
       "label": "Sovereign mage Eternals manual entry",
       "url": null,
       "use": "User-provided in-game text covering Sovereign mage Eternal traits and Minor Blessing options."
+    },
+    "dreadnought-tank-eternals-manual-entry-2026-08-22": {
+      "label": "Dreadnought tank Eternals manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Dreadnought tank Eternal traits and Minor Blessing options."
     }
   },
   "validEternalCategories": [
@@ -1344,6 +1349,502 @@
       "verification": {
         "status": "source-backed",
         "notes": "Fully encoded from user-provided Sovereign mage Eternal manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "idrisil",
+      "name": "Idrisil",
+      "category": "dreadnought",
+      "role": "tank",
+      "mainTrait": {
+        "name": "Idrisil",
+        "description": "While above 30% Max Health, gain 15% increased Physical Armor and Magical Armor. Falling below 30% Health grants a 4s Shield equal to 150% of your Total Armors. CD: 75-32.5s.",
+        "scaling": {
+          "healthThreshold": 30,
+          "armorIncrease": 15,
+          "shieldDuration": 4,
+          "totalArmorShieldRatio": 1.5,
+          "cooldownMin": 32.5,
+          "cooldownMax": 75
+        },
+        "effects": [
+          "high-health",
+          "armor-amplification",
+          "low-health",
+          "shield",
+          "total-armor-scaling"
+        ],
+        "tags": [
+          "durability",
+          "anti-burst",
+          "armor-scaling"
+        ]
+      },
+      "minorBlessing1": [
+        {
+          "id": "idrisil-cold-hearted",
+          "name": "Cold Hearted",
+          "description": "Receiving Basic Attack Damage from Enemy Heroes reduces their Movement Speed by 2% for 2s. Max 5 Stacks.",
+          "scaling": {
+            "movementSpeedReductionPerStack": 2,
+            "duration": 2,
+            "maxStacks": 5
+          },
+          "effects": [
+            "basic-attack-damage-taken",
+            "hero-source",
+            "movement-speed-reduction",
+            "stacking"
+          ],
+          "tags": [
+            "anti-basic-attack",
+            "peel",
+            "stickiness"
+          ]
+        },
+        {
+          "id": "idrisil-mending",
+          "name": "Mending",
+          "description": "After taking Hero Damage, restore 3.0/4.0/5.0/6.0% Missing Health over 8s.",
+          "scaling": {
+            "missingHealthRestoreMin": 3,
+            "missingHealthRestoreMax": 6,
+            "duration": 8
+          },
+          "effects": [
+            "hero-damage-taken",
+            "missing-health-restore"
+          ],
+          "tags": [
+            "sustain",
+            "anti-poke",
+            "durability"
+          ]
+        },
+        {
+          "id": "idrisil-frost-snap",
+          "name": "Frost Snap",
+          "description": "Deal +10% Damage to Immobilized or Slowed Targets.",
+          "scaling": {
+            "damageIncrease": 10
+          },
+          "effects": [
+            "immobilized-target",
+            "slowed-target",
+            "damage-amplification"
+          ],
+          "tags": [
+            "cc-synergy",
+            "damage-amplification",
+            "teamfight"
+          ]
+        }
+      ],
+      "minorBlessing2": [
+        {
+          "id": "idrisil-icy-touch",
+          "name": "Icy Touch",
+          "description": "Basic Attacks reduce Enemy Hero Attack Speed by 3% for 3s. Max 4 Stacks.",
+          "scaling": {
+            "attackSpeedReductionPerStack": 3,
+            "duration": 3,
+            "maxStacks": 4
+          },
+          "effects": [
+            "basic-attack",
+            "hero-hit",
+            "attack-speed-reduction",
+            "stacking"
+          ],
+          "tags": [
+            "anti-carry",
+            "dueling",
+            "peel"
+          ]
+        },
+        {
+          "id": "idrisil-glacier",
+          "name": "Glacier",
+          "description": "Gain +1 Magical Armor per 300 Total Gold earned.",
+          "scaling": {
+            "magicalArmorPerGoldStep": 1,
+            "goldStep": 300
+          },
+          "effects": [
+            "gold-scaling",
+            "magical-armor"
+          ],
+          "tags": [
+            "anti-magic",
+            "scaling",
+            "durability"
+          ]
+        },
+        {
+          "id": "idrisil-diamond-tip",
+          "name": "Diamond Tip",
+          "description": "Gain +4% Physical Penetration and Magical Penetration per Tier 3 Item.",
+          "scaling": {
+            "physicalPenetrationPerTier3Item": 4,
+            "magicalPenetrationPerTier3Item": 4
+          },
+          "effects": [
+            "tier-3-item-scaling",
+            "physical-penetration",
+            "magical-penetration"
+          ],
+          "tags": [
+            "scaling",
+            "damage",
+            "hybrid-penetration"
+          ]
+        }
+      ],
+      "tags": [
+        "tank",
+        "armor",
+        "shield",
+        "anti-burst",
+        "scaling"
+      ],
+      "answers": [
+        "burst",
+        "basic-attackers",
+        "magic-damage",
+        "frontline"
+      ],
+      "sourceRef": "dreadnought-tank-eternals-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided Dreadnought tank Eternal manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "knell",
+      "name": "Knell",
+      "category": "dreadnought",
+      "role": "tank",
+      "mainTrait": {
+        "name": "Knell",
+        "description": "Basic Attacks and Abilities against Enemy Heroes apply a stack of Rust for 5s. Each stack shreds 2% (+0.2% per Level) Physical Armor and Magical Armor, stacking up to 4 times. You gain 75% of the Armors Shredded.",
+        "scaling": {
+          "duration": 5,
+          "armorShredPerStack": 2,
+          "armorShredPerStackPerLevel": 0.2,
+          "maxStacks": 4,
+          "stolenArmorRatio": 0.75
+        },
+        "effects": [
+          "basic-attack",
+          "ability-damage",
+          "hero-hit",
+          "armor-shred",
+          "armor-steal",
+          "stacking"
+        ],
+        "tags": [
+          "armor-shred",
+          "teamfight",
+          "frontline"
+        ]
+      },
+      "minorBlessing1": [
+        {
+          "id": "knell-frequency",
+          "name": "Frequency",
+          "description": "Gain 2% Total Attack Speed and 2 Ability Haste per Rust stack currently applied.",
+          "scaling": {
+            "totalAttackSpeedPerStack": 2,
+            "abilityHastePerStack": 2
+          },
+          "effects": [
+            "rust-stack-scaling",
+            "attack-speed",
+            "ability-haste"
+          ],
+          "tags": [
+            "tempo",
+            "cooldown-reduction",
+            "basic-attack"
+          ]
+        },
+        {
+          "id": "knell-patina",
+          "name": "Patina",
+          "description": "Gain a 30 (+15 per Level) Shield when not taking Damage for 12s. Gain 4% Movement Speed whilst the Shield holds.",
+          "scaling": {
+            "shield": 30,
+            "shieldPerLevel": 15,
+            "outOfDamageDuration": 12,
+            "movementSpeed": 4
+          },
+          "effects": [
+            "out-of-damage",
+            "shield",
+            "movement-speed",
+            "level-scaling"
+          ],
+          "tags": [
+            "anti-poke",
+            "mobility",
+            "durability"
+          ]
+        },
+        {
+          "id": "knell-dampening",
+          "name": "Dampening",
+          "description": "Incoming Damage from Enemies farther than 1100u is reduced by 12%.",
+          "scaling": {
+            "rangeThreshold": 1100,
+            "damageReduction": 12
+          },
+          "effects": [
+            "long-range-damage-reduction",
+            "damage-mitigation"
+          ],
+          "tags": [
+            "anti-poke",
+            "anti-range",
+            "durability"
+          ]
+        }
+      ],
+      "minorBlessing2": [
+        {
+          "id": "knell-peal",
+          "name": "Peal",
+          "description": "Gain 25 Ultimate Ability Haste. Upon casting your Ultimate, Basic Attacks and Abilities apply the maximum amount of Rust stacks for 4s.",
+          "scaling": {
+            "ultimateAbilityHaste": 25,
+            "duration": 4
+          },
+          "effects": [
+            "ultimate-haste",
+            "ultimate-cast",
+            "max-rust-stacks"
+          ],
+          "tags": [
+            "ultimate-synergy",
+            "armor-shred",
+            "teamfight"
+          ]
+        },
+        {
+          "id": "knell-fracture",
+          "name": "Fracture",
+          "description": "Deal 4% (+0.3% per Level) more Damage against Enemies with the maximum amount of Rust stacks.",
+          "scaling": {
+            "damageIncrease": 4,
+            "damageIncreasePerLevel": 0.3
+          },
+          "effects": [
+            "max-rust-stacks",
+            "damage-amplification",
+            "level-scaling"
+          ],
+          "tags": [
+            "damage-amplification",
+            "armor-shred-synergy",
+            "teamfight"
+          ]
+        },
+        {
+          "id": "knell-resonant-repair",
+          "name": "Resonant Repair",
+          "description": "Whenever you are Immobilized, you restore 3% of your Maximum Health over 4s.",
+          "scaling": {
+            "maxHealthRestore": 3,
+            "duration": 4
+          },
+          "effects": [
+            "immobilized",
+            "max-health-restore"
+          ],
+          "tags": [
+            "anti-disruption",
+            "sustain",
+            "durability"
+          ]
+        }
+      ],
+      "tags": [
+        "tank",
+        "armor-shred",
+        "armor-steal",
+        "teamfight",
+        "frontline"
+      ],
+      "answers": [
+        "frontline",
+        "armor-stacking",
+        "poke",
+        "cc-heavy"
+      ],
+      "sourceRef": "dreadnought-tank-eternals-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided Dreadnought tank Eternal manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "krix",
+      "name": "Krix",
+      "category": "dreadnought",
+      "role": "tank",
+      "mainTrait": {
+        "name": "Krix",
+        "description": "Gain 5% (+1% per Level) Max Health and Bonus Size equal to 0.5% of your Max Health.",
+        "scaling": {
+          "maxHealth": 5,
+          "maxHealthPerLevel": 1,
+          "bonusSizePerMaxHealth": 0.5
+        },
+        "effects": [
+          "max-health",
+          "level-scaling",
+          "size-scaling"
+        ],
+        "tags": [
+          "max-health",
+          "scaling",
+          "frontline"
+        ]
+      },
+      "minorBlessing1": [
+        {
+          "id": "krix-voracity",
+          "name": "Voracity",
+          "description": "Heal 0.75% Max Health and gain +3 Gold on Unit kills.",
+          "scaling": {
+            "maxHealthHealing": 0.75,
+            "bonusGold": 3
+          },
+          "effects": [
+            "unit-kill",
+            "max-health-healing",
+            "bonus-gold"
+          ],
+          "tags": [
+            "sustain",
+            "economy",
+            "waveclear"
+          ]
+        },
+        {
+          "id": "krix-regenerative-tissue",
+          "name": "Regenerative Tissue",
+          "description": "After not taking Hero Damage for 8s, regenerate 0.2/0.4/0.7/1.0% Max Health per Second.",
+          "scaling": {
+            "outOfHeroDamageDuration": 8,
+            "maxHealthRegenMin": 0.2,
+            "maxHealthRegenMax": 1
+          },
+          "effects": [
+            "out-of-hero-damage",
+            "max-health-regeneration"
+          ],
+          "tags": [
+            "sustain",
+            "anti-poke",
+            "frontline"
+          ]
+        },
+        {
+          "id": "krix-festering-wounds",
+          "name": "Festering Wounds",
+          "description": "Your DoT abilities and Immobilizing Effects reduce Enemy Heroes' Healing by 45% for 2s.",
+          "scaling": {
+            "healingReduction": 45,
+            "duration": 2
+          },
+          "effects": [
+            "damage-over-time",
+            "immobilize",
+            "anti-heal"
+          ],
+          "tags": [
+            "anti-heal",
+            "cc-synergy",
+            "sustain-counter"
+          ]
+        }
+      ],
+      "minorBlessing2": [
+        {
+          "id": "krix-cannibalism",
+          "name": "Cannibalism",
+          "description": "Takedowns permanently grant +35 Max Health.",
+          "scaling": {
+            "maxHealthPerTakedown": 35
+          },
+          "effects": [
+            "takedown",
+            "permanent-max-health"
+          ],
+          "tags": [
+            "scaling",
+            "snowball",
+            "frontline"
+          ]
+        },
+        {
+          "id": "krix-feeding-frenzy",
+          "name": "Feeding Frenzy",
+          "description": "Gain +12% Attack Speed per Enemy Hero within 1200 Units.",
+          "scaling": {
+            "attackSpeedPerEnemyHero": 12,
+            "range": 1200
+          },
+          "effects": [
+            "nearby-enemy-heroes",
+            "attack-speed"
+          ],
+          "tags": [
+            "teamfight",
+            "basic-attack",
+            "frontline"
+          ]
+        },
+        {
+          "id": "krix-predator",
+          "name": "Predator",
+          "description": "Camp Leader Kills grant +10% Damage and +3% Movement Speed for 20s. 100% Bonus Duration for Epic Monsters.",
+          "scaling": {
+            "damageIncrease": 10,
+            "movementSpeed": 3,
+            "duration": 20,
+            "epicMonsterBonusDuration": 100
+          },
+          "effects": [
+            "camp-leader-kill",
+            "damage-amplification",
+            "movement-speed",
+            "epic-monster-bonus"
+          ],
+          "tags": [
+            "objective-control",
+            "jungle",
+            "tempo"
+          ]
+        }
+      ],
+      "tags": [
+        "tank",
+        "max-health",
+        "scaling",
+        "sustain",
+        "anti-heal"
+      ],
+      "answers": [
+        "frontline",
+        "sustain-comps",
+        "objectives",
+        "teamfight"
+      ],
+      "sourceRef": "dreadnought-tank-eternals-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided Dreadnought tank Eternal manual entry on 2026-08-22."
       }
     }
   ]
