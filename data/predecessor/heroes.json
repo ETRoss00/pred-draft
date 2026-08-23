@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "game": "Predecessor",
   "patch": "unknown-current",
-  "lastManualReview": null,
+  "lastManualReview": "2026-08-23",
   "sources": {
     "official-hero-gallery": {
       "label": "Official Predecessor Hero Gallery",
@@ -303,7 +303,8 @@
       "name": "Adele",
       "roles": [
         "support",
-        "offlane"
+        "offlane",
+        "jungle"
       ],
       "flexRoles": [
         "jungle"
@@ -12958,14 +12959,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -14935,9 +14936,9 @@
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
@@ -15908,14 +15909,14 @@
       ],
       "sourceRefs": {
         "roster": "official-hero-gallery",
-        "roles": "needs-source-review",
+        "roles": "verified-combined-hero-roles-2026-08-23",
         "kit": "prototype-kit-taxonomy"
       },
       "verification": {
         "rosterStatus": "source-backed",
-        "roleStatus": "needs-review",
+        "roleStatus": "source-backed",
         "kitStatus": "prototype",
-        "notes": "Imported from the MVP seed. Roles and kit tags must be checked against current in-game data before being treated as canonical."
+        "notes": "Roles combine user-verified primary roles and accepted flex roles for draft filtering."
       }
     },
     {
