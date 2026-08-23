@@ -155,6 +155,8 @@ test("keeps the kit data in a source-audited data folder", async () => {
   assert.match(itemAudit, /auditItemData/);
   assert.match(eternalAudit, /auditEternalData/);
   assert.match(page, /const counterRules = \[/);
+  assert.match(page, /const roleMatchupWeights/);
+  assert.match(page, /matchup answer/);
   assert.match(page, /peels dive/);
   assert.match(page, /frontline shred/);
   assert.match(page, /recommendBuild/);
