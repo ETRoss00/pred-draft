@@ -220,6 +220,8 @@ test("keeps the kit data in a source-audited data folder", async () => {
   assert.match(page, /verifiedEnemies/);
   assert.match(page, /sourceBackedKitHeroes/);
   assert.match(page, /const roleMatchupWeights/);
+  assert.match(page, /inferEnemyRole/);
+  assert.match(page, /inferEffectiveEnemyRole/);
   assert.match(page, /matchup answer/);
   assert.match(page, /peels dive/);
   assert.match(page, /frontline shred/);
@@ -240,7 +242,7 @@ test("keeps the kit data in a source-audited data folder", async () => {
   assert.match(page, /recommendAugments/);
   assert.match(page, /scoreAugment/);
   assert.match(page, /augmentTextSignals/);
-  assert.match(page, /roleMatchupWeights\[role\]\[enemyRole\]/);
+  assert.match(page, /roleMatchupWeights\[role\]\[effectiveEnemyRole\]/);
   assert.match(page, /formatAugmentCategory/);
   assert.match(page, /isPlaceholderAugmentDescription/);
   assert.match(page, /hero-specific option/);

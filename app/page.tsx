@@ -178,6 +178,25 @@ const laneMatchupTargets: Partial<Record<Role, EnemyRole[]>> = {
   offlane: ["offlane"],
 };
 
+function inferEnemyRole(heroName: string, perspectiveRole: Role | "flex" = "flex"): EnemyRole {
+  const hero = heroes.find((item) => item.name === heroName);
+  return hero ? inferHeroEnemyRole(hero, perspectiveRole) : "unknown";
+}
+
+function inferHeroEnemyRole(hero: Hero, perspectiveRole: Role | "flex" = "flex"): EnemyRole {
+  if (perspectiveRole !== "flex") {
+    const targetRoles = laneMatchupTargets[perspectiveRole] ?? [];
+    const matchupRole = targetRoles.find((targetRole) => targetRole !== "unknown" && hero.roles.includes(targetRole));
+    if (matchupRole) return matchupRole;
+  }
+
+  return hero.roles[0] ?? "unknown";
+}
+
+function inferEffectiveEnemyRole(enemyHero: Hero, storedRole: EnemyRole, perspectiveRole: Role | "flex" = "flex"): EnemyRole {
+  return storedRole === "unknown" ? inferHeroEnemyRole(enemyHero, perspectiveRole) : storedRole;
+}
+
 const buildThreatAnswers: Array<{ threat: string; tags: string[]; reason: string }> = [
   { threat: "sustain", tags: ["anti-heal", "healing-counter"], reason: "counters enemy sustain" },
   { threat: "frontline", tags: ["anti-tank", "frontline-shred", "armor-ignore", "max-health-damage", "current-health-damage"], reason: "breaks frontline" },
@@ -261,7 +280,8 @@ function scoreHero(hero: Hero, enemyPicks: EnemyPick[], role: Role | "flex", loc
 
   if (role !== "flex") {
     comp.verifiedEnemies.forEach(({ hero: enemyHero, role: enemyRole }) => {
-      const matchupWeight = roleMatchupWeights[role][enemyRole] ?? 0;
+      const effectiveEnemyRole = inferEffectiveEnemyRole(enemyHero, enemyRole, role);
+      const matchupWeight = roleMatchupWeights[role][effectiveEnemyRole] ?? 0;
       if (!matchupWeight) return;
 
       counterRules.forEach((counter) => {
@@ -272,14 +292,14 @@ function scoreHero(hero: Hero, enemyPicks: EnemyPick[], role: Role | "flex", loc
         if (!matchingAnswers.length) return;
 
         score += Math.round(matchupWeight * (matchingAnswers.length > 1 ? 10 : 7));
-        reasons.add(`${formatRole(enemyRole)} matchup answer`);
+        reasons.add(`${formatRole(effectiveEnemyRole)} matchup answer`);
         matchingAnswers.forEach((tag) => tags.add(tag));
       });
 
       hero.threats.forEach((threat) => {
         if (!enemyHero.weaknesses.includes(threat)) return;
         score += Math.round(matchupWeight * 7);
-        reasons.add(`${formatRole(enemyRole)} pressure`);
+        reasons.add(`${formatRole(effectiveEnemyRole)} pressure`);
         tags.add(threat);
       });
     });
@@ -408,10 +428,11 @@ function scoreLaneCounter(tags: string[], comp: ReturnType<typeof analyze>, role
   const targetRoles = laneMatchupTargets[role] ?? [];
   let score = 0;
   comp.verifiedEnemies
-    .filter((enemy) => targetRoles.includes(enemy.role))
-    .forEach(({ hero: enemyHero, role: enemyRole }) => {
+    .map((enemy) => ({ ...enemy, effectiveRole: inferEffectiveEnemyRole(enemy.hero, enemy.role, role) }))
+    .filter((enemy) => targetRoles.includes(enemy.effectiveRole))
+    .forEach(({ hero: enemyHero, effectiveRole }) => {
       const traits = [...enemyHero.threats, ...enemyHero.weaknesses];
-      score += scoreTagsAgainstTraits(tags, traits, reasons, `${formatRole(enemyRole)} counter`, 9);
+      score += scoreTagsAgainstTraits(tags, traits, reasons, `${formatRole(effectiveRole)} counter`, 9);
     });
 
   return score;
@@ -641,7 +662,8 @@ function scoreAugment(augment: HeroAugment, comp: ReturnType<typeof analyze>, lo
   });
 
   comp.verifiedEnemies.forEach(({ hero: enemyHero, role: enemyRole }) => {
-    const matchupWeight = role === "flex" ? 0.75 : (roleMatchupWeights[role][enemyRole] ?? 0.45);
+    const effectiveEnemyRole = inferEffectiveEnemyRole(enemyHero, enemyRole, role);
+    const matchupWeight = role === "flex" ? 0.75 : (roleMatchupWeights[role][effectiveEnemyRole] ?? 0.45);
     const enemyTraits = [...enemyHero.threats, ...enemyHero.weaknesses];
 
     counterRules.forEach((counter) => {
@@ -651,13 +673,13 @@ function scoreAugment(augment: HeroAugment, comp: ReturnType<typeof analyze>, lo
       if (!matchingAnswers.length) return;
 
       score += Math.round(matchupWeight * (matchingAnswers.length > 1 ? 10 : 7));
-      reasons.add(`${formatRole(enemyRole)} matchup answer`);
+      reasons.add(`${formatRole(effectiveEnemyRole)} matchup answer`);
     });
 
     lockedHero.threats.forEach((threat) => {
       if (!augmentTags.includes(threat) || !enemyHero.weaknesses.includes(threat)) return;
       score += Math.round(matchupWeight * 6);
-      reasons.add(`${formatRole(enemyRole)} pressure`);
+      reasons.add(`${formatRole(effectiveEnemyRole)} pressure`);
     });
   });
 
@@ -852,7 +874,8 @@ export default function Home() {
                     value={pick.name}
                     onChange={(event) => {
                       const next = [...enemyPicks];
-                      next[index] = { role: "unknown", name: event.target.value };
+                      const enemyName = event.target.value;
+                      next[index] = { role: inferEnemyRole(enemyName, role), name: enemyName };
                       setEnemyPicks(next);
                     }}
                     className="h-11 rounded-md border border-[#2b29231a] bg-[#faf8f3] px-3 text-sm font-semibold"
