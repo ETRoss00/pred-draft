@@ -83,20 +83,17 @@ const counterRules = [
   rule("weak-early", ["early-pressure", "dive", "duelist"], "pressures weak early game"),
 ];
 
-const buildPlans = [
-  plan("Dive control", ["dive", "mobility", "pick"], ["cleanse or stasis crest", "armor/health early", "peel-active support item"], "Survive first contact, then punish the diver after cooldowns."),
-  plan("Anti-poke sustain", ["poke", "zone-control"], ["sustain crest", "regen or shielding item", "early magic resist if poke is magical"], "Reduce chip damage so the enemy cannot force objectives for free."),
-  plan("Frontline shred", ["frontline", "sustain"], ["armor penetration", "percent-health damage", "anti-heal"], "Do not overbuild burst into tanks; prioritize damage that keeps working."),
-  plan("Burst insurance", ["burst", "pick"], ["stasis/cleanse option", "defensive second item", "vision and spacing tools"], "Avoid being removed before the fight starts."),
-  plan("Siege breaker", ["objective-control", "zone-control", "scaling"], ["waveclear item", "objective damage", "engage or flank tool"], "Clear waves, deny setup, and force fights before scaling takes over."),
+const buildSlots: BuildSlot[] = [
+  { position: 1, phase: "early", title: "Item 1", purpose: "augment-synergy" },
+  { position: 2, phase: "early", title: "Item 2", purpose: "augment-synergy" },
+  { position: 3, phase: "mid", title: "Item 3", purpose: "lane-counter" },
+  { position: 4, phase: "mid", title: "Item 4", purpose: "role-identity" },
+  { position: 5, phase: "late", title: "Item 5", purpose: "team-counter" },
+  { position: 6, phase: "late", title: "Item 6", purpose: "team-counter" },
 ];
 
 function rule(threat: string, answers: string[], reason: string) {
   return { threat, answers, reason };
-}
-
-function plan(title: string, threats: string[], items: string[], note: string) {
-  return { title, threats, items, note };
 }
 
 function hasSourceBackedKit(hero?: Hero) {
@@ -263,24 +260,204 @@ function scoreHero(hero: Hero, enemyPicks: EnemyPick[], role: Role | "flex", loc
   };
 }
 
-function recommendBuild(enemyPicks: EnemyPick[], lockedHero?: Hero) {
+function recommendBuild(enemyPicks: EnemyPick[], lockedHero?: Hero, role: Role | "flex" = "flex", selectedAugment?: AugmentAdvice) {
   const comp = analyze(enemyPicks);
-  const verifiedLockedHero = hasSourceBackedKit(lockedHero) ? lockedHero : undefined;
-  return buildPlans
-    .map((build) => ({
-      ...build,
-      score: build.threats.reduce((sum, threat) => sum + (comp.counts.get(threat) ?? 0), 0),
-    }))
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 3)
-    .map((build) => ({
-      ...build,
-      heroNote: verifiedLockedHero
-        ? `${verifiedLockedHero.name} brings ${verifiedLockedHero.answers.slice(0, 2).join(" and ")}. Build to cover the remaining draft pressure.`
-        : lockedHero
-          ? `${lockedHero.name} needs text-sourced kit encoding before augment advice can be tailored.`
-        : "Lock a hero to tailor this into a tighter item order.",
-    }));
+  if (!hasSourceBackedKit(lockedHero)) return [];
+
+  const selected = new Set<string>();
+  const preferredRoles = inferPreferredItemRoles(lockedHero, role);
+  return buildSlots.flatMap((slot) => {
+    const item = pickBuildItem(slot, comp, lockedHero, role, preferredRoles, selectedAugment, selected);
+    if (!item) return [];
+    selected.add(item.item.id);
+    return [item];
+  });
+}
+
+function pickBuildItem(
+  slot: BuildSlot,
+  comp: ReturnType<typeof analyze>,
+  lockedHero: Hero,
+  role: Role | "flex",
+  preferredRoles: Set<ItemRole>,
+  selectedAugment: AugmentAdvice | undefined,
+  selected: Set<string>,
+) {
+  const sourceBackedItems = items.filter((item) => item.verification.status === "source-backed" && !selected.has(item.id));
+  const preferredItems = sourceBackedItems.filter((item) => preferredRoles.has(item.role));
+  const pool = preferredItems.length ? preferredItems : sourceBackedItems;
+
+  return pool
+    .map((item) => scoreBuildItem(item, slot, comp, lockedHero, role, preferredRoles, selectedAugment))
+    .sort((a, b) => b.score - a.score || a.item.name.localeCompare(b.item.name))[0];
+}
+
+function scoreBuildItem(
+  item: Item,
+  slot: BuildSlot,
+  comp: ReturnType<typeof analyze>,
+  lockedHero: Hero,
+  role: Role | "flex",
+  preferredRoles: Set<ItemRole>,
+  selectedAugment?: AugmentAdvice,
+): BuildItemAdvice {
+  let score = preferredRoles.has(item.role) ? 14 : 0;
+  const reasons = new Set<string>();
+  const tags = collectItemTags(item);
+
+  if (preferredRoles.has(item.role)) reasons.add(`${item.role} item fit`);
+
+  if (slot.purpose === "augment-synergy") {
+    const augmentMatches = selectedAugment ? selectedAugment.tags.filter((tag) => tags.includes(tag)) : [];
+    if (augmentMatches.length) {
+      score += 28 + augmentMatches.length * 6;
+      reasons.add("early augment synergy");
+    }
+    score += scoreRoleIdentity(tags, preferredRoles, reasons, 4);
+  }
+
+  if (slot.purpose === "lane-counter") {
+    const laneScore = scoreLaneCounter(tags, comp, role, reasons);
+    score += laneScore || scoreTeamCounter(tags, comp, reasons, 0.6);
+  }
+
+  if (slot.purpose === "role-identity") {
+    score += scoreRoleIdentity(tags, preferredRoles, reasons, 8);
+    if (preferredRoles.has("support") && tags.some((tag) => ["healing", "shielding", "heal-shield-power"].includes(tag))) {
+      score += 12;
+      reasons.add("support sustain focus");
+    }
+    if (preferredRoles.has("fighter") && tags.some((tag) => ["sustain", "omnivamp", "dueling", "sustained-fighting"].includes(tag))) {
+      score += 12;
+      reasons.add("fighter sustain focus");
+    }
+    if (preferredRoles.has("tank") && tags.some((tag) => ["defense", "durability", "armor", "damage-mitigation"].includes(tag))) {
+      score += 12;
+      reasons.add("tank defense focus");
+    }
+    if (["carry", "mage", "assassin"].some((itemRole) => preferredRoles.has(itemRole as ItemRole)) && tags.some((tag) => ["damage-amplification", "crit-amplification", "magical-damage-amp", "physical-shred"].includes(tag))) {
+      score += 12;
+      reasons.add("damage amplification");
+    }
+  }
+
+  if (slot.purpose === "team-counter") {
+    score += scoreTeamCounter(tags, comp, reasons, 1);
+  }
+
+  score += scoreDefensiveDamageProfile(tags, comp, reasons);
+  score += scoreHeroItemSynergy(tags, lockedHero, reasons);
+
+  if (!reasons.size) reasons.add(`${slot.phase} game fit`);
+
+  return {
+    slot,
+    item,
+    score,
+    reasons: [...reasons].slice(0, 3),
+    tags: tags.slice(0, 5),
+  };
+}
+
+function scoreLaneCounter(tags: string[], comp: ReturnType<typeof analyze>, role: Role | "flex", reasons: Set<string>) {
+  if (role === "flex") return 0;
+
+  const targetRoles = laneMatchupTargets[role] ?? [];
+  let score = 0;
+  comp.verifiedEnemies
+    .filter((enemy) => targetRoles.includes(enemy.role))
+    .forEach(({ hero: enemyHero, role: enemyRole }) => {
+      const traits = [...enemyHero.threats, ...enemyHero.weaknesses];
+      score += scoreTagsAgainstTraits(tags, traits, reasons, `${formatRole(enemyRole)} counter`, 9);
+    });
+
+  return score;
+}
+
+function scoreTeamCounter(tags: string[], comp: ReturnType<typeof analyze>, reasons: Set<string>, multiplier: number) {
+  let score = 0;
+
+  buildThreatAnswers.forEach((counter) => {
+    const threatCount = comp.counts.get(counter.threat) ?? 0;
+    if (!threatCount || !counter.tags.some((tag) => tags.includes(tag))) return;
+    score += Math.round(threatCount * 9 * multiplier);
+    reasons.add(counter.reason);
+  });
+
+  return score;
+}
+
+function scoreTagsAgainstTraits(tags: string[], traits: string[], reasons: Set<string>, reason: string, weight: number) {
+  let score = 0;
+
+  counterRules.forEach((counter) => {
+    if (!traits.includes(counter.threat)) return;
+    const matchingAnswers = counter.answers.filter((answer) => tags.includes(answer));
+    if (!matchingAnswers.length) return;
+    score += matchingAnswers.length * weight;
+    reasons.add(reason);
+  });
+
+  buildThreatAnswers.forEach((counter) => {
+    if (!traits.includes(counter.threat) || !counter.tags.some((tag) => tags.includes(tag))) return;
+    score += weight;
+    reasons.add(reason);
+  });
+
+  return score;
+}
+
+function scoreRoleIdentity(tags: string[], preferredRoles: Set<ItemRole>, reasons: Set<string>, weight: number) {
+  let score = 0;
+  preferredRoles.forEach((itemRole) => {
+    const matches = roleIdentityTags[itemRole].filter((tag) => tags.includes(tag));
+    if (!matches.length) return;
+    score += matches.length * weight;
+    reasons.add(`${itemRole} identity`);
+  });
+  return score;
+}
+
+function scoreDefensiveDamageProfile(tags: string[], comp: ReturnType<typeof analyze>, reasons: Set<string>) {
+  let score = 0;
+
+  if (comp.damage.physical >= 3 && tags.some((tag) => ["physical-armor", "physical-mitigation", "anti-basic-attack", "anti-crit"].includes(tag))) {
+    score += 10;
+    reasons.add("physical damage counter");
+  }
+  if (comp.damage.magical >= 3 && tags.some((tag) => ["magical-armor", "anti-magic", "spell-shield"].includes(tag))) {
+    score += 10;
+    reasons.add("magical damage counter");
+  }
+
+  return score;
+}
+
+function scoreHeroItemSynergy(tags: string[], lockedHero: Hero, reasons: Set<string>) {
+  const synergyTags = tags.filter((tag) => lockedHero.threats.includes(tag) || lockedHero.answers.includes(tag));
+  if (!synergyTags.length) return 0;
+  reasons.add(`${lockedHero.name} kit synergy`);
+  return Math.min(synergyTags.length * 3, 9);
+}
+
+function inferPreferredItemRoles(hero: Hero, role: Role | "flex") {
+  const preferred = new Set<ItemRole>();
+
+  hero.classes?.forEach((className) => {
+    const itemRole = itemRoleByClass[className.toLowerCase()];
+    if (itemRole) preferred.add(itemRole);
+  });
+
+  if (role !== "flex") {
+    const laneRole = laneFallbackItemRole[role];
+    if (laneRole) preferred.add(laneRole);
+  }
+
+  return preferred;
+}
+
+function collectItemTags(item: Item) {
+  return [...new Set([item.purpose.toLowerCase().replaceAll(" ", "-"), ...item.tags, ...item.answers, ...item.passives.flatMap((passive) => passive.effects), ...(item.restrictions?.flatMap((restriction) => restriction.effects) ?? [])])];
 }
 
 function recommendAugments(enemyPicks: EnemyPick[], lockedHero?: Hero, role: Role | "flex" = "flex"): AugmentAdvice[] {
@@ -542,6 +719,7 @@ export default function Home() {
   const locked = heroes.find((hero) => hero.name === lockedHero);
   const audit = useMemo(() => auditHeroData(), []);
   const crestAudit = useMemo(() => auditCrestData(), []);
+  const itemAudit = useMemo(() => auditItemData(), []);
   const eternalAudit = useMemo(() => auditEternalData(), []);
   const sourceBackedKitHeroes = useMemo(() => heroes.filter(hasSourceBackedKit), []);
 
@@ -555,7 +733,6 @@ export default function Home() {
     [enemyPicks, role, lockedHero, sourceBackedKitHeroes],
   );
 
-  const builds = useMemo(() => recommendBuild(enemyPicks, locked), [enemyPicks, locked]);
   const augmentOptions = useMemo(() => recommendAugments(enemyPicks, locked, role), [enemyPicks, locked, role]);
   const eternalPaths = useMemo(() => recommendEternalPaths(enemyPicks, locked, role), [enemyPicks, locked, role]);
   const availableHeroes = heroes.filter((hero) => !enemyNames.includes(hero.name));
@@ -708,6 +885,9 @@ export default function Home() {
                 </p>
                 <p className="mt-1 text-xs font-bold text-[#665f52]">
                   {crestAudit.crestCount} crests / {crestAudit.sourceBackedCrests} source-backed / {crestAudit.errors.length} crest errors
+                </p>
+                <p className="mt-1 text-xs font-bold text-[#665f52]">
+                  {itemAudit.itemCount} items / {itemAudit.sourceBackedItems} source-backed / {itemAudit.errors.length} item errors
                 </p>
                 <p className="mt-1 text-xs font-bold text-[#665f52]">
                   {eternalAudit.eternalCount} Eternals / {eternalAudit.sourceBackedEternals} source-backed / {eternalAudit.errors.length} Eternal errors
