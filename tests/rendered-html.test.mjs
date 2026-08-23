@@ -54,7 +54,13 @@ test("keeps the kit data in a source-audited data folder", async () => {
   assert.doesNotMatch(page, /const heroes: Hero\[\] = \[/);
   assert.match(page, /from "@\/data\/predecessor\/audit"/);
   assert.match(heroes, /"schemaVersion": 2/);
-  assert.match(heroes, /"official-hero-gallery"/);
+  assert.doesNotMatch(heroes, /"official-hero-gallery"/);
+  assert.doesNotMatch(heroes, /"predecessor-wiki-hero"/);
+  assert.doesNotMatch(heroes, /"prototype-kit-taxonomy"/);
+  assert.doesNotMatch(heroes, /"kitStatus": "prototype"/);
+  assert.doesNotMatch(heroes, /"threats": \[\]/);
+  assert.doesNotMatch(heroes, /"answers": \[\]/);
+  assert.doesNotMatch(heroes, /"weaknesses": \[\]/);
   assert.match(heroes, /"argus-manual-entry-2026-08-23"/);
   assert.doesNotMatch(heroes, /"argus-game-client-screenshots-2026-08-02"/);
   assert.doesNotMatch(heroes, /1000001800\.jpg/);
