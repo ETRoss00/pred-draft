@@ -28,6 +28,11 @@
       "label": "Primarch fighter Eternals manual entry",
       "url": null,
       "use": "User-provided in-game text covering Primarch fighter Eternal traits and Minor Blessing options."
+    },
+    "anomaly-assassin-eternals-manual-entry-2026-08-22": {
+      "label": "Anomaly assassin Eternals manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Anomaly assassin Eternal traits and Minor Blessing options."
     }
   },
   "validEternalCategories": [
@@ -2190,6 +2195,495 @@
       "verification": {
         "status": "source-backed",
         "notes": "Fully encoded from user-provided Primarch fighter Eternal manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "aion",
+      "name": "Aion",
+      "category": "anomaly",
+      "role": "assassin",
+      "mainTrait": {
+        "name": "Aion",
+        "description": "Casting an Ability grants +1 Mana Regen for 8s, stacking up to 5 times. Additionally, gain Gold equal to 6% of Ability Damage dealt to Enemy Heroes.",
+        "scaling": {
+          "manaRegenPerStack": 1,
+          "duration": 8,
+          "maxStacks": 5,
+          "goldFromHeroAbilityDamage": 6
+        },
+        "effects": [
+          "ability-cast",
+          "mana-regeneration",
+          "stacking",
+          "ability-damage",
+          "bonus-gold"
+        ],
+        "tags": [
+          "economy",
+          "mana-regen",
+          "ability-damage"
+        ]
+      },
+      "minorBlessing1": [
+        {
+          "id": "aion-philosopher",
+          "name": "Philosopher",
+          "description": "Every 10s, gain 5 Gold. Interval is reduced by Ability Haste.",
+          "scaling": {
+            "intervalSeconds": 10,
+            "gold": 5
+          },
+          "effects": [
+            "interval-gold",
+            "ability-haste-scaling"
+          ],
+          "tags": [
+            "economy",
+            "scaling",
+            "haste-synergy"
+          ]
+        },
+        {
+          "id": "aion-sacrifice",
+          "name": "Sacrifice",
+          "description": "Damaging an Enemy Hero with an Ability regenerates 2.5% Missing Mana over 5s. On Hero Kill, regenerate 20% Missing Mana over 5s.",
+          "scaling": {
+            "missingManaRestore": 2.5,
+            "heroKillMissingManaRestore": 20,
+            "duration": 5
+          },
+          "effects": [
+            "ability-damage",
+            "hero-hit",
+            "missing-mana-restore",
+            "hero-kill"
+          ],
+          "tags": [
+            "mana-sustain",
+            "ability-assassin",
+            "snowball"
+          ]
+        },
+        {
+          "id": "aion-bottomless-vial",
+          "name": "Bottomless Vial",
+          "description": "Killing a River Buff restores a Potion charge and permanently grants 5 Magical Power.",
+          "scaling": {
+            "magicalPower": 5
+          },
+          "effects": [
+            "river-buff-kill",
+            "potion-charge",
+            "permanent-magical-power"
+          ],
+          "tags": [
+            "river-control",
+            "scaling",
+            "sustain"
+          ]
+        }
+      ],
+      "minorBlessing2": [
+        {
+          "id": "aion-arcane-resonance",
+          "name": "Arcane Resonance",
+          "description": "Basic Ability Cooldowns and Philosopher progress +0.75% faster per 1 Mana Regen. Max 50%.",
+          "scaling": {
+            "progressionPerManaRegen": 0.75,
+            "maxProgression": 50
+          },
+          "effects": [
+            "mana-regeneration-scaling",
+            "cooldown-progression",
+            "philosopher-progression"
+          ],
+          "tags": [
+            "cooldown-reduction",
+            "economy",
+            "mana-regen-scaling"
+          ]
+        },
+        {
+          "id": "aion-perfection",
+          "name": "Perfection",
+          "description": "While above 85% Health, gain +30 Ability Haste.",
+          "scaling": {
+            "healthThreshold": 85,
+            "abilityHaste": 30
+          },
+          "effects": [
+            "high-health",
+            "ability-haste"
+          ],
+          "tags": [
+            "poke",
+            "cooldown-reduction",
+            "high-health"
+          ]
+        },
+        {
+          "id": "aion-runic-focus",
+          "name": "Runic Focus",
+          "description": "Gain +0.15% Magical Power per 1% Current Mana.",
+          "scaling": {
+            "magicalPowerPerCurrentManaPercent": 0.15
+          },
+          "effects": [
+            "current-mana-scaling",
+            "magical-power"
+          ],
+          "tags": [
+            "mana-scaling",
+            "magical-power",
+            "burst"
+          ]
+        }
+      ],
+      "tags": [
+        "assassin",
+        "economy",
+        "mana-sustain",
+        "ability-damage",
+        "scaling"
+      ],
+      "answers": [
+        "mana-pressure",
+        "ability-assassin",
+        "roaming",
+        "snowball"
+      ],
+      "sourceRef": "anomaly-assassin-eternals-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided Anomaly assassin Eternal manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "demiurge",
+      "name": "Demiurge",
+      "category": "anomaly",
+      "role": "assassin",
+      "mainTrait": {
+        "name": "Demiurge",
+        "description": "Gain +10% Item Stats, excluding Passives, and +10% Item Damage.",
+        "scaling": {
+          "itemStatIncrease": 10,
+          "itemDamageIncrease": 10
+        },
+        "effects": [
+          "item-stat-amplification",
+          "item-damage-amplification"
+        ],
+        "tags": [
+          "item-scaling",
+          "damage-amplification",
+          "hybrid"
+        ]
+      },
+      "minorBlessing1": [
+        {
+          "id": "demiurge-tri-core",
+          "name": "Tri-Core",
+          "description": "Deal 5% Damage On-Hit, randomly chosen from Physical, Magical and True Damage.",
+          "scaling": {
+            "onHitDamage": 5
+          },
+          "effects": [
+            "on-hit",
+            "random-damage-type",
+            "physical-damage",
+            "magical-damage",
+            "true-damage"
+          ],
+          "tags": [
+            "on-hit",
+            "hybrid-damage",
+            "dueling"
+          ]
+        },
+        {
+          "id": "demiurge-construct",
+          "name": "Construct",
+          "description": "Gain +10 Health and +1 Ability Haste per Level.",
+          "scaling": {
+            "healthPerLevel": 10,
+            "abilityHastePerLevel": 1
+          },
+          "effects": [
+            "level-scaling",
+            "health",
+            "ability-haste"
+          ],
+          "tags": [
+            "scaling",
+            "durability",
+            "cooldown-reduction"
+          ]
+        },
+        {
+          "id": "demiurge-bio-mechanical-fusion",
+          "name": "Bio-Mechanical Fusion",
+          "description": "Gain 1 Physical Power per 8 Magical Power.",
+          "scaling": {
+            "magicalPowerStep": 8,
+            "physicalPowerPerStep": 1
+          },
+          "effects": [
+            "magical-power-scaling",
+            "physical-power"
+          ],
+          "tags": [
+            "hybrid-scaling",
+            "physical-power",
+            "mage-assassin"
+          ]
+        }
+      ],
+      "minorBlessing2": [
+        {
+          "id": "demiurge-cursed-corrupted",
+          "name": "Cursed Corrupted",
+          "description": "Convert every 1% Critical Strike Chance into 0.8 Ability Haste.",
+          "scaling": {
+            "criticalChanceStep": 1,
+            "abilityHastePerStep": 0.8
+          },
+          "effects": [
+            "critical-chance-conversion",
+            "ability-haste"
+          ],
+          "tags": [
+            "crit-conversion",
+            "cooldown-reduction",
+            "build-conversion"
+          ]
+        },
+        {
+          "id": "demiurge-memory-leak",
+          "name": "Memory Leak",
+          "description": "Ability casts grant +5% of their Mana or Energy Cost as permanent Max Mana. At +500 Max Mana, gain +5% Movement Speed.",
+          "scaling": {
+            "costToMaxManaRatio": 5,
+            "maxManaThreshold": 500,
+            "movementSpeed": 5
+          },
+          "effects": [
+            "ability-cast",
+            "permanent-max-mana",
+            "movement-speed"
+          ],
+          "tags": [
+            "mana-scaling",
+            "mobility",
+            "scaling"
+          ]
+        },
+        {
+          "id": "demiurge-bloatware",
+          "name": "Bloatware",
+          "description": "Gain +0.5% Damage and +0.75% Damage Reduction per Item.",
+          "scaling": {
+            "damageIncreasePerItem": 0.5,
+            "damageReductionPerItem": 0.75
+          },
+          "effects": [
+            "item-scaling",
+            "damage-amplification",
+            "damage-reduction"
+          ],
+          "tags": [
+            "item-scaling",
+            "damage",
+            "durability"
+          ]
+        }
+      ],
+      "tags": [
+        "assassin",
+        "item-scaling",
+        "hybrid-damage",
+        "on-hit",
+        "cooldown-reduction"
+      ],
+      "answers": [
+        "hybrid-builds",
+        "item-spikes",
+        "dueling",
+        "scaling"
+      ],
+      "sourceRef": "anomaly-assassin-eternals-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided Anomaly assassin Eternal manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "satariel",
+      "name": "Satariel",
+      "category": "anomaly",
+      "role": "assassin",
+      "mainTrait": {
+        "name": "Satariel",
+        "description": "Takedowns grant a stack of Fearless, up to 6 times. Your Max Health is reduced by 6% plus 4% for Melee or 6% for Ranged per Fearless. Gain +5% plus +5% per Fearless Physical Power, Magical Power and Attack Speed. Fearless stacks are lost on Death.",
+        "scaling": {
+          "maxStacks": 6,
+          "baseMaxHealthReduction": 6,
+          "meleeMaxHealthReductionPerStack": 4,
+          "rangedMaxHealthReductionPerStack": 6,
+          "basePowerAndAttackSpeed": 5,
+          "powerAndAttackSpeedPerStack": 5
+        },
+        "effects": [
+          "takedown",
+          "fearless-stacks",
+          "max-health-reduction",
+          "physical-power",
+          "magical-power",
+          "attack-speed",
+          "death-reset"
+        ],
+        "tags": [
+          "high-risk",
+          "snowball",
+          "damage-scaling"
+        ]
+      },
+      "minorBlessing1": [
+        {
+          "id": "satariel-demonic-bargain",
+          "name": "Demonic Bargain",
+          "description": "Gain 350 additional Gold at Levels 1.0/0.0/13.0.",
+          "scaling": {
+            "bonusGold": 350,
+            "levelThreshold1": 1,
+            "levelThreshold2": 0,
+            "levelThreshold3": 13
+          },
+          "effects": [
+            "level-threshold",
+            "bonus-gold"
+          ],
+          "tags": [
+            "economy",
+            "power-spike",
+            "scaling"
+          ]
+        },
+        {
+          "id": "satariel-risen",
+          "name": "Risen",
+          "description": "When at 3 or more Fearless stacks, gain 12% Omnivamp.",
+          "scaling": {
+            "requiredFearlessStacks": 3,
+            "omnivamp": 12
+          },
+          "effects": [
+            "fearless-stacks",
+            "omnivamp"
+          ],
+          "tags": [
+            "sustain",
+            "snowball",
+            "dueling"
+          ]
+        },
+        {
+          "id": "satariel-hellfire-strikes",
+          "name": "Hellfire Strikes",
+          "description": "Basic Attacks deal 3 (+1.5 per Level) True Damage On-Hit.",
+          "scaling": {
+            "trueDamage": 3,
+            "trueDamagePerLevel": 1.5
+          },
+          "effects": [
+            "basic-attack",
+            "true-damage",
+            "on-hit",
+            "level-scaling"
+          ],
+          "tags": [
+            "on-hit",
+            "true-damage",
+            "dueling"
+          ]
+        }
+      ],
+      "minorBlessing2": [
+        {
+          "id": "satariel-broken-wings",
+          "name": "Broken Wings",
+          "description": "Your Movement Speed cannot be altered by Items or Abilities.",
+          "effects": [
+            "movement-speed-lock",
+            "item-immunity",
+            "ability-immunity"
+          ],
+          "tags": [
+            "anti-slow",
+            "anti-speed",
+            "stability"
+          ]
+        },
+        {
+          "id": "satariel-rite",
+          "name": "Rite",
+          "description": "Abilities cost an additional 5 (+2.5 per Level) Health to cast but you permanently gain 15 (+1 per Level) Ability Haste.",
+          "scaling": {
+            "healthCost": 5,
+            "healthCostPerLevel": 2.5,
+            "abilityHaste": 15,
+            "abilityHastePerLevel": 1
+          },
+          "effects": [
+            "health-cost",
+            "permanent-ability-haste",
+            "level-scaling"
+          ],
+          "tags": [
+            "cooldown-reduction",
+            "high-risk",
+            "ability-assassin"
+          ]
+        },
+        {
+          "id": "satariel-psychosis",
+          "name": "Psychosis",
+          "description": "Deal 3.5% (+0.4% per Level) more Damage to the closest Enemy Hero but 10% less Damage to any other Enemy Hero.",
+          "scaling": {
+            "closestHeroDamageIncrease": 3.5,
+            "closestHeroDamageIncreasePerLevel": 0.4,
+            "otherHeroDamageReduction": 10
+          },
+          "effects": [
+            "closest-hero",
+            "damage-amplification",
+            "damage-reduction-to-other-heroes",
+            "level-scaling"
+          ],
+          "tags": [
+            "isolation",
+            "dueling",
+            "pick"
+          ]
+        }
+      ],
+      "tags": [
+        "assassin",
+        "snowball",
+        "high-risk",
+        "on-hit",
+        "damage-scaling"
+      ],
+      "answers": [
+        "pick",
+        "dueling",
+        "snowball",
+        "high-risk-burst"
+      ],
+      "sourceRef": "anomaly-assassin-eternals-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided Anomaly assassin Eternal manual entry on 2026-08-22."
       }
     }
   ]
