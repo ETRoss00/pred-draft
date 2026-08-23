@@ -44,6 +44,7 @@ test("keeps the kit data in a source-audited data folder", async () => {
   const crests = await readFile(new URL("../data/predecessor/crests.json", import.meta.url), "utf8");
   const items = await readFile(new URL("../data/predecessor/items.json", import.meta.url), "utf8");
   const eternals = await readFile(new URL("../data/predecessor/eternals.json", import.meta.url), "utf8");
+  const heroData = JSON.parse(heroes);
   const audit = await readFile(new URL("../data/predecessor/audit.ts", import.meta.url), "utf8");
   const crestAudit = await readFile(new URL("../data/predecessor/crests.ts", import.meta.url), "utf8");
   const itemAudit = await readFile(new URL("../data/predecessor/items.ts", import.meta.url), "utf8");
@@ -68,6 +69,17 @@ test("keeps the kit data in a source-audited data folder", async () => {
   assert.match(heroes, /"scarlett-manual-entry-2026-08-23"/);
   assert.match(heroes, /"name": "Disintegrate"/);
   assert.match(heroes, /"name": "Infinite Obliteration"/);
+  assert.match(heroes, /"name": "Argus"[\s\S]*?"damage": "magical"/);
+  assert.match(heroes, /"name": "Argus"[\s\S]*?"name": "Dread Nova"[\s\S]*?"description": "Argus lobs an unstable orb of energy\./);
+  assert.match(heroes, /"name": "Argus"[\s\S]*?"name": "Dread Nova"[\s\S]*?"scaling": \{[\s\S]*?"magicalPowerRatio": 0\.5/);
+  assert.match(heroes, /"name": "Argus"[\s\S]*?"name": "Dread Nova"[\s\S]*?"cooldown": \[[\s\S]*?16[\s\S]*?15[\s\S]*?14[\s\S]*?13[\s\S]*?12/);
+  assert.match(heroes, /"name": "Gadget"[\s\S]*?"damage": "magical"/);
+  assert.match(heroes, /"name": "Howitzer"[\s\S]*?"damage": "magical"/);
+  const staleWeaknessTags = new Set(["burst-vulnerable", "cc-vulnerable", "low-damage", "mana-dependent", "needs-matchup-review"]);
+  assert.deepEqual(
+    heroData.heroes.flatMap((hero) => hero.weaknesses.filter((tag) => staleWeaknessTags.has(tag))),
+    [],
+  );
   assert.match(heroes, /"name": "Scarlett"[\s\S]*?"roles": \[[\s\S]*?"offlane"[\s\S]*?"jungle"/);
   assert.match(heroes, /"name": "Swan Song"/);
   assert.match(heroes, /"name": "Scarlet Dawn"/);
@@ -172,6 +184,8 @@ test("keeps the kit data in a source-audited data folder", async () => {
   assert.match(itemAudit, /auditItemData/);
   assert.match(eternalAudit, /auditEternalData/);
   assert.match(page, /const counterRules = \[/);
+  assert.match(page, /punishes CC vulnerability/);
+  assert.match(page, /punishes healing vulnerability/);
   assert.match(page, /function hasSourceBackedKit/);
   assert.match(page, /verifiedEnemies/);
   assert.match(page, /sourceBackedKitHeroes/);
