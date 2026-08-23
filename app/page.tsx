@@ -13,6 +13,31 @@ type Advice = {
   tags: string[];
 };
 
+type EnemyRole = Role | "unknown";
+
+type EnemyPick = {
+  name: string;
+  role: EnemyRole;
+};
+
+const defaultEnemyPicks: EnemyPick[] = [
+  { role: "offlane", name: "" },
+  { role: "jungle", name: "" },
+  { role: "midlane", name: "" },
+  { role: "carry", name: "" },
+  { role: "support", name: "" },
+];
+
+const enemyRoleOptions: EnemyRole[] = ["unknown", ...roles];
+
+const roleMatchupWeights: Record<Role, Partial<Record<EnemyRole, number>>> = {
+  carry: { support: 1.35, jungle: 1.2, carry: 0.9, midlane: 0.75, offlane: 0.55, unknown: 0.45 },
+  support: { carry: 1.25, support: 1.2, jungle: 1.1, midlane: 0.8, offlane: 0.5, unknown: 0.45 },
+  midlane: { midlane: 1.25, jungle: 1.2, support: 0.8, carry: 0.75, offlane: 0.55, unknown: 0.45 },
+  jungle: { jungle: 1.1, midlane: 1.05, carry: 1.05, support: 1.0, offlane: 0.95, unknown: 0.75 },
+  offlane: { offlane: 1.35, jungle: 1.15, midlane: 0.75, support: 0.6, carry: 0.55, unknown: 0.45 },
+};
+
 const counterRules = [
   rule("dive", ["hard-cc", "peel", "anti-dive", "disengage"], "peels dive"),
   rule("mobility", ["hard-cc", "anti-dive"], "locks down mobility"),
@@ -48,17 +73,21 @@ function plan(title: string, threats: string[], items: string[], note: string) {
 }
 
 
-function analyze(enemyNames: string[]) {
-  const enemies = enemyNames
-    .map((name) => heroes.find((hero) => hero.name === name))
-    .filter(Boolean) as Hero[];
+function analyze(enemyPicks: EnemyPick[]) {
+  const enemies = enemyPicks
+    .filter((pick) => pick.name)
+    .map((pick) => {
+      const hero = heroes.find((item) => item.name === pick.name);
+      return hero ? { ...pick, hero } : undefined;
+    })
+    .filter(Boolean) as Array<EnemyPick & { hero: Hero }>;
 
   const counts = new Map<string, number>();
   const damage = { physical: 0, magical: 0, mixed: 0 };
 
-  enemies.forEach((enemy) => {
-    damage[enemy.damage] += 1;
-    [...enemy.threats, ...enemy.weaknesses].forEach((tag) => {
+  enemies.forEach(({ hero }) => {
+    damage[hero.damage] += 1;
+    [...hero.threats, ...hero.weaknesses].forEach((tag) => {
       counts.set(tag, (counts.get(tag) ?? 0) + 1);
     });
   });
@@ -73,8 +102,9 @@ function analyze(enemyNames: string[]) {
   };
 }
 
-function scoreHero(hero: Hero, enemyNames: string[], role: Role | "flex", lockedName: string) {
-  const comp = analyze(enemyNames);
+function scoreHero(hero: Hero, enemyPicks: EnemyPick[], role: Role | "flex", lockedName: string) {
+  const comp = analyze(enemyPicks);
+  const enemyNames = enemyPicks.map((pick) => pick.name).filter(Boolean);
   let score = 0;
   const reasons = new Set<string>();
   const tags = new Set<string>();
@@ -90,21 +120,47 @@ function scoreHero(hero: Hero, enemyNames: string[], role: Role | "flex", locked
     if (!threatCount) return;
     const matchingAnswers = counter.answers.filter((answer) => hero.answers.includes(answer) || hero.threats.includes(answer));
     if (matchingAnswers.length) {
-      score += threatCount * (matchingAnswers.length > 1 ? 18 : 12);
+      score += threatCount * (matchingAnswers.length > 1 ? 11 : 7);
       reasons.add(counter.reason);
       matchingAnswers.forEach((tag) => tags.add(tag));
     }
   });
 
-  comp.enemies.forEach((enemy) => {
+  comp.enemies.forEach(({ hero: enemyHero, role: enemyRole }) => {
     hero.threats.forEach((threat) => {
-      if (enemy.weaknesses.includes(threat)) {
-        score += 10;
-        reasons.add(`punishes ${enemy.name}`);
+      if (enemyHero.weaknesses.includes(threat)) {
+        score += 6;
+        reasons.add(`punishes ${enemyHero.name}`);
         tags.add(threat);
       }
     });
   });
+
+  if (role !== "flex") {
+    comp.enemies.forEach(({ hero: enemyHero, role: enemyRole }) => {
+      const matchupWeight = roleMatchupWeights[role][enemyRole] ?? 0;
+      if (!matchupWeight) return;
+
+      counterRules.forEach((counter) => {
+        const enemyTraits = [...enemyHero.threats, ...enemyHero.weaknesses];
+        if (!enemyTraits.includes(counter.threat)) return;
+
+        const matchingAnswers = counter.answers.filter((answer) => hero.answers.includes(answer) || hero.threats.includes(answer));
+        if (!matchingAnswers.length) return;
+
+        score += Math.round(matchupWeight * (matchingAnswers.length > 1 ? 10 : 7));
+        reasons.add(`${formatRole(enemyRole)} matchup answer`);
+        matchingAnswers.forEach((tag) => tags.add(tag));
+      });
+
+      hero.threats.forEach((threat) => {
+        if (!enemyHero.weaknesses.includes(threat)) return;
+        score += Math.round(matchupWeight * 7);
+        reasons.add(`${formatRole(enemyRole)} pressure`);
+        tags.add(threat);
+      });
+    });
+  }
 
   if (comp.damage.physical >= 3 && hero.answers.includes("frontline")) {
     score += 8;
@@ -124,8 +180,8 @@ function scoreHero(hero: Hero, enemyNames: string[], role: Role | "flex", locked
   };
 }
 
-function recommendBuild(enemyNames: string[], lockedHero?: Hero) {
-  const comp = analyze(enemyNames);
+function recommendBuild(enemyPicks: EnemyPick[], lockedHero?: Hero) {
+  const comp = analyze(enemyPicks);
   return buildPlans
     .map((build) => ({
       ...build,
@@ -141,15 +197,19 @@ function recommendBuild(enemyNames: string[], lockedHero?: Hero) {
     }));
 }
 
+function formatRole(role: EnemyRole) {
+  return role === "unknown" ? "enemy" : role;
+}
+
 export default function Home() {
   const [role, setRole] = useState<Role | "flex">("carry");
-  const [enemyPicks, setEnemyPicks] = useState<string[]>(["", "", "", "", ""]);
+  const [enemyPicks, setEnemyPicks] = useState<EnemyPick[]>(defaultEnemyPicks);
   const [lockedHero, setLockedHero] = useState("");
   const [search, setSearch] = useState("");
   const [showAudit, setShowAudit] = useState(false);
 
-  const enemyNames = enemyPicks.filter(Boolean);
-  const comp = useMemo(() => analyze(enemyNames), [enemyNames]);
+  const enemyNames = enemyPicks.map((pick) => pick.name).filter(Boolean);
+  const comp = useMemo(() => analyze(enemyPicks), [enemyPicks]);
   const locked = heroes.find((hero) => hero.name === lockedHero);
   const audit = useMemo(() => auditHeroData(), []);
   const crestAudit = useMemo(() => auditCrestData(), []);
@@ -158,15 +218,15 @@ export default function Home() {
   const recommendations = useMemo(
     () =>
       heroes
-        .map((hero) => scoreHero(hero, enemyNames, role, lockedHero))
+        .map((hero) => scoreHero(hero, enemyPicks, role, lockedHero))
         .filter((advice) => advice.score > 0 && advice.reasons.length)
         .sort((a, b) => b.score - a.score || a.name.localeCompare(b.name))
         .slice(0, 8),
-    [enemyNames, role, lockedHero],
+    [enemyPicks, role, lockedHero],
   );
 
-  const builds = useMemo(() => recommendBuild(enemyNames, locked), [enemyNames, locked]);
-  const availableHeroes = heroes.filter((hero) => !enemyPicks.includes(hero.name));
+  const builds = useMemo(() => recommendBuild(enemyPicks, locked), [enemyPicks, locked]);
+  const availableHeroes = heroes.filter((hero) => !enemyNames.includes(hero.name));
   const filteredHeroes = availableHeroes.filter((hero) => hero.name.toLowerCase().includes(search.toLowerCase()));
 
   return (
@@ -223,24 +283,41 @@ export default function Home() {
             <h2 className="mb-3 text-sm font-black uppercase tracking-[0.12em]">Enemy draft</h2>
             <div className="grid gap-2">
               {enemyPicks.map((pick, index) => (
-                <select
-                  key={index}
-                  value={pick}
-                  onChange={(event) => {
-                    const next = [...enemyPicks];
-                    next[index] = event.target.value;
-                    setEnemyPicks(next);
-                  }}
-                  className="h-11 rounded-md border border-[#2b29231a] bg-[#faf8f3] px-3 text-sm font-semibold"
-                  aria-label={`Enemy pick ${index + 1}`}
-                >
-                  <option value="">Enemy pick {index + 1}</option>
-                  {heroes.map((hero) => (
-                    <option key={hero.name} value={hero.name} disabled={enemyPicks.includes(hero.name) && pick !== hero.name}>
-                      {hero.name}
-                    </option>
-                  ))}
-                </select>
+                <div key={index} className="grid grid-cols-[0.86fr_1.14fr] gap-2">
+                  <select
+                    value={pick.role}
+                    onChange={(event) => {
+                      const next = [...enemyPicks];
+                      next[index] = { ...next[index], role: event.target.value as EnemyRole };
+                      setEnemyPicks(next);
+                    }}
+                    className="h-11 rounded-md border border-[#2b29231a] bg-[#faf8f3] px-2 text-xs font-black capitalize"
+                    aria-label={`Enemy pick ${index + 1} role`}
+                  >
+                    {enemyRoleOptions.map((enemyRole) => (
+                      <option key={enemyRole} value={enemyRole}>
+                        {formatRole(enemyRole)}
+                      </option>
+                    ))}
+                  </select>
+                  <select
+                    value={pick.name}
+                    onChange={(event) => {
+                      const next = [...enemyPicks];
+                      next[index] = { ...next[index], name: event.target.value };
+                      setEnemyPicks(next);
+                    }}
+                    className="h-11 rounded-md border border-[#2b29231a] bg-[#faf8f3] px-3 text-sm font-semibold"
+                    aria-label={`Enemy pick ${index + 1}`}
+                  >
+                    <option value="">Enemy pick {index + 1}</option>
+                    {heroes.map((hero) => (
+                      <option key={hero.name} value={hero.name} disabled={enemyNames.includes(hero.name) && pick.name !== hero.name}>
+                        {hero.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               ))}
             </div>
           </section>
@@ -336,7 +413,7 @@ export default function Home() {
                   className="h-9 w-36 rounded-md border border-[#2b29231a] bg-white px-3 text-sm"
                 />
               </div>
-              {(search ? filteredHeroes.map((hero) => scoreHero(hero, enemyNames, role, lockedHero)).filter((advice) => advice.score > -50) : recommendations).map((advice) => (
+              {(search ? filteredHeroes.map((hero) => scoreHero(hero, enemyPicks, role, lockedHero)).filter((advice) => advice.score > -50) : recommendations).map((advice) => (
                 <Recommendation key={advice.name} advice={advice} />
               ))}
               {!recommendations.length && <EmptyState text="Add at least one enemy pick to get kit-based counter recommendations." />}
