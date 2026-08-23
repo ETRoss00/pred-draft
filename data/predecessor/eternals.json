@@ -23,6 +23,11 @@
       "label": "Dreadnought tank Eternals manual entry",
       "url": null,
       "use": "User-provided in-game text covering Dreadnought tank Eternal traits and Minor Blessing options."
+    },
+    "primarch-fighter-eternals-manual-entry-2026-08-22": {
+      "label": "Primarch fighter Eternals manual entry",
+      "url": null,
+      "use": "User-provided in-game text covering Primarch fighter Eternal traits and Minor Blessing options."
     }
   },
   "validEternalCategories": [
@@ -1845,6 +1850,346 @@
       "verification": {
         "status": "source-backed",
         "notes": "Fully encoded from user-provided Dreadnought tank Eternal manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "nihil",
+      "name": "Nihil",
+      "category": "primarch",
+      "role": "fighter",
+      "mainTrait": {
+        "name": "Nihil",
+        "description": "Damage a Hero to gain Doom for 3s. Doom grants 1 Physical Power, 2 Magical Power, 1 Physical Armor and 1 Magical Armor every 3s Doom persists. Stats gain 20% more effectiveness per Level and Takedown.",
+        "scaling": {
+          "doomDuration": 3,
+          "statTickInterval": 3,
+          "physicalPowerPerTick": 1,
+          "magicalPowerPerTick": 2,
+          "physicalArmorPerTick": 1,
+          "magicalArmorPerTick": 1,
+          "effectivenessPerLevelAndTakedown": 20
+        },
+        "effects": [
+          "hero-damage",
+          "stat-growth",
+          "physical-power",
+          "magical-power",
+          "physical-armor",
+          "magical-armor"
+        ],
+        "tags": [
+          "scaling",
+          "hybrid-stats",
+          "bruiser"
+        ]
+      },
+      "minorBlessing1": [
+        {
+          "id": "nihil-growing-threat",
+          "name": "Growing Threat",
+          "description": "At 18 Minutes, gain +12% Damage and +5% Omnivamp.",
+          "scaling": {
+            "triggerMinute": 18,
+            "damageIncrease": 12,
+            "omnivamp": 5
+          },
+          "effects": [
+            "time-threshold",
+            "damage-amplification",
+            "omnivamp"
+          ],
+          "tags": [
+            "scaling",
+            "sustain",
+            "power-spike"
+          ]
+        },
+        {
+          "id": "nihil-from-the-abyss",
+          "name": "From the Abyss",
+          "description": "Restore 0.2/0.4/0.7/1.0% Max Health per Second while in Hero Combat or Out of Vision.",
+          "scaling": {
+            "maxHealthRegenMin": 0.2,
+            "maxHealthRegenMax": 1
+          },
+          "effects": [
+            "hero-combat",
+            "out-of-vision",
+            "max-health-regeneration"
+          ],
+          "tags": [
+            "sustain",
+            "skirmish",
+            "roaming"
+          ]
+        },
+        {
+          "id": "nihil-mana-siphon",
+          "name": "Mana Siphon",
+          "description": "Ability hits on Enemy Heroes steal 10 (+1% Target's Max Mana).",
+          "scaling": {
+            "manaSteal": 10,
+            "targetMaxManaRatio": 0.01
+          },
+          "effects": [
+            "ability-hit",
+            "hero-hit",
+            "mana-steal",
+            "target-max-mana-scaling"
+          ],
+          "tags": [
+            "mana-pressure",
+            "ability-fighter",
+            "anti-caster"
+          ]
+        }
+      ],
+      "minorBlessing2": [
+        {
+          "id": "nihil-adaptive-plating",
+          "name": "Adaptive Plating",
+          "description": "Taking Physical Damage or Magical Damage grants +1% Armor of that type. Max 8 Stacks per type. Stacks reset out of Hero Combat.",
+          "scaling": {
+            "armorIncreasePerStack": 1,
+            "maxStacksPerType": 8
+          },
+          "effects": [
+            "physical-damage-taken",
+            "magical-damage-taken",
+            "armor-stacking",
+            "hero-combat"
+          ],
+          "tags": [
+            "durability",
+            "adaptive-defense",
+            "frontline"
+          ]
+        },
+        {
+          "id": "nihil-inescapable",
+          "name": "Inescapable",
+          "description": "Enemy Heroes within 800 Units that Dash, Leap, or Blink are Slowed by 20% for 2s.",
+          "scaling": {
+            "range": 800,
+            "slow": 20,
+            "duration": 2
+          },
+          "effects": [
+            "nearby-enemy-heroes",
+            "dash-counter",
+            "leap-counter",
+            "blink-counter",
+            "slow"
+          ],
+          "tags": [
+            "anti-mobility",
+            "peel",
+            "stickiness"
+          ]
+        },
+        {
+          "id": "nihil-terror",
+          "name": "Terror",
+          "description": "Gain +35% Damage Reduction vs. Minions and Monsters, and +20% vs. Towers.",
+          "scaling": {
+            "minionMonsterDamageReduction": 35,
+            "towerDamageReduction": 20
+          },
+          "effects": [
+            "minion-damage-reduction",
+            "monster-damage-reduction",
+            "tower-damage-reduction"
+          ],
+          "tags": [
+            "objective-pressure",
+            "jungle",
+            "dive"
+          ]
+        }
+      ],
+      "tags": [
+        "fighter",
+        "scaling",
+        "hybrid-stats",
+        "sustain",
+        "anti-mobility"
+      ],
+      "answers": [
+        "skirmish",
+        "mobility",
+        "objectives",
+        "frontline"
+      ],
+      "sourceRef": "primarch-fighter-eternals-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided Primarch fighter Eternal manual entry on 2026-08-22."
+      }
+    },
+    {
+      "id": "thraex",
+      "name": "Thraex",
+      "category": "primarch",
+      "role": "fighter",
+      "mainTrait": {
+        "name": "Thraex",
+        "description": "Basic Attacks Mark an Enemy Hero for 3s. You deal +3% (+0.4% per level) Damage to them and take 1.5% (+0.35% per level) less Damage from them.",
+        "scaling": {
+          "markDuration": 3,
+          "damageIncrease": 3,
+          "damageIncreasePerLevel": 0.4,
+          "damageReduction": 1.5,
+          "damageReductionPerLevel": 0.35
+        },
+        "effects": [
+          "basic-attack",
+          "hero-mark",
+          "damage-amplification",
+          "damage-reduction",
+          "level-scaling"
+        ],
+        "tags": [
+          "dueling",
+          "basic-attack",
+          "mark"
+        ]
+      },
+      "minorBlessing1": [
+        {
+          "id": "thraex-alphas-court",
+          "name": "Alpha's Court",
+          "description": "Deal +6% Damage when no Allied Hero is within 800 Units.",
+          "scaling": {
+            "damageIncrease": 6,
+            "allyRange": 800
+          },
+          "effects": [
+            "isolation",
+            "damage-amplification"
+          ],
+          "tags": [
+            "dueling",
+            "split-push",
+            "isolation"
+          ]
+        },
+        {
+          "id": "thraex-savage-strikes",
+          "name": "Savage Strikes",
+          "description": "Deal 2 (+0.4 per Level) Physical Damage On-Hit. Attacking an Enemy Hero increases this by 100% for 3s. Max 3 Stacks. Heals for the Damage dealt.",
+          "scaling": {
+            "damage": 2,
+            "damagePerLevel": 0.4,
+            "heroHitIncrease": 100,
+            "duration": 3,
+            "maxStacks": 3
+          },
+          "effects": [
+            "on-hit",
+            "physical-damage",
+            "hero-hit",
+            "stacking",
+            "healing"
+          ],
+          "tags": [
+            "on-hit",
+            "dueling",
+            "sustain"
+          ]
+        },
+        {
+          "id": "thraex-the-king",
+          "name": "The King",
+          "description": "Basic Attacks on Enemy Heroes grant 6 Gold.",
+          "scaling": {
+            "gold": 6
+          },
+          "effects": [
+            "basic-attack",
+            "hero-hit",
+            "bonus-gold"
+          ],
+          "tags": [
+            "economy",
+            "basic-attack",
+            "lane-pressure"
+          ]
+        }
+      ],
+      "minorBlessing2": [
+        {
+          "id": "thraex-ferocity",
+          "name": "Ferocity",
+          "description": "Gain +1% Total Attack Speed per Second in Hero Combat. Stacks infinitely and resets when Out of Combat.",
+          "scaling": {
+            "totalAttackSpeedPerSecond": 1
+          },
+          "effects": [
+            "hero-combat",
+            "attack-speed",
+            "infinite-stacking"
+          ],
+          "tags": [
+            "attack-speed",
+            "extended-fights",
+            "dueling"
+          ]
+        },
+        {
+          "id": "thraex-rallying-roar",
+          "name": "Rallying Roar",
+          "description": "Gain +10 Ultimate Haste. Casting your Ultimate grants you and Allies within 1500 Units +25% Movement Speed for 4s.",
+          "scaling": {
+            "ultimateHaste": 10,
+            "allyRange": 1500,
+            "movementSpeed": 25,
+            "duration": 4
+          },
+          "effects": [
+            "ultimate-haste",
+            "ultimate-cast",
+            "ally-movement-speed"
+          ],
+          "tags": [
+            "teamfight",
+            "engage",
+            "ultimate-synergy"
+          ]
+        },
+        {
+          "id": "thraex-golden-mane",
+          "name": "Golden Mane",
+          "description": "Take 8% less Damage from Non-AoE Attacks.",
+          "scaling": {
+            "damageReduction": 8
+          },
+          "effects": [
+            "non-aoe-damage-reduction"
+          ],
+          "tags": [
+            "dueling",
+            "anti-basic-attack",
+            "survivability"
+          ]
+        }
+      ],
+      "tags": [
+        "fighter",
+        "dueling",
+        "basic-attack",
+        "sustain",
+        "teamfight"
+      ],
+      "answers": [
+        "split-push",
+        "extended-fights",
+        "basic-attackers",
+        "engage"
+      ],
+      "sourceRef": "primarch-fighter-eternals-manual-entry-2026-08-22",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Fully encoded from user-provided Primarch fighter Eternal manual entry on 2026-08-22."
       }
     }
   ]
