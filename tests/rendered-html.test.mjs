@@ -224,10 +224,13 @@ test("keeps the kit data in a source-audited data folder", async () => {
   assert.match(page, /scoreAugment/);
   assert.match(page, /augmentTextSignals/);
   assert.match(page, /roleMatchupWeights\[role\]\[enemyRole\]/);
-  assert.match(page, /needs full augment text for matchup weighting/);
+  assert.match(page, /formatAugmentCategory/);
+  assert.match(page, /isPlaceholderAugmentDescription/);
+  assert.match(page, /hero-specific option/);
+  assert.doesNotMatch(page, /needs full augment text for matchup weighting/);
   assert.match(page, /Actual augment options/);
   assert.match(page, /lockedHero\.augments/);
-  assert.match(page, /augment\.description/);
+  assert.match(page, /!isPlaceholderAugmentDescription\(augment\.description\)/);
   assert.match(layout, /kit-based draft assistant/i);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
 });

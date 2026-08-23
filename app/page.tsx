@@ -296,10 +296,8 @@ function scoreAugment(augment: HeroAugment, comp: ReturnType<typeof analyze>, lo
     reasons.add(`${lockedHero.name} kit synergy`);
   }
 
-  if (score === 0 && augment.tags.includes("kit-modifier")) {
-    score = 1;
-    reasons.add("needs full augment text for matchup weighting");
-  } else if (score === 0) {
+  if (score === 0) {
+    score = augment.tags.includes("kit-modifier") ? 1 : 0;
     reasons.add("hero-specific option");
   }
 
@@ -322,8 +320,16 @@ function inferAugmentTags(augment: HeroAugment) {
     signal.tags.forEach((tag) => tags.add(tag));
   });
 
-  if (!tags.size) augment.tags.forEach((tag) => tags.add(tag));
+  if (!tags.size) tags.add("hero-specific");
   return [...tags];
+}
+
+function formatAugmentCategory(category: string) {
+  return category === "kit-modifier" ? "" : category.replaceAll("-", " ");
+}
+
+function isPlaceholderAugmentDescription(description: string) {
+  return /^User-verified text entry for .+ augment\.$/.test(description);
 }
 
 function formatRole(role: EnemyRole) {
@@ -569,32 +575,37 @@ export default function Home() {
               <div className="space-y-2">
                 <h3 className="text-xs font-black uppercase tracking-[0.12em] text-[#665f52]">Actual augment options</h3>
                 {augmentOptions.length ? (
-                  augmentOptions.map((augment) => (
-                    <article key={augment.name} className="rounded-lg border border-[#2b29231a] bg-white p-4 shadow-sm">
-                      <div className="flex items-start justify-between gap-3">
-                        <div>
-                          <h4 className="text-lg font-black">{augment.name}</h4>
-                          <p className="mt-1 text-xs font-black uppercase tracking-[0.12em] text-[#8a3524]">{augment.category.replaceAll("-", " ")}</p>
+                  augmentOptions.map((augment) => {
+                    const category = formatAugmentCategory(augment.category);
+                    const showDescription = !isPlaceholderAugmentDescription(augment.description);
+
+                    return (
+                      <article key={augment.name} className="rounded-lg border border-[#2b29231a] bg-white p-4 shadow-sm">
+                        <div className="flex items-start justify-between gap-3">
+                          <div>
+                            <h4 className="text-lg font-black">{augment.name}</h4>
+                            {category && <p className="mt-1 text-xs font-black uppercase tracking-[0.12em] text-[#8a3524]">{category}</p>}
+                          </div>
+                          <span className="rounded-md bg-[#191712] px-2 py-1 text-xs font-black text-white">fit {augment.score}</span>
                         </div>
-                        <span className="rounded-md bg-[#191712] px-2 py-1 text-xs font-black text-white">fit {augment.score}</span>
-                      </div>
-                      <p className="mt-3 text-sm text-[#665f52]">{augment.description}</p>
-                      <div className="mt-3 flex flex-wrap gap-2">
-                        {augment.reasons.map((reason) => (
-                          <span key={reason} className="rounded-md bg-[#e9f0dd] px-2 py-1 text-xs font-black text-[#273713]">
-                            {reason}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="mt-2 flex flex-wrap gap-2">
-                        {augment.tags.map((tag) => (
-                          <span key={tag} className="rounded-md bg-[#f4e0d9] px-2 py-1 text-[11px] font-bold text-[#8a3524]">
-                            {tag.replaceAll("-", " ")}
-                          </span>
-                        ))}
-                      </div>
-                    </article>
-                  ))
+                        {showDescription && <p className="mt-3 text-sm text-[#665f52]">{augment.description}</p>}
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          {augment.reasons.map((reason) => (
+                            <span key={reason} className="rounded-md bg-[#e9f0dd] px-2 py-1 text-xs font-black text-[#273713]">
+                              {reason}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          {augment.tags.map((tag) => (
+                            <span key={tag} className="rounded-md bg-[#f4e0d9] px-2 py-1 text-[11px] font-bold text-[#8a3524]">
+                              {tag.replaceAll("-", " ")}
+                            </span>
+                          ))}
+                        </div>
+                      </article>
+                    );
+                  })
                 ) : (
                   <EmptyState text={`${locked?.name ?? "This hero"} needs verified augment data before the app can show actual augment choices.`} />
                 )}
