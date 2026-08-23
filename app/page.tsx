@@ -1,10 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { auditHeroData, heroes, predecessorHeroData, roles, type Hero, type HeroAugment, type Role } from "@/data/predecessor/audit";
-import { auditCrestData } from "@/data/predecessor/crests";
-import { auditEternalData } from "@/data/predecessor/eternals";
-import { auditItemData, items, type Item, type ItemRole } from "@/data/predecessor/items";
+import { heroes, roles, type Hero, type HeroAugment, type Role } from "@/data/predecessor/audit";
+import { eternals, type Eternal, type EternalBlessing, type EternalRole } from "@/data/predecessor/eternals";
+import { items, type Item, type ItemRole } from "@/data/predecessor/items";
 
 type Advice = {
   name: string;
@@ -30,6 +29,13 @@ type AugmentAdvice = {
   tags: string[];
 };
 
+type EternalAdvice = {
+  eternal: Eternal;
+  score: number;
+  reasons: string[];
+  tags: string[];
+};
+
 type BuildPhase = "early" | "mid" | "late";
 
 type BuildSlot = {
@@ -48,14 +54,12 @@ type BuildItemAdvice = {
 };
 
 const defaultEnemyPicks: EnemyPick[] = [
-  { role: "offlane", name: "" },
-  { role: "jungle", name: "" },
-  { role: "midlane", name: "" },
-  { role: "carry", name: "" },
-  { role: "support", name: "" },
+  { role: "unknown", name: "" },
+  { role: "unknown", name: "" },
+  { role: "unknown", name: "" },
+  { role: "unknown", name: "" },
+  { role: "unknown", name: "" },
 ];
-
-const enemyRoleOptions: EnemyRole[] = ["unknown", ...roles];
 
 const roleMatchupWeights: Record<Role, Partial<Record<EnemyRole, number>>> = {
   carry: { support: 1.35, jungle: 1.2, carry: 0.9, midlane: 0.75, offlane: 0.55, unknown: 0.45 },
@@ -131,7 +135,21 @@ const itemRoleByClass: Record<string, ItemRole> = {
   assassin: "assassin",
 };
 
+const eternalRoleByClass: Record<string, EternalRole> = {
+  carry: "carry",
+  support: "support",
+  mage: "mage",
+  tank: "tank",
+  fighter: "fighter",
+  assassin: "assassin",
+};
+
 const laneFallbackItemRole: Partial<Record<Role, ItemRole>> = {
+  carry: "carry",
+  support: "support",
+};
+
+const laneFallbackEternalRole: Partial<Record<Role, EternalRole>> = {
   carry: "carry",
   support: "support",
 };
@@ -478,6 +496,70 @@ function collectItemTags(item: Item) {
   return [...new Set([item.purpose.toLowerCase().replaceAll(" ", "-"), ...item.tags, ...item.answers, ...item.passives.flatMap((passive) => passive.effects), ...(item.restrictions?.flatMap((restriction) => restriction.effects) ?? [])])];
 }
 
+function recommendEternals(enemyPicks: EnemyPick[], lockedHero?: Hero, role: Role | "flex" = "flex"): EternalAdvice[] {
+  if (!hasSourceBackedKit(lockedHero)) return [];
+
+  const comp = analyze(enemyPicks);
+  const preferredRoles = inferPreferredEternalRoles(lockedHero, role);
+
+  return eternals
+    .filter((eternal) => eternal.verification.status === "source-backed")
+    .map((eternal) => scoreEternal(eternal, comp, lockedHero, preferredRoles))
+    .sort((a, b) => b.score - a.score || a.eternal.name.localeCompare(b.eternal.name))
+    .slice(0, 6);
+}
+
+function scoreEternal(eternal: Eternal, comp: ReturnType<typeof analyze>, lockedHero: Hero, preferredRoles: Set<EternalRole>): EternalAdvice {
+  let score = preferredRoles.has(eternal.role) ? 22 : 0;
+  const reasons = new Set<string>();
+  const tags = collectEternalTags(eternal);
+
+  if (preferredRoles.has(eternal.role)) reasons.add(`${eternal.role} Eternal fit`);
+
+  buildThreatAnswers.forEach((counter) => {
+    const threatCount = comp.counts.get(counter.threat) ?? 0;
+    if (!threatCount || !counter.tags.some((tag) => tags.includes(tag))) return;
+    score += threatCount * 7;
+    reasons.add(counter.reason);
+  });
+
+  const kitMatches = tags.filter((tag) => lockedHero.threats.includes(tag) || lockedHero.answers.includes(tag));
+  if (kitMatches.length) {
+    score += Math.min(kitMatches.length * 4, 12);
+    reasons.add(`${lockedHero.name} kit synergy`);
+  }
+
+  if (!reasons.size) reasons.add("general matchup fit");
+
+  return {
+    eternal,
+    score,
+    reasons: [...reasons].slice(0, 3),
+    tags: tags.slice(0, 5),
+  };
+}
+
+function inferPreferredEternalRoles(hero: Hero, role: Role | "flex") {
+  const preferred = new Set<EternalRole>();
+
+  hero.classes?.forEach((className) => {
+    const eternalRole = eternalRoleByClass[className.toLowerCase()];
+    if (eternalRole) preferred.add(eternalRole);
+  });
+
+  if (role !== "flex") {
+    const laneRole = laneFallbackEternalRole[role];
+    if (laneRole) preferred.add(laneRole);
+  }
+
+  return preferred;
+}
+
+function collectEternalTags(eternal: Eternal) {
+  const blessingTags = [...eternal.minorBlessing1, ...eternal.minorBlessing2].flatMap((blessing) => [...blessing.tags, ...blessing.effects]);
+  return [...new Set([eternal.category, eternal.role, ...eternal.tags, ...eternal.answers, ...eternal.mainTrait.tags, ...eternal.mainTrait.effects, ...blessingTags])];
+}
+
 function recommendAugments(enemyPicks: EnemyPick[], lockedHero?: Hero, role: Role | "flex" = "flex"): AugmentAdvice[] {
   if (!lockedHero?.augments?.length || lockedHero.verification.augmentStatus !== "source-backed") return [];
 
@@ -580,19 +662,18 @@ function formatBuildPurpose(purpose: BuildSlot["purpose"]) {
 }
 
 export default function Home() {
-  const [role, setRole] = useState<Role | "flex">("carry");
+  const [role, setRole] = useState<Role>("carry");
   const [enemyPicks, setEnemyPicks] = useState<EnemyPick[]>(defaultEnemyPicks);
   const [lockedHero, setLockedHero] = useState("");
   const [search, setSearch] = useState("");
-  const [showAudit, setShowAudit] = useState(false);
+  const [selectedAugmentName, setSelectedAugmentName] = useState("");
+  const [selectedEternalId, setSelectedEternalId] = useState("");
+  const [selectedMinorBlessing1Id, setSelectedMinorBlessing1Id] = useState("");
+  const [selectedMinorBlessing2Id, setSelectedMinorBlessing2Id] = useState("");
 
   const enemyNames = enemyPicks.map((pick) => pick.name).filter(Boolean);
   const comp = useMemo(() => analyze(enemyPicks), [enemyPicks]);
   const locked = heroes.find((hero) => hero.name === lockedHero);
-  const audit = useMemo(() => auditHeroData(), []);
-  const crestAudit = useMemo(() => auditCrestData(), []);
-  const itemAudit = useMemo(() => auditItemData(), []);
-  const eternalAudit = useMemo(() => auditEternalData(), []);
   const sourceBackedKitHeroes = useMemo(() => heroes.filter(hasSourceBackedKit), []);
 
   const recommendations = useMemo(
@@ -606,13 +687,23 @@ export default function Home() {
   );
 
   const augmentOptions = useMemo(() => recommendAugments(enemyPicks, locked, role), [enemyPicks, locked, role]);
-  const builds = useMemo(() => recommendBuild(enemyPicks, locked, role, augmentOptions[0]), [enemyPicks, locked, role, augmentOptions]);
+  const selectedAugment = augmentOptions.find((augment) => augment.name === selectedAugmentName);
+  const eternalOptions = useMemo(() => recommendEternals(enemyPicks, locked, role), [enemyPicks, locked, role]);
+  const selectedEternalAdvice = eternalOptions.find((advice) => advice.eternal.id === selectedEternalId);
+  const selectedEternal = selectedEternalAdvice?.eternal;
+  const selectedMinorBlessing1 = selectedEternal?.minorBlessing1.find((blessing) => blessing.id === selectedMinorBlessing1Id);
+  const selectedMinorBlessing2 = selectedEternal?.minorBlessing2.find((blessing) => blessing.id === selectedMinorBlessing2Id);
+  const buildReady = Boolean(locked && selectedAugment && selectedEternal && selectedMinorBlessing1 && selectedMinorBlessing2);
+  const builds = useMemo(
+    () => (buildReady ? recommendBuild(enemyPicks, locked, role, selectedAugment) : []),
+    [buildReady, enemyPicks, locked, role, selectedAugment],
+  );
   const availableHeroes = heroes.filter((hero) => !enemyNames.includes(hero.name));
   const filteredHeroes = availableHeroes.filter((hero) => hero.name.toLowerCase().includes(search.toLowerCase()));
 
   return (
     <main className="min-h-screen bg-[#f7f4ee] text-[#191712]">
-      <section className="mx-auto flex min-h-screen w-full max-w-md flex-col">
+      <section className="mx-auto flex min-h-screen w-full max-w-5xl flex-col">
         <header className="sticky top-0 z-20 border-b border-[#2b29231a] bg-[#f7f4ee]/95 px-4 py-4 backdrop-blur">
           <div className="flex items-center justify-between gap-3">
             <div>
@@ -627,271 +718,254 @@ export default function Home() {
         </header>
 
         <div className="flex-1 space-y-5 px-4 py-5">
-          <section className="rounded-lg border border-[#2b29231a] bg-white p-3 shadow-sm">
-            <div className="mb-3 flex items-center justify-between">
-              <h2 className="text-sm font-black uppercase tracking-[0.12em]">Your lane</h2>
-              <button
-                className="rounded-md border border-[#191712] px-3 py-1 text-xs font-bold"
-                onClick={() => setRole(role === "flex" ? "carry" : "flex")}
-              >
-                {role === "flex" ? "Role locked" : "Flex mode"}
-              </button>
-            </div>
-            <div className="grid grid-cols-3 gap-2">
-              {roles.map((item) => (
-                <button
-                  key={item}
-                  onClick={() => setRole(item)}
-                  className={`rounded-md border px-2 py-2 text-sm font-bold capitalize ${
-                    role === item ? "border-[#8a3524] bg-[#8a3524] text-white" : "border-[#2b29231a] bg-[#faf8f3]"
-                  }`}
+          <div className="grid gap-5 lg:grid-cols-2">
+            <div className="space-y-5">
+              <section className="rounded-lg border border-[#2b29231a] bg-white p-3 shadow-sm">
+                <label className="mb-2 block text-sm font-black uppercase tracking-[0.12em]" htmlFor="my-role">
+                  My role
+                </label>
+                <select
+                  id="my-role"
+                  value={role}
+                  onChange={(event) => setRole(event.target.value as Role)}
+                  className="h-11 w-full rounded-md border border-[#2b29231a] bg-[#faf8f3] px-3 text-sm font-semibold capitalize"
                 >
-                  {item}
-                </button>
-              ))}
-              <button
-                onClick={() => setRole("flex")}
-                className={`rounded-md border px-2 py-2 text-sm font-bold ${
-                  role === "flex" ? "border-[#8a3524] bg-[#8a3524] text-white" : "border-[#2b29231a] bg-[#faf8f3]"
-                }`}
-              >
-                Flex
-              </button>
-            </div>
-          </section>
-
-          <section className="rounded-lg border border-[#2b29231a] bg-white p-3 shadow-sm">
-            <h2 className="mb-3 text-sm font-black uppercase tracking-[0.12em]">Enemy draft</h2>
-            <div className="grid gap-2">
-              {enemyPicks.map((pick, index) => (
-                <div key={index} className="grid grid-cols-[0.86fr_1.14fr] gap-2">
-                  <select
-                    value={pick.role}
-                    onChange={(event) => {
-                      const next = [...enemyPicks];
-                      next[index] = { ...next[index], role: event.target.value as EnemyRole };
-                      setEnemyPicks(next);
-                    }}
-                    className="h-11 rounded-md border border-[#2b29231a] bg-[#faf8f3] px-2 text-xs font-black capitalize"
-                    aria-label={`Enemy pick ${index + 1} role`}
-                  >
-                    {enemyRoleOptions.map((enemyRole) => (
-                      <option key={enemyRole} value={enemyRole}>
-                        {formatRole(enemyRole)}
-                      </option>
-                    ))}
-                  </select>
-                  <select
-                    value={pick.name}
-                    onChange={(event) => {
-                      const next = [...enemyPicks];
-                      next[index] = { ...next[index], name: event.target.value };
-                      setEnemyPicks(next);
-                    }}
-                    className="h-11 rounded-md border border-[#2b29231a] bg-[#faf8f3] px-3 text-sm font-semibold"
-                    aria-label={`Enemy pick ${index + 1}`}
-                  >
-                    <option value="">Enemy pick {index + 1}</option>
-                    {heroes.map((hero) => (
-                      <option key={hero.name} value={hero.name} disabled={enemyNames.includes(hero.name) && pick.name !== hero.name}>
-                        {hero.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className="rounded-lg border border-[#2b29231a] bg-white p-3 shadow-sm">
-            <label className="mb-2 block text-sm font-black uppercase tracking-[0.12em]" htmlFor="locked-hero">
-              I already picked
-            </label>
-            <select
-              id="locked-hero"
-              value={lockedHero}
-              onChange={(event) => setLockedHero(event.target.value)}
-              className="h-11 w-full rounded-md border border-[#2b29231a] bg-[#faf8f3] px-3 text-sm font-semibold"
-            >
-              <option value="">No locked hero</option>
-              {availableHeroes.map((hero) => (
-                <option key={hero.name} value={hero.name}>
-                  {hero.name} ({hero.roles.join("/")})
-                </option>
-              ))}
-            </select>
-          </section>
-
-          <section className="rounded-lg border border-[#2b29231a] bg-[#191712] p-3 text-white shadow-sm">
-            <div className="mb-3 flex items-center justify-between">
-              <h2 className="text-sm font-black uppercase tracking-[0.12em]">Enemy read</h2>
-              <span className="rounded-md bg-white/10 px-2 py-1 text-xs font-bold">{comp.verifiedEnemies.length ? "Live" : "Waiting"}</span>
-            </div>
-            {comp.topTraits.length ? (
-              <div className="flex flex-wrap gap-2">
-                {comp.topTraits.map(([trait, count]) => (
-                  <span key={trait} className="rounded-md bg-[#f1d08a] px-2 py-1 text-xs font-black text-[#191712]">
-                    {trait.replaceAll("-", " ")} x{count}
-                  </span>
-                ))}
-              </div>
-            ) : (
-              <p className="text-sm text-[#e9dfcf]">Add text-sourced enemy kits to reveal draft pressure.</p>
-            )}
-            {comp.unverifiedEnemies.length > 0 && (
-              <p className="mt-3 rounded-md bg-white/10 px-3 py-2 text-xs font-bold text-[#f4dfb0]">
-                {comp.unverifiedEnemies.length} selected enemy {comp.unverifiedEnemies.length === 1 ? "kit is" : "kits are"} quarantined until text-sourced.
-              </p>
-            )}
-          </section>
-
-          <section className="rounded-lg border border-[#2b29231a] bg-white p-3 shadow-sm">
-            <div className="flex items-center justify-between gap-3">
-              <div>
-                <h2 className="text-sm font-black uppercase tracking-[0.12em]">Data audit</h2>
-                <p className="mt-1 text-sm font-semibold text-[#665f52]">
-                  {audit.heroCount} heroes / {audit.fullyVerifiedHeroes} fully verified / {audit.errors.length} errors
-                </p>
-                <p className="mt-1 text-xs font-bold text-[#665f52]">
-                  {sourceBackedKitHeroes.length} heroes available for verified kit recommendations / {audit.prototypeKits} prototype kits quarantined
-                </p>
-                <p className="mt-1 text-xs font-bold text-[#665f52]">
-                  {crestAudit.crestCount} crests / {crestAudit.sourceBackedCrests} source-backed / {crestAudit.errors.length} crest errors
-                </p>
-                <p className="mt-1 text-xs font-bold text-[#665f52]">
-                  {itemAudit.itemCount} items / {itemAudit.sourceBackedItems} source-backed / {itemAudit.errors.length} item errors
-                </p>
-                <p className="mt-1 text-xs font-bold text-[#665f52]">
-                  {eternalAudit.eternalCount} Eternals / {eternalAudit.sourceBackedEternals} source-backed / {eternalAudit.errors.length} Eternal errors
-                </p>
-              </div>
-              <button
-                className="rounded-md border border-[#191712] px-3 py-2 text-xs font-bold"
-                onClick={() => setShowAudit((value) => !value)}
-              >
-                {showAudit ? "Hide" : "Review"}
-              </button>
-            </div>
-            {showAudit && (
-              <div className="mt-3 space-y-3">
-                <div className="grid grid-cols-2 gap-2">
                   {roles.map((item) => (
-                    <p key={item} className="rounded-md bg-[#faf8f3] px-3 py-2 text-xs font-black capitalize text-[#191712]">
-                      {item}: {audit.roleCoverage[item]}
-                    </p>
+                    <option key={item} value={item}>
+                      {item}
+                    </option>
+                  ))}
+                </select>
+              </section>
+
+              <section className="rounded-lg border border-[#2b29231a] bg-white p-3 shadow-sm">
+                <label className="mb-2 block text-sm font-black uppercase tracking-[0.12em]" htmlFor="locked-hero">
+                  My hero
+                </label>
+                <select
+                  id="locked-hero"
+                  value={lockedHero}
+                  onChange={(event) => {
+                    setLockedHero(event.target.value);
+                    setSelectedAugmentName("");
+                    setSelectedEternalId("");
+                    setSelectedMinorBlessing1Id("");
+                    setSelectedMinorBlessing2Id("");
+                  }}
+                  className="h-11 w-full rounded-md border border-[#2b29231a] bg-[#faf8f3] px-3 text-sm font-semibold"
+                >
+                  <option value="">Choose during draft</option>
+                  {availableHeroes.map((hero) => (
+                    <option key={hero.name} value={hero.name}>
+                      {hero.name} ({hero.roles.join("/")})
+                    </option>
+                  ))}
+                </select>
+              </section>
+
+              {!lockedHero && (
+                <section className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-sm font-black uppercase tracking-[0.12em]">Counter picks</h2>
+                    <input
+                      value={search}
+                      onChange={(event) => setSearch(event.target.value)}
+                      placeholder="Filter heroes"
+                      className="h-9 w-36 rounded-md border border-[#2b29231a] bg-white px-3 text-sm"
+                    />
+                  </div>
+                  {(search
+                    ? filteredHeroes
+                        .filter(hasSourceBackedKit)
+                        .map((hero) => scoreHero(hero, enemyPicks, role, lockedHero))
+                        .filter((advice) => advice.score > -50)
+                    : recommendations
+                  ).map((advice) => (
+                    <Recommendation key={advice.name} advice={advice} />
+                  ))}
+                  {!recommendations.length && <EmptyState text="Add at least one enemy pick with text-sourced kit data to get verified counter recommendations." />}
+                </section>
+              )}
+            </div>
+
+            <div className="space-y-5">
+              <section className="rounded-lg border border-[#2b29231a] bg-[#191712] p-3 text-white shadow-sm">
+                <div className="mb-3 flex items-center justify-between">
+                  <h2 className="text-sm font-black uppercase tracking-[0.12em]">Enemy read</h2>
+                  <span className="rounded-md bg-white/10 px-2 py-1 text-xs font-bold">{comp.verifiedEnemies.length ? "Live" : "Waiting"}</span>
+                </div>
+                {comp.topTraits.length ? (
+                  <div className="flex flex-wrap gap-2">
+                    {comp.topTraits.map(([trait, count]) => (
+                      <span key={trait} className="rounded-md bg-[#f1d08a] px-2 py-1 text-xs font-black text-[#191712]">
+                        {trait.replaceAll("-", " ")} x{count}
+                      </span>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-sm text-[#e9dfcf]">Add text-sourced enemy kits to reveal draft pressure.</p>
+                )}
+                {comp.unverifiedEnemies.length > 0 && (
+                  <p className="mt-3 rounded-md bg-white/10 px-3 py-2 text-xs font-bold text-[#f4dfb0]">
+                    {comp.unverifiedEnemies.length} selected enemy {comp.unverifiedEnemies.length === 1 ? "kit is" : "kits are"} quarantined until text-sourced.
+                  </p>
+                )}
+              </section>
+
+              <section className="rounded-lg border border-[#2b29231a] bg-white p-3 shadow-sm">
+                <h2 className="mb-3 text-sm font-black uppercase tracking-[0.12em]">Enemy team</h2>
+                <div className="grid gap-2">
+                  {enemyPicks.map((pick, index) => (
+                    <select
+                      key={index}
+                      value={pick.name}
+                      onChange={(event) => {
+                        const next = [...enemyPicks];
+                        next[index] = { role: "unknown", name: event.target.value };
+                        setEnemyPicks(next);
+                      }}
+                      className="h-11 rounded-md border border-[#2b29231a] bg-[#faf8f3] px-3 text-sm font-semibold"
+                      aria-label={`Enemy pick ${index + 1}`}
+                    >
+                      <option value="">Enemy pick {index + 1}</option>
+                      {heroes.map((hero) => (
+                        <option key={hero.name} value={hero.name} disabled={enemyNames.includes(hero.name) && pick.name !== hero.name}>
+                          {hero.name}
+                        </option>
+                      ))}
+                    </select>
                   ))}
                 </div>
-                <p className="rounded-md bg-[#fff5cf] px-3 py-2 text-sm font-semibold text-[#5f4610]">
-                  Current patch: {predecessorHeroData.patch}. Prototype hero kit tags are visible for audit only and are not used for recommendations.
-                </p>
-                {[...audit.errors, ...audit.warnings].slice(0, 8).map((issue, index) => (
-                  <p key={`${issue.severity}-${issue.hero}-${issue.field}-${index}`} className="rounded-md bg-[#f4e0d9] px-3 py-2 text-xs font-bold text-[#8a3524]">
-                    {issue.severity.toUpperCase()} / {issue.hero ?? "Dataset"} / {issue.field}: {issue.message}
-                  </p>
-                ))}
-                {audit.warnings.length > 8 && <p className="text-xs font-semibold text-[#665f52]">Run npm run audit:data to see all {audit.warnings.length} warnings.</p>}
-              </div>
-            )}
-          </section>
+              </section>
+            </div>
+          </div>
 
-          {!lockedHero ? (
-            <section className="space-y-3">
-              <div className="flex items-center justify-between">
-                <h2 className="text-sm font-black uppercase tracking-[0.12em]">Counter picks</h2>
-                <input
-                  value={search}
-                  onChange={(event) => setSearch(event.target.value)}
-                  placeholder="Filter heroes"
-                  className="h-9 w-36 rounded-md border border-[#2b29231a] bg-white px-3 text-sm"
-                />
-              </div>
-              {(search
-                ? filteredHeroes
-                    .filter(hasSourceBackedKit)
-                    .map((hero) => scoreHero(hero, enemyPicks, role, lockedHero))
-                    .filter((advice) => advice.score > -50)
-                : recommendations
-              ).map((advice) => (
-                <Recommendation key={advice.name} advice={advice} />
-              ))}
-              {!recommendations.length && <EmptyState text="Add at least one enemy pick with text-sourced kit data to get verified counter recommendations." />}
-            </section>
-          ) : (
-            <section className="space-y-3">
-              <h2 className="text-sm font-black uppercase tracking-[0.12em]">Augment and build direction</h2>
+          {lockedHero && (
+            <section className="space-y-5">
               <div className="space-y-2">
-                <h3 className="text-xs font-black uppercase tracking-[0.12em] text-[#665f52]">Actual augment options</h3>
+                <h2 className="text-sm font-black uppercase tracking-[0.12em]">Recommended augments</h2>
                 {augmentOptions.length ? (
-                  augmentOptions.map((augment) => {
-                    const category = formatAugmentCategory(augment.category);
-                    const showDescription = !isPlaceholderAugmentDescription(augment.description);
+                  <div className="grid gap-3 lg:grid-cols-3">
+                    {augmentOptions.map((augment) => {
+                      const category = formatAugmentCategory(augment.category);
+                      const showDescription = !isPlaceholderAugmentDescription(augment.description);
+                      const selected = selectedAugmentName === augment.name;
 
-                    return (
-                      <article key={augment.name} className="rounded-lg border border-[#2b29231a] bg-white p-4 shadow-sm">
-                        <div className="flex items-start justify-between gap-3">
-                          <div>
-                            <h4 className="text-lg font-black">{augment.name}</h4>
-                            {category && <p className="mt-1 text-xs font-black uppercase tracking-[0.12em] text-[#8a3524]">{category}</p>}
+                      return (
+                        <button
+                          key={augment.name}
+                          type="button"
+                          aria-pressed={selected}
+                          onClick={() => setSelectedAugmentName(augment.name)}
+                          className={`rounded-lg border bg-white p-4 text-left shadow-sm transition ${
+                            selected ? "border-[#8a3524] ring-2 ring-[#8a3524]" : "border-[#2b29231a]"
+                          }`}
+                        >
+                          <div className="flex items-start justify-between gap-3">
+                            <div>
+                              <h3 className="text-lg font-black">{augment.name}</h3>
+                              {category && <p className="mt-1 text-xs font-black uppercase tracking-[0.12em] text-[#8a3524]">{category}</p>}
+                            </div>
+                            <span className="rounded-md bg-[#191712] px-2 py-1 text-xs font-black text-white">fit {augment.score}</span>
                           </div>
-                          <span className="rounded-md bg-[#191712] px-2 py-1 text-xs font-black text-white">fit {augment.score}</span>
-                        </div>
-                        {showDescription && <p className="mt-3 text-sm text-[#665f52]">{augment.description}</p>}
-                        <div className="mt-3 flex flex-wrap gap-2">
-                          {augment.reasons.map((reason) => (
-                            <span key={reason} className="rounded-md bg-[#e9f0dd] px-2 py-1 text-xs font-black text-[#273713]">
-                              {reason}
-                            </span>
-                          ))}
-                        </div>
-                        <div className="mt-2 flex flex-wrap gap-2">
-                          {augment.tags.map((tag) => (
-                            <span key={tag} className="rounded-md bg-[#f4e0d9] px-2 py-1 text-[11px] font-bold text-[#8a3524]">
-                              {tag.replaceAll("-", " ")}
-                            </span>
-                          ))}
-                        </div>
-                      </article>
-                    );
-                  })
+                          {showDescription && <p className="mt-3 text-sm text-[#665f52]">{augment.description}</p>}
+                          <TagList tags={augment.reasons} tone="reason" />
+                          <TagList tags={augment.tags} />
+                        </button>
+                      );
+                    })}
+                  </div>
                 ) : (
                   <EmptyState text={`${locked?.name ?? "This hero"} needs verified augment data before the app can show actual augment choices.`} />
                 )}
               </div>
+
               <div className="space-y-2">
-                <h3 className="text-xs font-black uppercase tracking-[0.12em] text-[#665f52]">Phased match build</h3>
-                {builds.length ? (
-                  builds.map((build) => (
-                    <article key={`${build.slot.position}-${build.item.id}`} className="rounded-lg border border-[#2b29231a] bg-white p-4 shadow-sm">
-                      <div className="flex items-start justify-between gap-3">
-                        <div>
-                          <p className="text-[10px] font-black uppercase tracking-[0.12em] text-[#665f52]">
-                            {build.slot.phase} game / {build.slot.title}
-                          </p>
-                          <h4 className="mt-1 text-lg font-black">{build.item.name}</h4>
-                          <p className="mt-1 text-xs font-black uppercase tracking-[0.12em] text-[#8a3524]">
-                            {formatBuildPurpose(build.slot.purpose)} / {build.item.purpose}
-                          </p>
-                        </div>
-                        <span className="rounded-md bg-[#8a3524] px-2 py-1 text-xs font-black text-white">fit {build.score}</span>
+                <h2 className="text-sm font-black uppercase tracking-[0.12em]">Recommended Eternals</h2>
+                {eternalOptions.length ? (
+                  <>
+                    <div className="grid gap-3 lg:grid-cols-3">
+                      {eternalOptions.map((advice) => {
+                        const selected = selectedEternalId === advice.eternal.id;
+
+                        return (
+                          <button
+                            key={advice.eternal.id}
+                            type="button"
+                            aria-pressed={selected}
+                            onClick={() => {
+                              setSelectedEternalId(advice.eternal.id);
+                              setSelectedMinorBlessing1Id("");
+                              setSelectedMinorBlessing2Id("");
+                            }}
+                            className={`rounded-lg border bg-white p-4 text-left shadow-sm transition ${
+                              selected ? "border-[#8a3524] ring-2 ring-[#8a3524]" : "border-[#2b29231a]"
+                            }`}
+                          >
+                            <div className="flex items-start justify-between gap-3">
+                              <div>
+                                <h3 className="text-lg font-black">{advice.eternal.name}</h3>
+                                <p className="mt-1 text-xs font-black uppercase tracking-[0.12em] text-[#8a3524]">
+                                  {advice.eternal.category} / {advice.eternal.role}
+                                </p>
+                              </div>
+                              <span className="rounded-md bg-[#191712] px-2 py-1 text-xs font-black text-white">fit {advice.score}</span>
+                            </div>
+                            <p className="mt-3 text-sm text-[#665f52]">{advice.eternal.mainTrait.name}</p>
+                            <TagList tags={advice.reasons} tone="reason" />
+                            <TagList tags={advice.tags} />
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {selectedEternal && (
+                      <div className="grid gap-3 lg:grid-cols-2">
+                        <BlessingGroup
+                          title="Minor blessing 1"
+                          blessings={selectedEternal.minorBlessing1}
+                          selectedId={selectedMinorBlessing1Id}
+                          onSelect={setSelectedMinorBlessing1Id}
+                        />
+                        <BlessingGroup
+                          title="Minor blessing 2"
+                          blessings={selectedEternal.minorBlessing2}
+                          selectedId={selectedMinorBlessing2Id}
+                          onSelect={setSelectedMinorBlessing2Id}
+                        />
                       </div>
-                      <div className="mt-3 flex flex-wrap gap-2">
-                        {build.reasons.map((reason) => (
-                          <span key={reason} className="rounded-md bg-[#e9f0dd] px-2 py-1 text-xs font-black text-[#273713]">
-                            {reason}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="mt-2 flex flex-wrap gap-2">
-                        {build.tags.map((tag) => (
-                          <span key={tag} className="rounded-md bg-[#f4e0d9] px-2 py-1 text-[11px] font-bold text-[#8a3524]">
-                            {tag.replaceAll("-", " ")}
-                          </span>
-                        ))}
-                      </div>
-                    </article>
-                  ))
+                    )}
+                  </>
                 ) : (
-                  <EmptyState text={`${locked?.name ?? "This hero"} needs a verified kit before the app can recommend a phased item build.`} />
+                  <EmptyState text={`${locked?.name ?? "This hero"} needs a verified kit before the app can recommend Eternals.`} />
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <h2 className="text-sm font-black uppercase tracking-[0.12em]">Phased match build</h2>
+                {buildReady ? (
+                  <div className="grid gap-3 lg:grid-cols-2">
+                    {builds.map((build) => (
+                      <article key={`${build.slot.position}-${build.item.id}`} className="rounded-lg border border-[#2b29231a] bg-white p-4 shadow-sm">
+                        <div className="flex items-start justify-between gap-3">
+                          <div>
+                            <p className="text-[10px] font-black uppercase tracking-[0.12em] text-[#665f52]">
+                              {build.slot.phase} game / {build.slot.title}
+                            </p>
+                            <h3 className="mt-1 text-lg font-black">{build.item.name}</h3>
+                            <p className="mt-1 text-xs font-black uppercase tracking-[0.12em] text-[#8a3524]">
+                              {formatBuildPurpose(build.slot.purpose)} / {build.item.purpose}
+                            </p>
+                          </div>
+                          <span className="rounded-md bg-[#8a3524] px-2 py-1 text-xs font-black text-white">fit {build.score}</span>
+                        </div>
+                        <TagList tags={build.reasons} tone="reason" />
+                        <TagList tags={build.tags} />
+                      </article>
+                    ))}
+                  </div>
+                ) : (
+                  <EmptyState text="Choose my role, hero, augment, Eternal, and both minor blessings to unlock the item build." />
                 )}
               </div>
             </section>
@@ -927,6 +1001,64 @@ function Recommendation({ advice }: { advice: Advice }) {
         ))}
       </div>
     </article>
+  );
+}
+
+function BlessingGroup({
+  title,
+  blessings,
+  selectedId,
+  onSelect,
+}: {
+  title: string;
+  blessings: EternalBlessing[];
+  selectedId: string;
+  onSelect: (id: string) => void;
+}) {
+  return (
+    <section className="rounded-lg border border-[#2b29231a] bg-white p-4 shadow-sm">
+      <h3 className="text-xs font-black uppercase tracking-[0.12em] text-[#665f52]">{title}</h3>
+      <div className="mt-3 space-y-2">
+        {blessings.map((blessing) => {
+          const selected = selectedId === blessing.id;
+
+          return (
+            <button
+              key={blessing.id}
+              type="button"
+              aria-pressed={selected}
+              onClick={() => onSelect(blessing.id)}
+              className={`w-full rounded-md border p-3 text-left transition ${
+                selected ? "border-[#8a3524] bg-[#fff5cf] ring-2 ring-[#8a3524]" : "border-[#2b29231a] bg-[#faf8f3]"
+              }`}
+            >
+              <p className="font-black">{blessing.name}</p>
+              <p className="mt-1 text-sm text-[#665f52]">{blessing.description}</p>
+              <TagList tags={[...blessing.tags, ...blessing.effects].slice(0, 5)} />
+            </button>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function TagList({ tags, tone = "tag" }: { tags: string[]; tone?: "tag" | "reason" }) {
+  if (!tags.length) return null;
+
+  return (
+    <div className="mt-3 flex flex-wrap gap-2">
+      {tags.map((tag) => (
+        <span
+          key={tag}
+          className={`rounded-md px-2 py-1 text-xs font-black ${
+            tone === "reason" ? "bg-[#e9f0dd] text-[#273713]" : "bg-[#f4e0d9] text-[#8a3524]"
+          }`}
+        >
+          {tag.replaceAll("-", " ")}
+        </span>
+      ))}
+    </div>
   );
 }
 
