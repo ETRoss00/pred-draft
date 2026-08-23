@@ -55,7 +55,9 @@ test("keeps the kit data in a source-audited data folder", async () => {
   assert.match(page, /from "@\/data\/predecessor\/audit"/);
   assert.match(heroes, /"schemaVersion": 2/);
   assert.match(heroes, /"official-hero-gallery"/);
-  assert.match(heroes, /"argus-game-client-screenshots-2026-08-02"/);
+  assert.match(heroes, /"argus-manual-entry-2026-08-23"/);
+  assert.doesNotMatch(heroes, /"argus-game-client-screenshots-2026-08-02"/);
+  assert.doesNotMatch(heroes, /1000001800\.jpg/);
   assert.match(heroes, /"verified-combined-hero-roles-2026-08-23"/);
   assert.match(heroes, /"scarlett-manual-entry-2026-08-23"/);
   assert.match(heroes, /"name": "Disintegrate"/);
