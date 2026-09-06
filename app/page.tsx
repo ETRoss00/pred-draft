@@ -61,6 +61,14 @@ const roleMatchupWeights: Record<Role, Partial<Record<EnemyRole, number>>> = {
   offlane: { offlane: 1.35, jungle: 1.15, midlane: 0.75, support: 0.6, carry: 0.55, unknown: 0.45 },
 };
 
+const laneMatchupTargets: Record<Role, EnemyRole[]> = {
+  carry: ["support", "carry"],
+  support: ["support", "carry"],
+  midlane: ["jungle", "midlane"],
+  jungle: ["jungle", "midlane", "carry", "support", "offlane"],
+  offlane: ["offlane", "jungle"],
+};
+
 const counterRules = [
   rule("dive", ["hard-cc", "peel", "anti-dive", "disengage"], "peels dive"),
   rule("mobility", ["hard-cc", "anti-dive"], "locks down mobility"),
@@ -100,6 +108,29 @@ function hasSourceBackedKit(hero?: Hero) {
 
 function heroFitsRole(hero: Hero, role: Role | "flex") {
   return role === "flex" || hero.roles.includes(role) || Boolean(hero.flexRoles?.includes(role));
+}
+
+function inferEnemyRole(enemyName: string, playerRole: Role | "flex"): EnemyRole {
+  const enemyHero = heroes.find((hero) => hero.name === enemyName);
+  if (!enemyHero) return "unknown";
+
+  return inferEffectiveEnemyRole(enemyHero, "unknown", playerRole);
+}
+
+function inferEffectiveEnemyRole(enemyHero: Hero, enemyRole: EnemyRole, playerRole: Role | "flex"): EnemyRole {
+  const candidateRoles = [...new Set([...enemyHero.roles, ...(enemyHero.flexRoles ?? [])])];
+  if (!candidateRoles.length) return enemyRole;
+
+  if (playerRole === "flex") {
+    return enemyRole !== "unknown" && candidateRoles.includes(enemyRole) ? enemyRole : candidateRoles[0];
+  }
+
+  const roleWeights = roleMatchupWeights[playerRole];
+  const preferredRole = candidateRoles
+    .map((candidate) => ({ role: candidate, weight: roleWeights[candidate] ?? 0 }))
+    .sort((a, b) => b.weight - a.weight || candidateRoles.indexOf(a.role) - candidateRoles.indexOf(b.role))[0];
+
+  return preferredRole?.role ?? enemyRole;
 }
 
 const augmentTextSignals = [
@@ -856,7 +887,16 @@ export default function Home() {
               <select
                 id="my-role"
                 value={role}
-                onChange={(event) => setRole(event.target.value as Role)}
+                onChange={(event) => {
+                  const nextRole = event.target.value as Role;
+                  setRole(nextRole);
+                  setEnemyPicks((current) =>
+                    current.map((pick) => ({
+                      name: pick.name,
+                      role: inferEnemyRole(pick.name, nextRole),
+                    })),
+                  );
+                }}
                 className="h-11 w-full rounded-md border border-[#2b29231a] bg-[#faf8f3] px-3 text-sm font-semibold capitalize"
               >
                 {roles.map((item) => (
