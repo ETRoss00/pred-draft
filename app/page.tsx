@@ -98,6 +98,10 @@ function hasSourceBackedKit(hero?: Hero) {
   return hero?.verification.kitStatus === "source-backed";
 }
 
+function heroFitsRole(hero: Hero, role: Role | "flex") {
+  return role === "flex" || hero.roles.includes(role) || Boolean(hero.flexRoles?.includes(role));
+}
+
 const augmentTextSignals = [
   augmentSignal(["cooldown", "cooldowns", "recast", "refresh", "reset", "flow state"], ["cooldown-reduction", "multikill"]),
   augmentSignal(["movement speed", "dash", "leap", "blink", "range", "longer", "further", "mobility"], ["mobility"]),
@@ -779,26 +783,6 @@ function scoreEternalTags(tags: string[], comp: ReturnType<typeof analyze>, reas
   return score;
 }
 
-function inferPreferredEternalRoles(hero: Hero, role: Role | "flex") {
-  const preferred = new Set<EternalRole>();
-
-  hero.classes?.forEach((className) => {
-    const eternalRole = eternalRoleByClass[className.toLowerCase()];
-    if (eternalRole) preferred.add(eternalRole);
-  });
-
-  if (role !== "flex") {
-    const laneRole = laneFallbackEternalRole[role];
-    if (laneRole) preferred.add(laneRole);
-  }
-
-  return preferred;
-}
-
-function collectEternalTags(eternal: Eternal, option: EternalTrait | EternalBlessing) {
-  return [...new Set([...eternal.tags, ...eternal.answers, ...option.tags, ...option.effects])];
-}
-
 function formatAugmentCategory(category: string) {
   return category === "kit-modifier" ? "" : category.replaceAll("-", " ");
 }
@@ -833,6 +817,7 @@ export default function Home() {
   const recommendations = useMemo(
     () =>
       sourceBackedKitHeroes
+        .filter((hero) => heroFitsRole(hero, role))
         .map((hero) => scoreHero(hero, enemyPicks, role, lockedHero))
         .filter((advice) => advice.score > 0 && advice.reasons.length)
         .sort((a, b) => b.score - a.score || a.name.localeCompare(b.name))
@@ -843,7 +828,8 @@ export default function Home() {
   const augmentOptions = useMemo(() => recommendAugments(enemyPicks, locked, role), [enemyPicks, locked, role]);
   const eternalPaths = useMemo(() => recommendEternalPaths(enemyPicks, locked, role), [enemyPicks, locked, role]);
   const availableHeroes = heroes.filter((hero) => !enemyNames.includes(hero.name));
-  const filteredHeroes = availableHeroes.filter((hero) => hero.name.toLowerCase().includes(search.toLowerCase()));
+  const availableRoleHeroes = availableHeroes.filter((hero) => heroFitsRole(hero, role));
+  const filteredHeroes = availableRoleHeroes.filter((hero) => hero.name.toLowerCase().includes(search.toLowerCase()));
 
   return (
     <main className="min-h-screen bg-[#f7f4ee] text-[#191712]">
@@ -921,7 +907,7 @@ export default function Home() {
                 className="h-11 w-full rounded-md border border-[#2b29231a] bg-[#faf8f3] px-3 text-sm font-semibold"
               >
                 <option value="">Choose during draft</option>
-                {availableHeroes.map((hero) => (
+                {availableRoleHeroes.map((hero) => (
                   <option key={hero.name} value={hero.name}>
                     {hero.name} ({hero.roles.join("/")})
                   </option>
@@ -971,6 +957,7 @@ export default function Home() {
               {(search
                 ? filteredHeroes
                     .filter(hasSourceBackedKit)
+                    .filter((hero) => heroFitsRole(hero, role))
                     .map((hero) => scoreHero(hero, enemyPicks, role, lockedHero))
                     .filter((advice) => advice.score > -50)
                 : recommendations
@@ -1061,8 +1048,8 @@ export default function Home() {
                           </span>
                         ))}
                       </div>
-                    )}
-                  </>
+                    </article>
+                  ))
                 ) : (
                   <EmptyState text={`${locked?.name ?? "This hero"} needs a verified kit before the app can recommend Eternals.`} />
                 )}
