@@ -2,8 +2,13 @@
   "schemaVersion": 2,
   "game": "Predecessor",
   "patch": "unknown-current",
-  "lastManualReview": "2026-08-23",
+  "lastManualReview": "2026-11-08",
   "sources": {
+    "valmont-manual-entry-2026-11-08": {
+      "label": "Valmont manual hero entry",
+      "url": null,
+      "use": "User-provided verified role, class, ratings, full ability text and augments. Kit tags are derived from that text; ambiguous Hemophagia values are preserved without assuming a formula."
+    },
     "verified-combined-hero-roles-2026-08-23": {
       "label": "Verified combined hero roles",
       "url": null,
@@ -8286,6 +8291,157 @@
             "kit-modifier"
           ],
           "sourceRef": "twinblast-manual-entry-2026-08-23"
+        }
+      ]
+    },
+    {
+      "id": "valmont",
+      "name": "Valmont",
+      "roles": ["midlane"],
+      "classes": ["mage"],
+      "damage": "magical",
+      "range": "ranged",
+      "ratings": {
+        "basicAttack": 7,
+        "abilityPower": 7,
+        "durability": 5,
+        "mobility": 1
+      },
+      "threats": ["sustained-dps", "sustain"],
+      "answers": ["anti-dive", "sustain"],
+      "weaknesses": ["low-mobility", "hard-cc"],
+      "sourceRefs": {
+        "roster": "valmont-manual-entry-2026-11-08",
+        "roles": "valmont-manual-entry-2026-11-08",
+        "kit": "valmont-manual-entry-2026-11-08"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Encoded from the user's text supplied on 2026-11-08, with HTML entities and Markdown formatting removed. Hemophagia's nine damage values, +15 magical power wording, and 18-value mana sequence followed by -41 are preserved in its description; their rank mapping and formula are unresolved and are not encoded as numeric scaling. Sanguine Banquet's Bonus Mana wording is retained without assuming a percent-of-mana formula. Costs omitted by the source remain unspecified. Weakness tags reflect Mobility 1, no movement ability, and Arterial Grip breaking on crowd control or loss of line of sight/range."
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Crimson Sigil",
+          "kind": "ranged",
+          "damageType": "physical",
+          "description": "Ranged basic attack dealing 49.0/51.8/54.8/57.9/61.1/64.5/68.0/71.8/75.6/79.6/83.8/88.0/92.5/97.1/101.8/106.8/111.8/117.0 (+60% physical power) physical damage.",
+          "scaling": {
+            "baseDamageByLevel": [49, 51.8, 54.8, 57.9, 61.1, 64.5, 68, 71.8, 75.6, 79.6, 83.8, 88, 92.5, 97.1, 101.8, 106.8, 111.8, 117],
+            "physicalPowerRatio": 0.6
+          },
+          "effects": ["ranged-basic", "physical-damage"],
+          "sourceRef": "valmont-manual-entry-2026-11-08"
+        },
+        {
+          "slot": "passive",
+          "name": "Hemophagia",
+          "kind": "utility",
+          "damageType": "magical",
+          "description": "When Valmont deals damage to an Enemy with Crimson Sigil or Bloodbound causes Lilith to strike them, dealing 12.0/20.0/28.0/36.0/44.0/23.0/31.0/39.0/47.0 (Based on Bloodbound Level) (+15 magical power) magical damage. The more attack speed Valmont has, the shorter the delay between strikes is. On Enemy Takedown their soul is consumed by Lilith and you restore 3.0/3.0/4.0/4.0/5.0/5.0/6.0/7.0/8.0/10.0/12.0/15.0/18.0/21.0/24.0/27.0/30.0/33.0-41 Mana (Based on Hero Level). Consuming the soul of an Enemy Hero restores 35% Maximum Mana additionally.",
+          "scaling": {
+            "heroSoulMaxManaRestoreRatio": 0.35
+          },
+          "effects": ["magical-damage", "basic-attack-synergy", "attack-speed-scaling", "takedown", "mana-restore"],
+          "sourceRef": "valmont-manual-entry-2026-11-08"
+        },
+        {
+          "slot": "primary",
+          "name": "Rupture",
+          "kind": "damage",
+          "damageType": "magical",
+          "description": "Valmont manifests 5 blood-forged blades above his head. Over the next 0.75s, these blades sequentially launch forward. Each Blade detonates upon impact, dealing 20.0/28.0/36.0/44.0/52.0 (+16% magical power) magical damage in a small area.",
+          "cooldown": [9, 8.5, 8, 7.5, 7],
+          "scaling": {
+            "damagePerBlade": [20, 28, 36, 44, 52],
+            "magicalPowerRatio": 0.16,
+            "bladeCount": 5,
+            "launchDurationSeconds": 0.75
+          },
+          "effects": ["magical-damage", "projectile", "area-damage", "multi-hit"],
+          "sourceRef": "valmont-manual-entry-2026-11-08"
+        },
+        {
+          "slot": "secondary",
+          "name": "Bloodbound",
+          "kind": "damage",
+          "damageType": "magical",
+          "description": "Active: Valmont launches Lilith, dealing 70.0/90.0/110.0/130.0/150.0 (+60% magical power) magical damage. Damaging an Enemy grants 20.0/25.0/30.0/35.0/40.0% attack speed for 4s. Increasing the level of Bloodbound increases the strike damage of Hemophagia by 8 magical damage.",
+          "cooldown": [12, 11, 10, 9, 8],
+          "scaling": {
+            "baseDamage": [70, 90, 110, 130, 150],
+            "magicalPowerRatio": 0.6,
+            "attackSpeedPercent": [20, 25, 30, 35, 40],
+            "buffDurationSeconds": 4,
+            "hemophagiaDamageIncreasePerRank": 8
+          },
+          "effects": ["magical-damage", "attack-speed", "basic-attack-synergy"],
+          "sourceRef": "valmont-manual-entry-2026-11-08"
+        },
+        {
+          "slot": "alternate",
+          "name": "Arterial Grip",
+          "kind": "complex",
+          "damageType": "magical",
+          "description": "Valmont uses his blood to bind an Enemy to him, dealing 80.0/120.0/160.0/200.0/240.0 (+60% magical power) magical damage over 3s. When binding an Enemy, they are grounded and slowed by 25% for 3s. Valmont steals 10.0/15.0/20.0/25.0/30.0% attack speed from the bound Enemy. If Valmont is affected by Crowd Control or the Enemy cuts line of sight or gets far enough away from Valmont, the bind is broken.",
+          "cooldown": [16, 15, 14, 13, 12],
+          "scaling": {
+            "totalDamage": [80, 120, 160, 200, 240],
+            "magicalPowerRatio": 0.6,
+            "durationSeconds": 3,
+            "slowPercent": 25,
+            "attackSpeedStealPercent": [10, 15, 20, 25, 30]
+          },
+          "effects": ["magical-damage", "damage-over-time", "ground", "slow", "attack-speed-steal", "tether", "breaks-on-crowd-control", "breaks-on-line-of-sight-loss", "breaks-on-range"],
+          "sourceRef": "valmont-manual-entry-2026-11-08"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Exsanguinate",
+          "kind": "complex",
+          "damageType": "magical",
+          "description": "Unleash up to 3 swarms of bats, dealing 40.0/62.0/84.0 (+20% magical power) magical damage. Upon hitting the Enemy, bats return to Valmont, restoring 2.0/4.3/6.5 (+2.5% magical power) health. When hitting Heroes 8x the amount of health is restored instead. Exsanguinate costs 5 Mana more for every Second it is active.",
+          "cooldown": [25, 15, 5],
+          "scaling": {
+            "baseDamage": [40, 62, 84],
+            "magicalPowerRatio": 0.2,
+            "baseHealing": [2, 4.3, 6.5],
+            "healingMagicalPowerRatio": 0.025,
+            "heroHealingMultiplier": 8,
+            "maxSwarms": 3,
+            "additionalManaCostPerActiveSecond": 5
+          },
+          "effects": ["magical-damage", "self-heal", "sustain", "multi-hit", "increasing-mana-cost"],
+          "sourceRef": "valmont-manual-entry-2026-11-08"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Rupturing Fangs",
+          "category": "burst",
+          "description": "Rupture's Blades deal 20% less Damage, but their Damage increases by up to 85% based on the Target's Missing Health.",
+          "tags": ["burst", "pick", "missing-health-damage", "reduced-base-damage"],
+          "sourceRef": "valmont-manual-entry-2026-11-08"
+        },
+        {
+          "name": "Sanguine Banquet",
+          "category": "sustain",
+          "description": "Gain 2% (+0.35% Bonus Mana) Omnivamp. Minions killed by Valmont increase Valmont's Maximum Mana by 2. Hero deaths increase it by 20.",
+          "tags": ["sustain", "omnivamp", "scaling", "mana-scaling"],
+          "sourceRef": "valmont-manual-entry-2026-11-08"
+        },
+        {
+          "name": "Vein Splitter",
+          "category": "teamfight",
+          "description": "Arterial Grip no longer Grounds but automatically branches to nearby Enemy Targets (800u) near the Primary Target, applying 80% of the Damage and 100% of the Slow.",
+          "tags": ["teamfight", "area-damage", "slow", "damage-over-time", "removes-ground"],
+          "sourceRef": "valmont-manual-entry-2026-11-08"
         }
       ]
     },
