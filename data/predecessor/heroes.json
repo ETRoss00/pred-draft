@@ -4,6 +4,11 @@
   "patch": "unknown-current",
   "lastManualReview": "2026-11-08",
   "sources": {
+    "kaelen-manual-entry-2026-11-08": {
+      "label": "Kaelen manual hero entry",
+      "url": null,
+      "use": "User-provided verified role, class, ratings, full ability text and augments. Recommendation tags are derived from these mechanics."
+    },
     "valmont-manual-entry-2026-11-08": {
       "label": "Valmont manual hero entry",
       "url": null,
@@ -3667,6 +3672,170 @@
             "kit-modifier"
           ],
           "sourceRef": "ikra-manual-entry-2026-08-23"
+        }
+      ]
+    },
+    {
+      "id": "kaelen",
+      "name": "Kaelen",
+      "roles": ["jungle"],
+      "classes": ["tank"],
+      "damage": "physical",
+      "range": "melee",
+      "ratings": {
+        "basicAttack": 2,
+        "abilityPower": 6,
+        "durability": 8,
+        "mobility": 5
+      },
+      "threats": ["frontline", "engage", "dive", "hard-cc", "zone-control", "tank-shred"],
+      "answers": ["frontline", "hard-cc", "peel", "tank-shred"],
+      "weaknesses": ["low-range", "poke"],
+      "sourceRefs": {
+        "roster": "kaelen-manual-entry-2026-11-08",
+        "roles": "kaelen-manual-entry-2026-11-08",
+        "kit": "kaelen-manual-entry-2026-11-08"
+      },
+      "verification": {
+        "rosterStatus": "source-backed",
+        "roleStatus": "source-backed",
+        "classStatus": "source-backed",
+        "ratingStatus": "source-backed",
+        "abilityStatus": "source-backed",
+        "augmentStatus": "source-backed",
+        "kitStatus": "source-backed",
+        "notes": "Encoded from the user's text supplied on 2026-11-08, with HTML entities and Markdown formatting removed. Full ability and augment mechanics are preserved. Primary damage is physical; Heart of Ice's true damage is recorded separately in its effects. Unspecified costs remain absent. Weakness tags reflect melee range, sustained close-range combat, Razorstorm's self-slow, and Frostfall's 1.5s channel. Relentless Hunt's removal of Rimeglass Armors is preserved as a tradeoff rather than applied to the base kit."
+      },
+      "abilities": [
+        {
+          "slot": "basic",
+          "name": "Pale Twins",
+          "kind": "melee",
+          "damageType": "physical",
+          "description": "Melee basic attack dealing 65.0/68.6/72.5/76.5/80.7/85.2/89.8/94.6/99.6/104.8/110.2/115.8/121.5/127.5/133.7/140.1/146.6/153.4 (+80% Physical power) physical damage.",
+          "scaling": {
+            "baseDamageByLevel": [65, 68.6, 72.5, 76.5, 80.7, 85.2, 89.8, 94.6, 99.6, 104.8, 110.2, 115.8, 121.5, 127.5, 133.7, 140.1, 146.6, 153.4],
+            "physicalPowerRatio": 0.8
+          },
+          "effects": ["melee-basic", "physical-damage"],
+          "sourceRef": "kaelen-manual-entry-2026-11-08"
+        },
+        {
+          "slot": "passive",
+          "name": "Heart of Ice",
+          "kind": "utility",
+          "description": "Kaelen's abilities create patches of Rimeglass. Enemies that stand on Rimeglass are afflicted with Frostbite for 1s. Enemies with Frostbite are Slowed by 15% and take 0.5% Max Health True Damage every 0.5s. Rimeglass persists on the floor for 6s.",
+          "scaling": {
+            "rimeglassDurationSeconds": 6,
+            "frostbiteDurationSeconds": 1,
+            "slowPercent": 15,
+            "targetMaxHealthDamageRatioPerTick": 0.005,
+            "tickIntervalSeconds": 0.5
+          },
+          "effects": ["true-damage", "target-max-health-damage", "damage-over-time", "slow", "zone-control", "rimeglass", "frostbite"],
+          "sourceRef": "kaelen-manual-entry-2026-11-08"
+        },
+        {
+          "slot": "primary",
+          "name": "Razorstorm",
+          "kind": "damage",
+          "damageType": "physical",
+          "description": "Spin with the Greatswords creating razor-sharp cuts for 3.5s, dealing 7.5/10.0/12.5/15.0/17.5 (+8.0/10.0/12.0/14.0/16.0% physical power)(+0.5/0.8/1.1/1.5/1.8% max health) physical damage every 0.25s. Rimeglass continuously spawns whilst casting Razorstorm. Passive: Increase total Physical and Magical Armor by 4.0/6.0/8.0/10.0/12.0%, increased by 150% whilst on Rimeglass. Razorstorm deals 5 bonus physical damage to Monsters and only 60% Damage to Minions. Whilst casting Razorstorm Kaelen is slowed by 15%.",
+          "cooldown": [13, 11.75, 10.5, 9.25, 8],
+          "scaling": {
+            "damagePerTick": [7.5, 10, 12.5, 15, 17.5],
+            "physicalPowerRatio": [0.08, 0.1, 0.12, 0.14, 0.16],
+            "maxHealthDamageRatioPerTick": [0.005, 0.008, 0.011, 0.015, 0.018],
+            "durationSeconds": 3.5,
+            "tickIntervalSeconds": 0.25,
+            "totalArmorIncreasePercent": [4, 6, 8, 10, 12],
+            "rimeglassArmorBonusIncreasePercent": 150,
+            "bonusMonsterDamage": 5,
+            "minionDamageMultiplier": 0.6,
+            "selfSlowPercent": 15
+          },
+          "effects": ["physical-damage", "area-damage", "multi-hit", "rimeglass", "armor-amplification", "health-scaling", "self-slow", "bonus-monster-damage", "reduced-minion-damage"],
+          "sourceRef": "kaelen-manual-entry-2026-11-08"
+        },
+        {
+          "slot": "secondary",
+          "name": "Winter's Pursuit",
+          "kind": "mobility",
+          "damageType": "physical",
+          "description": "Lunge forward pursuing Kaelen's Enemies with his hunger for blood. Upon hitting the first enemy hero, the dash stops shortly behind them dealing 70.0/95.0/120.0/145.0/170.0 (+100% physical power) physical damage to all enemy targets hit and applying a 25% slow for 1.2s. If the enemy unit has Frostbite, it will receive 200% of the original damage and Heroes are rooted for 1.2s.",
+          "cooldown": [16, 15.5, 15, 14.5, 14],
+          "cost": [80, 80, 80, 80, 80],
+          "scaling": {
+            "baseDamage": [70, 95, 120, 145, 170],
+            "physicalPowerRatio": 1,
+            "slowPercent": 25,
+            "slowDurationSeconds": 1.2,
+            "frostbiteDamageMultiplier": 2,
+            "frostbiteHeroRootDurationSeconds": 1.2
+          },
+          "effects": ["physical-damage", "dash", "stops-on-hero", "slow", "conditional-root", "frostbite-synergy"],
+          "sourceRef": "kaelen-manual-entry-2026-11-08"
+        },
+        {
+          "slot": "alternate",
+          "name": "Rimefang",
+          "kind": "utility",
+          "damageType": "physical",
+          "description": "Kaelen crosses his Greatswords to unleash Rimefang's Spirit, flying forward, piercing enemies whilst creating a trail of Rimeglass. Hitting Enemies deals 11.0/12.0/13.0/14.0/15.0% of the Target's maximum health as physical damage, Stunning them for 0.2s and Slowing by 50% for 1.5s.",
+          "cooldown": [15, 14.5, 14, 13.5, 13],
+          "scaling": {
+            "targetMaxHealthDamageRatio": [0.11, 0.12, 0.13, 0.14, 0.15],
+            "stunDurationSeconds": 0.2,
+            "slowPercent": 50,
+            "slowDurationSeconds": 1.5
+          },
+          "effects": ["physical-damage", "piercing-projectile", "target-max-health-damage", "stun", "slow", "rimeglass"],
+          "sourceRef": "kaelen-manual-entry-2026-11-08"
+        },
+        {
+          "slot": "ultimate",
+          "name": "Frostfall",
+          "kind": "complex",
+          "damageType": "physical",
+          "description": "Channel Kaelen's strength over 1.5s, then cleanse and leap into the sky for up to 4s. After the 4s or upon recasting Kaelen crashes down into the ground, dealing 200.0/300.0/400.0 (+100% physical power)(+6% max health) physical damage in an area, Slowing Enemies by 60% for 1.5s. Enemies caught the center are Rooted for 1.5s. Afterwards, a raging Rimestorm is left behind for 8s. Enemies inside the Rimestorm are continuously afflicted with Frostbite. The Frostbite applied in the Rimestorm deals 2x the damage instead.",
+          "cooldown": [130, 110, 90],
+          "scaling": {
+            "baseDamage": [200, 300, 400],
+            "physicalPowerRatio": 1,
+            "maxHealthRatio": 0.06,
+            "channelDurationSeconds": 1.5,
+            "maxAirborneDurationSeconds": 4,
+            "slowPercent": 60,
+            "slowDurationSeconds": 1.5,
+            "centerRootDurationSeconds": 1.5,
+            "rimestormDurationSeconds": 8,
+            "rimestormFrostbiteDamageMultiplier": 2
+          },
+          "effects": ["physical-damage", "channel", "cleanse", "leap", "recast", "area-damage", "slow", "center-root", "zone-control", "frostbite", "true-damage-over-time", "health-scaling"],
+          "sourceRef": "kaelen-manual-entry-2026-11-08"
+        }
+      ],
+      "augments": [
+        {
+          "name": "Relentless Hunt",
+          "category": "sustained-dps",
+          "description": "Razorstorm now strikes an additional time for every 20% Attack Speed owned, up to +10 strikes and can Critically Strike. Rimeglass no longer grants Armors.",
+          "tags": ["sustained-dps", "attack-speed-scaling", "crit", "area-damage", "removes-rimeglass-armor"],
+          "sourceRef": "kaelen-manual-entry-2026-11-08"
+        },
+        {
+          "name": "Neverending Chase",
+          "category": "mobility",
+          "description": "Pale Twins and Ability hits against Heroes reduce Winter's Pursuit Cooldown by 3% on-hit (3% for Camp Leaders).",
+          "tags": ["mobility", "cooldown-reduction", "basic-attack-synergy", "on-hit"],
+          "sourceRef": "kaelen-manual-entry-2026-11-08"
+        },
+        {
+          "name": "Last Winter",
+          "category": "teamfight",
+          "description": "Frostfall grants Allies within the Targeting Zone +20% Movement Speed for 3s. Upon landing, Kaelen gains a (+10% Max Health) (+4% Max Health per Hero hit) Shield for 4s.",
+          "tags": ["teamfight", "anti-burst", "shields", "frontline", "ally-movement-speed", "health-scaling"],
+          "sourceRef": "kaelen-manual-entry-2026-11-08"
         }
       ]
     },
