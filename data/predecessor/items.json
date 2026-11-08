@@ -4,6 +4,11 @@
   "patch": "unknown-current",
   "lastManualReview": null,
   "sources": {
+    "support-tank-items-manual-entry-2026-11-08": {
+      "label": "Vortex Stone and Forticus manual item entry",
+      "url": null,
+      "use": "User-provided verified text covering Vortex Stone and Forticus classes, purposes, stats, full passives, cooldowns, durations, and conditional effects."
+    },
     "carry-items-manual-entry-2026-08-22": {
       "label": "Carry items manual entry",
       "url": null,
@@ -49,6 +54,82 @@
     "prototype"
   ],
   "items": [
+    {
+      "id": "vortex-stone",
+      "name": "Vortex Stone",
+      "role": "support",
+      "purpose": "Shielding",
+      "stats": {
+        "maxHealth": 375,
+        "healthRegeneration": 100,
+        "manaRegeneration": 100,
+        "abilityHaste": 10
+      },
+      "passives": [
+        {
+          "name": "Eye Of The Storm",
+          "cooldown": 12,
+          "description": "On Immobilizing Heroes: Reduce your Current Basic Ability Cooldowns by 20%. Gain a (+12% max health) Shield for 4s. Shield is reduced by 50% for Ranged Heroes.",
+          "scaling": {
+            "currentBasicAbilityCooldownReduction": 20,
+            "shieldMaxHealthRatio": 0.12,
+            "shieldDuration": 4,
+            "rangedShieldMultiplier": 0.5
+          },
+          "effects": ["immobilize-trigger", "basic-ability-cooldown-reduction", "self-shield", "health-scaling", "ranged-penalty"]
+        }
+      ],
+      "tags": ["shielding", "shield", "cooldown-reduction", "haste", "health-regen", "mana-regen", "health-scaling"],
+      "answers": ["anti-burst", "survivability"],
+      "sourceRef": "support-tank-items-manual-entry-2026-11-08",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Encoded from user-provided text on 2026-11-08. Class Support maps to item role support; Type Shielding maps to purpose. Eye Of The Storm requires immobilizing a Hero. Its cooldown reduction affects current basic ability cooldowns only, and its shield is halved for ranged users."
+      }
+    },
+    {
+      "id": "forticus",
+      "name": "Forticus",
+      "role": "tank",
+      "purpose": "Defense",
+      "stats": {
+        "maxHealth": 325,
+        "physicalArmor": 55,
+        "tenacity": 75
+      },
+      "passives": [
+        {
+          "name": "Immovable",
+          "description": "Immovable - 14-10s. Upon taking Hero damage: Gain a (+8% max health) Shield for 3.5s.",
+          "scaling": {
+            "cooldownMin": 10,
+            "cooldownMax": 14,
+            "shieldMaxHealthRatio": 0.08,
+            "shieldDuration": 3.5
+          },
+          "effects": ["hero-damage-taken-trigger", "self-shield", "health-scaling"]
+        },
+        {
+          "name": "Swell",
+          "description": "Upon damaging or being damaged by Heroes: For the next 3s, gain Stats each second: (+0.6% Base Health) additional Max Health, +4 Movement Speed and +0.5% Size. All Stats are lost once the 3s timer expires.",
+          "scaling": {
+            "duration": 3,
+            "tickInterval": 1,
+            "additionalMaxHealthBaseHealthRatioPerTick": 0.006,
+            "movementSpeedPerTick": 4,
+            "sizePercentPerTick": 0.5
+          },
+          "effects": ["hero-damage-dealt-trigger", "hero-damage-taken-trigger", "temporary-max-health", "base-health-scaling", "movement-speed", "size-increase", "stats-expire-with-timer"]
+        }
+      ],
+      "tags": ["defense", "durability", "shield", "physical-armor", "tenacity", "health-scaling", "movement-speed"],
+      "answers": ["anti-burst", "frontline", "survivability"],
+      "sourceRef": "support-tank-items-manual-entry-2026-11-08",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Encoded from user-provided text on 2026-11-08, with HTML entities and Markdown formatting removed. Class Tank maps to item role tank; Type Defense maps to purpose. Immovable's 14-10s cooldown is retained as a range with no assumed level mapping or fixed cooldown. Swell grants temporary bonuses based on Base Health, not Max Health; no maximum stacks or timer-refresh rule was supplied, so neither is invented."
+      }
+    },
     {
       "id": "nuclear-rounds",
       "name": "Nuclear Rounds",
