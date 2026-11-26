@@ -39,6 +39,7 @@ export type Item = {
     tenacity?: number;
     physicalPenetration?: number;
     magicalPenetration?: number;
+    hybridPenetration?: number;
     magicalLifesteal?: number;
     maxMana?: number;
   };
