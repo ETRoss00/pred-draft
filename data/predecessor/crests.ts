@@ -53,7 +53,7 @@ export type Crest = {
   };
 };
 
-export type CrestDataSet = typeof crestData & { crests: Crest[] };
+export type CrestDataSet = Omit<typeof crestData, 'crests'> & { crests: Crest[] };
 
 export type CrestAuditIssue = {
   severity: "error" | "warning";

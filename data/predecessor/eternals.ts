@@ -35,7 +35,7 @@ export type Eternal = {
   };
 };
 
-export type EternalDataSet = typeof eternalData & { eternals: Eternal[] };
+export type EternalDataSet = Omit<typeof eternalData, 'eternals'> & { eternals: Eternal[] };
 
 export type EternalAuditIssue = {
   severity: "error" | "warning";
@@ -53,7 +53,7 @@ export type EternalAuditReport = {
   roleCoverage: Record<EternalRole, number>;
 };
 
-const data = eternalData as EternalDataSet;
+const data = eternalData as unknown as EternalDataSet;
 
 export const predecessorEternalData = data;
 export const eternals = data.eternals;

@@ -10,7 +10,9 @@
     "build": "vinext build",
     "start": "vinext start",
     "audit:data": "node scripts/audit-data.mjs",
-    "test": "npm run audit:data && npm run build && node --test tests/rendered-html.test.mjs",
+    "test": "npm run audit:data && npm run typecheck:draft && npm run build && node --test tests/rendered-html.test.mjs tests/draft-engine.test.mjs",
+    "typecheck:draft": "tsc --noEmit -p tsconfig.draft.json",
+    "test:draft": "node --test tests/draft-engine.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate"
   },

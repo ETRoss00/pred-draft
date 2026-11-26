@@ -25,6 +25,12 @@ export type HeroAugment = {
   description: string;
   tags: string[];
   sourceRef: string;
+  mechanics?: {
+    grants: string[];
+    removes: string[];
+    tradeoffs?: string[];
+    removesBySlot?: Partial<Record<AbilitySlot, string[]>>;
+  };
 };
 
 export type Hero = {
@@ -63,7 +69,7 @@ export type Hero = {
   };
 };
 
-export type HeroDataSet = typeof heroData & { heroes: Hero[] };
+export type HeroDataSet = Omit<typeof heroData, 'heroes'> & { heroes: Hero[] };
 
 export type AuditIssue = {
   severity: "error" | "warning";
@@ -166,6 +172,7 @@ export function auditHeroData(dataset: HeroDataSet = data): AuditReport {
         seenSlots.add(ability.slot);
         if (!ability.name) errors.push(issue("error", hero.name, "abilities", `Ability in ${ability.slot} is missing a name.`));
         if (!ability.description) errors.push(issue("error", hero.name, "abilities", `${ability.name || ability.slot} is missing description text.`));
+        if (/^User-verified text entry/i.test(ability.description)) errors.push(issue("error", hero.name, "abilities", `${ability.name} has placeholder text instead of verified mechanics.`));
         if (!ability.effects.length) warnings.push(issue("warning", hero.name, "abilities", `${ability.name || ability.slot} has no effects tags.`));
       });
       validSlots.forEach((slot) => {
@@ -180,6 +187,7 @@ export function auditHeroData(dataset: HeroDataSet = data): AuditReport {
         seenAugments.add(augment.name);
         if (!augment.name) errors.push(issue("error", hero.name, "augments", "Augment is missing a name."));
         if (!augment.description) errors.push(issue("error", hero.name, "augments", `${augment.name || "Augment"} is missing description text.`));
+        if (/^User-verified text entry/i.test(augment.description)) errors.push(issue("error", hero.name, "augments", `${augment.name} has placeholder text instead of verified mechanics.`));
         if (!augment.tags.length) warnings.push(issue("warning", hero.name, "augments", `${augment.name || "Augment"} has no recommendation tags.`));
       });
     }
@@ -250,6 +258,9 @@ function issue(severity: AuditIssue["severity"], hero: string | undefined, field
 
 function isFullyVerified(hero: Hero) {
   return (
+    hero.abilities?.length === 6 &&
+    hero.augments?.length === 3 &&
+    ![...hero.abilities, ...hero.augments].some(entry => /^User-verified text entry/i.test(entry.description)) &&
     hero.verification.roleStatus === "source-backed" &&
     hero.verification.classStatus === "source-backed" &&
     hero.verification.ratingStatus === "source-backed" &&

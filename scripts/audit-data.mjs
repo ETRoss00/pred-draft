@@ -56,6 +56,7 @@ for (const hero of dataset.heroes) {
       seenSlots.add(ability.slot);
       if (!ability.name) errors.push(`[abilities] ${hero.name} has an ability missing a name.`);
       if (!ability.description) errors.push(`[abilities] ${hero.name} ${ability.name || ability.slot} is missing description text.`);
+      if (/^User-verified text entry/i.test(ability.description)) errors.push(`[abilities] ${hero.name} ${ability.name} contains placeholder text.`);
       if (!Array.isArray(ability.effects) || ability.effects.length === 0) warnings.push(`[abilities] ${hero.name} ${ability.name || ability.slot} has no effects tags.`);
       if (!ability.sourceRef) errors.push(`[abilities] ${hero.name} ${ability.name || ability.slot} is missing sourceRef.`);
     }
@@ -71,6 +72,7 @@ for (const hero of dataset.heroes) {
       seenAugments.add(augment.name);
       if (!augment.name) errors.push(`[augments] ${hero.name} has an augment missing a name.`);
       if (!augment.description) errors.push(`[augments] ${hero.name} ${augment.name || "augment"} is missing description text.`);
+      if (/^User-verified text entry/i.test(augment.description)) errors.push(`[augments] ${hero.name} ${augment.name} contains placeholder text.`);
       if (!Array.isArray(augment.tags) || augment.tags.length === 0) warnings.push(`[augments] ${hero.name} ${augment.name || "augment"} has no recommendation tags.`);
       if (!augment.sourceRef) errors.push(`[augments] ${hero.name} ${augment.name || "augment"} is missing sourceRef.`);
     }
