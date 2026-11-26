@@ -4,6 +4,11 @@
   "patch": "unknown-current",
   "lastManualReview": null,
   "sources": {
+    "five-items-manual-entry-2026-11-26": {
+      "label": "Kingsbane, Elysia, Shadebinder, Bandit's Toll and Heretic's Blade manual entry",
+      "url": null,
+      "use": "User-provided verified item classes, types, stats, complete passives, cooldowns, scaling, on-hit modifier restrictions, and ranged penalties."
+    },
     "support-tank-items-manual-entry-2026-11-08": {
       "label": "Vortex Stone and Forticus manual item entry",
       "url": null,
@@ -54,6 +59,193 @@
     "prototype"
   ],
   "items": [
+    {
+      "id": "kingsbane",
+      "name": "Kingsbane",
+      "role": "carry",
+      "purpose": "Offense",
+      "stats": {
+        "attackSpeed": 40,
+        "hybridPenetration": 10,
+        "abilityHaste": 15
+      },
+      "passives": [
+        {
+          "name": "Regicide",
+          "description": "Basic Attacks deal 25 Physical Damage On-Hit. Each hit on a Hero increases it by 3 (reduced by On-Hit Modifiers), up to 80. The bonus damage resets after not damaging a Hero for 2.5s.",
+          "scaling": {
+            "baseOnHitDamage": 25,
+            "onHitDamageIncreasePerHeroHit": 3,
+            "maxOnHitDamage": 80,
+            "resetAfterNoHeroDamageSeconds": 2.5
+          },
+          "effects": ["basic-attack", "on-hit", "physical-damage", "hero-hit-stacking", "on-hit-modifier-scaling", "resets-without-hero-damage"]
+        }
+      ],
+      "tags": ["offense", "on-hit", "sustained-dps", "attack-speed", "hybrid-penetration", "haste"],
+      "answers": ["sustained-fighting"],
+      "sourceRef": "five-items-manual-entry-2026-11-26",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Encoded from user text on 2026-11-26. Hybrid Penetration is retained as one stat without duplicating it into separate penetration stats. On-Hit Modifiers reduce Regicide's per-Hero-hit increase. Its on-hit damage caps at 80 and resets after 2.5s without Hero damage."
+      }
+    },
+    {
+      "id": "elysia",
+      "name": "Elysia",
+      "role": "support",
+      "purpose": "Reduced Cooldowns",
+      "stats": {
+        "magicalPower": 40,
+        "manaRegeneration": 125,
+        "healShieldPower": 12
+      },
+      "passives": [
+        {
+          "name": "Verdant Bloom",
+          "cooldown": 30,
+          "description": "Upon casting your Ultimate, your Basic Ability Cooldowns progress 40% faster for 6s - 30s CD.",
+          "scaling": {
+            "basicAbilityCooldownProgressionIncreasePercent": 40,
+            "duration": 6
+          },
+          "effects": ["ultimate-cast-trigger", "basic-ability-cooldown-progression"]
+        },
+        {
+          "name": "Nature's Edge",
+          "description": "Gain 25 Ultimate Haste.",
+          "scaling": { "ultimateHaste": 25 },
+          "effects": ["ultimate-haste"]
+        }
+      ],
+      "tags": ["cooldown-reduction", "ultimate-synergy", "heal-shield-power", "mana-regen"],
+      "answers": ["healing", "shielding"],
+      "sourceRef": "five-items-manual-entry-2026-11-26",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Encoded from user text on 2026-11-26. Mana Regeneration is the supplied percentage of Base Mana Regen, consistent with existing item stat units. Verdant Bloom accelerates cooldown progression; it does not instantly subtract 40% from current cooldowns. Ultimate Haste remains a passive bonus."
+      }
+    },
+    {
+      "id": "shadebinder",
+      "name": "Shadebinder",
+      "role": "mage",
+      "purpose": "Finisher",
+      "stats": {
+        "magicalPower": 65,
+        "attackSpeed": 25,
+        "maxHealth": 250,
+        "abilityHaste": 15
+      },
+      "passives": [
+        {
+          "name": "Exorcizing Strikes",
+          "description": "Every 3 Basic Attacks within 3s deal 25 (+25% Magical Power)(+100% Item Ability Haste) Magical Damage to the Target, and Enemies within 250u of the Target.",
+          "scaling": {
+            "attacksToTrigger": 3,
+            "attackWindowSeconds": 3,
+            "baseDamage": 25,
+            "magicalPowerRatio": 0.25,
+            "itemAbilityHasteRatio": 1,
+            "areaRadius": 250
+          },
+          "effects": ["basic-attack-trigger", "magical-damage", "area-damage", "item-ability-haste-scaling"]
+        }
+      ],
+      "restrictions": [
+        {
+          "description": "Number of hits required to trigger Exorcizing Strikes scales with the Basic Attack's On-Hit Modifier (E.g: A 10% On-Hit Modifier requires 30 hits.)",
+          "effects": ["on-hit-modifier-hit-requirement", "reduced-on-hit-requires-more-hits"]
+        }
+      ],
+      "tags": ["on-hit", "basic-attack", "area-damage", "attack-speed", "haste"],
+      "answers": ["area-damage", "ability-carry"],
+      "sourceRef": "five-items-manual-entry-2026-11-26",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Encoded from user text on 2026-11-26. Item Ability Haste scaling is distinct from total Ability Haste. The on-hit modifier hit requirement and supplied 10%/30-hit example are preserved in the restriction; no unspecified rounding rule is assumed. Type Finisher is retained as purpose without inventing an execute or missing-health mechanic."
+      }
+    },
+    {
+      "id": "bandits-toll",
+      "name": "Bandit's Toll",
+      "role": "fighter",
+      "purpose": "Offense",
+      "stats": {
+        "attackSpeed": 40,
+        "maxHealth": 150,
+        "lifesteal": 8
+      },
+      "passives": [
+        {
+          "name": "Extortion",
+          "description": "Basic Attacks deal 15 (+5% Total Physical Power for each Basic Ability on cooldown) True Damage On-Hit.",
+          "scaling": {
+            "baseOnHitDamage": 15,
+            "totalPhysicalPowerRatioPerBasicAbilityOnCooldown": 0.05
+          },
+          "effects": ["basic-attack", "on-hit", "true-damage", "basic-abilities-on-cooldown-scaling"]
+        },
+        {
+          "name": "Padfoot",
+          "description": "Your Basic Attack Movement Penalty is reduced by 50% (20% for Ranged Heroes).",
+          "scaling": {
+            "basicAttackMovementPenaltyReductionPercent": 50,
+            "rangedBasicAttackMovementPenaltyReductionPercent": 20
+          },
+          "effects": ["basic-attack-movement-penalty-reduction", "ranged-penalty"]
+        }
+      ],
+      "tags": ["offense", "on-hit", "attack-speed", "true-damage", "lifesteal", "sustain"],
+      "answers": ["sustained-fighting"],
+      "sourceRef": "five-items-manual-entry-2026-11-26",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Encoded from user text on 2026-11-26. Extortion scales with Total Physical Power for each Basic Ability currently on cooldown. Padfoot reduces the basic attack movement penalty, rather than granting flat movement speed, and uses 20% instead of 50% for ranged users."
+      }
+    },
+    {
+      "id": "heretics-blade",
+      "name": "Heretic's Blade",
+      "role": "fighter",
+      "purpose": "Defense",
+      "stats": {
+        "attackSpeed": 40,
+        "physicalArmor": 40,
+        "abilityHaste": 15
+      },
+      "passives": [
+        {
+          "name": "Villainous Strikes",
+          "description": "Basic Attacks deal 15 (+1 per Level) Physical Damage On-Hit. This damage is increased by 1.5x against Slowed or Immobilized Units.",
+          "scaling": {
+            "baseOnHitDamage": 15,
+            "damagePerLevel": 1,
+            "slowedOrImmobilizedDamageMultiplier": 1.5
+          },
+          "effects": ["basic-attack", "on-hit", "physical-damage", "level-scaling", "bonus-damage-to-slowed-or-immobilized"]
+        },
+        {
+          "name": "Cold Steel",
+          "cooldown": 30,
+          "description": "Upon casting your Ultimate, for the next 6s your Basic Attacks Slow Enemies On-Hit by 20% for 1.25s. The Slow is 50% effective for Ranged Heroes - 30s CD.",
+          "scaling": {
+            "buffDuration": 6,
+            "slowPercent": 20,
+            "slowDuration": 1.25,
+            "rangedSlowMultiplier": 0.5
+          },
+          "effects": ["ultimate-cast-trigger", "on-hit", "slow", "ranged-penalty"]
+        }
+      ],
+      "tags": ["defense", "on-hit", "physical-armor", "attack-speed", "haste", "slow", "ultimate-synergy"],
+      "answers": ["stickiness", "physical-pressure"],
+      "sourceRef": "five-items-manual-entry-2026-11-26",
+      "verification": {
+        "status": "source-backed",
+        "notes": "Encoded from user text on 2026-11-26. Villainous Strikes' conditional damage multiplier is 1.5x. Cold Steel requires an Ultimate cast; the 6s buff window, per-hit 1.25s slow duration, 30s cooldown and halved ranged slow are retained separately."
+      }
+    },
     {
       "id": "vortex-stone",
       "name": "Vortex Stone",
