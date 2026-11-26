@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["app/page.tsx", "app/draft-client.tsx", "data/predecessor/*.ts"],
+  "exclude": ["node_modules"],
+  "compilerOptions": { "incremental": false }
+}

@@ -54,7 +54,7 @@ export type Item = {
   };
 };
 
-export type ItemDataSet = typeof itemData & { items: Item[] };
+export type ItemDataSet = Omit<typeof itemData, 'items'> & { items: Item[] };
 
 export type ItemAuditIssue = {
   severity: "error" | "warning";
